@@ -4,6 +4,7 @@ from .claude import CLAUDE
 from .vllm import VLLM
 from common.registry import registry
 from .huggingface import HgModels
+from .lookahead_lm import LookAhead_LM
 
 __all__ = [
     "OPENAI_GPT",

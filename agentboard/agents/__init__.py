@@ -1,5 +1,6 @@
 from .vanilla_agent import VanillaAgent
 from .react_agent import ReactAgent
+from .lookahead_agent import LookAheadAgent 
 from common.registry import registry
 
 __all__ = ["VanillaAgent", "ReactAgent"]

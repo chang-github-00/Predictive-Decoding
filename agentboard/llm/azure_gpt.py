@@ -108,7 +108,7 @@ class OPENAI_GPT_AZURE:
             for attempt in range(self.max_retry_iters):  
                 try:
                     output = self.chat_inference(prompt)
-                    output = output.split("\n")[0]
+                    # output = output.split("\n")[0]
                     return True, output # return success, completion
                 except Exception as e:
                     print(f"Error on attempt {attempt + 1}") 

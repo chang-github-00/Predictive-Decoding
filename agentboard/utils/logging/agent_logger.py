@@ -11,6 +11,7 @@ BOLD_SEQ = "\033[1m"
 COLORS = {
     'GOAL': BLUE,
     'FINISH': YELLOW,
+    'GUESS_ACTION': RED,
 }
 
 class ColoredFormatter(logging.Formatter):
@@ -54,6 +55,7 @@ class AgentLogger(logging.Logger):
     ACTION_INPUT_LEVEL_NUM = 103
     OBSERVATION_LEVEL_NUM = 104
     FINISH_LEVEL_NUM = 105
+    GUESS_LEVEL_NUM = 106
 
     def __init__(self, name, level=logging.NOTSET, filepath=None):
         super().__init__(name, level)
@@ -67,8 +69,12 @@ class AgentLogger(logging.Logger):
     def finish(self, msg, *args, **kwargs):
         if self.isEnabledFor(self.FINISH_LEVEL_NUM):
             self._log(self.FINISH_LEVEL_NUM, msg, args, **kwargs)   
+    
+    def guess_action(self, msg, *args, **kwargs):
+        if self.isEnabledFor(self.GUESS_LEVEL_NUM):
+            self._log(self.GUESS_LEVEL_NUM, msg, args, **kwargs)   
 
 logging.addLevelName(AgentLogger.GOAL_LEVEL_NUM, "GOAL")
 logging.addLevelName(AgentLogger.FINISH_LEVEL_NUM, "FINISH")
-
+logging.addLevelName(AgentLogger.GUESS_LEVEL_NUM, "GUESS_ACTION")
 logging.setLoggerClass(AgentLogger)

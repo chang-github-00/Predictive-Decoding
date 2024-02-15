@@ -5,9 +5,10 @@ from llm import load_llm
 from common.registry import registry
 import copy
 
+
 from utils.logging.logger import TaskLogger
 from utils.logging.agent_logger import AgentLogger
-logger = AgentLogger(__name__)
+logger = AgentLogger(__name__, filepath="lade_agent_gpt35_alfworld.txt")
 
 
 from .base_task import BaseTask
@@ -87,10 +88,12 @@ class Evalalfworld(BaseTask):
         
         trajectory = []
         trajectory.append({"Goal":goal, "id":0})
-        trajectory.append({"Observation":init_ob, "id":0})   
+        trajectory.append({"Observation":init_ob, "id":0})  
+        
+        guess_good = 0 
         
         for i in range(0, self.max_num_steps):
-            success, action = self.agent.run(init_prompt_dict=init_prompt_dict)
+            success, action, is_guess = self.agent.run(init_prompt_dict=init_prompt_dict)
             
             if not success:
                 break
@@ -98,8 +101,11 @@ class Evalalfworld(BaseTask):
             action = self.parseAction(action)
             if action in self.env.get_action_space():
                 grounding_acc_count += 1.0
-            
-            logger.info("Step {:02} - Action: {}".format(i, action))
+                
+            if is_guess:
+                logger.guess_action("Step {:02} - Action: {}".format(i, action))
+            else:
+                logger.info("Step {:02} - Action: {}".format(i, action))
             trajectory.append({"Action":action, "id":i})
             
             observation, reward, done, info = self.env.step(action)
@@ -118,6 +124,8 @@ class Evalalfworld(BaseTask):
             
             if reward > last_reward:
                 score_change_record.append((i, reward))
+                
+                if is_guess: guess_good +=1
             last_reward = reward
             self.agent.update(action=action, state=observation)
             if done:
@@ -125,9 +133,14 @@ class Evalalfworld(BaseTask):
                 game_name = self.env.cur_task_name.split('/')[0]
                 env_details = {"task_name": game_name, "goal": self.agent.goal, "difficulty": self.env.difficulty}
                 self.agentboard.log_example(index, True, reward, grounding_acc_count / (i + 1), score_change_record, env_details, trajectory)
-                    
+                
+                logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/i))
+                logger.info("guess good: {}".format(guess_good/self.agent.use_guess_cnt))
+        
                 return 1.0, True, grounding_acc_count / (i + 1), score_change_record, i
-
+            
+        logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/i))
+        logger.info("guess good: {}".format(guess_good/self.agent.use_guess_cnt))
         
         game_name = self.env.cur_task_name.split('/')[0]
         env_details = {"task_name": game_name, "goal": self.agent.goal, "difficulty": self.env.difficulty}

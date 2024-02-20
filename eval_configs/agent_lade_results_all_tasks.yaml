@@ -26,6 +26,17 @@ llm:
       use_parser: False
       max_tokens: 200
 
+  deepseek-67b:   # for opensource models, llm name should be either vllm/hg based on the vllm/huggingface inference architecture
+    name: vllm
+    engine: /root/huggingface_models/deepseek-llm-67b-chat
+    max_tokens: 200
+    temperature: 0
+    top_p: 1
+    stop:
+    context_length: 4096
+    dtype: float16
+    ngpu: 8
+    use_parser: False
 env:
   pddl:
     name: pddl

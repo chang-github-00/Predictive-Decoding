@@ -36,6 +36,7 @@ llm:
     context_length: 4096
     dtype: float16
     ngpu: 8
+    tau: 0.5
     use_parser: False
 env:
   pddl:

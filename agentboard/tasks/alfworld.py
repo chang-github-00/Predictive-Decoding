@@ -8,7 +8,7 @@ import copy
 
 from utils.logging.logger import TaskLogger
 from utils.logging.agent_logger import AgentLogger
-logger = AgentLogger(__name__, filepath="lade_agent_gpt35_alfworld.txt")
+logger = AgentLogger(__name__, filepath="lade_agent_deepseek_alfworld.txt")
 
 
 from .base_task import BaseTask
@@ -125,7 +125,6 @@ class Evalalfworld(BaseTask):
             if reward > last_reward:
                 score_change_record.append((i, reward))
                 
-                if is_guess: guess_good +=1
             last_reward = reward
             self.agent.update(action=action, state=observation)
             if done:
@@ -135,12 +134,12 @@ class Evalalfworld(BaseTask):
                 self.agentboard.log_example(index, True, reward, grounding_acc_count / (i + 1), score_change_record, env_details, trajectory)
                 
                 logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/i))
-                logger.info("guess good: {}".format(guess_good/self.agent.use_guess_cnt))
+                # logger.info("guess good: {}".format(guess_good/self.agent.use_guess_cnt))
         
                 return 1.0, True, grounding_acc_count / (i + 1), score_change_record, i
             
         logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/i))
-        logger.info("guess good: {}".format(guess_good/self.agent.use_guess_cnt))
+        # logger.info("guess good: {}".format(guess_good/self.agent.use_guess_cnt))
         
         game_name = self.env.cur_task_name.split('/')[0]
         env_details = {"task_name": game_name, "goal": self.agent.goal, "difficulty": self.env.difficulty}

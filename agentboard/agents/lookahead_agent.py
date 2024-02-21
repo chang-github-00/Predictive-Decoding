@@ -181,17 +181,24 @@ class LookAheadAgent(
         action_sequences = action.split('\n')
         all_actions = []
         for action in action_sequences:
-            if "action:" in action.lower():
-                new_action = action.split(":")[1]
-                new_action = new_action.strip()
-                all_actions.append({"Action": new_action})
-            elif ":" in action.lower():
-                type = action.split(":")[0]
-                content = action.split(":")[1]
-                type = type.strip()
-                content = content.strip()
-                all_actions[-1][type.capitalize()] = content
-        first_action = all_actions[0]["Action"]
+            try: 
+                if "action:" in action.lower():
+                    new_action = action.split(":")[1]
+                    new_action = new_action.strip()
+                    all_actions.append({"Action": new_action})
+                elif ":" in action.lower():
+                    type = action.split(":")[0]
+                    content = action.split(":")[1]
+                    type = type.strip()
+                    content = content.strip()
+                    all_actions[-1][type.capitalize()] = content
+            except:
+                continue
+                
+        if len(all_actions)>0: 
+            first_action = all_actions[0]["Action"] 
+        else:
+            first_action = ""
         return all_actions, first_action
     
     def update_n_gram(self, action):

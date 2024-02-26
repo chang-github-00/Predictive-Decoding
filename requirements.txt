@@ -20,8 +20,8 @@ imageio
 scikit-image
 geopy
 jsonlines
-vllm
-torch==2.0.1 # vllm 0.2.1.post1 requires
+#vllm
+#torch==2.0.1 # vllm 0.2.1.post1 requires
 python-dotenv
 bs4
 deepspeed
@@ -58,4 +58,4 @@ train==0.0.5
 # transformers==4.23.1 # claude need transformers 4.23.1 / transformers 4.34.1
 typing_extensions==4.5.0
 typing-inspect==0.8.0
-anthropic==0.6.0
+# anthropic==0.6.0

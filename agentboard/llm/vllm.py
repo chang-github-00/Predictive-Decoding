@@ -36,7 +36,7 @@ class VLLM:
         
         self.tokenizer = self.llm.get_tokenizer()
         
-        if tau is None:
+        if tau:
             self.sampling_params = SamplingParams(
                 temperature=temperature,
                 top_p=top_p,
@@ -54,7 +54,11 @@ class VLLM:
                     UncertaintyLogitsProcessor(self.tokenizer, tau)
                 ]
             )
-        
+            
+        self.tau = tau
+        self.action_id_lower = self.tokenizer.encode("action")[-1]
+        self.action_id_upper = self.tokenizer.encode("Action")[-1]
+        self.new_line_id = self.tokenizer.encode("\n")[-1]
         
     def make_prompt(self, system_message, prompt):
         full_prompt = None
@@ -95,21 +99,69 @@ class VLLM:
         full_prompt = self.make_prompt(system_message, prompt)
         assert full_prompt is not None
         outputs = self.llm.generate([full_prompt], self.sampling_params)
-        logprobs_topp = outputs[0].outputs[0].logprobs
+        # logprobs_topp = outputs[0].outputs[0].logprobs
         
-        outputs = outputs[0].outputs[0].text
+        outputs = self.apply_uncertainty(outputs)
         
-        logprobs = np.array([list(logprob.values()) for logprob in logprobs_topp])
-        probs = np.exp(logprobs)/np.sum(np.exp(logprobs), axis=1, keepdims=True)
-        entropy = -np.sum(probs * np.log2(probs), axis=1)
+        # logprobs = np.array([list(logprob.values()) for logprob in logprobs_topp])
+        # probs = np.exp(logprobs)/np.sum(np.exp(logprobs), axis=1, keepdims=True)
+        # entropy = -np.sum(probs * np.log2(probs), axis=1)
         
-        tokens = [self.tokenizer.decode(list(probs.keys())[0] ) for probs in logprobs_topp]
+        # tokens = [self.tokenizer.decode(list(probs.keys())[0] ) for probs in logprobs_topp]
         
         if 'vicuna' in self.model.lower():
             # Note: vicuna tends to generate get\_search\_movie with Action Input: {"movie\_name": "Crouching Tiger, Hidden Dragon"} when using tools
             outputs = outputs.replace('\_', '_')
 
         return True, outputs 
+    
+    
+    def apply_uncertainty(self, outputs):
+        if self.tau is None:
+            return outputs[0].outputs[0].text
+        else:
+            logprobs_raw = outputs[0].outputs[0].logprobs
+            
+            
+            tokens = [list(probs.keys())[0]  for probs in logprobs_raw]
+            start_id = None
+            end_id = -1
+            
+            try:
+                if self.action_id_upper in tokens:
+                    start_id = tokens.index(self.action_id_upper)
+                if self.action_id_lower in tokens:
+                    start_id = tokens.index(self.action_id_lower)
+                end_id = tokens.index(self.new_line_id)
+            except:
+                pass
+            
+            if start_id is None or end_id == -1:
+                return outputs[0].outputs[0].text
+            
+            logprobs = np.array([list(logprob.values()) for logprob in logprobs_raw])
+            k = logprobs.shape[1]
+            probs = np.exp(logprobs)/np.sum(np.exp(logprobs), axis=1, keepdims=True)
+            entropy = -np.sum(probs * np.log2(probs), axis=1)/np.log2(k)
+            uncertain_mask = entropy < self.tau
+            
+            action_mask = np.ones_like(uncertain_mask)
+            
+            if start_id is not None and end_id != -1:
+                action_mask[end_id:] = 0
+            
+            uncertain_mask = uncertain_mask | action_mask
+            
+            # find the first false in uncertain_mask
+            first_false = -1
+            try: 
+                first_false = np.where(uncertain_mask == False)[0][0]
+            except:
+                pass
+            
+            
+            outputs_tokens = tokens[:first_false]
+            return self.tokenizer.decode(outputs_tokens, skip_special_tokens=True)
     
     def generate_uncertainty_early_stop(self, system_message, prompt):
         
@@ -169,6 +221,9 @@ class UncertaintyLogitsProcessor:
             
             self.eos_id = tokenizer.eos_token_id
             
+            self.new_line_id = tokenizer.encode("\n")[0]
+            self.action_id = tokenizer.encode("action")[0]
+            
     def validate(self, input_action) -> bool:
         pattern = r"action .+\n"
     
@@ -193,73 +248,16 @@ class UncertaintyLogitsProcessor:
         # if the sequence is the first action sequence, e.g. Action: put down cup <eos>, then we should not interrupt
         action_mask = torch.zeros_like(_mask)
         
-        input_prompt = self.tokenizer.decode(input_ids)
+        # input_prompt = self.tokenizer.decode(input_ids)
         
-        # protect the first action, which are tokens [start_action:end_action]
-        action_mask = torch.zeros_like(_mask)
-        if self.validate(input_prompt):
+        # # protect the first action, which are tokens [start_action:end_action]
+        # action_mask = torch.zeros_like(_mask)
+        # if self.validate(input_prompt):
+        #     action_mask[0] = 1
+        
+        if self.action_id in input_ids and self.new_line_id in input_ids:
             action_mask[0] = 1
         
-        _mask = _mask & ~action_mask
-        
-        if self.random_interrupt:
-            # re-scale the prob such that
-            # prob > self.tau => sample_prob = 0.0
-            # prob = self.tau => sample_prob = 0.5
-            # prob = 0.0 => sample_prob = 1.0
-            calibrated_prob = (
-                _mask.float() * (1 - (0.5 * entropy / self.tau))
-            )
-            uncertain_mask = torch.bernoulli(calibrated_prob).bool()
-        else:
-            uncertain_mask = _mask # [B]
-        
-        
-        ###########################################
-        # emit an <eos> token if 
-        force_eos_mask = uncertain_mask
-        
-        # produce a point mass over <eos>
-        scores[force_eos_mask, :] = -float("inf")
-        scores[force_eos_mask, self.eos_id] = 0
-        
-        return scores
-    def __init__(
-            self, 
-            tokenizer,
-            tau=0.1,
-            random_interrupt=False
-        ):
-            self.tokenizer = tokenizer
-            self.tau = tau
-            self.random_interrupt = random_interrupt
-            
-            self.eos_id = tokenizer.eos_token_id
-
-    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
-        k = 20
-        logprobs_topk = scores.topk(k, dim=-1).values
-        # logprobs = np.array([list(logprob.values()) for logprob in logprobs_topk])
-        probs = torch.softmax(logprobs_topk, dim=-1)
-        entropy = -torch.sum(probs * torch.log2(probs)/torch.log2(torch.tensor(k, device=probs.device)), axis=1)
-        
-        # max_prob = torch.softmax(scores, dim=-1).amax(dim=-1)
-        _mask = entropy > self.tau # [B]
-        
-        
-        # if the sequence is the first action sequence, e.g. Action: put down cup <eos>, then we should not interrupt
-        start_action = 0
-        end_action = -1 
-        
-        try:
-            start_action = torch.where(input_ids == self.tokenizer.encode("Action:")[0])[0]
-            end_action = torch.where(input_ids == self.tokenizer.encode("Action:")[0])[1]
-        except:
-            pass
-        
-        # protect the first action, which are tokens [start_action:end_action]
-        action_mask = torch.zeros_like(_mask)
-        action_mask[start_action:end_action] = 1
         
         _mask = _mask & ~action_mask
         

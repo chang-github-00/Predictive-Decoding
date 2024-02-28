@@ -1,12 +1,13 @@
 from vllm import LLM, SamplingParams
 import pdb
 import sys
+import numpy as np
 sys.path.append('.')
 from common.registry import registry
 from prompts.prompt_template import prompt_templates
 
 import torch
-
+import re
 
 @registry.register_llm("vllm")
 class VLLM:
@@ -41,6 +42,7 @@ class VLLM:
                 top_p=top_p,
                 stop=stop,
                 max_tokens=max_tokens,
+                logprobs = 20
             )
         else:
             self.sampling_params = SamplingParams(
@@ -93,7 +95,15 @@ class VLLM:
         full_prompt = self.make_prompt(system_message, prompt)
         assert full_prompt is not None
         outputs = self.llm.generate([full_prompt], self.sampling_params)
+        logprobs_topp = outputs[0].outputs[0].logprobs
+        
         outputs = outputs[0].outputs[0].text
+        
+        logprobs = np.array([list(logprob.values()) for logprob in logprobs_topp])
+        probs = np.exp(logprobs)/np.sum(np.exp(logprobs), axis=1, keepdims=True)
+        entropy = -np.sum(probs * np.log2(probs), axis=1)
+        
+        tokens = [self.tokenizer.decode(list(probs.keys())[0] ) for probs in logprobs_topp]
         
         if 'vicuna' in self.model.lower():
             # Note: vicuna tends to generate get\_search\_movie with Action Input: {"movie\_name": "Crouching Tiger, Hidden Dragon"} when using tools
@@ -146,8 +156,74 @@ class VLLM:
                    tau=tau)
 
 
-
 class UncertaintyLogitsProcessor:
+    def __init__(
+            self, 
+            tokenizer,
+            tau=0.1,
+            random_interrupt=False
+        ):
+            self.tokenizer = tokenizer
+            self.tau = tau
+            self.random_interrupt = random_interrupt
+            
+            self.eos_id = tokenizer.eos_token_id
+            
+    def validate(self, input_action) -> bool:
+        pattern = r"action .+\n"
+    
+        # Use re.search to find the pattern in the string.
+        # If a match is found, re.search returns a match object. Otherwise, it returns None.
+        match = re.search(pattern, input_action.lower())    
+        
+        # Return True if a match was found, otherwise False.
+        return match is not None
+
+    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
+        k = 20
+        logprobs_topk = scores.topk(k, dim=-1).values
+        # logprobs = np.array([list(logprob.values()) for logprob in logprobs_topk])
+        probs = torch.softmax(logprobs_topk, dim=-1)
+        entropy = -torch.sum(probs * torch.log2(probs)/torch.log2(torch.tensor(k, device=probs.device)))
+        
+        # max_prob = torch.softmax(scores, dim=-1).amax(dim=-1)
+        _mask = entropy > self.tau # [B]
+        
+        
+        # if the sequence is the first action sequence, e.g. Action: put down cup <eos>, then we should not interrupt
+        action_mask = torch.zeros_like(_mask)
+        
+        input_prompt = self.tokenizer.decode(input_ids)
+        
+        # protect the first action, which are tokens [start_action:end_action]
+        action_mask = torch.zeros_like(_mask)
+        if self.validate(input_prompt):
+            action_mask[0] = 1
+        
+        _mask = _mask & ~action_mask
+        
+        if self.random_interrupt:
+            # re-scale the prob such that
+            # prob > self.tau => sample_prob = 0.0
+            # prob = self.tau => sample_prob = 0.5
+            # prob = 0.0 => sample_prob = 1.0
+            calibrated_prob = (
+                _mask.float() * (1 - (0.5 * entropy / self.tau))
+            )
+            uncertain_mask = torch.bernoulli(calibrated_prob).bool()
+        else:
+            uncertain_mask = _mask # [B]
+        
+        
+        ###########################################
+        # emit an <eos> token if 
+        force_eos_mask = uncertain_mask
+        
+        # produce a point mass over <eos>
+        scores[force_eos_mask, :] = -float("inf")
+        scores[force_eos_mask, self.eos_id] = 0
+        
+        return scores
     def __init__(
             self, 
             tokenizer,
@@ -161,15 +237,39 @@ class UncertaintyLogitsProcessor:
             self.eos_id = tokenizer.eos_token_id
 
     def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
-        max_prob = torch.softmax(scores, dim=-1).amax(dim=-1)
-        _mask = max_prob < self.tau # [B]
+        k = 20
+        logprobs_topk = scores.topk(k, dim=-1).values
+        # logprobs = np.array([list(logprob.values()) for logprob in logprobs_topk])
+        probs = torch.softmax(logprobs_topk, dim=-1)
+        entropy = -torch.sum(probs * torch.log2(probs)/torch.log2(torch.tensor(k, device=probs.device)), axis=1)
+        
+        # max_prob = torch.softmax(scores, dim=-1).amax(dim=-1)
+        _mask = entropy > self.tau # [B]
+        
+        
+        # if the sequence is the first action sequence, e.g. Action: put down cup <eos>, then we should not interrupt
+        start_action = 0
+        end_action = -1 
+        
+        try:
+            start_action = torch.where(input_ids == self.tokenizer.encode("Action:")[0])[0]
+            end_action = torch.where(input_ids == self.tokenizer.encode("Action:")[0])[1]
+        except:
+            pass
+        
+        # protect the first action, which are tokens [start_action:end_action]
+        action_mask = torch.zeros_like(_mask)
+        action_mask[start_action:end_action] = 1
+        
+        _mask = _mask & ~action_mask
+        
         if self.random_interrupt:
             # re-scale the prob such that
             # prob > self.tau => sample_prob = 0.0
             # prob = self.tau => sample_prob = 0.5
             # prob = 0.0 => sample_prob = 1.0
             calibrated_prob = (
-                _mask.float() * (1 - (0.5 * max_prob / self.tau))
+                _mask.float() * (1 - (0.5 * entropy / self.tau))
             )
             uncertain_mask = torch.bernoulli(calibrated_prob).bool()
         else:

@@ -8,8 +8,8 @@ import random
 import re
 
 
-@registry.register_agent("LookAheadAgent")
-class LookAheadAgent(      # directly follow https://lmsys.org/blog/2023-11-21-lookahead-decoding/
+@registry.register_agent("LookAheadEvalAgent")
+class LookAheadEvalAgent(   # add world modeling objective in agent 
     BaseAgent):  # the agent should receive goal, state and action, then return the next state
     def __init__(self,
                  llm_model,
@@ -55,6 +55,9 @@ class LookAheadAgent(      # directly follow https://lmsys.org/blog/2023-11-21-l
 
         self.n_gram = 2
         self.n_gram_pool = []
+        
+        self.reward = []
+        
         self.last_action = None 
         self.guess_action = None
         self.use_guess_cnt = 0
@@ -214,7 +217,41 @@ class LookAheadAgent(      # directly follow https://lmsys.org/blog/2023-11-21-l
                 
                 if new_action == sequence[i]["Action"]:
                     self.guess_action = n_gram_list[1:]
+    
+    def update_reward(self):
+        return
+    
+    def longest_common_subsequence(self, X, Y):
+        m = len(X)
+        n = len(Y)
+        L = [[None]*(n+1) for i in range(m+1)]
+        for i in range(m+1):
+            for j in range(n+1):
+                if i == 0 or j == 0 :
+                    L[i][j] = 0
+                elif X[i-1] == Y[j-1]:
+                    L[i][j] = L[i-1][j-1]+1
+                else:
+                    L[i][j] = max(L[i-1][j], L[i][j-1])
+        # What is the sequence?
         
+        next_step = Y[L[m][n]:]
+        return L[m][n]
+    
+    def n_gram_inference(self):
+        trajectories_pool = self.n_gram_pool
+        history = self.memory
+        scores = self.reward
+        
+        action_distribution = {}
+        
+        for i in range(len(trajectories_pool)):
+            trajectory = trajectories_pool[i]
+            score = scores[i]
+            for j in range(len(trajectory)-self.n_gram):
+                n_gram_list = [trajectory[j+s]["Action"] for s in  range(self.n_gram)]
+                if n_gram_list == self.guess_action:
+                    return trajectory[j+self.n_gram]
         
     
     def run(self, init_prompt_dict=None):

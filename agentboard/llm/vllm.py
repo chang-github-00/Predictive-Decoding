@@ -36,13 +36,15 @@ class VLLM:
         
         self.tokenizer = self.llm.get_tokenizer()
         
-        if tau:
+        if True:
             self.sampling_params = SamplingParams(
                 temperature=temperature,
                 top_p=top_p,
                 stop=stop,
                 max_tokens=max_tokens,
-                logprobs = 20
+                logprobs = 20,
+                # n=4,
+                # use_beam_search=True,
             )
         else:
             self.sampling_params = SamplingParams(

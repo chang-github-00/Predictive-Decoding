@@ -1,0 +1,122 @@
+2024-02-29 16:26:29 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-02-29 16:26:29 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-02-29 16:28:23 | INFO | tasks.alfworld | Step 02 - Action: go to desk 1
+2024-02-29 16:28:23 | INFO | tasks.alfworld | Step 02 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-02-29 16:28:23 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.25
+
+2024-02-29 16:28:30 | INFO | tasks.alfworld | Step 05 - Action: go to desk 2
+2024-02-29 16:28:30 | INFO | tasks.alfworld | Step 05 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-02-29 16:28:30 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.5
+
+2024-02-29 16:29:08 | INFO | tasks.alfworld | Step 06 - Action: take bowl 1 from desk 2
+2024-02-29 16:29:09 | INFO | tasks.alfworld | Step 06 - Observation: You pick up the bowl 1 from the desk 2.
+2024-02-29 16:29:09 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.75
+
+2024-02-29 16:32:10 | GOAL | tasks.alfworld | Example 2 | Goal: look at bowl under the desklamp.
+2024-02-29 16:32:10 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-02-29 16:32:16 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-02-29 16:32:17 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-02-29 16:32:17 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-02-29 16:32:28 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-02-29 16:32:28 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-02-29 16:32:28 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-02-29 16:35:30 | GOAL | tasks.alfworld | Example 2 | Goal: put a cool tomato in microwave.
+2024-02-29 16:35:30 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-02-29 16:36:14 | INFO | tasks.alfworld | Step 00 - Action: go to fridge 1
+2024-02-29 16:36:14 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
+2024-02-29 16:36:14 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-02-29 16:36:40 | INFO | tasks.alfworld | Step 01 - Action: open fridge 1
+2024-02-29 16:36:41 | INFO | tasks.alfworld | Step 01 - Observation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-02-29 16:36:41 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.0
+
+2024-02-29 16:37:04 | INFO | tasks.alfworld | Step 02 - Action: take tomato from fridge 1
+2024-02-29 16:37:04 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
+2024-02-29 16:37:04 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.0
+
+2024-02-29 16:37:29 | INFO | tasks.alfworld | Step 03 - Action: examine fridge 1
+2024-02-29 16:37:29 | INFO | tasks.alfworld | Step 03 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-02-29 16:37:29 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.0
+
+2024-02-29 16:38:04 | INFO | tasks.alfworld | Step 04 - Action: take tomato from fridge 1
+2024-02-29 16:38:04 | INFO | tasks.alfworld | Step 04 - Observation: Nothing happens.
+2024-02-29 16:38:04 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.0
+
+2024-02-29 16:38:39 | INFO | tasks.alfworld | Step 05 - Action: take pan 1 from fridge 1
+2024-02-29 16:38:39 | INFO | tasks.alfworld | Step 05 - Observation: You pick up the pan 1 from the fridge 1.
+2024-02-29 16:38:39 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.0
+
+2024-02-29 16:39:11 | INFO | tasks.alfworld | Step 06 - Action: put pan 1 in/on stoveburner 1
+2024-02-29 16:39:11 | INFO | tasks.alfworld | Step 06 - Observation: Nothing happens.
+2024-02-29 16:39:11 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.0
+
+2024-02-29 16:39:54 | INFO | tasks.alfworld | Step 07 - Action: go to stoveburner 1
+2024-02-29 16:39:54 | INFO | tasks.alfworld | Step 07 - Observation: On the stoveburner 1, you see a pot 1.
+2024-02-29 16:39:54 | INFO | tasks.alfworld | Step 07 - Progress Rate: 0.0
+
+2024-02-29 16:41:44 | INFO | tasks.alfworld | Step 08 - Action: take pot 1 from stoveburner 1
+2024-02-29 16:41:44 | INFO | tasks.alfworld | Step 08 - Observation: Nothing happens.
+2024-02-29 16:41:44 | INFO | tasks.alfworld | Step 08 - Progress Rate: 0.0
+
+2024-02-29 20:23:10 | GOAL | tasks.alfworld | Example 2 | Goal: put a cool tomato in microwave.
+2024-02-29 20:23:10 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-02-29 20:30:14 | GOAL | tasks.alfworld | Example 2 | Goal: put a cool tomato in microwave.
+2024-02-29 20:30:14 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-02-29 20:31:08 | INFO | tasks.alfworld | Step 00 - Action: go to fridge 1
+2024-02-29 20:31:08 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
+2024-02-29 20:31:08 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-02-29 20:31:44 | INFO | tasks.alfworld | Step 01 - Action: open fridge 1
+2024-02-29 20:31:45 | INFO | tasks.alfworld | Step 01 - Observation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-02-29 20:31:45 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.0
+
+2024-02-29 20:34:13 | INFO | tasks.alfworld | Step 02 - Action: take pan 1 from fridge 1
+2024-02-29 20:34:13 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the pan 1 from the fridge 1.
+2024-02-29 20:34:13 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.0
+
+2024-02-29 20:35:05 | INFO | tasks.alfworld | Step 03 - Action: examine pan 1
+2024-02-29 20:35:05 | INFO | tasks.alfworld | Step 03 - Observation: This is a normal pan 1. In it, you see nothing.
+2024-02-29 20:35:05 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.0
+
+2024-02-29 20:36:00 | INFO | tasks.alfworld | Step 04 - Action: go to microwave 1
+2024-02-29 20:36:00 | INFO | tasks.alfworld | Step 04 - Observation: The microwave 1 is closed.
+2024-02-29 20:36:00 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.0
+
+2024-02-29 20:36:27 | INFO | tasks.alfworld | Step 05 - Action: open microwave 1
+2024-02-29 20:36:27 | INFO | tasks.alfworld | Step 05 - Observation: You open the microwave 1. The microwave 1 is open. In it, you see nothing.
+2024-02-29 20:36:27 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.0
+
+2024-02-29 20:37:39 | INFO | tasks.alfworld | Step 06 - Action: put pan 1 in/on microwave 1
+2024-02-29 20:37:39 | INFO | tasks.alfworld | Step 06 - Observation: Nothing happens.
+2024-02-29 20:37:39 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.0
+
+2024-02-29 20:41:54 | GOAL | tasks.alfworld | Example 2 | Goal: put a cool tomato in microwave.
+2024-02-29 20:41:54 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-02-29 20:42:30 | INFO | tasks.alfworld | Step 00 - Action: go to fridge 1
+2024-02-29 20:42:31 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
+2024-02-29 20:42:31 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-02-29 20:44:16 | INFO | tasks.alfworld | Step 01 - Action: open fridge 1
+2024-02-29 20:44:16 | INFO | tasks.alfworld | Step 01 - Observation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-02-29 20:44:16 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.0
+
+2024-02-29 20:47:34 | INFO | tasks.alfworld | Step 02 - Action: take pan 1 from fridge 1
+2024-02-29 20:47:35 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the pan 1 from the fridge 1.
+2024-02-29 20:47:35 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.0
+
+2024-02-29 21:07:07 | GOAL | tasks.alfworld | Example 5 | Goal: cool some lettuce and put it in countertop.
+2024-02-29 21:07:07 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-02-29 21:07:31 | INFO | tasks.alfworld | Step 00 - Action: go to fridge 1
+2024-02-29 21:07:31 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
+2024-02-29 21:07:31 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-02-29 21:08:33 | INFO | tasks.alfworld | Step 01 - Action: open fridge 1
+2024-02-29 21:08:33 | INFO | tasks.alfworld | Step 01 - Observation: You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.
+2024-02-29 21:08:33 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.0
+
+2024-02-29 21:08:54 | INFO | tasks.alfworld | Step 02 - Action: take lettuce from fridge 1
+2024-02-29 21:08:54 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
+2024-02-29 21:08:54 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.0
+

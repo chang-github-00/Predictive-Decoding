@@ -8,7 +8,7 @@ import copy
 
 from utils.logging.logger import TaskLogger
 from utils.logging.agent_logger import AgentLogger
-logger = AgentLogger(__name__, filepath="lade_agent_deepseek_alfworld.txt")
+logger = AgentLogger(__name__, filepath="lade_agent_deepseek_alfworld_uncertain.txt")
 
 
 from .base_task import BaseTask
@@ -93,6 +93,7 @@ class Evalalfworld(BaseTask):
         guess_good = 0 
         
         for i in range(0, self.max_num_steps):
+            
             success, action, is_guess = self.agent.run(init_prompt_dict=init_prompt_dict)
             
             if not success:
@@ -164,6 +165,10 @@ class Evalalfworld(BaseTask):
         for id in range(self.num_exams):
 
             ob, info = self.env.reset()
+            
+            # if id not in [5, 6, 8]:
+            #     continue
+            
             ob = '\n'.join(ob[0].split('\n\n')[1:])
             name = '/'.join(info['extra.gamefile'][0].split('/')[-3:-1])
             #sub_goal = selected_obs[name]

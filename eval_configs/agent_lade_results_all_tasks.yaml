@@ -8,7 +8,8 @@ run:
 # --wandb --max_num_steps 30 --project_name ... --baseline_dir ... --log_path ...
 
 agent:
-  name: LookAheadAgent
+  # name: LookAheadAgent
+  name: LookAheadEvalAgent
   memory_size: 100
   need_goal: True
 

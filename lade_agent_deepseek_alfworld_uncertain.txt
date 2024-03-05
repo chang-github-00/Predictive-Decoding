@@ -120,3 +120,284 @@
 2024-02-29 21:08:54 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
 2024-02-29 21:08:54 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.0
 
+2024-03-05 16:44:58 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 16:44:58 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 16:48:40 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 16:48:40 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 16:52:44 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 16:52:44 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 16:56:29 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 16:56:29 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 17:00:37 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 17:00:37 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 17:06:11 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 17:06:11 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 17:11:38 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 17:11:38 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 17:17:10 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 17:17:10 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 17:18:21 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 17:18:21 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 17:18:21 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 17:21:18 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 17:21:18 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 17:21:18 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 17:25:48 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 17:25:48 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 17:34:24 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 17:34:25 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 17:34:25 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 17:34:44 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 17:34:45 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 17:34:45 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 17:47:15 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 17:47:15 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 17:57:15 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 17:57:15 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 17:57:15 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 17:57:38 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 17:57:39 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 17:57:39 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 18:03:20 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 18:03:20 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 18:03:22 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 18:03:22 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 18:03:22 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 18:03:24 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 18:03:24 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 18:03:24 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 18:05:53 | INFO | tasks.alfworld | Step 02 - Action: take bowl 1 from desk 2
+2024-03-05 18:05:53 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the bowl 1 from the desk 2.
+2024-03-05 18:05:53 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.75
+
+2024-03-05 18:08:36 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 18:08:36 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 18:10:19 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 18:10:19 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 18:10:19 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 18:10:22 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 18:10:23 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 18:10:23 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 18:10:37 | INFO | tasks.alfworld | Step 02 - Action: take bowl 1 from desk 2
+2024-03-05 18:10:37 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the bowl 1 from the desk 2.
+2024-03-05 18:10:37 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.75
+
+2024-03-05 18:14:25 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 18:14:25 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 18:18:09 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 18:18:10 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 18:18:10 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 18:21:43 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 18:21:43 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 18:27:03 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 18:27:03 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 18:27:03 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 18:27:06 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 18:27:07 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 18:27:07 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 18:27:30 | INFO | tasks.alfworld | Step 02 - Action: take bowl 1 from desk 2
+2024-03-05 18:27:30 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the bowl 1 from the desk 2.
+2024-03-05 18:27:30 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.75
+
+2024-03-05 18:43:09 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 18:43:09 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 18:43:48 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 18:43:49 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 18:43:49 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 18:45:06 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 18:45:06 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 18:45:06 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 18:45:23 | INFO | tasks.alfworld | Step 02 - Action: take bowl 1 from desk 2
+2024-03-05 18:45:23 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the bowl 1 from the desk 2.
+2024-03-05 18:45:23 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.75
+
+2024-03-05 18:45:49 | INFO | tasks.alfworld | Step 03 - Action: use desklamp 1
+2024-03-05 18:45:49 | INFO | tasks.alfworld | Step 03 - Observation: Nothing happens.
+2024-03-05 18:45:49 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.75
+
+2024-03-05 18:51:53 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 18:51:53 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 18:58:42 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 18:58:43 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 18:58:43 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 18:58:48 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 18:58:48 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 18:58:48 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 18:59:03 | INFO | tasks.alfworld | Step 02 - Action: take bowl 1 from desk 2
+2024-03-05 18:59:03 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the bowl 1 from the desk 2.
+2024-03-05 18:59:03 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.75
+
+2024-03-05 18:59:14 | INFO | tasks.alfworld | Step 03 - Action: go to desk 1
+2024-03-05 18:59:14 | INFO | tasks.alfworld | Step 03 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 18:59:14 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.75
+
+2024-03-05 18:59:18 | INFO | tasks.alfworld | Step 04 - Action: use desklamp 1
+2024-03-05 18:59:18 | INFO | tasks.alfworld | Step 04 - Observation: You turn on the desklamp 1.
+2024-03-05 18:59:18 | INFO | tasks.alfworld | Step 04 - Progress Rate: 1.0
+
+2024-03-05 19:03:41 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 19:03:41 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 19:05:48 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 19:05:48 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 19:05:48 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 19:06:41 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 19:06:41 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 19:06:41 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 19:11:29 | INFO | tasks.alfworld | Step 02 - Action: take bowl 1 from desk 2
+2024-03-05 19:11:30 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the bowl 1 from the desk 2.
+2024-03-05 19:11:30 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.75
+
+2024-03-05 19:11:32 | GUESS_ACTION | tasks.alfworld | Step 03 - Action: go to desk 1
+2024-03-05 19:11:32 | INFO | tasks.alfworld | Step 03 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 19:11:32 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.75
+
+2024-03-05 19:11:33 | GUESS_ACTION | tasks.alfworld | Step 04 - Action: use desklamp 1
+2024-03-05 19:11:33 | INFO | tasks.alfworld | Step 04 - Observation: You turn on the desklamp 1.
+2024-03-05 19:11:33 | INFO | tasks.alfworld | Step 04 - Progress Rate: 1.0
+
+2024-03-05 19:11:33 | INFO | tasks.alfworld | use guess percentage: 0.5
+2024-03-05 19:11:33 | FINISH | tasks.alfworld | Example 0 | Success: True , Progress Rate: 1.0 , Steps: 4
+
+2024-03-05 19:11:35 | GOAL | tasks.alfworld | Example 1 | Goal: put two soapbar in garbagecan.
+2024-03-05 19:11:35 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.
+2024-03-05 19:11:40 | INFO | tasks.alfworld | Step 00 - Action: go to garbagecan 1
+2024-03-05 19:11:40 | INFO | tasks.alfworld | Step 00 - Observation: On the garbagecan 1, you see nothing.
+2024-03-05 19:11:40 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-05 19:11:57 | INFO | tasks.alfworld | Step 01 - Action: go to countertop 1
+2024-03-05 19:11:57 | INFO | tasks.alfworld | Step 01 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.
+2024-03-05 19:11:57 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.25
+
+2024-03-05 19:12:35 | GUESS_ACTION | tasks.alfworld | Step 02 - Action: take soapbar 2 from countertop 1
+2024-03-05 19:12:35 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
+2024-03-05 19:12:35 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.25
+
+2024-03-05 19:12:50 | GUESS_ACTION | tasks.alfworld | Step 03 - Action: go to garbagecan 1
+2024-03-05 19:12:50 | INFO | tasks.alfworld | Step 03 - Observation: On the garbagecan 1, you see nothing.
+2024-03-05 19:12:50 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.25
+
+2024-03-05 19:12:52 | GUESS_ACTION | tasks.alfworld | Step 04 - Action: put soapbar 2 in/on garbagecan 1
+2024-03-05 19:12:52 | INFO | tasks.alfworld | Step 04 - Observation: Nothing happens.
+2024-03-05 19:12:52 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.25
+
+2024-03-05 19:12:57 | GUESS_ACTION | tasks.alfworld | Step 05 - Action: go to countertop 1
+2024-03-05 19:12:57 | INFO | tasks.alfworld | Step 05 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.
+2024-03-05 19:12:57 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.25
+
+2024-03-05 19:12:59 | GUESS_ACTION | tasks.alfworld | Step 06 - Action: take soapbar 2 from countertop 1
+2024-03-05 19:12:59 | INFO | tasks.alfworld | Step 06 - Observation: Nothing happens.
+2024-03-05 19:12:59 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.25
+
+2024-03-05 19:13:00 | GUESS_ACTION | tasks.alfworld | Step 07 - Action: go to garbagecan 1
+2024-03-05 19:13:01 | INFO | tasks.alfworld | Step 07 - Observation: On the garbagecan 1, you see nothing.
+2024-03-05 19:13:01 | INFO | tasks.alfworld | Step 07 - Progress Rate: 0.25
+
+2024-03-05 19:13:25 | GUESS_ACTION | tasks.alfworld | Step 08 - Action: put soapbar 2 in/on garbagecan 1
+2024-03-05 19:13:25 | INFO | tasks.alfworld | Step 08 - Observation: Nothing happens.
+2024-03-05 19:13:25 | INFO | tasks.alfworld | Step 08 - Progress Rate: 0.25
+
+2024-03-05 19:13:27 | GUESS_ACTION | tasks.alfworld | Step 09 - Action: go to countertop 1
+2024-03-05 19:13:27 | INFO | tasks.alfworld | Step 09 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.
+2024-03-05 19:13:27 | INFO | tasks.alfworld | Step 09 - Progress Rate: 0.25
+
+2024-03-05 19:26:55 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 19:26:55 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 19:28:20 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 19:28:20 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 19:28:20 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 19:28:23 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 19:28:23 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 19:28:23 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 19:28:35 | INFO | tasks.alfworld | Step 02 - Action: take bowl 1 from desk 2
+2024-03-05 19:28:35 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the bowl 1 from the desk 2.
+2024-03-05 19:28:35 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.75
+
+2024-03-05 19:28:41 | GUESS_ACTION | tasks.alfworld | Step 03 - Action: go to desk 1
+2024-03-05 19:28:42 | INFO | tasks.alfworld | Step 03 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 19:28:42 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.75
+
+2024-03-05 19:28:53 | GUESS_ACTION | tasks.alfworld | Step 04 - Action: use desklamp 1
+2024-03-05 19:28:53 | INFO | tasks.alfworld | Step 04 - Observation: You turn on the desklamp 1.
+2024-03-05 19:28:53 | INFO | tasks.alfworld | Step 04 - Progress Rate: 1.0
+
+2024-03-05 19:28:53 | INFO | tasks.alfworld | use guess percentage: 0.5
+2024-03-05 19:28:53 | FINISH | tasks.alfworld | Example 0 | Success: True , Progress Rate: 1.0 , Steps: 4
+
+2024-03-05 19:28:55 | GOAL | tasks.alfworld | Example 1 | Goal: put two soapbar in garbagecan.
+2024-03-05 19:28:55 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.
+2024-03-05 19:29:07 | INFO | tasks.alfworld | Step 00 - Action: go to garbagecan 1
+2024-03-05 19:29:07 | INFO | tasks.alfworld | Step 00 - Observation: On the garbagecan 1, you see nothing.
+2024-03-05 19:29:07 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-05 19:29:40 | INFO | tasks.alfworld | Step 01 - Action: go to countertop 1
+2024-03-05 19:29:41 | INFO | tasks.alfworld | Step 01 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.
+2024-03-05 19:29:41 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.25
+
+2024-03-05 19:45:27 | GUESS_ACTION | tasks.alfworld | Step 02 - Action: take soapbar 2 from countertop 1
+2024-03-05 19:45:27 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
+2024-03-05 19:45:27 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.25
+
+2024-03-05 19:46:25 | GUESS_ACTION | tasks.alfworld | Step 03 - Action: go to garbagecan 1
+2024-03-05 19:46:25 | INFO | tasks.alfworld | Step 03 - Observation: On the garbagecan 1, you see nothing.
+2024-03-05 19:46:25 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.25
+
+2024-03-05 19:55:53 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-05 19:55:53 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-05 19:56:04 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-05 19:56:04 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 19:56:04 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-05 19:56:08 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-05 19:56:08 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-05 19:56:08 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-05 19:56:21 | INFO | tasks.alfworld | Step 02 - Action: take bowl 1 from desk 2
+2024-03-05 19:56:21 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the bowl 1 from the desk 2.
+2024-03-05 19:56:21 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.75
+
+2024-03-05 19:56:25 | GUESS_ACTION | tasks.alfworld | Step 03 - Action: go to desk 1
+2024-03-05 19:56:25 | INFO | tasks.alfworld | Step 03 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-05 19:56:25 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.75
+
+2024-03-05 19:56:30 | GUESS_ACTION | tasks.alfworld | Step 04 - Action: use desklamp 1
+2024-03-05 19:56:30 | INFO | tasks.alfworld | Step 04 - Observation: You turn on the desklamp 1.
+2024-03-05 19:56:30 | INFO | tasks.alfworld | Step 04 - Progress Rate: 1.0
+
+2024-03-05 19:56:31 | INFO | tasks.alfworld | use guess percentage: 0.5
+2024-03-05 19:56:31 | FINISH | tasks.alfworld | Example 0 | Success: True , Progress Rate: 1.0 , Steps: 4
+
+2024-03-05 19:56:32 | GOAL | tasks.alfworld | Example 1 | Goal: put two soapbar in garbagecan.
+2024-03-05 19:56:32 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.
+2024-03-05 19:56:40 | INFO | tasks.alfworld | Step 00 - Action: go to garbagecan 1
+2024-03-05 19:56:40 | INFO | tasks.alfworld | Step 00 - Observation: On the garbagecan 1, you see nothing.
+2024-03-05 19:56:40 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-05 19:56:57 | INFO | tasks.alfworld | Step 01 - Action: go to countertop 1
+2024-03-05 19:56:58 | INFO | tasks.alfworld | Step 01 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.
+2024-03-05 19:56:58 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.25
+
+2024-03-05 19:57:00 | GUESS_ACTION | tasks.alfworld | Step 02 - Action: take soapbar 2 from countertop 1
+2024-03-05 19:57:00 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
+2024-03-05 19:57:00 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.25
+

@@ -56,16 +56,15 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         self.example_prompt = None
 
         self.n_gram = 3
-        self.trajectory_pool = []
-        self.trajectory_reward = []
+        self.n_gram_pool = []
+        
+        self.reward = []
         
         self.use_guess_cnt = 0
         
+        
         # self.guess_action = []
 
-        self.similarity_threshold = 0.5 # determine if two observations are similar
-        self.reward_threshold = 0.5 # determine if the reward is good enough
-        self.window_size = 2 # determine the action window size for self-evaulation
         
         self.similarity_metric = SimilarityMetric()
         
@@ -93,12 +92,11 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             ('Observation', self.init_obs)]  # list of [('State', "xxx"), ('Action', "xxx"), ...]
         self.steps = 0
         self.done = False
-
-        
-        self.trajectory_pool = []
-        self.trajectory_reward = []
+        self.n_gram_pool = []
+        self.reward = []
         
         self.use_guess_cnt = 0
+        # self.guess_action = []
 
 
     def update(self, action, state):
@@ -197,12 +195,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         return action
 
     
-    # ---------------------------------------- components of lookahead agent  ----------------------------------------
-    
-    def parse_action_sequnece(self,action): 
-        
-        # parse the llm generated action sequence into a trajectory list
-        
+    def parse_action_sequnece(self,action):
         action_sequences = action.split('\n')
         all_actions = []
         for action in action_sequences:
@@ -210,7 +203,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                 if "action:" in action.lower():
                     new_action = action.split(":")[1]
                     new_action = new_action.strip()
-                    all_actions.append({"Action": new_action, "Verified": None, "Observation": None, "Reward": None})
+                    all_actions.append({"Action": new_action})
                 elif ":" in action.lower():
                     type = action.split(":")[0]
                     content = action.split(":")[1]
@@ -226,180 +219,162 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             first_action = ""
         return all_actions, first_action
     
-    def update_trajectory_pool(self, action):
+    def update_n_gram(self, action):
+        # self.guess_action = []
+        action_ngram, new_action = self.parse_action_sequnece(action)
         
-        # update the trajectory pool with the generated action rollouts by llm
+        self.n_gram_pool.append(action_ngram)
         
-        action_rollouts, new_action = self.parse_action_sequnece(action)
-        
-        begin_observation = self.memory[-1][1]
-        
-        action_rollouts.insert(0, {"Action":None, "Verified": True, "Observation": begin_observation, "Reward": None})
-        
-        self.trajectory_pool.append(action_rollouts)
-        
-        self.update_trajectory_reward()
-        
-        
-    def update_trajectory_reward(self):
-        
-        # calculate the reward for new action rollouts, this function is called after each action execution
-
-        new_trajectory = self.trajectory_pool[-1]
-        
-        observations = [item["Observation"] for item in new_trajectory if "Observation" in item]
-        
-        sim_to_goal= float(torch.max(self.similarity_metric.get_similarity(observations, self.goal)))
-        
-        self.trajectory_reward.append(sim_to_goal)
-        
-        # change the reward of the last trajectory
-        
-        for id in range(len(self.trajectory_pool[-1])):
-            if "Reward" in self.trajectory_pool[-1][id]:
-                self.trajectory_pool[-1][id]["Reward"] = sim_to_goal
-
-
-    def verify_trajectory(self, threshold=0.5):
-        
-        # after the new execution, provide verification for action rollouts
-
-        # if an action has been executed
-        
-        last_end_observation = self.memory[-1][1]
-        
-        if len(self.memory) > 2:
-            last_executed_action = self.memory[-2][1]
-            last_begin_observation = self.memory[-3][1]
-
-            for traj_id, trajectory in enumerate(self.trajectory_pool):
-                begin_observation = trajectory[0]["Observation"]
+        # self.update_reward()
+        # for sequence in self.n_gram_pool:
+        #     for i in range(len(sequence)-self.n_gram):
+        #         n_gram_list = [sequence[i+s]["Action"] for s in  range(self.n_gram)]
                 
-                for id, item in enumerate(trajectory):
-                    if "Action" in item and item["Action"] == last_executed_action:
-                        if "Observation" in item:
-                            end_observation = item["Observation"]
-
-                            # if begin_observation is the same as last_begin_observation, and end_observation is not the same as last_end_observation, then the action is not executed as expected
-                            
-                            begin_observation_similarity = float(torch.max(self.similarity_metric.get_similarity([begin_observation], [last_begin_observation])))
-                            end_observation_similarity = float(torch.max(self.similarity_metric.get_similarity([end_observation], [last_end_observation])))
-                            
-                            if begin_observation_similarity > threshold and end_observation_similarity > threshold:
-                                # this action is executed as expected, verify it as True
-                                
-                                if "Verified" in trajectory[id]:
-                                    self.trajectory_pool[traj_id][id]["Verified"] = True
-                                    
-                            if begin_observation_similarity > threshold and end_observation_similarity < threshold:
-                                # all the actions after the action should be verified as False
-                                
-                                for i in range(id, len(trajectory)):
-                                    if "Verified" in trajectory[i]:
-                                        self.trajectory_pool[traj_id][i]["Verified"] = False
-                                        
-                                break
-                            
-                        else:
-                            continue
-        else:
-            return        
-        
+        #         if new_action == sequence[i]["Action"]:
+        #             self.guess_action = n_gram_list[1:]
     
-    def lookahead_decision_model(self, reward_threshold=0.5):
+    def update_reward(self):
+        self.reward = [] # re-calculate the reward for each n-gram sequence
+        history = []
+        for item in self.memory:
+            if item[0] == "Action":
+                history.append((item[1], self.memory[self.memory.index(item)+1][1]))
+            else:
+                continue
+        
+        for i in range(len(self.n_gram_pool)):
+            trajectory = self.n_gram_pool[i]
+            observations = [item["Observation"] for item in trajectory if "Observation" in item]
+            if len(observations) == 0:
+                self.reward.append(None)
+                continue
+                
+            sim_to_goal= float(torch.max(self.similarity_metric.get_similarity(observations, self.goal)))  # get the max similarity score of states to goal, measuring how close the state is to the goal
+            all_correctness = []
+            
+            for item in trajectory:
+                action = item["Action"]
+                observation = item["Observation"] if "Observation" in item else None
+                for (at, st) in history:
+                    if action == at:
+                        if observation is not None:
+                            correctness_of_lookahead = self.similarity_metric.get_similarity([st], observation)[0]
+                        else:
+                            correctness_of_lookahead = 1
+                        all_correctness.append(float(correctness_of_lookahead))
+
+            correctness_of_traj = 1 if len(all_correctness) == 0 else sum(all_correctness)/len(all_correctness)
+            
+            self.reward.append(sim_to_goal*correctness_of_traj) # evaluate two aspects of the trajectory, the similarity to the goal and the correctness of the lookahead action
+            
+        return
+    
+    
+    def lookahead_decision_model(self):
         # given the look ahead predictions, make the next action
         
-        # ! todo: choose the best action when there are multiple options
-        
+        # if self.guess_action) > 0:
+        #     return self.guess_action.pop()
+                
         action_history = [item[1] for item in self.memory if item[0] == "Action"]
+        valid_guess_actions = []
+        valid_reward = []
+        for id, sequence in enumerate(self.n_gram_pool):
+            for i in range(len(sequence)-self.n_gram):
+                n_gram_list = [sequence[i+s]["Action"] for s in  range(self.n_gram)]
+                
+                if action_history[-self.n_gram+1:] == n_gram_list[:-1]:
+                    valid_guess_actions.append(n_gram_list[-1])
+                
+                    valid_reward.append(self.reward[id])
         
-        for traj_id, trajectory in enumerate(self.trajectory_pool):
-            
-            trajectory = trajectory[1:] # remove the first action, which is None
-            
-            for id in range(len(trajectory) - self.n_gram):
-                
-                n_gram_list = [trajectory[id+s]["Action"] for s in range(self.n_gram)]
-                n_gram_verification = [trajectory[id+s]["Verified"] for s in range(self.n_gram)]
-                n_gram_reward = [trajectory[id+s]["Reward"] for s in range(self.n_gram)][-1]
-                
-                match =  (action_history[-self.n_gram+1:] == n_gram_list[:-1])
-                verified = False in n_gram_verification
-                reward_good = n_gram_reward > reward_threshold
-                
-                if match and not verified and reward_good:
-                    return n_gram_list[-1]
+        # find the action with the highest reward
+        if len(valid_guess_actions) > 0:
+            guess_action =  valid_guess_actions[valid_reward.index(max(valid_reward))]
+        
+            return guess_action
+        
+        else:
+            return None
+        
 
-        return None
-        
-
-    def reflection_tips(self, reward_threshold=0.5, window_size=2): 
-        
-        # determine if the model is stuck and requires self-reflection, used sparingly
-        
-        # first scenario: there are repeat cycles of actions that are not helping the model to reach the goal
+    def reflection_tips(self): #determine if the model is stuck and requires self-reflection, used sparingly
         
         try:
+            history = []
+            for item in self.memory:
+                if item[0] == "Action":
+                    history.append((item[1], self.memory[self.memory.index(item)+1][1]))
+                else:
+                    continue
+            
             action_history = [item[1] for item in self.memory if item[0] == "Action"]
-            
-            
+            # first scenario: based on history it is not good, and deviating from the goal
+            # there are repeat cycles of actions that are not helping the model to reach the goal
             if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
-                action = "I have been repeating the same action, and it is not helping me to reach the goal. I need to perform diverse exploration."
-            
+                
+                action = "I have been repeating the same action, and it is not helping me to reach the goal. I need to try something different."
                 return True, action
         except:
             pass
-
-        # second scenario: the last few-steps has been tested by execution, and the actual observations are not according to plan
         
-        # third scenario: the last few-steps has been tested by the lookahead model, and the reward is not good
+        # second scenario: based on lookahead prediction it is not good, and deviating from the goal
         
-        if len(action_history) > window_size:
+        # last n-gram is looked ahead, but the actual observations are not according to plan
+        
+        try:
+            last_n_gram = action_history[-self.n_gram:]
+            average_similarity = []
+            average_reward = []
             
-            last_actions = action_history[-window_size:] 
+            for id, sequence in enumerate(self.n_gram_pool):
+                for i in range(len(sequence)-self.n_gram):
+                    n_gram_list = [sequence[i+s]["Action"] for s in  range(self.n_gram)]
+                    if last_n_gram == n_gram_list:
+                        average_reward.append(self.reward[id])
+                        
+                        observations = [item["Observation"] for item in sequence[i:i+self.n_gram]]
+                        real_observation = [item[1] for item in history ][-self.n_gram:]
+                        average_similarity.append(torch.max(self.similarity_metric.get_similarity(observations, real_observation)))
+                        
+            average_reward = sum(average_reward)/len(average_reward)
+            average_similarity = sum(average_similarity)/len(average_similarity)
             
-            for traj_id, trajectory in enumerate(self.trajectory_pool):
-
-                trajectory = trajectory[1:] # remove the first action, which is None
-                
-                for id in range(len(trajectory) - window_size):
-                    
-                    n_gram_list = [trajectory[id+s]["Action"] for s in range(window_size)]
-                    n_gram_verification = [trajectory[id+s]["Verified"] for s in range(window_size)]
-                    n_gram_reward = [trajectory[id+s]["Reward"] for s in range(window_size)][-1]
-                    
-                    match = (last_actions == n_gram_list)
-                    verified = False in n_gram_verification
-                    reward_good = n_gram_reward > reward_threshold
-                    
-                    if match: 
-                        if not verified:
-                            # find the action that is not verified
-                            error_action = n_gram_list[n_gram_verification.index(False)]
-                            action = f"The execution of {error_action} is not as expected. I need to try something different."
-                            return True, action
-                        
-                        if not reward_good:
-                            action = "My original plan could not reach the goal. I should change my policy."
-                            return True, action
-                        
+            if average_reward < 0.5:
+                action = "I have been making actions that are not helping me to reach the goal. I need to try something different."
+                return True, action
+            
+            if average_similarity < 0.5:
+                action = "The execution of my plan is not going as expected. I need to try something different."
+                return True ,action
+        except:
+            pass
+            
+        
         return False, None
         
-          
+        
+        
+    
     def run(self, init_prompt_dict=None):
         
-        self.verify_trajectory(threshold=self.similarity_threshold)
+        self.update_reward()
 
         # decide upon the best action based on simulated planning
-        action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
+        action = self.lookahead_decision_model()
         
         if action is not None:
             self.use_guess_cnt += 1
             return True, action, True
         
         else:
-            need_tip, reflection_tip = self.reflection_tips(reward_threshold=self.reward_threshold, window_size=self.window_size)
+            need_tip, reflection_tip = self.reflection_tips()
             
+            # if need_tip:
+            #     return True, reflection_tip, True
+            
+            # else:        
+                # note that these configs are originally provided when initialized, but you can choose to override them here with parameters
             if init_prompt_dict is not None:
                 self.init_prompt_dict = init_prompt_dict
                 self.instruction = init_prompt_dict['instruction']
@@ -420,7 +395,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
 
                 action_ngram, action = self.parse_action_sequnece(action_sequence)
                 
-                self.update_trajectory_pool(action_sequence)
+                self.update_n_gram(action_sequence)
                 
                 if success and self.use_parser:
                     action = self.action_parser_for_special_llms(action)

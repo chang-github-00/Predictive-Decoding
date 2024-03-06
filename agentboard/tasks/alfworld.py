@@ -166,7 +166,7 @@ class Evalalfworld(BaseTask):
 
             ob, info = self.env.reset()
             
-            # if id not in [5, 6, 8]:
+            # if id <1:
             #     continue
             
             ob = '\n'.join(ob[0].split('\n\n')[1:])

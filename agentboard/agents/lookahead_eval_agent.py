@@ -291,6 +291,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                     
                     if "Action" in item and item["Action"] == last_executed_action:
                         if "Observation" in item and item["Observation"] is not None and begin_observation is not None:
+                            begin_observation = trajectory[id-1]["Observation"]
                             end_observation = item["Observation"]
 
                             # if begin_observation is the same as last_begin_observation, and end_observation is not the same as last_end_observation, then the action is not executed as expected
@@ -313,11 +314,9 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                                         
                                 break
                             
-                            begin_observation = end_observation
-                            
                         else:
                             continue
-            
+                    
         
     
     def lookahead_decision_model(self, reward_threshold=0.5):

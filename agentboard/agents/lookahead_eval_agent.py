@@ -63,7 +63,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         
         # self.guess_action = []
 
-        self.similarity_threshold = 0.5 # determine if two observations are similar
+        self.similarity_threshold = 0.7 # determine if two observations are similar
         self.reward_threshold = 0.5 # determine if the reward is good enough
         self.window_size = 2 # determine the action window size for self-evaulation
         
@@ -265,19 +265,32 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         # after the new execution, provide verification for action rollouts
 
         # if an action has been executed
+                    
+        action_history = [item[1] for item in self.memory if item[0] == "Action"]
+        observation_history = [item[1] for item in self.memory if item[0] == "Observation"]
         
-        last_end_observation = self.memory[-1][1]
+        if len(action_history) < 1:
+            return
         
-        if len(self.memory) > 2:
-            last_executed_action = self.memory[-2][1]
-            last_begin_observation = self.memory[-3][1]
+        begin_observations_history = observation_history[:-1]
+        end_observations_history = observation_history[1:]
+        
+        for action_id, action in enumerate(action_history):
+            
+            last_executed_action = action_history[action_id]
+            last_begin_observation = begin_observations_history[action_id]
+            last_end_observation = end_observations_history[action_id]
 
             for traj_id, trajectory in enumerate(self.trajectory_pool):
                 begin_observation = trajectory[0]["Observation"]
                 
                 for id, item in enumerate(trajectory):
+                    
+                    if item["Verified"] is not None: # avoid re-verification
+                        continue    
+                    
                     if "Action" in item and item["Action"] == last_executed_action:
-                        if "Observation" in item:
+                        if "Observation" in item and item["Observation"] is not None and begin_observation is not None:
                             end_observation = item["Observation"]
 
                             # if begin_observation is the same as last_begin_observation, and end_observation is not the same as last_end_observation, then the action is not executed as expected
@@ -300,10 +313,11 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                                         
                                 break
                             
+                            begin_observation = end_observation
+                            
                         else:
                             continue
-        else:
-            return        
+            
         
     
     def lookahead_decision_model(self, reward_threshold=0.5):
@@ -373,7 +387,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                     reward_good = n_gram_reward > reward_threshold
                     
                     if match: 
-                        if not verified:
+                        if verified:
                             # find the action that is not verified
                             error_action = n_gram_list[n_gram_verification.index(False)]
                             action = f"The execution of {error_action} is not as expected. I need to try something different."

@@ -255,3 +255,50 @@
 2024-03-07 06:15:20 | INFO | tasks.alfworld | Step 06 - Observation: You pick up the soapbar 3 from the countertop 1.
 2024-03-07 06:15:20 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.75
 
+2024-03-07 06:29:04 | GOAL | tasks.alfworld | Example 1 | Goal: put two soapbar in garbagecan.
+2024-03-07 06:29:04 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.
+2024-03-07 06:29:28 | INFO | tasks.alfworld | Step 00 - Action: go to garbagecan 1
+2024-03-07 06:29:28 | INFO | tasks.alfworld | Step 00 - Observation: On the garbagecan 1, you see nothing.
+2024-03-07 06:29:28 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-07 06:29:43 | INFO | tasks.alfworld | Step 01 - Action: go to countertop 1
+2024-03-07 06:29:43 | INFO | tasks.alfworld | Step 01 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.
+2024-03-07 06:29:43 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.25
+
+2024-03-07 06:31:15 | INFO | tasks.alfworld | Step 02 - Action: take soapbar 1 from countertop 1
+2024-03-07 06:31:15 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the soapbar 1 from the countertop 1.
+2024-03-07 06:31:15 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.5
+
+2024-03-07 06:31:30 | INFO | tasks.alfworld | Step 03 - Action: go to garbagecan 1
+2024-03-07 06:31:30 | INFO | tasks.alfworld | Step 03 - Observation: On the garbagecan 1, you see nothing.
+2024-03-07 06:31:30 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.5
+
+2024-03-07 06:31:31 | GUESS_ACTION | tasks.alfworld | Step 04 - Action: put soapbar 1 in/on garbagecan 1
+2024-03-07 06:31:31 | INFO | tasks.alfworld | Step 04 - Observation: You put the soapbar 1 in/on the garbagecan 1.
+2024-03-07 06:31:31 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.75
+
+2024-03-07 06:31:31 | GUESS_ACTION | tasks.alfworld | Step 05 - Action: go to countertop 1
+2024-03-07 06:31:32 | INFO | tasks.alfworld | Step 05 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, and a spraybottle 1.
+2024-03-07 06:31:32 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.75
+
+2024-03-07 06:31:32 | GUESS_ACTION | tasks.alfworld | Step 06 - Action: take soapbar 3 from countertop 1
+2024-03-07 06:31:32 | INFO | tasks.alfworld | Step 06 - Observation: You pick up the soapbar 3 from the countertop 1.
+2024-03-07 06:31:32 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.75
+
+2024-03-07 06:31:33 | GUESS_ACTION | tasks.alfworld | Step 07 - Action: go to garbagecan 1
+2024-03-07 06:31:33 | INFO | tasks.alfworld | Step 07 - Observation: On the garbagecan 1, you see a soapbar 1.
+2024-03-07 06:31:33 | INFO | tasks.alfworld | Step 07 - Progress Rate: 0.75
+
+2024-03-07 06:31:36 | INFO | tasks.alfworld | Step 08 - Action: put soapbar 3 in/on garbagecan 1
+2024-03-07 06:31:36 | INFO | tasks.alfworld | Step 08 - Observation: You put the soapbar 3 in/on the garbagecan 1.
+2024-03-07 06:31:36 | INFO | tasks.alfworld | Step 08 - Progress Rate: 1.0
+
+2024-03-07 06:31:36 | INFO | tasks.alfworld | use guess percentage: 0.5
+2024-03-07 06:31:36 | FINISH | tasks.alfworld | Example 1 | Success: True , Progress Rate: 1.0 , Steps: 8
+
+2024-03-07 06:31:40 | GOAL | tasks.alfworld | Example 2 | Goal: put a cool tomato in microwave.
+2024-03-07 06:31:40 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-03-07 06:31:50 | INFO | tasks.alfworld | Step 00 - Action: go to fridge 1
+2024-03-07 06:31:50 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
+2024-03-07 06:31:50 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+

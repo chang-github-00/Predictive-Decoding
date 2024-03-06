@@ -265,6 +265,8 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         # after the new execution, provide verification for action rollouts
 
         # if an action has been executed
+        
+        # todo: need to merge the same n_gram actions together, also need to double check the similarity implementation
                     
         action_history = [item[1] for item in self.memory if item[0] == "Action"]
         observation_history = [item[1] for item in self.memory if item[0] == "Observation"]

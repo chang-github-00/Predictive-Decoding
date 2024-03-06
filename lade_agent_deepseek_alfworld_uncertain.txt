@@ -98,3 +98,160 @@
 
 2024-03-07 05:28:44 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
 2024-03-07 05:28:44 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-07 05:32:45 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-03-07 05:32:45 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-03-07 05:32:52 | INFO | tasks.alfworld | Step 00 - Action: go to desk 1
+2024-03-07 05:32:53 | INFO | tasks.alfworld | Step 00 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-07 05:32:53 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.25
+
+2024-03-07 05:33:00 | INFO | tasks.alfworld | Step 01 - Action: go to desk 2
+2024-03-07 05:33:00 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.
+2024-03-07 05:33:00 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.5
+
+2024-03-07 05:33:20 | INFO | tasks.alfworld | Step 02 - Action: take bowl 1 from desk 2
+2024-03-07 05:33:20 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the bowl 1 from the desk 2.
+2024-03-07 05:33:20 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.75
+
+2024-03-07 05:33:35 | INFO | tasks.alfworld | Step 03 - Action: go to desk 1
+2024-03-07 05:33:36 | INFO | tasks.alfworld | Step 03 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-03-07 05:33:36 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.75
+
+2024-03-07 05:38:22 | GUESS_ACTION | tasks.alfworld | Step 04 - Action: use desklamp 1
+2024-03-07 05:38:23 | INFO | tasks.alfworld | Step 04 - Observation: You turn on the desklamp 1.
+2024-03-07 05:38:23 | INFO | tasks.alfworld | Step 04 - Progress Rate: 1.0
+
+2024-03-07 05:38:23 | INFO | tasks.alfworld | use guess percentage: 0.25
+2024-03-07 05:38:23 | FINISH | tasks.alfworld | Example 0 | Success: True , Progress Rate: 1.0 , Steps: 4
+
+2024-03-07 05:38:25 | GOAL | tasks.alfworld | Example 1 | Goal: put two soapbar in garbagecan.
+2024-03-07 05:38:25 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.
+2024-03-07 05:38:31 | INFO | tasks.alfworld | Step 00 - Action: go to garbagecan 1
+2024-03-07 05:38:31 | INFO | tasks.alfworld | Step 00 - Observation: On the garbagecan 1, you see nothing.
+2024-03-07 05:38:31 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-07 05:38:51 | INFO | tasks.alfworld | Step 01 - Action: go to countertop 1
+2024-03-07 05:38:51 | INFO | tasks.alfworld | Step 01 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.
+2024-03-07 05:38:51 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.25
+
+2024-03-07 05:39:17 | INFO | tasks.alfworld | Step 02 - Action: take soapbar 1 from countertop 1
+2024-03-07 05:39:17 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the soapbar 1 from the countertop 1.
+2024-03-07 05:39:17 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.5
+
+2024-03-07 05:39:41 | INFO | tasks.alfworld | Step 03 - Action: go to garbagecan 1
+2024-03-07 05:39:41 | INFO | tasks.alfworld | Step 03 - Observation: On the garbagecan 1, you see nothing.
+2024-03-07 05:39:41 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.5
+
+2024-03-07 05:40:13 | GUESS_ACTION | tasks.alfworld | Step 04 - Action: put soapbar 1 in/on garbagecan 1
+2024-03-07 05:40:13 | INFO | tasks.alfworld | Step 04 - Observation: You put the soapbar 1 in/on the garbagecan 1.
+2024-03-07 05:40:13 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.75
+
+2024-03-07 05:40:32 | GUESS_ACTION | tasks.alfworld | Step 05 - Action: go to countertop 1
+2024-03-07 05:40:33 | INFO | tasks.alfworld | Step 05 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, and a spraybottle 1.
+2024-03-07 05:40:33 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.75
+
+2024-03-07 05:41:01 | GUESS_ACTION | tasks.alfworld | Step 06 - Action: take soapbar 3 from countertop 1
+2024-03-07 05:41:02 | INFO | tasks.alfworld | Step 06 - Observation: You pick up the soapbar 3 from the countertop 1.
+2024-03-07 05:41:02 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.75
+
+2024-03-07 05:41:14 | INFO | tasks.alfworld | Step 07 - Action: go to garbagecan 1
+2024-03-07 05:41:15 | INFO | tasks.alfworld | Step 07 - Observation: On the garbagecan 1, you see a soapbar 1.
+2024-03-07 05:41:15 | INFO | tasks.alfworld | Step 07 - Progress Rate: 0.75
+
+2024-03-07 05:41:31 | INFO | tasks.alfworld | Step 08 - Action: go to countertop 1
+2024-03-07 05:41:32 | INFO | tasks.alfworld | Step 08 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, and a spraybottle 1.
+2024-03-07 05:41:32 | INFO | tasks.alfworld | Step 08 - Progress Rate: 0.75
+
+2024-03-07 05:44:46 | GOAL | tasks.alfworld | Example 1 | Goal: put two soapbar in garbagecan.
+2024-03-07 05:44:46 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.
+2024-03-07 05:45:16 | INFO | tasks.alfworld | Step 00 - Action: go to garbagecan 1
+2024-03-07 05:45:16 | INFO | tasks.alfworld | Step 00 - Observation: On the garbagecan 1, you see nothing.
+2024-03-07 05:45:16 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-07 05:45:38 | INFO | tasks.alfworld | Step 01 - Action: go to countertop 1
+2024-03-07 05:45:38 | INFO | tasks.alfworld | Step 01 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.
+2024-03-07 05:45:38 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.25
+
+2024-03-07 05:47:51 | INFO | tasks.alfworld | Step 02 - Action: take soapbar 1 from countertop 1
+2024-03-07 05:47:52 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the soapbar 1 from the countertop 1.
+2024-03-07 05:47:52 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.5
+
+2024-03-07 05:48:22 | INFO | tasks.alfworld | Step 03 - Action: go to garbagecan 1
+2024-03-07 05:48:22 | INFO | tasks.alfworld | Step 03 - Observation: On the garbagecan 1, you see nothing.
+2024-03-07 05:48:22 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.5
+
+2024-03-07 05:52:54 | GUESS_ACTION | tasks.alfworld | Step 04 - Action: put soapbar 1 in/on garbagecan 1
+2024-03-07 05:52:54 | INFO | tasks.alfworld | Step 04 - Observation: You put the soapbar 1 in/on the garbagecan 1.
+2024-03-07 05:52:54 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.75
+
+2024-03-07 05:53:57 | GUESS_ACTION | tasks.alfworld | Step 05 - Action: go to countertop 1
+2024-03-07 05:53:57 | INFO | tasks.alfworld | Step 05 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, and a spraybottle 1.
+2024-03-07 05:53:57 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.75
+
+2024-03-07 05:54:41 | GUESS_ACTION | tasks.alfworld | Step 06 - Action: take soapbar 3 from countertop 1
+2024-03-07 05:54:41 | INFO | tasks.alfworld | Step 06 - Observation: You pick up the soapbar 3 from the countertop 1.
+2024-03-07 05:54:41 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.75
+
+2024-03-07 06:01:08 | GOAL | tasks.alfworld | Example 1 | Goal: put two soapbar in garbagecan.
+2024-03-07 06:01:08 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.
+2024-03-07 06:02:48 | INFO | tasks.alfworld | Step 00 - Action: go to garbagecan 1
+2024-03-07 06:02:49 | INFO | tasks.alfworld | Step 00 - Observation: On the garbagecan 1, you see nothing.
+2024-03-07 06:02:49 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-07 06:03:13 | INFO | tasks.alfworld | Step 01 - Action: go to countertop 1
+2024-03-07 06:03:13 | INFO | tasks.alfworld | Step 01 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.
+2024-03-07 06:03:13 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.25
+
+2024-03-07 06:03:31 | INFO | tasks.alfworld | Step 02 - Action: take soapbar 1 from countertop 1
+2024-03-07 06:03:32 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the soapbar 1 from the countertop 1.
+2024-03-07 06:03:32 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.5
+
+2024-03-07 06:03:56 | INFO | tasks.alfworld | Step 03 - Action: go to garbagecan 1
+2024-03-07 06:03:57 | INFO | tasks.alfworld | Step 03 - Observation: On the garbagecan 1, you see nothing.
+2024-03-07 06:03:57 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.5
+
+2024-03-07 06:04:09 | GUESS_ACTION | tasks.alfworld | Step 04 - Action: put soapbar 1 in/on garbagecan 1
+2024-03-07 06:04:09 | INFO | tasks.alfworld | Step 04 - Observation: You put the soapbar 1 in/on the garbagecan 1.
+2024-03-07 06:04:09 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.75
+
+2024-03-07 06:04:11 | GUESS_ACTION | tasks.alfworld | Step 05 - Action: go to countertop 1
+2024-03-07 06:04:11 | INFO | tasks.alfworld | Step 05 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, and a spraybottle 1.
+2024-03-07 06:04:11 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.75
+
+2024-03-07 06:04:19 | GUESS_ACTION | tasks.alfworld | Step 06 - Action: take soapbar 3 from countertop 1
+2024-03-07 06:04:19 | INFO | tasks.alfworld | Step 06 - Observation: You pick up the soapbar 3 from the countertop 1.
+2024-03-07 06:04:19 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.75
+
+2024-03-07 06:07:33 | INFO | tasks.alfworld | Step 07 - Action: go to garbagecan 1
+2024-03-07 06:07:33 | INFO | tasks.alfworld | Step 07 - Observation: On the garbagecan 1, you see a soapbar 1.
+2024-03-07 06:07:33 | INFO | tasks.alfworld | Step 07 - Progress Rate: 0.75
+
+2024-03-07 06:13:24 | GOAL | tasks.alfworld | Example 1 | Goal: put two soapbar in garbagecan.
+2024-03-07 06:13:24 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.
+2024-03-07 06:13:34 | INFO | tasks.alfworld | Step 00 - Action: go to garbagecan 1
+2024-03-07 06:13:34 | INFO | tasks.alfworld | Step 00 - Observation: On the garbagecan 1, you see nothing.
+2024-03-07 06:13:34 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-07 06:13:54 | INFO | tasks.alfworld | Step 01 - Action: go to countertop 1
+2024-03-07 06:13:54 | INFO | tasks.alfworld | Step 01 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.
+2024-03-07 06:13:54 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.25
+
+2024-03-07 06:14:49 | INFO | tasks.alfworld | Step 02 - Action: take soapbar 1 from countertop 1
+2024-03-07 06:14:49 | INFO | tasks.alfworld | Step 02 - Observation: You pick up the soapbar 1 from the countertop 1.
+2024-03-07 06:14:49 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.5
+
+2024-03-07 06:15:11 | INFO | tasks.alfworld | Step 03 - Action: go to garbagecan 1
+2024-03-07 06:15:11 | INFO | tasks.alfworld | Step 03 - Observation: On the garbagecan 1, you see nothing.
+2024-03-07 06:15:11 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.5
+
+2024-03-07 06:15:14 | GUESS_ACTION | tasks.alfworld | Step 04 - Action: put soapbar 1 in/on garbagecan 1
+2024-03-07 06:15:14 | INFO | tasks.alfworld | Step 04 - Observation: You put the soapbar 1 in/on the garbagecan 1.
+2024-03-07 06:15:14 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.75
+
+2024-03-07 06:15:17 | GUESS_ACTION | tasks.alfworld | Step 05 - Action: go to countertop 1
+2024-03-07 06:15:17 | INFO | tasks.alfworld | Step 05 - Observation: On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, and a spraybottle 1.
+2024-03-07 06:15:17 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.75
+
+2024-03-07 06:15:20 | GUESS_ACTION | tasks.alfworld | Step 06 - Action: take soapbar 3 from countertop 1
+2024-03-07 06:15:20 | INFO | tasks.alfworld | Step 06 - Observation: You pick up the soapbar 3 from the countertop 1.
+2024-03-07 06:15:20 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.75
+

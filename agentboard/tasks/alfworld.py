@@ -166,8 +166,8 @@ class Evalalfworld(BaseTask):
 
             ob, info = self.env.reset()
             
-            # if id <1:
-            #     continue
+            if id <1:
+                continue
             
             ob = '\n'.join(ob[0].split('\n\n')[1:])
             name = '/'.join(info['extra.gamefile'][0].split('/')[-3:-1])

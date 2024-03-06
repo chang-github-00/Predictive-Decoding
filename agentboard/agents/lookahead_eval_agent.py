@@ -286,7 +286,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                 
                 for id, item in enumerate(trajectory):
                     
-                    if item["Verified"] is not None: # avoid re-verification
+                    if item["Verified"] == True: # avoid re-verification
                         continue    
                     
                     if "Action" in item and item["Action"] == last_executed_action:
@@ -330,7 +330,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             
             trajectory = trajectory[1:] # remove the first action, which is None
             
-            for id in range(len(trajectory) - self.n_gram):
+            for id in range(len(trajectory) - self.n_gram + 1):
                 
                 n_gram_list = [trajectory[id+s]["Action"] for s in range(self.n_gram)]
                 n_gram_verification = [trajectory[id+s]["Verified"] for s in range(self.n_gram)]
@@ -375,7 +375,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
 
                 trajectory = trajectory[1:] # remove the first action, which is None
                 
-                for id in range(len(trajectory) - window_size):
+                for id in range(len(trajectory) - window_size + 1):
                     
                     n_gram_list = [trajectory[id+s]["Action"] for s in range(window_size)]
                     n_gram_verification = [trajectory[id+s]["Verified"] for s in range(window_size)]

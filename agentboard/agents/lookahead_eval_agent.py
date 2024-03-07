@@ -64,8 +64,8 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         # self.guess_action = []
 
         self.similarity_threshold = 0.7 # determine if two observations are similar
-        self.reward_threshold = 0.5 # determine if the reward is good enough
-        self.window_size = 2 # determine the action window size for self-evaulation
+        self.reward_threshold = 0.7 # determine if the reward is good enough
+        self.window_size = 1 # determine the action window size for self-evaulation
         
         self.similarity_metric = SimilarityMetric()
         
@@ -359,7 +359,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             
             
             if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
-                action = "I have been repeating the same action, and it is not helping me to reach the goal. I need to perform diverse exploration."
+                action = f"I have been repeating the same action, and it is not helping me to reach the goal {self.goal}. I need to perform diverse exploration. "
             
                 return True, action
         except:
@@ -391,11 +391,11 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                         if verified:
                             # find the action that is not verified
                             error_action = n_gram_list[n_gram_verification.index(False)]
-                            action = f"The execution of {error_action} is not as expected. I need to try something different."
+                            action = f"The execution of {error_action} is not as expected. I need to try something different. check valid actions could tell me what I can do next."
                             return True, action
                         
                         if not reward_good:
-                            action = "My original plan could not reach the goal. I should change my policy."
+                            action = "My last few steps do not contribute to the goal {self.goal}. I should change my policy."
                             return True, action
                         
         return False, None

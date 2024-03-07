@@ -302,3 +302,368 @@
 2024-03-07 06:31:50 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
 2024-03-07 06:31:50 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
 
+2024-03-07 13:44:51 | GOAL | tasks.alfworld | Example 2 | Goal: put a cool tomato in microwave.
+2024-03-07 13:44:51 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-03-07 13:45:03 | INFO | tasks.alfworld | Step 00 - Action: go to fridge 1
+2024-03-07 13:45:04 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
+2024-03-07 13:45:04 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-07 13:45:18 | INFO | tasks.alfworld | Step 01 - Action: open fridge 1
+2024-03-07 13:45:19 | INFO | tasks.alfworld | Step 01 - Observation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 13:45:19 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.0
+
+2024-03-07 13:45:29 | INFO | tasks.alfworld | Step 02 - Action: take tomato from fridge 1
+2024-03-07 13:45:29 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
+2024-03-07 13:45:29 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.0
+
+2024-03-07 13:49:50 | GOAL | tasks.alfworld | Example 2 | Goal: put a cool tomato in microwave.
+2024-03-07 13:49:50 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-03-07 13:50:05 | INFO | tasks.alfworld | Step 00 - Action: go to fridge 1
+2024-03-07 13:50:05 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
+2024-03-07 13:50:05 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-07 13:50:38 | INFO | tasks.alfworld | Step 01 - Action: open fridge 1
+2024-03-07 13:50:39 | INFO | tasks.alfworld | Step 01 - Observation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 13:50:39 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.0
+
+2024-03-07 13:51:09 | INFO | tasks.alfworld | Step 02 - Action: take tomato from fridge 1
+2024-03-07 13:51:09 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
+2024-03-07 13:51:09 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.0
+
+2024-03-07 13:52:10 | INFO | tasks.alfworld | Step 03 - Action: examine fridge 1
+2024-03-07 13:52:11 | INFO | tasks.alfworld | Step 03 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 13:52:11 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.0
+
+2024-03-07 13:53:03 | INFO | tasks.alfworld | Step 04 - Action: take tomato from fridge 1
+2024-03-07 13:53:04 | INFO | tasks.alfworld | Step 04 - Observation: Nothing happens.
+2024-03-07 13:53:04 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.0
+
+2024-03-07 13:55:12 | INFO | tasks.alfworld | Step 05 - Action: take pan 1 from fridge 1
+2024-03-07 13:55:13 | INFO | tasks.alfworld | Step 05 - Observation: You pick up the pan 1 from the fridge 1.
+2024-03-07 13:55:13 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.0
+
+2024-03-07 13:56:13 | INFO | tasks.alfworld | Step 06 - Action: put pan 1 in/on stoveburner 1
+2024-03-07 13:56:13 | INFO | tasks.alfworld | Step 06 - Observation: Nothing happens.
+2024-03-07 13:56:13 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.0
+
+2024-03-07 13:56:49 | INFO | tasks.alfworld | Step 07 - Action: go to stoveburner 1
+2024-03-07 13:56:50 | INFO | tasks.alfworld | Step 07 - Observation: On the stoveburner 1, you see a pot 1.
+2024-03-07 13:56:50 | INFO | tasks.alfworld | Step 07 - Progress Rate: 0.0
+
+2024-03-07 13:57:44 | INFO | tasks.alfworld | Step 08 - Action: take pot 1 from stoveburner 1
+2024-03-07 13:57:44 | INFO | tasks.alfworld | Step 08 - Observation: Nothing happens.
+2024-03-07 13:57:44 | INFO | tasks.alfworld | Step 08 - Progress Rate: 0.0
+
+2024-03-07 13:58:42 | INFO | tasks.alfworld | Step 09 - Action: go to fridge 1
+2024-03-07 13:58:42 | INFO | tasks.alfworld | Step 09 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, and a mug 1.
+2024-03-07 13:58:42 | INFO | tasks.alfworld | Step 09 - Progress Rate: 0.0
+
+2024-03-07 13:59:27 | INFO | tasks.alfworld | Step 10 - Action: take tomato from fridge 1
+2024-03-07 13:59:27 | INFO | tasks.alfworld | Step 10 - Observation: Nothing happens.
+2024-03-07 13:59:27 | INFO | tasks.alfworld | Step 10 - Progress Rate: 0.0
+
+2024-03-07 14:00:18 | INFO | tasks.alfworld | Step 11 - Action: examine fridge 1
+2024-03-07 14:00:18 | INFO | tasks.alfworld | Step 11 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, and a mug 1.
+2024-03-07 14:00:18 | INFO | tasks.alfworld | Step 11 - Progress Rate: 0.0
+
+2024-03-07 14:00:58 | INFO | tasks.alfworld | Step 12 - Action: take apple 1 from fridge 1
+2024-03-07 14:00:58 | INFO | tasks.alfworld | Step 12 - Observation: Nothing happens.
+2024-03-07 14:00:58 | INFO | tasks.alfworld | Step 12 - Progress Rate: 0.0
+
+2024-03-07 14:02:24 | INFO | tasks.alfworld | Step 13 - Action: take bowl 2 from fridge 1
+2024-03-07 14:02:24 | INFO | tasks.alfworld | Step 13 - Observation: Nothing happens.
+2024-03-07 14:02:24 | INFO | tasks.alfworld | Step 13 - Progress Rate: 0.0
+
+2024-03-07 14:03:09 | INFO | tasks.alfworld | Step 14 - Action: take bowl 3 from fridge 1
+2024-03-07 14:03:10 | INFO | tasks.alfworld | Step 14 - Observation: Nothing happens.
+2024-03-07 14:03:10 | INFO | tasks.alfworld | Step 14 - Progress Rate: 0.0
+
+2024-03-07 14:03:38 | INFO | tasks.alfworld | Step 15 - Action: take bowl 2 from fridge 1
+2024-03-07 14:03:39 | INFO | tasks.alfworld | Step 15 - Observation: Nothing happens.
+2024-03-07 14:03:39 | INFO | tasks.alfworld | Step 15 - Progress Rate: 0.0
+
+2024-03-07 14:04:05 | INFO | tasks.alfworld | Step 16 - Action: take bowl 3 from fridge 1
+2024-03-07 14:04:05 | INFO | tasks.alfworld | Step 16 - Observation: Nothing happens.
+2024-03-07 14:04:05 | INFO | tasks.alfworld | Step 16 - Progress Rate: 0.0
+
+2024-03-07 14:04:33 | INFO | tasks.alfworld | Step 17 - Action: take mug 1 from fridge 1
+2024-03-07 14:04:33 | INFO | tasks.alfworld | Step 17 - Observation: Nothing happens.
+2024-03-07 14:04:33 | INFO | tasks.alfworld | Step 17 - Progress Rate: 0.0
+
+2024-03-07 14:12:35 | GOAL | tasks.alfworld | Example 2 | Goal: put a cool tomato in microwave.
+2024-03-07 14:12:35 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-03-07 14:13:28 | INFO | tasks.alfworld | Step 00 - Action: go to fridge 1
+2024-03-07 14:13:28 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
+2024-03-07 14:13:28 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-07 15:16:11 | INFO | tasks.alfworld | Step 01 - Action: open fridge 1
+2024-03-07 15:16:11 | INFO | tasks.alfworld | Step 01 - Observation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 15:16:11 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.0
+
+2024-03-07 15:16:31 | INFO | tasks.alfworld | Step 02 - Action: take tomato from fridge 1
+2024-03-07 15:16:32 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
+2024-03-07 15:16:32 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.0
+
+2024-03-07 15:16:50 | INFO | tasks.alfworld | Step 03 - Action: examine fridge 1
+2024-03-07 15:16:51 | INFO | tasks.alfworld | Step 03 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 15:16:51 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.0
+
+2024-03-07 15:17:10 | INFO | tasks.alfworld | Step 04 - Action: take tomato from fridge 1
+2024-03-07 15:17:10 | INFO | tasks.alfworld | Step 04 - Observation: Nothing happens.
+2024-03-07 15:17:10 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.0
+
+2024-03-07 15:18:13 | INFO | tasks.alfworld | Step 05 - Action: take pan 1 from fridge 1
+2024-03-07 15:18:13 | INFO | tasks.alfworld | Step 05 - Observation: You pick up the pan 1 from the fridge 1.
+2024-03-07 15:18:13 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.0
+
+2024-03-07 15:18:49 | INFO | tasks.alfworld | Step 06 - Action: put pan 1 in/on stoveburner 1
+2024-03-07 15:18:49 | INFO | tasks.alfworld | Step 06 - Observation: Nothing happens.
+2024-03-07 15:18:49 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.0
+
+2024-03-07 15:23:49 | INFO | tasks.alfworld | Step 07 - Action: go to stoveburner 1
+2024-03-07 15:23:50 | INFO | tasks.alfworld | Step 07 - Observation: On the stoveburner 1, you see a pot 1.
+2024-03-07 15:23:50 | INFO | tasks.alfworld | Step 07 - Progress Rate: 0.0
+
+2024-03-07 15:24:44 | INFO | tasks.alfworld | Step 08 - Action: take pot 1 from stoveburner 1
+2024-03-07 15:24:44 | INFO | tasks.alfworld | Step 08 - Observation: Nothing happens.
+2024-03-07 15:24:44 | INFO | tasks.alfworld | Step 08 - Progress Rate: 0.0
+
+2024-03-07 15:25:54 | INFO | tasks.alfworld | Step 09 - Action: go to fridge 1
+2024-03-07 15:25:55 | INFO | tasks.alfworld | Step 09 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, and a mug 1.
+2024-03-07 15:25:55 | INFO | tasks.alfworld | Step 09 - Progress Rate: 0.0
+
+2024-03-07 15:26:39 | INFO | tasks.alfworld | Step 10 - Action: take tomato from fridge 1
+2024-03-07 15:26:39 | INFO | tasks.alfworld | Step 10 - Observation: Nothing happens.
+2024-03-07 15:26:39 | INFO | tasks.alfworld | Step 10 - Progress Rate: 0.0
+
+2024-03-07 15:27:47 | INFO | tasks.alfworld | Step 11 - Action: examine fridge 1
+2024-03-07 15:27:47 | INFO | tasks.alfworld | Step 11 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, and a mug 1.
+2024-03-07 15:27:47 | INFO | tasks.alfworld | Step 11 - Progress Rate: 0.0
+
+2024-03-07 15:28:18 | INFO | tasks.alfworld | Step 12 - Action: take apple 1 from fridge 1
+2024-03-07 15:28:18 | INFO | tasks.alfworld | Step 12 - Observation: Nothing happens.
+2024-03-07 15:28:18 | INFO | tasks.alfworld | Step 12 - Progress Rate: 0.0
+
+2024-03-07 15:29:14 | INFO | tasks.alfworld | Step 13 - Action: take bowl 2 from fridge 1
+2024-03-07 15:29:14 | INFO | tasks.alfworld | Step 13 - Observation: Nothing happens.
+2024-03-07 15:29:14 | INFO | tasks.alfworld | Step 13 - Progress Rate: 0.0
+
+2024-03-07 15:29:28 | INFO | tasks.alfworld | Step 14 - Action: take bowl 3 from fridge 1
+2024-03-07 15:29:28 | INFO | tasks.alfworld | Step 14 - Observation: Nothing happens.
+2024-03-07 15:29:28 | INFO | tasks.alfworld | Step 14 - Progress Rate: 0.0
+
+2024-03-07 15:29:41 | INFO | tasks.alfworld | Step 15 - Action: take bowl 2 from fridge 1
+2024-03-07 15:29:42 | INFO | tasks.alfworld | Step 15 - Observation: Nothing happens.
+2024-03-07 15:29:42 | INFO | tasks.alfworld | Step 15 - Progress Rate: 0.0
+
+2024-03-07 15:30:00 | INFO | tasks.alfworld | Step 16 - Action: take bowl 3 from fridge 1
+2024-03-07 15:30:00 | INFO | tasks.alfworld | Step 16 - Observation: Nothing happens.
+2024-03-07 15:30:00 | INFO | tasks.alfworld | Step 16 - Progress Rate: 0.0
+
+2024-03-07 15:30:25 | INFO | tasks.alfworld | Step 17 - Action: take mug 1 from fridge 1
+2024-03-07 15:30:25 | INFO | tasks.alfworld | Step 17 - Observation: Nothing happens.
+2024-03-07 15:30:25 | INFO | tasks.alfworld | Step 17 - Progress Rate: 0.0
+
+2024-03-07 15:30:44 | INFO | tasks.alfworld | Step 18 - Action: take cup 1 from fridge 1
+2024-03-07 15:30:44 | INFO | tasks.alfworld | Step 18 - Observation: Nothing happens.
+2024-03-07 15:30:44 | INFO | tasks.alfworld | Step 18 - Progress Rate: 0.0
+
+2024-03-07 15:35:33 | GOAL | tasks.alfworld | Example 2 | Goal: put a cool tomato in microwave.
+2024-03-07 15:35:33 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-03-07 15:35:46 | INFO | tasks.alfworld | Step 00 - Action: go to fridge 1
+2024-03-07 15:35:46 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
+2024-03-07 15:35:46 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-07 15:36:01 | INFO | tasks.alfworld | Step 01 - Action: open fridge 1
+2024-03-07 15:36:01 | INFO | tasks.alfworld | Step 01 - Observation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 15:36:01 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.0
+
+2024-03-07 15:36:11 | INFO | tasks.alfworld | Step 02 - Action: take tomato from fridge 1
+2024-03-07 15:36:12 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
+2024-03-07 15:36:12 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.0
+
+2024-03-07 15:36:27 | INFO | tasks.alfworld | Step 03 - Action: examine fridge 1
+2024-03-07 15:36:27 | INFO | tasks.alfworld | Step 03 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 15:36:27 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.0
+
+2024-03-07 15:36:37 | INFO | tasks.alfworld | Step 04 - Action: take tomato from fridge 1
+2024-03-07 15:36:37 | INFO | tasks.alfworld | Step 04 - Observation: Nothing happens.
+2024-03-07 15:36:37 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.0
+
+2024-03-07 15:37:25 | INFO | tasks.alfworld | Step 05 - Action: check valid actions
+2024-03-07 15:37:25 | INFO | tasks.alfworld | Step 05 - Observation: Choose an action from these valid actions: close fridge 1, examine fridge 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, take apple 1 from fridge 1, take bowl 2 from fridge 1, take bowl 3 from fridge 1, take cup 1 from fridge 1, take mug 1 from fridge 1, take pan 1 from fridge 1, check valid actions
+2024-03-07 15:37:25 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.0
+
+2024-03-07 15:37:28 | INFO | tasks.alfworld | Step 06 - Action: take tomato from fridge 1
+2024-03-07 15:37:29 | INFO | tasks.alfworld | Step 06 - Observation: Nothing happens.
+2024-03-07 15:37:29 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.0
+
+2024-03-07 15:37:45 | INFO | tasks.alfworld | Step 07 - Action: take tomato from fridge 1
+2024-03-07 15:37:45 | INFO | tasks.alfworld | Step 07 - Observation: Nothing happens.
+2024-03-07 15:37:45 | INFO | tasks.alfworld | Step 07 - Progress Rate: 0.0
+
+2024-03-07 15:38:06 | INFO | tasks.alfworld | Step 08 - Action: check valid actions
+2024-03-07 15:38:06 | INFO | tasks.alfworld | Step 08 - Observation: Choose an action from these valid actions: close fridge 1, examine fridge 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, take apple 1 from fridge 1, take bowl 2 from fridge 1, take bowl 3 from fridge 1, take cup 1 from fridge 1, take mug 1 from fridge 1, take pan 1 from fridge 1, check valid actions
+2024-03-07 15:38:06 | INFO | tasks.alfworld | Step 08 - Progress Rate: 0.0
+
+2024-03-07 15:38:25 | INFO | tasks.alfworld | Step 09 - Action: take apple 1 from fridge 1
+2024-03-07 15:38:26 | INFO | tasks.alfworld | Step 09 - Observation: You pick up the apple 1 from the fridge 1.
+2024-03-07 15:38:26 | INFO | tasks.alfworld | Step 09 - Progress Rate: 0.0
+
+2024-03-07 15:38:32 | INFO | tasks.alfworld | Step 10 - Action: put apple 1 in/on microwave 1
+2024-03-07 15:38:32 | INFO | tasks.alfworld | Step 10 - Observation: Nothing happens.
+2024-03-07 15:38:32 | INFO | tasks.alfworld | Step 10 - Progress Rate: 0.0
+
+2024-03-07 15:38:50 | INFO | tasks.alfworld | Step 11 - Action: examine microwave 1
+2024-03-07 15:38:50 | INFO | tasks.alfworld | Step 11 - Observation: Nothing happens.
+2024-03-07 15:38:50 | INFO | tasks.alfworld | Step 11 - Progress Rate: 0.0
+
+2024-03-07 15:39:08 | INFO | tasks.alfworld | Step 12 - Action: take tomato from fridge 1
+2024-03-07 15:39:08 | INFO | tasks.alfworld | Step 12 - Observation: Nothing happens.
+2024-03-07 15:39:08 | INFO | tasks.alfworld | Step 12 - Progress Rate: 0.0
+
+2024-03-07 15:39:26 | INFO | tasks.alfworld | Step 13 - Action: take tomato from fridge 1
+2024-03-07 15:39:26 | INFO | tasks.alfworld | Step 13 - Observation: Nothing happens.
+2024-03-07 15:39:26 | INFO | tasks.alfworld | Step 13 - Progress Rate: 0.0
+
+2024-03-07 15:39:58 | INFO | tasks.alfworld | Step 14 - Action: check valid actions
+2024-03-07 15:39:58 | INFO | tasks.alfworld | Step 14 - Observation: Choose an action from these valid actions: close fridge 1, cool apple 1 with fridge 1, examine apple 1, examine fridge 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, put apple 1 in/on fridge 1, check valid actions
+2024-03-07 15:39:58 | INFO | tasks.alfworld | Step 14 - Progress Rate: 0.0
+
+2024-03-07 15:40:27 | INFO | tasks.alfworld | Step 15 - Action: examine fridge 1
+2024-03-07 15:40:27 | INFO | tasks.alfworld | Step 15 - Observation: The fridge 1 is open. In it, you see a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 15:40:27 | INFO | tasks.alfworld | Step 15 - Progress Rate: 0.0
+
+2024-03-07 15:40:49 | INFO | tasks.alfworld | Step 16 - Action: check valid actions
+2024-03-07 15:40:49 | INFO | tasks.alfworld | Step 16 - Observation: Choose an action from these valid actions: close fridge 1, cool apple 1 with fridge 1, examine apple 1, examine fridge 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, put apple 1 in/on fridge 1, check valid actions
+2024-03-07 15:40:49 | INFO | tasks.alfworld | Step 16 - Progress Rate: 0.0
+
+2024-03-07 15:41:05 | INFO | tasks.alfworld | Step 17 - Action: examine fridge 1
+2024-03-07 15:41:05 | INFO | tasks.alfworld | Step 17 - Observation: The fridge 1 is open. In it, you see a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 15:41:05 | INFO | tasks.alfworld | Step 17 - Progress Rate: 0.0
+
+2024-03-07 15:44:50 | GOAL | tasks.alfworld | Example 2 | Goal: put a cool tomato in microwave.
+2024-03-07 15:44:50 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.
+2024-03-07 15:45:02 | INFO | tasks.alfworld | Step 00 - Action: go to fridge 1
+2024-03-07 15:45:03 | INFO | tasks.alfworld | Step 00 - Observation: The fridge 1 is closed.
+2024-03-07 15:45:03 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-03-07 15:45:18 | INFO | tasks.alfworld | Step 01 - Action: open fridge 1
+2024-03-07 15:45:18 | INFO | tasks.alfworld | Step 01 - Observation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 15:45:18 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.0
+
+2024-03-07 15:45:37 | INFO | tasks.alfworld | Step 02 - Action: examine fridge 1
+2024-03-07 15:45:37 | INFO | tasks.alfworld | Step 02 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.
+2024-03-07 15:45:37 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.0
+
+2024-03-07 15:45:56 | INFO | tasks.alfworld | Step 03 - Action: take pan 1 from fridge 1
+2024-03-07 15:45:56 | INFO | tasks.alfworld | Step 03 - Observation: You pick up the pan 1 from the fridge 1.
+2024-03-07 15:45:56 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.0
+
+2024-03-07 15:46:15 | INFO | tasks.alfworld | Step 04 - Action: go to microwave 1
+2024-03-07 15:46:15 | INFO | tasks.alfworld | Step 04 - Observation: The microwave 1 is closed.
+2024-03-07 15:46:15 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.0
+
+2024-03-07 15:46:41 | INFO | tasks.alfworld | Step 05 - Action: open microwave 1
+2024-03-07 15:46:42 | INFO | tasks.alfworld | Step 05 - Observation: You open the microwave 1. The microwave 1 is open. In it, you see nothing.
+2024-03-07 15:46:42 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.0
+
+2024-03-07 15:47:03 | INFO | tasks.alfworld | Step 06 - Action: take tomato from shelf 1
+2024-03-07 15:47:04 | INFO | tasks.alfworld | Step 06 - Observation: Nothing happens.
+2024-03-07 15:47:04 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.0
+
+2024-03-07 15:47:26 | INFO | tasks.alfworld | Step 07 - Action: check valid actions
+2024-03-07 15:47:26 | INFO | tasks.alfworld | Step 07 - Observation: Choose an action from these valid actions: close microwave 1, examine microwave 1, examine pan 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, check valid actions
+2024-03-07 15:47:26 | INFO | tasks.alfworld | Step 07 - Progress Rate: 0.0
+
+2024-03-07 15:47:45 | INFO | tasks.alfworld | Step 08 - Action: examine shelf 1
+2024-03-07 15:47:45 | INFO | tasks.alfworld | Step 08 - Observation: Nothing happens.
+2024-03-07 15:47:45 | INFO | tasks.alfworld | Step 08 - Progress Rate: 0.0
+
+2024-03-07 15:48:11 | INFO | tasks.alfworld | Step 09 - Action: check valid actions
+2024-03-07 15:48:11 | INFO | tasks.alfworld | Step 09 - Observation: Choose an action from these valid actions: close microwave 1, examine microwave 1, examine pan 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, check valid actions
+2024-03-07 15:48:11 | INFO | tasks.alfworld | Step 09 - Progress Rate: 0.0
+
+2024-03-07 15:48:27 | INFO | tasks.alfworld | Step 10 - Action: examine shelf 1
+2024-03-07 15:48:27 | INFO | tasks.alfworld | Step 10 - Observation: Nothing happens.
+2024-03-07 15:48:27 | INFO | tasks.alfworld | Step 10 - Progress Rate: 0.0
+
+2024-03-07 15:49:06 | INFO | tasks.alfworld | Step 11 - Action: go to shelf 1
+2024-03-07 15:49:06 | INFO | tasks.alfworld | Step 11 - Observation: On the shelf 1, you see a statue 1.
+2024-03-07 15:49:06 | INFO | tasks.alfworld | Step 11 - Progress Rate: 0.0
+
+2024-03-07 15:49:17 | INFO | tasks.alfworld | Step 12 - Action: examine shelf 1
+2024-03-07 15:49:17 | INFO | tasks.alfworld | Step 12 - Observation: On the shelf 1, you see a statue 1.
+2024-03-07 15:49:17 | INFO | tasks.alfworld | Step 12 - Progress Rate: 0.0
+
+2024-03-07 15:49:46 | INFO | tasks.alfworld | Step 13 - Action: check valid actions
+2024-03-07 15:49:46 | INFO | tasks.alfworld | Step 13 - Observation: Choose an action from these valid actions: examine pan 1, examine shelf 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to microwave 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, check valid actions
+2024-03-07 15:49:46 | INFO | tasks.alfworld | Step 13 - Progress Rate: 0.0
+
+2024-03-07 15:50:06 | INFO | tasks.alfworld | Step 14 - Action: go to cabinet 1
+2024-03-07 15:50:07 | INFO | tasks.alfworld | Step 14 - Observation: On the cabinet 1, you see a bowl 1.
+2024-03-07 15:50:07 | INFO | tasks.alfworld | Step 14 - Progress Rate: 0.0
+
+2024-03-07 15:50:27 | INFO | tasks.alfworld | Step 15 - Action: go to fridge 1
+2024-03-07 15:50:27 | INFO | tasks.alfworld | Step 15 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, and a mug 1.
+2024-03-07 15:50:27 | INFO | tasks.alfworld | Step 15 - Progress Rate: 0.0
+
+2024-03-07 15:50:41 | INFO | tasks.alfworld | Step 16 - Action: examine fridge 1
+2024-03-07 15:50:41 | INFO | tasks.alfworld | Step 16 - Observation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, and a mug 1.
+2024-03-07 15:50:41 | INFO | tasks.alfworld | Step 16 - Progress Rate: 0.0
+
+2024-03-07 15:51:02 | INFO | tasks.alfworld | Step 17 - Action: go to cabinet 2
+2024-03-07 15:51:02 | INFO | tasks.alfworld | Step 17 - Observation: The cabinet 2 is closed.
+2024-03-07 15:51:02 | INFO | tasks.alfworld | Step 17 - Progress Rate: 0.0
+
+2024-03-07 15:51:22 | INFO | tasks.alfworld | Step 18 - Action: check valid actions
+2024-03-07 15:51:22 | INFO | tasks.alfworld | Step 18 - Observation: Choose an action from these valid actions: examine cabinet 2, examine pan 1, go to cabinet 1, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, open cabinet 2, check valid actions
+2024-03-07 15:51:22 | INFO | tasks.alfworld | Step 18 - Progress Rate: 0.0
+
+2024-03-07 15:55:10 | INFO | tasks.alfworld | Step 19 - Action: open cabinet 2
+2024-03-07 15:55:11 | INFO | tasks.alfworld | Step 19 - Observation: You open the cabinet 2. The cabinet 2 is open. In it, you see nothing.
+2024-03-07 15:55:11 | INFO | tasks.alfworld | Step 19 - Progress Rate: 0.0
+
+2024-03-07 15:55:40 | INFO | tasks.alfworld | Step 20 - Action: go to cabinet 3
+2024-03-07 15:55:40 | INFO | tasks.alfworld | Step 20 - Observation: On the cabinet 3, you see a plate 1.
+2024-03-07 15:55:40 | INFO | tasks.alfworld | Step 20 - Progress Rate: 0.0
+
+2024-03-07 15:56:04 | INFO | tasks.alfworld | Step 21 - Action: check valid actions
+2024-03-07 15:56:04 | INFO | tasks.alfworld | Step 21 - Observation: Choose an action from these valid actions: examine cabinet 3, examine pan 1, go to cabinet 1, go to cabinet 2, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, put pan 1 in/on cabinet 3, check valid actions
+2024-03-07 15:56:04 | INFO | tasks.alfworld | Step 21 - Progress Rate: 0.0
+
+2024-03-07 15:56:59 | INFO | tasks.alfworld | Step 22 - Action: go to cabinet 4
+2024-03-07 15:56:59 | INFO | tasks.alfworld | Step 22 - Observation: On the cabinet 4, you see a glassbottle 1.
+2024-03-07 15:56:59 | INFO | tasks.alfworld | Step 22 - Progress Rate: 0.0
+
+2024-03-07 15:57:13 | INFO | tasks.alfworld | Step 23 - Action: check valid actions
+2024-03-07 15:57:13 | INFO | tasks.alfworld | Step 23 - Observation: Choose an action from these valid actions: examine cabinet 4, examine pan 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, put pan 1 in/on cabinet 4, check valid actions
+2024-03-07 15:57:13 | INFO | tasks.alfworld | Step 23 - Progress Rate: 0.0
+
+2024-03-07 15:59:33 | INFO | tasks.alfworld | Step 24 - Action: go to cabinet 5
+2024-03-07 15:59:33 | INFO | tasks.alfworld | Step 24 - Observation: The cabinet 5 is closed.
+2024-03-07 15:59:33 | INFO | tasks.alfworld | Step 24 - Progress Rate: 0.0
+
+2024-03-07 16:00:01 | INFO | tasks.alfworld | Step 25 - Action: open cabinet 5
+2024-03-07 16:00:01 | INFO | tasks.alfworld | Step 25 - Observation: You open the cabinet 5. The cabinet 5 is open. In it, you see a dishsponge 2.
+2024-03-07 16:00:01 | INFO | tasks.alfworld | Step 25 - Progress Rate: 0.0
+
+2024-03-07 16:00:26 | INFO | tasks.alfworld | Step 26 - Action: go to cabinet 6
+2024-03-07 16:00:26 | INFO | tasks.alfworld | Step 26 - Observation: The cabinet 6 is closed.
+2024-03-07 16:00:26 | INFO | tasks.alfworld | Step 26 - Progress Rate: 0.0
+
+2024-03-07 16:00:40 | INFO | tasks.alfworld | Step 27 - Action: check valid actions
+2024-03-07 16:00:40 | INFO | tasks.alfworld | Step 27 - Observation: Choose an action from these valid actions: examine cabinet 6, examine pan 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, open cabinet 6, check valid actions
+2024-03-07 16:00:40 | INFO | tasks.alfworld | Step 27 - Progress Rate: 0.0
+
+2024-03-07 16:01:08 | INFO | tasks.alfworld | Step 28 - Action: open cabinet 6
+2024-03-07 16:01:08 | INFO | tasks.alfworld | Step 28 - Observation: You open the cabinet 6. The cabinet 6 is open. In it, you see a soapbottle 1, and a vase 2.
+2024-03-07 16:01:08 | INFO | tasks.alfworld | Step 28 - Progress Rate: 0.0
+
+2024-03-07 16:01:35 | INFO | tasks.alfworld | Step 29 - Action: go to cabinet 1
+2024-03-07 16:01:35 | INFO | tasks.alfworld | Step 29 - Observation: On the cabinet 1, you see a bowl 1.
+2024-03-07 16:01:35 | INFO | tasks.alfworld | Step 29 - Progress Rate: 0.0
+
+2024-03-07 16:01:35 | INFO | tasks.alfworld | use guess percentage: 0.0
+2024-03-07 16:01:35 | FINISH | tasks.alfworld | Example 2 | Success: False , Progress Rate: 0.0 , Steps: 29
+

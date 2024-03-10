@@ -361,7 +361,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             
             
             if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
-                action = f"I have been repeating the same action. I need to perform diverse exploration. "
+                action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. "
             
                 return True, action
         except:
@@ -396,11 +396,11 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                         if verified:
                             # find the action that is not verified
                             error_action = n_gram_list[n_gram_verification.index(False)]
-                            action = f"The execution of {error_action} is not as expected. I need to try something different. I could use the check valid actions command to see what I can do next."
+                            action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command."
                             return True, action
                         
                         if not reward_good:
-                            action = f"My last few steps do not contribute to the goal {self.goal}. I should change my policy or perform explorations."
+                            action = f"My recent actions haven't advanced towards my goal: {self.goal}. I need to revise my approach to be more goal-driven."
                             return True, action
                         
         return False, None

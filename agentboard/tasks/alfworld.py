@@ -45,6 +45,8 @@ class Evalalfworld(BaseTask):
         ####################  initialize llm and agent ##################
         if llm is None:
             llm = load_llm(llm_config.get("name", "gpt"), llm_config)
+        
+        agent_config["logger"] = logger
         self.agent = load_agent(agent_name, agent_config, llm)
         #################################################################
         

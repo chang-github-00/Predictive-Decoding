@@ -25,6 +25,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                  check_actions=None,
                  check_inventory=None,
                  use_parser=True,
+                 logger=None,
                  ):
         super().__init__()
         self.use_parser = use_parser
@@ -32,6 +33,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         self.memory_size = memory_size
         self.goal = None
         self.init_obs = None
+        self.logger = logger
         if init_prompt_path is not None:  # load from file
             self.init_prompt_dict = json.load(open(init_prompt_path, 'r'))
             self.instruction = self.init_prompt_dict["instruction"]
@@ -359,7 +361,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             
             
             if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
-                action = f"I have been repeating the same action, and it is not helping me to reach the goal {self.goal}. I need to perform diverse exploration. "
+                action = f"I have been repeating the same action. I need to perform diverse exploration. "
             
                 return True, action
         except:
@@ -372,6 +374,9 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         if len(action_history) > window_size:
             
             last_actions = action_history[-window_size:] 
+            
+            if last_actions[-1] == self.check_actions or last_actions[-1] == self.check_inventory:
+                return False, None
             
             for traj_id, trajectory in enumerate(self.trajectory_pool):
 
@@ -391,11 +396,11 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                         if verified:
                             # find the action that is not verified
                             error_action = n_gram_list[n_gram_verification.index(False)]
-                            action = f"The execution of {error_action} is not as expected. I need to try something different. check valid actions could tell me what I can do next."
+                            action = f"The execution of {error_action} is not as expected. I need to try something different. I could use the check valid actions command to see what I can do next."
                             return True, action
                         
                         if not reward_good:
-                            action = "My last few steps do not contribute to the goal {self.goal}. I should change my policy."
+                            action = f"My last few steps do not contribute to the goal {self.goal}. I should change my policy or perform explorations."
                             return True, action
                         
         return False, None
@@ -427,6 +432,11 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                                             system_message=system_message,
                                             tip = reflection_tip)
             
+            # if reflection_tip is not None:
+            #     self.memory.append(("Thought", reflection_tip))
+            
+            self.logger.info(f"Reflection tip: {reflection_tip}")
+            
             self.log_example_prompt(input_prompt)
 
             success, action_sequence = self.llm_model.generate(system_message, input_prompt)
@@ -453,8 +463,9 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         check_inventory = config.get("check_inventory", None)
         use_parser = config.get("use_parser", True)
         need_goal = config.get("need_goal", False)
+        logger = config.get("logger", None)
         return cls(llm_model, memory_size, examples, instruction, init_prompt_path, system_message, 
-                   need_goal, check_actions, check_inventory, use_parser)
+                   need_goal, check_actions, check_inventory, use_parser, logger)
         
 
 class SimilarityMetric(object):

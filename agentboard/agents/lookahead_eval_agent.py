@@ -61,6 +61,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         self.trajectory_pool = []
         self.trajectory_reward = []
         
+        self.gamma = 6
         self.use_guess_cnt = 0
         
         # self.guess_action = []
@@ -251,11 +252,16 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         
         observations = [item["Observation"] for item in new_trajectory if "Observation" in item]
         
-        action_history = [item[1] for item in self.memory if item[0] == "Action"]
+        # action_history = [item[1] for item in self.memory if item[0] == "Action"]
         
-        steps = len(action_history) + len(observations)
+        similarity = self.similarity_metric.get_similarity(observations, self.goal)
         
-        sim_to_goal= float(torch.max(self.similarity_metric.get_similarity(observations, self.goal)))
+        # index of max similarity
+        step_most_similar = int(torch.argmax(similarity)) + 1
+        
+        sim_to_goal= float(torch.max(similarity))
+        
+        sim_to_goal = sim_to_goal * self.gamma / step_most_similar
         
         self.trajectory_reward.append(sim_to_goal)
         
@@ -365,7 +371,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             
             
             if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
-                action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. "
+                action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. You can use the check valid actions command to find exploration options."
             
                 return True, action
         except:
@@ -411,7 +417,6 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         
           
     def run(self, init_prompt_dict=None):
-        
         self.verify_trajectory(threshold=self.similarity_threshold)
 
         # decide upon the best action based on simulated planning

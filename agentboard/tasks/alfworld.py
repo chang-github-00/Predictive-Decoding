@@ -168,9 +168,6 @@ class Evalalfworld(BaseTask):
 
             ob, info = self.env.reset()
             
-            if id <2:
-                continue
-            
             ob = '\n'.join(ob[0].split('\n\n')[1:])
             name = '/'.join(info['extra.gamefile'][0].split('/')[-3:-1])
             #sub_goal = selected_obs[name]

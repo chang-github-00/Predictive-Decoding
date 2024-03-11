@@ -251,6 +251,10 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         
         observations = [item["Observation"] for item in new_trajectory if "Observation" in item]
         
+        action_history = [item[1] for item in self.memory if item[0] == "Action"]
+        
+        steps = len(action_history) + len(observations)
+        
         sim_to_goal= float(torch.max(self.similarity_metric.get_similarity(observations, self.goal)))
         
         self.trajectory_reward.append(sim_to_goal)

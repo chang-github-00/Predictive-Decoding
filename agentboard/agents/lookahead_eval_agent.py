@@ -66,7 +66,8 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         
         # self.guess_action = []
 
-        self.similarity_threshold = 0.7 # determine if two observations are similar
+        self.similarity_threshold_high = 0.7 # determine if two observations are similar
+        self.similarity_threshold_low = 0.5 # determine if two observations are similar
         self.reward_threshold = 0.7 # determine if the reward is good enough
         self.window_size = 1 # determine the action window size for self-evaulation
         
@@ -272,7 +273,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                 self.trajectory_pool[-1][id]["Reward"] = sim_to_goal
 
 
-    def verify_trajectory(self, threshold=0.5):
+    def verify_trajectory(self, threshold_high=0.5, threshold_low=0.3):
         
         # after the new execution, provide verification for action rollouts
 
@@ -313,13 +314,13 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                             begin_observation_similarity = float(torch.max(self.similarity_metric.get_similarity([begin_observation], [last_begin_observation])))
                             end_observation_similarity = float(torch.max(self.similarity_metric.get_similarity([end_observation], [last_end_observation])))
                             
-                            if begin_observation_similarity > threshold and end_observation_similarity > threshold:
+                            if begin_observation_similarity > threshold_high and end_observation_similarity > threshold_high:
                                 # this action is executed as expected, verify it as True
                                 
                                 if "Verified" in trajectory[id]:
                                     self.trajectory_pool[traj_id][id]["Verified"] = True
                                     
-                            if begin_observation_similarity > threshold and end_observation_similarity < threshold:
+                            if begin_observation_similarity > threshold_high and end_observation_similarity < threshold_low:
                                 # all the actions after the action should be verified as False
                                 
                                 for i in range(id, len(trajectory)):
@@ -371,7 +372,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             
             
             if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
-                action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. You can use the check valid actions command to find exploration options."
+                action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions."
             
                 return True, action
         except:
@@ -417,7 +418,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         
           
     def run(self, init_prompt_dict=None):
-        self.verify_trajectory(threshold=self.similarity_threshold)
+        self.verify_trajectory(threshold_high=self.similarity_threshold_high, threshold_low=self.similarity_threshold_low)
 
         # decide upon the best action based on simulated planning
         action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)

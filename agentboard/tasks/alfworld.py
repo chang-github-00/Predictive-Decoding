@@ -8,7 +8,7 @@ import copy
 
 from utils.logging.logger import TaskLogger
 from utils.logging.agent_logger import AgentLogger
-logger = AgentLogger(__name__, filepath="lade_agent_deepseek_alfworld_uncertain.txt")
+logger = AgentLogger(__name__, filepath="lade_agent_deepseek_alfworld_reward_new.txt")
 
 
 from .base_task import BaseTask
@@ -165,6 +165,10 @@ class Evalalfworld(BaseTask):
         difficulties = []
 
         for id in range(self.num_exams):
+            
+            # if id < 1:
+            #     self.env.reset()
+            #     continue
 
             ob, info = self.env.reset()
             

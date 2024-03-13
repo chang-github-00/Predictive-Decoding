@@ -310,7 +310,8 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                             end_observation = item["Observation"]
 
                             # if begin_observation is the same as last_begin_observation, and end_observation is not the same as last_end_observation, then the action is not executed as expected
-                            
+                            if begin_observation is None or end_observation is None:
+                                continue
                             begin_observation_similarity = float(torch.max(self.similarity_metric.get_similarity([begin_observation], [last_begin_observation])))
                             end_observation_similarity = float(torch.max(self.similarity_metric.get_similarity([end_observation], [last_end_observation])))
                             

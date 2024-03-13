@@ -103,7 +103,7 @@ env:
     label_path: ${PROJECT_PATH}/data/alfworld/test.jsonl
     check_inventory: True
     check_actions: check valid actions
-    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/VanillaAgent/alfworld_base.json
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/VanillaAgent/alfworld_base_new.json
   
   webshop:
     name: webshop

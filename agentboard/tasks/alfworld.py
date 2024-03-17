@@ -8,7 +8,7 @@ import copy
 
 from utils.logging.logger import TaskLogger
 from utils.logging.agent_logger import AgentLogger
-logger = AgentLogger(__name__, filepath="lade_agent_deepseek_alfworld_reward_new.txt")
+logger = AgentLogger(__name__, filepath="lade_agent_alfworld_alfworld_reward_new.txt")
 
 
 from .base_task import BaseTask

@@ -11,7 +11,7 @@ from utils.logging.agent_logger import AgentLogger
 
 from .base_task import BaseTask
 
-logger = AgentLogger(__name__)
+logger = AgentLogger(__name__, filepath="lade_agent_deepseek_pddl_reward_new.txt")
 
 
 @registry.register_task("pddl")
@@ -121,8 +121,13 @@ class EvalPddl(BaseTask):
         
         for step_id in range(max_steps):
 
-            success, action = self.agent.run(init_prompt_dict = self.init_prompt_game_dict[game_name])
+            success, action, is_guess = self.agent.run(init_prompt_dict = self.init_prompt_game_dict[game_name])
             
+            if is_guess:
+                logger.guess_action("Step {:02} - Action: {}".format(step_id, action))
+            else:
+                logger.info("Step {:02} - Action: {}".format(step_id, action))
+                
             trajectory.append({"Action":action, "id":step_id})
             
             if not success:
@@ -150,9 +155,14 @@ class EvalPddl(BaseTask):
                 
                 progress_rate = reward
                 
+                logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/step_id))
+                
                 self.agentboard.log_example(id, env.won, progress_rate, grounding_acc_count / (step_id + 1), score_change_record, env_details, trajectory)
 
                 return env.won, progress_rate, step_id + 1, grounding_acc_count / (step_id + 1), score_change_record
+
+        
+        logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/step_id))
 
 
         env_details = {"task_name": env.game_name, "goal": self.agent.goal, "difficulty": env.difficulty}
@@ -162,7 +172,7 @@ class EvalPddl(BaseTask):
         progress_rate = reward
         
         self.agentboard.log_example(id, False, progress_rate, grounding_acc_count / (step_id + 1), score_change_record, env_details, trajectory, example_prompt)
-            
+                
         return False, progress_rate, step_id + 1, grounding_acc_count / (step_id + 1), score_change_record
                 
     

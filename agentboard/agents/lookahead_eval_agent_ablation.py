@@ -10,8 +10,8 @@ import torch
 from sentence_transformers import SentenceTransformer, util
 
 
-@registry.register_agent("LookAheadEvalAgent")
-class LookAheadEvalAgent(   # add world modeling objective in agent 
+@registry.register_agent("LookAheadEvalAgentAblation")
+class LookAheadEvalAgentAblation(   # add world modeling objective in agent 
     BaseAgent):  # the agent should receive goal, state and action, then return the next state
     def __init__(self,
                  llm_model,
@@ -258,11 +258,8 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         similarity = self.similarity_metric.get_similarity(observations, self.goal)
         
         # index of max similarity
-        step_most_similar = int(torch.argmax(similarity)) + 1
         
-        sim_to_goal= float(torch.max(similarity))
-        
-        sim_to_goal = sim_to_goal * self.gamma / step_most_similar
+        sim_to_goal= float(similarity[0][0])
         
         self.trajectory_reward.append(sim_to_goal)
         
@@ -421,8 +418,8 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
     def run(self, init_prompt_dict=None):
         self.verify_trajectory(threshold_high=self.similarity_threshold_high, threshold_low=self.similarity_threshold_low)
 
-        # decide upon the best action based on simulated planning
         action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
+        action = None
         
         if action is not None:
             self.use_guess_cnt += 1
@@ -443,8 +440,8 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                                             system_message=system_message,
                                             tip = reflection_tip)
             
-            # if reflection_tip is not None:
-            #     self.memory.append(("Thought", reflection_tip))
+            if reflection_tip is not None:
+                self.memory.append(("Thought", reflection_tip))
             
             self.logger.info(f"Reflection tip: {reflection_tip}")
             

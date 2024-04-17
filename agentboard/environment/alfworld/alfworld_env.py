@@ -67,7 +67,7 @@ class AlfWorld:
             observation, _, done, info = self.env.step([action])
             observation = [self.env_ob]
             done = done[0]
-        elif action == "check valid actions":
+        elif action.lower() == "check valid actions":
             valid_actions = ", ".join(self.valid_actions)
             observation = [f"Choose an action from these valid actions: {valid_actions}"]
       #  elif action not in self.valid_actions:

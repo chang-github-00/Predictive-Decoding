@@ -215,7 +215,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         action_sequences = action.split('\n')
         all_actions = []
         for action in action_sequences:
-            try: 
+            try:
                 if "action:" in action.lower():
                     new_action = action.split(":")[1]
                     new_action = new_action.strip()
@@ -226,13 +226,16 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                     type = type.strip()
                     content = content.strip()
                     all_actions[-1][type.capitalize()] = content
+                else:
+                    continue
             except:
                 continue
-                
+            
         if len(all_actions)>0: 
             first_action = all_actions[0]["Action"] 
         else:
-            first_action = ""
+            first_action = action_sequences[0]
+            all_actions.append({"Action": first_action, "Verified": None, "Observation": None, "Reward": None})
         return all_actions, first_action
     
     def update_trajectory_pool(self, action):
@@ -414,7 +417,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                             # find the action that is not verified
                             error_action = n_gram_list[n_gram_verification.index(False)]
                             # action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command." # for alfworld
-                            action = f"The execution of {error_action} is not as anticipated. I need to try something different. I can use the check valid actions command to find available actions."
+                            action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command."
                             return True, action
                         
                         if not reward_good:

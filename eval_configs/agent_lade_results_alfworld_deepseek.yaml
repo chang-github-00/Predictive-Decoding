@@ -10,7 +10,7 @@ run:
 agent:
   # name: LookAheadAgent
   name: LookAheadEvalAgent
-  memory_size: 200
+  memory_size: 100
   need_goal: True
   n_gram: 3
   gamma: 6

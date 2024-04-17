@@ -1,3 +1,58 @@
-2024-03-17 20:18:18 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
-2024-03-17 20:18:18 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
-2024-03-17 20:18:18 | INFO | tasks.alfworld | Reflection tip: None
+2024-04-17 20:02:14 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-04-17 20:02:14 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.
+2024-04-17 20:02:14 | INFO | tasks.alfworld | Reflection tip: None
+2024-04-17 20:02:17 | INFO | tasks.alfworld | Step 00 - Action: examine desk 1
+2024-04-17 20:02:17 | INFO | tasks.alfworld | Step 00 - Observation: Nothing happens.
+2024-04-17 20:02:17 | INFO | tasks.alfworld | Step 00 - Progress Rate: 0.0
+
+2024-04-17 20:02:17 | INFO | tasks.alfworld | Reflection tip: None
+2024-04-17 20:02:22 | INFO | tasks.alfworld | Step 01 - Action: go to desk 1
+2024-04-17 20:02:22 | INFO | tasks.alfworld | Step 01 - Observation: On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.
+2024-04-17 20:02:22 | INFO | tasks.alfworld | Step 01 - Progress Rate: 0.25
+
+2024-04-17 20:02:22 | INFO | tasks.alfworld | Reflection tip: None
+2024-04-17 20:02:24 | INFO | tasks.alfworld | Step 02 - Action: take desklamp 1 from desk 1
+2024-04-17 20:02:24 | INFO | tasks.alfworld | Step 02 - Observation: Nothing happens.
+2024-04-17 20:02:24 | INFO | tasks.alfworld | Step 02 - Progress Rate: 0.25
+
+2024-04-17 20:02:24 | INFO | tasks.alfworld | Reflection tip: None
+2024-04-17 20:02:26 | INFO | tasks.alfworld | Step 03 - Action: take desklamp 1 from desk 1
+2024-04-17 20:02:26 | INFO | tasks.alfworld | Step 03 - Observation: Nothing happens.
+2024-04-17 20:02:26 | INFO | tasks.alfworld | Step 03 - Progress Rate: 0.25
+
+2024-04-17 20:02:26 | INFO | tasks.alfworld | Reflection tip: I have been repeating the same action. I need to perform diverse exploration and try different actions. I can use the check valid actions command to find available actions.
+2024-04-17 20:02:28 | INFO | tasks.alfworld | Step 04 - Action: 
+2024-04-17 20:02:28 | INFO | tasks.alfworld | Step 04 - Observation: Nothing happens.
+2024-04-17 20:02:28 | INFO | tasks.alfworld | Step 04 - Progress Rate: 0.25
+
+2024-04-17 20:02:28 | INFO | tasks.alfworld | Reflection tip: None
+2024-04-17 20:02:30 | INFO | tasks.alfworld | Step 05 - Action: 
+2024-04-17 20:02:30 | INFO | tasks.alfworld | Step 05 - Observation: Nothing happens.
+2024-04-17 20:02:30 | INFO | tasks.alfworld | Step 05 - Progress Rate: 0.25
+
+2024-04-17 20:02:30 | INFO | tasks.alfworld | Reflection tip: I have been repeating the same action. I need to perform diverse exploration and try different actions. I can use the check valid actions command to find available actions.
+2024-04-17 20:02:41 | INFO | tasks.alfworld | Step 06 - Action: take mug 2 from desk 1
+2024-04-17 20:02:41 | INFO | tasks.alfworld | Step 06 - Observation: You pick up the mug 2 from the desk 1.
+2024-04-17 20:02:41 | INFO | tasks.alfworld | Step 06 - Progress Rate: 0.25
+
+2024-04-17 20:02:41 | INFO | tasks.alfworld | Reflection tip: None
+2024-04-17 20:02:43 | INFO | tasks.alfworld | Step 07 - Action: examine mug 2
+2024-04-17 20:02:43 | INFO | tasks.alfworld | Step 07 - Observation: This is a normal mug 2. In it, you see nothing.
+2024-04-17 20:02:43 | INFO | tasks.alfworld | Step 07 - Progress Rate: 0.25
+
+2024-04-17 20:02:43 | INFO | tasks.alfworld | Reflection tip: None
+2024-04-17 20:02:58 | INFO | tasks.alfworld | Step 08 - Action: go to shelf 3
+2024-04-17 20:02:58 | INFO | tasks.alfworld | Step 08 - Observation: On the shelf 3, you see a desklamp 1, a pen 1, and a pencil 2.
+2024-04-17 20:02:58 | INFO | tasks.alfworld | Step 08 - Progress Rate: 0.25
+
+2024-04-17 20:02:58 | INFO | tasks.alfworld | Reflection tip: My recent actions haven't advanced towards my goal: look at bowl under the desklamp.. I need to revise my approach to be more goal-driven.
+2024-04-17 20:03:10 | INFO | tasks.alfworld | Step 09 - Action: examine desklamp 1
+2024-04-17 20:03:11 | INFO | tasks.alfworld | Step 09 - Observation: Nothing happens.
+2024-04-17 20:03:11 | INFO | tasks.alfworld | Step 09 - Progress Rate: 0.25
+
+2024-04-17 20:03:11 | INFO | tasks.alfworld | Reflection tip: None
+2024-04-17 20:03:17 | INFO | tasks.alfworld | Step 10 - Action: 
+2024-04-17 20:03:17 | INFO | tasks.alfworld | Step 10 - Observation: Nothing happens.
+2024-04-17 20:03:17 | INFO | tasks.alfworld | Step 10 - Progress Rate: 0.25
+
+2024-04-17 20:03:17 | INFO | tasks.alfworld | Reflection tip: None

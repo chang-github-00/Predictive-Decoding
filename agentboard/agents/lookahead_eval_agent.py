@@ -26,6 +26,11 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                  check_inventory=None,
                  use_parser=True,
                  logger=None,
+                 n_gram=3,
+                 gamma=6,
+                 similarity_threshold_high=0.7,
+                 similarity_threshold_low=0.5,
+                 reward_threshold=0.9
                  ):
         super().__init__()
         self.use_parser = use_parser
@@ -57,18 +62,18 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
 
         self.example_prompt = None
 
-        self.n_gram = 3
+        self.n_gram = n_gram
         self.trajectory_pool = []
         self.trajectory_reward = []
         
-        self.gamma = 6
+        self.gamma = gamma
         self.use_guess_cnt = 0
 
         # self.guess_action = []
 
-        self.similarity_threshold_high = 0.7 # determine if two observations are similar
-        self.similarity_threshold_low = 0.5 # determine if two observations are similar
-        self.reward_threshold = 0.9 #0.7 # determine if the reward is good enough
+        self.similarity_threshold_high = similarity_threshold_high # determine if two observations are similar
+        self.similarity_threshold_low = similarity_threshold_low# determine if two observations are similar
+        self.reward_threshold = reward_threshold #0.7 # determine if the reward is good enough
         self.window_size = 1 # determine the action window size for self-evaulation
         
         self.similarity_metric = SimilarityMetric()
@@ -476,6 +481,13 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
         use_parser = config.get("use_parser", True)
         need_goal = config.get("need_goal", False)
         logger = config.get("logger", None)
+        
+        n_gram = config.get("n_gram", None)
+        gamma = config.get("gamma", None)
+        similarity_threshold_low = config.get("similarity_threshold_low", None)
+        similarity_threshold_high = config.get("similarity_threshold_high", None)
+        reward_threshold = config.get("reward_threshold", None)
+        
         return cls(llm_model, memory_size, examples, instruction, init_prompt_path, system_message, 
                    need_goal, check_actions, check_inventory, use_parser, logger)
         

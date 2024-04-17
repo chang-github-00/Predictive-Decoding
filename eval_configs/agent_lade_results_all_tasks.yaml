@@ -31,8 +31,8 @@ llm:
     name: vllm
     engine: /root/huggingface/deepseek-llm-67b-chat
     max_tokens: 200
-    temperature: 0.1
-    top_p: 0.9
+    temperature: 0.8
+    top_p: 0.95
     stop:
     context_length: 4096
     dtype: float16

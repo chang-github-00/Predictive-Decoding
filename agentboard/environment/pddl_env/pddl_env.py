@@ -10,7 +10,7 @@ sys.path.append(os.path.join(os.getcwd(), 'environment', 'pddl_env'))
 import pddlgym
 from pddlgym.structs import Literal, Predicate
 
-nltk.download('punkt')
+# nltk.download('punkt')
 
 @registry.register_environment("pddl")
 class PDDL(BaseEnvironment):

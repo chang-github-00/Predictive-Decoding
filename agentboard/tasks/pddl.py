@@ -38,6 +38,7 @@ class EvalPddl(BaseTask):
             llm = load_llm(llm_name, llm_config)
         init_prompt_path = agent_config.get("init_prompt_path", None)
         agent_config["init_prompt_path"] = None
+        agent_config["logger"] = logger
         self.agent = load_agent(agent_name, agent_config, llm)
         
         self.label_path = env_config.get("label_path", None)

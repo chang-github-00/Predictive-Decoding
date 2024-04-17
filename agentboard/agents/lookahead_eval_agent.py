@@ -68,7 +68,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
 
         self.similarity_threshold_high = 0.7 # determine if two observations are similar
         self.similarity_threshold_low = 0.5 # determine if two observations are similar
-        self.reward_threshold = 0.7 # determine if the reward is good enough
+        self.reward_threshold = 0.9 #0.7 # determine if the reward is good enough
         self.window_size = 1 # determine the action window size for self-evaulation
         
         self.similarity_metric = SimilarityMetric()
@@ -373,8 +373,8 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             
             
             if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
-                action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions."
-            
+                # action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. " # alfworld
+                action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. I can use the check valid actions command to find available actions."
                 return True, action
         except:
             pass
@@ -408,7 +408,8 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                         if verified:
                             # find the action that is not verified
                             error_action = n_gram_list[n_gram_verification.index(False)]
-                            action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command."
+                            # action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command." # for alfworld
+                            action = f"The execution of {error_action} is not as anticipated. I need to try something different. I can use the check valid actions command to find available actions."
                             return True, action
                         
                         if not reward_good:

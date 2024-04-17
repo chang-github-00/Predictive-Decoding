@@ -3,7 +3,7 @@ run:
   wandb: False
   project_name: eval-test
   baseline_dir: data/baseline_results
-  log_path: ${PROJECT_PATH}/results/test_ablation
+  log_path: ${PROJECT_PATH}/results/test_uncertainty
 # only provide example run_config here, please specify with arguments when running
 # --wandb --max_num_steps 30 --project_name ... --baseline_dir ... --log_path ...
 
@@ -30,9 +30,9 @@ llm:
   deepseek-67b:   # for opensource models, llm name should be either vllm/hg based on the vllm/huggingface inference architecture
     name: vllm
     engine: /root/huggingface/deepseek-llm-67b-chat
-    max_tokens: 100
-    temperature: 0.1
-    top_p: 0.9
+    max_tokens: 200
+    temperature: 0.8 #0.1
+    top_p: 0.95 #0.9
     stop:
     context_length: 4096
     dtype: float16

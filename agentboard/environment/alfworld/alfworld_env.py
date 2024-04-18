@@ -119,6 +119,8 @@ class AlfWorld:
         if "check valid actions" not in self.valid_actions:
             self.valid_actions.append("check valid actions")
 
+        # sort valid actions
+        self.valid_actions = sorted(self.valid_actions)
         return self.valid_actions
 
     @classmethod

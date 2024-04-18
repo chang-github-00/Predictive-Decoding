@@ -37,7 +37,7 @@ llm:
     name: vllm
     engine: /root/huggingface/deepseek-llm-67b-chat
     max_tokens: 200
-    temperature: 0.1
+    temperature: 0.1  #0.1
     top_p: 0.9
     stop:
     context_length: 4096
@@ -109,7 +109,7 @@ env:
     label_path: ${PROJECT_PATH}/data/alfworld/test.jsonl
     check_inventory: True
     check_actions: check valid actions
-    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/VanillaAgent/alfworld_base_new.json
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/MPCAgent/alfworld_base_new.json
   
   webshop:
     name: webshop

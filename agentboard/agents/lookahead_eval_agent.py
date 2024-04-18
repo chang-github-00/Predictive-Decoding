@@ -30,7 +30,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                  gamma=6,
                  similarity_threshold_high=0.7,
                  similarity_threshold_low=0.5,
-                 reward_threshold=0.9
+                 reward_threshold=0.7
                  ):
         super().__init__()
         self.use_parser = use_parser
@@ -382,7 +382,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             
             if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
                 # action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. " # alfworld
-                action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. I can use the check valid actions command to find available actions."
+                action = f"I have been repeating the same action {action_history[-1]}. I need to perform diverse exploration and try different actions. I can use the check valid actions command to find available actions."
                 return True, action
         except:
             pass

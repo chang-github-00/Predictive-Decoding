@@ -4,6 +4,11 @@
       "Your task is to: put some spraybottle on toilet.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\n",
       "Action: go to cabinet 1\n",
       "Observation: On the cabinet 1, you see a cloth 1, a soapbar 1, a soapbottle 1.\n",
+      "Action: take soapbottle 1 from cabinet 1\n",
+      "Observation: You pick up the soapbottle 1 from the cabinet 1.\n",
+      "Thought: You have picked up an unrelated object. Please put it back before you could take something else.\n",
+      "Action: put soapbottle 1 in/on cabinet 1\n",
+      "Observation: You put the soapbottle 1 in/on the cabinet 1.\n",
       "Action: go to cabinet 2\n",
       "Observation: The cabinet 2 is closed.\n",
       "Action: open cabinet 2\n",
@@ -34,6 +39,11 @@
       "Your task is to: put a hot apple in fridge.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 1, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\n",
       "Action: go to diningtable 1\n",
       "Observation: On the diningtable 1, you see a apple 1, a bread 1, a fork 3, a fork 2, a fork 1, a mug 2, a peppershaker 3, a plate 2, a pot 1, a soapbottle 3, a spatula 1, a spoon 3, a spoon 2, a spoon 1, a winebottle 3, and a winebottle 2.\n\n",
+      "Action: take bread 1 from cabinet 1\n",
+      "Observation: You pick up the bread 1 from the cabinet 1.\n",
+      "Thought: You have picked up an unrelated object. Please put it back before you could take something else.\n",
+      "Action: put bread 1 in/on cabinet 1\n",
+      "Observation: You put the bread 1 in/on the cabinet 1.\n",
       "Action: take apple 1 from diningtable 1\n",
       "Observation: You pick up the apple 1 from the diningtable 1.\n",
       "Action: go to microwave 1\n",
@@ -51,6 +61,11 @@
       "Observation: On the stoveburner 1, you see nothing.\n",
       "Action: go to stoveburner 2\n",
       "Observation: On the stoveburner 2, you see a pot 1.\n",
+      "Action: take pot 1 from stoveburner 2\n",
+      "Observation: You pick up the bread pot 1 on stoveburner 2.\n",
+      "Thought: You have picked up an unrelated object. Please put it back before you could take something else.\n",
+      "Action: put pot 1 from stoveburner 2\n",
+      "Observation: You put the pot 1 on stoveburner 2.\n",
       "Action: go to stoveburner 3\n",
       "Observation: On the stoveburner 3, you see a pan 1.\n",
       "Action: take pan 1 from stoveburner 3\n",
@@ -98,5 +113,5 @@
     ]
   },
   "system_msg": "You are a helpful assistant.",
-  "instruction": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'toggle {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n"
+  "instruction": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'toggle {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\nYou need to have an empty inventory before taking anything."
 }

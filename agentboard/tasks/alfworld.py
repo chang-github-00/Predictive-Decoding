@@ -166,9 +166,9 @@ class Evalalfworld(BaseTask):
 
         for id in range(self.num_exams):
             
-            if id < 8:
-                self.env.reset()
-                continue
+            # if id < 8:
+            #     self.env.reset()
+            #     continue
 
             ob, info = self.env.reset()
             

@@ -425,6 +425,79 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
                             return True, action
                         
         return False, None
+    
+    
+    
+    def reflection_tips_v2(self, reward_threshold=0.5, window_size=2): 
+        
+        # determine if the model is stuck and requires self-reflection, used sparingly
+        
+        # first scenario: there are repeat cycles of actions that are not helping the model to reach the goal
+        
+        try:
+            action_history = [item[1] for item in self.memory if item[0] == "Action"]
+            
+            
+            if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
+                # action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. " # alfworld
+                action = f"I have been repeating the same action {action_history[-1]}. I need to perform diverse exploration and try different actions. I can use the check valid actions command to find available actions."
+                return True, action
+        except:
+            pass
+
+        # second scenario: the last few-steps has been tested by execution, and the actual observations are not according to plan
+        
+        # third scenario: the last few-steps has been tested by the lookahead model, and the reward is not good
+        
+        if len(action_history) > window_size:
+            
+            last_actions = action_history[-window_size:] 
+            
+            if last_actions[-1] == self.check_actions or last_actions[-1] == self.check_inventory:
+                return False, None
+            
+            for traj_id, trajectory in enumerate(self.trajectory_pool):
+
+                trajectory = trajectory[1:] # remove the first action, which is None
+                
+                for id in range(len(trajectory) - window_size + 1):
+                    
+                    n_gram_list = [trajectory[id+s]["Action"] for s in range(window_size)]
+                    n_gram_verification = [trajectory[id+s]["Verified"] for s in range(window_size)]
+                    n_gram_reward = [trajectory[id+s]["Reward"] for s in range(window_size)][-1]
+                    
+                    match = (last_actions == n_gram_list)
+                    verified = False in n_gram_verification
+                    reward_good = n_gram_reward > reward_threshold
+                    
+                    if match and (verified or not reward_good): 
+                        rollout_n_gram = [trajectory[id+s] for s in range(window_size, len(trajectory) - id)] # window_size part has true environmental interaction, no need to provide imagination
+                        has_imagination = False
+                        
+                        rollout = "Imagined rollout trajectory of task is: "
+                        for item in rollout_n_gram:
+                            if "Action" in item and item["Observation"] is not None:
+                                has_imagination = True
+                                rollout += "Action: " + item["Action"] + "->"
+                                rollout += "Observation: " + item["Observation"] + "->"
+                                if item["Verified"] is not None:
+                                    rollout += "Is Verified: " + str(item["Verified"]) + "->"
+                        action = f"Correct and optimize this imagined trajectory to adhere to goal {self.goal} : {rollout}.\n"
+                        
+                        if has_imagination:
+                            return True, action
+                        # if verified:
+                        #     # find the action that is not verified
+                        #     error_action = n_gram_list[n_gram_verification.index(False)]
+                        #     # action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command." # for alfworld
+                        #     action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command."
+                        #     return True, action
+                        
+                        # if not reward_good:
+                        #     action = f"My recent actions haven't advanced towards my goal: {self.goal}. I need to revise my approach to be more goal-driven."
+                        #     return True, action
+                        
+        return False, None
         
           
     def run(self, init_prompt_dict=None):
@@ -438,7 +511,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             return True, action, True
         
         else:
-            need_tip, reflection_tip = self.reflection_tips(reward_threshold=self.reward_threshold, window_size=self.window_size)
+            need_tip, reflection_tip = self.reflection_tips_v2(reward_threshold=self.reward_threshold, window_size=self.window_size)
             
             if init_prompt_dict is not None:
                 self.init_prompt_dict = init_prompt_dict

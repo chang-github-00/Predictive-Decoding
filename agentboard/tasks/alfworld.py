@@ -136,12 +136,18 @@ class Evalalfworld(BaseTask):
                 env_details = {"task_name": game_name, "goal": self.agent.goal, "difficulty": self.env.difficulty}
                 self.agentboard.log_example(index, True, reward, grounding_acc_count / (i + 1), score_change_record, env_details, trajectory)
                 
-                logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/i))
+                try:
+                    logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/i))
+                except:
+                    pass
                 # logger.info("guess good: {}".format(guess_good/self.agent.use_guess_cnt))
         
                 return 1.0, True, grounding_acc_count / (i + 1), score_change_record, i
-            
-        logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/i))
+        
+        try:
+            logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/i))
+        except:
+            pass
         # logger.info("guess good: {}".format(guess_good/self.agent.use_guess_cnt))
         
         game_name = self.env.cur_task_name.split('/')[0]

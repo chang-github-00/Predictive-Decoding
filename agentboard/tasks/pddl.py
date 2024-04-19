@@ -156,15 +156,19 @@ class EvalPddl(BaseTask):
                 
                 progress_rate = reward
                 
-                logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/step_id))
+                try:
+                    logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/step_id))
+                except:
+                    pass
                 
                 self.agentboard.log_example(id, env.won, progress_rate, grounding_acc_count / (step_id + 1), score_change_record, env_details, trajectory)
 
                 return env.won, progress_rate, step_id + 1, grounding_acc_count / (step_id + 1), score_change_record
 
-        
-        logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/step_id))
-
+        try:
+            logger.info("use guess percentage: {}".format(self.agent.use_guess_cnt/step_id))
+        except:
+            pass
 
         env_details = {"task_name": env.game_name, "goal": self.agent.goal, "difficulty": env.difficulty}
         try: example_prompt = self.agent.get_example_prompt()

@@ -8,8 +8,8 @@ import random
 import re
 
 
-@registry.register_agent("VanillaAgent")
-class VanillaAgent(
+@registry.register_agent("COTAgent")
+class COTAgent(
     BaseAgent):  # the agent should receive goal, state and action, then return the next state
     def __init__(self,
                  llm_model,
@@ -70,6 +70,7 @@ class VanillaAgent(
         self.example_prompt = prompt
 
     def reset(self, goal, init_obs, init_act=None):
+        self.action_sequence = None # list of actions
         self.goal = goal
         self.init_obs = init_obs
         self.memory = [("Action", init_act), ('Observation', self.init_obs)] if init_act \
@@ -99,31 +100,31 @@ class VanillaAgent(
         if need_goal:
             query += self.split["goal"][0] + "You should perform actions to accomplish the goal: " + self.goal + "\n" + \
                      self.split["goal"][-1]
-        if check_actions is not None:
-            query += "You should use the following commands for help when your action cannot be understood: " + check_actions + "\n"
-        if check_inventory is not None:
-            query += "You should use the following commands for help when your action cannot be understood: inventory\n"
+        # if check_actions is not None:
+        #     query += "You should use the following commands for help when your action cannot be understood: " + check_actions + "\n"
+        # if check_inventory is not None:
+        #     query += "You should use the following commands for help when your action cannot be understood: inventory\n"
 
         history = self.memory[-self.memory_size:]
         input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
 
-        input_prompt += "\nAction: "
+        input_prompt += "\nActions needed to finish this task step by step: "
 
         messages = [
             {"role": "system", "content": system_message},
             {"role": "user", "content": input_prompt}
         ]
-        num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
-        while num_of_tokens > self.max_context_length - self.llm_model.max_tokens:
-            history = history[1:]
-            input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
-            input_prompt += "\nAction: "
-            # input_prompt += "\nPlease enter your action:"
-            messages = [
-                {"role": "system", "content": system_message},
-                {"role": "user", "content": input_prompt}
-            ]
-            num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
+        # num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
+        # while num_of_tokens > self.max_context_length - self.llm_model.max_tokens:
+        #     history = history[1:]
+        #     input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
+        #     input_prompt += "\nAction: "
+        #     # input_prompt += "\nPlease enter your action:"
+        #     messages = [
+        #         {"role": "system", "content": system_message},
+        #         {"role": "user", "content": input_prompt}
+        #     ]
+        #     num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
 
         return input_prompt
 
@@ -166,26 +167,53 @@ class VanillaAgent(
         action = action.split('\n')[0]
         return action
 
+    def update_cot_actions(self, action_sequence):
+        self.action_sequence = []
+        if action_sequence is not None:
+            if ":" in action_sequence:
+                action_sequence = action_sequence.split(":")[1]
+            action_sequence = action_sequence.split('\n')
+            
+            for action in action_sequence:
+                action = action.strip()
+                if "." in action:
+                    action = action.split(".")[1]
+                    action = action.strip()
+                if action == "":
+                    continue
+                self.action_sequence.append(action)
+    
     def run(self, init_prompt_dict=None):
         # note that these configs are originally provided when initialized, but you can choose to override them here with parameters
-        if init_prompt_dict is not None:
-            self.init_prompt_dict = init_prompt_dict
-            self.instruction = init_prompt_dict['instruction']
-            self.examples = init_prompt_dict['examples']
-        system_message = self.init_prompt_dict['system_msg']
-        input_prompt = self.make_prompt(need_goal=self.need_goal,
-                                        check_actions=self.check_actions,
-                                        check_inventory=self.check_inventory,
-                                        system_message=system_message)
-        
-        self.log_example_prompt(input_prompt)
+        if self.action_sequence is None:
+            if init_prompt_dict is not None:
+                self.init_prompt_dict = init_prompt_dict
+                self.instruction = init_prompt_dict['instruction']
+                self.examples = init_prompt_dict['examples']
+            system_message = self.init_prompt_dict['system_msg']
+            input_prompt = self.make_prompt(need_goal=self.need_goal,
+                                            check_actions=self.check_actions,
+                                            check_inventory=self.check_inventory,
+                                            system_message=system_message)
+            
+            self.log_example_prompt(input_prompt)
 
-        success, action = self.llm_model.generate(system_message, input_prompt)
+            success, action_sequence = self.llm_model.generate(system_message, input_prompt)
+            
+            self.update_cot_actions(action_sequence)
+        
+        if len(self.action_sequence) > 0:
+            action = self.action_sequence.pop(0)
+        else:
+            action = None
+        
+        success = (action != None )
 
         if success and self.use_parser:
+            
             action = self.action_parser_for_special_llms(action)
 
-        return success, action
+        return success, action, False   
 
     @classmethod
     def from_config(cls, llm_model, config):

@@ -28,7 +28,18 @@ class SummaryLogger:
         self.current_run_metrics = []
         self.log_path = os.path.join(log_path, "all_results.txt")
         self.log_dimension_path = os.path.join(log_path, "dimension.txt")
-
+        self.log_config_path = os.path.join(log_path, "config.txt")
+    
+    def log_config(self, llm_config, agent_config, env_config, run_config):
+        with open(self.log_config_path, "w") as f:
+            f.write("LLM Configuration: \n")
+            f.write(json.dumps(llm_config, indent=2)+'\n')
+            f.write("Agent Configuration: \n")
+            f.write(json.dumps(agent_config, indent=2)+'\n')
+            f.write("Environment Configuration: \n")
+            f.write(json.dumps(env_config, indent=2)+'\n')
+            f.write("Run Configuration: \n")
+            f.write(json.dumps(run_config, indent=2)+'\n')
     
     def check_metric_item_is_logged(self, metric_type, file_name):
         with open(file_name) as f:

@@ -130,6 +130,9 @@ def main():
     # agentboard is the main launcher of visualizations and metrics calculation, 
     agentboard = SummaryLogger(baseline_dir=baseline_path, log_path=log_dir) 
     
+    
+    agentboard.log_config(llm_config, agent_config, env_config, run_config)
+    
     log_history = dict()
     for line in open(os.path.join(log_dir, 'all_results.txt'), "r"):
         logger.info(line)

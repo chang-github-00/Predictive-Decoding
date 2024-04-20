@@ -108,6 +108,8 @@ class ReactAgent(
             query += "You should use the following commands for help when your action cannot be understood: " + check_actions + "\n"
         if check_inventory is not None:
             query += "You should use the following commands for help when your action cannot be understood: inventory\n"
+            
+        query += "For necessary steps, try to provide a rationale starting with Think: to guide further actions."
 
         history = self.memory[-self.memory_size:]
         input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
@@ -221,7 +223,7 @@ class ReactAgent(
                 self.think_count = 0
                 self.force_action = True
 
-        return success, response
+        return success, response, False 
 
     @classmethod
     def from_config(cls, llm_model, config):

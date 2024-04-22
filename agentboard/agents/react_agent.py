@@ -2,7 +2,7 @@ from agents.base_agent import BaseAgent
 from common.registry import registry
 
 import json
-
+import re
 
 @registry.register_agent("ReactAgent")
 class ReactAgent(
@@ -180,6 +180,26 @@ class ReactAgent(
         action = action.strip("'/")
         action = action.split('\n')[0]
         return action
+    
+    def extract_action_all(self, response):
+        action_pattern = r"(Action:.*?)(?=\n|$)"
+        matches = re.findall(action_pattern, response)
+        
+        if len(matches) > 0:
+            return matches[0].split(":")[1]
+        
+        else:
+            return None
+        
+    def extract_thought_all(self, response):
+        thought_pattern = r"(Think:.*?)(?=\n|$)"
+        matches = re.findall(thought_pattern, response)
+        
+        if len(matches) > 0:
+            return matches[0].split(":")[1]
+        
+        else:
+            return None
 
     def run(self, init_prompt_dict=None):
         # note that these configs are originally provided when initialized, but you can choose to override them here with parameters
@@ -189,9 +209,8 @@ class ReactAgent(
             self.examples = init_prompt_dict['examples']
         system_message = self.init_prompt_dict['system_msg']
 
-        flag = False    # flag to indicate whether the agent has generated an **action**
-
-        while not flag:
+        action = None    
+        while action is None:
             input_prompt = self.make_prompt(need_goal=self.need_goal,
                                             check_actions=self.check_actions,
                                             check_inventory=self.check_inventory,
@@ -199,31 +218,32 @@ class ReactAgent(
 
             success, response = self.llm_model.generate(system_message, input_prompt)
             # print(input_prompt)
+            
+            if not success: 
+                return False, None, False   
 
-            if response.startswith("Action"):
-                flag = True
-                self.think_count = 0
-                self.force_action = False
-                response = self.extract_action(response)
-                if self.use_parser:
-                    response = self.action_parser_for_special_llms(response)
-
-            elif response.startswith("Think"):
-                flag = False
-                self.think_count += 1
-                self.force_action = False
-                response = self.extract_think(response)
-                print("Step {:02} - Think: {}".format(self.steps, response))
+            
+            # first try to extract think and action
+            
+            # if no action could be extracted, then extract think
+            
+            thought = self.extract_thought_all(response)
+            action = self.extract_action_all(response)
+            
+            if thought is not None:
+                print("Step {:02} - Think: {}".format(self.steps, thought))
                 self.memory.append(
-                    ("Think", response)
+                    ("Think", thought)
                 )
             
-            else:
-                flag = False
-                self.think_count = 0
-                self.force_action = True
+            if action is not None:
+                action = self.action_parser_for_special_llms(action)
+            else: 
+                self.think_count += 1
+                if self.think_count >= self.max_think_iters:
+                    action = response
 
-        return success, response, False 
+        return success, action, False 
 
     @classmethod
     def from_config(cls, llm_model, config):

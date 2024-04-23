@@ -511,7 +511,7 @@ class LookAheadEvalAgent(   # add world modeling objective in agent
             return True, action, True
         
         else:
-            need_tip, reflection_tip = self.reflection_tips(reward_threshold=self.reward_threshold, window_size=self.window_size)
+            need_tip, reflection_tip = self.reflection_tips_v2(reward_threshold=self.reward_threshold, window_size=self.window_size)
             
             if init_prompt_dict is not None:
                 self.init_prompt_dict = init_prompt_dict

@@ -1,11 +1,15 @@
+import pdb
+
 from agents.base_agent import BaseAgent
 from common.registry import registry
-
+# from rouge import Rouge
 import json
+import random
 import re
 
-@registry.register_agent("ReactAgent")
-class ReactAgent(
+
+@registry.register_agent("PlanSolve")
+class PlanSolveAgent(
     BaseAgent):  # the agent should receive goal, state and action, then return the next state
     def __init__(self,
                  llm_model,
@@ -19,7 +23,6 @@ class ReactAgent(
                  check_actions=None,
                  check_inventory=None,
                  use_parser=True,
-                 max_think_iters=3
                  ):
         super().__init__()
         self.use_parser = use_parser
@@ -47,9 +50,9 @@ class ReactAgent(
         self.need_goal = need_goal
         self.check_actions = check_actions
         self.check_inventory = check_inventory
-        self.think_count = 0
-        self.max_think_iters = max_think_iters
-        self.force_action = False   # Sometimes the agent does not generate action or think, we need to force it to take action.
+
+        self.example_prompt = None
+        self.plan = None
 
         if "claude" in self.llm_model.engine:
             self.split = self.llm_model.xml_split
@@ -61,6 +64,12 @@ class ReactAgent(
                           "instruction": [""],
                           "goal": [""]}
 
+    def get_example_prompt(self): #return the prompt for an interaction turn
+        return self.example_prompt
+    
+    def log_example_prompt(self, prompt):
+        self.example_prompt = prompt
+
     def reset(self, goal, init_obs, init_act=None):
         self.goal = goal
         self.init_obs = init_obs
@@ -69,26 +78,14 @@ class ReactAgent(
             ('Observation', self.init_obs)]  # list of [('State', "xxx"), ('Action', "xxx"), ...]
         self.steps = 0
         self.done = False
-        self.think_count = 0
 
-    def extract_think(self, response):
-        if response.startswith("Think"):
-            return response.split("Think: ")[-1].split("\n")[0]
-    
-    def extract_action(self, response):
-        if response.startswith("Action"):
-            return response.split("Action: ")[-1].split("\n")[0]
-
-    def update(self, action='', state=''):
+    def update(self, action, state):
         self.steps += 1
+
         self.memory.append(("Action", action))
         self.memory.append(("Observation", state))
 
-    def make_prompt(self,
-                    need_goal=False,
-                    check_actions="check valid actions",
-                    check_inventory="inventory",
-                    system_message=""):
+    def make_prompt(self, need_goal=False, plan ='', check_actions="check valid actions", check_inventory="inventory", system_message=''):
         query = ""
         query += self.split["instruction"][0] + self.instruction + self.split["instruction"][-1]
 
@@ -100,40 +97,30 @@ class ReactAgent(
             for example in self.examples:
                 query += example + "\n"
             query += self.split["example"][-1]
-
         if need_goal:
             query += self.split["goal"][0] + "You should perform actions to accomplish the goal: " + self.goal + "\n" + \
                      self.split["goal"][-1]
+        query += f"A plan for this problem is: {plan}.\n"
         if check_actions is not None:
             query += "You should use the following commands for help when your action cannot be understood: " + check_actions + "\n"
         if check_inventory is not None:
             query += "You should use the following commands for help when your action cannot be understood: inventory\n"
-            
-        query += "For necessary steps, try to provide a rationale starting with Think: to guide further actions."
 
         history = self.memory[-self.memory_size:]
         input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
 
-        if self.think_count >= self.max_think_iters:
-            input_prompt +="\nPlease stop thinking and start taking action on the task."
-        elif self.force_action:
-            input_prompt += "\nPlease take action on the task."
-        
+        input_prompt += "\nAction: "
+
         messages = [
             {"role": "system", "content": system_message},
-            {"role": "user", "content": input_prompt}     
+            {"role": "user", "content": input_prompt}
         ]
-
         num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
         while num_of_tokens > self.max_context_length - self.llm_model.max_tokens:
             history = history[1:]
             input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
-
-            if self.think_count >= self.max_think_iters:
-                input_prompt +="\nPlease stop thinking and start taking action on the task."
-            elif self.force_action:
-                input_prompt += "\nPlease take action on the task."
-
+            input_prompt += "\nAction: "
+            # input_prompt += "\nPlease enter your action:"
             messages = [
                 {"role": "system", "content": system_message},
                 {"role": "user", "content": input_prompt}
@@ -142,6 +129,48 @@ class ReactAgent(
 
         return input_prompt
 
+    
+    def make_plan_prompt(self, need_goal=False, check_actions="check valid actions", check_inventory="inventory", system_message=''):
+        
+        query = ""
+        query += self.split["instruction"][0] + self.instruction + self.split["instruction"][-1]
+
+        if isinstance(self.examples, str):
+            self.examples = [self.examples]
+
+        if len(self.examples) > 0:
+            query += "\nHere are examples:\n" + self.split["example"][0]
+            for example in self.examples:
+                query += example + "\n"
+            query += self.split["example"][-1]
+        if need_goal:
+            query += self.split["goal"][0] + "Please draft a plan to accomplish the goal: " + self.goal + "\n" + \
+                     self.split["goal"][-1]
+
+        history = self.memory[-self.memory_size:]
+        input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
+
+        input_prompt += "\nPlan: "
+
+        messages = [
+            {"role": "system", "content": system_message},
+            {"role": "user", "content": input_prompt}
+        ]
+        num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
+        while num_of_tokens > self.max_context_length - self.llm_model.max_tokens:
+            history = history[1:]
+            input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
+            input_prompt += "\nPlan: "
+            # input_prompt += "\nPlease enter your action:"
+            messages = [
+                {"role": "system", "content": system_message},
+                {"role": "user", "content": input_prompt}
+            ]
+            num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
+
+        return input_prompt
+        
+        
     def action_parser_for_special_llms(self, action):
         
         '''
@@ -180,70 +209,42 @@ class ReactAgent(
         action = action.strip("'/")
         action = action.split('\n')[0]
         return action
-    
-    def extract_action_all(self, response):
-        action_pattern = r"(Action:.*?)(?=\n|$)"
-        matches = re.findall(action_pattern, response)
-        
-        if len(matches) > 0:
-            return matches[0].split(":")[1]
-        
-        else:
-            return None
-        
-    def extract_thought_all(self, response):
-        thought_pattern = r"(Think:.*?)(?=\n|$)"
-        matches = re.findall(thought_pattern, response)
-        
-        if len(matches) > 0:
-            return matches[0].split(":")[1]
-        
-        else:
-            return None
 
+    
     def run(self, init_prompt_dict=None):
         # note that these configs are originally provided when initialized, but you can choose to override them here with parameters
+        
+        if self.plan is None:
+            plan_prompt = self.make_plan_prompt(need_goal=self.need_goal,
+                                        check_actions=self.check_actions,
+                                        check_inventory=self.check_inventory,
+                                        system_message=system_message)
+            
+            success, plan = self.llm_model.generate(system_message, input_prompt)
+            
+            self.plan = plan
+            
+            print("Plan: {}".format(plan))
+            
         if init_prompt_dict is not None:
             self.init_prompt_dict = init_prompt_dict
             self.instruction = init_prompt_dict['instruction']
             self.examples = init_prompt_dict['examples']
         system_message = self.init_prompt_dict['system_msg']
+        input_prompt = self.make_prompt(need_goal=self.need_goal,
+                                        plan = self.plan,
+                                        check_actions=self.check_actions,
+                                        check_inventory=self.check_inventory,
+                                        system_message=system_message)
+        
+        self.log_example_prompt(input_prompt)
 
-        action = None    
-        while action is None:
-            input_prompt = self.make_prompt(need_goal=self.need_goal,
-                                            check_actions=self.check_actions,
-                                            check_inventory=self.check_inventory,
-                                            system_message=system_message)
+        success, action = self.llm_model.generate(system_message, input_prompt)
 
-            success, response = self.llm_model.generate(system_message, input_prompt)
-            # print(input_prompt)
-            
-            if not success: 
-                return False, None, False   
+        if success and self.use_parser:
+            action = self.action_parser_for_special_llms(action)
 
-            
-            # first try to extract think and action
-            
-            # if no action could be extracted, then extract think
-            
-            thought = self.extract_thought_all(response)
-            action = self.extract_action_all(response)
-            
-            if thought is not None:
-                print("Step {:02} - Think: {}".format(self.steps, thought))
-                self.memory.append(
-                    ("Think", thought)
-                )
-                self.think_count += 1
-            if action is not None:
-                action = self.action_parser_for_special_llms(action)
-            else: 
-                self.think_count += 1
-            if self.think_count >= self.max_think_iters:
-                action = response
-
-        return success, action, False 
+        return success, action
 
     @classmethod
     def from_config(cls, llm_model, config):
@@ -256,7 +257,5 @@ class ReactAgent(
         check_inventory = config.get("check_inventory", None)
         use_parser = config.get("use_parser", True)
         need_goal = config.get("need_goal", False)
-        max_think_iters = config.get("max_think_iters", 3)
-
         return cls(llm_model, memory_size, examples, instruction, init_prompt_path, system_message, 
-                   need_goal, check_actions, check_inventory, use_parser, max_think_iters=max_think_iters) 
+                   need_goal, check_actions, check_inventory, use_parser)

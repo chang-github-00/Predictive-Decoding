@@ -8,7 +8,7 @@ run:
 # --wandb --max_num_steps 30 --project_name ... --baseline_dir ... --log_path ...
 
 agent:
-  name: ReactAgent
+  name: PreactAgent
   memory_size: 100
   need_goal: True
 
@@ -184,7 +184,7 @@ env:
     game_name: [gripper, blockworld, barman, tyreworld]
     env_num_per_task: 20
     check_actions: "check valid actions"
-    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/ReactAgent/pddl_vanilla_prompt.json
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/PreactAgent/pddl_vanilla_prompt.json
     label_path: ${PROJECT_PATH}/data/pddl/test.jsonl
 
   jericho:
@@ -194,7 +194,7 @@ env:
     label_path: ${PROJECT_PATH}/data/jericho/test.jsonl
     check_actions: "check valid actions"
     check_inventory: "inventory"
-    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/ReactAgent/jericho_vanilla_prompt.json
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/PreactAgent/jericho_vanilla_prompt.json
 
 
   babyai:
@@ -205,7 +205,7 @@ env:
     env_num_per_task: 4
     check_actions: "check valid actions"
     check_inventory: "inventory"
-    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/ReactAgent/babyai_vanilla_prompt.json
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/PreactAgent/babyai_vanilla_prompt.json
 
   tool-query:
     name: tool-query
@@ -229,7 +229,7 @@ env:
     seed: 0
     check_inventory: True
     check_actions: check valid actions
-    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/ReactAgent/scienceworld_base.json
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/PreactAgent/scienceworld_base.json
     label_path: ${PROJECT_PATH}/data/scienceworld/test.jsonl
 
 
@@ -241,7 +241,7 @@ env:
     label_path: ${PROJECT_PATH}/data/alfworld/test.jsonl
     check_inventory: True
     check_actions: check valid actions
-    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/ReactAgent/alfworld_base.json
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/PreactAgent/alfworld_base.json
   
   webshop:
     name: webshop
@@ -251,7 +251,7 @@ env:
     start_idx: 0
     end_idx: 251
     to_print: True
-    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/ReactAgent/webshop_vanilla.json
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/PreactAgent/webshop_vanilla.json
     label_path: ${PROJECT_PATH}/data/webshop/test.jsonl
 
   webarena:
@@ -266,7 +266,7 @@ env:
     sleep_after_execution: 2.5
     action_set_tag: id_accessibility_tree
     render_screenshot: True
-    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/ReactAgent/webbrowse_vanilla.json
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/PreactAgent/webbrowse_vanilla.json
     label_path: ${PROJECT_PATH}/data/webarena/test.jsonl
     start_test_id: 0
     test_case_count: 245

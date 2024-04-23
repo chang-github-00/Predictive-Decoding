@@ -5,6 +5,7 @@ from .lookahead_agent import LookAheadAgent
 from .lookahead_eval_agent import LookAheadEvalAgent
 from .lookahead_eval_agent_ablation import LookAheadEvalAgentAblation
 from .chain_of_thought_agent import COTAgent
+from .plan_solve_agent import PlanSolveAgent
 from common.registry import registry
 
 __all__ = ["VanillaAgent", "ReactAgent"]

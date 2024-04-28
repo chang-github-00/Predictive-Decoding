@@ -12,6 +12,7 @@ class Registry:
         "agent_name_mapping": {},
         "llm_name_mapping": {},
         "task_name_mapping": {},
+        "algorithm_name_mapping": {},
         "state": {},
     }
     @classmethod
@@ -124,6 +125,31 @@ class Registry:
             return task_cls
 
         return wrap
+    
+    @classmethod
+    def register_algorithm(cls, name):
+        r"""Register an task to registry with key 'name'
+
+        Args:
+            name: Key with which the llm will be registered.
+
+        Usage:
+
+            from common.registry import registry
+        """
+
+        def wrap(algorithm_cls):
+            
+            if name in cls.mapping["algorithm_name_mapping"]:
+                raise KeyError(
+                    "Name '{}' already registered for {}.".format(
+                        name, cls.mapping["algorithm_name_mapping"][name]
+                    )
+                )
+            cls.mapping["algorithm_name_mapping"][name] = algorithm_cls
+            return algorithm_cls
+
+        return wrap
 
     
     @classmethod
@@ -168,6 +194,10 @@ class Registry:
         return cls.mapping["task_name_mapping"].get(name, None)
 
     @classmethod
+    def get_algorithm_class(cls, name):
+        return cls.mapping["algorithm_name_mapping"].get(name, None)
+        
+    @classmethod
     def list_environments(cls):
         return sorted(cls.mapping["environment_name_mapping"].keys())
     
@@ -183,7 +213,10 @@ class Registry:
     def list_tasks(cls):
         return sorted(cls.mapping["task_name_mapping"].keys())
 
-
+    @classmethod
+    def list_algorithms(cls):
+        return sorted(cls.mapping["algorithm_name_mapping"].keys())
+    
     @classmethod
     def get(cls, name, default=None, no_warning=False):
         r"""Get an item from registry with key 'name'

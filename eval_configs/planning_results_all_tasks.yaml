@@ -1,0 +1,176 @@
+run:
+  log_path: ${PROJECT_PATH}/results/test
+  data_path: ${PROJECT_PATH}/data
+# only provide example run_config here, please specify with arguments when running
+# --wandb --max_num_steps 30 --project_name ... --baseline_dir ... --log_path ...
+
+
+algorithm:
+  name: Generation
+  prompt_path: ${PROJECT_PATH}/data/prompts
+
+llm:
+  gpt-3.5-turbo-16k:
+      name: gpt
+      engine: gpt-3.5-turbo-16k
+      context_length: 16384 # 4096
+      use_azure: False
+      temperature: 0.
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
+  gpt-3.5-turbo-0613:
+      name: gpt
+      engine: gpt-3.5-turbo-0613
+      context_length: 4096
+      use_azure: False
+      temperature: 0.
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
+  gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
+      name: gpt_azure
+      engine: gpt-35-turbo
+      context_length: 4096
+      use_azure: True
+      temperature: 0.
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
+  text-davinci-003:
+      name: gpt_azure
+      engine: text-davinci-003
+      context_length: 4096
+      use_azure: True
+      temperature: 0.
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
+  gpt-4:
+      name: gpt_azure
+      engine: gpt-4
+      context_length: 8192
+      use_azure: True
+      temperature: 0.
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
+  claude2:
+      name: claude
+      engine: claude-2
+      temperature: 0.
+      top_p: 1
+      retry_delays: 10
+      max_retry_iters: 15
+      stop:
+        - "\n\nHuman:"
+      context_length: 100000
+      xml_split:
+        example: ["\n<example>\n", "</example>\n"]
+        text: ["<text>\n", "</text>\n"]
+        rule: ["<rule>\n", "</rule>\n"]
+        system_msg: ["<system_message>\n", "</system_message>\n"]
+        instruction: ["<instruction>\n", "</instruction>\n"]
+        goal: ["<goal>\n", "</goal>\n"]
+      use_parser: False
+  deepseek-67b:   # for opensource models, llm name should be either vllm/hg based on the vllm/huggingface inference architecture
+      name: vllm
+      engine: deepseek-ai/deepseek-llm-67b-chat
+      max_tokens: 100
+      temperature: 0
+      top_p: 1
+      stop:
+      context_length: 4096
+      dtype: float16
+      ngpu: 4
+      use_parser: True
+  codellama-13b:
+      name: vllm
+      engine: codellama/CodeLlama-13b-Instruct-hf
+      max_tokens: 100
+      temperature: 0
+      top_p: 1
+      stop:
+      context_length: 16384
+      dtype: float32
+      ngpu: 4
+      use_parser: True
+  codellama-34b:
+      name: vllm
+      engine: codellama/CodeLlama-34b-Instruct-hf
+      max_tokens: 100
+      temperature: 0
+      top_p: 1
+      stop:
+      context_length: 16384
+      dtype: float32
+      ngpu: 4
+      use_parser: True
+  lemur-70b:
+      name: vllm
+      engine: OpenLemur/lemur-70b-chat-v1
+      max_tokens: 100
+      temperature: 0.
+      top_p: 1
+      stop:
+      context_length: 4096
+      ngpu: 4
+      dtype: float16
+      use_parser: True
+  llama2-13b:
+      name: vllm
+      engine: /model_download/Llama-2-13b-chat-hf
+      max_tokens: 100
+      temperature: 0.
+      top_p: 1
+      stop:
+      context_length: 4096
+      dtype: float16
+      ngpu: 2
+      use_parser: True
+  llama2-70b:
+      name: vllm
+      engine:  meta-llama/Llama-2-70b-chat-hf
+      max_tokens: 100
+      temperature: 0.
+      top_p: 1
+      stop:
+      context_length: 4096
+      dtype: float16
+      ngpu: 4
+      use_parser: True
+
+  vicuna-13b-16k:
+      name: vllm
+      engine: lmsys/vicuna-13b-v1.5-16k
+      max_tokens: 100
+      temperature: 0.
+      top_p: 1
+      stop:
+      context_length: 16384
+      dtype: float16
+      ngpu: 2
+      use_parser: True
+
+  mistral-7b:
+      name: vllm
+      engine: mistralai/Mistral-7B-Instruct-v0.2
+      max_tokens: 100
+      temperature: 0.
+      top_p: 1
+      stop:
+      context_length: 32768
+      dtype: float16
+      ngpu: 2
+      use_parser: True
+

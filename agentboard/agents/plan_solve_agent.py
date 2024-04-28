@@ -8,7 +8,7 @@ import random
 import re
 
 
-@registry.register_agent("PlanSolve")
+@registry.register_agent("PlanSolveAgent")
 class PlanSolveAgent(
     BaseAgent):  # the agent should receive goal, state and action, then return the next state
     def __init__(self,
@@ -213,6 +213,11 @@ class PlanSolveAgent(
     
     def run(self, init_prompt_dict=None):
         # note that these configs are originally provided when initialized, but you can choose to override them here with parameters
+        if init_prompt_dict is not None:
+            self.init_prompt_dict = init_prompt_dict
+            self.instruction = init_prompt_dict['instruction']
+            self.examples = init_prompt_dict['examples']
+        system_message = self.init_prompt_dict['system_msg']
         
         if self.plan is None:
             plan_prompt = self.make_plan_prompt(need_goal=self.need_goal,
@@ -220,17 +225,12 @@ class PlanSolveAgent(
                                         check_inventory=self.check_inventory,
                                         system_message=system_message)
             
-            success, plan = self.llm_model.generate(system_message, input_prompt)
+            success, plan = self.llm_model.generate(system_message, plan_prompt)
             
             self.plan = plan
             
             print("Plan: {}".format(plan))
             
-        if init_prompt_dict is not None:
-            self.init_prompt_dict = init_prompt_dict
-            self.instruction = init_prompt_dict['instruction']
-            self.examples = init_prompt_dict['examples']
-        system_message = self.init_prompt_dict['system_msg']
         input_prompt = self.make_prompt(need_goal=self.need_goal,
                                         plan = self.plan,
                                         check_actions=self.check_actions,
@@ -244,7 +244,7 @@ class PlanSolveAgent(
         if success and self.use_parser:
             action = self.action_parser_for_special_llms(action)
 
-        return success, action
+        return success, action, False
 
     @classmethod
     def from_config(cls, llm_model, config):

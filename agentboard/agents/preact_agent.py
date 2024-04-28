@@ -109,7 +109,7 @@ class PreactAgent(
         if check_inventory is not None:
             query += "You should use the following commands for help when your action cannot be understood: inventory\n"
             
-        query += "For necessary steps, try to provide a rationale starting with Think: to guide further actions. You should think about what is the long-term impact and consequence of actions."
+        query += "For necessary steps, try to provide a rationale starting with Think: to guide further actions. You should think about what is the long-term impact and consequence of actions - If I do xxx, xx would happen."
 
         history = self.memory[-self.memory_size:]
         input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])

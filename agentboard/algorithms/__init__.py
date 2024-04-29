@@ -1,4 +1,5 @@
-from .generation import Generation  
+from .generation import Generation
+from .cot import COT  
 from common.registry import registry
 
 

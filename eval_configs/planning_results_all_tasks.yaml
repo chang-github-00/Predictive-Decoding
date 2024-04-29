@@ -41,8 +41,9 @@ llm:
       top_p: 1
       retry_delays: 20
       max_retry_iters: 15
-      stop: "\n"
+      stop: #"\n"
       use_parser: False
+      max_tokens: 500
   text-davinci-003:
       name: gpt_azure
       engine: text-davinci-003

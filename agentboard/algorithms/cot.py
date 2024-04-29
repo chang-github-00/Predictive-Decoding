@@ -24,7 +24,7 @@ class COT:  # the agent should receive goal, state and action, then return the n
         query += "\nHere is an example:\n" + prompt["examples"][0] + '\n'
         
         input_prompt = query + question
-        input_prompt = input_prompt + "\nAnswer:"
+        input_prompt = input_prompt 
 
         return input_prompt
 
@@ -45,9 +45,11 @@ class COT:  # the agent should receive goal, state and action, then return the n
         system_message = self.prompts["system_msg"]
         input_prompt = self.make_prompt(question, self.prompts)
         success, results = self.llm_model.generate( system_message, input_prompt)
+        if success:
+            success, answer = self.llm_model.generate( system_message, f"{input_prompt}\nThought:{results}\noutput=")
         
         if success:
-            result_lists = self.parse_integer_lists(results)
+            result_lists = self.parse_integer_lists(answer)
             if len(result_lists) > 0:
                 return True, result_lists[-1]
         return False, None

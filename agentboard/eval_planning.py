@@ -105,6 +105,7 @@ def parse_args():
 
     parser.add_argument("--cfg-path", required=True, help="path to configuration file.")
     parser.add_argument("--tasks", required=True, type=str, help="specify the tasks")
+    parser.add_argument("--algorithm", required=True, type=str, help="specify the algorithm")
     parser.add_argument("--model", required=True ,help="specify the models, available models are stated in the configuration file")
     parser.add_argument("--log_path", required=False, default='', help="specify the place to store the resuls")
     parser.add_argument("--data_path", required=False, default='', help="specify the test data file")
@@ -131,7 +132,7 @@ def load_config(cfg_path, args):
     llm_config = config["llm"]
     algorithm_config = config["algorithm"]
     run_config = config["run"]
-    
+    algorithm_config["name"] = args.algorithm
     if args.log_path != '':
         run_config["log_path"] = args.log_path
     if args.data_path != '':

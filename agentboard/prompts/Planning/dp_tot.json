@@ -1,0 +1,6 @@
+{
+    "examples": ["input = [0, -4, 3, 6, -2, -3] \nAction: First choose 0 as it is the largest number in its neighbors.\nObservation: 0 is chosen and you cannot choose -4\nThen choose 6 as it is larger than 3-2=1\n Observation: 6 is chosen and you cannot choose -2 \n Action: -3 is discarded as it lowers the sum. \n Observation: The task is finished. You have chosen 0 and 6.\n Anwer:[1, 2, 2, 1, 2, 2]"],
+    "system_msg": "You are a helpful assistant.",
+    "evaluation_prompt": "reward is the sum of your current chosen numbers",
+    "instruction": "Given a sequence of integers, find a subsequence with the highest sum, such that no two numbers in the subsequence are adjacent in the original sequence.\n\nOutput a list with \"1\" for chosen numbers and \"2\" for unchosen ones. If multiple solutions exist, select the lexicographically smallest. "
+}

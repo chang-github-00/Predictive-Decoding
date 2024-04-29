@@ -8,6 +8,7 @@ from prompts.prompt_template import prompt_templates
 
 import torch
 import re
+import copy
 
 @registry.register_llm("vllm")
 class VLLM:
@@ -98,6 +99,31 @@ class VLLM:
         return full_prompt
 
     def generate(self, system_message, prompt):
+        full_prompt = self.make_prompt(system_message, prompt)
+        assert full_prompt is not None
+        outputs = self.llm.generate([full_prompt], self.sampling_params)
+        # logprobs_topp = outputs[0].outputs[0].logprobs
+        
+        outputs = self.apply_uncertainty(outputs)
+        
+        # logprobs = np.array([list(logprob.values()) for logprob in logprobs_topp])
+        # probs = np.exp(logprobs)/np.sum(np.exp(logprobs), axis=1, keepdims=True)
+        # entropy = -np.sum(probs * np.log2(probs), axis=1)
+        
+        # tokens = [self.tokenizer.decode(list(probs.keys())[0] ) for probs in logprobs_topp]
+        
+        if 'vicuna' in self.model.lower():
+            # Note: vicuna tends to generate get\_search\_movie with Action Input: {"movie\_name": "Crouching Tiger, Hidden Dragon"} when using tools
+            outputs = outputs.replace('\_', '_')
+
+        return True, outputs 
+    
+    def generate_with_config(self, system_message, prompt, config):
+        sampling_params = copy.deepcopy(self.sampling_params)
+        
+        for item in config: 
+            sampling_params[item] = config[item]
+        
         full_prompt = self.make_prompt(system_message, prompt)
         assert full_prompt is not None
         outputs = self.llm.generate([full_prompt], self.sampling_params)

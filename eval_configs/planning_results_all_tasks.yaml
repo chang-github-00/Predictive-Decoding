@@ -37,7 +37,7 @@ llm:
       engine: gpt-35-turbo
       context_length: 4096
       use_azure: True
-      temperature: 0.
+      temperature: 0.7 # make this larger for tot
       top_p: 1
       retry_delays: 20
       max_retry_iters: 15

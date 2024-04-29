@@ -64,6 +64,28 @@ class OPENAI_GPT_AZURE:
         )
 
         return response['choices'][0]['message']['content']
+    
+    @timeout_decorator.timeout(10)
+    def chat_inference_with_config(self, messages, config):
+        assert self.engine in ["gpt-35-turbo", "gpt-4", "gpt-35-turbo-16k"], "engine not supported in ChatCompletion"
+
+        stop = config.get("stop", self.stop)
+        temperature = config.get("temperature", self.temperature)
+        max_tokens = config.get("max_tokens", self.max_tokens)
+        n = config.get("n", 1)
+        
+        response = openai.ChatCompletion.create(
+            engine=self.engine, # engine = "deployment_name".
+            messages=messages,
+            stop = stop,
+            temperature = temperature,
+            max_tokens = max_tokens,
+            n = n
+        )
+        if n == 1:
+            return response['choices'][0]['message']['content']
+        else:
+            return [response['choices'][i]['message']['content'] for i in range(len(response['choices']))]
         
     
 
@@ -141,6 +163,34 @@ class OPENAI_GPT_AZURE:
                         raise e
                         
             return False, None
+        
+    def generate_with_config(self, system_message, prompt, config):
+        
+        if 'gpt' in self.engine:
+        
+            prompt=[
+                {"role": "system", "content": system_message},
+                {"role": "user", "content": prompt}
+            ]
+            for attempt in range(self.max_retry_iters):  
+                try:
+                    output = self.chat_inference_with_config(prompt, config)
+                    # output = output.split("\n")[0]
+                    return True, output # return success, completion
+                except Exception as e:
+                    print(f"Error on attempt {attempt + 1}") 
+                    if attempt < self.max_retry_iters - 1:  # If not the last attempt
+                        time.sleep(self.retry_delays)  # Wait before retrying
+                    
+                    else:
+                        print("Failed to get completion after multiple attempts.")
+                        # raise e
+                        
+            return False, None
+        
+        elif 'text' in self.engine:
+            
+            raise NotImplementedError
     
 
     def num_tokens_from_messages(self, messages, model="gpt-3.5-turbo-0613"):

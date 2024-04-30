@@ -21,17 +21,20 @@ class TOT:  # the agent should receive goal, state and action, then return the n
         self.world_model = llm_model
         self.prompts = json.load(open(prompt_path, 'r'))
         self.system_message = self.prompts["system_msg"]
+        
+        self.task = "dp" if "dp" in prompt_path else "pf"
     
     def make_prompt(self, node):
         query = ""
         query += self.prompts["instruction"] + '\n'
         query += "\nHere is an example:\n" + self.prompts["examples"][0] + '\n'
         
-        input_prompt = query + node.question
+        input_prompt = query + 'Question:' + node.question
         
         trajectory = []
         new_segment = []
         while node:
+            new_segment = []
             if node.state['action']:
                 new_segment.append(f"Action: {node.state['action']}")
             if node.state['observation'] and node.depth != 0:  # Exclude the observation from the root node
@@ -57,7 +60,7 @@ class TOT:  # the agent should receive goal, state and action, then return the n
         
         args = {
             "n_generate_sample": 10,
-            "depth_limit": 15,
+            "depth_limit": 6,
             "iterations": 30
         }
         
@@ -69,7 +72,7 @@ class TOT:  # the agent should receive goal, state and action, then return the n
         
         if len(all_terminals) > 0:
             
-            sorted_terminals = sorted(self.terminals, key=lambda x: sum(x.reward), reverse=True)
+            sorted_terminals = sorted(all_terminals, key=lambda x: x.reward, reverse=True)
             
             best_node = sorted_terminals[0]
             
@@ -95,9 +98,9 @@ class TOT:  # the agent should receive goal, state and action, then return the n
         
     def get_samples(self, n_generate_sample, prompt, stop=None):
         if stop is not None:
-            config = {"n": n_generate_sample, "stop": stop, "max_tokens": 100}
+            config = {"n": n_generate_sample, "stop": stop, "max_tokens": 20}
         else:
-            config = {"n": n_generate_sample, "max_tokens": 100}
+            config = {"n": n_generate_sample, "max_tokens": 20}
             
         success, samples = self.llm_model.generate_with_config(self.system_message, prompt, config)
         return success, samples
@@ -129,15 +132,15 @@ class TOT:  # the agent should receive goal, state and action, then return the n
     
     def world_model_step(self, node, action):
         prompt = self.make_prompt(node) + '\n Action:' + action + f'\n Predict the outcome observation of this action as well as generate a reward for this new state ({self.prompts["evaluation_prompt"]}). Observation:\n Reward:\n Is done: True/False\n'
-        config = {"stop": ''}
+        config = {"stop": '', "max_tokens": 100}
         success, output = self.llm_model.generate_with_config(self.system_message, prompt, config)
         output = output.split("\n")
         reward = 0
-        observation = None
+        observation = ""
         done = False    
         for line in output:
             if "Observation" in line:
-                observation = line.split(":")[1].strip()
+                observation = ":".join(line.split(":")[1:]).strip()
             if "Reward" in line:
                 numbers = self.find_numbers(line)
                 if len(numbers)>0:
@@ -151,6 +154,8 @@ class TOT:  # the agent should receive goal, state and action, then return the n
             if "done" in line.lower():
                 if "true" in line.lower():
                     done = True
+        if self.task == "dp":
+            done = done or ("None" not in observation)
         return success, observation, reward, done
 
     def generate_new_states(self, node, args):
@@ -208,19 +213,24 @@ class TOT:  # the agent should receive goal, state and action, then return the n
         
         all_terminals = []
         
+        visited = 0
+        
+        exhausted = []
         
         while stack and it < iterations:
             node = stack.pop()
             logging.info(f"DFS at node depth {node.depth}...")
             
             if node.is_terminal and node.reward == 1:
-                logging.info(f"Terminal node with reward 1 found at depth {node.depth}")
+                logging.info(f"Terminal node with reward {node.reward} found at depth {node.depth}")
                 all_terminals.append(node)
                 continue
                 
             if node.depth >= depth_limit:
                 logging.info("Depth limit reached")
                 it += 1
+                all_terminals.append(node)
+                logging.info(f"Terminal node with reward {node.reward} found at depth {node.depth}")
                 continue  # go to next iteration
             self.expand_node(node, args, depth_limit)
             stack.extend(reversed(node.children))  # adding all child nodes to stack for DFS
@@ -229,7 +239,7 @@ class TOT:  # the agent should receive goal, state and action, then return the n
             logging.info(f"State of all_nodes after iteration: {all_nodes}")
             it += 1
         # If we reach here, no solution was found
-        logging.info("All paths explored. No solution found.")
+        # if len(all_terminals) > 0: all_terminals += exhausted
         return all_terminals
     
     
@@ -265,7 +275,7 @@ class Node:
         return exploitation_term + C1 * exploration_term + C2 * depth_term
 
     def __str__(self):
-        return f"Node(depth={self.depth}, reward={self.reward:.2f}, visits={self.visits}, action={self.state['action']}, observation={self.state['observation']})"
+        return f"Node(depth={self.depth}, reward={self.reward:.2f}, is_terminal={self.is_terminal}, action={self.state['action']}, observation={self.state['observation']})"
     
     def to_dict(self):
         return {

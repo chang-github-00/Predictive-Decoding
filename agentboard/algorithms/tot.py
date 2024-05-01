@@ -8,7 +8,7 @@ import re
 import logging
 import argparse
 
-logging.basicConfig(filename='tot_150it.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filemode='w')
+logging.basicConfig(filename='tot_50it.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filemode='w')
 
 @registry.register_algorithm("TOT")
 class TOT:  # the agent should receive goal, state and action, then return the next state
@@ -61,7 +61,7 @@ class TOT:  # the agent should receive goal, state and action, then return the n
         args = {
             "n_generate_sample": 10,
             "depth_limit": 6,
-            "iterations": 30
+            "iterations": 50
         }
         
         #dict to object
@@ -135,7 +135,7 @@ class TOT:  # the agent should receive goal, state and action, then return the n
         config = {"stop": '', "max_tokens": 100}
         success, output = self.llm_model.generate_with_config(self.system_message, prompt, config)
         output = output.split("\n")
-        reward = 0
+        reward = -50
         observation = ""
         done = False    
         for line in output:

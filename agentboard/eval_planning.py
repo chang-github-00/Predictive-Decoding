@@ -33,7 +33,8 @@ def load_dataset(task, path):
             for line in f:
                 item = json.loads(line.strip())
                 numbers = item["raw_input"]   
-                question_prompt = f"Given a sequence of integers, find a subsequence with the highest sum, such that no two numbers in the subsequence are adjacent in the original sequence.\n\nOutput a list with \"1\" for chosen numbers and \"2\" for unchosen ones. If multiple solutions exist, select the lexicographically smallest. input = {numbers} "
+                # question_prompt = f"Given a sequence of integers, find a subsequence with the highest sum, such that no two numbers in the subsequence are adjacent in the original sequence.\n\nOutput a list with \"1\" for chosen numbers and \"2\" for unchosen ones. If multiple solutions exist, select the lexicographically smallest. input = {numbers} "
+                question_prompt = f"input = {numbers}"
                 item["question"] = question_prompt
                 dataset.append(item)
         return dataset[:200]
@@ -50,8 +51,23 @@ def evaluate_results(task, item, result): #result is a list
         return True
     
     if task == "dp":
+        # ground_truth = item["raw_output"]
+        # if ground_truth != result:
+        #     return False
+        mapping = {1: 1, 0: 2, 2: 2}
+        result = [mapping[x] for x in result]
+        
+        # check all neighbor results are not both 1
+        for i in range(len(result) - 1):
+            if result[i] == 1 and result[i+1] == 1:
+                return False
+            
+        # check the sum of the chosen numbers is the largest
+        numbers = item["raw_input"]
         ground_truth = item["raw_output"]
-        if ground_truth != result:
+        sum_result = sum([numbers[i] for i in range(len(numbers)) if result[i] == 1])
+        sum_ground_truth = sum([numbers[i] for i in range(len(numbers)) if ground_truth[i] == 1])
+        if sum_result != sum_ground_truth:
             return False
         return True
     
@@ -81,6 +97,7 @@ class EvalPlanning:
         result = []
         for id, item in tqdm(enumerate(self.dataset), total=len(self.dataset)):
             question = item["question"]
+            # print(question)
             success, output = self.algorithm.run(question)
             if success:
                 evaluation = evaluate_results(self.task, item, output)

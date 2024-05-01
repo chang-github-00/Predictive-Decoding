@@ -1,6 +1,8 @@
 from .generation import Generation
 from .cot import COT  
 from .tot import TOT
+from .lookahead_eval import Lookahead_Eval
+from .lookahead_eval_light import Lookahead_Eval_Light
 from common.registry import registry
 
 

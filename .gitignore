@@ -19,3 +19,4 @@ agentboard/environment/WebShop/subreward_log*
 */__pycache__/
 /.ipynb_checkpoints/*
 alfworld/
+*.log

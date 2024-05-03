@@ -7,8 +7,8 @@ import random
 import re
 import argparse
 
-@registry.register_algorithm("Lookahead_Eval_Light")
-class Lookahead_Eval_Light:  # the agent should receive goal, state and action, then return the next state
+@registry.register_algorithm("Lookahead_Eval_Ablation")
+class Lookahead_Eval_Ablation:  # the agent should receive goal, state and action, then return the next state
     def __init__(self,
                  llm_model,
                  prompt_path,
@@ -26,7 +26,7 @@ class Lookahead_Eval_Light:  # the agent should receive goal, state and action, 
         self.reward_threshold = reward_threshold 
         self.window_size = window_size
         
-        self.problem_size = 10
+        self.problem_size = 6
         
         self.n_gram = self.problem_size
         
@@ -135,11 +135,11 @@ class Lookahead_Eval_Light:  # the agent should receive goal, state and action, 
                         if max_reward < 0:
                             trajectory[id]["Normalized_Reward"] = max_reward / trajectory[id]["Reward"]
             
-    def eval(self, trajectory):
+    def eval(self, trajectory, start_id):
         if self.task == "dp":
-            return self.eval_dp(trajectory)
+            return self.eval_dp(trajectory, start_id)
         elif self.task == "pf":
-            return self.eval_pf(trajectory)
+            return self.eval_pf(trajectory, start_id)
         else:
             raise NotImplementedError
     
@@ -167,16 +167,10 @@ class Lookahead_Eval_Light:  # the agent should receive goal, state and action, 
         
         return converted_numbers
     
-    def eval_dp(self, trajectory):
-        
+    def eval_dp(self, action_list, start_id):
         input = eval(self.prompts["question"].split("=")[1])
-        action_list = [item["Action"] for item in trajectory if item["Action"] is not None]
-        try:
-            num_sum = sum([input[i] for i in range(len(action_list)) if action_list[i] == 1])
-        except:
-            print(action_list)
-            print(input)
-            raise ValueError("Error in evaluating the action sequence")
+        action_list = self.memory[:start_id]+action_list[start_id:]
+        num_sum = sum([input[i] for i in range(len(input)) if action_list[i] == 1])
         
         for i in range(len(action_list)-1):
             if action_list[i] == 1 and action_list[i+1] == 1:
@@ -305,7 +299,7 @@ class Lookahead_Eval_Light:  # the agent should receive goal, state and action, 
         iter = 0 
         
         args = {
-            "n_generate_sample":20,
+            "n_generate_sample":2,
             "max_iters": self.problem_size
         }
         
@@ -313,18 +307,7 @@ class Lookahead_Eval_Light:  # the agent should receive goal, state and action, 
         
         all_iter = 0
         iter = 0
-        while iter < args.max_iters:
-            
-            action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
-            
-            if action is not None:
-                
-                self.memory[iter] = action
-                
-                iter += 1
-                
-                if iter > args.max_iters:
-                    break
+        while iter < args.max_iters :
             
             system_message = self.prompts["system_msg"]
             
@@ -335,11 +318,27 @@ class Lookahead_Eval_Light:  # the agent should receive goal, state and action, 
             if isinstance(samples, str):
                 samples = [samples]
             samples = set(list(samples))
+            evaluations = []
             for sample in samples:
-                self.update_trajectory_pool(sample)
+                try:
+                    action = self.parse_integer_lists(sample)[0]
+                    if len(action) != self.problem_size:
+                        continue
+                    success, evaluation = self.eval(action, iter)
+                    evaluations.append((action, evaluation))
+                except:
+                    continue
+            
+            try:
+                evaluations = sorted(evaluations, key=lambda x: x[1], reverse=True)
+                action = evaluations[0][0][iter]
+            
+                self.memory[iter] = action
+                iter += 1
+            except:
+                pass
             
             all_iter += 1
-            
             if all_iter > 12:
                 return False, None
                     

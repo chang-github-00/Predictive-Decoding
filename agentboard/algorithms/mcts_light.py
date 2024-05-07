@@ -332,7 +332,6 @@ class MCTS_Light:  # the agent should receive goal, state and action, then retur
             
             while node is None or (node.is_terminal):
                 logging.info(f"Need to backtrack or terminal node with reward 0 found at iteration {i + 1}, reselecting...")
-                terminals.append(node)
                 node = self.select_node(root)
                 
             if node is None:
@@ -356,7 +355,12 @@ class MCTS_Light:  # the agent should receive goal, state and action, then retur
             
             self.backpropagate(node, value)
             
+            terminals = []
             all_nodes = [(node, node.value) for node in self.collect_all_nodes(root)]
+            
+            for j, (node, value) in enumerate(all_nodes):
+                if node.is_terminal and node not in terminals:
+                    terminals.append(node)
 
             for j, (node, value) in enumerate(all_nodes):
                 logging.info(f"Node {j+1}: {str(node)}")

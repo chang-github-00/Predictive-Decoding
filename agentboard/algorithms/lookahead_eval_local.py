@@ -7,8 +7,8 @@ import random
 import re
 import argparse
 
-@registry.register_algorithm("Lookahead_Eval_Light")
-class Lookahead_Eval_Light:  # the agent should receive goal, state and action, then return the next state
+@registry.register_algorithm("Lookahead_Eval_Local")
+class Lookahead_Eval_Local:  # the agent should receive goal, state and action, then return the next state
     def __init__(self,
                  llm_model,
                  prompt_path,
@@ -29,6 +29,8 @@ class Lookahead_Eval_Light:  # the agent should receive goal, state and action, 
         self.problem_size = 6
         
         self.n_gram = self.problem_size
+        
+        self.lookahead_length = 3
         
     def make_prompt(self, prompt):
         query = ""
@@ -53,6 +55,9 @@ class Lookahead_Eval_Light:  # the agent should receive goal, state and action, 
         # update the trajectory pool with the generated action rollouts by llm
         
         action_rollouts, new_action = self.parse_action_sequence(action)
+        
+        memory_length = len(self.memory)
+        action_rollouts = action_rollouts[:self.lookahead_length + memory_length]
         
         if action_rollouts is None:
             return  

@@ -7,11 +7,12 @@ import random
 import re
 import logging
 import argparse
+import numpy as np
 
-logging.basicConfig(filename='tot_50it.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filemode='w')
+logging.basicConfig(filename='mcts_50it.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filemode='w')
 
-@registry.register_algorithm("TOT_Light")
-class TOT_Light:  # the agent should receive goal, state and action, then return the next state
+@registry.register_algorithm("MCTS_Light")
+class MCTS_Light:  # the agent should receive goal, state and action, then return the next state
     def __init__(self,
                  llm_model,
                  prompt_path
@@ -63,7 +64,7 @@ class TOT_Light:  # the agent should receive goal, state and action, then return
         args = {
             "n_generate_sample": 20,
             "depth_limit": self.problem_size,
-            "iterations": 64
+            "iterations": 20
         }
         
         #dict to object
@@ -71,7 +72,7 @@ class TOT_Light:  # the agent should receive goal, state and action, then return
         self.prompts["question"] = question
         
         args = argparse.Namespace(**args)
-        all_terminals = self.dfs_search(args, question, args.iterations, args.depth_limit)
+        all_terminals = self.mcts_search(args, question, args.iterations, args.depth_limit)
         
         
         if len(all_terminals) > 0:
@@ -256,45 +257,114 @@ class TOT_Light:  # the agent should receive goal, state and action, then return
             nodes.extend(self.collect_all_nodes(child))
         return nodes
 
+    
+    def select_node(self, node):
+        while node and node.children:
+            logging.info(f"Selecting from {len(node.children)} children at depth {node.depth}.")
+        
+            terminal_children = [child for child in node.children if child.is_terminal]
+            terminal_status = [child.is_terminal for child in node.children]
+            
+            if len(terminal_children) == len(node.children):
+                logging.info(f"All children are terminal at depth {node.depth}. Backtracking...")
+                if node.parent:  
+                    node.parent.children.remove(node)
+                node = node.parent  
+                continue  
+            
+            node = max((child for child in node.children if not child.is_terminal), key=lambda child: child.uct(), default=None)
+            
+            while node.is_terminal:
+                node = max((child for child in node.parent.children if not child.is_terminal), key=lambda child: child.uct(), default=None)
+            
+            logging.info(f"Selected node at depth {node.depth} with UCT {node.uct()}.")
+        
+        return node  # This will return None if all paths from the root are exhausted
+            
+    def backpropagate(self, node, value):
+        while node:
+            node.visits += 1
+            node.value = (node.value * (node.visits - 1) + value) / node.visits
+            logging.info(f"Backpropagating at depth {node.depth}. New value: {node.value}.")
 
-    def dfs_search(self, args, question, iterations, depth_limit):
+            node = node.parent
+            
+    def evaluate_node(self, node):
+        values = []
+        
+        for child in node.children:
+            values.append(child.reward)
+        
+        logging.info(f"Length of votes: {len(values)}")
+        logging.info(f"Length of node.children: {len(node.children)}")
+        
+        if len(values) == 0:
+            return node.reward
+        
+        value = sum(values) / len(values)
+        
+        return value
+        
+    def simulate(self, path, args, depth_limit):
+        node = path[-1]
+        logging.info(f"Simulating from node {node}...")
+        while True:
+            if node is not None and len(node.children) == 0:
+                self.expand_node(node, args, depth_limit)
+            if node.is_terminal or len(node.children) == 0:
+                return
+            rewards = np.array([child.reward for child in node.children])
+            # choose the child with the highest reward
+            node = node.children[np.argmax(rewards)]
+            logging.info(f"Simulation selected {node}")
+            path.append(node)
+        return
+    
+    def mcts_search(self, args, question, iterations, depth_limit):
         root = Node(state=None, question=question)
         all_nodes = []
         failed_trajectories = []
-        stack = [root] 
-        it = 0
+        terminals = []
         
-        all_terminals = []
-        
-        visited = 0
-        
-        exhausted = []
-        
-        while stack and it < iterations:
-            node = stack.pop()
-            logging.info(f"DFS at node depth {node.depth}...")
+        for i in range(iterations):
+            logging.info(f"Iteration {i + 1}...")
+            node = self.select_node(root)
             
-            if node.is_terminal:
-                logging.info(f"Terminal node with reward {node.reward} found at depth {node.depth}")
-                it += 1
-                all_terminals.append(node)
-                continue
+            while node is None or (node.is_terminal):
+                logging.info(f"Need to backtrack or terminal node with reward 0 found at iteration {i + 1}, reselecting...")
+                terminals.append(node)
+                node = self.select_node(root)
                 
-            if node.depth >= depth_limit:
-                logging.info("Depth limit reached")
-                it += 1
-                all_terminals.append(node)
-                logging.info(f"Terminal node with reward {node.reward} found at depth {node.depth}")
-                continue  # go to next iteration
-            self.expand_node(node, args, depth_limit)
-            stack.extend(reversed(node.children))  # adding all child nodes to stack for DFS
+            if node is None:
+                logging.info("All paths lead to terminal nodes with reward 0. Ending search.")
+                break
+            
+            if len(node.children) == 0:
+                self.expand_node(node, args, depth_limit)
+            
+            
+            while node.is_terminal:
+                logging.info(f"Depth limit node found at iteration {i + 1}, reselecting...")
+                node = self.select_node(root)
+                if len(node.children) == 0:
+                    self.expand_node(node, args, depth_limit)
+            
+            path = [node]
+            self.simulate(path, args, depth_limit)
+            
+            value = path[-1].reward
+            
+            self.backpropagate(node, value)
+            
+            all_nodes = [(node, node.value) for node in self.collect_all_nodes(root)]
 
-            all_nodes = [(node, node.reward) for node in self.collect_all_nodes(root)]
-            logging.info(f"State of all_nodes after iteration: {all_nodes}")
-            it += 1
-        # If we reach here, no solution was found
-        # if len(all_terminals) > 0: all_terminals += exhausted
-        return all_terminals
+            for j, (node, value) in enumerate(all_nodes):
+                logging.info(f"Node {j+1}: {str(node)}")
+
+            logging.info(f"State of all_nodes after iteration {i + 1}: {all_nodes}")
+        
+        
+        return terminals
     
     
     @classmethod
@@ -329,7 +399,7 @@ class Node:
         return exploitation_term + C1 * exploration_term + C2 * depth_term
 
     def __str__(self):
-        return f"Node(depth={self.depth}, reward={self.reward:.2f}, is_terminal={self.is_terminal}, action={self.state['action']}, observation={str(self.state['observation'])}"
+        return f"Node(depth={self.depth}, reward={self.reward:.2f}, value={self.value}, is_terminal={self.is_terminal}, action={self.state['action']}, observation={str(self.state['observation'])}"
     
     def to_dict(self):
         return {

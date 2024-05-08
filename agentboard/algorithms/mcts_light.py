@@ -81,13 +81,15 @@ class MCTS_Light:  # the agent should receive goal, state and action, then retur
             
             best_node = sorted_terminals[0]
             
-            answer_prompt = self.make_prompt(best_node) + "\n output="
-            success, answer = self.llm_model.generate(self.system_message, answer_prompt)
+            return True, best_node.state['observation']
             
-            if success:
-                result_lists = self.parse_integer_lists(answer)
-                if len(result_lists) > 0:
-                    return True, result_lists[-1]
+            # answer_prompt = self.make_prompt(best_node) + "\n output="
+            # success, answer = self.llm_model.generate(self.system_message, answer_prompt)
+            
+            # if success:
+            #     result_lists = self.parse_integer_lists(answer)
+            #     if len(result_lists) > 0:
+            #         return True, result_lists[-1]
         
         return False, None
 
@@ -149,7 +151,7 @@ class MCTS_Light:  # the agent should receive goal, state and action, then retur
         
         for i in range(len(action_list)-1):
             if action_list[i] == 1 and action_list[i+1] == 1:
-                return True, -50
+                return True, -5
         return True, num_sum
         
         prompt = self.make_prompt(self.prompts)
@@ -359,7 +361,7 @@ class MCTS_Light:  # the agent should receive goal, state and action, then retur
             all_nodes = [(node, node.value) for node in self.collect_all_nodes(root)]
             
             for j, (node, value) in enumerate(all_nodes):
-                if node.is_terminal and node not in terminals:
+                if node.is_terminal:
                     terminals.append(node)
 
             for j, (node, value) in enumerate(all_nodes):
@@ -367,7 +369,10 @@ class MCTS_Light:  # the agent should receive goal, state and action, then retur
 
             logging.info(f"State of all_nodes after iteration {i + 1}: {all_nodes}")
         
-        
+        logging.info(f"All terminal nodes: {terminals}")
+        for j, node in enumerate(terminals):
+            logging.info(f"Terminal Node {j+1}: {str(node)}")
+            
         return terminals
     
     

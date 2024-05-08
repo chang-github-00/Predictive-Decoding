@@ -24,7 +24,7 @@ class TOT_Light:  # the agent should receive goal, state and action, then return
         
         self.task = "dp" if "dp" in prompt_path else "pf"
         
-        self.problem_size = 6
+        self.problem_size = 10
     
     def make_prompt(self, node):
         query = ""
@@ -63,7 +63,7 @@ class TOT_Light:  # the agent should receive goal, state and action, then return
         args = {
             "n_generate_sample": 20,
             "depth_limit": self.problem_size,
-            "iterations": 64
+            "iterations": 100
         }
         
         #dict to object

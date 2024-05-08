@@ -25,7 +25,7 @@ class MCTS_Light:  # the agent should receive goal, state and action, then retur
         
         self.task = "dp" if "dp" in prompt_path else "pf"
         
-        self.problem_size = 6
+        self.problem_size = 10
     
     def make_prompt(self, node):
         query = ""
@@ -64,7 +64,7 @@ class MCTS_Light:  # the agent should receive goal, state and action, then retur
         args = {
             "n_generate_sample": 20,
             "depth_limit": self.problem_size,
-            "iterations": 20
+            "iterations": 100,
         }
         
         #dict to object
@@ -405,7 +405,7 @@ class Node:
         exploitation_term = self.value / self.visits
         exploration_term = np.sqrt(2 * np.log(self.parent.visits) / self.visits)
         depth_term = self.depth
-        return exploitation_term + C1 * exploration_term + C2 * depth_term
+        return 0.1*exploitation_term + C1 * exploration_term + C2 * depth_term
 
     def __str__(self):
         return f"Node(depth={self.depth}, reward={self.reward:.2f}, value={self.value}, is_terminal={self.is_terminal}, action={self.state['action']}, observation={str(self.state['observation'])}"

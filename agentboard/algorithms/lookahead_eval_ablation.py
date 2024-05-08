@@ -26,7 +26,7 @@ class Lookahead_Eval_Ablation:  # the agent should receive goal, state and actio
         self.reward_threshold = reward_threshold 
         self.window_size = window_size
         
-        self.problem_size = 6
+        self.problem_size = 10
         
         self.n_gram = self.problem_size
         
@@ -299,7 +299,7 @@ class Lookahead_Eval_Ablation:  # the agent should receive goal, state and actio
         iter = 0 
         
         args = {
-            "n_generate_sample":2,
+            "n_generate_sample":10,
             "max_iters": self.problem_size
         }
         

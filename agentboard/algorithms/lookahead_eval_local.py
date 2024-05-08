@@ -56,11 +56,11 @@ class Lookahead_Eval_Local:  # the agent should receive goal, state and action, 
         
         action_rollouts, new_action = self.parse_action_sequence(action)
         
-        memory_length = len(self.memory)
-        action_rollouts = action_rollouts[:self.lookahead_length + memory_length]
-        
         if action_rollouts is None:
             return  
+        
+        memory_length = len([item for item in self.memory if item is not None])
+        action_rollouts = action_rollouts[:self.lookahead_length + memory_length]
         
         action_rollouts.insert(0, {"Action":None, "Reward": None})
         
@@ -120,6 +120,7 @@ class Lookahead_Eval_Local:  # the agent should receive goal, state and action, 
         self.trajectory_reward.append(reward)
         
         
+        n_steps = len(new_trajectory)
         
         for id in range(len(self.trajectory_pool[-1])):
             if "Reward" in self.trajectory_pool[-1][id]:
@@ -127,19 +128,21 @@ class Lookahead_Eval_Local:  # the agent should receive goal, state and action, 
                 self.trajectory_pool[-1][id]["Normalized_Reward"] = reward
         
         if self.task == "dp":
-            max_reward = max(self.trajectory_reward)
-            for trajectory in self.trajectory_pool:
-                for id in range(len(trajectory)):
-                    if "Normalized_Reward" in trajectory[id]:
-                        if max_reward > 0:
-                            trajectory[id]["Normalized_Reward"] = trajectory[id]["Reward"] / max_reward
-                            
-                        if max_reward == 0:
-                            trajectory[id]["Normalized_Reward"] = 1
-                        
-                        if max_reward < 0:
-                            trajectory[id]["Normalized_Reward"] = max_reward / trajectory[id]["Reward"]
+            for num_step in range(n_steps):
+                
+                # find max reward for num_step
+                max_reward = max([self.trajectory_pool[id][num_step]["Reward"] for id in range(len(self.trajectory_pool)) if num_step < len(self.trajectory_pool[id])])
             
+                for trajectory in self.trajectory_pool:
+                    if num_step < len(trajectory):
+                        if max_reward > 0:
+                            trajectory[num_step]["Normalized_Reward"] = trajectory[num_step]["Reward"] / max_reward
+                        if max_reward == 0:
+                            trajectory[num_step]["Normalized_Reward"] = 1
+                        if max_reward < 0:
+                            trajectory[num_step]["Normalized_Reward"] = max_reward / trajectory[num_step]["Reward"]
+            
+    
     def eval(self, trajectory):
         if self.task == "dp":
             return self.eval_dp(trajectory)
@@ -310,7 +313,7 @@ class Lookahead_Eval_Local:  # the agent should receive goal, state and action, 
         iter = 0 
         
         args = {
-            "n_generate_sample":10,
+            "n_generate_sample":20,
             "max_iters": self.problem_size
         }
         

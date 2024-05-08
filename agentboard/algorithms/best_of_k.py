@@ -20,7 +20,7 @@ class BestK:  # the agent should receive goal, state and action, then return the
         
         self.task = "dp" if "dp" in prompt_path else "pf"
     
-        self.problem_size = 6
+        self.problem_size = 10
         
         
     def make_prompt(self, prompt):
@@ -161,7 +161,7 @@ class BestK:  # the agent should receive goal, state and action, then return the
         iter = 0 
         
         args = {
-            "n_generate_sample":2,
+            "n_generate_sample":10,
             "max_iters": self.problem_size
         }
         

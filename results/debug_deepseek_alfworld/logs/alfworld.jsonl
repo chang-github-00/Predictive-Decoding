@@ -1,0 +1,55 @@
+{
+  "id": 0,
+  "task_name": "look_at_obj_in_light-Bowl-None-DeskLamp-308",
+  "goal": "look at bowl under the desklamp.",
+  "difficulty": "hard",
+  "is_done": true,
+  "progress_rate": 1.0,
+  "grounding_acc": 1.0,
+  "score_change_record": [
+    [
+      0,
+      0.25
+    ],
+    [
+      1,
+      0.5
+    ],
+    [
+      2,
+      0.75
+    ],
+    [
+      4,
+      1.0
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "look at bowl under the desklamp.",
+      "Observation": "On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.",
+      "Action": "go to desk 1",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 1": {
+      "Action": "go to desk 2",
+      "Observation": "On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 2": {
+      "Action": "take bowl 1 from desk 2",
+      "Observation": "You pick up the bowl 1 from the desk 2.",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 3": {
+      "Action": "go to desk 1",
+      "Observation": "On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 4": {
+      "Action": "use desklamp 1",
+      "Observation": "You turn on the desklamp 1.",
+      "Progress Rate": 1.0
+    }
+  }
+}

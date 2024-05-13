@@ -26,23 +26,36 @@ plt.figure(figsize=(6, 5))
 # plt.plot(list(best_of_k.keys()), list(best_of_k.values()), label='Best of K', marker='o', color='steelblue')
 # plt.plot(list(tot.keys()), list(tot.values()), label='TOT', marker='o',color='darkcyan')
 # plt.plot(list(mcts.keys()), list(mcts.values()), label='MCTS', marker='o',color='royalblue')
-colors = sns.color_palette("coolwarm",10)
+colors = sns.color_palette("coolwarm",5)
 colors = sns.color_palette("deep", 5)
 sns.set(style="ticks")
-sns.lineplot(x=list(lookahead.keys()), y=list(lookahead.values()), label='MPC w. n-gram', marker='o', color=colors[0], linewidth=2)
-sns.lineplot(x=list(lookahead_no_cache.keys()), y=list(lookahead_no_cache.values()), label='MPC wo. n-gram', marker='o', color=colors[1], linewidth=2)
-sns.lineplot(x=list(best_of_k.keys()), y=list(best_of_k.values()), label='Self-Consistency', marker='o', color=colors[-3], linewidth=2)
-sns.lineplot(x=list(tot.keys()), y=list(tot.values()), label='TOT', marker='o', color=colors[-2], linewidth=2)
-sns.lineplot(x=list(mcts.keys()), y=list(mcts.values()), label='MCTS', marker='o', color=colors[-1], linewidth=2)
+sns.lineplot(x=list(lookahead.keys()), y=list(lookahead.values()), label='MPC w. n-gram', marker='o', color=colors[0], linewidth=3, markersize=10)
+sns.lineplot(x=list(lookahead_no_cache.keys()), y=list(lookahead_no_cache.values()), label='MPC wo. n-gram', marker='o', color=colors[-1], linewidth=3, markersize=10)
+sns.lineplot(x=list(best_of_k.keys()), y=list(best_of_k.values()), label='Self-Consistency', marker='*', color=colors[-3], linewidth=3, markersize=15)
+sns.lineplot(x=list(mcts.keys()), y=list(mcts.values()), label='MCTS', marker='s', color=colors[-2], linewidth=3, markersize=10)
+sns.lineplot(x=list(tot.keys()), y=list(tot.values()), label='TOT', marker='d', color=colors[1], linewidth=3, markersize=12)
 
 # draw horizontal line
-plt.axhline(y=0.36, color='black', linestyle='--', label='COT', linewidth=2)
+plt.axhline(y=0.36, color='black', linestyle='--', label='COT', linewidth=3)
 plt.xlabel("Sampling Parameter K", fontsize=15)
 plt.ylabel("Accuracy", fontsize=15)
-plt.xticks(range(2, 21, 4))
-plt.yticks([0.1, 0.3, 0.5, 0.7, 0.9])
+plt.xticks(range(2, 21, 4), fontsize=12)
+plt.yticks([0.1, 0.3, 0.5, 0.7, 0.9], fontsize=12)
 plt.legend(prop={'size': 14})
 plt.savefig(f"dp_6.pdf")
 
 
-rollout_length = {3: 0.9314, 6: 0.918}
+dp_rollout_length = {0:0.35, 1:0.597, 2:0.709, 3:0.77, 4:0.85, 5:0.91}
+pf_rollout_length = {0:0.31, 1:0.55, 2:0.67, 3:0.73, 4:0.81, 5:0.87} 
+plt.figure(figsize=(6, 5)) 
+colors = [ "#456990", "#d87659"]
+data = {'Rollout Length': list(dp_rollout_length.keys()) + list(pf_rollout_length.keys()), 'Accuracy': list(dp_rollout_length.values()) + list(pf_rollout_length.values()), 'Task': ['Dynamic Programming'] * 6 + ['Path Finding'] * 6}
+sns.barplot(x='Rollout Length', y='Accuracy', hue='Task', data=data, palette=colors, linewidth=2, edgecolor=".3")
+# sns.lineplot(x=list(dp_rollout_length.keys()), y=list(dp_rollout_length.values()), label='MPC, DP   (N=6)', marker='o', color=colors[0], linewidth=2)
+# sns.lineplot(x=list(pf_rollout_length.keys()), y=list(pf_rollout_length.values()), label='MPC, Path (N=6)', marker='o', color=colors[1], linewidth=2)
+plt.xlabel("MPC Rollout Length", fontsize=15)
+plt.ylabel("Accuracy", fontsize=15)
+plt.xticks(range(6), fontsize=12)
+plt.yticks([0.1, 0.3, 0.5, 0.7, 0.9], fontsize=12)
+plt.legend(prop={'size': 14})
+plt.savefig(f"rollout_length.pdf")

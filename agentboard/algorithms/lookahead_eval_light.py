@@ -26,7 +26,7 @@ class Lookahead_Eval_Light:  # the agent should receive goal, state and action, 
         self.reward_threshold = reward_threshold 
         self.window_size = window_size
         
-        self.problem_size = 6
+        self.problem_size = 10
         
         self.n_gram = self.problem_size
         

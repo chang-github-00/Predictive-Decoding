@@ -1,0 +1,2 @@
+{"task": "dp_data_no_scratchpad_n_6_minval_-5_maxval_5_sampled_1000", "success_rate": 0.89070103825136612}
+{"task": "dp_data_no_scratchpad_n_10_minval_-5_maxval_5_sampled_1000", "success_rate": 0.8579881656804734}

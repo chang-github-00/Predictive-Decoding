@@ -9,7 +9,6 @@ agentboard/utils/sheet/credential.json
 data/*
 alfworld/*
 wandb/*
-results/*
 agentboard/environment/browser_env/config_files/
 agentboard/environment/WebShop/search_engine/indexes*
 agentboard/environment/WebShop/search_engine/resources*

@@ -14,7 +14,8 @@ class Lookahead_Eval_Local:  # the agent should receive goal, state and action, 
                  prompt_path,
                  n_gram=3,
                  reward_threshold=1.0,
-                 window_size=2
+                 window_size=2,
+                 lookahead_length=3
                  ):
         
         self.llm_model = llm_model
@@ -30,7 +31,7 @@ class Lookahead_Eval_Local:  # the agent should receive goal, state and action, 
         
         self.n_gram = self.problem_size
         
-        self.lookahead_length = 3
+        self.lookahead_length = lookahead_length
         
     def make_prompt(self, prompt):
         query = ""
@@ -224,6 +225,8 @@ class Lookahead_Eval_Local:  # the agent should receive goal, state and action, 
         
         action_history = [None] + [action for action in self.memory if action is not None]
         
+        all_matches = []
+        
         for traj_id, trajectory in enumerate(self.trajectory_pool):
             
             start = max(1, len(trajectory) - self.n_gram + 1)
@@ -239,14 +242,18 @@ class Lookahead_Eval_Local:  # the agent should receive goal, state and action, 
                 
                 reward_bad = n_gram_reward_normalized[-1] < reward_threshold
                 
-                if match and not reward_bad:
-                    return n_gram_list[-1]
-                
-        if len(self.trajectory_pool) > 0:
-            print(self.prompts["question"])
-            print("Warning: no action found")
+                if match:
+                    all_matches.append((n_gram_list[-1], n_gram_reward))
+        
+        
+        if len(all_matches) == 0:
+            # print(self.prompts["question"])
+            # print("Warning: no action found")
             # print(self.trajectory_pool)
-        return None
+            return None
+        else:
+            best_action = max(all_matches, key=lambda x: x[1])[0]
+            return best_action
     
     def reflection_tip(self, reward_threshold=1.0, window_size=2):
         # generate reflection tips for the user
@@ -365,4 +372,5 @@ class Lookahead_Eval_Local:  # the agent should receive goal, state and action, 
     
     @classmethod
     def from_config(cls, llm_model, config):
-        return cls(llm_model, config["prompt_path"])
+        looahead_length = config.get("lookahead_length", 3)
+        return cls(llm_model, config["prompt_path"], lookahead_length=looahead_length)

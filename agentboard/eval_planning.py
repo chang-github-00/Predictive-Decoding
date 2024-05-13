@@ -55,7 +55,7 @@ def evaluate_results(task, item, result): #result is a list
         # if ground_truth != result:
         #     return False
         mapping = {1: 1, 0: 2, 2: 2}
-        result = [mapping[x] for x in result]
+        result = [mapping[x] for x in result if x in mapping]
         
         # check all neighbor results are not both 1
         for i in range(len(result) - 1):
@@ -127,6 +127,7 @@ def parse_args():
     parser.add_argument("--log_path", required=False, default='', help="specify the place to store the resuls")
     parser.add_argument("--data_path", required=False, default='', help="specify the test data file")
     parser.add_argument("--prompt_path", required=False, default='', help="specify the prompt")
+    parser.add_argument("--lookahead_length", type=int, default=3, help="random seed")
     args = parser.parse_args()
 
     return args
@@ -156,6 +157,7 @@ def load_config(cfg_path, args):
         run_config["data_path"] = args.data_path
     if args.prompt_path != '':
         algorithm_config["prompt_path"] = args.prompt_path
+    algorithm_config["lookahead_length"] = args.lookahead_length
     return llm_config, algorithm_config, run_config
 
 def check_log_paths_are_ready(log_dir):

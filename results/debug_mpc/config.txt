@@ -1,0 +1,186 @@
+LLM Configuration: 
+{
+  "name": "gpt_azure",
+  "engine": "gpt-35-turbo",
+  "context_length": 4096,
+  "use_azure": true,
+  "temperature": 0.1,
+  "top_p": 0.9,
+  "retry_delays": 20,
+  "max_retry_iters": 15,
+  "stop": null,
+  "use_parser": false,
+  "max_tokens": 200
+}
+Agent Configuration: 
+{
+  "name": "MPCAgent",
+  "memory_size": 200,
+  "need_goal": true,
+  "n_gram": 3,
+  "gamma": 6,
+  "similarity_threshold_low": 0.5,
+  "similarity_threshold_high": 0.7,
+  "reward_threshold": 0.9
+}
+Environment Configuration: 
+{
+  "pddl": {
+    "name": "pddl",
+    "game_name": [
+      "gripper",
+      "blockworld",
+      "barman",
+      "tyreworld"
+    ],
+    "env_num_per_task": 20,
+    "check_actions": "check valid actions",
+    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/VanillaAgent/pddl_vanilla_prompt.json",
+    "label_path": "/root/Agent-Decoding/data/pddl/test.jsonl"
+  },
+  "jericho": {
+    "name": "jericho",
+    "game_name": [
+      "905",
+      "acorncourt",
+      "afflicted",
+      "balances",
+      "dragon",
+      "jewel",
+      "library",
+      "omniquest",
+      "reverb",
+      "snacktime",
+      "zenon",
+      "zork1",
+      "zork2",
+      "zork3",
+      "detective",
+      "night",
+      "pentari",
+      "weapon",
+      "huntdark",
+      "loose"
+    ],
+    "game_dir": "/root/Agent-Decoding/data/jericho/z-machine-games-master/jericho-game-suite",
+    "label_path": "/root/Agent-Decoding/data/jericho/test.jsonl",
+    "check_actions": "check valid actions",
+    "check_inventory": "inventory",
+    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/VanillaAgent/jericho_vanilla_prompt.json"
+  },
+  "babyai": {
+    "name": "babyai",
+    "seed": 1234,
+    "game_level": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25,
+      27,
+      28,
+      29,
+      31,
+      32
+    ],
+    "label_path": "/root/Agent-Decoding/data/babyai/test.jsonl",
+    "env_num_per_task": 4,
+    "check_actions": "check valid actions",
+    "check_inventory": "inventory",
+    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/VanillaAgent/babyai_vanilla_prompt.json"
+  },
+  "tool-query": {
+    "name": "tool-query",
+    "seed": 1234,
+    "dataset_dir": "/root/Agent-Decoding/data",
+    "result_dir": "/root/Agent-Decoding/results/query",
+    "check_actions": "check_valid_actions",
+    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts"
+  },
+  "tool-operation": {
+    "name": "tool-operation",
+    "seed": 1234,
+    "dataset_dir": "/root/Agent-Decoding/data",
+    "result_dir": "/root/Agent-Decoding/results/operation",
+    "check_actions": "check_valid_actions",
+    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts"
+  },
+  "scienceworld": {
+    "name": "scienceworld",
+    "envStepLimit": 30,
+    "seed": 0,
+    "check_inventory": true,
+    "check_actions": "check valid actions",
+    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/VanillaAgent/scienceworld_base.json",
+    "label_path": "/root/Agent-Decoding/data/scienceworld/test.jsonl"
+  },
+  "alfworld": {
+    "name": "alfworld",
+    "base_config": "/root/Agent-Decoding/agentboard/environment/alfworld/base_config.yaml",
+    "split": "eval_out_of_distribution",
+    "batch_size": 1,
+    "label_path": "/root/Agent-Decoding/data/alfworld/test.jsonl",
+    "check_inventory": true,
+    "check_actions": "check valid actions",
+    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/MPCAgent/alfworld_base_new.json"
+  },
+  "webshop": {
+    "name": "webshop",
+    "web_url": "http://127.0.0.1:3000",
+    "subreward_floder": "/root/Agent-Decoding/agentboard/WebShop/subreward_log",
+    "max_step": 50,
+    "start_idx": 0,
+    "end_idx": 251,
+    "to_print": true,
+    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/VanillaAgent/webshop_vanilla.json",
+    "label_path": "/root/Agent-Decoding/data/webshop/test.jsonl"
+  },
+  "webarena": {
+    "name": "webarena",
+    "render": true,
+    "headless": true,
+    "slow_mo": 100,
+    "observation_type": "accessibility_tree",
+    "current_viewport_only": true,
+    "viewport_size": {
+      "width": 1280,
+      "height": 720
+    },
+    "save_trace_enabled": true,
+    "sleep_after_execution": 2.5,
+    "action_set_tag": "id_accessibility_tree",
+    "render_screenshot": true,
+    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/VanillaAgent/webbrowse_vanilla.json",
+    "label_path": "/root/Agent-Decoding/data/webarena/test.jsonl",
+    "start_test_id": 0,
+    "test_case_count": 245,
+    "parsing_failure_th": 5,
+    "repeating_action_failure_th": 5
+  }
+}
+Run Configuration: 
+{
+  "max_num_steps": 30,
+  "wandb": false,
+  "project_name": "eval-test",
+  "baseline_dir": "data/baseline_results",
+  "log_path": "results/debug_mpc"
+}

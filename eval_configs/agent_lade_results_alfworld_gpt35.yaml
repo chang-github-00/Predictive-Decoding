@@ -9,7 +9,7 @@ run:
 
 agent:
   # name: LookAheadAgent
-  name: LookAheadEvalAgent
+  name: SAgent
   memory_size: 200
   need_goal: True
   n_gram: 3

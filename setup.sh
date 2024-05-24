@@ -1,7 +1,7 @@
 
 if [ $INSTALL_WEBARENA = false ]; then
 ## Tool/game24/babyi/pddl
-pip install -r requirements.txt
+pip install -r requirements_cuda12.txt
 
 ## jericho
 #apt update

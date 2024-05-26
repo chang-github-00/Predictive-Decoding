@@ -132,18 +132,23 @@
     ],
     "examine": [
       "Your task is to: look at statue under the desklamp.\nYou are in the middle of a room. Looking quickly around you, you see a coffeetable 1, a diningtable 1, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a dresser 1, a garbagecan 1, a sidetable 2, a sidetable 1, and a sofa 1.\n",
-      "Action: go to dresser 1\n",
-      "Observation: On the dresser 1, you see a cellphone 3, a newspaper 2, a statue 1, and a television 1.\n",
-      "Action: take statue 1 from dresser 1\n",
-      "Observation: You pick up the statue 1 from the dresser 1.\n",
+      "Thought: You need to find a desklamp and a statue.\n",
       "Action: go to sidetable 1\n",
       "Observation: On the sidetable 1, you see nothing.\n",
       "Action: go to sidetable 2\n",
-      "Observation: On the sidetable 2, you see a desklamp 3, a newspaper 1, and a statue 2.\n",
+      "Observation: On the sidetable 2, you see a desklamp 3, a newspaper 1.\n",
+      "Action: go to dresser 1\n",
+      "Observation: On the dresser 1, you see a cellphone 3, a newspaper 2, a statue 1, and a television 1.\n",
+      "Thought: You have found a statue, pick it up.\n",
+      "Action: take statue 1 from dresser 1\n",
+      "Observation: You pick up the statue 1 from the dresser 1.\n",
+      "Thought: You now have the statue, go find a desklamp and use desklamp.\n",
+      "Action: go to sidetable 2\n",
+      "Observation: On the sidetable 2, you see a desklamp 3, a newspaper 1.\n",
       "Action: use desklamp 3\n",
       "Observation: You turn on the desklamp 3.\n"
     ]
   },
   "system_msg": "You are a helpful assistant.",
-  "instruction": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'toggle {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n"
+  "instruction": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided. You also need to ensure your inventory is empty before taking.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'use {obj=desklamp}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'examine {recep}'\n- 'toggle {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'go to {recep}'\n."
 }

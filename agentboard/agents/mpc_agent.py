@@ -8,7 +8,7 @@ import random
 import re
 import torch
 from sentence_transformers import SentenceTransformer, util
-
+from InstructorEmbedding import INSTRUCTOR
 
 @registry.register_agent("MPCAgent")
 class MPCAgent(   # add world modeling objective in agent 
@@ -26,11 +26,11 @@ class MPCAgent(   # add world modeling objective in agent
                  check_inventory=None,
                  use_parser=True,
                  logger=None,
-                 n_gram=5,
+                 n_gram=30,
                  gamma=6,
                  similarity_threshold_high=0.7,
                  similarity_threshold_low=0.5,
-                 reward_threshold=0.5
+                 reward_threshold=0.6
                  ):
         super().__init__()
         self.use_parser = use_parser
@@ -75,7 +75,7 @@ class MPCAgent(   # add world modeling objective in agent
         self.stop = ''
         self.max_tokens = 200
         self.temperature = 0.7
-        self.max_iters = 3
+        self.max_iters = 2
         self.generation_config = {"n": self.n_generate_sample, "stop": self.stop, "max_tokens": self.max_tokens, "temperature": self.temperature}
         
 
@@ -84,7 +84,7 @@ class MPCAgent(   # add world modeling objective in agent
         self.reward_threshold = reward_threshold #0.7 # determine if the reward is good enough
         self.window_size = 1 # determine the action window size for self-evaulation
         
-        self.similarity_metric = SimilarityMetric()
+        self.similarity_metric = SimilarityMetric() #InstructionSimilarityMetric() #SimilarityMetric()
         
         if "claude" in self.llm_model.engine:
             self.split = self.llm_model.xml_split
@@ -152,7 +152,7 @@ class MPCAgent(   # add world modeling objective in agent
         if tip is not None:
             input_prompt += "\n Thought: " + tip
 
-        input_prompt += "\nActions and Observations: "
+        input_prompt += "\nActions and Observations:"  #(stop generating if you are not certain about the next observation)"
 
         messages = [
             {"role": "system", "content": system_message},
@@ -165,7 +165,7 @@ class MPCAgent(   # add world modeling objective in agent
             if tip is not None:
                 input_prompt += "\n Thought: " + tip
 
-            input_prompt += "\nActions and Observations: "
+            input_prompt += "\nActions and Observations:"  #(stop generating if you are not certain about the next observation)"
             
             # input_prompt += "\nPlease enter your action:"
             messages = [
@@ -267,33 +267,36 @@ class MPCAgent(   # add world modeling objective in agent
                 history_rollouts[-1]["Observation"] = item[1]
                 history_rollouts[-1]["Verified"] = True
                 
-        action_rollouts = history_rollouts + action_rollouts
-        self.trajectory_pool.append(action_rollouts)
+        full_rollouts = history_rollouts + action_rollouts
+        self.trajectory_pool.append(full_rollouts)
         
-        self.update_trajectory_reward()
+        self.update_trajectory_reward(action_rollouts)
         
         
-    def update_trajectory_reward(self):
+    def update_trajectory_reward(self, new_trajectory):
         
         # calculate the reward for new action rollouts, this function is called after each action execution
 
-        new_trajectory = self.trajectory_pool[-1]
+        # new_trajectory = self.trajectory_pool[-1]
         
-        observations = [item["Observation"] for item in new_trajectory if "Observation" in item]
+        observations = [item["Observation"] for item in new_trajectory if "Observation" in item and item["Observation"] is not None]
         
         # action_history = [item[1] for item in self.memory if item[0] == "Action"]
         
-        similarity = self.similarity_metric.get_similarity(observations, self.goal)
-        
-        # index of max similarity
-        step_most_similar = int(torch.argmax(similarity)) + 1
-        
-        sim_to_goal= float(torch.max(similarity))
-        
-        # sim_to_goal = sim_to_goal * self.gamma / step_most_similar
-        
+        if len(observations) < 1:
+            sim_to_goal = 0
+        else:
+            similarity = self.similarity_metric.get_goal_similarity(observations, self.goal)
+            
+            # index of max similarity
+            step_most_similar = int(torch.argmax(similarity)) + 1
+            
+            sim_to_goal= float(torch.max(similarity))
+            
+            # sim_to_goal = sim_to_goal * self.gamma / step_most_similar
+            
         self.trajectory_reward.append(sim_to_goal)
-        
+            
         # change the reward of the last trajectory
         
         for id in range(len(self.trajectory_pool[-1])):
@@ -396,6 +399,19 @@ class MPCAgent(   # add world modeling objective in agent
         all_results = sorted(all_results, key=lambda x: x[1], reverse=True)
         
         if len(all_results) > 0:
+            results_values = [item[1] for item in all_results]
+            softmax_results_values = torch.nn.functional.softmax(torch.tensor(results_values), dim=0)
+            
+            normalized_results = {}
+            for key, value in all_results:
+                if key in normalized_results:
+                    normalized_results[key] += softmax_results_values[all_results.index((key,value))].item()
+                else:
+                    normalized_results[key] = softmax_results_values[all_results.index((key,value))].item()
+                    
+            normalized_results = sorted(normalized_results.items(), key=lambda x: x[1], reverse=True)
+
+            print(all_results)
             return all_results[0][0]
         else:
             return None
@@ -422,38 +438,34 @@ class MPCAgent(   # add world modeling objective in agent
         
         # third scenario: the last few-steps has been tested by the lookahead model, and the reward is not good
         
-        if len(action_history) > window_size:
+        all_results = []
+        
+        action_history = [None] + [item[1] for item in self.memory if item[0] == "Action"]
+        
+        for traj_id, trajectory in enumerate(self.trajectory_pool):
             
-            last_actions = action_history[-window_size:] 
+            # trajectory = trajectory[1:] # remove the first action, which is None
             
-            if last_actions[-1] == self.check_actions or last_actions[-1] == self.check_inventory:
-                return False, None
+            start = max(1, len(trajectory) - self.n_gram + 1)
             
-            for traj_id, trajectory in enumerate(self.trajectory_pool):
-
-                trajectory = trajectory[1:] # remove the first action, which is None
+            for id in range(start):
                 
-                for id in range(len(trajectory) - window_size + 1):
+                n = min([len(trajectory) - id, self.n_gram, len(action_history)+1])
+                
+                n_gram_list = [trajectory[id+s]["Action"] for s in range(n)]
+                n_gram_verification = [trajectory[id+s]["Verified"] for s in range(n)]
+                n_gram_reward = [trajectory[id+s]["Reward"] for s in range(n)][-1]
+                
+                match = (action_history[-n+1:] == n_gram_list[:-1])
+                verified = False in n_gram_verification
+                
+                if match and not verified:
+                    all_results.append((n_gram_list[-1], n_gram_reward))
                     
-                    n_gram_list = [trajectory[id+s]["Action"] for s in range(window_size)]
-                    n_gram_verification = [trajectory[id+s]["Verified"] for s in range(window_size)]
-                    n_gram_reward = [trajectory[id+s]["Reward"] for s in range(window_size)][-1]
-                    
-                    match = (last_actions == n_gram_list)
-                    verified = False in n_gram_verification
-                    reward_good = n_gram_reward > reward_threshold
-                    
-                    if match: 
-                        if verified:
-                            # find the action that is not verified
-                            error_action = n_gram_list[n_gram_verification.index(False)]
-                            # action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command." # for alfworld
-                            action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command."
-                            return True, action
-                        
-                        if not reward_good:
-                            action = f"My recent actions haven't advanced towards my goal: {self.goal}. I need to revise my approach to be more goal-driven."
-                            return True, action
+        all_results = sorted(all_results, key=lambda x: x[1], reverse=True)
+        if len(all_results) > 0 and all_results[0][1] < reward_threshold:
+            action = f"Action {all_results[0][0]} fail to advance towards my goal: {self.goal}. I need to revise my approach to be more goal-driven. You can use check valid actions to explore more options."
+            return True, action
                         
         return False, None
     
@@ -529,7 +541,7 @@ class MPCAgent(   # add world modeling objective in agent
                         #     return True, action
                         
         return False, None
-        
+          
           
     def run(self, init_prompt_dict=None):
         
@@ -573,9 +585,10 @@ class MPCAgent(   # add world modeling objective in agent
                 return True, action, True
             
             else:
-                need_tip, reflection_tip = self.reflection_tips_v2(reward_threshold=self.reward_threshold, window_size=self.window_size)
+                need_tip, reflection_tip = self.reflection_tips(reward_threshold=self.reward_threshold, window_size=self.window_size)
         
-        action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
+        action = self.lookahead_decision_model(reward_threshold=0)
+        action = "check valid actions" if action is None else action
         self.use_guess_cnt += 1
         return True, action, True
 
@@ -604,11 +617,40 @@ class MPCAgent(   # add world modeling objective in agent
 
 class SimilarityMetric(object):
     def __init__(self,
-                 model_name='/root/huggingface/all-MiniLM-L6-v2'):
+                 model_name='/root/huggingface/all-MiniLM-L12-v2'):
         self.model = SentenceTransformer(model_name)
 
     def get_similarity(self, sequences, source_sequence):
         source_embedding = self.model.encode(source_sequence)
+        sequence_embeddings = self.model.encode(sequences)
+        
+        similarity = util.pytorch_cos_sim(source_embedding, sequence_embeddings)
+        return similarity
+    
+    def get_goal_similarity(self, sequences, source_sequence):
+        source_embedding = self.model.encode(source_sequence)
+        sequence_embeddings = self.model.encode(sequences)
+        
+        similarity = util.pytorch_cos_sim(source_embedding, sequence_embeddings)
+        return similarity
+    
+    
+class InstructionSimilarityMetric(object):
+    def __init__(self,
+                 model_name='/root/huggingface/instructor-large'):
+        self.model = INSTRUCTOR(model_name)
+
+    def get_goal_similarity(self, sequences, source_sequence):
+        source_embedding = self.model.encode(["Represent the goal state for an agent", source_sequence])
+        sequences = [["Represent the state for an agent"] + [s] for s in sequences]
+        sequence_embeddings = self.model.encode(sequences)
+        
+        similarity = util.pytorch_cos_sim(source_embedding, sequence_embeddings)
+        return similarity
+    
+    def get_similarity(self, sequences, source_sequence):
+        source_embedding = self.model.encode(["Represent the state for agent"] + source_sequence)
+        sequences = [["Represent the state for an agent"] + [s] for s in sequences]
         sequence_embeddings = self.model.encode(sequences)
         
         similarity = util.pytorch_cos_sim(source_embedding, sequence_embeddings)

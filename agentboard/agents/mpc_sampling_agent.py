@@ -7,11 +7,13 @@ import json
 import random
 import re
 import torch
+import torch.nn.functional as F
+from torch.distributions import Categorical
 from sentence_transformers import SentenceTransformer, util
 from InstructorEmbedding import INSTRUCTOR
 
-@registry.register_agent("MPCAgent")
-class MPCAgent(   # add world modeling objective in agent 
+@registry.register_agent("MPCSample")
+class MPCSample(   # add world modeling objective in agent 
     BaseAgent):  # the agent should receive goal, state and action, then return the next state
     def __init__(self,
                  llm_model,
@@ -80,7 +82,7 @@ class MPCAgent(   # add world modeling objective in agent
         self.max_iters = 2
         self.generation_config = {"n": self.n_generate_sample, "stop": self.stop, "max_tokens": self.max_tokens, "temperature": self.temperature}
         
-
+        self.value_type = "heuristic" # "logp", "llm"
         self.similarity_threshold_high = similarity_threshold_high # determine if two observations are similar
         self.similarity_threshold_low = similarity_threshold_low# determine if two observations are similar
         self.reward_threshold = reward_threshold #0.7 # determine if the reward is good enough
@@ -250,7 +252,7 @@ class MPCAgent(   # add world modeling objective in agent
             all_actions.append({"Action": first_action, "Verified": None, "Observation": None, "Reward": None})
         return all_actions, first_action
     
-    def update_trajectory_pool(self, action, lookahead=True):
+    def update_trajectory_pool(self, action, lookahead=True, reward = None  ):
         
         # update the trajectory pool with the generated action rollouts by llm
         if lookahead:
@@ -272,7 +274,7 @@ class MPCAgent(   # add world modeling objective in agent
             full_rollouts = history_rollouts + action_rollouts
             self.trajectory_pool.append(full_rollouts)
             
-            self.update_trajectory_reward(action_rollouts)
+            self.update_trajectory_reward(reward)
             
         else:
             action_rollouts, new_action = self.parse_action_sequnece(action)
@@ -293,11 +295,16 @@ class MPCAgent(   # add world modeling objective in agent
             full_rollouts = history_rollouts + action_rollouts
             self.trajectory_pool.append(full_rollouts)
             
-            self.update_trajectory_reward(action_rollouts[:1])
+            self.update_trajectory_reward(reward)
             
         
+    def update_trajectory_reward(self, reward=None):
         
-    def update_trajectory_reward(self, new_trajectory):
+        for id in range(len(self.trajectory_pool[-1])):
+            if "Reward" in self.trajectory_pool[-1][id]:
+                self.trajectory_pool[-1][id]["Reward"] = reward
+
+    def get_heuristic_value(self, new_trajectory):
         
         # calculate the reward for new action rollouts, this function is called after each action execution
 
@@ -319,13 +326,7 @@ class MPCAgent(   # add world modeling objective in agent
             
             # sim_to_goal = sim_to_goal * self.gamma / step_most_similar
             
-        self.trajectory_reward.append(sim_to_goal)
-            
-        # change the reward of the last trajectory
-        
-        for id in range(len(self.trajectory_pool[-1])):
-            if "Reward" in self.trajectory_pool[-1][id]:
-                self.trajectory_pool[-1][id]["Reward"] = sim_to_goal
+        return sim_to_goal  
 
 
     def verify_trajectory(self, threshold_high=0.5, threshold_low=0.3):
@@ -392,53 +393,26 @@ class MPCAgent(   # add world modeling objective in agent
     def lookahead_decision_model(self, reward_threshold=0.5):
         # given the look ahead predictions, make the next action
         
+        # different from prior approach, sampling based decision model to simulate energy function
+        
         # ! todo: choose the best action when there are multiple options
         
-        all_results = []
+        all_valid_values = torch.tensor([trajectory[-1]["Reward"] for trajectory in self.trajectory_pool if trajectory[-1]["Reward"] is not None])
         
-        action_history = [None] + [item[1] for item in self.memory if item[0] == "Action"]
         
-        for traj_id, trajectory in enumerate(self.trajectory_pool):
+        if all_valid_values.max() < reward_threshold:
             
-            # trajectory = trajectory[1:] # remove the first action, which is None
-            
-            start = max(1, len(trajectory) - self.n_gram + 1)
-            
-            for id in range(start):
-                
-                n = min([len(trajectory) - id, self.n_gram, len(action_history)+1])
-                
-                n_gram_list = [trajectory[id+s]["Action"] for s in range(n)]
-                n_gram_verification = [trajectory[id+s]["Verified"] for s in range(n)]
-                n_gram_reward = [trajectory[id+s]["Reward"] for s in range(n)][-1]
-                
-                match = (action_history[-n+1:] == n_gram_list[:-1])
-                verified = False in n_gram_verification
-                reward_good = n_gram_reward > reward_threshold
-                
-                if match and not verified and reward_good:
-                    all_results.append((n_gram_list[-1], n_gram_reward))
-
-        # sort all the results by reward
-        all_results = sorted(all_results, key=lambda x: x[1], reverse=True)
-        
-        if len(all_results) > 0:
-            results_values = [item[1] for item in all_results]
-            softmax_results_values = torch.nn.functional.softmax(torch.tensor(results_values), dim=0)
-            
-            normalized_results = {}
-            for key, value in all_results:
-                if key in normalized_results:
-                    normalized_results[key] += softmax_results_values[all_results.index((key,value))].item()
-                else:
-                    normalized_results[key] = softmax_results_values[all_results.index((key,value))].item()
-                    
-            normalized_results = sorted(normalized_results.items(), key=lambda x: x[1], reverse=True)
-
-            print(all_results)
-            return all_results[0][0]
-        else:
             return None
+        
+        probs = F.softmax(all_valid_values, dim=0)
+
+        distribution = Categorical(probs=probs)
+        
+        sample = distribution.sample().item()
+        
+        action = self.trajectory_pool[sample][-1]["Action"]
+        
+        return action
         
 
     def reflection_tips(self, reward_threshold=0.5, window_size=2): 
@@ -447,263 +421,83 @@ class MPCAgent(   # add world modeling objective in agent
         
         # first scenario: there are repeat cycles of actions that are not helping the model to reach the goal
         
+        reflection = ""
         try:
             action_history = [item[1] for item in self.memory if item[0] == "Action"]
             
             
             if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
                 # action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. " # alfworld
-                action = f"I have been repeating the same action {action_history[-1]}. I need to perform diverse exploration and try different actions. I can use the check valid actions command to find available actions."
-                return True, action
+                reflection += f"I have been repeating the same action {action_history[-1]}. I need to perform diverse exploration and try different actions. I can use the check valid actions command to find available actions.\n"
+                
         except:
             pass
+        
+        if len(self.trajectory_pool) > 0 :
+            
+            all_actions = [trajectory[-1]["Action"] for trajectory in self.trajectory_pool if trajectory[-1]["Action"] is not None]
+            
+            reflection += f" I have tried actions {",".join(all_actions)}, but none of them are advancing towards my goal: {self.goal}. I need to revise my approach to be more goal-driven."
 
-        # second scenario: the last few-steps has been tested by execution, and the actual observations are not according to plan
-        
-        # third scenario: the last few-steps has been tested by the lookahead model, and the reward is not good
-        
-        all_results = []
-        
-        action_history = [None] + [item[1] for item in self.memory if item[0] == "Action"]
-        
-        for traj_id, trajectory in enumerate(self.trajectory_pool):
-            
-            # trajectory = trajectory[1:] # remove the first action, which is None
-            
-            start = max(1, len(trajectory) - self.n_gram + 1)
-            
-            for id in range(start):
-                
-                n = min([len(trajectory) - id, self.n_gram, len(action_history)+1])
-                
-                n_gram_list = [trajectory[id+s]["Action"] for s in range(n)]
-                n_gram_verification = [trajectory[id+s]["Verified"] for s in range(n)]
-                n_gram_reward = [trajectory[id+s]["Reward"] for s in range(n)][-1]
-                
-                match = (action_history[-n+1:] == n_gram_list[:-1])
-                verified = False in n_gram_verification
-                
-                if match and not verified:
-                    all_results.append((n_gram_list[-1], n_gram_reward))
-                    
-        all_results = sorted(all_results, key=lambda x: x[1], reverse=True)
-        if len(all_results) > 0 and all_results[0][1] < reward_threshold:
-            action = f"Action {all_results[0][0]} fail to advance towards my goal: {self.goal}. I need to revise my approach to be more goal-driven. You can use check valid actions to explore more options."
-            return True, action
-                        
-        return False, None
-    
-    
-    
-    def reflection_tips_v2(self, reward_threshold=0.5, window_size=2): 
-        
-        # determine if the model is stuck and requires self-reflection, used sparingly
-        
-        # first scenario: there are repeat cycles of actions that are not helping the model to reach the goal
-        
-        try:
-            action_history = [item[1] for item in self.memory if item[0] == "Action"]
-            
-            
-            if action_history.count(action_history[-1])>1 and action_history.count(action_history[-2])>1:
-                # action = f"I have been repeating the same action. I need to perform diverse exploration and try different actions. " # alfworld
-                action = f"I have been repeating the same action {action_history[-1]}. I need to perform diverse exploration and try different actions. I can use the check valid actions command to find available actions."
-                return True, action
-        except:
-            pass
-
-        # second scenario: the last few-steps has been tested by execution, and the actual observations are not according to plan
-        
-        # third scenario: the last few-steps has been tested by the lookahead model, and the reward is not good
-        
-        if len(action_history) > window_size:
-            
-            last_actions = action_history[-window_size:] 
-            
-            if last_actions[-1] == self.check_actions or last_actions[-1] == self.check_inventory:
-                return False, None
-            
-            for traj_id, trajectory in enumerate(self.trajectory_pool):
-
-                trajectory = trajectory[1:] # remove the first action, which is None
-                
-                for id in range(len(trajectory) - window_size + 1):
-                    
-                    n_gram_list = [trajectory[id+s]["Action"] for s in range(window_size)]
-                    n_gram_verification = [trajectory[id+s]["Verified"] for s in range(window_size)]
-                    n_gram_reward = [trajectory[id+s]["Reward"] for s in range(window_size)][-1]
-                    
-                    match = (last_actions == n_gram_list)
-                    verified = False in n_gram_verification
-                    reward_good = n_gram_reward > reward_threshold
-                    
-                    if match and (verified or not reward_good): 
-                        rollout_n_gram = [trajectory[id+s] for s in range(window_size, len(trajectory) - id)] # window_size part has true environmental interaction, no need to provide imagination
-                        has_imagination = False
-                        
-                        rollout = "Imagined rollout trajectory of task is: "
-                        for item in rollout_n_gram:
-                            if "Action" in item and item["Observation"] is not None:
-                                has_imagination = True
-                                rollout += "Action: " + item["Action"] + "->"
-                                rollout += "Observation: " + item["Observation"] + "->"
-                                if item["Verified"] is not None:
-                                    rollout += "Is Verified: " + str(item["Verified"]) + "->"
-                        action = f"Correct and optimize this imagined trajectory to adhere to goal {self.goal} : {rollout}.\n"
-                        
-                        if has_imagination:
-                            return True, action
-                        # if verified:
-                        #     # find the action that is not verified
-                        #     error_action = n_gram_list[n_gram_verification.index(False)]
-                        #     # action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command." # for alfworld
-                        #     action = f"The execution of {error_action} is not as anticipated. I need to try something different. If I am stuck, I can use the check valid actions command."
-                        #     return True, action
-                        
-                        # if not reward_good:
-                        #     action = f"My recent actions haven't advanced towards my goal: {self.goal}. I need to revise my approach to be more goal-driven."
-                        #     return True, action
-                        
-        return False, None
-          
-          
-    def run_no_cache(self, init_prompt_dict=None, lookahead=True):
-        
-        self.reflection_tip = None
-        self.trajectory_pool = []
-        
-        for i in range(self.max_iters):
-        
-            if init_prompt_dict is not None:
-                self.init_prompt_dict = init_prompt_dict
-                self.instruction = init_prompt_dict['instruction']
-                self.examples = init_prompt_dict['examples']
-
-            system_message = self.init_prompt_dict['system_msg']
-            input_prompt = self.make_prompt(need_goal=self.need_goal,
-                                            check_actions=self.check_actions,
-                                            check_inventory=self.check_inventory,
-                                            system_message=system_message,
-                                            tip = self.reflection_tip)
-            
-            self.log_example_prompt(input_prompt)
-            
-            
-            
-            success, action_sequence_samples = self.llm_model.generate_with_config(system_message, input_prompt, self.generation_config)
-            
-            if success:
-                for action_sequence in action_sequence_samples:
-
-                    action_ngram, action = self.parse_action_sequnece(action_sequence)
-                    
-                    self.update_trajectory_pool(action_sequence, lookahead=lookahead)
-                    
-                        
-                
-            self.verify_trajectory(threshold_high=self.similarity_threshold_high, threshold_low=self.similarity_threshold_low)
-
-            # decide upon the best action based on simulated planning
-            action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
-            
-            if action is not None:
-                self.use_guess_cnt += 1
-                return True, action, True
-            
-            else:
-                need_tip, reflection_tip = self.reflection_tips(reward_threshold=self.reward_threshold, window_size=self.window_size)
-        
-        action = self.lookahead_decision_model(reward_threshold=0)
-        action = "check valid actions" if action is None else action
-        self.use_guess_cnt += 1
-        return True, action, True
-    
-    def run_ngram_cache(self, init_prompt_dict=None, lookahead=True):
-        
-        self.reflection_tip = None
-        for i in range(self.max_iters):
-        
-            if init_prompt_dict is not None:
-                self.init_prompt_dict = init_prompt_dict
-                self.instruction = init_prompt_dict['instruction']
-                self.examples = init_prompt_dict['examples']
-
-            system_message = self.init_prompt_dict['system_msg']
-            input_prompt = self.make_prompt(need_goal=self.need_goal,
-                                            check_actions=self.check_actions,
-                                            check_inventory=self.check_inventory,
-                                            system_message=system_message,
-                                            tip = self.reflection_tip)
-            
-            self.log_example_prompt(input_prompt)
-            
-            
-            
-            success, action_sequence_samples = self.llm_model.generate_with_config(system_message, input_prompt, self.generation_config)
-            
-            if success:
-                for action_sequence in action_sequence_samples:
-
-                    action_ngram, action = self.parse_action_sequnece(action_sequence)
-                    
-                    self.update_trajectory_pool(action_sequence, lookahead=lookahead)
-                    
-                        
-                
-            self.verify_trajectory(threshold_high=self.similarity_threshold_high, threshold_low=self.similarity_threshold_low)
-
-            # decide upon the best action based on simulated planning
-            action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
-            
-            if action is not None:
-                self.use_guess_cnt += 1
-                return True, action, True
-            
-            else:
-                need_tip, reflection_tip = self.reflection_tips(reward_threshold=self.reward_threshold, window_size=self.window_size)
-        
-        action = self.lookahead_decision_model(reward_threshold=0)
-        action = "check valid actions" if action is None else action
-        self.use_guess_cnt += 1
-        return True, action, True
-
-    
-    def run(self, init_prompt_dict=None):
-        if self.style == "no_cache_lookahead":
-            self.n_generate_sample = 4
-            self.stop = ''
-            self.max_tokens = 200
-            self.temperature = 0.7
-            self.max_iters = 2
-            self.n_gram = 30
-            self.generation_config = {"n": self.n_generate_sample, "stop": self.stop, "max_tokens": self.max_tokens, "temperature": self.temperature}
-            
-            return self.run_no_cache(init_prompt_dict, lookahead=True)
-        
-        elif self.style == "no_cache_no_lookahead":
-            self.n_generate_sample = 4
-            self.stop = ''
-            self.max_tokens = 100
-            self.temperature = 0.7
-            self.max_iters = 2
-            self.n_gram = 30
-            self.generation_config = {"n": self.n_generate_sample, "stop": self.stop, "max_tokens": self.max_tokens, "temperature": self.temperature}
-            
-            return self.run_no_cache(init_prompt_dict, lookahead=False)
-        
-        elif self.style == "full":
-            self.n_generate_sample = 4
-            self.stop = ''
-            self.max_tokens = 200
-            self.temperature = 0.7
-            self.max_iters = 2
-            self.n_gram = 3
-            self.generation_config = {"n": self.n_generate_sample, "stop": self.stop, "max_tokens": self.max_tokens, "temperature": self.temperature}
-            
-            return self.run_ngram_cache(init_prompt_dict, lookahead=True)
-        
+        if reflection != "":
+            return True, reflection
         else:
-            raise NotImplementedError
+            return False, None
+     
+    def run(self, init_prompt_dict=None):
+        
+        value_type = self.value_type #"heuristic", "logp", "llm" 
+
+        
+        for i in range(self.max_iters):
+            if init_prompt_dict is not None:
+                self.init_prompt_dict = init_prompt_dict
+                self.instruction = init_prompt_dict['instruction']
+                self.examples = init_prompt_dict['examples']
+
+            system_message = self.init_prompt_dict['system_msg']
+            input_prompt = self.make_prompt(need_goal=self.need_goal,
+                                            check_actions=self.check_actions,
+                                            check_inventory=self.check_inventory,
+                                            system_message=system_message,
+                                            tip = self.reflection_tip)
+            
+            self.log_example_prompt(input_prompt)
+            
+            success, action_sequence_samples = self.llm_model.generate_with_config(system_message, input_prompt, self.generation_config)
+            
+            if success:
+                for action_sequence in action_sequence_samples:
+
+                    action_ngram, action = self.parse_action_sequnece(action_sequence)
+                    
+                    reward = 0
+                    if value_type == "heuristic":
+                        reward = self.get_heuristic_value(action_ngram)
+                    else:
+                        raise NotImplementedError
+                    
+                    reward = self.get_heuristic_value(action_ngram)
+                    
+                    self.update_trajectory_pool(action_sequence, lookahead=True, reward=reward)
+                
+            # self.verify_trajectory(threshold_high=self.similarity_threshold_high, threshold_low=self.similarity_threshold_low) #don't currently use verify
+
+            # decide upon the best action based on simulated planning
+            action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
+
+            if action is not None:
+                self.use_guess_cnt += 1
+                return True, action, True
+            
+            else:
+                need_tip, reflection_tip = self.reflection_tips(reward_threshold=self.reward_threshold, window_size=self.window_size)
+        
+        action = self.lookahead_decision_model(reward_threshold=0)
+        action = "check valid actions" if action is None else action
+        self.use_guess_cnt += 1
+        return True, action, True
+       
     
     @classmethod
     def from_config(cls, llm_model, config):

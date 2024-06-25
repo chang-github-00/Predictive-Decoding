@@ -7,6 +7,7 @@ from .lookahead_eval_agent_ablation import LookAheadEvalAgentAblation
 from .chain_of_thought_agent import COTAgent
 from .plan_solve_agent import PlanSolveAgent
 from .mpc_agent import MPCAgent
+from .mpc_sample import MPCSample
 from common.registry import registry
 
 __all__ = ["VanillaAgent", "ReactAgent"]

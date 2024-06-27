@@ -390,6 +390,32 @@ class MPCSample(   # add world modeling objective in agent
                             continue
                        
     
+    def get_valid_actions(self, action_history):
+        
+        all_results = []
+        
+        for traj_id, trajectory in enumerate(self.trajectory_pool):
+            
+            # trajectory = trajectory[1:] # remove the first action, which is None
+            
+            start = max(1, len(trajectory) - self.n_gram + 1)
+            
+            for id in range(start):
+                
+                n = min([len(trajectory) - id, self.n_gram, len(action_history)+1])
+                
+                n_gram_list = [trajectory[id+s]["Action"] for s in range(n)]
+                n_gram_verification = [trajectory[id+s]["Verified"] for s in range(n)]
+                n_gram_reward = [trajectory[id+s]["Reward"] for s in range(n)][-1]
+                
+                match = (action_history[-n+1:] == n_gram_list[:-1])
+                verified = False in n_gram_verification
+                
+                if match and not verified:
+                    all_results.append((n_gram_list[-1], n_gram_reward))
+                    
+        return all_results
+
     def lookahead_decision_model(self, reward_threshold=0.5):
         # given the look ahead predictions, make the next action
         
@@ -397,8 +423,11 @@ class MPCSample(   # add world modeling objective in agent
         
         # ! todo: choose the best action when there are multiple options
         
-        all_valid_values = torch.tensor([trajectory[-1]["Reward"] for trajectory in self.trajectory_pool if trajectory[-1]["Reward"] is not None])
+        action_history = [None] + [item[1] for item in self.memory if item[0] == "Action"]
+        all_valid_action_values = self.get_valid_actions(action_history)
         
+        all_valid_values = torch.tensor([item[1] for item in all_valid_action_values])
+        all_valid_actions = [item[0] for item in all_valid_action_values]
         
         if all_valid_values.max() < reward_threshold:
             
@@ -410,7 +439,7 @@ class MPCSample(   # add world modeling objective in agent
         
         sample = distribution.sample().item()
         
-        action = self.trajectory_pool[sample][-1]["Action"]
+        action = all_valid_actions[sample]
         
         return action
         
@@ -435,9 +464,9 @@ class MPCSample(   # add world modeling objective in agent
         
         if len(self.trajectory_pool) > 0 :
             
-            all_actions = [trajectory[-1]["Action"] for trajectory in self.trajectory_pool if trajectory[-1]["Action"] is not None]
+            all_actions = ",".join([trajectory[-1]["Action"] for trajectory in self.trajectory_pool if trajectory[-1]["Action"] is not None])
             
-            reflection += f" I have tried actions {",".join(all_actions)}, but none of them are advancing towards my goal: {self.goal}. I need to revise my approach to be more goal-driven."
+            reflection += f" I have tried actions {all_actions}, but none of them are advancing towards my goal: {self.goal}. I need to revise my approach to be more goal-driven."
 
         if reflection != "":
             return True, reflection

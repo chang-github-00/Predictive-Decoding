@@ -33,7 +33,6 @@ def parse_args():
     parser.add_argument("--baseline_dir", required=False, default='', help="specify the baseline loggings for wandb baseline comparison visualization")
     parser.add_argument("--max_num_steps", required=False, default=30, help="specify the maximum number of steps used to finish the problems")
     args = parser.parse_args()
-
     return args
 
 def path_constructor(loader, node):

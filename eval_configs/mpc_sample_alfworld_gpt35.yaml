@@ -11,12 +11,15 @@ agent:
   name: MPCSample
   memory_size: 200
   need_goal: True
-  n_gram: 3
-  gamma: 6
+  n_gram: 30
   similarity_threshold_low: 0.5
   similarity_threshold_high: 0.7
-  reward_threshold: 0.9
-  
+  reward_threshold: 0.5
+  do_sample: True
+  max_world_model_len: 200
+  beam_temperature: 0.7
+  select_temperature: 0.1
+  n_generate_sample: 6
 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key

@@ -7,6 +7,7 @@ import json
 import random
 import re
 import torch
+import numpy as np
 import torch.nn.functional as F
 from torch.distributions import Categorical
 from sentence_transformers import SentenceTransformer, util
@@ -29,10 +30,14 @@ class MPCSample(   # add world modeling objective in agent
                  use_parser=True,
                  logger=None,
                  n_gram=30,
-                 gamma=6,
                  similarity_threshold_high=0.7,
                  similarity_threshold_low=0.5,
-                 reward_threshold=0.5
+                 reward_threshold=0.5,
+                 do_sample=True,
+                 max_world_model_len=200,
+                 beam_temperature=0.7,
+                 select_temperature=0.1,
+                 n_generate_sample=6
                  ):
         super().__init__()
         self.use_parser = use_parser
@@ -68,17 +73,18 @@ class MPCSample(   # add world modeling objective in agent
         self.trajectory_pool = []
         self.trajectory_reward = []
         
-        self.gamma = gamma
         self.use_guess_cnt = 0
 
         # self.guess_action = []
         
         self.style = "full" # "no_cache_lookahead" "no_cache_no_lookahead"
         
-        self.n_generate_sample = 4
+        self.n_generate_sample = n_generate_sample
         self.stop = ''
-        self.max_tokens = 200
-        self.temperature = 0.7
+        self.max_tokens = max_world_model_len
+        self.temperature = beam_temperature
+        self.select_temperature = select_temperature
+        self.do_sample = do_sample
         self.max_iters = 2
         self.generation_config = {"n": self.n_generate_sample, "stop": self.stop, "max_tokens": self.max_tokens, "temperature": self.temperature}
         
@@ -426,21 +432,43 @@ class MPCSample(   # add world modeling objective in agent
         action_history = [None] + [item[1] for item in self.memory if item[0] == "Action"]
         all_valid_action_values = self.get_valid_actions(action_history)
         
-        all_valid_values = torch.tensor([item[1] for item in all_valid_action_values])
+        if len(all_valid_action_values) < 1:
+            
+            return None
+        
+        all_valid_values = np.array([item[1] for item in all_valid_action_values])
         all_valid_actions = [item[0] for item in all_valid_action_values]
+        
         
         if all_valid_values.max() < reward_threshold:
             
             return None
         
-        probs = F.softmax(all_valid_values, dim=0)
-
-        distribution = Categorical(probs=probs)
+        if self.do_sample: 
+            probs = np.exp(all_valid_values/self.select_temperature)
+            probs = probs / probs.sum()
+            
+            all_action_prob_pairs = dict()
+            
+            for (action, prob) in zip(all_valid_actions, probs):
+                if action not in all_action_prob_pairs:
+                    all_action_prob_pairs[action] = prob
+                else:
+                    all_action_prob_pairs[action] += prob
+            
+            # print in style action:prob, action: prob...
+            print("Action probabilities: ", all_action_prob_pairs)
+            
+            all_valid_actions = list(all_action_prob_pairs.keys())
+            probs = list(all_action_prob_pairs.values())
+            
+            sample = torch.multinomial(torch.tensor(probs), 1).item()
         
-        sample = distribution.sample().item()
-        
-        action = all_valid_actions[sample]
-        
+            action = all_valid_actions[sample]
+        else:
+            
+            action = all_valid_actions[np.argmax(all_valid_values)]
+            
         return action
         
 
@@ -475,10 +503,12 @@ class MPCSample(   # add world modeling objective in agent
      
     def run(self, init_prompt_dict=None):
         
+        self.trajectory_pool = []
+        
         value_type = self.value_type #"heuristic", "logp", "llm" 
 
-        
         for i in range(self.max_iters):
+            
             if init_prompt_dict is not None:
                 self.init_prompt_dict = init_prompt_dict
                 self.instruction = init_prompt_dict['instruction']
@@ -510,7 +540,7 @@ class MPCSample(   # add world modeling objective in agent
                     
                     self.update_trajectory_pool(action_sequence, lookahead=True, reward=reward)
                 
-            # self.verify_trajectory(threshold_high=self.similarity_threshold_high, threshold_low=self.similarity_threshold_low) #don't currently use verify
+            self.verify_trajectory(threshold_high=self.similarity_threshold_high, threshold_low=self.similarity_threshold_low) #don't currently use verify
 
             # decide upon the best action based on simulated planning
             action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
@@ -542,13 +572,29 @@ class MPCSample(   # add world modeling objective in agent
         logger = config.get("logger", None)
         
         n_gram = config.get("n_gram", None)
-        gamma = config.get("gamma", None)
         similarity_threshold_low = config.get("similarity_threshold_low", None)
         similarity_threshold_high = config.get("similarity_threshold_high", None)
         reward_threshold = config.get("reward_threshold", None)
         
+        do_sample = config.get("do_sample", True)
+        max_world_model_len = config.get("max_world_model_len", 200)
+        beam_temperature = config.get("beam_temperature", 0.7)
+        select_temperature = config.get("select_temperature", 0.1)
+        n_generate_sample = config.get("n_generate_sample", 6)
+        
+        
+        
         return cls(llm_model, memory_size, examples, instruction, init_prompt_path, system_message, 
-                   need_goal, check_actions, check_inventory, use_parser, logger)
+                   need_goal, check_actions, check_inventory, use_parser, logger,
+                   n_gram=n_gram, 
+                   similarity_threshold_high=similarity_threshold_high, 
+                   similarity_threshold_low=similarity_threshold_low,
+                   reward_threshold=reward_threshold, 
+                   do_sample=do_sample, 
+                   max_world_model_len=max_world_model_len,
+                   beam_temperature=beam_temperature, 
+                   select_temperature=select_temperature, 
+                   n_generate_sample=n_generate_sample)
         
 
 class SimilarityMetric(object):

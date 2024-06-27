@@ -8,6 +8,7 @@ import yaml
 import json
 import time
 import argparse
+import random
 from dotenv import load_dotenv
 from tasks import load_task
 from llm import load_llm

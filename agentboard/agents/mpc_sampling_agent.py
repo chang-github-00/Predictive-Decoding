@@ -175,7 +175,7 @@ class MPCSample(   # add world modeling objective in agent
             if tip is not None:
                 input_prompt += "\n Thought: " + tip
 
-            input_prompt += "\nActions and Observations:"  #(stop generating if you are not certain about the next observation)"
+            input_prompt +=  "\nActions and Observations:"  #(stop generating if you are not certain about the next observation)"
             
             # input_prompt += "\nPlease enter your action:"
             messages = [
@@ -508,6 +508,8 @@ class MPCSample(   # add world modeling objective in agent
         value_type = self.value_type #"heuristic", "logp", "llm" 
 
         for i in range(self.max_iters):
+            
+            self.trajectory_pool = []
             
             if init_prompt_dict is not None:
                 self.init_prompt_dict = init_prompt_dict

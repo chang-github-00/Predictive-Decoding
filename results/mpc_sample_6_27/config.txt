@@ -20,11 +20,11 @@ Agent Configuration:
   "n_gram": 30,
   "similarity_threshold_low": 0.5,
   "similarity_threshold_high": 0.7,
-  "reward_threshold": 0.6,
+  "reward_threshold": 0.5,
   "do_sample": true,
   "max_world_model_len": 200,
   "beam_temperature": 0.7,
-  "select_temperature": 0.05,
+  "select_temperature": 0.1,
   "n_generate_sample": 6
 }
 Environment Configuration: 
@@ -186,5 +186,5 @@ Run Configuration:
   "wandb": false,
   "project_name": "eval-test",
   "baseline_dir": "data/baseline_results",
-  "log_path": "results/debug_mpc"
+  "log_path": "results/mpc_sample_6_27"
 }

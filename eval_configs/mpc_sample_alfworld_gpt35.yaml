@@ -14,11 +14,11 @@ agent:
   n_gram: 30
   similarity_threshold_low: 0.5
   similarity_threshold_high: 0.7
-  reward_threshold: 0.5
+  reward_threshold: 0.6
   do_sample: True
   max_world_model_len: 200
   beam_temperature: 0.7
-  select_temperature: 0.1
+  select_temperature: 0.05
   n_generate_sample: 6
 
 llm:

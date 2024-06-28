@@ -37,7 +37,8 @@ class MPCSample(   # add world modeling objective in agent
                  max_world_model_len=200,
                  beam_temperature=0.7,
                  select_temperature=0.1,
-                 n_generate_sample=6
+                 n_generate_sample=6,
+                 value_type = "heuristic"
                  ):
         super().__init__()
         self.use_parser = use_parser
@@ -88,7 +89,7 @@ class MPCSample(   # add world modeling objective in agent
         self.max_iters = 2
         self.generation_config = {"n": self.n_generate_sample, "stop": self.stop, "max_tokens": self.max_tokens, "temperature": self.temperature}
         
-        self.value_type = "heuristic" # "logp", "llm"
+        self.value_type = value_type # "logp", "llm"
         self.similarity_threshold_high = similarity_threshold_high # determine if two observations are similar
         self.similarity_threshold_low = similarity_threshold_low# determine if two observations are similar
         self.reward_threshold = reward_threshold #0.7 # determine if the reward is good enough
@@ -333,7 +334,98 @@ class MPCSample(   # add world modeling objective in agent
             # sim_to_goal = sim_to_goal * self.gamma / step_most_similar
             
         return sim_to_goal  
+    
+    def get_llm_value(self, new_trajectory, init_prompt_dict=None):
+        
+        llm_generation_config = {"n": 1, "max_tokens": 100, "temperature": 0}
+        
+        system_message = "Please evaluate the given trajectory."
+        
+        prompt = self.make_llm_scorer_prompt(new_trajectory, need_goal=self.need_goal, check_actions=self.check_actions, check_inventory=self.check_inventory, system_message=system_message, tip=None)
+        
+        success = False
+         
+        it = 0
+        
+        while not success:
+            success, output = self.llm_model.generate_with_config(system_message, prompt, llm_generation_config)
+            
+            it += 1
+            
+            if it > 5:
+                raise ValueError("LLM model failed to generate the score.")
+        
+        if "0.25" in output:
+            return 0.25
+        if "0.5" in output:
+            return 0.5
+        if "0.75" in output:
+            return 0.75
+        if "1" in output:
+            return 1
+        return 0
+        
+    def make_llm_scorer_prompt(self, trajectory, need_goal=False, check_actions="check valid actions", check_inventory="inventory", system_message='', tip=None):
+        query = ""
+        query += self.split["instruction"][0] + self.instruction + self.split["instruction"][-1]
 
+        if isinstance(self.examples, str):
+            self.examples = [self.examples]
+
+        if len(self.examples) > 0:
+            query += "\nHere are examples:\n" + self.split["example"][0]
+            for example in self.examples:
+                query += example + "\n"
+            query += self.split["example"][-1]
+        if need_goal:
+            query += self.split["goal"][0] + "You should perform actions to accomplish the goal: " + self.goal + "\n" + \
+                     self.split["goal"][-1]
+        if check_actions is not None:
+            query += "You should use the following commands for help when your action cannot be understood: " + check_actions + "\n"
+        if check_inventory is not None:
+            query += "You should use the following commands for help when your action cannot be understood: inventory\n"
+
+        history = self.memory[-self.memory_size:] # need to add memory to make the trajectory whole
+        
+        for item in trajectory:
+            if "Action" in item and item["Action"] is not None:
+                history.append(("Action", item["Action"]))
+            if "Observation" in item and item["Observation"] is not None:
+                history.append(("Observation", item["Observation"]))
+        
+        evluation_instruction = f'''
+            Evaluate the possibility the current trajectory could finish the task {self.goal} in the future in format: 
+            [Because ...](rationale), the current trajectory has a score [0.x] (choose between: 0: impossible, 0.25, 0.5, 0.75, 1: very likely).
+            Also penalize meaningless repeated actions or actions that deviate far from the goal.
+        '''
+        
+        input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
+
+        input_prompt += "\n"  #(stop generating if you are not certain about the next observation)"
+
+        input_prompt += evluation_instruction
+        
+        messages = [
+            {"role": "system", "content": system_message},
+            {"role": "user", "content": input_prompt}
+        ]
+        num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
+        while num_of_tokens > self.max_context_length - self.llm_model.max_tokens:
+            history = history[1:]
+            input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
+            
+
+            input_prompt += "\n"  #(stop generating if you are not certain about the next observation)"
+
+            input_prompt += evluation_instruction
+            # input_prompt += "\nPlease enter your action:"
+            messages = [
+                {"role": "system", "content": system_message},
+                {"role": "user", "content": input_prompt}
+            ]
+            num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
+
+        return input_prompt
 
     def verify_trajectory(self, threshold_high=0.5, threshold_low=0.3):
         
@@ -535,10 +627,12 @@ class MPCSample(   # add world modeling objective in agent
                     reward = 0
                     if value_type == "heuristic":
                         reward = self.get_heuristic_value(action_ngram)
+                    elif value_type == "llm":
+                        reward = self.get_llm_value(action_ngram)
+                    # elif value_type == "logp":
+                    #     only support some models  
                     else:
                         raise NotImplementedError
-                    
-                    reward = self.get_heuristic_value(action_ngram)
                     
                     self.update_trajectory_pool(action_sequence, lookahead=True, reward=reward)
                 
@@ -584,6 +678,7 @@ class MPCSample(   # add world modeling objective in agent
         select_temperature = config.get("select_temperature", 0.1)
         n_generate_sample = config.get("n_generate_sample", 6)
         
+        value_type = config.get("value_type", "heuristic")
         
         
         return cls(llm_model, memory_size, examples, instruction, init_prompt_path, system_message, 
@@ -596,7 +691,9 @@ class MPCSample(   # add world modeling objective in agent
                    max_world_model_len=max_world_model_len,
                    beam_temperature=beam_temperature, 
                    select_temperature=select_temperature, 
-                   n_generate_sample=n_generate_sample)
+                   n_generate_sample=n_generate_sample,
+                   value_type=value_type
+                   )
         
 
 class SimilarityMetric(object):

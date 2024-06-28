@@ -20,6 +20,7 @@ agent:
   beam_temperature: 0.7
   select_temperature: 0.05
   n_generate_sample: 6
+  value_type: llm
 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key

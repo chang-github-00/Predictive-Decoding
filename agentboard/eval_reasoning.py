@@ -45,7 +45,7 @@ def evaluate_results(task, item, result): #result is a list
     if task == "gsm8k":
         answer = retrieve_answer_from_dataset(item["answer"])
         executed_solution = execute_solution(result, execute=True)
-        return judge_gsm8k_answer(executed_solution, answer)
+        return judge_gsm8k_answer(executed_solution, answer), executed_solution
     else:
         raise NotImplementedError
         
@@ -130,13 +130,13 @@ class EvalReasoning:
             # print(question)
             success, output = self.algorithm.run(question, prompts=self.prompts, end_suffix="return")
             if success:
-                evaluation = evaluate_results(self.task, item, output)
+                evaluation, executed_output = evaluate_results(self.task, item, output)
                 result.append(evaluation)
             else:
                 evaluation = None   
-            
+            output = output + "\n Executed result: " + str(executed_output)
             with open(os.path.join(self.log_path,f"{self.task}_{dataset_name}.txt"), "a+") as f:
-                f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [output]: {output} \n")
+                f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [output]: {output}\n")
 
         
         metrics = {"task":self.task+'_'+dataset_name, "success_rate": sum(result) / len(result)}

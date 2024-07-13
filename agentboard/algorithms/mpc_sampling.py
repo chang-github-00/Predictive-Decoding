@@ -23,6 +23,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                  n_generate_sample=8,
                  value_type = "logp",
                  do_sample=True,
+                 memory=True,
                  ):
         
         self.llm_model = llm_model
@@ -48,7 +49,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         self.select_temperature = select_temperature
         self.n_generate_sample = n_generate_sample
         self.value_type = value_type
-        
+        self.memory = memory
         
         
     def make_prompt(self, prompt):
@@ -208,6 +209,28 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
     
     def get_valid_actions(self, action_history):
         
+        def is_valid_python(code):
+            with io.StringIO() as f:
+                f.write("def solution():\n")
+                # iterate through the state
+                for a  in self.memory:
+                    if a is not None:
+                        f.write(f"{a}\n")
+                f.write(code+"\n")
+                full_code = f.getvalue()
+            try:
+                # Try to compile the string of code.
+                # If the code compiles without raising a SyntaxError, it is valid Python code.
+                compile(code, "<string>", "exec")
+                return True
+            except SyntaxError:
+                try: 
+                    compile(full_code, "<string>", "exec")
+                    return True
+                except SyntaxError:
+                    pass
+                return False
+        
         all_results = []
         
         for traj_id, trajectory in enumerate(self.trajectory_pool):
@@ -229,6 +252,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                 
                 if match:
                     all_results.append((n_gram_list[-1], n_gram_reward))
+                    
+        # for coding tasks, screen out the actions that are not valid
                     
         return all_results
     
@@ -348,6 +373,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         reflection_tips = ""
 
         while iter < args.max_iters:
+            if not self.memory:
+                self.trajectory_pool = [] # don't keep memory, but re-init the trajectory pool every time
             
             input_prompt = self.make_prompt(self.prompts["prompt"])
             system_message = self.prompts["system_msg"]

@@ -1,0 +1,296 @@
+{
+  "id": 0,
+  "task_name": "gripper",
+  "goal": "The goal is to satisfy the following conditions: ball1 is at roomb. , ball2 is at roomb. , ball3 is at roomb. , ball4 is at roomb. ",
+  "difficulty": "easy",
+  "is_done": true,
+  "progress_rate": 1.0,
+  "grounding_acc": 0.7647058823529411,
+  "score_change_record": [
+    [
+      3,
+      0.25
+    ],
+    [
+      4,
+      0.5
+    ],
+    [
+      11,
+      0.75
+    ],
+    [
+      16,
+      1.0
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: ball1 is at roomb. , ball2 is at roomb. , ball3 is at roomb. , ball4 is at roomb. ",
+      "Observation": "Ball1 is carrying right. ",
+      "Action": "pick up ball1 at rooma with arm right.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "pick up ball2 at rooma with arm left.",
+      "Observation": "Ball2 is carrying left. ",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "move from rooma to roomb",
+      "Observation": "Robby is at roomb. ",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "drop ball1 at roomb with arm right.",
+      "Observation": "Ball1 is at roomb.  Right is free. ",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 4": {
+      "Action": "drop ball2 at roomb with arm left.",
+      "Observation": "Ball2 is at roomb.  Left is free. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 5": {
+      "Action": "pick up ball3 at rooma with arm right.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 6": {
+      "Action": "pick up ball3 at rooma with arm left.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 7": {
+      "Action": "drop ball3 at roomb with arm right.",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 8": {
+      "Action": "move from roomb to rooma",
+      "Observation": "Robby is at rooma. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 9": {
+      "Action": "pick up ball3 at rooma with arm right.",
+      "Observation": "Ball3 is carrying right. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 10": {
+      "Action": "move from rooma to roomb",
+      "Observation": "Robby is at roomb. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 11": {
+      "Action": "drop ball3 at roomb with arm right.",
+      "Observation": "Ball3 is at roomb.  Right is free. ",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 12": {
+      "Action": "drop ball4 at roomb with arm left.",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 13": {
+      "Action": "move from roomb to rooma",
+      "Observation": "Robby is at rooma. ",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 14": {
+      "Action": "pick up ball4 at rooma with arm right.",
+      "Observation": "Ball4 is carrying right. ",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 15": {
+      "Action": "move from rooma to roomb",
+      "Observation": "Robby is at roomb. ",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 16": {
+      "Action": "drop ball4 at roomb with arm right.",
+      "Observation": "Ball4 is at roomb.  Right is free.  The goal is satisfied.",
+      "Progress Rate": 1.0
+    }
+  }
+}
+{
+  "id": 1,
+  "task_name": "gripper",
+  "goal": "The goal is to satisfy the following conditions: ball1 is at roomb. , ball2 is at roomb. , ball3 is at roomb. , ball4 is at roomb. , ball5 is at roomb. , ball6 is at roomb. ",
+  "difficulty": "easy",
+  "is_done": false,
+  "progress_rate": 0.6666666666666666,
+  "grounding_acc": 0.7,
+  "score_change_record": [
+    [
+      3,
+      0.16666666666666666
+    ],
+    [
+      5,
+      0.3333333333333333
+    ],
+    [
+      14,
+      0.5
+    ],
+    [
+      16,
+      0.6666666666666666
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: ball1 is at roomb. , ball2 is at roomb. , ball3 is at roomb. , ball4 is at roomb. , ball5 is at roomb. , ball6 is at roomb. ",
+      "Observation": "Ball1 is carrying right. ",
+      "Action": "pick up ball1 at rooma with arm right.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "pick up ball2 at rooma with arm left.",
+      "Observation": "Ball2 is carrying left. ",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "move from rooma to roomb",
+      "Observation": "Robby is at roomb. ",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "drop ball1 at roomb with arm right.",
+      "Observation": "Ball1 is at roomb.  Right is free. ",
+      "Progress Rate": 0.16666666666666666
+    },
+    "Interaction Turn 4": {
+      "Action": "pick up ball3 at roomb with arm left.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.16666666666666666
+    },
+    "Interaction Turn 5": {
+      "Action": "drop ball2 at roomb with arm left.",
+      "Observation": "Ball2 is at roomb.  Left is free. ",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 6": {
+      "Action": "pick up ball3 at rooma with arm right.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 7": {
+      "Action": "drop ball3 at roomb with arm right.",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 8": {
+      "Action": "check valid actions",
+      "Observation": "Valid actions are: Pick up ball1 at roomb with arm left. , Pick up ball2 at roomb with arm right. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , check valid actions",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 9": {
+      "Action": "check valid actions",
+      "Observation": "Valid actions are: Pick up ball1 at roomb with arm left. , Pick up ball2 at roomb with arm right. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , check valid actions",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 10": {
+      "Action": "Move from roomb to rooma",
+      "Observation": "Robby is at rooma. ",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 11": {
+      "Action": "pick up ball4 at rooma with arm right.",
+      "Observation": "Ball4 is carrying right. ",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 12": {
+      "Action": "pick up ball5 at rooma with arm left.",
+      "Observation": "Ball5 is carrying left. ",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 13": {
+      "Action": "move from rooma to roomb",
+      "Observation": "Robby is at roomb. ",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 14": {
+      "Action": "drop ball4 at roomb with arm right.",
+      "Observation": "Ball4 is at roomb.  Right is free. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 15": {
+      "Action": "pick up ball6 at roomb with arm left.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 16": {
+      "Action": "drop ball5 at roomb with arm left.",
+      "Observation": "Ball5 is at roomb.  Left is free. ",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 17": {
+      "Action": "pick up ball6 at rooma with arm right.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 18": {
+      "Action": "drop ball6 at roomb with arm right.",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 19": {
+      "Action": "check valid actions",
+      "Observation": "Valid actions are: Pick up ball5 at roomb with arm right. , Pick up ball1 at roomb with arm left. , Pick up ball4 at roomb with arm right. , Pick up ball2 at roomb with arm right. , Pick up ball5 at roomb with arm left. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , Pick up ball4 at roomb with arm left. , check valid actions",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 20": {
+      "Action": "check valid actions",
+      "Observation": "Valid actions are: Pick up ball5 at roomb with arm right. , Pick up ball1 at roomb with arm left. , Pick up ball4 at roomb with arm right. , Pick up ball2 at roomb with arm right. , Pick up ball5 at roomb with arm left. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , Pick up ball4 at roomb with arm left. , check valid actions",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 21": {
+      "Action": "check valid actions",
+      "Observation": "Valid actions are: Pick up ball5 at roomb with arm right. , Pick up ball1 at roomb with arm left. , Pick up ball4 at roomb with arm right. , Pick up ball2 at roomb with arm right. , Pick up ball5 at roomb with arm left. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , Pick up ball4 at roomb with arm left. , check valid actions",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 22": {
+      "Action": "Move from rooma to roomb",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 23": {
+      "Action": "Move from rooma to roomb",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 24": {
+      "Action": "check valid actions",
+      "Observation": "Valid actions are: Pick up ball5 at roomb with arm right. , Pick up ball1 at roomb with arm left. , Pick up ball4 at roomb with arm right. , Pick up ball2 at roomb with arm right. , Pick up ball5 at roomb with arm left. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , Pick up ball4 at roomb with arm left. , check valid actions",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 25": {
+      "Action": "Move from roomb to rooma",
+      "Observation": "Robby is at rooma. ",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 26": {
+      "Action": "check valid actions",
+      "Observation": "Valid actions are: Move from rooma to roomb. , Pick up ball3 at rooma with arm right. , Pick up ball6 at rooma with arm right. , Pick up ball6 at rooma with arm left. , Pick up ball3 at rooma with arm left. , check valid actions",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 27": {
+      "Action": "pick up ball3 at rooma with arm right.",
+      "Observation": "Ball3 is carrying right. ",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 28": {
+      "Action": "Pick up ball6 at rooma with arm right.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 29": {
+      "Action": "Pick up ball6 at rooma with arm left.",
+      "Observation": "Ball6 is carrying left. ",
+      "Progress Rate": 0.6666666666666666
+    }
+  },
+  "example_prompt": "You are a robot with a gripper that can move objects between different rooms. Your name is Robby.\n    There are three actions defined in this domain:\n    move <room1> <room2>: This action allows the robot to move from one room to another.The action has a single precondition, which is that the robot is currently in a room. The effect of this action is to move the robot to another room and to remove the fact that it is in the original room.\n    pick <obj> <room> <gripper>: This action allows the robot to pick up an object using the gripper. The action has three preconditions: (1) the object is located in a room (2) the robot is currently in the same room and (3) the gripper is free (i.e., not holding any object). The effect of this action is to update the state of the world to show that the robot is carrying the object using the gripper, the object is no longer in the room, and the gripper is no longer free.\n    drop <obj> <room> <gripper>: This action allows the robot to drop an object that it is carrying. The action has two preconditions: (1) the robot is currently carrying the object using the gripper, and (2) the robot is currently in a room. The effect of this action is to update the state of the world to show that the robot is no longer carrying the object using the gripper, the object is now located in the room, and the gripper is now free.\n\nHere are examples:\nThe goal is to satisfy the following conditions: ball1 is at roomb. , ball2 is at roomb. , ball3 is at roomb. \nObservation: Ball1 is a ball. Ball1 is at rooma. Ball2 is a ball. Ball2 is at rooma. Ball3 is a ball. Ball3 is at rooma. Left is a gripper. Left is free. Right is a gripper. Right is free. Robby is at rooma. Room rooma Room roomb\nAction: Pick up ball1 at rooma with arm right.\nObservation: Ball1 is carrying right. \nAction: Pick up ball2 at rooma with arm left.\nObservation: Ball2 is carrying left. \nAction: Move from rooma to roomb\nObservation: Robby is at roomb. \nAction: drop ball1 at rooma with arm right\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: check valid actions\nObservation: Valid actions are: drop ball1 roomb right, drop ball2 roomb left, Move from roomb to rooma. , check valid actions\nAction: drop ball1 roomb right\nObservation: Ball1 is at roomb. \nAction: drop ball2 roomb left\nObservation: Ball2 is at roomb. \nAction: move from roomb to rooma\nObservation: Robby is at rooma. \nAction: Pick up ball3 at rooma with arm right.\nObservation: Ball3 is carrying right. \nAction: Move from rooma to roomb\nObservation: Robby is at roomb. \nAction: drop ball3 rooms right\nObservation: Ball3 is at roomb. The task is completed.\nYou should perform actions to accomplish the goal: The goal is to satisfy the following conditions: ball1 is at roomb. , ball2 is at roomb. , ball3 is at roomb. , ball4 is at roomb. , ball5 is at roomb. , ball6 is at roomb. \nYou should use the following commands for help when your action cannot be understood: check valid actions\nObservation: Ball1 is a ball.  Ball1 is at rooma.  Ball2 is a ball.  Ball2 is at rooma.  Ball3 is a ball.  Ball3 is at rooma.  Ball4 is a ball.  Ball4 is at rooma.  Ball5 is a ball.  Ball5 is at rooma.  Ball6 is a ball.  Ball6 is at rooma.  Left is a gripper.  Left is free.  Right is a gripper.  Right is free.  Robby is at rooma.  Room rooma Room roomb\nAction: pick up ball1 at rooma with arm right.\nObservation: Ball1 is carrying right. \nAction: pick up ball2 at rooma with arm left.\nObservation: Ball2 is carrying left. \nAction: move from rooma to roomb\nObservation: Robby is at roomb. \nAction: drop ball1 at roomb with arm right.\nObservation: Ball1 is at roomb.  Right is free. \nAction: pick up ball3 at roomb with arm left.\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: drop ball2 at roomb with arm left.\nObservation: Ball2 is at roomb.  Left is free. \nAction: pick up ball3 at rooma with arm right.\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: drop ball3 at roomb with arm right.\nObservation: The action is not valid and therefore takes no effect. Please check valid actions.\nAction: check valid actions\nObservation: Valid actions are: Pick up ball1 at roomb with arm left. , Pick up ball2 at roomb with arm right. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , check valid actions\nAction: check valid actions\nObservation: Valid actions are: Pick up ball1 at roomb with arm left. , Pick up ball2 at roomb with arm right. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , check valid actions\nAction: Move from roomb to rooma\nObservation: Robby is at rooma. \nAction: pick up ball4 at rooma with arm right.\nObservation: Ball4 is carrying right. \nAction: pick up ball5 at rooma with arm left.\nObservation: Ball5 is carrying left. \nAction: move from rooma to roomb\nObservation: Robby is at roomb. \nAction: drop ball4 at roomb with arm right.\nObservation: Ball4 is at roomb.  Right is free. \nAction: pick up ball6 at roomb with arm left.\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: drop ball5 at roomb with arm left.\nObservation: Ball5 is at roomb.  Left is free. \nAction: pick up ball6 at rooma with arm right.\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: drop ball6 at roomb with arm right.\nObservation: The action is not valid and therefore takes no effect. Please check valid actions.\nAction: check valid actions\nObservation: Valid actions are: Pick up ball5 at roomb with arm right. , Pick up ball1 at roomb with arm left. , Pick up ball4 at roomb with arm right. , Pick up ball2 at roomb with arm right. , Pick up ball5 at roomb with arm left. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , Pick up ball4 at roomb with arm left. , check valid actions\nAction: check valid actions\nObservation: Valid actions are: Pick up ball5 at roomb with arm right. , Pick up ball1 at roomb with arm left. , Pick up ball4 at roomb with arm right. , Pick up ball2 at roomb with arm right. , Pick up ball5 at roomb with arm left. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , Pick up ball4 at roomb with arm left. , check valid actions\nAction: check valid actions\nObservation: Valid actions are: Pick up ball5 at roomb with arm right. , Pick up ball1 at roomb with arm left. , Pick up ball4 at roomb with arm right. , Pick up ball2 at roomb with arm right. , Pick up ball5 at roomb with arm left. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , Pick up ball4 at roomb with arm left. , check valid actions\nAction: Move from rooma to roomb\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: Move from rooma to roomb\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: check valid actions\nObservation: Valid actions are: Pick up ball5 at roomb with arm right. , Pick up ball1 at roomb with arm left. , Pick up ball4 at roomb with arm right. , Pick up ball2 at roomb with arm right. , Pick up ball5 at roomb with arm left. , Pick up ball2 at roomb with arm left. , Move from roomb to rooma. , Pick up ball1 at roomb with arm right. , Pick up ball4 at roomb with arm left. , check valid actions\nAction: Move from roomb to rooma\nObservation: Robby is at rooma. \nAction: check valid actions\nObservation: Valid actions are: Move from rooma to roomb. , Pick up ball3 at rooma with arm right. , Pick up ball6 at rooma with arm right. , Pick up ball6 at rooma with arm left. , Pick up ball3 at rooma with arm left. , check valid actions\nAction: pick up ball3 at rooma with arm right.\nObservation: Ball3 is carrying right. \nAction: Pick up ball6 at rooma with arm right.\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}

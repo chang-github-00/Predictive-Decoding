@@ -163,7 +163,7 @@ class MPCSample(   # add world modeling objective in agent
         if tip is not None:
             input_prompt += "\n Thought: " + tip
 
-        input_prompt += "\nActions and Observations:"  #(stop generating if you are not certain about the next observation)"
+        input_prompt += "Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n" # alfworld - "\nActions and Observations:"  #(stop generating if you are not certain about the next observation)"
 
         messages = [
             {"role": "system", "content": system_message},
@@ -176,7 +176,7 @@ class MPCSample(   # add world modeling objective in agent
             if tip is not None:
                 input_prompt += "\n Thought: " + tip
 
-            input_prompt +=  "\nActions and Observations:"  #(stop generating if you are not certain about the next observation)"
+            input_prompt += "Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n" # alfworld - "\nActions and Observations:"  #(stop generating if you are not certain about the next observation)"
             
             # input_prompt += "\nPlease enter your action:"
             messages = [
@@ -229,7 +229,7 @@ class MPCSample(   # add world modeling objective in agent
     
     # ---------------------------------------- components of lookahead agent  ----------------------------------------
     
-    def parse_action_sequnece(self,action): 
+    def parse_action_sequence(self,action): 
         
         # parse the llm generated action sequence into a trajectory list
         
@@ -263,7 +263,7 @@ class MPCSample(   # add world modeling objective in agent
         
         # update the trajectory pool with the generated action rollouts by llm
         if lookahead:
-            action_rollouts, new_action = self.parse_action_sequnece(action)
+            action_rollouts, new_action = self.parse_action_sequence(action)
             
             history_rollouts = []
             
@@ -284,7 +284,7 @@ class MPCSample(   # add world modeling objective in agent
             self.update_trajectory_reward(reward)
             
         else:
-            action_rollouts, new_action = self.parse_action_sequnece(action)
+            action_rollouts, new_action = self.parse_action_sequence(action)
             
             history_rollouts = []
             
@@ -337,7 +337,7 @@ class MPCSample(   # add world modeling objective in agent
     
     def get_llm_value(self, new_trajectory, init_prompt_dict=None):
         
-        llm_generation_config = {"n": 1, "max_tokens": 100, "temperature": 0}
+        llm_generation_config = {"n": 1, "max_tokens": 100, "temperature": 0, "stop": ['\n']}
         
         system_message = "Please evaluate the given trajectory."
         
@@ -354,17 +354,51 @@ class MPCSample(   # add world modeling objective in agent
             
             if it > 5:
                 raise ValueError("LLM model failed to generate the score.")
+            
+            
+        print(output)
         
-        if "0.25" in output:
+        if "25" in output or "unlikely" in output:
             return 0.25
-        if "0.5" in output:
+        if "50" in output or "not sure" in output:
             return 0.5
-        if "0.75" in output:
+        if "75" in output or "very likely" in output:
             return 0.75
-        if "1" in output:
+        if "0" in output or "impossible" in output:
+            return 0
+        if "definitely" in output or "100" in output:
             return 1
         return 0
+    
+    def get_pddl_value(self, new_trajectory):
         
+        observations = [item["Observation"] for item in new_trajectory if "Observation" in item and item["Observation"] is not None]
+        constraints = [subgoal.strip() for subgoal in self.goal.split(":")[1].split(",")]
+        used_constraints = []
+        
+        for item in self.memory:
+            if "Observation" in item and item[1] is not None:
+                for subgoal in constraints:
+                    if subgoal.lower() in item[1].lower():
+                        used_constraints.append(subgoal)
+        
+        satisfied = 0
+        for subgoal in constraints:
+            if subgoal not in used_constraints:
+                for ob in observations:
+                    if subgoal.lower() in ob.lower():
+                        satisfied += 1
+                        continue
+            # xxx is xxx, if the prefix matches yet the following part does not match, satisfied - 1
+            if subgoal in used_constraints:
+                for ob in observations:
+                    if subgoal.split("is")[0].lower() in ob.lower():
+                            satisfied -= 1
+                            continue
+        satisified_percentage = satisfied/len(constraints)
+        
+        return satisified_percentage
+            
     def make_llm_scorer_prompt(self, trajectory, need_goal=False, check_actions="check valid actions", check_inventory="inventory", system_message='', tip=None):
         query = ""
         query += self.split["instruction"][0] + self.instruction + self.split["instruction"][-1]
@@ -395,13 +429,87 @@ class MPCSample(   # add world modeling objective in agent
         
         evluation_instruction = f'''
             Evaluate the possibility the current trajectory could finish the task {self.goal} in the future in format: 
-            [Because ...](rationale), the current trajectory has a score [0.x] (choose between: 0: impossible, 0.25, 0.5, 0.75, 1: very likely).
-            Also penalize meaningless repeated actions or actions that deviate far from the goal.
+            [Because ...](a one-phrase rationale), the current trajectory has a score [0.x] (You must give a score between: 0: impossible, 25: unlikely, 50: not sure, 75: very likely, 100: definitely).
+            Also penalize unnecessary repeated actions or actions that deviate far from the goal.
         '''
         
         input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
 
         input_prompt += "\n"  #(stop generating if you are not certain about the next observation)"
+
+        input_prompt += evluation_instruction
+        
+        messages = [
+            {"role": "system", "content": system_message},
+            {"role": "user", "content": input_prompt}
+        ]
+        num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
+        while num_of_tokens > self.max_context_length - self.llm_model.max_tokens:
+            history = history[1:]
+            input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
+            
+
+            input_prompt += "\n"  #(stop generating if you are not certain about the next observation)"
+
+            input_prompt += evluation_instruction
+            # input_prompt += "\nPlease enter your action:"
+            messages = [
+                {"role": "system", "content": system_message},
+                {"role": "user", "content": input_prompt}
+            ]
+            num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
+
+        return input_prompt
+
+
+    def make_llm_scorer_prompt_v2(self, trajectory, need_goal=False, check_actions="check valid actions", check_inventory="inventory", system_message='', tip=None):
+        query = ""
+        query += self.split["instruction"][0] + self.instruction + self.split["instruction"][-1]
+
+        if isinstance(self.examples, str):
+            self.examples = [self.examples]
+
+        if len(self.examples) > 0:
+            query += "\nHere are examples:\n" + self.split["example"][0]
+            for example in self.examples:
+                query += example + "\n"
+            query += self.split["example"][-1]
+        if need_goal:
+            query += self.split["goal"][0] + "You should perform actions to accomplish the goal: " + self.goal + "\n" + \
+                     self.split["goal"][-1]
+        if check_actions is not None:
+            query += "You should use the following commands for help when your action cannot be understood: " + check_actions + "\n"
+        if check_inventory is not None:
+            query += "You should use the following commands for help when your action cannot be understood: inventory\n"
+
+        history = self.memory[-self.memory_size:] # need to add memory to make the trajectory whole
+        
+        rollout = []
+        action_to_evaluate = None
+        for item in trajectory:
+            if "Action" in item and item["Action"] is not None:
+                if action_to_evaluate is None: 
+                    action_to_evaluate = item["Action"]  # first action in rollout
+                rollout.append(("Action", item["Action"]))
+            if "Observation" in item and item["Observation"] is not None:
+                rollout.append(("Observation", item["Observation"]))
+
+        
+        evluation_instruction = f'''
+            Evaluate if action {action_to_evaluate} could help finish the task {self.goal} in the future, based on past interactions as well as imagined future trajectory.
+            Actions that lead to successful competion in future trajectory should be awarded high scores.
+            Also penalize heavily unnecessary repeated actions or actions that deviate far from the goal. If the trajectory is not plausible, you should also give a lower score.
+            Score: (choose between: E: impossible, D: unlikely, C: not sure, B: very likely, A: definitely).
+            Reason:
+        '''
+        
+        input_prompt = query + "\n Past interactions".join([item[0] + ": " + item[1] for item in history])
+
+        input_prompt += "\n"  #(stop generating if you are not certain about the next observation)"
+        
+        input_prompt += f"Action: {action_to_evaluate}\n"
+        
+        input_prompt += "Imagined future trajectory:" 
 
         input_prompt += evluation_instruction
         
@@ -622,13 +730,15 @@ class MPCSample(   # add world modeling objective in agent
             if success:
                 for action_sequence in action_sequence_samples:
 
-                    action_ngram, action = self.parse_action_sequnece(action_sequence)
+                    action_ngram, action = self.parse_action_sequence(action_sequence)
                     
                     reward = 0
                     if value_type == "heuristic":
                         reward = self.get_heuristic_value(action_ngram)
                     elif value_type == "llm":
                         reward = self.get_llm_value(action_ngram)
+                    elif value_type == "pddl":
+                        reward = self.get_pddl_value(action_ngram)
                     # elif value_type == "logp":
                     #     only support some models  
                     else:

@@ -123,7 +123,7 @@ class PDDL(BaseEnvironment):
         goal_text = "The goal is to satisfy the following conditions: " + ", ".join(goal) 
         
         state = obs.literals # conjunction of literals
-        if self.game_name in ["barman", "tyreworld"]:
+        if self.game_name in ["barman", "tyreworld", "gripper", "blocks"]:
             if self.last_obs is not None:
                 state = [literal for literal in state if literal not in self.last_obs.literals]
         state_text = [self.literal_to_text(literal).capitalize() for literal in state]
@@ -270,6 +270,8 @@ class PDDL(BaseEnvironment):
                  )
         
 # Define the mapping of predicate names to their natural language formats  
+
+# state_predicate = {"on", "clear", "holding", "on-table", "isopen", "closed", "have", "in", "loose", "tight", "unlocked", "on-ground", "not-on-ground", "inflated", "not-inflated", "fastened", "unfastened", "free", "on", "intact", "open", "close", "fetch", "put-away", "loosen", "tighten", "jack-up", "jack-down", "undo", "do-up", "remove-wheel", "put-on-wheel", "inflate", "clear", "move", "smaller", "ball", "gripper", "at-robby", "at", "free", "carry", "move", "pick", "ontable", "holding", "empty", "contains", "clean", "used", "dispenses", "shaker-empty-level", "shaker-level", "next", "unshaked", "shaked", "cocktail-part1", "cocktail-part2", "grasp", "leave", "fill-shot", "refill-shot", "empty-shot", "clean-shot", "pour-shot-to-clean-shaker", "pour-shot-to-used-shaker", "empty-shaker", "clean-shaker", "shake", "pour-shaker-to-shot"}
 predicate_map = {  
     # Blocks
     "on": "{} is on {}.",

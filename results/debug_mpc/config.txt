@@ -20,12 +20,13 @@ Agent Configuration:
   "n_gram": 30,
   "similarity_threshold_low": 0.5,
   "similarity_threshold_high": 0.7,
-  "reward_threshold": 0.6,
+  "reward_threshold": 0.1,
   "do_sample": true,
-  "max_world_model_len": 200,
+  "max_world_model_len": 500,
   "beam_temperature": 0.7,
   "select_temperature": 0.05,
-  "n_generate_sample": 6
+  "n_generate_sample": 8,
+  "value_type": "pddl"
 }
 Environment Configuration: 
 {
@@ -39,7 +40,7 @@ Environment Configuration:
     ],
     "env_num_per_task": 20,
     "check_actions": "check valid actions",
-    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/VanillaAgent/pddl_vanilla_prompt.json",
+    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/VanillaAgent/pddl_concise_prompt.json",
     "label_path": "/root/Agent-Decoding/data/pddl/test.jsonl"
   },
   "jericho": {

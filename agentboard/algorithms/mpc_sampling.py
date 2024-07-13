@@ -34,7 +34,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         
         self.task = "gsm8k"
         
-        self.problem_size = 16 if self.task == "gsm8k" else 30
+        self.problem_size = 25 if self.task == "gsm8k" else 30
         
         self.n_gram = self.problem_size
         
@@ -88,6 +88,10 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
     def parse_action_sequence(self, action_output): 
         
         def _get_start_end_token_id(original_text, text, tokens):
+            if text not in original_text:
+                text = text.strip()
+                if text not in original_text:
+                    return 0, -1
             cnt_length = [len(token) for token in tokens]
             cumulated_cnt_length = np.cumsum(cnt_length)
             index_start =  original_text.index(text)#processed action index in action
@@ -98,10 +102,14 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             if token_end < token_start:
                 token_end = -1
             return token_start, token_end
+        def _clean_action(action):
+            action = action.replace("`\n", "")
+            return action + "\n"
+        
+        prefix = "def solution():\n"
         
         if type(action_output) == str: # no logprob information
             
-            prefix = "def solution():\n"
             
             all_prefix = [prefix] + [a for a in self.memory if a is not None]
             
@@ -159,7 +167,14 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                 
                 action_logprobs = action_logprobs[token_start:token_end]
                 
-                action_prob = np.exp(sum(action_logprobs))
+                action_prob = np.exp(sum(action_logprobs)) 
+                if token_end - token_start > 0:
+                    action_length = token_end - token_start
+                else:
+                    action_length = len(action_tokens)
+                action_prob = action_prob ** (1 / action_length) # normalize by the length of the action
+                
+                action_chain = [a for a in action_chain if a.strip()!=""]
             
                 return {"action": first_action, "action_chain": action_chain, "action_prob": action_prob}, first_action
             
@@ -172,13 +187,19 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                     all_actions = [action]
                 
                 first_action = all_actions[0] + '\n'
-                action_chain = [a + '\n' for a in all_actions][: self.lookahead_decision_length] # only keep the first n actions
+                action_chain = [_clean_action(a) for a in all_actions][: self.lookahead_decision_length] # only keep the first n actions
                 
                 token_start, token_end = _get_start_end_token_id(action_text_output, "".join(action_chain), action_tokens)
                 
                 action_logprobs = action_logprobs[token_start:token_end]
                 
                 action_prob = np.exp(sum(action_logprobs))
+                if token_end - token_start > 0:
+                    action_length = token_end - token_start
+                else:
+                    action_length = len(action_tokens)
+                action_prob = action_prob ** (1 / action_length)  # normalize by the length of the action
+                action_chain = [a for a in action_chain if a.strip()!=""]
                 
                 return {"action": first_action, "action_chain": action_chain, "action_prob": action_prob}, first_action
         
@@ -271,7 +292,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             
             all_actions = ",".join(list(set([trajectory[-1]["Action"] for trajectory in self.trajectory_pool if trajectory[-1]["Action"] is not None])))
             
-            reflection += f"I have generated {all_actions}, but none of them are correct. I need to revise them to solve the problem {self.prompts["question"]}."
+            question = self.prompts["question"]
+            reflection += f"I have generated {all_actions}, but none of them are correct. I need to revise them to solve the problem {question}."
             
             # if reflection is multiline, follow the format of python comment
             indent = "    "
@@ -377,7 +399,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                     if a is not None:
                         f.write(f"{a}\n")
 
-            full_output = f.getvalue()
+                full_output = f.getvalue()
 
             return True, full_output
             

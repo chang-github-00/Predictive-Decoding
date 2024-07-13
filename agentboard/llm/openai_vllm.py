@@ -48,7 +48,7 @@ class OPENAI_VLLM:
                 
     def chat_inference(self, messages):
 
-        response = openai.ChatCompletion.create(
+        response = self.client.chat.completions.create(
             engine=self.engine, # engine = "deployment_name".
             messages=messages,
             stop = self.stop,
@@ -73,7 +73,7 @@ class OPENAI_VLLM:
         top_p = config.get("top_p", 1)
         
         
-        response = openai.ChatCompletion.create(
+        response = self.client.chat.completions.create(
                         model=self.engine,
                         messages=messages,
                         max_tokens=max_tokens,
@@ -97,7 +97,7 @@ class OPENAI_VLLM:
                 choice = response.choices[i]
                 item = {}
                 item["text"] = choice.message.content
-                raw_log_prob = choice.logprobs
+                raw_log_prob = choice.logprobs.content
                 item["logprobs"] = [token.logprob for token in raw_log_prob]
                 item["tokens"] = [token.token for token in raw_log_prob]
                 outputs.append(item)

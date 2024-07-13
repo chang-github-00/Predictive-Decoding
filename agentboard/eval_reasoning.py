@@ -1,8 +1,6 @@
-import pdb
 import sys
 import os
 import re
-import wandb
 import warnings
 import yaml
 import json
@@ -18,9 +16,12 @@ from typing import Optional
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
-        return full_dataset[:100]
+        dataset = [{"question": a["question"], "answer": a["answer"]} for a in full_dataset]
+        return dataset[:100]
         
 def evaluate_results(task, item, result): #result is a list
+    def retrieve_answer_from_dataset(answer: str) -> str:
+        return re.match(r'[\S\s]*#### (.*)$', answer)[1]
     def judge_gsm8k_answer(output: Optional[str], answer: str) -> bool:
         if output is None:
             return False
@@ -42,7 +43,7 @@ def evaluate_results(task, item, result): #result is a list
             return False
 
     if task == "gsm8k":
-        answer = item["answer"]
+        answer = retrieve_answer_from_dataset(item["answer"])
         executed_solution = execute_solution(result, execute=True)
         return judge_gsm8k_answer(executed_solution, answer)
     else:
@@ -84,12 +85,13 @@ def execute_solution(code, execute=True):
                         pass
                 if return_variable in exec_globals:
                     return exec_globals[return_variable]
-            return str(e)
+        
+            return "Error: return error, fail to execute"
     else:
         return full_output
     
       
-class EvalPlanning:
+class EvalReasoning:
     def __init__(self,
                  task="dp",
                  run_config=None,
@@ -119,6 +121,10 @@ class EvalPlanning:
         
         dataset_name = os.path.basename(self.dataset_path).split(".")[0]
         result = []
+        
+        # create a new empty file for logging
+        f = open(os.path.join(self.log_path,f"{self.task}_{dataset_name}.txt"), "w")
+            
         for id, item in tqdm(enumerate(self.dataset), total=len(self.dataset)):
             question = item["question"]
             # print(question)
@@ -180,7 +186,6 @@ def load_config(cfg_path, args):
         run_config["data_path"] = args.data_path
     # if args.prompt_path != '':
     #     algorithm_config["prompt_path"] = args.prompt_path
-    algorithm_config["lookahead_length"] = args.lookahead_length
     return llm_config, algorithm_config, run_config
 
 def check_log_paths_are_ready(log_dir):
@@ -203,9 +208,9 @@ def main():
     
     check_log_paths_are_ready(run_config["log_path"])
     
-    eval_planning = EvalPlanning(task, run_config, llm_config, algorithm_config)
+    eval_reasoning = EvalReasoning(task, run_config, llm_config, algorithm_config)
     
-    metrics = eval_planning.evaluate()
+    metrics = eval_reasoning.evaluate()
     
 if __name__ == "__main__":
     main()

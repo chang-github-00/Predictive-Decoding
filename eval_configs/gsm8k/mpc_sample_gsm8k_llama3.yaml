@@ -13,7 +13,7 @@ algorithm:
   value_type: logp # use llama3
   do_sample: True
   beam_temperature: 1.0
-  select_temperature: 0.1
+  select_temperature: 0.05
   # lookahead_token_length: 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
@@ -30,7 +30,7 @@ llm:
       max_tokens: 500
   llama3:
       name: openai_vllm
-      model: /root/huggingface/Meta-Llama-3-8B-Instruct/
+      engine: /root/huggingface/Meta-Llama-3-8B-Instruct/
       context_length: 4096
       temperature: 0 # make this larger for tot
       top_p: 1

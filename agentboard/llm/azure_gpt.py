@@ -12,7 +12,7 @@ from tenacity import (
     wait_random_exponential,
 )  # for exponential backoff
 
-
+# install openai==0.28.1 
 @registry.register_llm("gpt_azure")
 class OPENAI_GPT_AZURE:
     def __init__(self,

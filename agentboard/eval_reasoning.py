@@ -44,7 +44,18 @@ def evaluate_results(task, item, result): #result is a list
 
     if task == "gsm8k":
         answer = retrieve_answer_from_dataset(item["answer"])
-        executed_solution = execute_solution(result, execute=True)
+        if type(result) == str:
+            executed_solution = execute_solution(result, execute=True)
+        elif type(result) == list:
+            executed_solution = [execute_solution(a, execute=True) for a in result]
+            # majority vote
+            count = dict()
+            for a in executed_solution:
+                if a not in count:
+                    count[a] = 1
+                else:
+                    count[a] += 1
+            executed_solution = max(count, key=count.get)
         return judge_gsm8k_answer(executed_solution, answer), executed_solution
     else:
         raise NotImplementedError
@@ -129,11 +140,13 @@ class EvalReasoning:
             question = item["question"]
             # print(question)
             success, output = self.algorithm.run(question, prompts=self.prompts, end_suffix="return")
+            
             if success:
                 evaluation, executed_output = evaluate_results(self.task, item, output)
                 result.append(evaluation)
             else:
-                evaluation = None   
+                evaluation = None  
+            if type(output) == list: output = "\n".join(output) 
             output = output + "\n Executed result: " + str(executed_output)
             with open(os.path.join(self.log_path,f"{self.task}_{dataset_name}.txt"), "a+") as f:
                 f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [output]: {output}\n")

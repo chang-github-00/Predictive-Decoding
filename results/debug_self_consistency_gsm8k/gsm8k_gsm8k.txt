@@ -1,0 +1,1199 @@
+[EXP] 0: [success_rate]: True, [output]: 
+def solution():
+    eggs_laid = 16
+    eggs_eaten = 3
+    eggs_used = 4
+    eggs_sold = eggs_laid - eggs_eaten - eggs_used
+    revenue = eggs_sold * 2
+    result = revenue
+    return result
+
+ Executed result: 18
+[EXP] 1: [success_rate]: True, [output]: 
+def solution():
+    blue_fiber = 2
+    white_fiber = blue_fiber / 2
+    total_fiber = blue_fiber + white_fiber
+    result = total_fiber
+    return result
+
+ Executed result: 3.0
+[EXP] 2: [success_rate]: False, [output]: 
+def solution():
+    house_price_initial = 80000
+    repairs = 50000
+    increased_value = house_price_initial + repairs
+    percentage_increase = 1.5
+    house_price_new = increased_value * percentage_increase
+    profit = house_price_new - house_price_initial - repairs
+    result = profit
+    return result
+
+ Executed result: 65000.0
+[EXP] 3: [success_rate]: True, [output]: 
+def solution():
+    sprints_per_week = 3
+    sprints_per_session = 3
+    meters_per_sprint = 60
+    total_meters_per_week = sprints_per_session * meters_per_sprint  # meters per session
+    total_meters_per_week = total_meters_per_week * sprints_per_week  # total meters per week
+    result = total_meters_per_week
+    return result
+
+ Executed result: 540
+[EXP] 4: [success_rate]: False, [output]: 
+def solution():
+    number_of_chickens = 20
+    morning_feed = 15
+    afternoon_feed = 25
+    total_feed_given = morning_feed + afternoon_feed
+    feed_needed_per_chicken = 3
+    final_feed_needed = total_feed_given - (number_of_chickens * feed_needed_per_chicken)
+    result = final_feed_needed
+    return result
+
+ Executed result: -20
+[EXP] 5: [success_rate]: True, [output]: Python
+def solution():
+    cost_per_glass = 5
+    cost_per_glass_half_price = 0.6 * cost_per_glass
+    glasses_to_buy = 16
+    full_price_glasses = int(glasses_to_buy / 2)
+    half_price_glasses = glasses_to_buy - full_price_glasses
+    total_cost = (cost_per_glass * full_price_glasses) + (cost_per_glass_half_price * half_price_glasses)
+    result = total_cost
+    return result
+
+ Executed result: 64.0
+[EXP] 6: [success_rate]: True, [output]: 
+def solution():
+    seattle_sheep = 20
+    charleston_sheep = 4 * seattle_sheep
+    toulouse_sheep = 2 * charleston_sheep
+    total_sheep = seattle_sheep + charleston_sheep + toulouse_sheep
+    result = total_sheep
+    return result
+
+ Executed result: 260
+[EXP] 7: [success_rate]: False, [output]: 
+def solution():
+    total_size = 200
+    download_rate = 2
+    size_downloaded_before_restart = total_size * 0.4
+    time_to_download-before_restart = size_downloaded_before_restart / download_rate
+    time_to_install_updates = 20
+    
+    time_to_restart = time_to_download_before_restart + time_to_install_updates
+    time_to_download_after_restart = (total_size - size_downloaded_before_restart) / download_rate
+    
+    total_time = time_to_restart + time_to_download_after_restart
+    result = total_time
+    return result
+
+ Executed result: Error: return error, fail to execute
+[EXP] 8: [success_rate]: False, [output]: Python
+def solution():
+    # First leg
+    distance_driven_at_60_mph = 3 * 60
+    # Second leg
+    initial_distance = 0
+    initial_speed = 30
+    time_at_initial_speed = 0.5
+    initial_distance += initial_speed * time_at_initial_speed
+    remaining_distance = 4 * 80 - initial_distance
+    time_at_remaining_speed = remaining_distance / 80
+    # Total distance driven
+    total_distance_driven = distance_driven_at_60_mph + initial_distance + remaining_distance
+    result = total_distance_driven
+    return result
+
+ Executed result: 500.0
+[EXP] 9: [success_rate]: True, [output]: 
+def solution():
+    regular_rate = 10
+    regular_hours = 40
+    regular_earnings = regular_rate * regular_hours
+    overtime_rate = regular_rate * 1.2
+    overtime_hours = 45 - regular_hours
+    overtime_earnings = overtime_rate * overtime_hours
+    total_earnings = regular_earnings + overtime_earnings
+    result = total_earnings
+    return result
+
+ Executed result: 460.0
+[EXP] 10: [success_rate]: True, [output]: 
+def solution():
+    downloads_first_month = 60
+    downloads_second_month = downloads_first_month * 3
+    downloads_third_month = downloads_second_month * 0.7
+    total_downloads = downloads_first_month + downloads_second_month + downloads_third_month
+    result = total_downloads
+    return result
+
+ Executed result: 366.0
+[EXP] 11: [success_rate]: True, [output]: 
+def solution():
+    donuts = 3
+    donuts_price = 68
+    total_donuts_cost = donuts * donuts_price
+    
+    mini_cupcakes = 2
+    mini_cupcakes_price = 80
+    total_mini_cupcakes_cost = mini_cupcakes * mini_cupcakes_price
+    
+    mini_cheesecakes = 6
+    mini_cheesecakes_price = 55
+    total_mini_cheesecakes_cost = mini_cheesecakes * mini_cheesecakes_price
+    
+    total_cost = total_donuts_cost + total_mini_cupcakes_cost + total_mini_cheesecakes_cost
+    result = total_cost
+    return result
+
+ Executed result: 694
+[EXP] 12: [success_rate]: False, [output]: 
+def solution():
+    tree_cost = 90
+    lemons_per_year = 7
+    price_per_lemon = 1.5
+    cost_per_year = 3
+    years = 0
+    revenue = 0
+    while revenue < tree_cost:
+        revenue += lemons_per_year * price_per_lemon - cost_per_year
+        years += 1
+    result = years
+    return result
+
+ Executed result: 12
+[EXP] 13: [success_rate]: False, [output]: 
+def solution():
+    vacuum_cleaneers_sold = 5
+    vacuum_cleaneers_sold_at_green_house = int(vacuum_cleaneers_sold / 3)
+    vacuum_cleaneers_sold_at_red_house = 2
+    vacuum_cleaneers_sold_at_orange_house = int((vacuum_cleaneers_sold - vacuum_cleaneers_sold_at_green_house - vacuum_cleaneers_sold_at_red_house) / 2)
+    vacuum_cleaneers_initial = vacuum_cleaneers_sold_at_green_house + vacuum_cleaneers_sold_at_red_house + vacuum_cleaneers_sold_at_orange_house + vacuum_cleaneers_sold
+    result = vacuum_cleaneers_initial
+    return result
+
+ Executed result: 9
+[EXP] 14: [success_rate]: False, [output]: def solution():
+    students_initial = 20
+    percentage_students_contemporary = 20
+    students_contemporary = students_initial * (percentage_students_contemporary / 100)
+    students_remaining = students_initial - students_contemporary
+    percentage_students_jazz = 25
+    students_jazz = students_remaining * (percentage_students_jazz / 100)
+    students_hiphop = students_remaining - students_jazz
+    result = 100 - (percentage_students_contemporary + percentage_students_jazz)
+    return result
+
+ Executed result: 55
+[EXP] 15: [success_rate]: False, [output]: 
+def solution():
+    jewelry_cost = 5000
+    electronic_gadgets_cost = 8000
+    
+    jewelry_profit = jewelry_cost * 0.025
+    electronic_gadgets_profit = electronic_gadgets_cost * 0.012
+    
+    jewelry_profit = jewelry_cost + jewelry_profit
+    electronic_gadgets_profit = electronic_gadgets_cost + electronic_gadgets_profit
+    
+    if jewelry_profit > electronic_gadgets_profit:
+        result = jewelry_profit
+    else:
+        result = electronic_gadgets_profit
+    
+    return result
+
+ Executed result: 8096.0
+[EXP] 16: [success_rate]: False, [output]: 
+def solution():
+    total_distance_west = 80
+    total_distance_north = 150
+    distance_covered_per_day = total_distance_west * 2 + total_distance_north
+    distance_per_train = distance_covered_per_train = distance_covered_per_day / 2
+    result = distance_per_train
+    return result
+
+ Executed result: 155.0
+[EXP] 17: [success_rate]: True, [output]: 
+def solution():
+    hour_rate_teacher = 20
+    hour_rate_coach = 30
+    hours_per_week_teacher = 35
+    hours_per_week_coach = 15
+    weeks_in_a_year = 50
+    teacher_salary_per_year = hour_rate_teacher * hours_per_week_teacher * weeks_in_a_year
+    coach_salary_per_year = hour_rate_coach * hours_per_week_coach * weeks_in_a_year
+    total_salary_per_year = teacher_salary_per_year + coach_salary_per_year
+    result = total_salary_per_year
+    return result
+
+ Executed result: 57500
+[EXP] 18: [success_rate]: True, [output]: 
+def solution():
+    eggs_per_day = 3
+    days_in_4_weeks = 4 * 7
+    total_eggs = eggs_per_day * days_in_4_weeks
+    dozens_eggs = total_eggs // 12
+    result = dozens_eggs
+    return result
+
+ Executed result: 7
+[EXP] 19: [success_rate]: False, [output]: 
+def solution():
+    miles_walked = 4 + 2
+    hours_taken = 2
+    miles_left = 12 - miles_walked
+    speed_required = 4
+    speed_run = miles_left / (3)  # 3 hours have been taken, so subtract 2 hours
+    result = speed_run
+    return result
+
+ Executed result: 2.0
+[EXP] 20: [success_rate]: False, [output]: 
+def solution():
+    orange_drink_initial = 10
+    orange_drink_water = 2/3
+    pineapple_drink_initial = 15
+    pineapple_drink_water = 3/5
+    water_in_orange_drink = orange_drink_initial * orange_drink_water
+    water_in_pineapple_drink = pineapple_drink_initial * pineapple_drink_water
+    spill = 1
+    water_spilled = water_in_orange_drink
+    orange_drink_left = orange_drink_initial - spill
+    total_water_in_orange_drink_left = water_in_orange_drink - water_spilled
+    total_water_in_pineapple_drink = water_in_pineapple_drink
+    total_water_in_remaining_drink = total_water_in_orange_drink_left + total_water_in_pineapple_drink
+    total_remaining_drink = orange_drink_left + pineapple_drink_initial - spill
+    result = total_water_in_remaining_drink
+    return result
+
+ Executed result: 9.0
+[EXP] 21: [success_rate]: False, [output]: 
+def solution():
+    age_of_samantha = 31
+    age_of_raymond_son = age_of_samantha - 6
+    age_of_raymond_at_son_birth = age_of_raymond_son + 6
+    age_at_son_birth = 23
+    years_ago = age_at_son_birth - age_of_raymond_at_son_birth
+    result = years_ago
+    return result
+
+ Executed result: -8
+[EXP] 22: [success_rate]: True, [output]: 
+def solution():
+    customers_on_tuesday = 8
+    customers_who_buy_1 = 3
+    customers_who_buy_2 = 2
+    customers_who_dont_buy = 3
+    dvds_sold_by_1 = customers_who_buy_1
+    dvds_sold_by_2 = customers_who_buy_2 * 2
+    total_dvds_sold = dvds_sold_by_1 + dvds_sold_by_2
+    result = total_dvds_sold
+    return result
+
+ Executed result: 7
+[EXP] 23: [success_rate]: False, [output]: 
+def solution():
+    candle_initial_length = 0
+    candle_melting_rate = 2
+    time_00 = 1
+    time_00_to_17 = 4
+    candle_length_after_burning = candle_initial_length - (candle_melting_rate * time_00_to_17)
+    result = candle_length_after_burning
+    return result
+
+ Executed result: -8
+[EXP] 24: [success_rate]: True, [output]: def solution():
+    book_price = 19.50
+    discount = 0.25
+    original_price = book_price / (1 - discount)
+    result = original_price
+    return result
+
+ Executed result: 26.0
+[EXP] 25: [success_rate]: True, [output]: 
+def solution():
+    total_cost = 50
+    chicken_cost = 12
+    milk_cost = 5 * 3
+    apple_cost = 4 * 1.50
+    total_without_pizza = chicken_cost + milk_cost + apple_cost
+    pizza_cost = total_cost - total_without_pizza
+    pizza_boxes = pizza_cost / 8.50
+    result = int(pizza_boxes)
+    return result
+
+ Executed result: 2
+[EXP] 26: [success_rate]: True, [output]: 
+def solution():
+    shorts = 3
+    pants = 3
+    shoes = 3
+    
+    shorts_cost = 16.50
+    pants_cost = 22.50
+    shoes_cost = 42.00
+    
+    total_shorts_cost = shorts * shorts_cost
+    total_pants_cost = pants * pants_cost
+    total_shoes_cost = shoes * shoes_cost
+    
+    total_cost = total_shorts_cost + total_pants_cost + total_shoes_cost
+    
+    result = total_cost
+    return result
+
+ Executed result: 243.0
+[EXP] 27: [success_rate]: False, [output]: 
+def solution():
+    ice_cream servings_per_carton = 15
+    ice_cream_per_carton_cost = 4.0
+    total_days = 60
+    total_servings = total_days
+    cartons_consumed = math.ceil(total_servings / servings_per_carton)
+    total_cost = cartons_consumed * ice_cream_per_carton_cost
+    result = total_cost
+    return result
+
+ Executed result: Error: return error, fail to execute
+[EXP] 28: [success_rate]: False, [output]: 
+def solution():
+    trip_total_miles = 60
+    first_stop_miles = 20
+    trip_miles_to_second_stop = trip_total_miles - (trip_total_miles - 15)
+    trip_miles_between_stops = trip_miles_to_second_stop - first_stop_miles
+    result = trip_miles_between_stops
+    return result
+
+ Executed result: -5
+[EXP] 29: [success_rate]: True, [output]: 
+def solution():
+    heels_price = 33
+    expensiveheels_price = 2 * heels_price
+    heels_total = heels_price + expensiveheels_price
+    boots_price = heels_total + 5
+    result = boots_price
+    return result
+
+ Executed result: 104
+[EXP] 30: [success_rate]: False, [output]: 
+def solution():
+    ratio = 7 / 11
+    total_age = 162
+    allen_age = total_age * ratio[1] / (ratio[0] + ratio[1])
+    allen_age_ten_years_later = allen_age + 10
+    return allen_age_ten_years_later
+
+ Executed result: Error: return error, fail to execute
+[EXP] 31: [success_rate]: True, [output]: 
+def solution():
+    jelly_beans_guess1 = 80
+    jelly_beans_guess2 = jelly_beans_guess1 // 2 + 20
+    jelly_beans_guess3 = jelly_beans_guess1 * 1.25
+    total_guesses = jelly_beans_guess1 + jelly_beans_guess2 + jelly_beans_guess3
+    average_guess = total_guesses / 3
+    result = average_guess
+    return result
+
+ Executed result: 80.0
+[EXP] 32: [success_rate]: True, [output]: 
+def solution():
+    dogs = 10
+    time_per_dog = 0.5
+    time_per_week = dogs * time_per_dog * 7
+    result = time_per_week
+    return result
+
+ Executed result: 35.0
+[EXP] 33: [success_rate]: False, [output]: 
+def solution():
+    coins_total = 110
+    gold_coins = gold_coins_diff + silver_coins
+    gold_coins_diff = 30
+    silver_coins = coins_total - gold_coins
+    gold_coins = gold_coins_diff + silver_coins
+    result = gold_coins
+    return result
+
+ Executed result: Error: return error, fail to execute
+[EXP] 34: [success_rate]: True, [output]: 
+def solution():
+    raymond_jewels = 40
+    aaron_jewels = (raymond_jewels / 2) + 5
+    siobhan_jewels = aaron_jewels - 2
+    result = siobhan_jewels
+    return result
+
+ Executed result: 23.0
+[EXP] 35: [success_rate]: True, [output]: def solution():
+    minutes = 40
+    points_minutes_1 = 20
+    points_minutes_2 = 20
+    points_minutes_1 = 4
+    points_first_half = points_minutes_1
+    points_second_half = points_minutes_1 * 1.25 
+    points_total = points_first_half + points_second_half
+    result = points_total
+    return result
+
+ Executed result: 9.0
+[EXP] 36: [success_rate]: True, [output]: python
+def solution():
+    yogurts_per_day = 2
+    price_per_yogurt = 5/4
+    days = 30
+    total_yogurts = yogurts_per_day * days
+    total_cost = total_yogurts * price_per_yogurt
+    result = total_cost
+    return result
+
+ Executed result: 75.0
+[EXP] 37: [success_rate]: False, [output]: def solution():
+    lego_sets_initial = 13
+    lego_sets_sold = lego_sets_initial
+    revenue_from_lego_sets = lego_sets_sold * 15
+    games_purchased = 8
+    cost_per_game = 20
+    total_cost = games_purchased * cost_per_game
+    money_left = revenue_from_lego_sets - total_cost
+    expected_lego_sets_left = revenue_from_lego_sets - total_cost - 5
+    result = 0
+    for i in range(lego_sets_sold, 0, -1):
+        if i * 15 - total_cost - 5 >= 0:
+            result = i
+            break
+    return result
+
+ Executed result: 13
+[EXP] 38: [success_rate]: False, [output]: python
+def solution():
+    total_distance = 60
+    days_running = 3
+    first_day_distance = 3 * 60
+    remaining_distance = total_distance - first_day_distance
+    other_days_distance = remaining_distance / 2
+    days_run = [first_day_distance] + [other_days_distance] * 2
+    total_hours = sum(days_run)
+    miles_per_hour = total_distance / total_hours
+    result = miles_per_hour
+    return result
+
+ Executed result: 1.0
+[EXP] 39: [success_rate]: False, [output]: 
+def solution():
+    # Speed when skipping - 3 mph
+    skip_speed = 3
+    # Speed when running - 2 times skipping speed
+    run_speed = 2 * skip_speed
+    # Speed when walking - skip speed / 4
+    walk_speed = skip_speed / 4
+    # Total time - 6 hours
+    total_time = 6
+    # Time spent running - 1/3 of total time
+    run_time = total_time / 3
+    # Time spent walking - 2/3 of total time
+    walk_time = total_time - run_time
+    # Distance run - run speed * run time
+    run_distance = run_speed * run_time
+    # Distance walked - walk speed * walk time
+    walk_distance = walk_speed * walk_time
+    # Total distance - distance run + distance walked
+    total_distance = run_distance + walk_distance
+    result = total_distance
+    return result
+
+ Executed result: 15.0
+[EXP] 40: [success_rate]: True, [output]: def solution():
+    suzy_phone_age = 1
+    ben_phone_age = suzy_phone_age * 2
+    brandon_phone_age = ben_phone_age * 4
+    result = brandon_phone_age
+    return result
+
+ Executed result: 8
+[EXP] 41: [success_rate]: False, [output]: 
+def solution():
+    range_of_drageon = 1000
+    range_with_gemstone = 400 * 3 = 1200
+    margin = range_with_gemstone - range_of_drageon
+    result = margin
+    return result
+
+ Executed result: Error: return error, fail to execute
+[EXP] 42: [success_rate]: True, [output]: 
+def solution():
+    pieces_made = 5 * 8
+    pieces_taken = pieces_made - 14
+    result = pieces_taken
+    return result
+
+ Executed result: 26
+[EXP] 43: [success_rate]: False, [output]: python
+def solution():
+    calories_per_serving = 250
+    servings_per_bag = 5
+    grams_per_bag = 300
+    calories_per_gram = calories_per_serving / servings_per_bag
+    total_calories_needed = 2000 - 1800
+    total_grams_allowed = total_calories_needed / calories_per_gram
+    result = round(grams_per_bag - total_grams_allowed)
+    return result
+
+ Executed result: 296
+[EXP] 44: [success_rate]: True, [output]: 
+def solution():
+    beeswax_supplies_cost = 10
+    candles_per_pound = 10
+    candle_selling_price = 2
+    candles_made = 20
+    
+    beeswax_needed = candles_made / candles_per_pound
+    total_supplies_cost = beeswax_needed * beeswax_supplies_cost
+    total_revenue = candles_made * candle_selling_price
+    
+    profit = total_revenue - total_supplies_cost
+    result = profit
+    return result
+
+ Executed result: 20.0
+[EXP] 45: [success_rate]: False, [output]: 
+def solution():
+    articles_monday = 5
+    articles_tuesday = 2/5 * articles_monday
+    articles_wednesday = 2 * articles_tuesday
+    total_articles = articles_monday + articles_tuesday + articles_wednesday
+    
+    time_per_article = 4
+    total_time = total_articles * time_per_article
+    
+    result = total_time
+    return result
+
+ Executed result: 44.0
+[EXP] 46: [success_rate]: False, [output]: def solution():
+
+ Executed result: Error: return error, fail to execute
+[EXP] 47: [success_rate]: True, [output]: 
+def solution():
+    blue_ties_cost = 40
+    blue_ties_spent = 200
+    blue_ties = blue_ties_spent / blue_ties_cost
+    red_ties = blue_ties * 2
+    red_ties_cost = blue_ties_cost * 1.5
+    red_ties_spent = red_ties * red_ties_cost
+    total_ties_spent = blue_ties_spent + red_ties_spent
+    result = total_ties_spent
+    return result
+
+ Executed result: 800.0
+[EXP] 48: [success_rate]: True, [output]: 
+def solution():
+    total_wire = 4  # feet
+    piece_length = 0.5  # feet
+    number_of_pieces = total_wire / piece_length
+    result = int(number_of_pieces)
+    return result
+
+ Executed result: 8
+[EXP] 49: [success_rate]: False, [output]: 
+def solution():
+    floors = 15
+    units_per_floor = 8
+    occupied = 14  # 3/4 * 15 floors
+    unoccupied = floors * units_per_floor - occupied * units_per_floor
+    result = unoccupied
+    return result
+
+ Executed result: 8
+[EXP] 50: [success_rate]: True, [output]: 
+def solution():
+    eggs_per_day = 252
+    eggs_per_week = eggs_per_day * 7
+    eggs_per_dozen = eggs_per_week // 12
+    price_per_dozen = 2
+    total_money = eggs_per_dozen * price_per_dozen
+    result = total_money
+    return result
+
+ Executed result: 294
+[EXP] 51: [success_rate]: False, [output]: python
+def solution():
+    hours_from_1_to_4_pm = 3
+    miles_to_travel_first_half = 3 * 10
+    miles_to_travel_second_half = 3 * 6
+    total_miles_to_travel = miles_to_travel_first_half + miles_to_travel_second_half
+    result = total_miles_to_travel / 6
+    return result
+
+ Executed result: 8.0
+[EXP] 52: [success_rate]: True, [output]: 
+def solution():
+    weight_to_remove = 15
+    weight_per_comic_book = 1/4
+    weight_per_toy = 1/2
+    weight_removed_comic_books = 30 * weight_per_comic_book
+    weight_removed = weight_removed_comic_books
+    weight_to_remove_Toys = weight_to_remove - weight_removed
+    num_toys_removed = weight_to_remove_Toys / weight_per_toy
+    result = num_toys_removed
+    return result
+
+ Executed result: 15.0
+[EXP] 53: [success_rate]: False, [output]: 
+def solution():
+    trucks_repaired = 6
+    truck_charge = 60
+    truck_revenue = trucks_repaired * truck_charge
+
+    car_repaired = 4
+    car_charge = 40
+    car_revenue = car_repaired * car_charge
+
+    total_revenue_thursday = truck_revenue + car_revenue
+
+    truck_repaired_mail = 0
+    truck_charge_mail = 0
+    truck_revenue_mail = 0
+
+    car_repaired_mail = 12
+    car_charge_mail = 40
+    car_revenue_mail = car_repaired_mail * car_charge_mail
+
+    total_revenue_friday = truck_revenue_mail + car_revenue_mail
+
+    difference_revenue = total_revenue_friday - total_revenue_thursday
+
+    return difference_revenue
+
+ Executed result: -40
+[EXP] 54: [success_rate]: True, [output]: 
+def solution():
+    adopted_kittens = 7
+    patchy_kittens = adopted_kittens * 3
+    trixie_kittens = 12
+    total_kittens = adopted_kittens + patchy_kittens + trixie_kittens
+    result = total_kittens
+    return result
+
+ Executed result: 40
+[EXP] 55: [success_rate]: True, [output]: 
+def solution():
+    lollipops_initial = 30
+    lollipops_eaten = 2
+    lollipops_after_eating = lollipops_initial - lollipops_eaten
+    lollipops_per_bag = 2
+    num_bags = lollipops_after_eating // lollipops_per_bag
+    result = num_bags
+    return result
+
+ Executed result: 14
+[EXP] 56: [success_rate]: True, [output]: Python
+def solution():
+    money_initial = 42
+    ticket_cost = 7
+    popcorn_cost = 7
+    total_cost = ticket_cost + popcorn_cost
+    times = money_initial // total_cost
+    result = times
+    return result
+
+ Executed result: 3
+[EXP] 57: [success_rate]: True, [output]: Python
+def solution():
+    bridge_pounds = 5000
+    truck_and_driver_pounds = 3755
+    box_pounds = 15
+    
+    boxes_in_truck = (bridge_pounds - truck_and_driver_pounds) / box_pounds
+    
+    result = int(boxes_in_truck)
+    return result
+
+ Executed result: 83
+[EXP] 58: [success_rate]: True, [output]: 
+def solution():
+    final_bill = 40.00
+    fee = final_bill * 0.25
+    delivery_fees = 3.00
+    tip = 4.00
+    total = final_bill + fee + delivery_fees + tip
+    result = total
+    return result
+
+ Executed result: 57.0
+[EXP] 59: [success_rate]: True, [output]: Python
+def solution():
+    clusters = 6
+    fruits_per_cluster = 20
+    individual_fruit = 67
+    total_fruits = clusters * fruits_per_cluster + individual_fruit
+    result = total_fruits
+    return result
+
+ Executed result: 187
+[EXP] 60: [success_rate]: True, [output]: 
+def solution():
+    oranges_in_basket = 25
+    bad_oranges = 1
+    unripe_oranges = round(oranges_in_basket * 0.20)
+    sour_oranges = 2
+    remaining_oranges = oranges_in_basket - bad_oranges - unripe_oranges - sour_oranges
+    good_oranges = remaining_oranges
+    result = good_oranges
+    return result
+
+ Executed result: 17
+[EXP] 61: [success_rate]: True, [output]: 
+def solution():
+    material_cost = 500
+    jeweler_cost = 800
+    total_cost = material_cost + jeweler_cost
+    insurance_cost = total_cost * 0.1
+    
+    result = material_cost + jeweler_cost + insurance_cost
+    return result
+
+ Executed result: 1430.0
+[EXP] 62: [success_rate]: False, [output]: 
+def solution():
+    total_value_of_pension = 50000
+    years_after_start = 10  # 30 - 20 = 10 years
+    percentage_annually = 0.05
+    after_quiz_pension = (1 + percentage_annually) ** years_after_start * total_value_of_pension
+    result = after_quiz_pension
+    return result
+
+ Executed result: 81444.7313388721
+[EXP] 63: [success_rate]: True, [output]: 
+def solution():
+    initial_monthly_fee = 140
+    first_half_year_fee = initial_monthly_fee * 6
+    discount = 10 / 100
+    reduced_fee = initial_monthly_fee * (1 - discount)
+    second_half_year_fee = reduced_fee * 6
+    total_fee = first_half_year_fee + second_half_year_fee
+    result = total_fee
+    return result
+
+ Executed result: 1596.0
+[EXP] 64: [success_rate]: True, [output]: Python
+def solution():
+    distance_traveled = 100
+    gallons_used = 4
+    total_gallons = 12
+    miles_per_gallon = distance_traveled / gallons_used
+    total_miles = miles_per_gallon * total_gallons
+    result = total_miles
+    return result
+
+ Executed result: 300.0
+[EXP] 65: [success_rate]: True, [output]: 
+def solution():
+    hours_tv = 2
+    hours_reading = hours_tv / 2
+    total_hours_per_week = hours_tv + hours_reading
+    weeks = 4
+    total_hours = total_hours_per_week * 3 * weeks
+    result = total_hours
+    return result
+
+ Executed result: 36.0
+[EXP] 66: [success_rate]: True, [output]: 
+def solution():
+    schools = 4
+    teams_per_school = 2
+    team_players = 5
+    coaches_per_team = 1
+    teams = schools * teams_per_school
+    
+    players = teams * team_players
+    coaches = teams * coaches_per_team
+    
+    total_people_sent = players + coaches
+    
+    result = total_people_sent
+    
+    return result
+
+ Executed result: 48
+[EXP] 67: [success_rate]: True, [output]: def solution():
+    diamonds = 175
+    rubies = diamonds - 35
+    emeralds = rubies * 2
+    total_gems = diamonds + rubies + emeralds
+    result = total_gems
+    return result
+
+ Executed result: 595
+[EXP] 68: [success_rate]: True, [output]: 
+def solution():
+    girls = 60
+    boys = 2 * girls
+    students_per_teacher = 5
+    total_students = girls + boys
+    total_teachers = total_students // students_per_teacher
+    result = total_teachers
+    return result
+
+ Executed result: 36
+[EXP] 69: [success_rate]: True, [output]: 
+def solution():
+    weekly_allowance = 5
+    num_weeks = 8
+    total_money = 100
+    money_received = weekly_allowance * num_weeks
+    money_initial = total_money - money_received
+    result = money_initial
+    return result
+
+ Executed result: 60
+[EXP] 70: [success_rate]: False, [output]: Python
+def solution():
+    weekday_classes = 5
+    weekday_students = 15
+    weekend_classes = 8
+    weekend_students = 15
+    days_in_week = 7
+    total_students = (weekday_classes * weekday_students) + (weekend_classes * weekend_students)
+    total_rate = 15
+    total_charge = total_students * total_rate
+    total_charge_per_week = total_charge
+    result = total_charge_per_week
+    return result
+
+ Executed result: 2925
+[EXP] 71: [success_rate]: True, [output]: 
+def solution():
+    recipe1_instructions = 20
+    recipe2_instructions = recipe1_instructions * 2
+    total_instructions = recipe1_instructions + recipe2_instructions
+    result = total_instructions
+    return result
+
+ Executed result: 60
+[EXP] 72: [success_rate]: True, [output]: def solution():
+    brownies_sold = 43
+    brownie_price = 3
+    brownies_money = brownies_sold * brownie_price
+
+    cheesecakes_sold = 23
+    cheesecake_price = 4
+    cheesecakes_money = cheesecakes_sold * cheesecake_price
+
+    total_money = brownies_money + cheesecakes_money
+    result = total_money
+    return result
+
+ Executed result: 221
+[EXP] 73: [success_rate]: True, [output]: 
+def solution():
+    cell_phones = 5
+    phone_cost = 150
+    total_cost = cell_phones * phone_cost
+    interest_rate = 0.02
+    interest = total_cost * interest_rate
+    total_amount = total_cost + interest
+    monthly_amount = total_amount / 3
+    result = monthly_amount
+    return result
+
+ Executed result: 255.0
+[EXP] 74: [success_rate]: True, [output]: 
+def solution():
+    marigold_price = 2.74
+    petunia_price = 1.87
+    begonia_price = 2.12
+
+    marigold_price_ceil = round(marigold_price)
+
+    petunia_price_ceil = round(petunia_price)
+
+    begonia_price_ceil = round(begonia_price)
+
+    marigold_total = marigold_price_ceil * 12
+    petunia_total = petunia_price_ceil * 9
+    begonia_total = begonia_price_ceil * 17
+
+    total_amount = marigold_total + petunia_total + begonia_total
+
+    result = total_amount
+
+    return result
+
+ Executed result: 88
+[EXP] 75: [success_rate]: False, [output]: Python
+def solution():
+    square_footage_top_level = 16
+    square_footage_total = 0
+    for i in range(1, 5):
+        square_footage_level = square_footage_top_level / (2 ** i)
+        square_footage_total += square_footage_level
+    average_square_footage = square_footage_total / 4
+    result = average_square_footage
+    return result
+
+ Executed result: 0.0
+[EXP] 76: [success_rate]: False, [output]: python
+def solution():
+    dog_food_per_day = [1, 2]
+    days_per_stage = [180, 365 - 180]
+    dog_food_per_stage = [dog_food_per_day[0] * day for day in days_per_stage]
+    dog_food_per_stage.append(dog_food_per_day[1] * (365 - 180))
+    total_dog_food_per_year = sum(dog_food_per_stage)
+    bags_per_year = total_dog_food_per_year // 110
+    if total_dog_food_per_year % 110 != 0:
+        bags_per_year += 1
+    result = bags_per_year
+    return result
+
+ Executed result: 7
+[EXP] 77: [success_rate]: True, [output]: 
+def solution():
+    sarah_laundry = 400
+    david_laundry = sarah_laundry / 4
+    raymond_laundry = sarah_laundry / 2
+    difference = abs(raymond_laundry - david_laundry)
+    result = difference
+    return result
+
+ Executed result: 100.0
+[EXP] 78: [success_rate]: False, [output]: 
+def solution():
+    package_of_3 = 2.50
+    package_of_2 = 1
+    cheaper_price_per_flower = package_of_2 / 2
+    cheaper_price_for_18_flowers = 18 * cheaper_price_per_flower
+    better_price_for_18_flowers = 2 * (18 // 3) * package_of_3 + (18 % 3) * package_of_3 / 3
+    money_saved = better_price_for_18_flowers - cheaper_price_for_18_flowers
+    result = money_saved
+    return result
+
+ Executed result: 21.0
+[EXP] 79: [success_rate]: True, [output]: 
+def solution():
+    cost_initial = 100
+    discount = 0.30
+    cost_discounted = cost_initial - (cost_initial * discount)
+    result = cost_discounted
+    return result
+
+ Executed result: 70.0
+[EXP] 80: [success_rate]: True, [output]: def solution():
+    water_initial = 24
+    girls_water = 1 / 6 * water_initial * 2
+    boy_water = 6
+    water_left = water_initial - girls_water - boy_water
+    result = water_left
+    return result
+
+ Executed result: 10.0
+[EXP] 81: [success_rate]: True, [output]: Python
+def solution():
+    stickers_initial = 10
+    stickers_bought = 21
+    stickers_birthday = 23
+    stickers_total = stickers_initial + stickers_bought + stickers_birthday
+    stickers_given_sister = 9
+    stickers_used_card = 28
+    stickers_left = stickers_total - stickers_given_sister - stickers_used_card
+    result = stickers_left
+    return result
+
+ Executed result: 17
+[EXP] 82: [success_rate]: True, [output]: 
+def solution():
+    grace_weight = 125
+    alex_weight = 4 * grace_weight - 2
+    total_weight = grace_weight + alex_weight
+    result = total_weight
+    return result
+
+ Executed result: 623
+[EXP] 83: [success_rate]: True, [output]: 
+def solution():
+    rose_bushes = 3
+    roses_per_bush = 25
+    thorns_per_rose = 8
+    total_roses = rose_bushes * roses_per_bush
+    total_thorns = total_roses * thorns_per_rose
+    result = total_thorns
+    return result
+
+ Executed result: 600
+[EXP] 84: [success_rate]: False, [output]: 
+def solution():
+    games_played = 22
+    games_won = games_lost = 0
+    games_won = games_lost + 8  
+    games_played = games_won + games_lost
+    games_lost = games_played - games_won
+    result = games_won
+    return result
+
+ Executed result: 8
+[EXP] 85: [success_rate]: True, [output]: 
+def solution():
+    vacations_per_year = 4
+    years_vacationing = 34 - 23
+    quilt_blocks_per_year = vacations_per_year
+    total_quilt_blocks = years_vacationing * quilt_blocks_per_year
+    result = total_quilt_blocks
+    return result
+
+ Executed result: 44
+[EXP] 86: [success_rate]: False, [output]: 
+def solution():
+    alarm_rings_per_day = 3
+    ring_time_first = 4
+    ring_time_second = 3 * ring_time_first
+    ring_time_third = ring_time_second / 2
+    total_rings = ring_time_first + ring_time_second + ring_time_third
+    total_rings_per_day = total_rings * alarm_rings_per_day
+    result = total_rings_per_day
+    return result
+
+ Executed result: 66.0
+[EXP] 87: [success_rate]: False, [output]: 
+def solution():
+    initial_salary = 600
+    increase_per_year = 0.10
+    years_of_service = 5  # initially
+    total_years = years_of_service + 3  # for the future
+
+    for _ in range(total_years):
+        initial_salary += initial_salary * increase_per_year
+
+    result = initial_salary
+    return result
+
+ Executed result: 1286.153286
+[EXP] 88: [success_rate]: False, [output]: def solution():
+    harald_sells = ?  # unknown number of copies
+    marilyn_sells = harald_sells * 10  # 10 times as many copies as Harald's
+    total_sells = harald_sells + marilyn_sells
+    total_sells = 88000  # given total sells is 88000
+    result = harald_sells
+    return result
+
+ Executed result: Error: return error, fail to execute
+[EXP] 89: [success_rate]: True, [output]: def solution():
+    friends_invited = 16
+    bags_needed = friends_invited * 0.75
+    bags_cost = bags_needed * 2
+    result = bags_cost
+    return result
+
+ Executed result: 24.0
+[EXP] 90: [success_rate]: True, [output]: 
+def solution():
+    adult_eats = 10 
+    child_eats = adult_eats / 2
+    adults = 20
+    children = 5
+    weight_per_adult = adult_eats
+    weight_per_child = child_eats
+    weight_needed = (adults * weight_per_adult) + (children * weight_per_child)
+    result = weight_needed
+    return result
+
+ Executed result: 225.0
+[EXP] 91: [success_rate]: True, [output]: 
+def solution():
+    cindy_pets = 4
+    marcia_pets = cindy_pets + 2
+    jan_pets = marcia_pets * 3
+    total_pets = cindy_pets + marcia_pets + jan_pets
+    result = total_pets
+    return result
+
+ Executed result: 28
+[EXP] 92: [success_rate]: False, [output]: 
+def solution():
+    amy_age = Corey_age - 2
+    jackson_age = amy_age - 5
+    corey_age = James_age + 1
+    James_age = 10
+    result = jackson_age
+    return result
+
+ Executed result: Error: return error, fail to execute
+[EXP] 93: [success_rate]: False, [output]: 
+def solution():
+    time_lee = 38
+    time_gerald_before = time_lee + 2
+    percent_improve = 0.1
+    time_gerald_after = time_gerald_before * (1 + percent_improve)
+    result = time_gerald_after
+    return result
+
+ Executed result: 44.0
+[EXP] 94: [success_rate]: True, [output]: 
+def solution():
+    dogs = 60
+    cats_per_dog = 2
+    cats = dogs * cats_per_dog
+    total_animals = dogs + cats
+    rabbits = total_animals - 12
+    result = total_animals + rabbits
+    return result
+
+ Executed result: 348
+[EXP] 95: [success_rate]: True, [output]: 
+def solution():
+    total_students = 200
+    boys = 2/5 * total_students
+    girls = total_students - boys
+    girl_scouts = 2/3 * girls
+    girls_not_inGirlScout = girls - girl_scouts
+    result = int(girls_not_inGirlScout)
+    return result
+
+ Executed result: 40
+[EXP] 96: [success_rate]: True, [output]: 
+def solution():
+    harry_slept = 9
+    james_slept = 2/3 * harry_slept
+    harry_slept_more = harry_slept - james_slept
+    result = harry_slept_more
+    return result
+
+ Executed result: 3.0
+[EXP] 97: [success_rate]: True, [output]: 
+def solution():
+    can_volume = 16
+    can_volume_loss = 0.5
+    volume_sauce = 32
+    volume_loss = volume_sauce / can_volume_loss
+    can_needed = volume_loss / can_volume
+    tomatoes_per_can = 3
+    total_tacos = int(can_needed * tomatoes_per_can)
+    result = total_tacos
+    return result
+
+ Executed result: 12
+[EXP] 98: [success_rate]: True, [output]: 
+def solution():
+    cars_initial = 30
+    cars_left_after_traffic = cars_initial - 5
+    cars_driven_through_traffic = cars_left_after_traffic
+    cars_drove_through_in_first_15_minutes = cars_left_after_traffic - 20
+    result = cars_drove_through_in_first_15_minutes
+    return result
+
+ Executed result: 5
+[EXP] 99: [success_rate]: False, [output]: 
+def solution():
+    plants_initial = 18
+    plants_per_window = 2
+    windows = 40
+    initial_plants = plants_per_window * windows
+    plants_received = initial_plants + plants_initial
+    plants_gifted = plants_per_window
+    plants_left = plants_received - plants_gifted
+    result = plants_left
+    return result
+
+ Executed result: 96

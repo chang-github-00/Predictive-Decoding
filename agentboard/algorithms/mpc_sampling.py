@@ -345,7 +345,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         args = {
             "n_generate_sample":self.n_generate_sample,
             "max_iters": self.problem_size,
-            "max_tokens": 30*self.lookahead_decision_length if self.lookahead_token_length is None else self.lookahead_token_length,
+            "max_tokens": 50*self.lookahead_decision_length if self.lookahead_token_length is None else self.lookahead_token_length,
             "temperature": self.beam_temperature,
             "top_p": 1.0,
             "stop": [],            
@@ -444,4 +444,6 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                    n_generate_sample=config.get("n_generate_sample", 8),
                    value_type=config.get("value_type", "logp"),
                    do_sample=config.get("do_sample", True),
+                   memory=config.get("memory", True)
                    )
+        

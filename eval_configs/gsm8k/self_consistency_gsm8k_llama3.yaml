@@ -1,20 +1,16 @@
 run:
-  log_path: ${PROJECT_PATH}/results/debug_gsm8k
+  log_path: ${PROJECT_PATH}/results/debug_gsm8k_self_consistency
   data_path: /root/huggingface/gsm8k
 # only provide example run_config here, please specify with arguments when running
 # --wandb --max_num_steps 30 --project_name ... --baseline_dir ... --log_path ...
 
 
 algorithm:
-  name: MPC_Sample
-  lookahead_thought_length: 3
-  reward_threshold: 0.0
-  n_generate_sample: 8
+  name: Self_Consistency  
+  n_generate_sample: 8 # n=1 pal
   value_type: logp # use llama3
   do_sample: True
   beam_temperature: 1.0
-  select_temperature: 0.05
-  memory: True
   # lookahead_token_length: 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key

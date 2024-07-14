@@ -1,0 +1,488 @@
+[EXP] 0: [success_rate]: True, [output]: def solution():
+    eggs_per_day = 16
+
+    eggs_for_breakfast = 3
+
+    eggs_for_muffins = 4
+
+    eggs_sold = eggs_per_day - eggs_for_breakfast - eggs_for_muffins
+
+    revenue_per_day = eggs_sold * 2
+
+    result = revenue_per_day
+
+    return result
+
+
+ Executed result: 18
+[EXP] 1: [success_rate]: True, [output]: def solution():
+    blue_fiber = 2
+
+    white_fiber = blue_fiber / 2
+
+    total_fiber = blue_fiber + white_fiber
+
+    result = total_fiber
+
+    return result
+
+
+ Executed result: 3.0
+[EXP] 2: [success_rate]: False, [output]: def solution():
+    house_cost = 80000
+
+    repairs_cost = 50000
+
+    total_invested = house_cost + repairs_cost
+
+    house_cost = 80000
+
+    house_cost_after_repair = house_cost + repairs_cost
+
+    house_cost_after_repair *= 2.5  # 150% increase
+
+    profit = house_cost_after_repair - total_invested
+
+    result = profit
+
+    return result
+
+
+ Executed result: 195000.0
+[EXP] 3: [success_rate]: False, [output]: def solution():
+    sprints_per_week = 3
+
+    sprints_per_day = 3
+
+    meters_per_sprint = 60
+
+    sprints_per_week = sprints_per_day * 7
+
+    total_meters = sprints_per_week * sprints_per_day * meters_per_sprint
+
+    result = total_meters
+
+    return result
+
+
+ Executed result: 3780
+[EXP] 4: [success_rate]: True, [output]: def solution():
+    total_feed_needed = 20 * 3  # total feed needed for the day
+
+Wendi's chickens need 20 * 3 = 60 cups of feed in total for the day. She has already given them 15 + 25 = 40 cups. So for the final meal, she needs to give her chickens 60 - 40 = 20 cups of feed.
+
+    morning_feed = 15
+
+    afternoon_feed = 25
+
+    total_feed_given = morning_feed + afternoon_feed
+
+    feed_needed_last_meal = total_feed_needed - total_feed_given
+
+    result = feed_needed_last_meal
+
+    return result
+
+
+ Executed result: 20
+[EXP] 5: [success_rate]: False, [output]: def solution():
+    cost_per_glass = 5
+
+    total_cost = 0
+
+    for i in range(glasses_to_buy):
+
+        if i % 2 == 0:
+
+            total_cost += cost_per_glass
+
+        else:
+
+            total_cost += discounted_cost
+
+    result = total_cost
+
+    return result
+
+
+ Executed result: 5
+[EXP] 6: [success_rate]: True, [output]: def solution():
+    seattle_sheep = 20
+
+    charleston_sheep = seATTLE_sheep * 4
+
+    charleston_sheep = seattle_sheep * 4
+
+    toulouse_sheep = charleston_sheep * 2
+
+    total_sheep = seattle_sheep + charleston_sheep + toulouse_sheep
+
+    result = total_sheep
+
+    return result
+
+
+ Executed result: 260
+[EXP] 7: [success_rate]: False, [output]: def solution():
+    file_size = 200 * 1024 * 1024 * 1024  # convert GB to bytes
+
+    original_download_speed = 2 * 1024 * 1024  # convert GB/minute to bytes/second
+
+    minutes_before_break = file_size / original_download_speed * 0.4  # download time for 40% of the file
+
+    minutes_before_break = file_size / original_download_speed * 0.4  # download time for 40
+
+    minutes_before_break = file_size / original_download_speed * 0
+
+    speed_after_break = original_download_speed * 0.6  # 60% of the original speed
+
+    minutes_after_break = file_size / speed_after_break  # download time for the remaining 60%
+
+    minutes_after_break = file_size / original_download_speed * 0.6  # download time for the remaining 60%
+
+    minutes_break = 20  # time taken for the software update
+
+    total_minutes = minutes_before_break + minutes_break + minutes_after
+
+    minutes_after_break = (file_size - int(original_download_speed * 0.4)) / original_download_speed * 0.6  # download time for the remaining 60%
+
+    total_minutes = minutes_before
+
+    minutes_after_break = (file_size - int(original_download_speed * 0.4)) / speed_after_break  # download time for the remaining 60
+
+    minutes_after_break = (file_size - int(original_download_speed * 0.4))
+
+    total_minutes
+
+    total_minutes = minutes_before
+
+    total_minutes =
+
+    total_minutes
+
+    total
+
+    minutes_after_break = (file_size - int(original_download_speed * 0.4)) / speed_after_break  # download time for the remaining 60%
+
+    minutes_break =
+
+    minutes_break
+
+    total_minutes = minutes_before_break + minutes_break
+
+    total_minutes = minutes_before_break +
+
+    minutes_break
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 8: [success_rate]: False, [output]: def solution():
+    time_at_60_mph = 3
+
+    distance_at_60_mph = 60 * time_at_60_mph
+
+    time_at_30_mph = 0.5
+
+    distance_at_30_mph = 30 * time_at_30_mph
+
+    time_at_80_mph = 4 - time_at_60_mph - time_at_30_mph
+
+        distance_at_80_mph = 80 * time_at_80_mph
+
+    distance_at_80_mph = 80 * time_at_80_mph
+
+    distance_at_60_mph = time_at_60_mph * 60
+
+    total_distance = distance_at_60_mph + distance_at_30_mph + distance_at_80_mph
+
+    result = total_distance
+
+    return result
+
+
+ Executed result: 235.0
+[EXP] 9: [success_rate]: False, [output]: def solution():
+    rate_per_hour = 10
+
+    hours_worked_first_40 = 40
+
+    earnings_first_40_hours = rate_per_hour * hours_worked_first_40
+
+    hours_worked_overtime = 45 - hours_worked_first_40
+
+    earnings_overtime_hours = rate_per_hour_overtime * hours_worked_overtime
+
+    total_earnings = earnings_first_40_hours + earnings_overtime_hours
+
+    result = total_earnings
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 10: [success_rate]: True, [output]: def solution():
+    downloads_first_month = 60
+
+    downloads_second_month = downloads_first_month * 3
+
+    downloads_third_month = downloads_second_month * 0.7
+
+    total_downloads = downloads_first_month + downloads_second_month + downloads_third_month
+
+    result = total_downloads
+
+    return result
+
+
+ Executed result: 366.0
+[EXP] 11: [success_rate]: True, [output]: def solution():
+    donuts_cost = 3 * 68
+
+    mini_cupcakes_cost = 2 * 80
+
+    mini_cheesecakes_cost = 6 * 55
+
+    total_cost = donuts_cost + mini_cupcakes_cost + mini_cheesecakes_cost
+
+    return total_cost
+
+
+ Executed result: 694
+[EXP] 12: [success_rate]: False, [output]: def solution():
+    cost_to_plant = 90
+
+    cost_per_year = 3
+
+    sale_per_year = 7 * 1.5
+
+    revenue = 0
+
+    while True:
+
+    year = 1
+
+    while revenue < cost_to_plant:
+
+        revenue += sale_per_year
+
+        year += 1
+
+    result = year - 1
+
+    return result
+
+
+ Executed result: 1
+[EXP] 13: [success_rate]: False, [output]: def solution():
+    melanie_vacuum
+
+Here is the solution in Python:
+
+    melanie_vacuum_left = 5
+
+    melanie_vacuum_third = melanie_vacuum_left * 3
+
+    melanie_vacuum_third = 5 * 3
+
+    melanie_vacuum_red = melanie_vacuum_third + 2
+
+    melanie_vacuum_orange = melanie_vacuum_red // 2
+
+    melanie_vacuum_initial = melanie_vacuum_third + melanie_vacuum_red + melanie_vacuum_orange
+
+    result = melanie_vacuum_initial
+
+    return result
+
+
+ Executed result: 40
+[EXP] 14: [success_rate]: True, [output]: def solution():
+    students_initial = 20
+
+    students_enrolled_in_contemporary = (20 / 100) * students_initial
+
+    students_remaining = students_initial - students_enrolled_in_contemporary
+
+    students_enrolled_in_jazz = (25 / 100) * students_remaining
+
+    students_enrolled_in_hip_hop = students_remaining - students_enrolled_in_jazz
+
+    percentage_enrolled_in_hip_hop = (students_enrolled_in_hip_hop / students_initial) * 100
+
+    result = percentage_enrolled_in_hip_hop
+
+    return result
+
+
+ Executed result: 60.0
+[EXP] 15: [success_rate]: True, [output]: def solution():
+    jewelry_price = 5000
+
+    electronic_gadgets_price = 8000
+
+    jewelry_profit = jewelry_price * 0.025
+
+    jewelry_new_price =
+
+    jewelry_new_price = jewelry_price + jewelry_profit
+
+    electronic_gadgets_profit = electronic_gadgets_price * 0.012
+
+    electronic_gadgets_new_price = electronic_gadgets_price + electronic_gadgets_profit
+
+    jewelry_profit_final = jewelry_new_price - jewelry_price
+
+    electronic_gadgets_profit_final = electronic_gadgets_new_price - electronic_gadgets_price
+
+Here is a solution to the problem in Python.
+
+    profit = max(jewelry_profit_final, electronic_gadgets_profit_final)
+
+    result = profit
+
+    return result
+
+
+ Executed result: 125.0
+[EXP] 16: [success_rate]: True, [output]: def solution():
+    distance_west = 80
+
+    distance_north = 150
+
+    total_distance = distance_west + distance_north
+
+    return total_distance
+
+
+ Executed result: 230
+[EXP] 17: [success_rate]: False, [output]: def solution():
+    hourly_salary_teacher = 20
+
+    hourly_salary_coach = 30
+
+    hours_per_week_teacher = 35
+
+    hours_per_week_coach = 15
+
+    weeks_per_year = 50
+
+    total_hours_per_year_teacher = hours_per_week_teacher * weeks_per_year
+
+    total_hours_per_year_coach = hours_per_week_coach * weeks_per_year
+
+    total_salary_per_year_teacher = total_hours_per_year_teacher * hourly_salary_teacher
+
+    total_salary_per_year_coach = total_hours_per_year_coach * hourly_salary_coach
+
+    total_annual_salary = total_salary_per_year_teacher + total_salary_per_year_coach
+
+    result = total_annual
+
+    result = total
+
+    result =
+
+    result = total_annual
+
+    result =
+
+    result =
+
+    result = total
+
+    result = total_annual
+
+    result = total_annual
+
+    result =
+
+    total_salary_per_year_teacher = total_hours_per
+
+    result =
+
+    result = total
+
+    result = total_annual
+
+    result =
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 18: [success_rate]: True, [output]: def solution():
+    eggs_per_omelet = 3
+
+    omelets_per_week = 7
+
+    weeks_in_four_weeks = 4
+
+    omelets_per_four_weeks = omelets_per_week * weeks_in_four_weeks
+
+    eggs_per_four_weeks = omelets_per_four_weeks * eggs_per_omelet
+
+    hundreds = eggs_per_four_weeks // 12
+
+    dozens = eggs_per_four_weeks // 12
+
+    result = dozens
+
+    return result
+
+
+ Executed result: 7
+[EXP] 19: [success_rate]: False, [output]: def solution():
+    miles_initial = 12
+
+    miles_walked = 4 + 2
+
+    time_taken = 2
+
+    miles_left = miles_initial - miles_walked
+
+    speed_wanted = 4
+
+    speed_needed = miles_left / (time_taken + (miles_left / speed_wanted))
+
+    result = speed_needed
+
+    return result
+
+
+ Executed result: 1.7142857142857142
+[EXP] 20: [success_rate]: False, [output]: def solution():
+    orange_drink liters = 10
+
+Here is the solution to the problem:
+
+The orange drink is 2/3 water, so the water content in the orange drink is (2/3) * 10 = 20/3 liters. After pouring it into the pineapple drink, one liter of the orange drink is spilled, so the remaining water content is (20/3) - 1 = 7/3 liters. The pineapple drink is 3/5 water, so the water content in the pineapple drink is (3/5) * 15 = 9 liters. The total water content in the remaining 24 liters is the sum of the water content in the orange drink and the pineapple drink, which is 7/3 + 9 = 25
+
+    orange_drink_liters = 10
+
+    orange_drink_water = (2/3) * orange_drink_liters
+
+    pineapple_drink_liters = 15
+
+    pineapple_drink_water = (3/5) * pineapple_drink_liters
+
+    total_water = remaining_water + pineapple_drink_water
+
+    result = total_water
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 21: [success_rate]: False, [output]: def solution():
+    samantha_age = 31
+
+    raymond_son_age = samantha_age - 6
+
+You need to subtract 6 years from Samantha's current age to find out how old Samantha was when Raymond was born, and then subtract 2 years to find out how old Raymond was when his son was born.
+
+    raymond_age_at_son_birth = raymond_son_age - 2
+
+    result = raymond_age_at_son_birth
+
+    return result
+
+
+ Executed result: 23

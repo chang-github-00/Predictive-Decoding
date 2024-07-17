@@ -19,12 +19,17 @@ prompt_templates = {
             """
                 <s>[INST]{system_prompt}{prompt}[/INST]
             """,
-    "llama":
+    "llama2":
             """
                 <<SYS>>
                 {system_prompt}
                 <</SYS>>
                 [INST]{prompt}[/INST]
+            """,
+    "llama3":
+            """
+                <|begin_of_text|><|start_header_id|>{system_prompt}<|end_header_id|>
+                {prompt}<|eot_id|>
             """,
     "lemur":
             """

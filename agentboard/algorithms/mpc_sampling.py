@@ -57,13 +57,17 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             f.write(prompt)
             f.write("\n\n\n\n\n")
             # f.write(f'Q: {self.example}\n\n# solution in Python:\n\n\ndef solution():\n    """{self.example}"""\n')
-            f.write(f'Solve this problem following previous examples:\nQ: {self.prompts["question"]}\n\n# Finish the solution in Python:\n\n\ndef solution():\n')
+            f.write(f'Solve this problem following previous examples:\nQ: {self.prompts["question"]}\n# solution in Python:\n\n')
+            model_input = f.getvalue()
+        
+        with io.StringIO() as f:    
+            f.write("def solution():\n")
             for a in self.memory:
                 if a is not None:
                     f.write(f"{a}")
-            # get the prompt
-            model_input = f.getvalue()
-        return model_input
+            answer_prefix = f.getvalue()
+            
+        return model_input, answer_prefix
 
     def update_trajectory_pool(self, outputs, reward=None):
         
@@ -119,6 +123,9 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                     action = action.split(prefix)[1]
             action = action.lstrip('\n')
             
+            if action == "":
+                return None, None
+            
             # Here is the start of the action chain:
             if '\n' in action:
                 all_actions = action.split('\n')
@@ -147,6 +154,9 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                     
              # remove all '\n' in the beginning
             action = action.lstrip('\n')
+            
+            if action == "":
+                return None, None
             
             if self.lookahead_token_length is not None: # limit the length of the lookahead token sequence as a chunk for lookahead
                 
@@ -345,7 +355,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         args = {
             "n_generate_sample":self.n_generate_sample,
             "max_iters": self.problem_size,
-            "max_tokens": 50*self.lookahead_decision_length if self.lookahead_token_length is None else self.lookahead_token_length,
+            "max_tokens": 70*self.lookahead_decision_length if self.lookahead_token_length is None else self.lookahead_token_length,
             "temperature": self.beam_temperature,
             "top_p": 1.0,
             "stop": [],            
@@ -376,15 +386,16 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             if not self.memory:
                 self.trajectory_pool = [] # don't keep memory, but re-init the trajectory pool every time
             
-            input_prompt = self.make_prompt(self.prompts["prompt"])
+            input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"])
             system_message = self.prompts["system_msg"]
-            success, action_sequence_samples = self.llm_model.generate_with_config(system_message, input_prompt, generation_config)
+            success, action_sequence_samples = self.llm_model.generate_with_config(system_message, input_prompt, generation_config, answer_prefix=answer_prefix)
             
             if success:
                 for action_sequence in action_sequence_samples:
 
                     processed_output, action = self.parse_action_sequence(action_sequence)
 
+                    if action is None: continue
                     reward = 0
                     if args.value_type == "logp":
                         reward = processed_output["action_prob"]

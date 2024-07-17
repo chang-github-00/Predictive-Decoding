@@ -126,7 +126,7 @@ class EvalReasoning:
             from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt
             self.prompts["prompt"] = code_prompt
             self.prompts["evaluate"] = evaluate_prompt
-            self.prompts["system_msg"] = "Please write a function that solves the problem."
+            self.prompts["system_msg"] = ""
     
     def evaluate(self):
         

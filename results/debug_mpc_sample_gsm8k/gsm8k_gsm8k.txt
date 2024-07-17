@@ -1,0 +1,17 @@
+[EXP] 0: [success_rate]: True, [output]: def solution():
+    duck_eggs_per_day = 16
+
+    duck_eggs_for_breakfast = 3
+
+    duck_eggs_for_muffins = 4
+
+    total_eggs_sold = duck_eggs_per_day - (duck_eggs_for_breakfast + duck_eggs_for_muffins)
+
+    money_made = total_eggs_sold * 2
+
+    result = money_made
+
+    return result
+
+
+ Executed result: 18

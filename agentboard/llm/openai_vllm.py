@@ -107,11 +107,13 @@ class OPENAI_VLLM:
             else:
                 return outputs
     
-    def generate(self, system_message, prompt):
+    def generate(self, system_message, prompt, answer_prefix=None):
         prompt=[
                 {"role": "system", "content": system_message},
                 {"role": "user", "content": prompt}
         ]
+        if answer_prefix is not None:
+            prompt.append({"role": "assistant", "content": answer_prefix})
         for attempt in range(self.max_retry_iters):  
             try:
                 output = self.chat_inference(prompt)

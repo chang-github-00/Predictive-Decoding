@@ -14,7 +14,7 @@ algorithm:
   do_sample: True
   beam_temperature: 1.0
   select_temperature: 0.05
-  memory: True
+  use_memory: True
   # lookahead_token_length: 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key

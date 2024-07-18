@@ -1,0 +1,200 @@
+[EXP] 0: [success_rate]: True, [output]: def solution():
+    eggs_per_day = 16
+
+    eggs_eaten = 3
+
+    eggs_baked = 4
+
+    eggs_sold = eggs_per_day - eggs_eaten - eggs_baked
+
+    money_per_egg = 2
+
+    money_made = eggs_sold * money_per_egg
+
+    result = money_made
+
+    return result
+
+
+ Executed result: 18
+[EXP] 1: [success_rate]: True, [output]: def solution():
+    blue_fiber = 2
+
+    white_fiber = blue_fiber / 2
+
+    total_fiber = blue_fiber + white_fiber
+
+    result = total_fiber
+
+    return result
+
+
+ Executed result: 3.0
+[EXP] 2: [success_rate]: False, [output]: def solution():
+    house_cost = 80000
+
+    repairs_cost = 50000
+
+    total_cost = house_cost + repairs_cost
+
+    new_house_value = total_cost * 2.5  # 150% increase
+
+    profit = new_house_value - total_cost
+
+    result = profit
+
+    return result
+
+
+ Executed result: 195000.0
+[EXP] 3: [success_rate]: True, [output]: def solution():
+    sprints_per_week = 3
+
+    sprints_per_day = 3
+
+    sprints_in_a_week = sprints_per_week * sprints_per_day
+
+    meters_per_sprint = 60
+
+    meters_run_in_a_week = sprints_in_a_week * meters_per_sprint
+
+    result = meters_run_in_a_week
+
+    return result
+
+
+ Executed result: 540
+[EXP] 4: [success_rate]: True, [output]: def solution():
+    total_cups_already_given = 15 + 25
+
+    total_cups_needed = 3 * 20
+
+    cups_needed_for_final_meal = total_cups_needed - total_cups_already_given
+
+    result = cups_needed_for_final_meal
+
+    return result
+
+
+ Executed result: 20
+[EXP] 5: [success_rate]: True, [output]: def solution():
+    price_per_normal_glass = 5
+
+    price_per_discount_glass = price_per_normal_glass * 0.6
+
+    total_glasses = 16
+
+    normal_glasses = total_glasses // 2
+
+    discount_glasses = total_glasses - normal_glasses
+
+    total_cost = (normal_glasses * price_per_normal_glass) + (discount_glasses * price_per_discount_glass)
+
+    result = total_cost
+
+    return result
+
+
+ Executed result: 64.0
+[EXP] 6: [success_rate]: True, [output]: def solution():
+    seattle_sheep = 20
+
+    charleston_sheep = seattle_sheep * 4
+
+    toulouse_sheep = charleston_sheep * 2
+
+    total_sheep = seattle_sheep + charleston_sheep + toulouse_sheep
+
+    result = total_sheep
+
+    return result
+
+
+ Executed result: 260
+[EXP] 7: [success_rate]: False, [output]: def solution():
+    file_size = 200
+
+    download_speed = 2
+
+    minutes_before_reboot = (file_size / download_speed) * 0.4
+
+    minutes_after_reboot = 20
+
+    minutes_total = minutes_before_reboot + minutes_after_reboot + (file_size / download_speed)
+
+    hours_total = minutes_total / 60
+
+    result = hours_total
+
+    return result
+
+
+ Executed result: 2.6666666666666665
+[EXP] 8: [success_rate]: False, [output]: def solution():
+    distance_driven_to_turn_back = 3 * 60
+
+    distance_in_standstill_traffic = 2 * 60
+
+    distance_driven_at_slow_speed = 30 * 0.5
+
+    distance_driven_at_fast_speed = 2 * 4 * 80
+
+    total_distance = distance_driven_to_turn_back + distance_in_standstill_traffic + distance_driven_at_slow_speed + distance_driven_at_fast_speed
+
+    result = total_distance
+
+    return result
+
+
+ Executed result: 955.0
+[EXP] 9: [success_rate]: True, [output]: def solution():
+    hours_regular = 40
+
+    hours_overtime = 45 - hours_regular
+
+    rate_regular = 10
+
+    rate_overtime = rate_regular * 1.2
+
+    earnings_regular = hours_regular * rate_regular
+
+    earnings_overtime = hours_overtime * rate_overtime
+
+    total_earnings = earnings_regular + earnings_overtime
+
+    result = total_earnings
+
+    return result
+
+
+ Executed result: 460.0
+[EXP] 10: [success_rate]: True, [output]: def solution():
+    downloads_first_month = 60
+
+    downloads_second_month = downloads_first_month * 3
+
+    downloads_third_month = downloads_second_month * 0.7
+
+    total_downloads = downloads_first_month + downloads_second_month + downloads_third_month
+
+    result = total_downloads
+
+    return result
+
+
+ Executed result: 366.0
+[EXP] 11: [success_rate]: True, [output]: def solution():
+    donuts_cost = 3 * 68
+
+    cupcakes_cost = 2 * 80
+
+    cheesecakes_cost = 6 * 55
+
+    total_cost = donuts_cost + cupcakes_cost + cheesecakes_cost
+
+    result = total_cost
+
+    return result
+
+
+ Executed result: 694

@@ -23,7 +23,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                  n_generate_sample=8,
                  value_type = "logp",
                  do_sample=True,
-                 memory=True,
+                 use_memory=True,
                  ):
         
         self.llm_model = llm_model
@@ -49,7 +49,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         self.select_temperature = select_temperature
         self.n_generate_sample = n_generate_sample
         self.value_type = value_type
-        self.memory = memory
+        self.use_memory =use_memory
         
         
     def make_prompt(self, prompt):
@@ -383,7 +383,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         reflection_tips = ""
 
         while iter < args.max_iters:
-            if not self.memory:
+            if not self.use_memory:
                 self.trajectory_pool = [] # don't keep memory, but re-init the trajectory pool every time
             
             input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"])
@@ -421,7 +421,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                 if iter > args.max_iters:
                     break
                 
-                if end_suffix is not None and end_suffix in action:
+                if end_suffix is not None and action.strip().startswith(end_suffix):
                     break
             else:
                 reflection_tips = self.reflection_tips(reward_threshold=self.reward_threshold)
@@ -455,6 +455,6 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                    n_generate_sample=config.get("n_generate_sample", 8),
                    value_type=config.get("value_type", "logp"),
                    do_sample=config.get("do_sample", True),
-                   memory=config.get("memory", True)
+                   use_memory=config.get("use_memory", True)
                    )
         

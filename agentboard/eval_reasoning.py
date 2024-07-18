@@ -126,7 +126,7 @@ class EvalReasoning:
             from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt
             self.prompts["prompt"] = code_prompt
             self.prompts["evaluate"] = evaluate_prompt
-            self.prompts["system_msg"] = ""
+            self.prompts["system_msg"] = "Please write a function that solves the problem."
     
     def evaluate(self):
         
@@ -220,6 +220,10 @@ def main():
     llm_config = llm_config[args.model]
     
     check_log_paths_are_ready(run_config["log_path"])
+    
+    # save the configuration file
+    with open(os.path.join(run_config["log_path"], "config.yaml"), "w") as f:
+        yaml.dump({"llm":llm_config, "algorithm":algorithm_config, "run":run_config}, f)
     
     eval_reasoning = EvalReasoning(task, run_config, llm_config, algorithm_config)
     

@@ -83,10 +83,12 @@ class VLLM:
         ]
         
         if answer_prefix is not None:
-            full_prompt.append({"role": "assistant", "content": answer_prefix})
+            full_prompt.append({"role": "assistant", "content": ""})
         # full_prompt = self.make_prompt(system_message, prompt)
         full_prompt = self.tokenizer.apply_chat_template(full_prompt, tokenize=False)
-        full_prompt = full_prompt.rstrip("<|eot_id|>")
+        if answer_prefix is not None:
+            full_prompt = full_prompt.rstrip("<|eot_id|>")
+            full_prompt += answer_prefix
         assert full_prompt is not None
         
         outputs = self.llm.generate([full_prompt], self.sampling_params)
@@ -126,10 +128,12 @@ class VLLM:
         ]
         
         if answer_prefix is not None:
-            full_prompt.append({"role": "assistant", "content": answer_prefix})
+            full_prompt.append({"role": "assistant", "content": ""})
         # full_prompt = self.make_prompt(system_message, prompt)
         full_prompt = self.tokenizer.apply_chat_template(full_prompt, tokenize=False)
-        full_prompt = full_prompt.rstrip("<|eot_id|>")
+        if answer_prefix is not None:
+            full_prompt = full_prompt.rstrip("<|eot_id|>")
+            full_prompt += answer_prefix
         assert full_prompt is not None
             
         response = self.llm.generate([full_prompt], samplingparams)
@@ -158,6 +162,20 @@ class VLLM:
                 outputs.append(item)
 
             return True, outputs 
+    def get_input(self, system_message, prompt, answer_prefix=None):
+        full_prompt=[
+                {"role": "system", "content": system_message},
+                {"role": "user", "content": prompt},
+        ]
+        
+        if answer_prefix is not None:
+            full_prompt.append({"role": "assistant", "content": answer_prefix})
+        # full_prompt = self.make_prompt(system_message, prompt)
+        full_prompt = self.tokenizer.apply_chat_template(full_prompt, tokenize=False)
+        full_prompt = full_prompt.rstrip("<|eot_id|>")
+        assert full_prompt is not None
+        
+        return full_prompt
 
     def num_tokens_from_messages(self, messages):
         prompt = messages[1]["content"]

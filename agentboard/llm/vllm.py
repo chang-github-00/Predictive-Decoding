@@ -140,9 +140,9 @@ class VLLM:
         
         if logprobs == 0:
             if n == 1:
-                return response[0].outputs[0].text
+                return True, response[0].outputs[0].text
             else:
-                return [choice.text for choice in response[0].outputs]
+                return True, [choice.text for choice in response[0].outputs]
             
         else:
             outputs = []

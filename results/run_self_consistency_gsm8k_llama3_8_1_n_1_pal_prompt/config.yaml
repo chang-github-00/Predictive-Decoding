@@ -1,0 +1,18 @@
+algorithm:
+  beam_temperature: 0.6
+  do_sample: true
+  n_generate_sample: 1
+  name: Self_Consistency
+  value_type: logp
+llm:
+  context_length: 8192
+  dtype: float32
+  engine: /root/huggingface/Meta-Llama-3-8B-Instruct/
+  name: vllm
+  ngpu: 1
+  stop: null
+  temperature: 0
+  top_p: 1
+run:
+  data_path: /root/huggingface/gsm8k
+  log_path: results/run_self_consistency_gsm8k_llama3_8_1_n_1_pal_prompt

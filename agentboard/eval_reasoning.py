@@ -7,6 +7,7 @@ import json
 import time
 import datasets
 import argparse
+import timeout_decorator
 from dotenv import load_dotenv
 from llm import load_llm
 from algorithms import load_algorithm
@@ -17,7 +18,7 @@ def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
         dataset = [{"question": a["question"], "answer": a["answer"]} for a in full_dataset]
-        return dataset[:100]
+        return dataset
         
 def evaluate_results(task, item, result): #result is a list
     def retrieve_answer_from_dataset(answer: str) -> str:
@@ -45,9 +46,17 @@ def evaluate_results(task, item, result): #result is a list
     if task == "gsm8k":
         answer = retrieve_answer_from_dataset(item["answer"])
         if type(result) == str:
-            executed_solution = execute_solution(result, execute=True)
+            try:
+                executed_solution = execute_solution(result, execute=True)
+            except Exception as e:
+                executed_solution = "Error: time out"
         elif type(result) == list:
-            executed_solution = [execute_solution(a, execute=True) for a in result]
+            executed_solution = []
+            for r in result:
+                try:
+                    executed_solution.append(execute_solution(r, execute=True))
+                except Exception as e:
+                    executed_solution.append("Error: time out")
             # majority vote
             count = dict()
             for a in executed_solution:
@@ -60,7 +69,7 @@ def evaluate_results(task, item, result): #result is a list
     else:
         raise NotImplementedError
         
-        
+@timeout_decorator.timeout(20)
 def execute_solution(code, execute=True):
     
     full_output = code
@@ -123,10 +132,10 @@ class EvalReasoning:
         #     self.prompts = json.load(f)
         self.prompts = {}
         if self.task == "gsm8k":
-            from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt
-            self.prompts["prompt"] = code_prompt
+            from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt, pal_prompt
+            self.prompts["prompt"] = code_prompt#pal_prompt
             self.prompts["evaluate"] = evaluate_prompt
-            self.prompts["system_msg"] = "Please write a function that solves the problem."
+            self.prompts["system_msg"] = "You will write python program to solve math problems. You will only write code blocks."
     
     def evaluate(self):
         

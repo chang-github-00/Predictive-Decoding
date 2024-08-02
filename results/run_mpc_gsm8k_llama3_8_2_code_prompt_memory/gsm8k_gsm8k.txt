@@ -3327,7 +3327,7 @@
 
 
  Executed result: 14.0
-[EXP] 183: [success_rate]: False, [output]: def solution():
+[EXP] 183: [success_rate]: True, [output]: def solution():
     well_rounded_time = 55
 
     less_rounded_first_run = 60
@@ -6083,7 +6083,7 @@ return result
 
 
  Executed result: 44.0
-[EXP] 333: [success_rate]: False, [output]: def solution():
+[EXP] 333: [success_rate]: True, [output]: def solution():
     furniture_united_advance = 1350
 
     furniture_united_installments = 6 * 350
@@ -7705,7 +7705,7 @@ return result
 
 
  Executed result: 284
-[EXP] 423: [success_rate]: False, [output]: def solution():
+[EXP] 423: [success_rate]: True, [output]: def solution():
     tattered_jeans = 28
 
     jogger_jeans = tattered_jeans - 6
@@ -11820,7 +11820,7 @@ return result
 
 
  Executed result: 162000
-[EXP] 650: [success_rate]: False, [output]: def solution():
+[EXP] 650: [success_rate]: True, [output]: def solution():
     price_per_pomegranate_tuplesday = 20
 
     discount_on_tuplesday = 2
@@ -14176,7 +14176,7 @@ return result
 
 
  Executed result: 255.0
-[EXP] 780: [success_rate]: False, [output]: def solution():
+[EXP] 780: [success_rate]: True, [output]: def solution():
     emma_enemies = 0
 
     emma_berry = 0
@@ -14741,7 +14741,7 @@ return result
 
 
  Executed result: 48.0
-[EXP] 809: [success_rate]: False, [output]: def solution():
+[EXP] 809: [success_rate]: True, [output]: def solution():
     total_to_order = 100
 
     candies_sold = 150
@@ -17304,7 +17304,7 @@ return result
 
 
  Executed result: 57
-[EXP] 950: [success_rate]: False, [output]: def solution():
+[EXP] 950: [success_rate]: True, [output]: def solution():
     total_points = 45
 
     difference_Bahati_Azibo = 20
@@ -22565,7 +22565,7 @@ return result
 
 
  Executed result: Error: return error, fail to execute
-[EXP] 1241: [success_rate]: False, [output]: def solution():
+[EXP] 1241: [success_rate]: True, [output]: def solution():
     eggs_per_dozen = 12
 
     dozen_eggs = 5

@@ -26,6 +26,14 @@ def evaluate_results(task, item, result): #result is a list
     def judge_gsm8k_answer(output: Optional[str], answer: str) -> bool:
         if output is None:
             return False
+        try: 
+            output = eval(output)
+            answer = eval(answer)
+            if output < 0 and answer > 0:
+                output = - output
+            return abs(output-answer) < 0.01
+        except:
+            pass
         try:
             output = int(output)
             answer = int(answer)
@@ -133,7 +141,7 @@ class EvalReasoning:
         self.prompts = {}
         if self.task == "gsm8k":
             from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt, pal_prompt
-            self.prompts["prompt"] = code_prompt#pal_prompt
+            self.prompts["prompt"] = pal_prompt #code_prompt#pal_prompt
             self.prompts["evaluate"] = evaluate_prompt
             self.prompts["system_msg"] = "You will write python program to solve math problems. You will only write code blocks."
     

@@ -14,15 +14,35 @@ from algorithms import load_algorithm
 from tqdm import tqdm
 from typing import Optional
 
+from utils.math.math_utils import parse_question, parse_ground_truth, math_equal
+
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
         dataset = [{"question": a["question"], "answer": a["answer"]} for a in full_dataset]
         return dataset
+    
+    if task == "math":
+        examples = []
+        with open(path, "r") as f: 
+            for line in f:
+                js = json.loads(line)
+                examples.append(js)
         
+        dataset = []
+        for example in examples:
+            idx = example['idx']
+            example['question'] = parse_question(example, "math")
+            gt_cot, gt_ans = parse_ground_truth(example, "math")
+            example = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'answer': gt_ans}
+            dataset.append(example)  
+
+        return dataset
+
+def retrieve_answer_from_dataset(answer: str) -> str:
+    return re.match(r'[\S\s]*#### (.*)$', answer)[1]
+    
 def evaluate_results(task, item, result): #result is a list
-    def retrieve_answer_from_dataset(answer: str) -> str:
-        return re.match(r'[\S\s]*#### (.*)$', answer)[1]
     def judge_gsm8k_answer(output: Optional[str], answer: str) -> bool:
         if output is None:
             return False
@@ -74,10 +94,34 @@ def evaluate_results(task, item, result): #result is a list
                     count[a] += 1
             executed_solution = max(count, key=count.get)
         return judge_gsm8k_answer(executed_solution, answer), executed_solution
+    elif task == "math":
+        answer = item["answer"]
+        if type(result) == str:
+            try:
+                executed_solution = execute_solution(result, execute=True)
+            except Exception as e:
+                executed_solution = "Error: time out"
+        elif type(result) == list:
+            executed_solution = []
+            for r in result:
+                try:
+                    executed_solution.append(execute_solution(r, execute=True))
+                except Exception as e:
+                    executed_solution.append("Error: time out")
+            # majority vote
+            count = dict()
+            for a in executed_solution:
+                if a not in count:
+                    count[a] = 1
+                else:
+                    count[a] += 1
+            executed_solution = max(count, key=count.get)
+        return math_equal(executed_solution, answer), executed_solution
+        
     else:
         raise NotImplementedError
         
-@timeout_decorator.timeout(20)
+# @timeout_decorator.timeout(20)
 def execute_solution(code, execute=True):
     
     full_output = code
@@ -144,7 +188,11 @@ class EvalReasoning:
             self.prompts["prompt"] = pal_prompt #code_prompt#pal_prompt
             self.prompts["evaluate"] = evaluate_prompt
             self.prompts["system_msg"] = "You will write python program to solve math problems. You will only write code blocks."
-    
+        if self.task == "math":
+            from prompts.Reasoning.math_prompt import math_deepseekpal_prompt 
+            self.prompts["prompt"] = math_deepseekpal_prompt  #code_prompt#pal_prompt
+            self.prompts["system_msg"] = "You will write python program to solve math problems."
+
     def evaluate(self):
         
         dataset_name = os.path.basename(self.dataset_path).split(".")[0]
@@ -166,7 +214,11 @@ class EvalReasoning:
             if type(output) == list: output = "\n".join(output) 
             output = output + "\n Executed result: " + str(executed_output)
             with open(os.path.join(self.log_path,f"{self.task}_{dataset_name}.txt"), "a+") as f:
-                f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [output]: {output}\n")
+                if self.task == "math":
+                    answer = item["answer"]
+                elif self.task == "gsm8k":
+                    answer = retrieve_answer_from_dataset(item["answer"])
+                f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [answer]: {answer}, [output]: {output}\n")
 
         
         metrics = {"task":self.task+'_'+dataset_name, "success_rate": sum(result) / len(result)}

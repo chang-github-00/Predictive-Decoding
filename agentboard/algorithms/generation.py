@@ -85,15 +85,24 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
         
         
     def make_prompt(self, prompt):
-        with io.StringIO() as f:
-            f.write(prompt)
-            f.write("\n\n\n\n\n")
-            # f.write(f'Q: {self.example}\n\n# solution in Python:\n\n\ndef solution():\n    """{self.example}"""\n')
-            f.write(f'Solve this problem following previous examples:\nQ: {self.prompts["question"]}\n\n# Finish the solution in Python:\n\n\ndef solution():\n')
+        if self.task == "gsm8k":
+            with io.StringIO() as f:
+                f.write(prompt)
+                f.write("\n\n\n\n\n")
+                # f.write(f'Q: {self.example}\n\n# solution in Python:\n\n\ndef solution():\n    """{self.example}"""\n')
+                f.write(f'Solve this problem following previous examples:\nQ: {self.prompts["question"]}\n\n# Finish the solution in Python:\n\n\ndef solution():\n')
 
-            # get the prompt
-            model_input = f.getvalue()
-        return model_input
+                # get the prompt
+                model_input = f.getvalue()
+            return model_input
+        
+        if self.task == "math":
+            with io.StringIO() as f:
+                f.write(prompt)
+                f.write("\n\n")
+                f.write(f'Solve this problem following previous examples:\nQ: {self.prompts["question"]}\n# solution in Python:\n')
+                model_input = f.getvalue()
+            return model_input
     
     def format_code(self, code):
         # one typical format is ```...```, parse the code inside

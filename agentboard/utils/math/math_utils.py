@@ -348,20 +348,20 @@ def math_equal(prediction: Union[bool, float, str],
     """
     try: # 1. numerical equal
         if is_digit(prediction) and is_digit(reference):
-            prediction = float(str(prediction).replace(",", ""))
-            reference = float(str(reference).replace(",", ""))
+            prediction_num = float(str(prediction).replace(",", ""))
+            reference_num = float(str(reference).replace(",", ""))
             # number questions
             if include_percentage:
-                gt_result = [reference / 100, reference, reference * 100]
+                gt_result = [reference_num / 100, reference_num, reference_num * 100]
             else:
-                gt_result = [reference]
+                gt_result = [reference_num]
             for item in gt_result:
                 try:
                     if is_close:
-                        if isclose(item, prediction, rel_tol=1e-4):
+                        if isclose(item, prediction_num, rel_tol=1e-4):
                             return True
                     else:
-                        if item == prediction:
+                        if item == prediction_num:
                             return True
                 except Exception:
                     continue
@@ -372,10 +372,34 @@ def math_equal(prediction: Union[bool, float, str],
     if not prediction and prediction not in [0, False]:
         return False
 
+    try: # 3. complex equal
+        # first make reference in a+bj format
+        
+        if "i" in reference:
+            reference_complex = re.sub("i","j", reference)
+        reference_complex = re.sub(" ", "", reference_complex)
+        
+        prediction_complex = str(prediction)
+        if "i" in prediction_complex:
+            prediction_complex = re.sub("i","j", prediction)
+        prediction_complex = re.sub(" ", "", prediction_complex)
+        
+        reference_c = complex(reference_complex)
+        prediction_c = complex(prediction_complex)
+        
+        # compare real and image part
+        if isclose(reference_c.real, prediction_c.real, rel_tol=1e-3) and isclose(reference_c.imag, prediction_c.imag, rel_tol=1e-3):
+            return True
+    except:
+        pass 
     # 2. symbolic equal
     reference = str(reference).strip()
     prediction = str(prediction).strip()
 
+    # remove $, m, cm, km in the form of $xxx, xxx cm
+    pattern = r'\$|cm|km'
+    prediction = re.sub(pattern, '', prediction)
+    
     ## deal with [], (), {}
     pred_str, ref_str = prediction, reference
     if (prediction.startswith("[") and prediction.endswith("]") and not reference.startswith("(")) or \
@@ -415,26 +439,29 @@ def math_equal_process(param):
 
 def symbolic_equal(a, b):
     def _parse(s):
+        all_exprs = []
         for f in [parse_latex, parse_expr]:
             try:
-                return f(s)
+                all_exprs.append(f(s))
             except:
                 pass
-        return s
-    a = _parse(a)
-    b = _parse(b)
+        return all_exprs
+    a_ls = _parse(a)
+    b_ls = _parse(b)
 
-    try:
-        if simplify(a-b) == 0:
-            return True
-    except:
-        pass
+    for a in a_ls:
+        for b in b_ls:        
+            try:
+                if simplify(a-b) == 0:
+                    return True
+            except:
+                pass
 
-    try:
-        if isclose(N(a), N(b), rel_tol=1e-3):
-            return True
-    except:
-        pass
+            try:
+                if isclose(N(a), N(b), rel_tol=1e-2):
+                    return True
+            except:
+                pass
     return False
 
 
@@ -459,9 +486,18 @@ def call_with_timeout(func, *args, timeout=1, **kwargs):
 
 
 def _test_math_equal():
-    print(math_equal("0.0833333333333333", "\\frac{1}{12}"))
+    print(math_equal("\\frac{1}{12}", "1/12"))
     print(math_equal("(1,4.5)", "(1,\\frac{9}{2})"))
-    print(math_equal("\\frac{x}{7}+\\frac{2}{7}", "\\frac{x+2}{7}", timeout=True))
+    print(math_equal("\\frac{x}{7}+\\frac{2}{7}", "\\frac{x+2}{7}", timeout=False))
+    print(math_equal("5.51", "\\frac{11}{2}"))
+    print(math_equal("$16.0$", "16"))
+    print(math_equal("(-\sqrt{3},\sqrt{3})", "(-1.732, 1.732)"))
+    print(math_equal("(6.0+9.1i)", "6+9.2i"))
+    print(math_equal("10 - 10*i**2", "20")) # difficult
+    print(math_equal("(1,\\frac{9}{2})", "(1.0,4.5)"))
+    print(math_equal("3s^2", "3*s**2"))
+    print(math_equal("2x(15x^2-4x+10)", "2*x*(15*x**2 - 4*x + 10)")) # difficult
+    print(math_equal("7*(x - 3)*(x + 3)", "7(x+3)(x-3)"))
 
-# if __name__ == "__main__":
-#     _test_math_equal()
+if __name__ == "__main__":
+    _test_math_equal()

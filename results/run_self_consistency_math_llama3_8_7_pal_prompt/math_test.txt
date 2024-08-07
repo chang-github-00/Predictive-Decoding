@@ -1,0 +1,31 @@
+[EXP] 0: [success_rate]: True, [answer]: 2, [output]: 
+import numpy as np
+from matplotlib import pyplot as plt
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 2 / (x**2 + x - 6)
+    simplified_expr = simplify(expr)
+
+    # Solve the equation x**2 + x - 6 = 0 for x
+    roots = np.roots([1, 1, -6])
+    roots = [root.real for root in roots if root.imag == 0]
+
+    # Plot the function
+    x_values = np.linspace(-10, 10, 400)
+    y_values = [expr.subs(x, value) for value in x_values]
+
+    plt.plot(x_values, y_values)
+    plt.plot([root, root], [0, 100], 'k--')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Graph of y = 2/(x^2 + x - 6)')
+    plt.grid(True)
+    plt.show()
+
+    # Count the number of vertical asymptotes
+    result = len(roots)
+    return result
+
+ Executed result: 2

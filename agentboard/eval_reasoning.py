@@ -47,8 +47,10 @@ def evaluate_results(task, item, result): #result is a list
         if output is None:
             return False
         try: 
-            output = eval(output)
-            answer = eval(answer)
+            if isinstance(output, str):
+                output = eval(output)
+            if isinstance(answer, str):
+                answer = eval(answer)
             if output < 0 and answer > 0:
                 output = - output
             return abs(output-answer) < 0.01
@@ -98,14 +100,19 @@ def evaluate_results(task, item, result): #result is a list
         answer = item["answer"]
         if type(result) == str:
             try:
-                executed_solution = execute_solution(result, execute=True)
+                executed_solution = str(execute_solution(result, execute=True))
+                if "=" in str(executed_solution):
+                    executed_solution = executed_solution.split("=")[1].strip()
             except Exception as e:
                 executed_solution = "Error: time out"
         elif type(result) == list:
             executed_solution = []
             for r in result:
                 try:
-                    executed_solution.append(execute_solution(r, execute=True))
+                    result = str(execute_solution(r, execute=True))
+                    if "=" in str(result):
+                        result = result.split("=")[1].strip()
+                    executed_solution.append(result)
                 except Exception as e:
                     executed_solution.append("Error: time out")
             # majority vote
@@ -121,7 +128,7 @@ def evaluate_results(task, item, result): #result is a list
     else:
         raise NotImplementedError
         
-# @timeout_decorator.timeout(20)
+@timeout_decorator.timeout(20)
 def execute_solution(code, execute=True):
     
     full_output = code

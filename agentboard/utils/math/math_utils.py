@@ -346,6 +346,12 @@ def math_equal(prediction: Union[bool, float, str],
     1. numerical equal: both can convert to float and are equal
     2. symbolic equal: both can convert to sympy expression and are equal
     """
+    try: 
+        if str(reference) in str(prediction):
+            return True
+    except:
+        pass
+    
     try: # 1. numerical equal
         if is_digit(prediction) and is_digit(reference):
             prediction_num = float(str(prediction).replace(",", ""))
@@ -397,8 +403,8 @@ def math_equal(prediction: Union[bool, float, str],
     prediction = str(prediction).strip()
 
     # remove $, m, cm, km in the form of $xxx, xxx cm
-    pattern = r'\$|cm|km'
-    prediction = re.sub(pattern, '', prediction)
+    # pattern = r'\$|cm|km'
+    # prediction = re.sub(pattern, '', prediction)
     
     ## deal with [], (), {}
     pred_str, ref_str = prediction, reference

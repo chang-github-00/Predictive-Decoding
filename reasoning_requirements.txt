@@ -63,8 +63,6 @@ jsonschema==4.22.0
 jsonschema-specifications==2023.12.1
 kiwisolver==1.4.5
 lark==1.1.9
-llama @ git+https://github.com/facebookresearch/llama@be327c427cc5e89cc1d3ab3d3fec4484df771245
-llama1 @ git+https://github.com/AegeanYan/llama@bbb5c8e861e25e073bc4d3356152b1ac8422aa09
 llvmlite==0.43.0
 lm-format-enforcer==0.10.1
 lxml==4.9.4

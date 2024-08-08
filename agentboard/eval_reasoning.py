@@ -14,7 +14,7 @@ from algorithms import load_algorithm
 from tqdm import tqdm
 from typing import Optional
 
-from utils.math.math_utils import parse_question, parse_ground_truth, math_equal
+from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
 
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
@@ -128,7 +128,7 @@ def evaluate_results(task, item, result): #result is a list
     else:
         raise NotImplementedError
         
-@timeout_decorator.timeout(20)
+@timeout_decorator.timeout(20, use_signals=False)
 def execute_solution(code, execute=True):
     
     full_output = code
@@ -209,6 +209,7 @@ class EvalReasoning:
         f = open(os.path.join(self.log_path,f"{self.task}_{dataset_name}.txt"), "w")
             
         for id, item in tqdm(enumerate(self.dataset), total=len(self.dataset)):
+
             question = item["question"]
             # print(question)
             success, output = self.algorithm.run(question, prompts=self.prompts, end_suffix="return")
@@ -304,6 +305,35 @@ def main():
     eval_reasoning = EvalReasoning(task, run_config, llm_config, algorithm_config)
     
     metrics = eval_reasoning.evaluate()
+
+def test_execution():
+    code = """
+    def solution():
+        # Let the current age of the son be x
+        x = int(input("Enter the current age of the son: "))
+
+        # The current age of the father is 5 times the son's age
+        father_age = 5 * x
+
+        # The sum of their ages 3 years ago is 30
+        total_age_3_years_ago = 30
+
+        # The sum of their ages 3 years ago is the sum of their current ages minus 6
+        current_age_sum = x + father_age + 6
+
+        # Solve for x
+        x = (total_age_3_years_ago - 6) / 2
+
+        # The son's current age is x + 3
+        son_age = x + 3
+
+        # Format the result in LaTeX
+        result = r'The son is {} years old.'.format(son_age)
+        return result
+    """
+    result = execute_solution(code)
+    
     
 if __name__ == "__main__":
     main()
+    # test_execution()

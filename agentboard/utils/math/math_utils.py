@@ -346,11 +346,6 @@ def math_equal(prediction: Union[bool, float, str],
     1. numerical equal: both can convert to float and are equal
     2. symbolic equal: both can convert to sympy expression and are equal
     """
-    try: 
-        if str(reference) in str(prediction):
-            return True
-    except:
-        pass
     
     try: # 1. numerical equal
         if is_digit(prediction) and is_digit(reference):
@@ -374,6 +369,13 @@ def math_equal(prediction: Union[bool, float, str],
             return False
     except:
         pass
+    
+    try: 
+        if str(reference) in str(prediction):
+            return True
+    except:
+        pass
+    
 
     if not prediction and prediction not in [0, False]:
         return False

@@ -1,0 +1,282 @@
+[EXP] 0: [success_rate]: True, [answer]: 2, [output]: import numpy as np
+
+import matplotlib.pyplot as plt
+
+def solution():
+
+    x = np.linspace(-10, 10, 400)
+
+    y = 2 / (x**2 + x - 6)
+
+    plt.plot(x, y)
+
+    plt.axvline(x=1, color='r', linestyle='--')
+
+    plt.axvline(x=-2, color='r', linestyle='--')
+
+    plt.xlabel('x')
+
+    plt.ylabel('y')
+
+    plt.title('Graph of y = 2/(x^2+x-6)')
+
+    plt.grid(True)
+
+    plt.show()
+
+    result = '2'
+
+    return result
+
+
+ Executed result: 2
+[EXP] 1: [success_rate]: True, [answer]: 10, [output]: def solution():
+
+    difference = (1.2 * 30) - (1.3 * 20)
+
+    result = "{:.2f}".format(difference)
+
+    return result
+
+
+ Executed result: 10.00
+[EXP] 2: [success_rate]: False, [answer]: \frac{9}{7}, [output]: import sympy as sp
+
+from sympy import ceiling
+
+x = sp.symbols('x')
+
+expr = ceiling(x) + x
+
+solve = sp.solve(Expr - 23/7, x)
+
+result = str(solve[0])
+
+return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 3: [success_rate]: True, [answer]: i, [output]: import cmath
+
+def solution():
+
+    i = cmath.sqrt(-1)
+
+    result = i**5 + 1/i**25 + i**45
+
+    return result
+
+
+ Executed result: 1j
+[EXP] 4: [success_rate]: True, [answer]: 4, [output]: def solution():
+
+    x = 8 / 2
+
+    result = int(x)
+
+    return result
+
+
+ Executed result: 4
+[EXP] 5: [success_rate]: True, [answer]: 402, [output]: def solution():
+
+    a = 6
+
+    d = 4
+
+    n = 100
+
+    result = a + (n - 1) * d
+
+    return result
+
+
+ Executed result: 402
+[EXP] 6: [success_rate]: False, [answer]: [-2,7], [output]: import sympy as sp
+
+from sympy import solve
+
+x = sp.symbols('x')
+
+expr = x**2 - 5*x - 4 - 10
+
+result = solve(expr, x)
+
+result = '[-4, 2]'
+
+return result
+
+
+ Executed result: [-4, 2]
+[EXP] 7: [success_rate]: True, [answer]: 7, [output]: import math
+
+def solution():
+
+    initial_investment = 1000
+
+    final_investment = 1225
+
+    years = 3
+
+    # Calculate the interest rate
+
+    interest_rate = ((final_investment / initial_investment) ** (1 / years)) - 1
+
+    interest_rate = interest_rate * 100
+
+    # Round the result to the nearest integer
+
+    result = round(interest_rate)
+
+    return result
+
+
+ Executed result: 7
+[EXP] 8: [success_rate]: False, [answer]: 4,6,14,15, [output]: import itertools
+
+def solution():
+
+    for a in range(1, 100):
+
+        for b in range(a + 1, 100):
+
+            for c in range(b + 1, 100):
+
+                for d in range(c + 1, 100):
+
+                    if (a + b == 10 or a + b == 18 or a + b == 19 or a + b == 20 or a + b == 21 or a + b == 29) and \
+
+                       (a + c == 10 or a + c == 18 or a + c == 19 or a + c == 20 or a + c == 21 or a + c == 29) and \
+
+                       (a + d == 10 or a + d == 18 or a + d == 19 or a + d == 20 or a + d == 21 or a + d == 29) and \
+
+                       (b + c == 10 or b + c == 18 or b + c == 19 or b + c == 20 or b + c == 21 or b + c == 29) and \
+
+                       (b + d == 10 or b + d == 18 or b + d == 19 or b + d == 20 or b + d == 21 or b + d == 29) and \
+
+                       (c + d == 10 or c + d == 18 or c + d == 19 or c + d == 20 or c + d == 21 or c + d == 29):
+
+                        return '{}, {}, {}, {}'.format(a, b, c, d)
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 9: [success_rate]: False, [answer]: -\frac{1}{8}, [output]: import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    expr = abs(5*x - 1) - abs(3*x + 2)
+
+    result = sp.solve(expr, x)[0]
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 10: [success_rate]: False, [answer]: \frac{x+2}{7}, [output]: from sympy import symbols, Eq, solve
+
+x = symbols('x')
+
+def solution():
+
+    f = 7*x + 5
+
+    g = x - 1
+
+    h = f(g)
+
+    inverse_h = solve(Eq(h, x), x)
+
+    result = inverse_h[0]
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 11: [success_rate]: False, [answer]: -15, [output]: def solution():
+
+    result = 0
+
+    for i in range(-6, 8):
+
+        if abs(i) + 1 > 7 and abs(i+1) <= 7:
+
+            result += i
+
+    return result
+
+
+ Executed result: 0
+[EXP] 12: [success_rate]: True, [answer]: 10, [output]: import math
+
+def solution():
+
+    x = -8
+
+    y = 6
+
+    distance = math.sqrt(x**2 + y**2)
+
+    result = format(distance, ".2f")
+
+    return result
+
+
+ Executed result: 10.00
+[EXP] 13: [success_rate]: True, [answer]: 8, [output]: import numpy as np
+
+import math
+
+def solution():
+
+    x1, y1 = 1, 4
+
+    x2, y2 = 1, 10
+
+    # Calculate the midpoint
+
+    midpoint_x = (x1 + x2) / 2
+
+    midpoint_y = (y1 + y2) / 2
+
+    # Calculate the sum of the coordinates
+
+    result = midpoint_x + midpoint_y
+
+    return result
+
+
+ Executed result: 8.0
+[EXP] 14: [success_rate]: True, [answer]: 75, [output]: import math
+
+import numpy as np
+
+def solution():
+
+    A = np.array([0, 7])
+
+    B = np.array([1, 0])
+
+    C = np.array([12, -2])
+
+    D = np.array([7, 8])
+
+    # Diagonal 1
+
+    diagonal1 = np.linalg.norm(C - A)
+
+    # Diagonal 2
+
+    diagonal2 = np.linalg.norm(B - D)
+
+    # Area of the kite
+
+    area = 0.5 * diagonal1 * diagonal2
+
+    result = "{:.2f}".format(area)
+
+    return result
+
+
+ Executed result: 75.00

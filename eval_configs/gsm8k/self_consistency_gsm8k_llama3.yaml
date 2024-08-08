@@ -6,6 +6,7 @@ run:
 
 
 algorithm:
+  task: gsm8k
   name: Self_Consistency  
   n_generate_sample: 1 # n=1 pal
   value_type: logp # use llama3

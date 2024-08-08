@@ -6,6 +6,7 @@ run:
 
 
 algorithm:
+  task: gsm8k
   name: MPC_Sample
   lookahead_thought_length: 6
   reward_threshold: 0.0

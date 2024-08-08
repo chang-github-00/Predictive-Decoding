@@ -14,6 +14,7 @@ import numpy as np
 class MPC_Sample:  # the algorithm should be stateless, and generates a whole plan / code / chain of actions at once.
     def __init__(self,
                  llm_model,
+                 task="gsm8k",
                  prompt_path=None,
                  lookahead_thought_length=3,
                  lookahead_token_length=None,    # the length of the lookahead token sequence, default use thought length as evaluation chunk
@@ -33,7 +34,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         else:
             self.prompts = {}
         
-        self.task = "gsm8k"
+        self.task = task
         
         self.problem_size = 25 if self.task == "gsm8k" else 30
         
@@ -73,11 +74,11 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             with io.StringIO() as f:
                 f.write(prompt)
                 f.write("\n\n")
-                f.write(f'Solve this problem following previous examples:\nQ: {self.prompts["question"]}\n# solution in Python:\n')
+                f.write(f'Solve this problem following previous examples:\nQ: {self.prompts["question"]}\n')
                 model_input = f.getvalue()
 
             with io.StringIO() as f:    
-                # f.write("def solution():\n")
+                f.write("solution in Python:\n```\n")
                 for a in self.memory:
                     if a is not None:
                         f.write(f"{a}")
@@ -106,7 +107,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         self.trajectory_pool.append(item)
         
         
-    def parse_action_sequence(self, action_output): 
+    def parse_action_sequence(self, action_output, parse_prefix=""): 
         
         def _get_start_end_token_id(original_text, text, tokens):
             if text not in original_text:
@@ -127,7 +128,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             action = action.replace("`\n", "")
             return action + "\n"
         
-        prefix = "def solution():\n"
+        prefix = parse_prefix
         
         if type(action_output) == str: # no logprob information
             
@@ -280,7 +281,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                     all_results.append((n_gram_list[-1], n_gram_reward))
                     
         # for coding tasks, screen out the actions that are not valid
-                    
+        if self.task == "math": #don't allow generating ``` in code as it will end the code and cannot fix return
+            all_results = [item for item in all_results if "```" not in item[0]]
         return all_results
     
       
@@ -312,6 +314,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             all_action_prob_pairs = dict()
             
             for (action, prob) in zip(all_valid_actions, probs):
+    
                 if action not in all_action_prob_pairs:
                     all_action_prob_pairs[action] = prob
                 else:
@@ -326,9 +329,11 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             sample = torch.multinomial(torch.tensor(probs), 1).item()
         
             action = all_valid_actions[sample]
+            
         else:
             
             action = all_valid_actions[np.argmax(all_valid_values)]
+            
             
         return action
 
@@ -408,8 +413,11 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             
             if success:
                 for action_sequence in action_sequence_samples:
-
-                    processed_output, action = self.parse_action_sequence(action_sequence)
+                    if self.task == "gsm8k":
+                        parse_prefix = "def solution():\n"
+                    if self.task == "math":
+                        parse_prefix = "Null"
+                    processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix)
 
                     if action is None: continue
                     reward = 0
@@ -463,6 +471,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
     @classmethod
     def from_config(cls, llm_model, config):
         return cls(llm_model, 
+                   task=config.get("task", "gsm8k"),
                    prompt_path=config.get("prompt_path", None),
                    lookahead_thought_length=config.get("lookahead_thought_length", 3),
                    lookahead_token_length=config.get("lookahead_token_length", None),

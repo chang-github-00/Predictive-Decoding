@@ -198,7 +198,7 @@ class EvalReasoning:
         if self.task == "math":
             from prompts.Reasoning.math_prompt import math_deepseekpal_prompt 
             self.prompts["prompt"] = math_deepseekpal_prompt  #code_prompt#pal_prompt
-            self.prompts["system_msg"] = "You will write python program to solve math problems."
+            self.prompts["system_msg"] = "You will write python program to solve math problems. You will only write imports and code blocks ."
 
     def evaluate(self):
         

@@ -65,7 +65,7 @@ kiwisolver==1.4.5
 lark==1.1.9
 llama @ git+https://github.com/facebookresearch/llama@be327c427cc5e89cc1d3ab3d3fec4484df771245
 llama1 @ git+https://github.com/AegeanYan/llama@bbb5c8e861e25e073bc4d3356152b1ac8422aa09
-llama3 @ git+https://github.com/Ber666/llama3@6aa3a98911de669637af6183934c1afaf05bc916
+llama3
 llvmlite==0.43.0
 lm-format-enforcer==0.10.1
 lxml==4.9.4
@@ -151,7 +151,7 @@ stack-data==0.6.3
 starlette==0.37.2
 sympy==1.12
 termcolor==2.4.0
-tiktoken==0.7.0
+tiktoken
 timeout-decorator==0.5.0
 tokenizers==0.19.1
 torch==2.3.0

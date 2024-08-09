@@ -336,7 +336,7 @@ def solution():
     return A+B+C
 
  Executed result: Error: return error, fail to execute
-[EXP] 18: [success_rate]: True, [answer]: 3, [output]: 
+[EXP] 18: [success_rate]: False, [answer]: 3, [output]: 
 def solution():
     # Let's say the weight of one treek is x
     # Then, 10 treeks weigh 3 squigs, so 10x = 3y, where y is the weight of one squig
@@ -458,7 +458,7 @@ def solution():
     return result
 
  Executed result: Error: return error, fail to execute
-[EXP] 27: [success_rate]: True, [answer]: 12,10,6, [output]: 
+[EXP] 27: [success_rate]: False, [answer]: 12,10,6, [output]: 
 import numpy as np
 
 def solution():
@@ -529,7 +529,7 @@ def solution():
     return result
 
  Executed result: Error: return error, fail to execute
-[EXP] 31: [success_rate]: True, [answer]: 5, [output]: 
+[EXP] 31: [success_rate]: False, [answer]: 5, [output]: 
 import sympy as sp
 
 def solution():
@@ -44096,7 +44096,8 @@ def solution():
 
     return result
 
- Executed result: \left[ -4  , 100 , 81 , 64 , 49 , 36 , 25 , 16 , 9 , 4 , 1 , 0 , -4 , 3 , 22 , 59 , 120 , 211 , 338 , 507 , 724 , 995 ight]
+ Executed result: \left[ -4  , 100 , 81 , 64 , 49 , 36 , 25 , 16 , 9 , 4 , 1 , 0 , -4 , 3 , 22 , 59 , 120 , 211 , 338 , 507 , 724 , 995 
+ight]
 [EXP] 2427: [success_rate]: True, [answer]: a, [output]: 
 def solution():
     a, b, c = 0, 0, 0
@@ -46215,7 +46216,8 @@ def solution():
     result = r'\left\{' + ', '.join([str(root) for root in roots]) + '\right\}'
     return result
 
- Executed result: \left\{((-b*(b + c) - sqrt((b + c)*(b**3 + b**2*c - 4*c**3)))/(2*c), b, c), ((-b*(b + c) + sqrt((b + c)*(b**3 + b**2*c - 4*c**3)))/(2*c), b, c)ight\}
+ Executed result: \left\{((-b*(b + c) - sqrt((b + c)*(b**3 + b**2*c - 4*c**3)))/(2*c), b, c), ((-b*(b + c) + sqrt((b + c)*(b**3 + b**2*c - 4*c**3)))/(2*c), b, c)
+ight\}
 [EXP] 2537: [success_rate]: False, [answer]: 3, [output]: 
 def solution():
     n = 1

@@ -50913,3 +50913,161 @@ def solution():
 
 
  Executed result: Error: return error, fail to execute
+[EXP] 2356: [success_rate]: False, [answer]: 2, [output]: import numpy as np
+
+import math
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x, y, z = symbols('x y z')
+
+    # Equation of the curve
+
+    expr = x*y*z**2 - 2
+
+    # Distance from the origin
+
+    distance = np.sqrt(x**2 + y**2 + z**2)
+
+    distance = np.sqrt(sol[0]**2 + sol[1]**2 + sol[2]**2)
+
+    result = distance
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2357: [success_rate]: False, [answer]: 49, [output]: def solution():
+
+    k = 0
+
+    term = 1
+
+    while term < 2**99:
+
+        if term % 2 == 1:
+
+            term += 1
+
+        else:
+
+            term *= 2
+
+        k += 1
+
+    return k
+
+
+ Executed result: 99
+[EXP] 2358: [success_rate]: True, [answer]: 2\sqrt{5}, [output]: import math
+
+import sympy as sp
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    equation = x**2 - 3*x + 1
+
+    roots = sp.solve(equation, x)
+
+    a, b = roots
+
+    result = (a / math.sqrt(b)) + (b / math.sqrt(a))
+
+    return str(result)
+
+
+ Executed result: 0.5*sqrt(5) + 3.35410196624968
+[EXP] 2359: [success_rate]: False, [answer]: 331, [output]: def solution():
+
+    f = lambda n: (-1)**(n+1) * n - 2*f(n-1) if n > 1 else f(1)
+
+    f(1) = 1
+
+    result = sum(f(i) for i in range(1,1986))
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2360: [success_rate]: False, [answer]: 8n^2+4n+1, [output]: from sympy import symbols, simplify
+
+from math import factorial
+
+def solution():
+
+    n = symbols('n')
+
+    numerator = 1
+
+    denominator = 1
+
+    for i in range(1, n+1):
+
+        numerator *= ((2*i)**4 + 1/4)
+
+        denominator *= ((2*i-1)**4 + 1/4)
+
+    result = numerator / denominator
+
+    result = simplify(result)
+
+    return result
+
+
+ Executed result: 1.00000000000000
+[EXP] 2361: [success_rate]: False, [answer]: 18, [output]: def solution():
+
+    A = symbols('A')
+
+    B = symbols('B')
+
+    C = symbols('C')
+
+    P = symbols('P')
+
+    Q = symbols('Q')
+
+    expr1 = x**3 + P*x**2 + Q*x - 19
+
+    expr2 = x**3 - A*x**2 + B*x - C
+
+    # Equating the roots
+
+    expr3 = simplify((expr1 - expr2).subs(x, x+1))
+
+    # Solving for A + B + C
+
+    result = simplify(A + B + C)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2362: [success_rate]: False, [answer]: \sqrt{5}, [output]: import sympy as sp
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    equation1 = x - 1/x - 1
+
+    equation2 = 1/x - x - 1
+
+    solution1 = sp.solve(equation1, x)[0]
+
+    solution2 = sp.solve(equation2, x)[0]
+
+    result = solution1 + solution2
+
+    return result
+
+
+ Executed result: 0

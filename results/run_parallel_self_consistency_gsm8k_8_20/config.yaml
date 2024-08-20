@@ -3,7 +3,7 @@ algorithm:
   do_sample: true
   n_generate_sample: 1
   name: Self_Consistency
-  task: math
+  task: gsm8k
   value_type: logp
 llm:
   context_length: 8192
@@ -15,5 +15,5 @@ llm:
   temperature: 0
   top_p: 1
 run:
-  data_path: /root/Agent-Decoding/data/math/test.json
-  log_path: results/debug_mpc_sample_math
+  data_path: /root/huggingface/gsm8k
+  log_path: results/run_parallel_self_consistency_gsm8k_8_20

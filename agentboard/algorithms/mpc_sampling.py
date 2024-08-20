@@ -53,18 +53,23 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         self.use_memory =use_memory
         
         
-    def make_prompt(self, prompt):
+    def make_prompt(self, prompt, question, memory=None):
+        if memory is None:
+            memory = self.memory
+        else:
+            memory = memory
+            
         if self.task == "gsm8k":
             with io.StringIO() as f:
                 f.write(prompt)
                 f.write("\n\n\n\n\n")
                 # f.write(f'Q: {self.example}\n\n# solution in Python:\n\n\ndef solution():\n    """{self.example}"""\n')
-                f.write(f'Solve this problem following previous examples:\nQ: {self.prompts["question"]}\n# solution in Python:\n\n')
+                f.write(f'Solve this problem following previous examples:\nQ: {question}\n# solution in Python:\n\n')
                 model_input = f.getvalue()
             
             with io.StringIO() as f:    
                 f.write("def solution():\n")
-                for a in self.memory:
+                for a in memory:
                     if a is not None:
                         f.write(f"{a}")
                 answer_prefix = f.getvalue()
@@ -74,12 +79,12 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             with io.StringIO() as f:
                 f.write(prompt)
                 f.write("\n\n")
-                f.write(f'Solve this problem following previous examples:\nQ: {self.prompts["question"]}\n')
+                f.write(f'Solve this problem following previous examples:\nQ: {question}\n')
                 model_input = f.getvalue()
 
             with io.StringIO() as f:    
                 f.write("solution in Python:\n```\n")
-                for a in self.memory:
+                for a in memory:
                     if a is not None:
                         f.write(f"{a}")
                 answer_prefix = f.getvalue()
@@ -407,7 +412,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             if not self.use_memory:
                 self.trajectory_pool = [] # don't keep memory, but re-init the trajectory pool every time
             
-            input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"])
+            input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"], question)
             system_message = self.prompts["system_msg"]
             success, action_sequence_samples = self.llm_model.generate_with_config(system_message, input_prompt, generation_config, answer_prefix=answer_prefix)
             
@@ -427,6 +432,130 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                         raise NotImplementedError
                     
                     self.update_trajectory_pool(processed_output, reward=reward)
+            else:
+                print("Failed to generate action sequence.")
+                return False, None
+                
+            reward_threshold = self.reward_threshold if reflection_tips == "" else 0  # if reflection is needed, lower the threshold so that the model won't get stuck
+            action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
+            
+            if action is not None:
+                
+                self.memory[iter] = action
+                
+                iter += 1
+                
+                reflection_tips = self.reflection_tips(reward_threshold=self.reward_threshold)
+                
+                if iter > args.max_iters:
+                    break
+                
+                if end_suffix is not None and action.strip().startswith(end_suffix):
+                    break
+            else:
+                reflection_tips = self.reflection_tips(reward_threshold=self.reward_threshold)
+                if reflection_tips[0]:
+                    self.memory[iter] = reflection_tips[1]
+                    break
+                      
+        if success:
+            with io.StringIO() as f:
+                if self.task == "gsm8k":
+                    f.write("def solution():\n")
+                # iterate through the state
+                for a  in self.memory:
+                    if a is not None:
+                        f.write(f"{a}\n")
+
+                full_output = f.getvalue()
+
+            return True, full_output
+            
+        return False, None
+    
+    
+    def parallel_run(self, questions, prompts=None, **kwargs): # code for original vllm
+        
+        args = {
+            "n_generate_sample":self.n_generate_sample,
+            "max_iters": self.problem_size,
+            "max_tokens": 500,# if self.lookahead_token_length is None else self.lookahead_token_length,
+            "temperature": self.beam_temperature,
+            "top_p": 1.0,
+            "stop": [],            
+            "logprobs": (self.value_type == "logp"),
+            "value_type": self.value_type
+        }
+        
+        args = argparse.Namespace(**args)
+        
+        
+        generation_config = {"n": args.n_generate_sample, 
+                            "stop": args.stop, 
+                            "top_p": args.top_p,
+                            "max_tokens": args.max_tokens, 
+                            "temperature": args.temperature,
+                            "do_sample": True,
+                            "logprobs": args.logprobs}
+        
+        if "end_suffix" in kwargs:
+            end_suffix = kwargs["end_suffix"]
+        else:
+            end_suffix = None
+            
+        if prompts is not None:
+            self.prompts = prompts
+        
+        self.trajectory_pool = {}
+        self.memory = {}
+        
+        for id, question in enumerate(questions):
+            self.trajectory_pool[id] = []
+            self.memory[id] = [None]*self.problem_size
+
+        all_iter = 0
+        iter = 0
+
+        while iter < args.max_iters:
+            all_input_prompts = []
+            all_answer_prefixes = []
+            all_system_messages = []
+            all_index = []
+            for id in range(len(questions)):
+                if not self.use_memory:
+                    self.trajectory_pool[id] = []
+
+                ended = True
+                for action in self.memory[id]:
+                    if end_suffix is not None and action.strip().startswith(end_suffix): 
+                        ended = True    
+                        break
+                    
+                if not ended: # as not all samples have the same number of steps, we only inference those that have not finished
+                    input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"], question, memory=self.memory[id])
+                    all_input_prompts.append(input_prompt)
+                    all_answer_prefixes.append(answer_prefix)
+                    all_system_messages.append(self.prompts["system_msg"])
+                    all_index.append(id)
+                    
+            success, action_sequence_samples = self.llm_model.generate_with_config(all_system_messages, all_input_prompts, generation_config, answer_prefixes=all_answer_prefixes)
+            
+            if success:
+                for id, action_sequence in zip(all_index, action_sequence_samples):
+                    if self.task == "gsm8k":
+                        parse_prefix = "def solution():\n"
+                    if self.task == "math":
+                        parse_prefix = "Null"
+                    processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix)
+
+                    if action is None: continue
+                    reward = 0
+                    if args.value_type == "logp":
+                        reward = processed_output["action_prob"]
+                    else:
+                        raise NotImplementedError
+                    
+                    
             else:
                 print("Failed to generate action sequence.")
                 return False, None

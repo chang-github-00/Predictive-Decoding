@@ -162,6 +162,82 @@ class VLLM:
                 outputs.append(item)
 
             return True, outputs 
+    
+    def parallel_generate_with_config(self, system_messages, prompts, config, answer_prefixes=None):
+        
+        
+        stop = config.get("stop", self.stop)
+        temperature = config.get("temperature", self.temperature)
+        max_tokens = config.get("max_tokens", self.max_tokens)
+        n = config.get("n", 1)
+        logprobs = config.get("logprobs", 5)
+        do_sample = config.get("do_sample", True)
+        top_p = config.get("top_p", 1)
+        
+        
+        samplingparams = SamplingParams(
+            temperature=temperature,
+            top_p=top_p,
+            stop=stop,
+            max_tokens=max_tokens,
+            logprobs=logprobs,
+            n=n,
+        )
+        
+        full_prompts = []
+        for i in range(len(prompts)):
+            prompt = prompts[i]
+            system_message = system_messages[i]
+            if answer_prefixes is not None:
+                answer_prefix = answer_prefixes[i]
+            else:
+                answer_prefix = None
+            
+            full_prompt=[
+                    {"role": "system", "content": system_message},
+                    {"role": "user", "content": prompt},
+            ]
+            
+            if answer_prefix is not None:
+                full_prompt.append({"role": "assistant", "content": ""})
+            # full_prompt = self.make_prompt(system_message, prompt)
+            full_prompt = self.tokenizer.apply_chat_template(full_prompt, tokenize=False)
+            if answer_prefix is not None:
+                full_prompt = full_prompt.rstrip("<|eot_id|>")
+                full_prompt += answer_prefix
+            assert full_prompt is not None
+            
+            full_prompts.append(full_prompt)
+            
+        response = self.llm.generate(full_prompts, samplingparams)
+        
+        if logprobs == 0:
+            if n == 1:
+                return True, [res.outputs[0].text for res in response]
+            else:
+                return True, [[choice.text for choice in res.outputs] for res in response]
+            
+        else:
+            all_outputs = []
+            for res in response:
+                outputs = []
+            
+                for i in range(n):
+                    choice = res[0].outputs[i]
+                    item = {}
+                    item["text"] = choice.text
+                    raw_log_prob = choice.logprobs
+                    item["logprobs"] = []
+                    item["tokens"] = []
+                    for token in raw_log_prob:
+                        for key in token:
+                            item["logprobs"].append(token[key].logprob)
+                            item["tokens"].append(token[key].decoded_token)
+                            break
+                    outputs.append(item)
+            all_outputs.append(outputs)
+            return True, all_outputs
+        
     def get_input(self, system_message, prompt, answer_prefix=None):
         full_prompt=[
                 {"role": "system", "content": system_message},

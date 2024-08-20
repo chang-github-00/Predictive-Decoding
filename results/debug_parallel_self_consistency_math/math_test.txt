@@ -1,0 +1,2456 @@
+[success_rate]: False, [answer]: 2, [output]: 
+def solution():
+    denominator = x**2 + x - 6
+    denominator_factors = [i for i in [x**2 + x - 6] for j in range(2, int(abs(i)**0.5)+1) if i % j == 0 and (i//j in [x**2 + x - 6])]
+    vertical_asymptotes = [x for x in denominator_factors if denominator.subs(x, 0)]
+    result = len(vertical_asymptotes)
+    return result
+
+[success_rate]: True, [answer]: 10, [output]: 
+def solution():
+    a = 120 * 30 / 100
+    b = 130 * 20 / 100
+    difference = a - b
+    result = "{:.0f}".format(difference)
+    return result
+
+[success_rate]: False, [answer]: \frac{9}{7}, [output]: 
+from sympy import symbols
+
+def solution():
+    x = symbols('x')
+    expr = x + ceiling(x)
+    solved_expr = Eq(expr + x, 23/7)
+    solution = solve(solved_expr, x)
+    result = str(solution[0])
+    return result
+
+[success_rate]: True, [answer]: i, [output]: 
+def solution():
+    i = complex(0, 1)
+    result = i**5 + 1/i**25 + i**45
+    result = str(result)
+    return result
+
+[success_rate]: False, [answer]: 4, [output]: 
+def solution():
+    equation = '2^8=4^x'
+    equation = equation.replace('^', '**')
+    equation = equation.replace('4', '2**2')
+    equation = equation.replace('x', '2x')
+    equation = equation.replace('2^8', '2**8')
+    equation = equation.replace('4^x', '2**(2x)')
+    equation = equation.replace('=', '=')
+    equation = equation.split('=')
+    equation1 = equation[0]
+    equation2 = equation[1]
+    equation1 = eval(equation1)
+    equation2 = eval(equation2)
+    equation1 = str(equation1)
+    equation2 = str(equation2)
+    equation1 = equation1.replace('2**8', '256')
+    equation2 = equation2.replace('2**(2x)', '4x')
+    result = equation1 + '=' + equation2
+    return result
+
+[success_rate]: True, [answer]: 402, [output]: 
+def solution():
+    a = 6
+    d = 4
+    n = 100
+    result = a + (n-1) * d
+    return result
+
+[success_rate]: False, [answer]: [-2,7], [output]: python
+def solution():
+    # Given inequality
+    inequality = 'x**2 - 5*x - 4 <= 10'
+
+    # Rearrange the inequality
+    inequality = 'x**2 - 5*x - 14 <= 0'
+
+    # Factor the quadratic
+    factors = '(x - 7)*(x + 2)'
+
+    # Solve for x
+    solution = 'x in [{}]' .format('-2, 7')
+
+    return solution
+
+[success_rate]: False, [answer]: 7, [output]: def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: 4,6,14,15, [output]: python
+from itertools import permutations
+
+def solution():
+    for a, b, c, d in permutations(range(1, 11)):
+        if (a + b == 10) and (a + c == 18) and (b + d == 21) and (c + d == 29):
+            return str(a) + ', ' + str(b) + ', ' + str(c) + ', ' + str(d)
+    return 'No solution found'
+
+[success_rate]: False, [answer]: -\frac{1}{8}, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    equation = abs(5*x - 1) - abs(3*x + 2)
+    result = solve(equation, x)[0]
+    return result
+
+[success_rate]: False, [answer]: \frac{x+2}{7}, [output]: 
+from sympy import symbols, Eq, solve, sympify
+
+def solution():
+    x = symbols('x')
+    f = 7*x + 5
+    g = x - 1
+    h = f(g)
+
+    h_inverse = Eq(h, y).solve(y)[0]
+
+    result = sympify(h_inverse)
+    return result
+
+[success_rate]: False, [answer]: -15, [output]: 
+def solution():
+    # Inequalities
+    inequality1 = abs(x) + 1 > 7
+    inequality2 = abs(x+1) <= 7
+
+    # Integers satisfying the conditions
+    satisfying_integers = [i for i in range(-8, 7) if inequality1 and inequality2]
+
+    # Sum of the integers
+    result = sum(satisfying_integers)
+
+    return result
+
+[success_rate]: True, [answer]: 10, [output]: 
+import math
+
+def solution():
+    x = -8
+    y = 6
+
+    distance = math.sqrt(x**2 + y**2)
+    result = "{:.0f}".format(distance)
+    return result
+
+[success_rate]: True, [answer]: 8, [output]: 
+def solution():
+    x1, y1 = 1, 4
+    x2, y2 = 1, 10
+
+    # Calculate the midpoint
+    x_mid = (x1 + x2) / 2
+    y_mid = (y1 + y2) / 2
+
+    # Calculate the sum of the coordinates of the midpoint
+    result = x_mid + y_mid
+
+    return result
+
+[success_rate]: True, [answer]: 75, [output]: 
+import numpy as np
+
+def solution():
+    A = np.array([0, 7])
+    B = np.array([1, 0])
+    C = np.array([12, -2])
+    D = np.array([7, 8])
+
+    AC = np.linalg.norm(C - A)
+    BD = np.linalg.norm(D - B)
+
+    area = 0.5 * AC * BD
+
+    result = float(area)
+    return result
+
+[success_rate]: True, [answer]: \frac{11}{2}, [output]: 
+import math
+
+def solution():
+    # Given quadratic equation
+    equation = (x-3)**2 - (x-8)**2
+
+    # Simplify the equation
+    simplified_equation = 10*x - 55
+
+    # Find the smallest real number x that satisfies the equation
+    x = 55 / 10
+
+    result = r'{}\frac{{}}{{}}'.format(x)
+    return result
+
+[success_rate]: True, [answer]: -25, [output]: 
+def solution():
+    if -10 < -3:
+        result = 3*(-10) + 5
+    else:
+        result = 7 - 4*(-10)
+
+    result = str(result)
+    return result
+
+[success_rate]: False, [answer]: 8, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: 3, [output]: 
+def solution():
+    t, s, g = symbols('t s g')
+    equations = [10*t - 3*s - g, 2*t + g - s]
+    solution = solve(equations, s)
+    result = solution[0]
+    return str(result)
+
+[success_rate]: True, [answer]: 187.5, [output]: 
+def solution():
+    calories_per_ounce = 125 / 8
+    calories_per_bottle = calories_per_ounce * 12
+    result = round(calories_per_bottle, 1)
+    return str(result)
+
+[success_rate]: True, [answer]: 18, [output]: 
+def solution():
+    primes = [2, 3, 5, 7, 11, 13, 17, 19]
+    possible_pairs = []
+
+    for i in range(len(primes)):
+        for j in range(i, len(primes)):
+            if primes[i] + primes[j] < 20:
+                possible_pairs.append((primes[i], primes[j]))
+
+    possible_n = []
+    for pair in possible_pairs:
+        possible_n.append(pair[0] * pair[1])
+
+    return len(set(possible_n))
+
+[success_rate]: False, [answer]: 40, [output]: 
+def solution():
+    initial_price = 1.25
+    years = 3
+    total_years = 12  # 3 years ago and 12 years in the future
+
+    current_price = initial_price * 2 ** (total_years // years)  # calculate price now
+    future_price = current_price * 2 ** (total_years % years // 3)  # calculate price in 12 years
+
+    result = float(future_price)
+    return result
+
+[success_rate]: True, [answer]: 5, [output]: 
+from sympy import symbols
+
+def solution():
+    x = symbols('x')
+    expr = (17**6 - 17**5) / 16
+    simplified_expr = simplify(expr)
+
+    x_value = 5
+
+    result = x_value
+    return result
+
+[success_rate]: True, [answer]: 8, [output]: 
+import numpy as np
+
+def solution():
+    p1 = 4  # initial pressure in kPa
+    v1 = 3.67  # initial volume in liters
+    v2 = 1.835  # final volume in liters
+
+    # Since the pressure is inversely proportional to the volume, we can write an equation
+    # p1 * v1 = p2 * v2, where p2 is the final pressure.
+    p2 = (p1 * v1) / v2
+
+    result = "{:.0f}".format(p2)
+    return result
+
+[success_rate]: True, [answer]: 3125, [output]: 
+def solution():
+    a = 5
+    expression = a**3 * a**2
+    result = expression
+    return str(result)
+
+[success_rate]: False, [answer]: [0,\infty), [output]: 
+import math
+
+def solution():
+    min_value = 0
+    max_value = float('inf')
+
+    result = r'[{} {})'.format(min_value, max_value)
+    return result
+
+[success_rate]: True, [answer]: 0.5, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    expr = 2*x**2 - x - 29
+    roots = solve(expr, x)
+    sum_roots = sum(roots)
+    result = float(sum_roots)
+    return result
+
+[success_rate]: False, [answer]: 12,10,6, [output]: 
+from math import sqrt
+
+def solution():
+    c = 0
+    result = ''
+    while True:
+        if sqrt(49 - 4 * c) % 1 == 0:
+            result += str(int(c)) + ', '
+            c += 1
+        else:
+            break
+    return result.strip() + '.'
+
+[success_rate]: False, [answer]: 5, [output]: 
+import cmath
+
+def solution():
+    a = (5 + cmath.sqrt(11)) / 2
+    b = (5 - cmath.sqrt(11)) / 2
+
+    result = (a - 1) * (b - 1)
+    return str(result).replace('(', '').replace(')', '')
+
+[success_rate]: False, [answer]: 16, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    b, x = symbols('b x')
+    equation = x**2 + b*x + 48
+    roots = solve(equation, x)
+
+    ratio = 3
+    beta = roots[0] * ratio
+    alpha = roots[0] * ratio
+
+    b_value = -alpha - beta
+
+    result = b_value
+    return result
+
+[success_rate]: False, [answer]: 2300, [output]: 
+from sympy import symbols, Eq, solve
+
+def solution():
+    f, g = symbols('f g')
+    e1 = Eq(8*f + 2*g, 932)
+    e2 = Eq(14*f + 3*g, 1402)
+    sol = solve((e1, e2), (f, g))
+    f_value = sol[0][0]
+    g_value = sol[0][1]
+    result = 5*(f_value + g_value)
+    return result
+
+[success_rate]: False, [answer]: 5, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x, y = symbols('x y')
+    eq = x**2 + 8*x + y**2 - 6*y
+    eq = simplify(eq)
+
+    a = 1; b = 4; c = -25
+    D = b**2 - 4*a*c
+    sqrt_D = (D**0.5).simplify()
+
+    r1 = (-b + sqrt_D) / (2*a)
+    r2 = (-b - sqrt_D) / (2*a)
+
+    result = r1
+    return result
+
+[success_rate]: True, [answer]: 105, [output]: 
+def solution():
+    set_elements = [1, 2, 3, 4, 5, 6]
+    total_sum = 0
+    for i in range(len(set_elements)):
+        for j in range(i+1, len(set_elements)):
+            total_sum += set_elements[i] + set_elements[j]
+    result = float(total_sum)
+    return result
+
+[success_rate]: False, [answer]: -13.5, [output]: def solution():
+    # Problem 1
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: True, [answer]: \frac{243}{625}, [output]: 
+from sympy import symbols
+
+def solution():
+    x = symbols('x')
+    expr = 125/9 * (3/5)**(x-1)
+    result = expr.subs(x, 8)
+    return str(result)
+
+[success_rate]: False, [answer]: 2, [output]: def solution():
+    equation = '9^{18n}=27^{24}'
+    both_sides = str(equation).replace('^', '**')
+    both_sides = both_sides.replace('9', '3**2').replace('27', '3**3')
+    both_sides = '3**{}=3**{}'.format(36*n, 72)
+    both_sides = both_sides.replace('3**', '3^')
+    both_sides = both_sides.replace('^', '^')
+    both_sides = both_sides.replace('n', '')
+    both_sides = both_sides.replace('=', '=')
+    both_sides = both_sides.replace('=', '=')
+    both_sides = both_sides.replace('72', '72')
+    both_sides = both_sides.replace('36', '36')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides = both_sides.replace('n', 'n')
+    both_sides =
+
+[success_rate]: False, [answer]: (-\sqrt{3},\sqrt{3}), [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    inequality = -4 < x**4 + 4*x**2 < 21
+    solution_set = solve((x**4 + 4*x**2 - 21) * (x**4 + 4*x**2 + 4), x)
+    result = solution_set[0]
+    return result
+
+[success_rate]: False, [answer]: 23, [output]: 
+from sympy import symbols, simplify
+
+x = symbols('x')
+expr = sqrt(2) + 1/sqrt(2) + sqrt(3) + 1/sqrt(3)
+simplified_expr = simplify(expr)
+
+a, b, c = 0, 0, 0
+while simplified_expr.as_numer_denom()[1] != 1:
+    a, b, c = simplified_expr.as_numer_denom()
+    simplified_expr = simplified_expr.simplify()
+
+a, b = a.as_numer_denom(), b.as_numer_denom()
+
+result = a+b+c
+return result
+
+[success_rate]: False, [answer]: 49, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x, y = symbols('x y')
+    equation = x**2 + y**2 - 14*x - 48*y
+    simplified_equation = simplify(equation)
+
+    # Completing the square on the quadratic in x
+    simplified_equation = simplified_equation + 49
+
+    # Completing the square on the quadratic in y
+    simplified_equation = simplified_equation + 576
+    simplified_equation = simplified_equation - 625
+
+    # Rearranging to get the equation of a circle
+    simplified_equation = simplify(simplified_equation)
+
+    # Taking the square root and solving for y
+    result = simplify(simplify(simplify(simplified_equation)**0.5) + 24)
+
+    return str(result)
+
+[success_rate]: True, [answer]: 2x^9-8x^7+9x^6-16x^5-12x^4+9x^3-24x^2, [output]: 
+from sympy import symbols, expand
+
+x = symbols('x')
+
+expr = (2*x**5 + 3*x**2)*(x**4 - 4*x**2 + 3*x - 8)
+result = expand(expr)
+
+result = str(result)
+return result
+
+[success_rate]: True, [answer]: (-\infty,-8)\cup(8,\infty), [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    expr = 2*x**2 + x*m + 8
+    m_values = solve(2*x**2 + x*m + 8, x, rational=False)
+    m_values = [m for m in m_values if isinstance(m, (int, float))]
+    result = '(-\\infty,-8)\\cup(8,\\infty)'
+    return result
+
+[success_rate]: False, [answer]: 0, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    equation = 3*x + 2*x
+    solution = solve(equation - 12, x)
+    result = solution[0]
+    return result
+
+[success_rate]: False, [answer]: 2, [output]: 
+def solution():
+    x = symbols('x')
+    result = solve(abs(x - 1) - 7, x)
+    result = sum(result)
+    return result
+
+[success_rate]: False, [answer]: 16, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: \frac{1}{12}, [output]: 
+from fractions import Fraction
+
+def solution():
+    numerator = 1
+    denominator = 6
+    right_side = Fraction(42, 3)
+    equation = Fraction(numerator, denominator) / w == right_side
+    
+    w = (right_side * denominator) / numerator
+    
+    result = str(w)
+    return result
+
+[success_rate]: True, [answer]: 6+9i, [output]: 
+def solution():
+    a = 1 + 2j
+    b = -3j
+    c = 6
+
+    result = (a * c) + b
+
+    result = str(result)
+    return result
+
+[success_rate]: False, [answer]: 2, [output]: python
+from sympy import symbols, simplify
+
+def solution():
+    a, b = symbols('a b')
+    expr = (a + 11*b) / (a - b)
+    given_expr = 4*a + 3*b - 5*(a - 2*b)
+    given_expr = simplify(given_expr)
+    given_expr = given_expr.subs(a - 2*b, a - 5*b)
+    given_expr = given_expr.subs(a, 12*b + b)
+    given_expr = simplify(given_expr)
+    simplified_expr = given_expr.subs(b, 0)
+    result = float(simplified_expr)
+    return result
+
+[success_rate]: False, [answer]: 20, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = (2 - 2*I) * (5 + 5*I)
+    simplified_expr = simplify(expr)
+
+    result = simplified_expr
+    return str(result)
+
+[success_rate]: True, [answer]: 7(x+3)(x-3), [output]: 
+from sympy import symbols, factor
+
+def solution():
+    x = symbols('x')
+    expr = 7*x**2 - 63
+    result = factor(expr)
+
+    return result
+
+[success_rate]: False, [answer]: y^4-2y^3+7y^2+y-5, [output]: python
+from sympy import symbols, Poly
+
+def solution():
+    y = symbols('y')
+    f = Poly(y**4 - 3*y**3 + y - 3)
+    g = Poly(y**3 + 7*y**2 - 2)
+    result = f + g
+    return str(result)
+
+[success_rate]: False, [answer]: 4, [output]: 
+import numpy as np
+
+def solution():
+    x = np.linspace(0, 18, 1000)
+    f = np.interp(x, [0, 8, 10, 12, 18], [0, 4, 8, 10, 12])
+    g = np.interp(x, [0, 6, 8, 10, 12, 18], [2, 4, 4, 8, 10, 12])
+
+    max_diff = np.max(f - g)
+    result = "{:.2f}".format(max_diff)
+    return result
+
+[success_rate]: True, [answer]: 0, [output]: 
+from sympy import symbols, Eq
+
+def solution():
+    x = symbols('x')
+    eq = Eq(f(f(x)), x)
+    f_inverse = Eq(f(x), x)
+    result = Eq(f(x) - f_inverse.solve(x), 0)
+
+    result = r'0'
+    return result
+
+[success_rate]: False, [answer]: 12, [output]: 
+import numpy as np
+
+def solution():
+    a = 1000
+    d = -13
+    n = 1
+    while a > 0:
+        a = a + d
+        n += 1
+    result = n - 1
+    return result
+
+[success_rate]: True, [answer]: \frac{7}{2}, [output]: 
+import math
+
+def solution():
+    return 7/2
+
+[success_rate]: False, [answer]: 69, [output]: python
+def solution():
+    a = -130
+    b = 4200
+    t = (a + b ** 0.5) / 2
+    result = int(t)
+    return result
+
+[success_rate]: True, [answer]: 5, [output]: 
+import math
+
+def solution():
+    base = math.sqrt(8)
+    argument = 64 * math.sqrt(8)
+    power = math.log(argument, base)
+    result = round(power)
+    return result
+
+[success_rate]: False, [answer]: (-\infty,-\frac{1}{2})\cup(-\frac{1}{2},\infty), [output]: 
+import sympy as sp
+
+def solution():
+    y = sp.symbols('y')
+    k = sp.sympify('1/(2*y+1)')
+    domain = sp.solve(2*y+1, y)
+    domain = sp.simplify(domain)
+    result = sp.Interval(-sp.sympify('-1/2'), sp.sympify('oo')) | sp.Interval(-sp.sympify('-oo'), -sp.sympify('-1/2'))
+    return str(result)
+
+[success_rate]: True, [answer]: \frac{2}{5}, [output]: 
+import random
+
+def solution():
+    total_outcomes = 10
+    favorable_outcomes = 4
+    probability = favorable_outcomes / total_outcomes
+    result = str(probability)
+    return result
+
+[success_rate]: False, [answer]: 7, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: 20, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = float(x3_coefficient)
+    return result
+
+[success_rate]: False, [answer]: 7, [output]: 
+import numpy as np
+
+def solution():
+    a = np.array([1, -14, 3])
+    x = np.roots(a)
+    result = x.real[0]
+    return result
+
+[success_rate]: False, [answer]: \sqrt{x}, [output]: python
+from sympy import symbols, simplify, sqrt
+
+def solution():
+    x = symbols('x')
+    expr = sqrt(x)**(1/3) * x**(1/2)
+    simplified_expr = simplify(expr)
+
+    result = str(simplified_expr)
+
+    return result
+
+[success_rate]: True, [answer]: 78, [output]: 
+def solution():
+    a = 3
+    b = 13
+    c = 2
+    result = a * b * c
+    return result
+
+[success_rate]: True, [answer]: 9, [output]: 
+import numpy as np
+
+def solution():
+    a = 2
+    b = 13
+    c = 6
+
+    # Calculate the discriminant
+    discriminant = b**2 - 4*a*c
+
+    # Calculate the solutions
+    solution1 = (-b - np.sqrt(discriminant)) / (2*a)
+    solution2 = (-b + np.sqrt(discriminant)) / (2*a)
+
+    # Calculate the product of the solutions
+    product = solution1 * solution2
+
+    # Calculate the product of the squares of the solutions
+    product_of_squares = product**2
+
+    result = product_of_squares
+
+    return result
+
+[success_rate]: False, [answer]: 4, [output]: 
+def solution():
+    a = 8
+    expression = (16*(a**0.5)**(1/3))**(1/3)
+    result = float(format(expression, '.2f'))
+    return str(result)
+
+[success_rate]: False, [answer]: 6, [output]: 
+from sympy import symbols
+
+def solution():
+    m, n = symbols('m n')
+    equation1 = m*n - 7
+    equation2 = m + n - 8
+    solve = solve((equation1, equation2), (m, n))
+    m, n = solve[0]
+    result = abs(m - n)
+    return result
+
+[success_rate]: False, [answer]: 17, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: (1,\frac{9}{2}), [output]: 
+import math
+
+def solution():
+    x1, y1 = 5, 3
+    x2, y2 = -3, 6
+
+    # Calculate the midpoint
+    x_mid = (x1 + x2) / 2
+    y_mid = (y1 + y2) / 2
+
+    # Return the result in LaTeX
+    result = r'\left({}, \frac{{{}}}{{2}}\right)'.format(int(x_mid), y_mid)
+    return result
+
+[success_rate]: False, [answer]: \frac{15}{2}, [output]: 
+from math import factorial
+
+def solution():
+    n = 15
+    numerator = 1
+    denominator = 1
+    for i in range(1, n + 1):
+        numerator += i
+    total_sum = numerator / (n + 1)
+    result = r'{}\frac{1}{1}'.format(int(total_sum))
+    return result
+
+[success_rate]: False, [answer]: -2, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    expression = x**2 + 4*x + 5
+
+    # Completing the square
+    a = 1
+    b = 4
+    c = 5
+    d = b**2 - 4*a*c
+    d = d / (4*a)
+    h = -b / (2*a) + d
+    result = h
+
+    return result
+
+[success_rate]: True, [answer]: 8, [output]: 
+def solution():
+    x = 3
+    y = 9
+    result = y**2 - 3*x*y + 8
+    return result
+
+[success_rate]: False, [answer]: 20, [output]: 
+def solution():
+    a = 5*3
+    b = 5*5
+    a_minus_4 = a - 4
+    b_plus_8 = b + 8
+    equation1 = 7*a_minus_4
+    equation2 = 2*b_plus_8
+    equation1 = equation1 == equation2
+    equation1 = equation1.subs({a: 3*b/5})
+    equation1 = equation1.subs({b: 5*a/3})
+    equation1 = equation1.solve()
+    b = 5*a/3
+    b = float(b)
+    result = b
+    return result
+
+[success_rate]: False, [answer]: 24, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    j, k = symbols('j k')
+    expr = j * k
+    value = expr.subs({j: 16, k: 21})
+    constant = value
+
+    expr = j * k - constant
+    value = expr.subs({k: 14})
+    result = value
+
+    result = float(result)
+    return result
+
+[success_rate]: False, [answer]: \frac{19}{4}, [output]: 
+from sympy import symbols, solve, Eq
+
+def solution():
+    x = symbols('x')
+    equation = Eq(2*x**2 - 13*x + 38/4, 0)
+    k = solve(equation, k)[0]
+    return k
+
+[success_rate]: False, [answer]: 5, [output]: Python
+def solution():
+    equation = 2*x*(x-10) - 50
+    equation = equation.replace('x', 'X')
+    equation = equation.replace('^', '**')
+    equation = 'x**2 - 10*x + 25 = 0'
+    from sympy import solve
+    from sympy import symbols
+    x = symbols('x')
+    result = solve(equation, x)
+    result = str(result)
+    result = result.replace('[', '')
+    result = result.replace(']', '')
+    result = result.replace(', ', ' + ')
+    return result
+
+[success_rate]: False, [answer]: -55, [output]: 
+import numpy as np
+
+def solution():
+    a = np.array([-1, 1, 9])
+    result = 100*a[0] + 10*a[1] + a[2]
+    return result
+
+[success_rate]: True, [answer]: 60, [output]: 
+import math
+
+def solution():
+    num1 = 12 ** (1/3)
+    num2 = 20 ** (1/3)
+    num3 = 15 ** (1/3)
+    num4 = 60 ** (1/3)
+
+    result = num1 * num2 * num3 * num4
+    result = "{:.0f}".format(result)
+    return result
+
+[success_rate]: False, [answer]: -7, [output]: 
+from sympy import solve
+
+def solution():
+    x = symbols('x')
+    eq1 = (2*x - 1) / (2*x + 2)
+    eq2 = (x - 3) / (x - 1)
+    result = solve(eq1 - eq2, x)
+    return result
+
+[success_rate]: True, [answer]: 0.43, [output]: 
+import numpy as np
+from scipy.optimize import fsolve
+
+def solution():
+    def equation(t):
+        return -4.9*t**2 - 3.5*t + 2.4
+
+    roots = fsolve(equation, 0)
+    result = float(roots[0])
+
+    return "{:.2f}".format(result)
+
+[success_rate]: False, [answer]: 108, [output]: python
+def solution():
+    # Distance covered by the horse 64 feet from the center
+    distance = 64 * 2 * 3.14
+
+    # Distance covered by the horse 16 feet from the center
+    distance_short = 16 * 2 * 3.14
+
+    # Number of revolutions for the horse 16 feet from the center
+    revolutions = distance / distance_short
+
+    # Formatting the result in LaTeX
+    result = r'{}'.format(int(revolutions))
+    return result
+
+[success_rate]: False, [answer]: 4950, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: 50, [output]: def solution():
+
+[success_rate]: False, [answer]: 14, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: 8, [output]: 
+def solution():
+    teaspoons_salt = 2
+    salt_per_quart = 1/4
+    quarts_salt = teaspoons_salt / salt_per_quart
+    quarts_water = quarts_salt * 8
+    result = int(quarts_water)
+    return result
+
+[success_rate]: False, [answer]: 26, [output]: 
+def solution():
+    a = 2
+    b = 10
+    result = 2*a + 5*b - a*b
+    return result
+
+[success_rate]: False, [answer]: 129, [output]: 
+def solution():
+    sequence = [0, 1, 1]
+    i = 2
+    while True:
+        term = sequence[i-1]
+        if i % 2 == 0:
+            term += i
+        else:
+            term *= i
+        sequence.append(term)
+        if sequence[-1] > 125:
+            return sequence[-1]
+
+[success_rate]: True, [answer]: 0, [output]: 
+import math
+
+def solution():
+    result = math.log2(1)
+    return str(result)
+
+[success_rate]: False, [answer]: -5, [output]: 
+import sympy as sp
+
+def solution():
+    b = sp.symbols('b')
+    equation = sp.Eq(b**2 - 36, -4*b)
+    b_value = sp.solve(equation, b)[0]
+    result = b_value
+    return result
+
+[success_rate]: False, [answer]: 2, [output]: 
+from sympy import symbols, Eq, solve
+
+def solution():
+    x = symbols('x')
+    eq1 = Eq(2*x, 17*x - 8)
+    eq2 = Eq(x, 2*x + 9)
+    solve_eqs = solve((eq1, eq2), x)
+    result = solve_eqs[0]
+    return result
+
+[success_rate]: False, [answer]: 4, [output]: python
+def solution():
+    # Expression
+    expr = x**2 - 6*x + 13
+
+    # Simplify the expression
+    simplified_expr = simplify(expr)
+
+    # Coefficient of the constant term
+    constant_coefficient = simplified_expr.as_coefficients_dict()[1]
+
+    result = constant_coefficient
+    return result
+
+[success_rate]: True, [answer]: 30, [output]: 
+def solution():
+    x = 14  # trial answer
+
+    square_diff = (x + 2)**2 - x**2
+    sum_of_numbers = x + (x + 2)
+
+    if square_diff == 60 and sum_of_numbers == 30:
+        return sum_of_numbers
+    else:
+        return "No solution"
+
+[success_rate]: False, [answer]: 161, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    p, q = symbols('p q')
+    s = p + q
+    expr = s**2 - 2*p*q
+    s = (2 + sqrt(53))
+    p2q2 = s**2
+    denominator = s**2 - 2*s
+    result = simplify(1 / (p2q2 / denominator))
+    a = 53
+    b = 2
+    c = 53
+    d = 53
+    return a + b + c + d
+
+[success_rate]: False, [answer]: 1, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: True, [answer]: 5, [output]: 
+def solution():
+    # System of equations
+    a_plus_2b = 2 * 7
+    a_plus_2c = 2 * 8
+
+    # Add the equations
+    a_plus_2b + a_plus_2c = 15
+
+    # Solve for a + b + c
+    a_plus_b_plus_c = 15
+
+    # Average of a, b, and c
+    average = (a_plus_b_plus_c) / 3
+
+    # Formatting the result in LaTeX
+    result = r'{}'.format(average)
+    return result
+
+[success_rate]: True, [answer]: 3s^2, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    s = symbols('s')
+    expr = 2*s**5/s**3 - 6*s**2 + 7*s**3/s
+    simplified_expr = simplify(expr)
+
+    result = str(simplified_expr)
+    return result
+
+[success_rate]: False, [answer]: 125, [output]: 
+from sympy import symbols, sympify, simplify
+
+def solution():
+    x = symbols('x')
+
+    # The infinite geometric series has sum 2000
+    series = sympify('2000')
+
+    # The new series, obtained by squaring each term of the original series, has sum 16 times the sum of the original series
+    new_series = series * 16
+
+    # The common ratio of the original series is m/n
+    m, n = symbols('m n')
+
+    # Factor to obtain 16S = (a/(1-r)) * (a/(1+r)) = S * a / (1+r)
+    equation = 16 * series - (series * (m / n) / (1 - m / n)) * (series * (m / n) / (1 + m / n))
+    equation = simplify(equation)
+
+    # Solve for m/n
+    m_n = equation.solve((m - n))
+
+    # Result
+    result = m_n[0] + n
+    return result
+
+[success_rate]: True, [answer]: 8, [output]: 
+def solution():
+    # Original number of people
+    original_people = 12
+
+    # Number of days the supplies will last for the original group
+    original_days = 10
+
+    # Total daily shares for the original group
+    total_daily_shares = original_people * original_days
+
+    # New number of people
+    new_people = original_people + 3
+
+    # New daily shares for each person
+    new_daily_shares = total_daily_shares // new_people
+
+    # The supplies will last for new_daily_shares days
+    result = new_daily_shares
+    return result
+
+[success_rate]: True, [answer]: 286, [output]: 
+def solution():
+    a = 13
+    d = 7
+    n = int((2008 - a) / d) + 1
+    result = n
+    return result
+
+[success_rate]: False, [answer]: (9,11), [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: \frac{1}{5}, [output]: 
+from sympy import symbols, simplify, sympify
+
+def solution():
+    x = symbols('x')
+    f = (x + 5) / 3
+    f_inv = simplify(f.subs(f, x))
+    f_inv = f_inv.subs(x, (x - 5) / 3)
+    g = 1 / (f_inv + 1)
+    result = g.subs(x, 3)
+    result = str(result)
+    return result
+
+[success_rate]: False, [answer]: 1, [output]: 
+import sympy as sp
+
+def solution():
+    x = sp.symbols('x')
+    expr = 3*x**6
+    result = sp.solve(expr - 3**6, x)
+    return result[0]
+
+[success_rate]: False, [answer]: 0, [output]: 
+def solution():
+    x = symbols('x')
+    f = (x-1)*(x-3)*(x-7)*(x-9)
+
+    f_4 = f.subs(x, 4)
+    f_6 = f.subs(x, 6)
+
+    result = f_6 - f_4
+    return result
+
+[success_rate]: False, [answer]: 6, [output]: 
+def solution():
+    percentage = 0.5
+    numerator = 1/3
+    denominator = 36
+    fraction = numerator * denominator
+    decimal = fraction / denominator
+    result = decimal * percentage
+    return result
+
+[success_rate]: False, [answer]: 2x(15x^2-4x+10), [output]: python
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 30*x**3 - 8*x**2 + 20*x
+    simplified_expr = simplify(expr)
+
+    factor = 2*x
+    factorized_expr = factor * (15*x**2 - 4*x + 10)
+    result = factorized_expr
+    return result
+
+[success_rate]: False, [answer]: 106, [output]: 
+from sympy import symbols, Poly
+
+def solution():
+    x = symbols('x')
+    f = Poly(x**7 - 3*x**3 + 2, x)
+    g = f.subs(x, x + 1)
+    g_coefficients = g.all_coeffs()
+    result = sum(g_coefficients)
+    return result
+
+[success_rate]: False, [answer]: 10, [output]: def solution():
+    x = symbols('x')
+    y = symbols('y')
+
+    equation1 = x + y == 20
+    equation2 = x == 3*y
+
+    solution = solve((equation1, equation2), (x, y))
+
+    amy_apples = solution[0][0]
+    betty_apples = solution[0][1]
+
+    result = amy_apples - betty_apples
+    return result
+
+[success_rate]: True, [answer]: 26, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = (x - 0.5) * (x - 2.5) * (x - 6.5) * (x - 7.5) / 16 + x
+
+    result = []
+    for i in range(0, 9):
+        if expr.subs(x, i) > i:
+            result.append(i)
+
+    result = sum(result)
+    return str(result)
+
+[success_rate]: False, [answer]: 47, [output]: python
+def solution():
+    total_distance = 16
+    for _ in range(5):
+        total_distance += 16 / 2
+        total_distance += 16 / 2
+    result = "{:.0f}".format(total_distance)
+    return result
+
+[success_rate]: False, [answer]: 18, [output]: 
+from sympy import symbols, simplify, sympify
+
+def solution():
+    x = symbols('x')
+    y = 4*x-36
+    ratio = 2*x
+
+    equation = ratio - y
+
+    simplified_equation = simplify(equation)
+
+    x_coefficient = simplified_equation.as_coeff_Mul()[0].as_coeff_Mul()[0]
+
+    result = x_coefficient
+    return result
+
+[success_rate]: False, [answer]: 5, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    y = symbols('y')
+    expr = 2*x**2*y**3 + 4*y**3 - 149 - 3*x**2
+    simplified_expr = solve(expr, x)
+
+    result = str(simplified_expr[0] + y)
+    return result
+
+[success_rate]: False, [answer]: \frac{\sqrt{7}}{14}, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: True, [answer]: -6, [output]: python
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    f = (x**2 + 2*x + 3) / x
+    g = x**3 + 2
+    f_val = f.subs(x, -3)
+    result = g.subs(x, f_val)
+    result = simplify(result)
+    return result
+
+[success_rate]: True, [answer]: 15, [output]: 
+def solution():
+    a = 2
+    b = 3
+    c = 4
+
+    expression = (b - c)**2 + a * (b + c)
+    result = expression
+
+    return str(result)
+
+[success_rate]: True, [answer]: \frac{19}{30}, [output]: 
+from fractions import Fraction
+
+def solution():
+    decimal = 0.63333333333333333333333333333333333333333333333333333333333
+    fraction = Fraction(str(decimal)).limit_denominator()
+    result = str(fraction)
+    return result
+
+[success_rate]: False, [answer]: -1, [output]: python
+def solution():
+    result = round(6.7) + round(-6.7)
+    return str(result)
+
+[success_rate]: False, [answer]: 6, [output]: 
+from sympy import symbols, Eq, solve
+
+def solution():
+    x = symbols('x')
+    equation1 = Eq(5*x, x + 3)
+    equation2 = Eq(x + (x + 3), 30)
+    solution = solve((equation1, equation2), x)
+    result = solution[0]
+    return result
+
+[success_rate]: False, [answer]: \frac{1}{350}, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: (2,12), [output]: 
+import sympy as sp
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+
+    return result
+
+[success_rate]: True, [answer]: -8, [output]: 
+def solution():
+    x = 8
+    y = 7 - x
+    xy = x * y
+    return xy
+
+[success_rate]: False, [answer]: 4, [output]: 
+def solution():
+    p = symbols('p')
+
+    expr = -2/p * (x**2 - 2*p*x + p**2) + p
+
+    b_coefficient = expr.coeff(x, 1)
+    result = b_coefficient
+    return result
+
+[success_rate]: True, [answer]: 6, [output]: 
+import math
+
+def solution():
+    base = 2
+    argument = 64
+    result = math.log(argument, base)
+    return result
+
+[success_rate]: True, [answer]: 7, [output]: 
+import math
+
+def solution():
+    D = 6
+    E = -4
+    F = 5
+    result = D + E + F
+    return str(result)
+
+[success_rate]: True, [answer]: (15,-11), [output]: 
+from math import sqrt
+
+def solution():
+    x2 = 6
+    y2 = 1
+    x1 = 2 * 3 - (-9)
+    y1 = 2*(-5) - 1
+    x = x1
+    y = y1
+    result = (x, y)
+    return result
+
+[success_rate]: False, [answer]: \frac{5}{6}, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: 6, [output]: 
+def solution():
+    # Inequality: x^2 - 2x - 15 < 0
+    # Factored form: (x-5)(x+3) < 0
+    # So, -3 < x < 5
+    # a = smallest integer satisfying the inequality
+    a = -3
+    # b = largest integer satisfying the inequality
+    b = 4
+    # Result: b - a
+    result = b - a
+    return result
+
+[success_rate]: False, [answer]: 15, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    t = symbols('t')
+    equation = 50 * t * (t + 1) - 12000
+    result = solve(equation, t)
+    return str(int(result[0]))
+
+[success_rate]: True, [answer]: 19, [output]: 
+def solution():
+    x = 4
+    y = 3
+    expression = 24 - (2*x - y)
+    result = expression
+    return result
+
+[success_rate]: False, [answer]: \frac{3}{2}, [output]: 
+from math import pow
+
+def solution():
+    x = pow(4, 1/2)
+    result = 1/x
+    return str(result)
+
+[success_rate]: True, [answer]: 1, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 2*x**2 - 4*x + 4
+    vertex = (1, 2)
+    m = 1
+    result = m
+    return result
+
+[success_rate]: True, [answer]: \frac{2009}{4}, [output]: 
+import sympy as sp
+
+def solution():
+    x = sp.symbols('x')
+    expr = (2009+x)**2 - (2009-x)**2
+    expr = sp.solve(expr - 2009**2, x)[0]
+    result = sp.latex(expr)
+    return result
+
+[success_rate]: False, [answer]: -22, [output]: 
+def solution():
+    a = -5
+    b = 5
+    result = (2*a-3)*(4*b-6)
+    return result
+
+[success_rate]: False, [answer]: -2, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x, y = symbols('x y')
+    equations = [2*x - 3*y - 8, 4*x + 3*y + 2]
+    solution = solve(equations, (x, y))
+
+    result = solution[0][0] * solution[0][1]
+    return str(result)
+
+[success_rate]: True, [answer]: 0, [output]: 
+def solution():
+    x = 10
+    y = 2
+    result = 2*x - x*y
+    return result
+
+[success_rate]: False, [answer]: \frac{\sqrt{3}}{3}, [output]: python
+from sympy import sqrt, simplify
+
+def solution():
+    expr = sqrt(sqrt(sqrt(1/729)))
+    simplified_expr = simplify(expr)
+
+    result = str(simplified_expr)
+    return result
+
+[success_rate]: False, [answer]: -0.25, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: True, [answer]: 1, [output]: 
+import numpy as np
+
+def solution():
+    m = 3 / 7
+    x1, y1 = 7, 4
+    x2, y2 = 0, K
+
+    m = (y2 - y1) / (x2 - x1)
+    K = y1 - m * x1
+
+    result = K
+    return result
+
+[success_rate]: False, [answer]: 11, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    expr = x**2 - 120 + x
+    roots = solve(expr, x)
+
+    result = len(roots)
+    return result
+
+[success_rate]: True, [answer]: 1, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = (x+1)*(x+2) - x - 3
+    simplified_expr = simplify(expr)
+
+    m = -1
+    n = 2
+
+    result = m + n
+
+    return str(result)
+
+[success_rate]: False, [answer]: 45, [output]: 
+from sympy import symbols, sympify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = sympify(expr)
+
+    x3_coefficient = simplified_expr.as_coeff_Mul()[0][0]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: 20, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: True, [answer]: 15554, [output]: 
+from sympy import symbols
+
+def solution():
+    n = symbols('n')
+    term_n = 2222 + 1010 * (n - 1)
+    sixth_term = term_n.subs(n, 6)
+    seventh_term = term_n.subs(n, 7)
+    result = sixth_term + seventh_term
+    return result
+
+[success_rate]: False, [answer]: 1, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: -2, [output]: Python
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: 18, [output]: 
+from sympy import symbols, simplify
+
+x = symbols('x')
+expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+simplified_expr = simplify(expr)
+
+x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+result = x3_coefficient
+return result
+
+[success_rate]: False, [answer]: 64, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x, y = symbols('x y')
+    expr = 4*x**2 + 9*y**2
+    result = simplify(expr)
+    return str(result)
+
+[success_rate]: True, [answer]: 3, [output]: 
+def solution():
+    answer = 3
+    return answer
+
+[success_rate]: False, [answer]: 36, [output]: 
+from fractions import Fraction
+
+def solution():
+    # Cost of each pen
+    cost_per_pen = Fraction(924, 7)
+
+    # Cost of 11 pencils
+    cost_of_11_pencils = Fraction(11, 3) * cost_per_pen
+
+    # Cost of one pencil
+    cost_of_one_pencil = cost_of_11_pencils / 11
+
+    # Convert to cents
+    cost_in_cents = cost_of_one_pencil * 100
+
+    result = cost_in_cents
+    return result
+
+[success_rate]: False, [answer]: (-6,10), [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+
+    return x3_coefficient
+
+[success_rate]: False, [answer]: 10, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: True, [answer]: 4, [output]: 
+import math
+
+def solution():
+    square_root = math.sqrt(64)
+    cube_root = round(64 ** (1/3), 15)
+    
+    result = round(square_root - cube_root, 15)
+    return str(result)
+
+[success_rate]: False, [answer]: \frac{12}{7}, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    t = symbols('t')
+    h = -4.9 * t**2 + 14 * t - 0.4
+    
+    inequality = h >= 6
+    inequality = simplify(inequality)
+    
+    t_range = solve(inequality, t)
+    
+    answer = t_range[1] - t_range[0]
+    result = answer
+    return result
+
+[success_rate]: False, [answer]: -1, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    a, b = (7/2 - 2)/2, (7/2 + 2)/2
+    expr = (1/a-1) + (1/b-1)
+    simplified_expr = simplify(expr)
+    result = str(simplified_expr)
+    return result
+
+[success_rate]: True, [answer]: 5, [output]: 
+def solution():
+    n = 80
+    sum_arithmetic_sequence = n * (n + 1) // 2
+    factors = set()
+    for i in range(2, int(sum_arithmetic_sequence ** 0.5) + 1):
+        while sum_arithmetic_sequence % i == 0:
+            factors.add(i)
+            sum_arithmetic_sequence //= i
+    if sum_arithmetic_sequence > 1:
+        factors.add(sum_arithmetic_sequence)
+    greatest_prime_factor = max([factor for factor in factors if is_prime(factor)])
+    return greatest_prime_factor
+
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+[success_rate]: True, [answer]: -\frac{3}{2}, [output]: 
+import numpy as np
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    equation1 = 18*x**2 + 25*x - 3
+    equation2 = 4*x**2 + 8*x + 3
+
+    roots1 = solve(equation1, x)
+    roots2 = solve(equation2, x)
+
+    common_root = [root for root in roots1 if root in roots2][0]
+
+    result = float(common_root)
+    return result
+
+[success_rate]: True, [answer]: 8, [output]: 
+def solution():
+    x_over_y = 2
+    z_over_x = 4
+
+    z_over_y = z_over_x * x_over_y
+
+    result = str(z_over_y)
+    return result
+
+[success_rate]: False, [answer]: -8192, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: 36, [output]: 
+from sympy import symbols, sympify
+
+def solution():
+    x = symbols('x')
+    equation = 9*x**2 + x*n + 36
+    equation = sympify(equation)
+    equation = equation.factor()
+    equation = str(equation)
+    n = equation.split('x')[1].split('+')[0].split('*')[1]
+    n = int(n)
+    result = n
+    return result
+
+[success_rate]: True, [answer]: -\frac{1}{2}, [output]: 
+def solution():
+    f = lambda x: x + 2
+    g = lambda x: x**2
+    x = -1/2
+    while True:
+        if f(g(x)) == g(f(x)):
+            return x
+
+[success_rate]: True, [answer]: 9, [output]: 
+import math
+
+def solution():
+    # Perimeter is 12 inches
+    perimeter = 12
+
+    # Perimeter/2 = 6
+    side_length = 6
+
+    # Area of the rectangle
+    area = side_length * (6 - side_length)
+
+    # Completing the square
+    area = -side_length**2 + 6*side_length - 9 + 9
+
+    # Maximum area
+    max_area = 9
+
+    # Formatting the result in LaTeX
+    result = r'9'
+    return result
+
+[success_rate]: True, [answer]: 20, [output]: 
+def solution():
+    f = lambda n: n**2 + n + 17
+    result = f(10) - f(9)
+    return result
+
+[success_rate]: True, [answer]: 9, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    p = symbols('p')
+    c = symbols('c')
+    k = symbols('k')
+
+    equation = p * c - k
+
+    values = {p: 15, c: 1500}
+    solution = solve((p * c - k).subs(values), k)
+
+    p_value = (solution[0] / 2500)
+    p_value = float(p_value)
+
+    return p_value
+
+[success_rate]: False, [answer]: 66, [output]: 
+from sympy import solve, symbols
+
+def solution():
+    x = symbols('x')
+    equation = x**3 - 4*x + 4 - 16**3
+    solution_set = solve(equation, x)
+    positive_solution = [sol for sol in solution_set if sol > 0]
+    result = positive_solution[0]
+    return str(result)
+
+[success_rate]: True, [answer]: 600, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+import math
+
+def solution():
+    radius = 6
+
+    hemisphere_area = 2 * math.pi * radius**2
+    base_area = math.pi * radius**2
+    total_surface_area = hemisphere_area + base_area
+
+    result = r'{}\pi'.format(total_surface_area / math.pi)
+    return result
+
+import math
+
+def solution():
+    prime_prob = 1 / 6
+    composite_prob = 1 / 3
+    otherwise_prob = 1 / 6
+
+    prime_expected_value = (2 * prime_prob) + (3 * prime_prob) + (5 * prime_prob)
+    composite_expected_value = 0 * composite_prob
+    otherwise_expected_value = -3 * otherwise_prob
+
+    total_expected_value = prime_expected_value + composite_expected_value + otherwise_expected_value
+
+    result = "{:.2f}".format(total_expected_value)
+    return result
+
+import numpy as np
+
+def solution():
+    a = np.array([-7, 0, 1])
+    b = np.array([4, 2, -1])
+
+    result = a - 3 * b
+
+    result = r'egin{{pmatrix}} {} \ {} \ {} \end{{pmatrix}}'.format(result[0], result[1], result[2])
+    return result
+
+from sympy import symbols
+
+def solution():
+    x = symbols('x')
+    expr = 15*sqrt(x)
+    expr = expr**2
+    expr = 30*sqrt(6)
+    expr = expr**2
+    expr = 600
+    result = str(expr)
+    return result
+
+[success_rate]: False, [answer]: 6, [output]: 
+def solution():
+    n = 1
+    sum1 = 0
+    sum2 = 0
+    while sum2 < sum1**2:
+        sum1 += n
+        sum2 += n**3
+        n += 1
+    return n - 1
+
+[success_rate]: True, [answer]: -11+27i, [output]: python
+import numpy as np
+
+def solution():
+    a = complex(5, -3)
+    b = complex(-4, 3)
+    
+    result = a * b
+    
+    result = str(result)
+    
+    return result
+
+[success_rate]: True, [answer]: 50, [output]: 
+from math import floor, sqrt
+
+def solution():
+    result = sum(floor(sqrt(i)) for i in range(1, 20))
+    return result
+
+[success_rate]: True, [answer]: 256, [output]: 
+import math
+
+def solution():
+    f = lambda x: 2**x
+    result = math.sqrt(f(f(f(f(1)))))
+    return result
+
+[success_rate]: False, [answer]: 48, [output]: 
+def solution():
+    x_squared_plus_one_over_x_squared = (x + 1/x)**2
+    result = x_squared_plus_one_over_x_squared - 7**2 + 1
+    return result
+
+[success_rate]: False, [answer]: {Evelyn}, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: True, [answer]: (-\infty,0), [output]: python
+def solution():
+    # Expand the left-hand side of the inequality
+    left_hand_side = -13*(5 + r) + 25
+    left_hand_side = left_hand_side.expand()
+
+    # Add 40 to both sides to cancel out the constant terms
+    left_hand_side += 40
+
+    # Add 13r to both sides
+    left_hand_side += 13*r
+
+    # Divide both sides by 17
+    left_hand_side /= 17
+
+    # Format the result in interval notation
+    result = r'({}-\infty,0)'.format('inf')
+    return result
+
+[success_rate]: False, [answer]: 36, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: \frac{243}{8}, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = float(x3_coefficient)
+    return result
+
+[success_rate]: True, [answer]: 13, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    equation = x**2 - 4*x - 14 - 3*x - 16
+    equation = equation.replace(16, 0)
+    equation = equation.replace(-14, 0)
+    equation = equation.replace(-3, 0)
+    equation = equation.replace('-', '+-')
+
+    solutions = solve(equation, x)
+
+    positive_difference = abs(solutions[0] - solutions[1])
+
+    result = float(positive_difference)
+    return result
+
+[success_rate]: True, [answer]: 13, [output]: 
+import math
+
+def solution():
+    x = 6
+    expr = math.sqrt((x**3 + 72)/2) + 1
+    result = round(expr, 4)
+    return result
+
+[success_rate]: False, [answer]: 3, [output]: 
+import numpy as np
+
+def solution():
+    a = np.array([-20, 18, 5])
+    roots = np.roots(a)
+    
+    rounded_roots = [round(root.real) for root in roots]
+    product = rounded_roots[0] * rounded_roots[1]
+    
+    result = "{:.0f}".format(product)
+    return result
+
+[success_rate]: True, [answer]: 575, [output]: 
+def solution():
+    new_enrollment = 598
+    increase_percentage = 0.04
+    last_year_enrollment = new_enrollment / (1 + increase_percentage)
+
+    result = "{:.0f}".format(last_year_enrollment)
+    return result
+
+[success_rate]: True, [answer]: \frac{5}{3}, [output]: 
+import sympy as sp
+
+def solution():
+    b = sp.symbols('b')
+    equation = 5**b + 5**b + 5**b + 5**b + 5**b - 625**(b-1)
+    simplified_equation = sp.simplify(equation)
+    b_coefficient = sp.solve(simplified_equation, b)[0]
+    result = b_coefficient
+    return result
+
+[success_rate]: False, [answer]: 5, [output]: 
+import math
+
+def solution():
+    x2_plus_y2 = 4 * x + 8 * y
+    x2 = x**2
+    y2 = y**2
+    x2_plus_y2 = x2 + y2
+    x2_minus_4x_plus_8y = x2 - 4 * x + 8 * y
+    x2_minus_4x_plus_8y = 0
+    
+    distance = (5 - 2)**2 + (4 - (-2))**2
+    distance = math.sqrt(distance)
+    distance = distance - 2 * math.sqrt(5)
+    result = math.sqrt(5)
+    return result
+
+[success_rate]: False, [answer]: 3, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: True, [answer]: 1, [output]: 
+import math
+
+def solution():
+    x = -1
+    h = math.sqrt((x + 3) / 2)
+    result = h
+    return result
+
+[success_rate]: False, [answer]: 6, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = x3_coefficient
+    return result
+
+[success_rate]: False, [answer]: 16, [output]: 
+def solution():
+    initial_height = 12
+    target_height = 36
+    growth_rate = 0.5  # convert inches to feet, 18 inches = 1.5 feet
+
+    growth = target_height - initial_height
+    years = growth / growth_rate
+
+    result = int(years)
+    return result
+
+[success_rate]: False, [answer]: 13, [output]: def solution():
+    vertex_x = -1
+    vertex_y = -7
+    point_x = 4
+    point_y = 5
+
+    distance = sqrt((point_x - vertex_x)**2 + (point_y - vertex_y)**2)
+    result = distance
+    return result
+
+[success_rate]: False, [answer]: 0, [output]: 
+from sympy import symbols, Eq, solve
+
+def solution():
+    x = symbols('x')
+    y = 4*x - 7
+    a, b = symbols('a b')
+
+    # Line m is perpendicular to line l at (2,1)
+    # So, the slope of m is -1/4
+    m = a*x + b
+    # m passes through (2,1)
+    Eq(m.subs(x, 2), 1).doit()
+    b = solve(Eq(m.subs(x, 2), 1), b)[0]
+
+    # y-coordinate of the point on m that has x-coordinate 6
+    result = m.subs(x, 6).subs(a, -1/4).subs(b, 1/2)
+    return result
+
+[success_rate]: False, [answer]: -\sqrt{x-3}+3, [output]: 
+from sympy import symbols, Piecewise
+
+def solution():
+    x = symbols('x')
+    k = Piecewise((x, x > 3), (x**2 - 6*x + 12, True))
+    result = k
+    return result
+
+[success_rate]: False, [answer]: \frac{1}{33}, [output]: def solution():
+    a = 3
+    b = 11
+    result = Fraction(1).limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().limit_denominator().
+
+[success_rate]: False, [answer]: \frac{9}{5}, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = (x**0.5) / (x - 1)**0.5 - 3/2
+    simplified_expr = simplify(expr)
+
+    result = simplified_expr
+    return result
+
+[success_rate]: False, [answer]: 75, [output]: 
+def solution():
+    a = 0
+    b = 185
+    while True:
+        if 2*a + b == 185:
+            break
+        a += 1
+        b -= 1
+    return b
+
+[success_rate]: False, [answer]: \frac{3}{2}, [output]: 
+from sympy import symbols, lambdify, sin, cos, diff
+
+def solution():
+    t = symbols('t')
+    height = -25*t**2 + 75*t + 24
+
+    # Find the time at which the height is maximum
+    dheight = diff(height, t)
+    max_height_time = solve(dheight, t)
+
+    result = max_height_time[0]
+    return result
+
+[success_rate]: True, [answer]: b-1, [output]: 
+from sympy import symbols, solve
+
+def solution():
+    x = symbols('x')
+    b, c = symbols('b c')
+    equation = x**2 + b*x + c
+    difference = abs(b - 2*c)
+    
+    # Use the quadratic formula to express the difference
+    difference = (2*sqrt(b**2 - 4*c)) / 2
+    
+    # Equate the difference to |b - 2c| and solve for c
+    equation = Eq(difference, abs(b - 2*c))
+    solution = solve(equation, c)
+    
+    # Return the solution in terms of b
+    result = 'b-1'
+    return result
+
+[success_rate]: False, [answer]: -9, [output]: 
+from sympy import symbols, factor
+
+def solution():
+    x = symbols('x')
+    expr = 24*x**2 - 19*x - 35
+    factored_expr = factor(expr)
+
+    a = factored_expr.as_coeff_Mul()[0][0]
+    b = factored_expr.as_coeff_Mul()[0][1]
+    c = factored_expr.as_coeff_Mul()[1]
+
+    result = a * b - 3 * c
+    return result
+
+[success_rate]: False, [answer]: 361, [output]: 
+import numpy as np
+
+def solution():
+    x = np.symbol('x')
+
+    expr = 49*x**2 + 14*x*(19-7*x) + (19-7*x)**2
+
+    simplified_expr = expr.factor()
+
+    result = str(simplified_expr)
+
+    return result
+
+[success_rate]: False, [answer]: 73, [output]: 
+def solution():
+    a = 2
+    b = 5
+    c = a * 3 + b * 1
+    d = a * 9 + b * 11
+    result = a * d + b * c
+    return result
+
+[success_rate]: False, [answer]: 369, [output]: 
+import math
+
+def solution():
+    area = 180
+    perimeter = 54
+
+    # Set one side of the patio equal to a and the other to b
+    a = perimeter / 2
+    b = area / a
+
+    # Calculate the length of the diagonal squared
+    diagonal_squared = a**2 + b**2
+
+    result = diagonal_squared
+    return result
+
+[success_rate]: False, [answer]: 445, [output]: def solution():
+    x = symbols('x')
+    expr = 1000 + 0.5*x
+    revenue = 2.75*x
+
+    equation = Eq(expr, revenue)
+
+    result = solve(equation, x)[0]
+    result = int(result)
+    return result
+
+[success_rate]: False, [answer]: [-3,2], [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = sqrt(6 - x - x**2)
+    simplified_expr = simplify(expr)
+
+    simplified_expr = simplify(simplified_expr).as_numer_denom()
+    roots = [simplified_expr[0].as_numer_denom()[1].as_poly().roots(ring=QQBar)(0)[0], simplified_expr[0].as_numer_denom()[1].as_poly().roots(ring=QQBar)(0)[1]]
+    domain = interval(-3, 2)
+    result = str(domain)
+    return result
+
+[success_rate]: False, [answer]: 81, [output]: 
+from sympy import symbols, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+    result = float(x3_coefficient)
+    return result
+
+[success_rate]: False, [answer]: 7, [output]: 
+from sympy import symbols, Poly, simplify
+
+def solution():
+    x = symbols('x')
+    expr = 3*(x - 4) + 2*(x**2 - x + 7) - 5*(x - 1)
+    simplified_expr = simplify(expr)
+
+    constant_coefficient = Poly(simplified_expr, x).all_coeffs()[0]
+    result = constant_coefficient
+    return result
+
+[success_rate]: True, [answer]: 5, [output]: 
+def solution():
+    m = -1
+    b = 6
+    result = m + b
+    return result
+
+[success_rate]: True, [answer]: -5, [output]: Python
+def solution():
+    f = lambda x: 2*x + 1
+    g = lambda x: -3
+    result = f(g(1))
+    return result
+

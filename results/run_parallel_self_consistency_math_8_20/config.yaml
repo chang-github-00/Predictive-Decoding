@@ -16,4 +16,4 @@ llm:
   top_p: 1
 run:
   data_path: /root/Agent-Decoding/data/math/test.json
-  log_path: results/debug_mpc_sample_math
+  log_path: results/run_parallel_self_consistency_math_8_20

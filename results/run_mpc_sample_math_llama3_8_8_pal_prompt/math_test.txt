@@ -51071,3 +51071,597 @@ def solution():
 
 
  Executed result: 0
+[EXP] 2363: [success_rate]: False, [answer]: (\frac{1}{2},\frac{\sqrt{7}}{2}), [output]: import cmath
+
+def solution():
+
+    for a in range(1, 100):
+
+        for b in range(1, 100):
+
+            z = complex(a, b)
+
+            if abs(z)**2 + z**3 == 0:
+
+                result = (a, b)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2364: [success_rate]: False, [answer]: \sqrt{3}-4, [output]: import math
+
+def solution():
+
+    a0 = 2
+
+    a1 = 1
+
+    a2 = a1 * math.sqrt(3) - a0
+
+    for i in range(3, 100):
+
+        a2, a1, a0 = a1 * math.sqrt(3) - a0, a2, a1
+
+    result = a2
+
+    return result
+
+
+ Executed result: 4.176354849921683e+17
+[EXP] 2365: [success_rate]: False, [answer]: 819, [output]: def solution():
+
+    a1 = 1
+
+    a2 = a1 + 1
+
+    a3 = a2 + 1
+
+    a4 = a3 + 1
+
+    a5 = a4 + 1
+
+    a6 = a5 + 1
+
+    a7 = a6 + 1
+
+    a8 = a7 + 1
+
+    a9 = a8 + 1
+
+    a10 = a9 + 1
+
+    a11 = a10 + 1
+
+    a12 = a11 + 1
+
+    a13 = a12 + 1
+
+    a14 = a13 + 1
+
+    a15 = a14 + 1
+
+    a16 = a15 + 1
+
+    a17 = a16 + 1
+
+    a18 = a17 + 1
+
+    a19 = a18 + 1
+
+    a20 = a19
+
+    a21 = a20 + 1
+
+    a22 = a21 + 1
+
+    a23 = a22 + 1
+
+    a24 = a23 + 1
+
+    a25 = a24 + 1
+
+    a26 = a25 + 1
+
+    a27 = a26 + 1
+
+    a28 = a27 + 1
+
+    a29 = a28 + 1
+
+
+ Executed result: None
+[EXP] 2366: [success_rate]: False, [answer]: {E}, [output]: def solution():
+
+    result = 'C'
+
+    return result
+
+
+ Executed result: C
+[EXP] 2367: [success_rate]: False, [answer]: 92, [output]: def solution():
+
+    sum_result = 0
+
+    for a in range(5):
+
+        for b in range(a, 5):
+
+            for c in range(b, 5):
+
+                for d in range(c, 5):
+
+                    P = lambda z: 4*z**4 + a*z**3 + b*z**2 + c*z + d
+
+                    roots = [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z
+
+    # I have generated                 for d in range(c+1):
+# ,                    if abs(poly.subs(x, 1)) in [poly.subs(x, -1)]:
+# ,    a, b, c, d = symbols('a b c d')
+# ,    return sum_result / 120
+# ,        for b in range(a+1):
+# ,                    z0 = (-p.real + (p.real**2 + 4*p.imag**2)**0.5)**0.5
+# ,                    # Calculate P(1)
+# ,                for d in range(c, 0, -1):
+# ,    result = sum_result
+# ,                    polynomial = 4*x**4 + a*x**3 + b*x**2 + c*x + d
+# ,                        sum_result += 1 + a + b + c + d
+# ,    result = "{:.2f}".format(sum_result)
+# ,                        z0_polar = abs(z0)
+# ,                    # Check if the polynomial has a zero with |z0| = 1
+# ,                    poly = a*4 + b*1j + c*1j**2 + d*1j**3
+# ,                            sum_result += result
+# ,```
+# ,                    p = 4 + a*1j + b*1j**2 + c*1j**3 + d*1j**4
+# ,                    if a <= 4 and b <= a and c <= b and d <= c:
+# ,                        p = 4 + a + b + c + d
+# ,                    roots = [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z for z in [z
+# ,                        sum_result += 1
+# ,                        polynomial = 4*x**4 + a*x**3 + b*x**2 + c*x + d
+# ,                            sum_result += 4
+# ,                        sum_result += P(1)
+# ,                    z0 = 1
+# ,                        sum_result += p(1)
+# ,    a = symbols('a', integer=True, bounds=(0, 4))
+# ,                for d in range(c + 1):
+# ,                    polynomial_coefficients = [4, a, b, c, d]
+# ,                        if p.real.real == 1:
+# ,    return result
+# ,                    P = 4 + a*1j + b*1j**2 + c*1j**3 + d*1j**4
+# ,                        sum_result += 4+d+a
+# ,                        sum_result += result.real
+# ,                    if P.subs(z, 1) == 0:
+# ,                for d in range(d+1):
+# ,            for c in range(b, 0, -1):
+# ,                    polynomial = 4*z**4 + a*z**3 + b*z**2 + c*z + d
+# ,                    import numpy as np
+# ,    P = 4*x**4 + a*x**3 + b*x**2 + c*x + d
+# , but none of them are correct. I need to revise them to solve the problem Consider all polynomials of a complex variable, $P(z)=4z^4+az^3+bz^2+cz+d$, where $a,b,c,$ and $d$ are integers, $0\le d\le c\le b\le a\le 4$, and the polynomial has a zero $z_0$ with $|z_0|=1.$ What is the sum of all values $P(1)$ over all the polynomials with these properties?.
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2368: [success_rate]: False, [answer]: (27,\infty), [output]: import sympy as sp
+
+from sympy import symbols
+
+def solution():
+
+    x, y, z = symbols('x y z')
+
+    expr = (x**3 + y**3 + z**3 - x**-3 - y**-3 - z**-3) / (x + y + z - x**-1 - y**-1 - z**-1)
+
+    result = sp.simplify(expr)
+
+    return result
+
+
+ Executed result: (x**3 + y**3 + z**3 - 1/z**3 - 1/y**3 - 1/x**3)/(x + y + z - 1/z - 1/y - 1/x)
+[EXP] 2369: [success_rate]: False, [answer]: -\frac{1}{4}, [output]: from sympy import symbols, Eq, solve
+
+x = symbols('x')
+
+f = symbols('f')
+
+eq = Eq(Eq((f(x) + f(2*x) + f(2 - x) + f(x + 1)), x))
+
+sol = solve(eq, f(x))[0].evalf(subs={x: 0})
+
+result = float(sol)
+
+return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2370: [success_rate]: False, [answer]: 42, [output]: from sympy import symbols, Poly
+
+from sympy.solvers import solve
+
+def solution():
+
+    x = symbols('x')
+
+    p = Poly(0, x)
+
+    p += 22*(x - sqrt(7))
+
+    p += 30*(x - sqrt(11))
+
+    result = p.evalf(subs={x: sqrt(17)})
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2371: [success_rate]: True, [answer]: 22, [output]: import math
+
+def solution():
+
+    a = 5 + math.sqrt(3)
+
+    conjugate = 5 - math.sqrt(3)
+
+    product = a * conjugate
+
+    result = product
+
+    return result
+
+
+ Executed result: 22.0
+[EXP] 2372: [success_rate]: False, [answer]: 10, [output]: import numpy as np
+
+from scipy.optimize import root_scalar
+
+import math
+
+def solution():
+
+    def f(x):
+
+        return abs(x) * abs(x - 5) - 3
+
+
+ Executed result: None
+[EXP] 2373: [success_rate]: False, [answer]: 3, [output]: def solution():
+
+    a = [1, 1, 1]
+
+    for i in range(3, 100):
+
+        a.append(a[i-1] - 2*a[i-2] + a[i-3])
+
+    result = sum(a)
+
+    return result
+
+
+ Executed result: -145442151502
+[EXP] 2374: [success_rate]: False, [answer]: 3, [output]: import numpy as np
+
+from sympy import symbols, solve
+
+from sympy.simplify import simplify
+
+def solution():
+
+    x = symbols('x')
+
+    a = symbols('a')
+
+    b = symbols('b')
+
+    expr = (x - a)/b + (x - b)/a - (b)/(x - a) - (a)/(x - b)
+
+    solutions = solve(simplify(expr), x)
+
+    result = ', '.join(map(str, solutions))
+
+    return result
+
+
+ Executed result: 0, (a**2 + b**2)/(a + b), a + b
+[EXP] 2375: [success_rate]: False, [answer]: 1052, [output]: from sympy import binomial, symbols
+
+x = symbols('x')
+
+expr = sum([binomial(1000, k) * x**k for k in range(1001)])
+
+coeff = expr.coeff(x, 50)
+
+result = 1000 + 50
+
+return result
+
+
+ Executed result: 1050
+[EXP] 2376: [success_rate]: True, [answer]: 25, [output]: import cmath
+
+def solution():
+
+    omega = complex(-1, 4)
+
+    result = abs(omega**2 + 2*omega - 8)
+
+    return result
+
+
+ Executed result: 25.0
+[EXP] 2377: [success_rate]: False, [answer]: 49896, [output]: import math
+
+def solution():
+
+    # Total length of all lines drawn
+
+    total_length = 2007
+
+    # Length of the base of the paper
+
+    base = 4
+
+    # Length of the height of the paper
+
+    height = 5
+
+    # Maximum possible number of basic rectangles
+
+    N = 0
+
+    for i in range(1, base + 1):
+
+        for j in range(1, height + 1):
+
+            if i * j * 2 <= total_length:
+
+                N = max(N, i * j)
+
+    result = N
+
+    return result
+
+
+ Executed result: 20
+[EXP] 2378: [success_rate]: False, [answer]: 11, [output]: import math
+
+def solution():
+
+    a = 7
+
+    b = math.sqrt(33)
+
+    c = 4
+
+    # Formula to find the distance between two points
+
+    def distance(x1, y1, x2, y2):
+
+        return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+
+
+ Executed result: None
+[EXP] 2379: [success_rate]: True, [answer]: \frac{4}{9}, [output]: import numpy as np
+
+def solution():
+
+    x = np.linspace(0, 1, 100)
+
+    y = np.linspace(0, 1, 100)
+
+    X, Y = np.meshgrid(x, y)
+
+    Z = np.maximum(X * Y, np.maximum(1 - X - Y + X * Y, X + Y - 2 * X * Y))
+
+    min_value = np.min(Z)
+
+    result = "{:.2f}".format(min_value)
+
+    return result
+
+
+ Executed result: 0.44
+[EXP] 2380: [success_rate]: False, [answer]: \frac{7}{2}, [output]: import math
+
+def solution():
+
+    result = math.log(5, 4) * math.log(6, 5) * math.log(7, 6) * ...  * math.log(128, 127)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2381: [success_rate]: False, [answer]: 973, [output]: from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+
+    result = x3_coefficient
+
+    radius = 6
+
+    prime_prob = 1 / 6
+
+    composite_prob = 1 / 3
+
+    otherwise_prob = 1 / 6
+
+    prime_expected_value = (2 * prime_prob) + (3 * prime_prob) + (5 * prime_prob)
+
+    composite_expected_value = 0 * composite_prob
+
+    otherwise_expected_value = -3 * otherwise_prob
+
+    total_expected_value = prime_expected_value + composite_expected_value + otherwise_expected_value
+
+    a = np.array([-7, 0, 1])
+
+    b = np.array([4, 2, -1])
+
+    result = a - 3 * b
+
+    result = r'egin{{pmatrix}} {} \ {} \ {} \end{{pmatrix}}'.format(result[0], result[1], result[2])
+
+    return result
+
+
+ Executed result: 26
+[EXP] 2382: [success_rate]: False, [answer]: -1, [output]: def solution():
+
+    a1 = 0.5
+
+    a3 = a1
+
+    for i in range(2, 9):
+
+        a1 = 1 / (1 - a1)
+
+    result = a1 ** 9
+
+    return result
+
+
+ Executed result: 512.0
+[EXP] 2383: [success_rate]: False, [answer]: 1, [output]: import numpy as np
+
+from scipy.optimize import root
+
+import cmath
+
+import math
+
+from sympy import symbols, solve
+
+def solution():
+
+    x = symbols('x')
+
+    expr = x**3 + 3*x + 5
+
+    roots = solve(expr, x)
+
+    real_roots = [root for root in roots if cmath.isreal(root)]
+
+    result = len(real_roots)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2384: [success_rate]: True, [answer]: 0, [output]: import numpy as np
+
+import cmath
+
+def solution():
+
+    a = 1j
+
+    b = -1j
+
+    c = 1
+
+    d = -1
+
+    a_plus_b = a + b
+
+    a_plus_c = a + c
+
+    a_plus_d = a + d
+
+    b_plus_c = b + c
+
+    b_plus_d = b + d
+
+    c_plus_d = c + d
+
+    result = abs((a_plus_b) * (a_plus_c) * (a_plus_d) * (b_plus_c) * (b_plus_d) * (c_plus_d))
+
+    return result
+
+
+ Executed result: 0.0
+[EXP] 2385: [success_rate]: False, [answer]: 2\sqrt{3}, [output]: import numpy as np
+
+from scipy.optimize import minimize
+
+def f(x):
+
+    return np.sqrt(8*x - x**2) - np.sqrt(14*x - x**2 - 48)
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2386: [success_rate]: False, [answer]: 500, [output]: import sympy as sp
+
+from sympy.solvers import solve
+
+def solution():
+
+    x = sp.symbols('x')
+
+    y = sp.symbols('y')
+
+    equation = sp.Eq(sp.sqrt(x) - sp.sqrt(y), 20)
+
+    solution = solve((equation, (x, 0, None), (y, 0, None)))
+
+    a = solution[0][0]
+
+    b = solution[0][1]
+
+    result = a - 5 * b
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2387: [success_rate]: False, [answer]: \sqrt{67},-\sqrt{85}, [output]: import math
+
+def solution():
+
+    for x in range(8, 9):
+
+        if x**2 + math.floor(x) == 75:
+
+            result = str(x) + ', '
+
+    result = result[:-2]
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2388: [success_rate]: False, [answer]: 4, [output]: import numpy as np
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x, y, z = symbols('x y z')
+
+    expr = 10*x**2 + 10*y**2 + z**2
+
+    constraint = x*y + x*z + y*z - 1
+
+    from sympy.solvers import solve
+
+    solutions = solve(constraint, (x, y, z))
+
+    min_value = float('inf')
+
+    for solution in solutions:
+
+        value = simplify(expr.subs({x: solution[0], y: solution[1], z: solution[2]}))
+
+        if value < min_value:
+
+            min_value = value
+
+    result = min_value
+
+    return result
+
+
+ Executed result: inf

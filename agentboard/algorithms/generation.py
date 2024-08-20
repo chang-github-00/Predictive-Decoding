@@ -182,6 +182,60 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
         
             all_outputs.append(code)
         return True, all_outputs
+    
+    def parallel_run(self, questions, prompts=None, **kwargs):
+        
+        args = {
+            "n_generate_sample":self.n_generate_sample,
+            "max_tokens": 500,
+            "temperature": self.beam_temperature,
+            "top_p": 1.0,
+            "stop": [],            
+            "logprobs": 0,
+        }
+        
+        args = argparse.Namespace(**args)
+        
+        
+        generation_config = {"n": args.n_generate_sample, 
+                            "stop": args.stop, 
+                            "top_p": args.top_p,
+                            "max_tokens": args.max_tokens, 
+                            "temperature": args.temperature,
+                            "do_sample": True,
+                            "logprobs": args.logprobs}
+        
+        
+        if prompts is not None:
+            self.prompts = prompts
+        
+        all_prompts = []
+        for i in range(len(questions)):
+            self.prompts["question"] = questions[i]
+            input_prompt = self.make_prompt(self.prompts["prompt"])
+            all_prompts.append(input_prompt)
+
+        all_system_messages = [self.prompts["system_msg"]] * len(all_prompts)
+        
+        success, all_code_samples = self.llm_model.parallel_generate_with_config(all_system_messages, all_prompts, generation_config)
+                
+        if not success:
+            
+            return False, None
+        
+        if args.n_generate_sample == 1: all_code_samples = [[code_sample] for code_sample in all_code_samples]
+        
+        all_outputs = []
+        for code_samples in all_code_samples:
+            
+            formatted_code_samples = []
+            for code in code_samples:
+                code = self.format_code(code)
+                formatted_code_samples.append(code)
+                
+            all_outputs.append(formatted_code_samples)
+            
+        return True, all_outputs
                 
     @classmethod
     def from_config(cls, llm_model, config):

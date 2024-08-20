@@ -78,8 +78,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         if self.task == "math": 
             with io.StringIO() as f:
                 f.write(prompt)
-                f.write("\n\n")
-                f.write(f'Solve this problem following previous examples:\nQ: {question}\n')
+                f.write("\n\n\n\n\n")
+                f.write(f'Solve this problem following previous examples:\n\nQ: {question}\n')
                 model_input = f.getvalue()
 
             with io.StringIO() as f:    
@@ -91,13 +91,19 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                 
             return model_input, answer_prefix
                 
-    def update_trajectory_pool(self, outputs, reward=None):
+    def update_trajectory_pool(self, outputs, reward=None, id=None):
         
         # update the trajectory pool with the generated action rollouts by llm
         
-        action_rollouts = outputs["action_chain"]
+        # if we have the id, means this is for parallel generation, therefore we need to update only the corresponding state for that question
         
-        history_rollouts = [a for a in self.memory if a is not None]
+        action_rollouts = outputs["action_chain"]
+        if id is not None:
+            memory = self.memory[id]
+        else:
+            memory = self.memory
+        
+        history_rollouts = [a for a in memory if a is not None]
         
         item = []
         
@@ -109,10 +115,12 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         for action in action_rollouts:
             item.append({"Action": action, "Verified": None, "Reward": reward})
         
-        self.trajectory_pool.append(item)
+        if id is not None:
+            self.trajectory_pool[id].append(item)
+        else:
+            self.trajectory_pool.append(item)
         
-        
-    def parse_action_sequence(self, action_output, parse_prefix=""): 
+    def parse_action_sequence(self, action_output, parse_prefix="", id=None): 
         
         def _get_start_end_token_id(original_text, text, tokens):
             if text not in original_text:
@@ -137,8 +145,9 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         
         if type(action_output) == str: # no logprob information
             
+            memory = self.memory[id] if id is not None else self.memory
             
-            all_prefix = [prefix] + [a for a in self.memory if a is not None]
+            all_prefix = [prefix] + [a for a in memory if a is not None]
             
             for prefix in all_prefix:
                 if prefix in action: # added, in case there is repeat of prompt inside the generation
@@ -165,7 +174,9 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             action_logprobs = action_output["logprobs"]
             action_tokens = action_output["tokens"]
             
-            all_prefix = [prefix] + [a for a in self.memory if a is not None]
+            memory = self.memory[id] if id is not None else self.memory
+            
+            all_prefix = [prefix] + [a for a in memory if a is not None]
             
             token_start, token_end = 0, -1
             action = action_text_output
@@ -239,7 +250,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         else:
             raise NotImplementedError
     
-    def get_valid_actions(self, action_history):
+    def get_valid_actions(self, action_history, id=None ):
         
         def is_valid_python(code):
             with io.StringIO() as f:
@@ -265,7 +276,12 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         
         all_results = []
         
-        for traj_id, trajectory in enumerate(self.trajectory_pool):
+        if id is not None:
+            trajectory_pool = self.trajectory_pool[id]
+        else:
+            trajectory_pool = self.trajectory_pool
+        
+        for traj_id, trajectory in enumerate(trajectory_pool):
             
             # trajectory = trajectory[1:] # remove the first action, which is None
             
@@ -341,6 +357,62 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             
             
         return action
+    
+    def parallel_lookahead_decision_model(self, all_ind, reward_threshold=1.0):
+        # given the look ahead predictions, make the next action
+        
+        # ! todo: choose the best action when there are multiple options
+        all_decided_actions = []
+        for ind in all_ind:
+            action_history = [None] + [action for action in self.memory[ind] if action is not None]
+        
+            all_valid_action_values = self.get_valid_actions(action_history, id=ind)
+        
+            if len(all_valid_action_values) < 1:
+            
+                all_decided_actions.append(None)
+                continue
+        
+            all_valid_values = np.array([item[1] for item in all_valid_action_values])
+            all_valid_actions = [item[0] for item in all_valid_action_values]
+        
+        
+            if all_valid_values.max() < reward_threshold:
+            
+                all_decided_actions.append(None)
+                continue
+        
+            if self.do_sample: 
+                probs = np.exp(all_valid_values/self.select_temperature)
+                probs = probs / probs.sum()
+            
+                all_action_prob_pairs = dict()
+            
+                for (action, prob) in zip(all_valid_actions, probs):
+    
+                    if action not in all_action_prob_pairs:
+                        all_action_prob_pairs[action] = prob
+                    else:
+                        all_action_prob_pairs[action] += prob
+            
+                # print in style action:prob, action: prob...
+                # print("Action probabilities: ", all_action_prob_pairs)
+            
+                all_valid_actions = list(all_action_prob_pairs.keys())
+                probs = list(all_action_prob_pairs.values())
+            
+                sample = torch.multinomial(torch.tensor(probs), 1).item()
+        
+                action = all_valid_actions[sample]
+            
+            else:
+            
+                action = all_valid_actions[np.argmax(all_valid_values)]
+                
+            all_decided_actions.append(action)
+            
+            
+        return all_decided_actions
 
     
     def reflection_tips(self, reward_threshold=0.5, window_size=2): 
@@ -525,75 +597,73 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                 if not self.use_memory:
                     self.trajectory_pool[id] = []
 
-                ended = True
+                ended = False
                 for action in self.memory[id]:
-                    if end_suffix is not None and action.strip().startswith(end_suffix): 
+                    if action is not None and end_suffix is not None and action.strip().startswith(end_suffix): 
                         ended = True    
                         break
                     
                 if not ended: # as not all samples have the same number of steps, we only inference those that have not finished
-                    input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"], question, memory=self.memory[id])
+                    input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"], questions[id], memory=self.memory[id])
                     all_input_prompts.append(input_prompt)
                     all_answer_prefixes.append(answer_prefix)
                     all_system_messages.append(self.prompts["system_msg"])
                     all_index.append(id)
-                    
-            success, action_sequence_samples = self.llm_model.generate_with_config(all_system_messages, all_input_prompts, generation_config, answer_prefixes=all_answer_prefixes)
+            
+            if len(all_index) == 0: # all questions have finished
+                break
+            
+            success, action_sequence_samples = self.llm_model.parallel_generate_with_config(all_system_messages, all_input_prompts, generation_config, answer_prefixes=all_answer_prefixes)
             
             if success:
-                for id, action_sequence in zip(all_index, action_sequence_samples):
-                    if self.task == "gsm8k":
-                        parse_prefix = "def solution():\n"
-                    if self.task == "math":
-                        parse_prefix = "Null"
-                    processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix)
+                for id, action_sequence_sample in zip(all_index, action_sequence_samples):
+                    for action_sequence in action_sequence_sample:
+                        if self.task == "gsm8k":
+                            parse_prefix = "def solution():\n"
+                        if self.task == "math":
+                            parse_prefix = "Null"
+                        processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix, id=id)
 
-                    if action is None: continue
-                    reward = 0
-                    if args.value_type == "logp":
-                        reward = processed_output["action_prob"]
-                    else:
-                        raise NotImplementedError
-                    
-                    
+                        if action is None: continue
+                        reward = 0
+                        if args.value_type == "logp":
+                            reward = processed_output["action_prob"]
+                        else:
+                            raise NotImplementedError
+                        
+                        self.update_trajectory_pool(processed_output, reward=reward, id=id)    
             else:
                 print("Failed to generate action sequence.")
                 return False, None
                 
-            reward_threshold = self.reward_threshold if reflection_tips == "" else 0  # if reflection is needed, lower the threshold so that the model won't get stuck
-            action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
+            # reward_threshold = self.reward_threshold if reflection_tips == "" else 0  # if reflection is needed, lower the threshold so that the model won't get stuck
+            actions = self.parallel_lookahead_decision_model(reward_threshold=self.reward_threshold, all_ind=all_index)
             
-            if action is not None:
+            for id, action in zip(all_index, actions):
+                if action is not None:
+                    step_id = self.memory[id].index(None)
+                    self.memory[id][step_id] = action
+            
+            iter += 1
+            if iter > args.max_iters:
+                break
                 
-                self.memory[iter] = action
-                
-                iter += 1
-                
-                reflection_tips = self.reflection_tips(reward_threshold=self.reward_threshold)
-                
-                if iter > args.max_iters:
-                    break
-                
-                if end_suffix is not None and action.strip().startswith(end_suffix):
-                    break
-            else:
-                reflection_tips = self.reflection_tips(reward_threshold=self.reward_threshold)
-                if reflection_tips[0]:
-                    self.memory[iter] = reflection_tips[1]
-                    break
-                      
+             
         if success:
-            with io.StringIO() as f:
-                if self.task == "gsm8k":
-                    f.write("def solution():\n")
-                # iterate through the state
-                for a  in self.memory:
-                    if a is not None:
-                        f.write(f"{a}\n")
+            all_outputs = []
+            for id in range(len(questions)):
+                with io.StringIO() as f:
+                    if self.task == "gsm8k":
+                        f.write("def solution():\n")
+                    # iterate through the state
+                    for a  in self.memory[id]:
+                        if a is not None:
+                            f.write(f"{a}\n")
 
-                full_output = f.getvalue()
-
-            return True, full_output
+                    full_output = f.getvalue()
+                all_outputs.append(full_output)
+            
+            return True, all_outputs
             
         return False, None
     

@@ -1,0 +1,940 @@
+[EXP] 0: [success_rate]: False, [answer]: 2, [output]: import numpy as np
+
+import matplotlib.pyplot as plt
+
+def solution():
+
+    x = np.linspace(-10, 10, 400)
+
+    y = 2 / (x**2 + x - 6)
+
+    plt.plot(x, y)
+
+    plt.grid(True)
+
+    plt.axhline(0, color='black')
+
+    plt.axvline(0, color='black')
+
+    plt.title('Graph of y = 2 / (x^2 + x - 6)')
+
+    plt.xlabel('x')
+
+    plt.ylabel('y')
+
+    plt.show()
+
+    x_values = np.array([i for i in x if np.isinf(y)])
+
+    return len(x_values)
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 1: [success_rate]: True, [answer]: 10, [output]: def solution():
+
+    # 120% of 30
+
+    one_twenty_percent_of_thirty = 1.2 * 30
+
+    # 130% of 20
+
+    one_thirty_percent_of_twenty = 1.3 * 20
+
+    # Positive difference
+
+    positive_difference = abs(one_twenty_percent_of_thirty - one_thirty_percent_of_twenty)
+
+    result = "{:.2f}".format(positive_difference)
+
+    return result
+
+
+ Executed result: 10.00
+[EXP] 2: [success_rate]: False, [answer]: \frac{9}{7}, [output]: import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    equation = sp.Eq(sp.Ceiling(x) + x, 23/7)
+
+    solution = sp.solve(equation, x)
+
+    result = str(solution[0])
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 3: [success_rate]: True, [answer]: i, [output]: import cmath
+
+import math
+
+def solution():
+
+    result = cmath.exp(cmath.pi * 1j / 2) ** 5 + (1 / cmath.exp(cmath.pi * 1j / 2)) ** 25 + cmath.exp(cmath.pi * 1j) ** 15
+
+    result = r'{}+i{}'.format(int(result.imag), int(result.real))
+
+    return result
+
+
+ Executed result: 0+i0
+[EXP] 4: [success_rate]: False, [answer]: 4, [output]: def solution():
+
+    expression = 2**8 == 4**x
+
+    result = 3
+
+    return str(expression)
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 5: [success_rate]: True, [answer]: 402, [output]: def solution():
+
+    a = 6
+
+    d = 4
+
+    n = 100
+
+    result = a + (n - 1) * d
+
+    return result
+
+
+ Executed result: 402
+[EXP] 6: [success_rate]: False, [answer]: [-2,7], [output]: import numpy as np
+
+from sympy import solve
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    inequality = x**2 - 5*x - 4 <= 10
+
+    solutions = solve(inequality, x)
+
+    result = '{:.2f}'.format(min(solutions)) + ' <= x <= {:.2f}'.format(max(solutions))
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 7: [success_rate]: True, [answer]: 7, [output]: import math
+
+def solution():
+
+    principal = 1000
+
+    amount = 1225
+
+    time = 3
+
+    rate = (amount / principal)**(1/time) - 1
+
+    rate = (rate * 100)
+
+    result = "{:.0f}".format(rate)
+
+    return result
+
+
+ Executed result: 7
+[EXP] 8: [success_rate]: False, [answer]: 4,6,14,15, [output]: from sympy import symbols, Eq, solve
+
+x, y, z, w = symbols('x y z w')
+
+equations = [x+y == 10, x+z == 18, x+w == 19, y+z == 20, y+w == 21, z+w == 29]
+
+result = solve(equations, (x, y, z, w))
+
+result = [int(i) for i in result[0]]
+
+result.sort()
+
+result = ', '.join(map(str, result))
+
+return result
+
+
+ Executed result: 
+[EXP] 9: [success_rate]: False, [answer]: -\frac{1}{8}, [output]: import numpy as np
+
+from sympy import symbols, Eq, solve
+
+x = symbols('x')
+
+expr = Eq(abs(5*x - 1), abs(3*x + 2))
+
+result = solve((5*x - 1 - 3*x - 2).evalf(), x)
+
+result = min(result)
+
+result = "{:.2f}".format(result)
+
+return result
+
+
+ Executed result: 1.50
+[EXP] 10: [success_rate]: False, [answer]: \frac{x+2}{7}, [output]: from sympy import symbols, lambdify, solve
+
+from sympy.abc import x
+
+import numpy as np
+
+def solution():
+
+    x = symbols('x')
+
+    f = 7*x + 5
+
+    g = x - 1
+
+    h = f(g)
+
+    h_func = lambdify(x, h, 'numpy')
+
+    inverse_h = solve(h_func(x) - x, x)
+
+    result = inverse_h[0]
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 11: [success_rate]: False, [answer]: -15, [output]: def solution():
+
+    result = 6
+
+    return result
+
+
+ Executed result: 6
+[EXP] 12: [success_rate]: True, [answer]: 10, [output]: import math
+
+def solution():
+
+    x, y = -8, 6
+
+    distance = math.sqrt(x**2 + y**2)
+
+    result = int(distance)
+
+    return result
+
+
+ Executed result: 10
+[EXP] 13: [success_rate]: True, [answer]: 8, [output]: import numpy as np
+
+import math
+
+def solution():
+
+    x1, y1 = 1, 4
+
+    x2, y2 = 1, 10
+
+    # Calculate the midpoint
+
+    x_mid = (x1 + x2) / 2
+
+    y_mid = (y1 + y2) / 2
+
+    # Sum of the coordinates of the midpoint
+
+    result = x_mid + y_mid
+
+    return result
+
+
+ Executed result: 8.0
+[EXP] 14: [success_rate]: False, [answer]: 75, [output]: import numpy as np
+
+def solution():
+
+    A = np.array([0, 7])
+
+    B = np.array([1, 0])
+
+    C = np.array([12, -2])
+
+    D = np.array([7, 8])
+
+    # Calculate the diagonals
+
+    diagonal1 = np.linalg.norm(A - D)
+
+    diagonal2 = np.linalg.norm(B - C)
+
+    # Calculate the area of the kite
+
+    area = 0.5 * diagonal1 * diagonal2
+
+    result = "{:.2f}".format(area)
+
+    return result
+
+
+ Executed result: 39.53
+[EXP] 15: [success_rate]: False, [answer]: \frac{11}{2}, [output]: import math
+
+import numpy as np
+
+def solution():
+
+    def g(x):
+
+        return math.sqrt((x-3)**2 - (x-8)**2)
+
+
+ Executed result: None
+[EXP] 16: [success_rate]: True, [answer]: -25, [output]: def solution():
+
+    x = -10
+
+    if x < -3:
+
+        result = 3*x + 5
+
+    else:
+
+        result = 7 - 4*x
+
+    return result
+
+
+ Executed result: -25
+[EXP] 17: [success_rate]: False, [answer]: 8, [output]: import math
+
+import sympy
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+
+    radius = 6
+
+    hemisphere_area = 2 * math.pi * radius**2
+
+    base_area = math.pi * radius**2
+
+    prime_prob = 1 / 6
+
+    composite_prob = 1 / 3
+
+    otherwise_prob = 1 / 6
+
+    prime_expected_value = (2 * prime_prob) + (3 * prime_prob) + (5 * prime_prob)
+
+    composite_expected_value = 0 * composite_prob
+
+    otherwise_expected_value = -3 * otherwise_prob
+
+    total_expected_value = prime_expected_value + composite_expected_value + otherwise_expected_value
+
+    a = np.array([-7, 0, 1])
+
+    b = np.array([4, 2, -1])
+
+    a = np.array([-7, 0, 1])
+
+    b = np.array([4, 2, -1])
+
+    result = 2 * math.pi * radius**2 + math.pi * radius**2
+
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+
+    result = x3_coefficient
+
+    return result
+
+
+ Executed result: 339.29200658769764
+[EXP] 18: [success_rate]: False, [answer]: 3, [output]: from sympy import symbols, Eq, solve
+
+x = symbols('x')
+
+expr1 = Eq(10*x, 3 + x)
+
+expr2 = Eq(2*x + 1, 1)
+
+solution = solve((expr1, expr2), x)[0]
+
+result = solution
+
+return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 19: [success_rate]: True, [answer]: 187.5, [output]: def solution():
+
+    calories_per_ounce = 125 / 8
+
+    calories_in_12_oz = calories_per_ounce * 12
+
+    result = "{:.2f}".format(calories_in_12_oz)
+
+    return result
+
+
+ Executed result: 187.50
+[EXP] 20: [success_rate]: False, [answer]: 18, [output]: from sympy import symbols, solve
+
+import math
+
+def solution():
+
+    x = symbols('x')
+
+    m = symbols('m')
+
+    n = symbols('n')
+
+    equation = x**2 - m*x + n
+
+    roots = solve(equation, x)
+
+    for root in roots:
+
+        if root > 0 and int(root) == root and math.isprime(int(root)):
+
+            print(n.subs({x: root}))
+
+    return len(solve(equation, x))
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 21: [success_rate]: False, [answer]: 40, [output]: import math
+
+def solution():
+
+    initial_price = 1.25
+
+    years = 12
+
+    for _ in range(int(years / 3)):
+
+        initial_price *= 2
+
+    result = initial_price
+
+    return "${:.2f}".format(result)
+
+
+ Executed result: $20.00
+[EXP] 22: [success_rate]: True, [answer]: 5, [output]: import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    expr = (17**6 - 17**5) / 16 - 17**x
+
+    simplified_expr = sp.solve(expr, x)
+
+    result = simplified_expr[0]
+
+    return result
+
+
+ Executed result: 5.00000000000000
+[EXP] 23: [success_rate]: True, [answer]: 8, [output]: def solution():
+
+    initial_volume = 3.67
+
+    initial_pressure = 4
+
+    final_volume = 1.835
+
+    k = initial_pressure * initial_volume
+
+    final_pressure = k / final_volume
+
+    result = "{:.2f}".format(final_pressure)
+
+    return result
+
+
+ Executed result: 8.00
+[EXP] 24: [success_rate]: True, [answer]: 3125, [output]: def solution():
+
+    a = 5
+
+    result = a**3 * a**2
+
+    return result
+
+
+ Executed result: 3125
+[EXP] 25: [success_rate]: False, [answer]: [0,\infty), [output]: import math
+
+def solution():
+
+    result = r'[0, \infty)'
+
+    return result
+
+
+ Executed result: [0, \infty)
+[EXP] 26: [success_rate]: True, [answer]: 0.5, [output]: import numpy as np
+
+from sympy import symbols, solve
+
+def solution():
+
+    x = symbols('x')
+
+    expr = 2*x + 5
+
+    expr = expr * (x - 3) - 14
+
+    solutions = solve(expr, x)
+
+    result = sum(solutions)
+
+    return result
+
+
+ Executed result: 1/2
+[EXP] 27: [success_rate]: False, [answer]: 12,10,6, [output]: import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    expr = x**2 - 7*x + c
+
+    roots = sp.solve(expr, x)
+
+    real_roots = [root for root in roots if root.is_real]
+
+    rational_roots = [root for root in real_roots if root.is_rational]
+
+    result = ','.join(map(str, sorted(rational_roots, reverse=True)))
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 28: [success_rate]: False, [answer]: 5, [output]: import math
+
+def solution():
+
+    a = (5 + math.sqrt(25 - 36)) / 2
+
+    b = (5 - math.sqrt(25 - 36)) / 2
+
+    result = (a - 1) * (b - 1)
+
+    return str(result)
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 29: [success_rate]: False, [answer]: 16, [output]: import sympy as sp
+
+from sympy.solvers import solve
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    b = symbols('b')
+
+    equation = x**2 + b*x - 48
+
+    solutions = solve(equation, x)
+
+        first_solution = solutions[0]
+
+        second_solution = solutions[1]
+
+        ratio = first_solution/second_solution
+
+        ratio_value = float(ratio)
+
+                if ratio_value == 3:
+
+                    b_value = i
+
+                    break
+
+        return b_value
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 30: [success_rate]: False, [answer]: 2300, [output]: def solution():
+
+    # Equations
+
+    equation1 = 8*x + 2*y = 932
+
+    equation2 = 14*x + 3*y = 1402
+
+    # Solving the system of equations
+
+    x = (1402*2 - 932*3) / (2*14 - 3*8)
+
+    y = (932*14 - 1402*8) / (2*14 - 3*8)
+
+    # Cost of five pounds of feathers and five ounces of gold
+
+    cost = 5*x + 5*y
+
+    # Formatting the result in LaTeX
+
+    result = r'${}$.format(cost)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 31: [success_rate]: False, [answer]: 5, [output]: import numpy as np
+
+from sympy import symbols, simplify
+
+from sympy.solvers import solve
+
+def solution():
+
+    x, y = symbols('x y')
+
+    expr = x**2 + 8*x + y**2 - 6*y
+
+    simplified_expr = simplify(expr)
+
+    # Put the equation in the form (x-h)^2 + (y-k)^2 = r^2
+
+    a, b, c = solve(simplified_expr, (x, y))
+
+    a = float(a)
+
+    b = float(b)
+
+    r = (a**2 + b**2)**0.5
+
+    result = r'{} cm'.format(r)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 32: [success_rate]: False, [answer]: 105, [output]: def solution():
+
+    total_sum = 225
+
+    result = total_sum
+
+    return result
+
+
+ Executed result: 225
+[EXP] 33: [success_rate]: False, [answer]: -13.5, [output]: import numpy as np
+
+from scipy.stats import linregress
+
+def solution():
+
+    x = [2, p, p+2]
+
+    y = [-5, -14, -17]
+
+    slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+    q = slope * 13 + intercept
+
+    p_q = p + q
+
+    result = "{:.1f}".format(p_q)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 34: [success_rate]: False, [answer]: \frac{243}{625}, [output]: def solution():
+
+    a = 125 / 9
+
+    r = a / (a / 3)
+
+    term8 = a * (r ** 7)
+
+    result = "{:.2f}".format(term8)
+
+    return result
+
+
+ Executed result: 30375.00
+[EXP] 35: [success_rate]: False, [answer]: 2, [output]: import sympy as sp
+
+def solution():
+
+    n = sp.symbols('n')
+
+    equation = 9**(18*n) == 27**(24)
+
+    solution = sp.solve(equation, n)
+
+    result = solution[0]
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 36: [success_rate]: False, [answer]: (-\sqrt{3},\sqrt{3}), [output]: import sympy as sp
+
+from sympy import solve
+
+def solution():
+
+    x = sp.symbols('x')
+
+    inequality = -4 < x**4 + 4*x**2 < 21
+
+    result = sp.solve(inequality, x)
+
+    result = str(result[0]) + ' < x < ' + str(result[1])
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 37: [success_rate]: False, [answer]: 23, [output]: from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = sqrt(2) + 1/sqrt(2) + sqrt(3) + 1/sqrt(3)
+
+    simplified_expr = simplify(expr)
+
+    a = int(simplified_expr.as_numer_denom()[0])
+
+    b = int(simplified_expr.as_numer_denom()[1][1])
+
+    c = int(simplified_expr.as_numer_denom()[1][0])
+
+    result = a + b + c
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 38: [success_rate]: False, [answer]: 49, [output]: import numpy as np
+
+import sympy as sp
+
+from scipy.optimize import minimize
+
+from scipy.optimize import minimize_scalar
+
+import math
+
+def solution():
+
+    x = sp.symbols('x')
+
+    y = sp.symbols('y')
+
+    expr = x**2 + y**2 - 14*x - 48*y
+
+    sol = sp.solve((expr - 0), (x, y))
+
+    x_val = sol[0][0]
+
+    y_val = sol[0][1]
+
+    result = y_val
+
+    return result
+
+
+ Executed result: y
+[EXP] 39: [success_rate]: False, [answer]: 2x^9-8x^7+9x^6-16x^5-12x^4+9x^3-24x^2, [output]: from sympy import symbols, expand
+
+x = symbols('x')
+
+expr = (2*x**5 + 3*x**2)*(x**4 - 4*x**2 + 3*x - 8)
+
+result = expand(expr)
+
+print(result)
+
+return float(result)
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 40: [success_rate]: False, [answer]: (-\infty,-8)\cup(8,\infty), [output]: from sympy import symbols, solve
+
+def solution():
+
+    x = symbols('x')
+
+    expr = 2*x**2 + x*m + 8
+
+    # Solve the quadratic equation
+
+    roots = solve(expr, x)
+
+    # Check if the roots are distinct
+
+    if len(roots) == 2 and roots[0] != roots[1]:
+
+ set'
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 41: [success_rate]: True, [answer]: 0, [output]: def solution():
+
+    a = 4
+
+    b = (12 - 3*a) / 2
+
+    result = "{:.2f}".format(b)
+
+    return result
+
+
+ Executed result: 0.00
+[EXP] 42: [success_rate]: True, [answer]: 2, [output]: def solution():
+
+    # Solve the inequality equation
+
+    x = (7 + 1, 1 - 7)
+
+    result = ' + '.join(map(str, x))
+
+    return result
+
+
+ Executed result: 8 + -6
+[EXP] 43: [success_rate]: False, [answer]: 16, [output]: import numpy as np
+
+from scipy.optimize import minimize
+
+def revenue(p):
+
+    books_sold = 128 - 4 * p
+
+    a = np.array([-7, 0, 1])
+
+    b = np.array([4, 2, -1])
+
+    result = a - 3 * b
+
+    result = r'egin{{pmatrix}} {} \ {} \ {} \end{{pmatrix}}'.format(result[0], result[1], result
+
+    return books_sold * p
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 44: [success_rate]: False, [answer]: \frac{1}{12}, [output]: from fractions import Fraction
+
+from sympy import symbols
+
+def solution():
+
+    w = symbols('w')
+
+    equation = 6*w == 42*3
+
+    solution = solve(equation, w)
+
+    result = Fraction(solution[0]).limit_denominator()
+
+    return str(result)
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 45: [success_rate]: False, [answer]: 6+9i, [output]: import cmath
+
+def solution():
+
+    num1 = 1 + complex(0, 2)
+
+    num2 = complex(0, 1)
+
+    result = num1 * 6 - num2
+
+    return str(result).replace('(', '').replace(')', '')
+
+
+ Executed result: 6+11j
+[EXP] 46: [success_rate]: False, [answer]: 2, [output]: from sympy import symbols, Eq, solve
+
+def solution():
+
+    a, b = symbols('a b')
+
+    eq = Eq((4*a + 3*b) / (a - 2*b), 5)
+
+    solution = solve(eq, a)
+
+    a_value = solution[0]
+
+    b_value = (4*a_value + 3*b_value) / (a_value - 2*b_value)
+
+    result = float(b_value)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 47: [success_rate]: True, [answer]: 20, [output]: import cmath
+
+def solution():
+
+    a = 2 - 2j
+
+    b = 5 + 5j
+
+    result = a * b
+
+    result = "{:.2f}".format(result.real) + ' + ' + "{:.2f}".format(result.imag) + 'i'
+
+    return result
+
+
+ Executed result: 20.00 + 0.00i
+[EXP] 48: [success_rate]: True, [answer]: 7(x+3)(x-3), [output]: from sympy import symbols, simplify
+
+x = symbols('x')
+
+expr = 7*x**2 - 63
+
+simplified_expr = simplify(expr)
+
+result = str(simplified_expr)
+
+return result
+
+
+ Executed result: 7*x**2 - 63
+[EXP] 49: [success_rate]: False, [answer]: y^4-2y^3+7y^2+y-5, [output]: from sympy import symbols, Poly
+
+x = symbols('x')
+
+f = Poly(x**4 - 3*x**3 + x - 3, x)
+
+g = Poly(x**3 + 7*x**2 - 2, x)
+
+result = f + g
+
+print(result)
+
+
+ Executed result: Error: return error, fail to execute

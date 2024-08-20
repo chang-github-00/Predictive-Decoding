@@ -223,7 +223,7 @@ class VLLM:
                 outputs = []
             
                 for i in range(n):
-                    choice = res[0].outputs[i]
+                    choice = res.outputs[i]
                     item = {}
                     item["text"] = choice.text
                     raw_log_prob = choice.logprobs
@@ -235,7 +235,7 @@ class VLLM:
                             item["tokens"].append(token[key].decoded_token)
                             break
                     outputs.append(item)
-            all_outputs.append(outputs)
+                all_outputs.append(outputs)
             return True, all_outputs
         
     def get_input(self, system_message, prompt, answer_prefix=None):

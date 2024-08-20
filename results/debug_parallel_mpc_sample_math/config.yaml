@@ -1,9 +1,13 @@
 algorithm:
-  beam_temperature: 0.6
+  beam_temperature: 0.8
   do_sample: true
-  n_generate_sample: 1
-  name: Self_Consistency
+  lookahead_thought_length: 6
+  n_generate_sample: 8
+  name: MPC_Sample
+  reward_threshold: 0.0
+  select_temperature: 0.01
   task: math
+  use_memory: true
   value_type: logp
 llm:
   context_length: 8192
@@ -16,4 +20,4 @@ llm:
   top_p: 1
 run:
   data_path: /root/Agent-Decoding/data/math/test.json
-  log_path: results/run_parallel_self_consistency_math_8_20
+  log_path: results/debug_parallel_mpc_sample_math

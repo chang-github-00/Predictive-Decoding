@@ -1,5 +1,7 @@
 math_deepseekpal_prompt = '''Let's write python function to solve math problems. You must return the executed result at the end of the function in float. If the final result is an expression, return it in LaTeX in simplest form.
 
+Here are some examples:
+
 Question: Find the coefficient of $x^3$ when $3(x^2 - x^3+x) +3(x +2x^3- 3x^2 + 3x^5+x^3) -5(1+x-4x^3 - x^2)$ is simplifie.
 
 solution in Python:

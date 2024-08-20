@@ -37,7 +37,7 @@ def load_dataset(task, path='/root/huggingface/gsm8k'):
             example = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'answer': gt_ans}
             dataset.append(example)  
 
-        return dataset
+        return dataset[:100]
 
 def retrieve_answer_from_dataset(answer: str) -> str:
     return re.match(r'[\S\s]*#### (.*)$', answer)[1]
@@ -169,7 +169,25 @@ def execute_solution(code, execute=True):
     else:
         return full_output
     
-      
+
+class Iterator:
+    def __init__(self, data, step=200):
+        self.data = data
+        self.index = 0
+        self.step = step
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.index >= len(self.data):
+            raise StopIteration
+        max_index = min(self.index+self.step, len(self.data))
+        value = self.data[self.index:max_index]
+        self.index += self.step
+        return value
+
+   
 class EvalReasoning:
     def __init__(self,
                  task="dp",
@@ -183,6 +201,7 @@ class EvalReasoning:
         self.log_path = run_config["log_path"]
         self.task = task
         
+        self.batch_size = run_config["batch_size"]
         self.algorithm = load_algorithm(algorithm_config["name"], algorithm_config, self.llm)
         
         self.dataset = load_dataset(task, run_config["data_path"])
@@ -244,19 +263,30 @@ class EvalReasoning:
         # create a new empty file for logging
         f = open(os.path.join(self.log_path,f"{self.task}_{dataset_name}.txt"), "w")
         
-        questions = [question for question in self.dataset]
-        success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
+        item_iter = Iterator(self.dataset, self.batch_size)
         
-        for id, item in tqdm(enumerate(self.dataset), total=len(self.dataset)):
-            output = all_outputs[id]
-            if type(output) == list: output = "\n".join(output) 
-            evaluation, executed_output = evaluate_results(self.task, item, output)
-            if self.task == "math":
-                answer = item["answer"]
-            elif self.task == "gsm8k":
-                answer = retrieve_answer_from_dataset(item["answer"])
-            f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [answer]: {answer}, [output]: {output}\n")
-            result.append(evaluation)
+        id = 0
+        
+        for test_items in item_iter:
+            questions = [item["question"] for item in test_items]
+            success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
+
+            for batch_id, item in tqdm(enumerate(test_items), total=len(test_items)):
+                output = all_outputs[batch_id]
+                if type(output) == list: output = "\n".join(output) 
+                try:
+                    evaluation, executed_output = evaluate_results(self.task, item, output)
+                except:
+                    evaluation = False  
+                    executed_output = None
+                if self.task == "math":
+                    answer = item["answer"]
+                elif self.task == "gsm8k":
+                    answer = retrieve_answer_from_dataset(item["answer"])
+                output = output + "\n Executed result: " + str(executed_output)
+                f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [answer]: {answer}, [output]: {output}\n")
+                result.append(evaluation)
+                id += 1
         
         metrics = {"task":self.task+'_'+dataset_name, "success_rate": sum(result) / len(result)}
         with open(os.path.join(self.log_path,f"all_results.txt"), "a+") as f:
@@ -273,6 +303,7 @@ def parse_args():
     parser.add_argument("--model", required=True ,help="specify the models, available models are stated in the configuration file")
     parser.add_argument("--log_path", required=False, default='', help="specify the place to store the resuls")
     parser.add_argument("--data_path", required=False, default='/root/huggingface/gsm8k', help="specify the test data file")
+    parser.add_argument("--batch_size", required=False, default=500, type=int,help="number of problems processed together")
     # parser.add_argument("--prompt_path", required=False, default='', help="specify the prompt")
     args = parser.parse_args()
 
@@ -301,6 +332,7 @@ def load_config(cfg_path, args):
         run_config["log_path"] = args.log_path
     if args.data_path != '':
         run_config["data_path"] = args.data_path
+    run_config["batch_size"] = args.batch_size
     # if args.prompt_path != '':
     #     algorithm_config["prompt_path"] = args.prompt_path
     return llm_config, algorithm_config, run_config

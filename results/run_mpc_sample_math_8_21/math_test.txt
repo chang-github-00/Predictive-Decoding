@@ -1,0 +1,130 @@
+[EXP] 0: [success_rate]: False, [answer]: 2, [output]: import numpy as np
+
+import sympy as sp
+
+def solution():
+
+    x = spsymbols('x')
+
+    expr = 2 / (x**2 + x - 6)
+
+    simplified_expr = sp.simplify(expr)
+
+    # Find the zeros of the denominator
+
+    zeros = sp.solve(x**2 + x - 6, x)
+
+    result = len(zeros)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 1: [success_rate]: True, [answer]: 10, [output]: def solution():
+
+    thirty_percent = 1.2 * 30
+
+    thirty_percent_result = thirty_percent - 1.3 * 20
+
+    result = "{:.2f}".format(thirty_percent_result)
+
+    return result
+
+
+ Executed result: 10.00
+[EXP] 2: [success_rate]: False, [answer]: \frac{9}{7}, [output]: from sympy import symbols, solve
+
+def solution():
+
+    x = symbols('x')
+
+    equation = x.ceil() + x - 23/7
+
+    solution = solve(equation, x)
+
+    result = str(solution[0])
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 3: [success_rate]: False, [answer]: i, [output]: import sympy as sp
+
+def solution():
+
+    i = sp.I
+
+    result = i**5 + 1/i**25 + i**45
+
+    result = sp.simplify(result)
+
+    return str(result)
+
+
+ Executed result: I
+[EXP] 4: [success_rate]: False, [answer]: 4, [output]: import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    equation = 2**8 == 4**x
+
+    solution = sp.solve(equation, x)
+
+    result = solution[0]
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 5: [success_rate]: True, [answer]: 402, [output]: def solution():
+
+    a = 6
+
+    d = 4
+
+    n = 100
+
+    result = a + (n - 1) * d
+
+    return result
+
+
+ Executed result: 402
+[EXP] 6: [success_rate]: False, [answer]: [-2,7], [output]: import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    inequality = x**2 - 5*x - 4 <= 10
+
+    solution = sp.solve(inequality, x)
+
+    result = r'[{:.2f}, {:.2f}]'.format(min(solution), max(solution))
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 7: [success_rate]: True, [answer]: 7, [output]: import numpy as np
+
+def solution():
+
+    principal = 1000
+
+    amount = 1225
+
+    time = 3
+
+    rate = (amount / principal) ** (1 / time) - 1
+
+    rate = (rate * 100)
+
+    result = str(round(rate)) + '%'
+
+    return result
+
+
+ Executed result: 7%

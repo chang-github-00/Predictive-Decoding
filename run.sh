@@ -40,3 +40,6 @@ python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs/gsm8k/self_
 
 # math parallel run predictive decoding, set n generate samples to 1
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model llama-3 --data_path /root/Agent-Decoding/data/math/test.json --log_path results/run_parallel_mpc_sample_math_8_20 --batch_size 500
+
+# math non parallel run predictive decoding
+python agentboard/eval_reasoning.py --cfg-path eval_configs/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model llama-3 --data_path /root/Agent-Decoding/data/math/test.json --log_path results/run_mpc_sample_math_8_21

@@ -1,0 +1,23 @@
+algorithm:
+  beam_temperature: 1.0
+  do_sample: true
+  lookahead_thought_length: 8
+  n_generate_sample: 8
+  name: MPC_Sample
+  reward_threshold: 0.0
+  select_temperature: 0.05
+  task: math
+  use_memory: true
+  value_type: logp
+llm:
+  context_length: 8192
+  dtype: float32
+  engine: /root/huggingface/Meta-Llama-3-8B-Instruct/
+  name: vllm
+  ngpu: 1
+  stop: null
+  temperature: 0
+  top_p: 1
+run:
+  data_path: /root/Agent-Decoding/data/math/test.json
+  log_path: results/run_mpc_sample_math_8_21

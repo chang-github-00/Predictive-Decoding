@@ -14,34 +14,15 @@ from algorithms import load_algorithm
 from tqdm import tqdm
 from typing import Optional
 
-from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
+from utils.human_eval.evaluation import evaluate_functional_correctness
+
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
-def load_dataset(task, path='/root/huggingface/gsm8k'):
-    if task == "gsm8k":
-        full_dataset = datasets.load_dataset(path, 'main', split='test')
-        dataset = [{"question": a["question"], "answer": a["answer"]} for a in full_dataset]
-        return dataset
-    
-    if task == "math":
-        examples = []
-        with open(path, "r") as f: 
-            for line in f:
-                js = json.loads(line)
-                examples.append(js)
-        
-        dataset = []
-        for example in examples:
-            idx = example['idx']
-            example['question'] = parse_question(example, "math")
-            gt_cot, gt_ans = parse_ground_truth(example, "math")
-            example = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'answer': gt_ans}
-            dataset.append(example)  
 
+def load_dataset(task, path=''):
+    if task == "humaneval":
+        dataset =  open(os.path.join(path, f"humaneval-python.jsonl")).readlines()
         return dataset
 
-def retrieve_answer_from_dataset(answer: str) -> str:
-    return re.match(r'[\S\s]*#### (.*)$', answer)[1]
-    
 def evaluate_results(task, item, result): #result is a list
     def judge_gsm8k_answer(output: Optional[str], answer: str) -> bool:
         if output is None:
@@ -190,7 +171,7 @@ class Iterator:
    
 class EvalReasoning:
     def __init__(self,
-                 task="dp",
+                 task="humaneval",
                  run_config=None,
                  llm_config=None,
                  algorithm_config=None,
@@ -209,16 +190,9 @@ class EvalReasoning:
         # with open(algorithm_config["prompt_path"], 'r') as f:
         #     self.prompts = json.load(f)
         self.prompts = {}
-        if self.task == "gsm8k":
-            from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt, pal_prompt
-            self.prompts["prompt"] = pal_prompt #code_prompt#pal_prompt
-            self.prompts["evaluate"] = evaluate_prompt
-            self.prompts["system_msg"] = "You will write python program to solve math problems. You will only write code blocks."
-        if self.task == "math":
-            from prompts.Reasoning.math_prompt import math_deepseekpal_prompt 
-            self.prompts["prompt"] = math_deepseekpal_prompt  #code_prompt#pal_prompt
-            self.prompts["system_msg"] = "You will write python program to solve math problems. You will only write imports and code blocks ."
-
+        if self.task == "humaneval":
+            self.prompts["system_msg"] = "Finish writing the python function. You will only write code blocks."
+        
     def evaluate(self):
         
         dataset_name = os.path.basename(self.dataset_path).split(".")[0]
@@ -268,11 +242,12 @@ class EvalReasoning:
         id = 0
         
         for test_items in tqdm(item_iter, total=int(len(self.dataset)//self.batch_size)):
-            questions = [item["question"] for item in test_items]
+            questions = [item["prompt"] for item in test_items]
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 
             for batch_id, item in tqdm(enumerate(test_items), total=len(test_items)):
                 output = all_outputs[batch_id]
+
                 try:
                     evaluation, executed_output = evaluate_results(self.task, item, output)
                 except:
@@ -282,7 +257,6 @@ class EvalReasoning:
                     answer = item["answer"]
                 elif self.task == "gsm8k":
                     answer = retrieve_answer_from_dataset(item["answer"])
-                if type(output) == list: output = "\n".join(output) 
                 output = output + "\n Executed result: " + str(executed_output)
                 f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [answer]: {answer}, [output]: {output}\n")
                 result.append(evaluation)

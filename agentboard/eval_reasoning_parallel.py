@@ -37,7 +37,7 @@ def load_dataset(task, path='/root/huggingface/gsm8k'):
             example = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'answer': gt_ans}
             dataset.append(example)  
 
-        return dataset[:100]
+        return dataset
 
 def retrieve_answer_from_dataset(answer: str) -> str:
     return re.match(r'[\S\s]*#### (.*)$', answer)[1]
@@ -267,7 +267,7 @@ class EvalReasoning:
         
         id = 0
         
-        for test_items in item_iter:
+        for test_items in tqdm(item_iter, total=int(len(self.dataset)//self.batch_size)):
             questions = [item["question"] for item in test_items]
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 

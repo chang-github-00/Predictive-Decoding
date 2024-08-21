@@ -16,7 +16,7 @@ from typing import Optional
 
 from utils.human_eval.evaluation import evaluate_functional_correctness
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 def load_dataset(task, path=''):
     if task == "humaneval":
@@ -168,6 +168,22 @@ class Iterator:
         self.index += self.step
         return value
 
+def entry_point(
+    sample_file: str,
+    problem_file: str,
+    k: str = "1,10,100",
+    n_workers: int = 4,
+    timeout: float = 3.0,
+):
+    """
+    Evaluates the functional correctness of generated samples, and writes
+    results to f"{sample_file}_results.jsonl.gz"
+    """
+    k = list(map(int, k.split(",")))
+    results = evaluate_functional_correctness(sample_file, k=k, n_workers=n_workers, timeout=timeout, problem_file=problem_file)
+    results = {k:v*100 for k,v in results.items()}
+    print(results)
+    
    
 class EvalReasoning:
     def __init__(self,
@@ -200,34 +216,31 @@ class EvalReasoning:
         
         # create a new empty file for logging
         f = open(os.path.join(self.log_path,f"{self.task}_{dataset_name}.txt"), "w")
-            
+        
+        output_filepath = os.path.join(self.log_path,f"{self.task}_output.jsonl")
+        
         for id, item in tqdm(enumerate(self.dataset), total=len(self.dataset)):
-
+            
+            task_id = item["task_id"]
             question = item["question"]
             # print(question)
             success, output = self.algorithm.run(question, prompts=self.prompts, end_suffix="return")
             
-            if success:
-                evaluation, executed_output = evaluate_results(self.task, item, output)
-                result.append(evaluation)
-            else:
-                evaluation = None  
-            if type(output) == list: output = "\n".join(output) 
-            output = output + "\n Executed result: " + str(executed_output)
-            with open(os.path.join(self.log_path,f"{self.task}_{dataset_name}.txt"), "a+") as f:
-                if self.task == "math":
-                    answer = item["answer"]
-                elif self.task == "gsm8k":
-                    answer = retrieve_answer_from_dataset(item["answer"])
-                f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [answer]: {answer}, [output]: {output}\n")
-
-        
-        metrics = {"task":self.task+'_'+dataset_name, "success_rate": sum(result) / len(result)}
-        
+            assert success
+            if type(output) == list: output = output[0]
+            
+            
+            with open(output_filepath, "a+") as f:
+                write_dict = {"task_id":task_id, "completion":output}
+                f.write(json.dumps(write_dict) + '\n')
+            
+        res = entry_point(output_filepath, self.dataset_path)
         with open(os.path.join(self.log_path,f"all_results.txt"), "a+") as f:
-            f.write(json.dumps(metrics) + "\n")
+            for key, value in res:
+                metrics = {"task":self.task+'_'+dataset_name, key: value}
+                f.write(json.dumps(metrics) + "\n")
         
-        return metrics
+        return res
     
     def parallel_evaluate(self):
         
@@ -237,6 +250,8 @@ class EvalReasoning:
         # create a new empty file for logging
         f = open(os.path.join(self.log_path,f"{self.task}_{dataset_name}.txt"), "w")
         
+        output_filepath = os.path.join(self.log_path,f"{self.task}_output.jsonl")
+        
         item_iter = Iterator(self.dataset, self.batch_size)
         
         id = 0
@@ -245,28 +260,25 @@ class EvalReasoning:
             questions = [item["prompt"] for item in test_items]
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 
-            for batch_id, item in tqdm(enumerate(test_items), total=len(test_items)):
-                output = all_outputs[batch_id]
-
-                try:
-                    evaluation, executed_output = evaluate_results(self.task, item, output)
-                except:
-                    evaluation = False  
-                    executed_output = None
-                if self.task == "math":
-                    answer = item["answer"]
-                elif self.task == "gsm8k":
-                    answer = retrieve_answer_from_dataset(item["answer"])
-                output = output + "\n Executed result: " + str(executed_output)
-                f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [answer]: {answer}, [output]: {output}\n")
-                result.append(evaluation)
-                id += 1
-        
-        metrics = {"task":self.task+'_'+dataset_name, "success_rate": sum(result) / len(result)}
+            assert success
+            
+            assert len(test_items) == len(all_outputs)
+            
+            
+            with open(output_filepath, "a+") as f:
+                for id, item in enumerate(test_items):
+                    output = all_outputs[id]
+                    if type(output) == list: output = output[0]
+                    write_dict = {"task_id":item["task_id"], "completion":output}
+                    f.write(json.dumps(write_dict) + '\n')
+            
+        res = entry_point(output_filepath, self.dataset_path)
         with open(os.path.join(self.log_path,f"all_results.txt"), "a+") as f:
-            f.write(json.dumps(metrics) + "\n")
+            for key, value in res:
+                metrics = {"task":self.task+'_'+dataset_name, key: value}
+                f.write(json.dumps(metrics) + "\n")
         
-        return metrics
+        return res
     
 def parse_args():
     parser = argparse.ArgumentParser(description="Testing")

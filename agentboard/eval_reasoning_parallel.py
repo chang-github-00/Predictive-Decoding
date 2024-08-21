@@ -303,7 +303,7 @@ def parse_args():
     parser.add_argument("--model", required=True ,help="specify the models, available models are stated in the configuration file")
     parser.add_argument("--log_path", required=False, default='', help="specify the place to store the resuls")
     parser.add_argument("--data_path", required=False, default='/root/huggingface/gsm8k', help="specify the test data file")
-    parser.add_argument("--batch_size", required=False, default=500, type=int,help="number of problems processed together")
+    parser.add_argument("--batch_size", required=False, default=50, type=int,help="number of problems processed together")
     # parser.add_argument("--prompt_path", required=False, default='', help="specify the prompt")
     args = parser.parse_args()
 

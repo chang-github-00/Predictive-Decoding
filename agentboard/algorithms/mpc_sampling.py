@@ -132,8 +132,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             index_start =  original_text.index(text)#processed action index in action
             index_end = index_start + len(text)
                 
-            token_start = np.argmax(cumulated_cnt_length > index_start)
-            token_end = np.argmax(cumulated_cnt_length > index_end)
+            token_start = np.argmax(cumulated_cnt_length >= index_start)
+            token_end = np.argmax(cumulated_cnt_length >= index_end)
             if token_end < token_start:
                 token_end = -1
             return token_start, token_end

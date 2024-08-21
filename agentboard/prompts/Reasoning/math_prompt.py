@@ -1,4 +1,4 @@
-math_deepseekpal_prompt = '''Let's write python function to solve math problems. You must return the executed result at the end of the function in float. If the final result is an expression, return it in LaTeX in simplest form.
+math_deepseekpal_prompt = '''Let's write python function to solve math problems. You must return the executed result at the end of the function in float. If the final result is an expression, return it in LaTeX in simplest form. You can only write a single function.
 
 Here are some examples:
 
@@ -70,7 +70,7 @@ def solution():
 
 ----------------
 
-Question: Given $\mathbf{a} = \begin{pmatrix} -7 \\ 0 \\ 1 \end{pmatrix}$ and $\mathbf{b} = \begin{pmatrix} 4 \\ 2 \\ -1 \end{pmatrix},$ find $\mathbf{a} - 3 \mathbf{b}.$
+Question: Given $\mathbf{a} = \\begin{pmatrix} -7 \\ 0 \\ 1 \end{pmatrix}$ and $\mathbf{b} = \begin{pmatrix} 4 \\ 2 \\ -1 \end{pmatrix},$ find $\mathbf{a} - 3 \mathbf{b}.$
 
 solution in Python:
 ```
@@ -82,7 +82,7 @@ def solution()
 
     result = a - 3 * b
 
-    result = r'\begin{{pmatrix}} {} \\ {} \\ {} \end{{pmatrix}}'.format(result[0], result[1], result[2])
+    result = r'\\begin{{pmatrix}} {} \\ {} \\ {} \end{{pmatrix}}'.format(result[0], result[1], result[2])
     return result
 ```
 

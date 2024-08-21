@@ -21,4 +21,4 @@ llm:
 run:
   batch_size: 100
   data_path: /root/Agent-Decoding/data/math/test.json
-  log_path: results/run_parallel_mpc_sample_math_8_20
+  log_path: results/run_parallel_mpc_sample_math_8_21

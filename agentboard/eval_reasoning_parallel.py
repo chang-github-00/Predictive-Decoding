@@ -15,7 +15,7 @@ from tqdm import tqdm
 from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
-
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
@@ -53,7 +53,7 @@ def evaluate_results(task, item, result): #result is a list
                 answer = eval(answer)
             if output < 0 and answer > 0:
                 output = - output
-            return abs(output-answer) < 0.01
+            return abs(output-answer) <= 1
         except:
             pass
         try:

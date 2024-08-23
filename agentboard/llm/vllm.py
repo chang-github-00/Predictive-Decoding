@@ -138,6 +138,9 @@ class VLLM:
             
         response = self.llm.generate([full_prompt], samplingparams)
         
+        if response[0] is None:
+            return False, None
+        
         if logprobs == 0:
             if n == 1:
                 return True, response[0].outputs[0].text
@@ -220,6 +223,9 @@ class VLLM:
         else:
             all_outputs = []
             for res in response:
+                if res is None:
+                    all_outputs.append(None)
+                    continue
                 outputs = []
             
                 for i in range(n):

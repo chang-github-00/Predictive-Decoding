@@ -617,6 +617,10 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             
             if success:
                 for id, action_sequence_sample in zip(all_index, action_sequence_samples):
+                    
+                    if action_sequence_sample is None: # no action sequence generated when length exceeds max_tokens
+                        continue
+                    
                     for action_sequence in action_sequence_sample:
                         if self.task == "gsm8k":
                             parse_prefix = "def solution():\n"

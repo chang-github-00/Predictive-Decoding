@@ -5,6 +5,7 @@ import warnings
 import yaml
 import json
 import time
+import math
 import datasets
 import argparse
 import timeout_decorator
@@ -266,7 +267,7 @@ class EvalReasoning:
         item_iter = Iterator(self.dataset, self.batch_size)
         
         
-        for test_items in tqdm(item_iter, total=int(len(self.dataset)//self.batch_size)):
+        for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
             questions = [item["question"] for item in test_items]
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 

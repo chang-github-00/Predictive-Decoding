@@ -1,7 +1,7 @@
 algorithm:
   beam_temperature: 0.6
   do_sample: true
-  n_generate_sample: 1
+  n_generate_sample: 10
   name: Self_Consistency
   task: humaneval
   value_type: logp
@@ -15,6 +15,6 @@ llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 50
+  batch_size: 200
   data_path: /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl
-  log_path: results/debug
+  log_path: results/run_parallel_passk_humaneval_8_23

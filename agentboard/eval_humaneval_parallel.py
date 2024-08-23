@@ -1,6 +1,7 @@
 import sys
 import os
 import re
+import math
 import warnings
 import yaml
 import json
@@ -16,140 +17,13 @@ from typing import Optional
 
 from utils.human_eval.evaluation import evaluate_functional_correctness
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 
 def load_dataset(task, path=''):
     if task == "humaneval":
-        dataset =  open(os.path.join(path, f"humaneval-python.jsonl")).readlines()
-        return dataset
-
-def evaluate_results(task, item, result): #result is a list
-    def judge_gsm8k_answer(output: Optional[str], answer: str) -> bool:
-        if output is None:
-            return False
-        try: 
-            if isinstance(output, str):
-                output = eval(output)
-            if isinstance(answer, str):
-                answer = eval(answer)
-            if output < 0 and answer > 0:
-                output = - output
-            return abs(output-answer) <= 1
-        except:
-            pass
-        try:
-            output = int(output)
-            answer = int(answer)
-            return output == answer
-        except:
-            pass
-        try:
-            output = float(output)
-            answer = float(answer)
-            return output == answer
-        except:
-            pass
-        try:
-            return output == answer
-        except ValueError:
-            return False
-
-    if task == "gsm8k":
-        answer = retrieve_answer_from_dataset(item["answer"])
-        if type(result) == str:
-            try:
-                executed_solution = execute_solution(result, execute=True)
-            except Exception as e:
-                executed_solution = "Error: time out"
-        elif type(result) == list:
-            executed_solution = []
-            for r in result:
-                try:
-                    executed_solution.append(execute_solution(r, execute=True))
-                except Exception as e:
-                    executed_solution.append("Error: time out")
-            # majority vote
-            count = dict()
-            for a in executed_solution:
-                if a not in count:
-                    count[a] = 1
-                else:
-                    count[a] += 1
-            executed_solution = max(count, key=count.get)
-        return judge_gsm8k_answer(executed_solution, answer), executed_solution
-    elif task == "math":
-        answer = item["answer"]
-        if type(result) == str:
-            try:
-                executed_solution = str(execute_solution(result, execute=True))
-                if "=" in str(executed_solution):
-                    executed_solution = executed_solution.split("=")[1].strip()
-            except Exception as e:
-                executed_solution = "Error: time out"
-        elif type(result) == list:
-            executed_solution = []
-            for r in result:
-                try:
-                    result = str(execute_solution(r, execute=True))
-                    if "=" in str(result):
-                        result = result.split("=")[1].strip()
-                    executed_solution.append(result)
-                except Exception as e:
-                    executed_solution.append("Error: time out")
-            # majority vote
-            count = dict()
-            for a in executed_solution:
-                if a not in count:
-                    count[a] = 1
-                else:
-                    count[a] += 1
-            executed_solution = max(count, key=count.get)
-        return math_equal(executed_solution, answer), executed_solution
-        
-    else:
-        raise NotImplementedError
-        
-@timeout_decorator.timeout(20, use_signals=False)
-def execute_solution(code, execute=True):
-    
-    full_output = code
-    if execute:
-        try:
-            # Create a dictionary to serve as the global and local scope for the exec call
-            exec_globals = {}
-
-            # Execute the function definition
-            exec(full_output, exec_globals)
-
-            # Call the function and get the output
-            output = exec_globals['solution']()
-            return output
-        except Exception as e:
-            # return the error message
-            # try execute again without the function definition
-            
-            # first parse the return statement
-            line_by_line_output = full_output.split("\n")
-            return_statement = [a for a in line_by_line_output if "return" in a]
-            if len(return_statement) > 0:
-                return_statement = return_statement[0]
-                # return_statement = re.match(r'return (.*)', return_statement).group(1)
-                return_variable = return_statement[return_statement.find("return")+len("return"):].strip()
-            
-                # execute the code line by line 
-                exec_globals = {}
-                for a in line_by_line_output:
-                    try:
-                        exec(a.strip(), exec_globals)
-                    except Exception as e:
-                        pass
-                if return_variable in exec_globals:
-                    return exec_globals[return_variable]
-        
-            return "Error: return error, fail to execute"
-    else:
-        return full_output
-    
+        dataset =  open(path).readlines()
+        dataset = [json.loads(item) for item in dataset]
+        return dataset    
 
 class Iterator:
     def __init__(self, data, step=200):
@@ -183,6 +57,8 @@ def entry_point(
     results = evaluate_functional_correctness(sample_file, k=k, n_workers=n_workers, timeout=timeout, problem_file=problem_file)
     results = {k:v*100 for k,v in results.items()}
     print(results)
+    
+    return results
     
    
 class EvalReasoning:
@@ -222,7 +98,8 @@ class EvalReasoning:
         for id, item in tqdm(enumerate(self.dataset), total=len(self.dataset)):
             
             task_id = item["task_id"]
-            question = item["question"]
+            question = item["text"]
+            self.prompts["prompt"] = item["prompt"]
             # print(question)
             success, output = self.algorithm.run(question, prompts=self.prompts, end_suffix="return")
             
@@ -231,7 +108,7 @@ class EvalReasoning:
             
             
             with open(output_filepath, "a+") as f:
-                write_dict = {"task_id":task_id, "completion":output}
+                write_dict = {"task_id":item["task_id"], "generation":output, "prompt":item["prompt"]}
                 f.write(json.dumps(write_dict) + '\n')
             
         res = entry_point(output_filepath, self.dataset_path)
@@ -256,8 +133,10 @@ class EvalReasoning:
         
         id = 0
         
-        for test_items in tqdm(item_iter, total=int(len(self.dataset)//self.batch_size)):
-            questions = [item["prompt"] for item in test_items]
+        for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
+            prefixes = [item["prompt"] for item in test_items]
+            questions = [item["text"] for item in test_items]
+            self.prompts["prompt"] = prefixes
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 
             assert success
@@ -268,13 +147,17 @@ class EvalReasoning:
             with open(output_filepath, "a+") as f:
                 for id, item in enumerate(test_items):
                     output = all_outputs[id]
-                    if type(output) == list: output = output[0]
-                    write_dict = {"task_id":item["task_id"], "completion":output}
-                    f.write(json.dumps(write_dict) + '\n')
+                    if type(output) == list: 
+                        for out in output:
+                            write_dict = {"task_id":item["task_id"], "generation":out, "prompt":item["prompt"]}
+                            f.write(json.dumps(write_dict) + '\n')
+                    else:
+                        write_dict = {"task_id":item["task_id"], "generation":output, "prompt":item["prompt"]}
+                        f.write(json.dumps(write_dict) + '\n')
             
         res = entry_point(output_filepath, self.dataset_path)
         with open(os.path.join(self.log_path,f"all_results.txt"), "a+") as f:
-            for key, value in res:
+            for key, value in res.items():
                 metrics = {"task":self.task+'_'+dataset_name, key: value}
                 f.write(json.dumps(metrics) + "\n")
         

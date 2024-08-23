@@ -37,7 +37,7 @@ def load_dataset(task, path='/root/huggingface/gsm8k'):
             example = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'answer': gt_ans}
             dataset.append(example)  
 
-        return dataset
+        return dataset[2000:]
 
 def retrieve_answer_from_dataset(answer: str) -> str:
     return re.match(r'[\S\s]*#### (.*)$', answer)[1]
@@ -265,7 +265,6 @@ class EvalReasoning:
         
         item_iter = Iterator(self.dataset, self.batch_size)
         
-        id = 0
         
         for test_items in tqdm(item_iter, total=int(len(self.dataset)//self.batch_size)):
             questions = [item["question"] for item in test_items]
@@ -284,9 +283,10 @@ class EvalReasoning:
                     answer = retrieve_answer_from_dataset(item["answer"])
                 if type(output) == list: output = "\n".join(output) 
                 output = output + "\n Executed result: " + str(executed_output)
+                
+                id = item["idx"]
                 f.write(f"[EXP] {id}: [success_rate]: {evaluation}, [answer]: {answer}, [output]: {output}\n")
                 result.append(evaluation)
-                id += 1
         
         metrics = {"task":self.task+'_'+dataset_name, "success_rate": sum(result) / len(result)}
         with open(os.path.join(self.log_path,f"all_results.txt"), "a+") as f:

@@ -8,12 +8,12 @@ run:
 algorithm:
   task: math
   name: MPC_Sample
-  lookahead_thought_length: 6
+  lookahead_thought_length: 8
   reward_threshold: 0.0
   n_generate_sample: 8
   value_type: logp # use llama3
   do_sample: True
-  beam_temperature: 0.8
+  beam_temperature: 1.0
   select_temperature: 0.01
   use_memory: True
   # lookahead_token_length: 
@@ -32,7 +32,7 @@ llm:
       max_tokens: 500
   llama-3:
       name: vllm
-      engine: /root/huggingface/Meta-Llama-3-8B-Instruct/
+      engine: /ssddata/model_hub/Meta-Llama-3-8B-Instruct
       context_length: 8192
       temperature: 0
       top_p: 1

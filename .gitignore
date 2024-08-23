@@ -19,3 +19,4 @@ agentboard/environment/WebShop/subreward_log*
 /.ipynb_checkpoints/*
 alfworld/
 *.log
+src/

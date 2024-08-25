@@ -24,13 +24,11 @@ def load_dataset(task, path=''):
         dataset =  open(path).readlines()
         dataset = [json.loads(item) for item in dataset]
         return dataset    
-    elif task == "mbpp":
+    if task == "mbpp":
         dataset =  open(path).readlines()
         dataset = [json.loads(item) for item in dataset]
         return dataset  
-    else:
-        raise ValueError("Task not supported")
-    
+
 class Iterator:
     def __init__(self, data, step=200):
         self.data = data
@@ -104,14 +102,8 @@ class EvalReasoning:
         for id, item in tqdm(enumerate(self.dataset), total=len(self.dataset)):
             
             task_id = item["task_id"]
-            if self.task == "humaneval":
-                question = item["text"]
-                self.prompts["prompt"] = item["prompt"]
-            elif self.task == "mbpp":
-                question = item["prompt"]
-                self.prompts["prompt"] = item["code"]
-            else:
-                raise ValueError("Task not supported")
+            question = item["text"]
+            self.prompts["prompt"] = item["prompt"]
             # print(question)
             success, output = self.algorithm.run(question, prompts=self.prompts, end_suffix="return")
             
@@ -146,17 +138,9 @@ class EvalReasoning:
         id = 0
         
         for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
-            if self.task == "humaneval":
-                prefixes = [item["text"] for item in test_items]
-                questions = [item["prompt"] for item in test_items]
-                self.prompts["prompt"] = prefixes
-            elif self.task == "mbpp":
-                prefixes = [item["code"] for item in test_items]
-                questions = [item["prompt"] for item in test_items]
-                self.prompts["prompt"] = prefixes
-            else:
-                raise ValueError("Task not supported")
-            
+            prefixes = [item["code"] for item in test_items]
+            questions = [item["prompt"] for item in test_items]
+            self.prompts["prompt"] = prefixes
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 
             assert success

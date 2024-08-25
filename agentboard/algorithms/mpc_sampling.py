@@ -90,7 +90,19 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                 answer_prefix = f.getvalue()
                 
             return model_input, answer_prefix
+        if self.task == "humaneval":
+            with io.StringIO() as f:
+                f.write(question)
+                model_input = f.getvalue()
+
+            with io.StringIO() as f:    
+                f.write(prompt)
+                for a in memory:
+                    if a is not None:
+                        f.write(f"{a}")
+                answer_prefix = f.getvalue()
                 
+            return model_input, answer_prefix
     def update_trajectory_pool(self, outputs, reward=None, id=None):
         
         # update the trajectory pool with the generated action rollouts by llm
@@ -494,6 +506,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                         parse_prefix = "def solution():\n"
                     if self.task == "math":
                         parse_prefix = "Null"
+                    if self.task == "humaneval":
+                        parse_prefix = self.prompts["prompt"]
                     processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix)
 
                     if action is None: continue
@@ -604,7 +618,12 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                         break
                     
                 if not ended: # as not all samples have the same number of steps, we only inference those that have not finished
-                    input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"], questions[id], memory=self.memory[id])
+                    if self.task in ["gsm8k", "math"]:
+                        input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"], questions[id], memory=self.memory[id])
+                    elif self.task in ["humaneval", "mbpp"]: # coding tasks have different prompts for each question
+                        input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"][id], questions[id], memory=self.memory[id])
+                    else:
+                        raise NotImplementedError
                     all_input_prompts.append(input_prompt)
                     all_answer_prefixes.append(answer_prefix)
                     all_system_messages.append(self.prompts["system_msg"])
@@ -626,6 +645,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                             parse_prefix = "def solution():\n"
                         if self.task == "math":
                             parse_prefix = "Null"
+                        if self.task == "humaneval":
+                            parse_prefix = self.prompts["prompt"][id]
                         processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix, id=id)
 
                         if action is None: continue
@@ -659,6 +680,12 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                 with io.StringIO() as f:
                     if self.task == "gsm8k":
                         f.write("def solution():\n")
+                    elif self.task == "math":
+                        pass
+                    elif self.task == "humaneval":
+                        f.write(self.prompts["prompt"][id])
+                    else:
+                        raise NotImplementedError
                     # iterate through the state
                     for a  in self.memory[id]:
                         if a is not None:

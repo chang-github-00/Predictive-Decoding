@@ -6,15 +6,15 @@ run:
 
 
 algorithm:
-  task: math
+  task: humaneval
   name: MPC_Sample
   lookahead_thought_length: 8
   reward_threshold: 0.0
   n_generate_sample: 8
   value_type: logp # use llama3
   do_sample: True
-  beam_temperature: 1.0
-  select_temperature: 0.01
+  beam_temperature: 0.8
+  select_temperature: 0.3
   use_memory: True
   # lookahead_token_length: 
 llm:

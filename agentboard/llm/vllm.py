@@ -226,6 +226,9 @@ class VLLM:
                 if res is None:
                     all_outputs.append(None)
                     continue
+                if len(res.outputs) < n:
+                    all_outputs.append(None)
+                    continue
                 outputs = []
             
                 for i in range(n):

@@ -37,6 +37,9 @@ python agentboard/eval_reasoning.py --cfg-path eval_configs/math/mpc_sample_math
 # math parallel run pal, set n generate samples to 1
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/self_consistency_math_llama3.yaml --tasks math --algorithm Self_Consistency --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_self_consistency_math_8_21_n_8 --batch_size 5000
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_self_consistency_gsm8k_8_21_n_8 --batch_size 1319
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_self_consistency_gsm8k_8_25_n_8_beam_search --batch_size 1319
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/self_consistency_math_llama3.yaml --tasks math --algorithm Self_Consistency --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_self_consistency_math_8_25_n_8_beam_search --batch_size 5000
+
 
 # math parallel run predictive decoding, set n generate samples to 1
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_mpc_sample_math_8_21 --batch_size 500

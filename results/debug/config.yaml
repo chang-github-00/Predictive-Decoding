@@ -1,11 +1,12 @@
 algorithm:
-  beam_temperature: 1.0
+  beam_size: 8
+  beam_temperature: 0.6
   do_sample: true
-  lookahead_thought_length: 6
-  n_generate_sample: 8
+  lookahead_thought_length: 8
+  n_generate_sample: 1
   name: MPC_Sample
   reward_threshold: 0.0
-  select_temperature: 0.01
+  select_temperature: 0.5
   task: humaneval
   use_memory: true
   value_type: logp

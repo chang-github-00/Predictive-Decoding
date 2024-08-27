@@ -19,6 +19,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                  lookahead_thought_length=3,
                  lookahead_token_length=None,    # the length of the lookahead token sequence, default use thought length as evaluation chunk
                  reward_threshold=1.0,
+                 beam_size=8,
                  beam_temperature=0.7,
                  select_temperature=0.1,
                  n_generate_sample=8,
@@ -48,6 +49,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         self.select_temperature = select_temperature
         self.beam_temperature = beam_temperature
         self.select_temperature = select_temperature
+        self.beam_size = beam_size
         self.n_generate_sample = n_generate_sample
         self.value_type = value_type
         self.use_memory =use_memory
@@ -103,17 +105,16 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                 answer_prefix = f.getvalue()
                 
             return model_input, answer_prefix
-    def update_trajectory_pool(self, outputs, reward=None, id=None):
+    def update_trajectory_pool(self, outputs, reward=None, id=None, memory=None):
         
         # update the trajectory pool with the generated action rollouts by llm
         
         # if we have the id, means this is for parallel generation, therefore we need to update only the corresponding state for that question
         
         action_rollouts = outputs["action_chain"]
-        if id is not None:
-            memory = self.memory[id]
-        else:
-            memory = self.memory
+        
+        if memory is None:
+            memory = self.memory[id] if id is not None else self.memory
         
         history_rollouts = [a for a in memory if a is not None]
         
@@ -132,7 +133,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         else:
             self.trajectory_pool.append(item)
         
-    def parse_action_sequence(self, action_output, parse_prefix="", id=None): 
+    def parse_action_sequence(self, action_output, parse_prefix="", id=None, memory=None): 
         
         def _get_start_end_token_id(original_text, text, tokens):
             if text not in original_text:
@@ -157,7 +158,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         
         if type(action_output) == str: # no logprob information
             
-            memory = self.memory[id] if id is not None else self.memory
+            if memory is None:
+                memory = self.memory[id] if id is not None else self.memory
             
             all_prefix = [prefix] + [a for a in memory if a is not None]
             
@@ -186,7 +188,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             action_logprobs = action_output["logprobs"]
             action_tokens = action_output["tokens"]
             
-            memory = self.memory[id] if id is not None else self.memory
+            if memory is None:
+                memory = self.memory[id] if id is not None else self.memory
             
             all_prefix = [prefix] + [a for a in memory if a is not None]
             
@@ -426,6 +429,62 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             
         return all_decided_actions
 
+    def search_lookahead_decision_model(self, all_ind, all_nodes, reward_threshold=1.0, expand_width=2):
+        # given the look ahead predictions, make the next action
+        
+        # ! todo: choose the best action when there are multiple options
+        all_decided_actions = []
+        for ind in all_ind:
+            action_history = [None] + [action for action in self.memory[ind] if action is not None]
+        
+            all_valid_action_values = self.get_valid_actions(action_history, id=ind)
+        
+            if len(all_valid_action_values) < 1:
+            
+                all_decided_actions.append(None)
+                continue
+        
+            all_valid_values = np.array([item[1] for item in all_valid_action_values])
+            all_valid_actions = [item[0] for item in all_valid_action_values]
+        
+        
+            if all_valid_values.max() < reward_threshold:
+            
+                all_decided_actions.append(None)
+                continue
+        
+            if self.do_sample: 
+                probs = np.exp(all_valid_values/self.select_temperature)
+                probs = probs / probs.sum()
+            
+                all_action_prob_pairs = dict()
+            
+                for (action, prob) in zip(all_valid_actions, probs):
+    
+                    if action not in all_action_prob_pairs:
+                        all_action_prob_pairs[action] = prob
+                    else:
+                        all_action_prob_pairs[action] += prob
+            
+                # print in style action:prob, action: prob...
+                # print("Action probabilities: ", all_action_prob_pairs)
+            
+                all_valid_actions = list(all_action_prob_pairs.keys())
+                probs = list(all_action_prob_pairs.values())
+            
+                sample = torch.multinomial(torch.tensor(probs), 1).item()
+        
+                action = all_valid_actions[sample]
+            
+            else:
+            
+                action = all_valid_actions[np.argmax(all_valid_values)]
+                
+            all_decided_actions.append(action)
+            
+            
+        return all_decided_actions
+
     
     def reflection_tips(self, reward_threshold=0.5, window_size=2): 
         
@@ -463,7 +522,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
         self.trajectory_pool = []
         
         args = {
-            "n_generate_sample":self.n_generate_sample,
+            "n_generate_sample":self.beam_size,
             "max_iters": self.problem_size,
             "max_tokens": 500,# if self.lookahead_token_length is None else self.lookahead_token_length,
             "temperature": self.beam_temperature,
@@ -559,11 +618,19 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             
         return False, None
     
-    
     def parallel_run(self, questions, prompts=None, **kwargs): # code for original vllm
         
+        if self.n_generate_sample == 1:
+            return self.parallel_run_single(questions, prompts=prompts, **kwargs)
+        elif self.n_generate_sample > 1:
+            return self.parallel_run_multiple(questions, prompts=prompts, **kwargs)
+        else:
+            raise ValueError("n_generate_sample must be greater than 0.")
+    
+    def parallel_run_single(self, questions, prompts=None, **kwargs): # code for original vllm
+        
         args = {
-            "n_generate_sample":self.n_generate_sample,
+            "n_generate_sample":self.beam_size,
             "max_iters": self.problem_size,
             "max_tokens": 500,# if self.lookahead_token_length is None else self.lookahead_token_length,
             "temperature": self.beam_temperature,
@@ -698,6 +765,155 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             
         return False, None
     
+    def parallel_run_multiple(self, questions, prompts=None, **kwargs): # code for original vllm
+        
+        args = {
+            "n_generate_sample":self.beam_size,
+            "max_iters": self.problem_size,
+            "max_tokens": 500,# if self.lookahead_token_length is None else self.lookahead_token_length,
+            "temperature": self.beam_temperature,
+            "top_p": 1.0,
+            "stop": [],            
+            "logprobs": (self.value_type == "logp"),
+            "value_type": self.value_type
+        }
+        
+        args = argparse.Namespace(**args)
+        
+        
+        generation_config = {"n": args.n_generate_sample, 
+                            "stop": args.stop, 
+                            "top_p": args.top_p,
+                            "max_tokens": args.max_tokens, 
+                            "temperature": args.temperature,
+                            "do_sample": True,
+                            "logprobs": args.logprobs}
+        
+        if "end_suffix" in kwargs:
+            end_suffix = kwargs["end_suffix"]
+        else:
+            end_suffix = None
+            
+        if prompts is not None:
+            self.prompts = prompts
+        
+        self.trajectory_pool = {}
+        self.roots = [Node(None)] * len(questions)
+        self.trees = [SearchTree(root) for root in self.roots]
+        
+        for id, question in enumerate(questions):
+            self.trajectory_pool[id] = []
+
+        all_iter = 0
+        iter = 0
+
+        while iter < args.max_iters:
+            all_input_prompts = []
+            all_answer_prefixes = []
+            all_system_messages = []
+            all_index = []
+            all_nodes = []
+            for id in range(len(questions)):
+                if not self.use_memory:
+                    self.trajectory_pool[id] = []
+
+                ended = False
+                
+                memories, trajectories = self.tree[id].get_all_trajectories_from_root()
+                
+                for chain_id in range(len(trajectories)):
+                    memory = memories[chain_id]
+                    
+                    for action in memory:
+                        if action is not None and end_suffix is not None and action.strip().startswith(end_suffix): 
+                            ended = True    
+                            break
+                    if not ended:
+                        if self.task in ["gsm8k", "math"]:
+                            input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"], questions[id], memory=memory)
+                        elif self.task in ["humaneval", "mbpp"]: # coding tasks have different prompts for each question
+                            input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"][id], questions[id], memory=memory)
+                        else:
+                            raise NotImplementedError
+                        all_input_prompts.append(input_prompt)
+                        all_answer_prefixes.append(answer_prefix)
+                        all_system_messages.append(self.prompts["system_msg"])
+                        all_index.append(id)
+                        all_nodes.append(trajectories[chain_id][-1]) # get the last node in the trajectory, for adding children
+            
+            if len(all_index) == 0: # all questions have finished
+                break
+            
+            success, action_sequence_samples = self.llm_model.parallel_generate_with_config(all_system_messages, all_input_prompts, generation_config, answer_prefixes=all_answer_prefixes)
+            
+            if success:
+                for sample_index, action_sequence_sample in enumerate(action_sequence_samples):
+                    
+                    id = all_index[sample_index]
+                    last_node = all_nodes[sample_index]
+                    memory = last_node.get_trajectory()
+                    
+                    if action_sequence_sample is None: # no action sequence generated when length exceeds max_tokens
+                        continue
+                    
+                    for action_sequence in action_sequence_sample:
+                        if self.task == "gsm8k":
+                            parse_prefix = "def solution():\n"
+                        if self.task == "math":
+                            parse_prefix = "Null"
+                        if self.task == "humaneval":
+                            parse_prefix = self.prompts["prompt"][id]
+                        processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix, id=id, memory=memory)
+
+                        if action is None: continue
+                        reward = 0
+                        if args.value_type == "logp":
+                            reward = processed_output["action_prob"]
+                        else:
+                            raise NotImplementedError
+                        
+                        self.update_trajectory_pool(processed_output, reward=reward, id=id, memory=memory)    
+            else:
+                print("Failed to generate action sequence.")
+                return False, None
+                
+            # reward_threshold = self.reward_threshold if reflection_tips == "" else 0  # if reflection is needed, lower the threshold so that the model won't get stuck
+            actions = self.search_lookahead_decision_model(reward_threshold=self.reward_threshold, all_ind=all_index)
+            
+            for id, action in zip(all_index, actions):
+                if action is not None:
+                    step_id = self.memory[id].index(None)
+                    self.memory[id][step_id] = action
+            
+            iter += 1
+            if iter > args.max_iters:
+                break
+                
+             
+        if success:
+            all_outputs = []
+            for id in range(len(questions)):
+                with io.StringIO() as f:
+                    if self.task == "gsm8k":
+                        f.write("def solution():\n")
+                    elif self.task == "math":
+                        pass
+                    elif self.task == "humaneval":
+                        f.write(self.prompts["prompt"][id])
+                    else:
+                        raise NotImplementedError
+                    # iterate through the state
+                    for a  in self.memory[id]:
+                        if a is not None:
+                            f.write(f"{a}\n")
+
+                    full_output = f.getvalue()
+                all_outputs.append(full_output)
+            
+            return True, all_outputs
+            
+        return False, None
+    
     @classmethod
     def from_config(cls, llm_model, config):
         return cls(llm_model, 
@@ -706,6 +922,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                    lookahead_thought_length=config.get("lookahead_thought_length", 3),
                    lookahead_token_length=config.get("lookahead_token_length", None),
                    reward_threshold=config.get("reward_threshold", 1.0),
+                   beam_size=config.get("beam_size", 8),
                    beam_temperature=config.get("beam_temperature", 0.7),
                    select_temperature=config.get("select_temperature", 0.1),
                    n_generate_sample=config.get("n_generate_sample", 8),
@@ -713,4 +930,61 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                    do_sample=config.get("do_sample", True),
                    use_memory=config.get("use_memory", True)
                    )
+
+class Node:
+    def __init__(self, state, parent=None, action=None):
+        self.state = state
+        self.parent = parent
+        self.action = action
+        self.children = []
         
+    def add_child(self, child):
+        self.children.append(child)
+    
+    
+    def get_state(self):
+        return self.state
+    
+    def get_parent(self):
+        return self.parent
+    
+    def get_children(self):
+        return self.children
+    
+    def get_trajectory(self):
+        trajectory = []
+        node = self
+        while node is not None:
+            trajectory.append(node.get_state())
+            node = node.get_parent()
+        trajectory.reverse()
+        return trajectory
+    
+
+class SearchTree:
+    def __init__(self, root):
+        self.root = root
+        self.nodes = []
+        self.nodes.append(root)
+        
+    def add_node(self, node):
+        self.nodes.append(node)
+    
+    
+    def get_all_trajectories_from_root(self):
+        trajectories = []
+        trajectories_nodes = []
+        
+        # search for all paths from root to leaf
+        for node in self.nodes:
+            trajectory = []
+            trajectory_nodes = []
+            while node is not None:
+                trajectory.append(node.get_state())
+                trajectory_nodes.append(node)
+                node = node.get_parent()
+            trajectory.reverse()
+            trajectory_nodes.reverse()
+            trajectories.append(trajectory)
+            trajectories_nodes.append(trajectory_nodes)
+        return trajectories, trajectories_nodes

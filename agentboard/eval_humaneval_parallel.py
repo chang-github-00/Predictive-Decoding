@@ -147,8 +147,8 @@ class EvalReasoning:
         
         for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
             if self.task == "humaneval":
-                prefixes = [item["text"] for item in test_items]
-                questions = [item["prompt"] for item in test_items]
+                prefixes = [item["prompt"] for item in test_items]
+                questions = [item["text"] for item in test_items]
                 self.prompts["prompt"] = prefixes
             elif self.task == "mbpp":
                 prefixes = [item["code"] for item in test_items]

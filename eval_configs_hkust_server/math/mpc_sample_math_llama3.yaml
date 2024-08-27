@@ -10,7 +10,8 @@ algorithm:
   name: MPC_Sample
   lookahead_thought_length: 8
   reward_threshold: 0.0
-  n_generate_sample: 8
+  n_generate_sample: 1
+  beam_size: 8
   value_type: logp # use llama3
   do_sample: True
   beam_temperature: 1.0

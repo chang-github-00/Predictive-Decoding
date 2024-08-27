@@ -67,6 +67,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
                  beam_temperature=0.7,
                  n_generate_sample=8,
                  do_sample=True,
+                 beam_search=False,
                  task="gsm8k"
                  ):
         
@@ -82,7 +83,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
         self.do_sample = do_sample
         self.beam_temperature = beam_temperature
         self.n_generate_sample = n_generate_sample
-
+        self.beam_search = beam_search
         
         
     def make_prompt(self, prompt):
@@ -179,6 +180,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
             "top_p": 1.0,
             "stop": [],            
             "logprobs": 0,
+            "use_beam_search": self.beam_search
         }
         
         args = argparse.Namespace(**args)
@@ -190,7 +192,9 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
                             "max_tokens": args.max_tokens, 
                             "temperature": args.temperature,
                             "do_sample": True,
-                            "logprobs": args.logprobs}
+                            "logprobs": args.logprobs,
+                            "use_beam_search": args.use_beam_search
+                            }
         
         if self.task == "humaneval":
             input_prompt = question
@@ -225,6 +229,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
             "top_p": 1.0,
             "stop": [],            
             "logprobs": 0,
+            "use_beam_search": self.beam_search
         }
         
         args = argparse.Namespace(**args)
@@ -236,7 +241,9 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
                             "max_tokens": args.max_tokens, 
                             "temperature": args.temperature,
                             "do_sample": True,
-                            "logprobs": args.logprobs}
+                            "logprobs": args.logprobs,
+                            "use_beam_search": args.use_beam_search
+                            }
         
         
         if prompts is not None:
@@ -282,6 +289,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
                    beam_temperature=config.get("beam_temperature", 0.7),
                    n_generate_sample=config.get("n_generate_sample", 8),
                    do_sample=config.get("do_sample", True),  
-                   task=config.get("task", "gsm8k")
+                   task=config.get("task", "gsm8k"),
+                   beam_search=config.get("beam_search", False)
                    )
         

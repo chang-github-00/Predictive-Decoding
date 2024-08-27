@@ -6,7 +6,16 @@ __pycache__/
 .idea/*
 .ipynb_checkpoints/*
 agentboard/utils/sheet/credential.json
-data/*
+data/alfworld/*
+data/babyai/*
+data/jericho/*
+data/pddl/*
+data/scienceworld/*
+data/tool-operation/*
+data/tool-query/*
+data/webarena/*
+data/webshop/*
+data/gsm8k/*
 alfworld/*
 wandb/*
 agentboard/environment/browser_env/config_files/

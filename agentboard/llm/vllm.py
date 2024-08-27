@@ -178,15 +178,28 @@ class VLLM:
         top_p = config.get("top_p", 1)
         
         
-        samplingparams = SamplingParams(
-            temperature=temperature,
-            top_p=top_p,
-            stop=stop,
-            max_tokens=max_tokens,
-            logprobs=logprobs,
-            n=n,
-        )
+        use_beam_search = config.get("use_beam_search", False)
         
+        if use_beam_search:
+            samplingparams = SamplingParams(
+                temperature=0,
+                top_p=top_p,
+                stop=stop,
+                max_tokens=max_tokens,
+                logprobs=logprobs,
+                n=n,
+                use_beam_search=True,
+            )
+        else:
+            samplingparams = SamplingParams(
+                temperature=temperature,
+                top_p=top_p,
+                stop=stop,
+                max_tokens=max_tokens,
+                logprobs=logprobs,
+                n=n,
+            )
+            
         full_prompts = []
         for i in range(len(prompts)):
             prompt = prompts[i]

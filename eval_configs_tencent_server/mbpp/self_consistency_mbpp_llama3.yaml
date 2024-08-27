@@ -28,7 +28,7 @@ llm:
       max_tokens: 500
   llama-3:
       name: vllm
-      engine: /ssddata/model_hub/Meta-Llama-3-8B-Instruct
+      engine: /apdcephfs_qy3/share_733425/timhuang/haitengzhao/Tree_DPO/models/Meta-Llama-3-8B-Instruct
       context_length: 8192
       temperature: 0
       top_p: 1

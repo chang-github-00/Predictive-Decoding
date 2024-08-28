@@ -765,6 +765,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             
         return False, None
     
+    
     def parallel_run_multiple(self, questions, prompts=None, **kwargs): # code for original vllm
         
         args = {
@@ -798,11 +799,16 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             self.prompts = prompts
         
         self.trajectory_pool = {}
-        self.roots = [Node(None)] * len(questions)
-        self.trees = [SearchTree(root) for root in self.roots]
+        self.memory = {}
         
+        # make the questions repeat n_generate_sample times
+        questions = [q  for q in questions for _ in range(self.n_generate_sample)]
+        if type(self.prompts["prompt"]) == list:
+            self.prompts["prompt"] = [p for p in self.prompts["prompt"] for _ in range(self.n_generate_sample)]
+            
         for id, question in enumerate(questions):
             self.trajectory_pool[id] = []
+            self.memory[id] = [None]*self.problem_size
 
         all_iter = 0
         iter = 0
@@ -812,34 +818,27 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             all_answer_prefixes = []
             all_system_messages = []
             all_index = []
-            all_nodes = []
             for id in range(len(questions)):
                 if not self.use_memory:
                     self.trajectory_pool[id] = []
 
                 ended = False
-                
-                memories, trajectories = self.tree[id].get_all_trajectories_from_root()
-                
-                for chain_id in range(len(trajectories)):
-                    memory = memories[chain_id]
+                for action in self.memory[id]:
+                    if action is not None and end_suffix is not None and action.strip().startswith(end_suffix): 
+                        ended = True    
+                        break
                     
-                    for action in memory:
-                        if action is not None and end_suffix is not None and action.strip().startswith(end_suffix): 
-                            ended = True    
-                            break
-                    if not ended:
-                        if self.task in ["gsm8k", "math"]:
-                            input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"], questions[id], memory=memory)
-                        elif self.task in ["humaneval", "mbpp"]: # coding tasks have different prompts for each question
-                            input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"][id], questions[id], memory=memory)
-                        else:
-                            raise NotImplementedError
-                        all_input_prompts.append(input_prompt)
-                        all_answer_prefixes.append(answer_prefix)
-                        all_system_messages.append(self.prompts["system_msg"])
-                        all_index.append(id)
-                        all_nodes.append(trajectories[chain_id][-1]) # get the last node in the trajectory, for adding children
+                if not ended: # as not all samples have the same number of steps, we only inference those that have not finished
+                    if self.task in ["gsm8k", "math"]:
+                        input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"], questions[id], memory=self.memory[id])
+                    elif self.task in ["humaneval", "mbpp"]: # coding tasks have different prompts for each question
+                        input_prompt, answer_prefix = self.make_prompt(self.prompts["prompt"][id], questions[id], memory=self.memory[id])
+                    else:
+                        raise NotImplementedError
+                    all_input_prompts.append(input_prompt)
+                    all_answer_prefixes.append(answer_prefix)
+                    all_system_messages.append(self.prompts["system_msg"])
+                    all_index.append(id)
             
             if len(all_index) == 0: # all questions have finished
                 break
@@ -847,11 +846,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             success, action_sequence_samples = self.llm_model.parallel_generate_with_config(all_system_messages, all_input_prompts, generation_config, answer_prefixes=all_answer_prefixes)
             
             if success:
-                for sample_index, action_sequence_sample in enumerate(action_sequence_samples):
-                    
-                    id = all_index[sample_index]
-                    last_node = all_nodes[sample_index]
-                    memory = last_node.get_trajectory()
+                for id, action_sequence_sample in zip(all_index, action_sequence_samples):
                     
                     if action_sequence_sample is None: # no action sequence generated when length exceeds max_tokens
                         continue
@@ -863,7 +858,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                             parse_prefix = "Null"
                         if self.task == "humaneval":
                             parse_prefix = self.prompts["prompt"][id]
-                        processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix, id=id, memory=memory)
+                        processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix, id=id)
 
                         if action is None: continue
                         reward = 0
@@ -872,13 +867,13 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                         else:
                             raise NotImplementedError
                         
-                        self.update_trajectory_pool(processed_output, reward=reward, id=id, memory=memory)    
+                        self.update_trajectory_pool(processed_output, reward=reward, id=id)    
             else:
                 print("Failed to generate action sequence.")
                 return False, None
                 
             # reward_threshold = self.reward_threshold if reflection_tips == "" else 0  # if reflection is needed, lower the threshold so that the model won't get stuck
-            actions = self.search_lookahead_decision_model(reward_threshold=self.reward_threshold, all_ind=all_index)
+            actions = self.parallel_lookahead_decision_model(reward_threshold=self.reward_threshold, all_ind=all_index)
             
             for id, action in zip(all_index, actions):
                 if action is not None:
@@ -910,6 +905,8 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                     full_output = f.getvalue()
                 all_outputs.append(full_output)
             
+            # merge the outputs for each question
+            all_outputs = [all_outputs[i:i+self.n_generate_sample] for i in range(0, len(all_outputs), self.n_generate_sample)]
             return True, all_outputs
             
         return False, None

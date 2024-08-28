@@ -7,13 +7,16 @@ run:
 
 algorithm:
   task: math
-  name: Self_Consistency  
-  n_generate_sample: 8 # n=1 pal
+  name: MPC_Sample
+  lookahead_thought_length: 8
+  reward_threshold: 0.0
+  n_generate_sample: 8
+  beam_size: 8
   value_type: logp # use llama3
   do_sample: True
-  beam_temperature: 0.6
-  beam_search: False
-
+  beam_temperature: 1.0
+  select_temperature: 0.1
+  use_memory: True
   # lookahead_token_length: 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
@@ -37,3 +40,14 @@ llm:
       stop:
       dtype: float32
       ngpu: 1
+  # llama3:
+  #     name: openai_vllm
+  #     engine: /root/huggingface/Meta-Llama-3-8B-Instruct/
+  #     context_length: 4096
+  #     temperature: 0 # make this larger for tot
+  #     top_p: 1
+  #     retry_delays: 20
+  #     max_retry_iters: 15
+  #     stop: #"\n"
+  #     use_parser: False
+  #     max_tokens: 500

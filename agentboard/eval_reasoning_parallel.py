@@ -16,7 +16,7 @@ from tqdm import tqdm
 from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
@@ -91,6 +91,8 @@ def evaluate_results(task, item, result): #result is a list
             # majority vote
             count = dict()
             for a in executed_solution:
+                if "Error" in str(a):
+                    continue
                 if a not in count:
                     count[a] = 1
                 else:
@@ -119,6 +121,8 @@ def evaluate_results(task, item, result): #result is a list
             # majority vote
             count = dict()
             for a in executed_solution:
+                if "Error" in str(a):
+                    continue
                 if a not in count:
                     count[a] = 1
                 else:
@@ -272,6 +276,7 @@ class EvalReasoning:
             questions = [item["question"] for item in test_items]
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 
+            print("len(test_items):", len(test_items))
             for batch_id, item in tqdm(enumerate(test_items), total=len(test_items)):
                 output = all_outputs[batch_id]
                 try:

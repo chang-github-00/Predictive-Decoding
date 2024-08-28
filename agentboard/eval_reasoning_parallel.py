@@ -38,7 +38,7 @@ def load_dataset(task, path='/root/huggingface/gsm8k'):
             example = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'answer': gt_ans}
             dataset.append(example)  
 
-        return dataset
+        return dataset[2877:]
 
 def retrieve_answer_from_dataset(answer: str) -> str:
     return re.match(r'[\S\s]*#### (.*)$', answer)[1]
@@ -93,11 +93,16 @@ def evaluate_results(task, item, result): #result is a list
             for a in executed_solution:
                 if "Error" in str(a):
                     continue
+                if a is None:
+                    continue
                 if a not in count:
                     count[a] = 1
                 else:
                     count[a] += 1
-            executed_solution = max(count, key=count.get)
+            if len(count) == 0:
+                executed_solution = None    
+            else:
+                executed_solution = max(count, key=count.get)
         return judge_gsm8k_answer(executed_solution, answer), executed_solution
     elif task == "math":
         answer = item["answer"]
@@ -123,11 +128,16 @@ def evaluate_results(task, item, result): #result is a list
             for a in executed_solution:
                 if "Error" in str(a):
                     continue
+                if a is None:
+                    continue
                 if a not in count:
                     count[a] = 1
                 else:
                     count[a] += 1
-            executed_solution = max(count, key=count.get)
+            if len(count) == 0:
+                executed_solution = None    
+            else:
+                executed_solution = max(count, key=count.get)
         return math_equal(executed_solution, answer), executed_solution
         
     else:

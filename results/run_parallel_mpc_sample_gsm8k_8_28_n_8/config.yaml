@@ -6,7 +6,7 @@ algorithm:
   n_generate_sample: 8
   name: MPC_Sample
   reward_threshold: 0.0
-  select_temperature: 0.1
+  select_temperature: 0.05
   task: gsm8k
   use_memory: true
   value_type: logp

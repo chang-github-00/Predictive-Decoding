@@ -275,7 +275,10 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
             
             formatted_code_samples = []
             for code in code_samples:
-                code = self.format_humaneval_completion(code, prefix)
+                if self.task == "humaneval":
+                    code = self.format_humaneval_completion(code, prefix)
+                else:
+                    code = self.format_code(code)
                 formatted_code_samples.append(code)
                 
             all_outputs.append(formatted_code_samples)

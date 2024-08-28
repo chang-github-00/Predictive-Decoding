@@ -259,6 +259,15 @@ class VLLM:
                     outputs.append(item)
                 all_outputs.append(outputs)
             return True, all_outputs
+    
+    def encode(self, system_message, prompt, answer_prefix=None):
+        full_prompt = self.get_input(system_message, prompt, answer_prefix)
+        outputs = self.llm.encode([full_prompt])
+        
+        # get tokens and logprobs
+        
+        
+        return True, outputs
         
     def get_input(self, system_message, prompt, answer_prefix=None):
         full_prompt=[

@@ -20,6 +20,6 @@ llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 10
+  batch_size: 50
   data_path: /ssddata/junxianh/Agent-Decoding/data/math/test.json
   log_path: results/run_parallel_mpc_sample_math_8_28_n_8

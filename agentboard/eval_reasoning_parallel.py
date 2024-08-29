@@ -288,9 +288,9 @@ class EvalReasoning:
             questions = [item["question"] for item in test_items]
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 
-            for output in all_outputs:
-                log_line = json.dumps(output) + "\n"
-                log_file.write(log_line)
+            # for output in all_outputs:
+            #     log_line = json.dumps(output) + "\n"
+            #     log_file.write(log_line)
             
             assert len(all_outputs) == len(test_items)
             for batch_id, item in tqdm(enumerate(test_items), total=len(test_items)):

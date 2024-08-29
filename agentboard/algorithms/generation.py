@@ -270,20 +270,31 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
         
         if args.n_generate_sample == 1: all_code_samples = [[code_sample] for code_sample in all_code_samples]
         
-        all_outputs = []
-        for prefix, code_samples in zip(self.prompts["prompt"], all_code_samples):
-            
-            formatted_code_samples = []
-            for code in code_samples:
-                if self.task == "humaneval":
-                    code = self.format_humaneval_completion(code, prefix)
-                else:
-                    code = self.format_code(code)
-                formatted_code_samples.append(code)
+        if self.task == "humaneval":
+            all_outputs = []
+            for prefix, code_samples in zip(self.prompts["prompt"], all_code_samples):
                 
-            all_outputs.append(formatted_code_samples)
+                formatted_code_samples = []
+                for code in code_samples:
+                    
+                    code = self.format_humaneval_completion(code, prefix)
+                    formatted_code_samples.append(code)
+                    
+                all_outputs.append(formatted_code_samples)
             
-        return True, all_outputs
+            return True, all_outputs
+        else:   
+            all_outputs = []
+            for code_samples in all_code_samples:
+                
+                formatted_code_samples = []
+                for code in code_samples:
+                    code = self.format_code(code)
+                    formatted_code_samples.append(code)
+                    
+                all_outputs.append(formatted_code_samples)
+            return True, all_outputs
+                
                 
     @classmethod
     def from_config(cls, llm_model, config):

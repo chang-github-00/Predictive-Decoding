@@ -16,7 +16,7 @@ from tqdm import tqdm
 from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
@@ -38,7 +38,7 @@ def load_dataset(task, path='/root/huggingface/gsm8k'):
             example = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'answer': gt_ans}
             dataset.append(example)  
 
-        return dataset[2877:]
+        return dataset
 
 def retrieve_answer_from_dataset(answer: str) -> str:
     return re.match(r'[\S\s]*#### (.*)$', answer)[1]
@@ -278,6 +278,8 @@ class EvalReasoning:
         # create a new empty file for logging
         f = open(os.path.join(self.log_path,f"{self.task}_{dataset_name}.txt"), "w")
         
+        log_file = open(os.path.join(self.log_path,f"{self.task}_{dataset_name}_generation_output.txt"), "w")
+        
         item_iter = Iterator(self.dataset, self.batch_size)
         
         id = 0
@@ -286,7 +288,11 @@ class EvalReasoning:
             questions = [item["question"] for item in test_items]
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 
-            print("len(test_items):", len(test_items))
+            for output in all_outputs:
+                log_line = json.dumps(output) + "\n"
+                log_file.write(log_line)
+            
+            assert len(all_outputs) == len(test_items)
             for batch_id, item in tqdm(enumerate(test_items), total=len(test_items)):
                 output = all_outputs[batch_id]
                 try:

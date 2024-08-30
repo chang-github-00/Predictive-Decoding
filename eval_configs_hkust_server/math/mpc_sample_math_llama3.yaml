@@ -14,8 +14,8 @@ algorithm:
   beam_size: 8
   value_type: logp # use llama3
   do_sample: True
-  beam_temperature: 1.0
-  select_temperature: 0.001
+  beam_temperature: 0.6
+  select_temperature: 0.01
   use_memory: True
   # lookahead_token_length: 
 llm:

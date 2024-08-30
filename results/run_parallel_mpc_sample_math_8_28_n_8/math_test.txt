@@ -178184,3 +178184,8841 @@ return result
 
 
  Executed result: [(-y, y)]
+[EXP] 999: [success_rate]: True, [answer]: -23.5, [output]: from sympy import symbols, solve
+
+from sympy.simplify.fu import rational
+
+from decimal import Decimal, getcontext
+
+getcontext().prec = 10
+
+def solution():
+
+    x = symbols('x')
+
+    line1 = x/3 + 7
+
+    line2 = 2*x + 5
+
+    x1 = solve(line1 - 0, x)[0]
+
+    x2 = solve(line2 - 0, x)[0]
+
+    result = Decimal(x1).quantize(Decimal('0.1')) + Decimal(x2).quantize(Decimal('0.1'))
+
+    return result
+
+
+from sympy import symbols, solve
+
+from decimal import Decimal, getcontext
+
+getcontext().prec = 11
+
+def solution():
+
+    x = symbols('x')
+
+    line1 = 1/3 * x + 7
+
+    line2 = 2*x + 5
+
+    # Find the x-intercepts of the lines
+
+    x1 = solve(line1 - 0, x)[0]
+
+    x2 = solve(line2 - 0, x)[0]
+
+    # Calculate the sum of the x-intercepts
+
+    total_x = Decimal(x1) + Decimal(x2)
+
+    # Round the sum to the nearest tenth
+
+    result = round(total_x, 1)
+
+    return result
+
+
+import numpy as np
+
+def solution():
+
+    # Lines
+
+    line1 = 1/3*x + 7
+
+    line2 = 2*x + 5
+
+    # Solve for x-intercepts
+
+    x1 = (7 - 5) / (1/3 - 2)
+
+    x2 = (0 - 5) / 2
+
+    # Sum of x-intercepts
+
+    sum_x = x1 + x2
+
+    # Round to the nearest tenth
+
+    result = round(sum_x, 1)
+
+    return result
+
+
+from sympy import symbols, solve
+
+def solution():
+
+    x = symbols('x')
+
+    y1 = 1/3*x + 7
+
+    y2 = 2*x + 5
+
+    x1 = solve(y1 - 0, x)[0]
+
+    x2 = solve(y2 - 0, x)[0]
+
+    result = x1 + x2
+
+    return "{:.1f}".format(result)
+
+
+import numpy as np
+
+from sympy import symbols, solve
+
+def solution():
+
+    x = symbols('x')
+
+    y1 = 1/3 * x + 7
+
+    y2 = 2 * x + 5
+
+    # Find the x-intercepts
+
+    intercept1 = solve(y1 - 0, x)[0]
+
+    intercept2 = solve(y2 - 0, x)[0]
+
+    # Calculate the sum of the x-coordinates
+
+    sum_intercepts = intercept1 + intercept2
+
+    # Round the result to the nearest tenth
+
+    result = round(sum_intercepts, 1)
+
+    return result
+
+
+def solution():
+
+    from sympy import symbols, Eq, solve
+
+    x = symbols('x')
+
+    y1 = 1/3*x + 7
+
+    y2 = 2*x + 5
+
+    # Equations of the $x$-intercepts
+
+    intercept1 = Eq(y1, 0)
+
+    intercept2 = Eq(y2, 0)
+
+    # Solve the equations
+
+    r1 = solve(intercept1, x)[0]
+
+    r2 = solve(intercept2, x)[0]
+
+    # Sum of the $x$-coordinates
+
+    result = round(r1 + r2, 1)
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, Eq, solve
+
+from math import sqrt
+
+x = symbols('x')
+
+def solution():
+
+    equation1 = Eq(x - (7*(3)), 0)
+
+    equation2 = Eq(2*x -5, 0)
+
+    solution1 = solve(equation1, x)
+
+    solution2 = solve(equation2, x)
+
+    sum_x = solution1[0] + solution2[0]
+
+    return "{:.1f}".format(sum_x)
+
+
+import numpy as np
+
+def solution():
+
+    x1 = (0 - 7) / (1/3)
+
+    x2 = (0 - 5) / 2
+
+    result = float(x1 + x2)
+
+    return "{:.1f}".format(result)
+
+
+ Executed result: -23.5
+[EXP] 1000: [success_rate]: True, [answer]: 11, [output]: import math
+
+import sympy as sp
+
+from sympy import symbols
+
+from sympy import simplify
+
+from sympy import sqrt
+
+def solution():
+
+    x, y = symbols('x y')
+
+    expr = sqrt(x**3 - 2**y)
+
+    x_val = 5
+
+    y_val = 2
+
+    simplified_expr = simplify(expr.subs({x:x_val,y:y_val}))
+
+    result = float(simplified_expr)
+
+    return result
+
+
+import math
+
+def solution():
+
+    x = 5
+
+    y = 2
+
+    expr = math.sqrt(x**3 - 2**y)
+
+    result = expr
+
+    return result
+
+
+import math
+
+def solution():
+
+    x = 5
+
+    y = 2
+
+    expression = math.sqrt(x**3 - 2**y)
+
+    result = "{:.2f}".format(expression)
+
+    return result
+
+
+import math
+
+def solution():
+
+    x = 5
+
+    y = 2
+
+    expr = math.sqrt(x**3 - 2**y)
+
+    result = "{:.2f}".format(expr)
+
+    return result
+
+
+import math
+
+def solution():
+
+    x = 5
+
+    y = 2
+
+    expr = x**3 - 2**y
+
+    result = math.sqrt(expr)
+
+    return str(result)
+
+
+import math
+
+def solution():
+
+    x = 5
+
+    y = 2
+
+    expression = x**3 - 2**y
+
+    result = math.sqrt(expression)
+
+    return result
+
+
+import math
+
+def solution():
+
+    x = 5
+
+    y = 2
+
+    expression = x**3 - 2**y
+
+    root_expression = math.sqrt(expression)
+
+    result = '{:.2f}'.format(root_expression)
+
+    return result
+
+
+import math
+
+def solution():
+
+    x = 5
+
+    y = 2
+
+    expression = x**3 - 2**y
+
+    positive_value = math.sqrt(expression)
+
+    result = "{:.2f}".format(positive_value)
+
+    return result
+
+
+ Executed result: 11.0
+[EXP] 1001: [success_rate]: True, [answer]: -1, [output]: import math
+
+def solution():
+
+    result = math.ceil(-7/4)
+
+    return result
+
+
+import math
+
+def solution():
+
+    result = math.ceil(-7/4)
+
+    return str(result)
+
+
+import math
+
+def solution():
+
+    value = -7 / 4
+
+    result = math.ceil(value)
+
+    return result
+
+
+import math
+
+def solution():
+
+    result = math.ceil(-7 / 4)
+
+    return str(result)
+
+
+import math
+
+def solution():
+
+    result = math.ceil(-7 / 4)
+
+    return str(result)
+
+
+import math
+
+def solution():
+
+    result = math.ceil(-7/4)
+
+    return result
+
+
+import math
+
+def solution():
+
+    result = math.ceil(-7/4)
+
+    return result
+
+
+import math
+
+def solution():
+
+    result = math.ceil(-7 / 4)
+
+    return result
+
+
+ Executed result: -1
+[EXP] 1002: [success_rate]: True, [answer]: \frac{2}{3}, [output]: def solution():
+
+    numerator = 2 - 4 + 6 - 8 + 10 - 12 + 14
+
+    denominator = 3 - 6 + 9 - 12 + 15 - 18 + 21
+
+    fraction = numerator / denominator
+
+    return str(fraction)
+
+
+import math
+
+import re
+
+def solution():
+
+    numerator = [2, -4, 6, -8, 10, -12, 14]
+
+    denominator = [3, -6, 9, -12, 15, -18, 21]
+
+    # Calculate the sum of numerator and denominator
+
+    numerator_sum = sum(numerator)
+
+    denominator_sum = sum(denominator)
+
+    # Find the GCD
+
+    def gcd(a, b):
+
+        while(b != 0):
+
+            a, b = b, a % b
+
+        return a
+
+
+import math
+
+def solution():
+
+    numerator = 2 - 4 + 6 - 8 + 10 - 12 + 14
+
+    denominator = 3 - 6 + 9 - 12 + 15 - 18 + 21
+
+    result = numerator / denominator
+
+    return result
+
+
+import fractions
+
+import numpy as np
+
+import re
+
+from asteval import Interpreter
+
+from sympy import symbols, simplify
+
+import math
+
+import random
+
+import decimal
+
+def solution():
+
+    expr = "(2-4+6-8+10-12+14)/(3-6+9-12+15-18+21)"
+
+    aeval = Interpreter()
+
+    aeval.symtable['x'] = symbols('x')
+
+    result = aeval(expr)
+
+    result = fractions.Fraction(result).limit_denominator()
+
+    result = str(result)
+
+    return result
+
+
+def solution():
+
+    numerator = 2 - 4 + 6 - 8 + 10 - 12 + 14
+
+    denominator = 3 - 6 + 9 - 12 + 15 - 18 + 21
+
+    simplified_numerator = simplify(numerator)
+
+    simplified_denominator = simplify(denominator)
+
+    gcd = gcd(simplified_numerator, simplified_denominator)
+
+    simplified_numerator //= gcd
+
+    simplified_denominator //= gcd
+
+    result = Fraction(simplified_numerator, simplified_denominator).limit_denominator()
+
+    return str(result)
+
+
+def solution():
+
+    top_sum = 2 - 4 + 6 - 8 + 10 - 12 + 14
+
+    bottom_sum = 3 - 6 + 9 - 12 + 15 - 18 + 21
+
+    result = top_sum / bottom_sum
+
+    return '{}'.format(result)
+
+
+def solution():
+
+    numerator = [2, -4, 6, -8, 10, -12, 14]
+
+    denominator = [3, -6, 9, -12, 15, -18, 21]
+
+    common_terms = []
+
+    for i in range(len(numerator)):
+
+        if i % 2 == 0:
+
+            common_terms.append(numerator[i])
+
+    result = sum(common_terms) / sum(denominator)
+
+    return result
+
+
+def solution():
+
+    numerator = 2 - 4 + 6 - 8 + 10 - 12 + 14
+
+    denominator = 3 - 6 + 9 - 12 + 15 - 18 + 21
+
+    result = numerator / denominator
+
+    return result
+
+
+ Executed result: 0.6666666666666666
+[EXP] 1003: [success_rate]: False, [answer]: (-\infty,-2)\cup(-2,3)\cup(3,\infty), [output]: import math
+
+import sympy as sp
+
+from sympy import symbols
+
+x = symbols('x')
+
+def solution():
+
+    expr = (2*x-3)*(2*x+5) / ((3*x-9)*(3*x+6))
+
+    domain = sp.solve((3*x-9)*(3*x+6), x)
+
+    result = str(min(domain)) + ' <= ' + str(x) + ' <= ' + str(max(domain))
+
+    return result
+
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (2*x - 3) * (2*x + 5) / ((3*x - 9) * (3*x + 6))
+
+    simp_expr = simplify(expr)
+
+    numerator = simp_expr.as_numer_denom()[0]
+
+    denominator = simp_expr.as_numer_denom()[1]
+
+    numerator_factors = set(numerator.factor_list()[1])
+
+    denominator_factors = set(denominator.factor_list()[1])
+
+    common_factors = numerator_factors & denominator_factors
+
+    for factor in list(common_factors):
+
+        numerator_factors.remove(factor)
+
+        denominator_factors.remove(factor)
+
+    numerator = numerator * 1 / product(numerator_factors)
+
+    denominator = product(denominator_factors)
+
+    intervals = []
+
+    for factor in numerator_factors:
+
+        if factor < 0:
+
+            intervals.append(-float('inf'), -factor)
+
+            intervals.append(factor, float('inf'))
+
+        else:
+
+            intervals.append((0, factor))
+
+    intervals = [interval for interval in intervals if interval[1] != 0]
+
+    result = '(-inf,' + str(intervals[0][1]) + ') U (' + ' U '.join([str(interval[0]) + ',' + str(interval[1]) for interval in intervals[1:]] + [')'])
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (2*x-3)*(2*x+5) / ((3*x-9)*(3*x+6))
+
+    simplified_expr = simplify(expr)
+
+    denominator = simplified_expr.as_numer_denom()[1]
+
+    denominator_roots = np.roots(denominator)
+
+    denominator_roots = [float(root.real) for root in denominator_roots if root.imag == 0]
+
+    result = r'$x \in (-\infty, 3) \cup (3, 3)$'
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+from sympy.solvers import solve
+
+def solution():
+
+    x = symbols('x')
+
+    f = ((2*x-3)*(2*x+5))/((3*x-9)*(3*x+6))
+
+    numerator = 2*x-3
+
+    denominator = 3*x-9
+
+    denominator2 = 3*x + 6
+
+    roots1 = solve(denominator, x)
+
+    roots2 = solve(denominator2, x)
+
+    domain = []
+
+    for root in roots1:
+
+        if np.isreal(root):
+
+            domain.append((root, root))
+
+    domain = [i for i in set(tuple(sorted(pair)) for pair in domain if i[1] > i[0]]
+
+    domain.append((min(roots2), min(roots2)))
+
+    result = '(' + str(domain[0][0]) + ', ' + str(domain[0][1]) + ') \cup (' + str(domain[1][0]) + ', ' + str(domain[1][1]) + ')'
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+from sympy.simplify.fraction import simplify_fractions
+
+x = symbols('x')
+
+expr = (2*x-3)*(2*x+5) / ((3*x-9)*(3*x+6))
+
+simplified_expr = simplify_fractions(simplify(expr))
+
+roots = np.roots(simplified_expr.as_numer_denom()[1])
+
+denom_real_roots = roots[np.isreal(roots)]
+
+denom_real_roots = [root for root in denom_real_roots if npールt.isfinite(root)]
+
+denom_real_roots = [float(root) for root in denom_real_roots]
+
+dom = [x for x in range(-9, 10) if all(abs((3*x-9)*(3*x+6)) > 1e-9)]
+
+dom = [x for x in dom if 2*x-3 > 0 and 2*x+5 > 0]
+
+result = '-INF < x < {} or {} < x < INF'.format(min(denom_real_roots), max(denom_real_roots))
+
+return result
+
+
+import numpy as np
+
+from sympy import symbols
+
+from sympy import simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (2*x-3)*(2*x+5) / ((3*x-9)*(3*x+6))
+
+    simplified_expr = simplify(expr)
+
+    denumerator = (3*x-9)*(3*x+6)
+
+    roots = denumerator.as_numer_denom()[1].roots()
+
+    roots = [root for root in roots if np.isreal(root)]
+
+    roots = [complex(root).real for root in roots]
+
+    domain = []
+
+    for root in roots:
+
+        if root < 9 and root > -6:
+
+            domain.append((root, root))
+
+    result = r'$\displaystyle (-6, -3) \cup (3, 9)$'
+
+    return result
+
+
+from sympy import symbols, sympify, solve
+
+import math
+
+def solution():
+
+    x = symbols('x')
+
+    expression = sympify('(2*x - 3)*(2*x + 5) / ((3*x - 9)*(3*x + 6))')
+
+    result = solve((3*x - 9)*(3*x + 6), x)
+
+    result = [float(x) for x in result]
+
+    result.sort()
+
+    domains = [f'({result[i]}, {result[i+1]})' for i in range(len(result) - 1)]
+
+    if len(result) == 1:
+
+        domains = [f'({result[0]}, {result[0]})']
+
+    elif len(result) > 2:
+
+        domains = [f'-inf, {result[0]})'] + [f'({x}, {y})' for x, y in zip(result, result[1:])] + [f'{result[-1]}, inf']
+
+    result = ', '.join(domains)
+
+    return result
+
+
+from sympy import symbols, solve
+
+import numpy as np
+
+import math
+
+import fractions
+
+from fractions import Fraction
+
+def solution():
+
+    x = symbols('x')
+
+    # Simplifying the function
+
+    numerator = (2*x - 3) * (2*x + 5)
+
+    denominator = (3*x - 9) * (3*x + 6)
+
+    f = simplify(fraction(numerator, denominator))
+
+    # Finding the domain
+
+    roots1, = solve(3*x - 9, x)
+
+    roots2, = solve(3*x + 6, x)
+
+    domain1 = (roots1, np.inf)
+
+    domain2 = (-np.inf, roots2)
+
+    domain = (min(domain1[0], domain2[0]), max(domain1[1], domain2[1]))
+
+    result = '({} , {})'.format(domain[0], domain[1])
+
+    return result
+
+
+ Executed result: x <
+[EXP] 1004: [success_rate]: True, [answer]: 60000, [output]: def solution():
+
+    start = 501
+
+    end = 701
+
+    total = 0
+
+    for i in range(start, end):
+
+        if i % 2 != 0:
+
+            total += i
+
+    result = total
+
+    return result
+
+
+def solution():
+
+    lower = 501
+
+    upper = 701
+
+    total = 0
+
+    for i in range(lower, upper):
+
+        if i % 2 != 0:
+
+            total += i
+
+    result = total
+
+    return result
+
+
+def solution():
+
+    start = 501
+
+    end = 701
+
+    expected_sum = 0
+
+    for i in range(start, end):
+
+        if i % 2 != 0:
+
+            expected_sum += i
+
+    result = expected_sum
+
+    return result
+
+
+import numpy as np
+
+def solution():
+
+    sum_odd = np.sum(np.arange(501, 701, 2))
+
+    result = sum_odd
+
+    return result
+
+
+def solution():
+
+    start = 501
+
+    end = 701
+
+    total = 0
+
+    for i in range(start, end):
+
+        if i % 2 != 0:
+
+            total += i
+
+    result = total
+
+    return result
+
+
+def solution():
+
+    start = 500
+
+    end = 701
+
+    total_sum = 0
+
+    for i in range(start, end):
+
+        if i % 2 != 0:
+
+            total_sum += i
+
+    result = total_sum
+
+    return result
+
+
+def solution():
+
+    a = 501
+
+    b = 700
+
+    odd_sum = 0
+
+    for i in range(a, b+1):
+
+        if i%2 != 0:
+
+            odd_sum += i
+
+    result = odd_sum
+
+    return result
+
+
+def solution():
+
+    total = 0
+
+    for i in range(501, 701):
+
+        if i % 2 != 0:
+
+            total += i
+
+    result = total
+
+    return result
+
+
+ Executed result: 60000
+[EXP] 1005: [success_rate]: True, [answer]: 600, [output]: from sympy import symbols, solve
+
+from sympy.latex import latex
+
+import matplotlib.pyplot as plt
+
+import numpy as np
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    z = symbols('z')
+
+    equation = (1/x) + (1/y) - (1/z)
+
+    solution_singles = solve((1/x) + (1/y) - (1/z), y, dict=True)
+
+    for sol in solution_singles:
+
+        if sol[x] == 25 and sol[z] == 24:
+
+            result = sol[y]
+
+    result = latex(result)
+
+    return result
+
+
+import math
+
+from sympy import symbols, Eq
+
+def solution():
+
+    x = 25
+
+    z = 24
+
+    y = symbols('y')
+
+    equation = Eq((1/x) + (1/y), (1/z))
+
+    solution = solve(equation, y)
+
+    result = float(solution[0])
+
+    return result
+
+
+import sympy as sp
+
+def solution():
+
+    x, y, z = sp.symbols('x y z')
+
+    equation = (1/x) + (1/y) - (1/z)
+
+    equation = sp.solve(equation, y, dict=True)
+
+    x_value = 25
+
+    z_value = 24
+
+    for solution_dict in equation:
+
+        y_value = solution_dict[y]
+
+        y_value = float(y_value)
+
+    result = y_value
+
+    return result
+
+
+from sympy import symbols
+
+import sympy as sp
+
+from fractions import Fraction
+
+x = symbols('x')
+
+y = symbols('y')
+
+z = symbols('z')
+
+expr = 1/x + 1/y - 1/z
+
+result_expr = sp.solve((1/x + 1/y - 1/z) - Fraction(1,24), y)#{substitute(x, 25)}.simplify()
+
+print(result_expr[0])
+
+result = r'{0}'.format(result_expr[0])
+
+return result
+
+
+from sympy import symbols, simplify
+
+import numpy as np
+
+import math
+
+import fractions
+
+from fractions import Fraction
+
+def solution():
+
+    x = 25
+
+    z = 24
+
+    y = x * z
+
+    result = y
+
+    return result
+
+
+def solution():
+
+    x = 25
+
+    z = 24
+
+    # Simplify the given equation
+
+    equation = 1/x + 1/y - 1/z
+
+    # Solve for y
+
+    y = z * x
+
+    result = y
+
+    return result
+
+
+import sympy as sy
+
+from sympy import symbols
+
+import numpy as np
+
+import math
+
+from fractions import Fraction
+
+from decimal import Decimal
+
+from functools import reduce
+
+from operator import mul
+
+from math import gcd
+
+def solution():
+
+    x = 25
+
+    z = 24
+
+    y = sy.symbols('y')
+
+    equation = (1/x) + (1/y) - (1/z)
+
+    equation_simple = sy.solve(equation, y)
+
+    result = str(equation_simple[0])
+
+    return result
+
+
+def solution():
+
+    x = 25
+
+    z = 24
+
+    y = x * z
+
+    result = y
+
+    return result
+
+
+ Executed result: 600
+[EXP] 1006: [success_rate]: False, [answer]: 4, [output]: import sympy as sp
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x - 3) / (2*x**2 - 8*x + 7)
+
+    denominator = 2*x**2 - 8*x + 7
+
+    roots = sp.solve(denominator, x)
+
+    return '{:.2f}'.format(roots[0]) + ' or ' + '{:.2f}'.format(roots[1])
+
+
+import numpy as np
+
+import sympy as sy
+
+from sympy import symbols
+
+from sympy import simplify
+
+from sympy import latex
+
+from sympy import solve
+
+import math
+
+def solution():
+
+    x = symbols('x')
+
+    f = (x-3)/(2*x**2-8*x+7)
+
+    roots = solve(equation,x)
+
+    roots = list(roots)
+
+    sum_of_roots = roots[0] + roots[1]
+
+    result = latex(simplify(sum_of_roots))
+
+    return result
+
+
+import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    expr = (x-3)/(2*x**2 - 8*x + 7)
+
+    domain = sp.solve(2*x**2 - 8*x + 7, x)
+
+    result = str(domain[0]) + ' or ' + str(domain[1])
+
+    return result
+
+
+import numpy as np
+
+import sympy as sp
+
+from sympy import symbols
+
+from sympy.simplify import simplify
+
+import math
+
+import fractions
+
+from fractions import Fraction
+
+def solution():
+
+    x = sp.symbols('x')
+
+    expr = (x-3) / (2*x**2 - 8*x + 7)
+
+    simplified_expr = simplify(expr)
+
+    roots = sp.solve(2*x**2 - 8*x + 7, x)
+
+    roots = [Fraction(i).limit_denominator() for i in roots]
+
+    roots = [float(i) for i in roots]
+
+    sum_of_roots = sum(roots)
+
+    result = str(sum_of_roots)
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols
+
+from sympy import Poly
+
+from sympy import simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x-3)/(2*x**2 - 8*x + 7)
+
+    denominator = 2*x**2 - 8*x + 7
+
+    roots = Poly(denominator, x).roots()
+
+    result = 0
+
+    for root in roots:
+
+        temp_expr = expr.subs(x, root)
+
+        if isinstance(simplify(temp_expr), (int, float)):
+
+            result += root
+
+    return result
+
+
+import sympy as sp
+
+from sympy import symbols
+
+from sympy import simplify
+
+x = symbols('x')
+
+expr = (x - 3) / (2*x**2 - 8*x + 7)
+
+def solution():
+
+    roots = sp.solve(2*x**2 - 8*x + 7, x)
+
+    result = r"${} + {}$".format(roots[0], roots[1])
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, Eq
+
+from sympy.solvers.solveset import solveset
+
+from sympy import simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x - 3)/(2*x**2 - 8*x + 7)
+
+    numerator_value = 0
+
+    denominator_value = 0
+
+    for i in range(-10, 11):
+
+        for j in range(-10, 11):
+
+            for k in range(-10, 11):
+
+                if 2*(i**2) - 8*i + 7 == 0:
+
+                    denominator_value = (i, j, k)
+
+                if i - 3 == 0:
+
+                    numerator_value = (i, j, k)
+
+    if denominator_value and numerator_value:
+
+        result = str(numerator_value) + ', ' + str(denominator_value)
+
+    elif denominator_value:
+
+        result = str(denominator_value)
+
+    elif numerator_value:
+
+        result = str(numerator_value)
+
+    else:
+
+        result = 'The expression is always defined.'
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x - 3) / (2*x**2 - 8*x + 7)
+
+    simplified_expr = simplify(expr)
+
+    denominator_coefficients = simplified_expr.as_numer_denom()[1].as_coefficients_dict()
+
+    roots = [k for k, v in denominator_coefficients.items() if v == 0]
+
+    result = str(roots[0]) + ' or ' + str(roots[1])
+
+    return result
+
+
+ Executed result: 1.29 or 2.71
+[EXP] 1007: [success_rate]: False, [answer]: 5, [output]: import numpy as np
+
+import sympy as sp
+
+import math
+
+def solution():
+
+    x = sp.symbols('x')
+
+    y = (x+2)**4 - 100
+
+    simplified_y = sp.simplify(y)
+
+    roots = sp.solve(simplified_y, x)
+
+    integer_roots = [root for root in roots if isinstance(root, int)]
+
+    negative_integer_roots = [root for root in integer_roots if root < 0]
+
+    result = len(negative_integer_roots)
+
+    return result
+
+
+import sympy as sp
+
+import numpy as np
+
+def solution():
+
+    x = sp.symbols('x')
+
+    expr = (x + 2)**4 - 100
+
+    result = sp.solve(expr, x)
+
+    result = [int(i) for i in result]
+
+def solution():
+
+    y_values = [(x+2)**4 - 100 for x in result]
+
+    integer_pairs = [(x, y) for x in result for y in y_values if x < 0 and y < 0]
+
+    result = len([i for i in integer_pairs if isinstance(i[0], int) and isinstance(i[1], int)])
+
+    return result
+
+
+import math
+
+import numpy as np
+
+from sympy import symbols
+
+from sympy import simplify
+
+from sympy import Poly
+
+def solution():
+
+    x = symbols('x')
+
+    expr = Poly((x + 2)**4 - 100, x)
+
+    coefficients = expr.all_coeffs()
+
+    degree = len(coefficients) - 1
+
+    for i in range(degree, -1, -1):
+
+        coefficient = coefficients[i]
+
+        if coefficient < 0:
+
+            extent = int(-coefficient ** (1 / (i + 2)))
+
+    result = 0
+
+    for i in range(0, extent + 1):
+
+        for j in range(0, extent + 1):
+
+            if (i - j) ** 4 - 100 < 0:
+
+                result += 1
+
+    return result
+
+
+from sympy import symbols, solve
+
+import math
+
+x = symbols('x')
+
+expr = (x+2)**4 - 100
+
+expr_subs = expr.subs({x: -10}, evaluate=False)  # substitute x = -10
+
+expr_subs = expr.subs({x: -8}, evaluate=False)  # substitute x = -8
+
+expr_subs = expr.subs({x: -6}, evaluate=False)  # substitute x = -6
+
+expr_subs = expr.subs({x: -4}, evaluate=False)  # substitute x = -4
+
+expr_subs = expr.subs({x: -2}, evaluate=False)  # substitute x = -2
+
+expr_subs = expr.subs({x: 0}, evaluate=False)  # substitute x = 0
+
+solutions = solve(expr - 100, x) 
+
+solutions = [solution for solution in solutions if solution < 0 and solution % 1 == 0]
+
+result = len(solutions)
+
+return result
+
+
+import numpy as np
+
+def solution():
+
+    x_values = list(range(-10,0))
+
+    y_values = [(i**4 - 100) for i in x_values]
+
+    points = [(x, y) for x, y in zip(x_values, y_values) if x < 0 and y < 0]
+
+    return str(len(points))
+
+
+import numpy as np
+
+from sympy import solve
+
+x = symbols('x')
+
+expr = x**4 + 2*4*x**3 + 4**2*x**2 - 100
+
+solutions = solve(expr, x)
+
+negative_solutions = [solution for solution in solutions if solution < 0 and int(solution) == solution]
+
+result = len(negative_solutions)
+
+return result
+
+
+import math
+
+import sympy as sp
+
+import numpy as np
+
+from fractions import Fraction
+
+from decimal import Decimal
+
+from itertools import count
+
+from operator import itemgetter
+
+def solution():
+
+    x = sp.var('x')
+
+    expr = (x+2)**4-100
+
+    simplified_expr = sp.factor(expr)
+
+    roots = sp.solve(simplified_expr, x)
+
+    integer_roots = [root for root in roots if isinstance(root, int) and root < 0]
+
+    result = len(integer_roots)
+
+    return result
+
+
+import numpy as np
+
+import math
+
+import sympy as sp
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x+2)**4 - 100
+
+    # Solving for x where y is 0
+
+    roots = sp.solve(expr, x)
+
+    # Selecting only negative integer roots
+
+    negative_integer_roots = [r for r in roots if isinstance(r, int) and r < 0]
+
+    result = len(negative_integer_roots)
+
+    return result
+
+
+ Executed result: 0
+[EXP] 1008: [success_rate]: True, [answer]: 1, [output]: import numpy as np
+
+import sympy as sp
+
+from sympy import solve
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    solve_expr = sp.solve(abs(5*x - 1) - x - 3, x)
+
+    result = max(solve_expr)
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, Eq, solve
+
+import re
+
+import math
+
+import random
+
+import string
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    # Equation
+
+    equation = Eq(abs(5*x-1), x+3)
+
+    # Solving the equation
+
+    solutions = solve(equation)
+
+    # Add the solutions
+
+    solutions = [s for s in solutions if isinstance(s, (int, float))]
+
+    result = max(solutions)
+
+    # Return the result
+
+    return result
+
+
+import numpy as np
+
+import math
+
+from sympy import symbols, Eq, solve
+
+def solution():
+
+    x = symbols('x')
+
+    eq = Eq(abs(5*x - 1), x + 3)
+
+    solve_eq = solve((5*x - 1 - x - 3), x)
+
+    result = max(solve_eq)
+
+    return result
+
+
+import sympy as sp
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    equation = sp.Eq(5*x-1, x+3)
+
+    solns = sp.solve(equation, x)
+
+    result = max(solns)
+
+    return result
+
+
+import numpy as np
+
+import sympy as sp
+
+from sympy import symbols, Eq, solve
+
+from typing import Union
+
+x = symbols('x')
+
+expr = Eq(abs(5*x-1),x+3)
+
+simplified_expr = simplify(expr)
+
+solution = solve(simplified_expr, x)
+
+result: Union[float, list] = float(max(solution))
+
+return result
+
+
+def solution():
+
+    # Solve the equation |5x-1|=x+3
+
+    equation = abs(5*x-1) == x+3
+
+    # Simplify the equation
+
+    from sympy import symbols, simplify
+
+    x = symbols('x')
+
+    equation = simplify(equation)
+
+    # Solve the equation
+
+    from sympy.solvers import solve
+
+    solution = solve(equation, x)
+
+    # Find the largest value of x
+
+    result = max(solution)
+
+    return result
+
+
+import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    expr = abs(5*x-1) - x - 3
+
+    expr = sp.solve(expr, x)[0]
+
+    result = "{:.2f}".format(float(expr))
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, solve
+
+import math
+
+def solution():
+
+    x = symbols('x')
+
+    equation = abs(5*x - 1) == x + 3
+
+    solution = solve(equation, x)
+
+    if len(solution) > 1:
+
+        result = 'x = {}, x = {}'.format(solution[0], solution[1])
+
+    else:
+
+        result = 'x = {}'.format(solution[0])
+
+    return result
+
+
+ Executed result: 1
+[EXP] 1009: [success_rate]: False, [answer]: a^3+a^2, [output]: from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x - 1)*(x + 1)*(x + 2) - (x - 2)*(x + 1)
+
+    simplified_expr = simplify(expr)
+
+    result = str(simplified_expr)
+
+    return result
+
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x - 1) * (x + 1) * (x + 2) - (x - 2) * (x + 1)
+
+    simplified_expr = simplify(expr)
+
+    return str(simplified_expr)
+
+
+from sympy import symbols
+
+from sympy import simplify
+
+from sympy import sympify
+
+import re
+
+def solution():
+
+    x = symbols('x')
+
+    first_term = (x - 1) * (x + 1) * (x + 2)
+
+    second_term = (x - 2) * (x + 1)
+
+    expression = first_term - second_term
+
+    simplified_expression = simplify(expression)
+
+    # Formating the result in LaTeX
+
+    result = str(simplified_expression)
+
+    result = re.sub(r'\*[^0-9]', ' ', result)
+
+    result = re.sub(r'\^', '^', result)
+
+    result = re.sub(r'\(', '', result)
+
+    result = re.sub(r'\)', '', result)
+
+    return result
+
+
+import sympy as sp
+
+import numpy as np
+
+import math
+
+from sympy import symbols, simplify
+
+def solution():
+
+    a = sp.symbols('a')
+
+    expr = (a-1)*(a+1)*(a+2) - (a-2)*(a+1)
+
+    simplified_expr = simplify(expr)
+
+    result = simplified_expr
+
+    return str(result)
+
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x - 1) * (x + 1) * (x + 2) - (x - 2) * (x + 1)
+
+    simplified_expr = simplify(expr)
+
+    result = str(simplified_expr)
+
+    return result
+
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x-1)*(x+1)*(x+2) - (x-2)*(x+1)
+
+    simplified_expr = simplify(expr)
+
+    return simplified_expr
+
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x-1)*(x+1)*(x+2) - (x-2)*(x+1)
+
+    simplified_expr = simplify(expr)
+
+    result = str(simplified_expr)
+
+    return result
+
+
+from sympy import symbols, simplify
+
+import sympy as sym
+
+def solution():
+
+    x = sym.symbols('x')
+
+    expr = (x-1)*(x+1)*(x+2) - (x-2)*(x+1)
+
+    simplified_expr = sym.simplify(expr)
+
+    result = str(simplified_expr)
+
+    return result
+
+
+ Executed result: x**2*(x + 1)
+[EXP] 1010: [success_rate]: True, [answer]: 37, [output]: from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr1 = 7*x**4 - 3*x**3 - 3*x**2 - 8*x + 1
+
+    expr2 = 8*x**4 + 2*x**3 - 7*x**2 + 3*x + 4
+
+    expanded_expr = (expr1*expr2).expand()
+
+    x3_coefficient = expanded_expr.as_coefficients_dict()[x**3]
+
+    result = x3_coefficient
+
+    return result
+
+
+import sympy as sp
+
+from sympy.simplify import simplify_func
+
+from sympy import Poly
+
+from sympy.abc import x
+
+import re
+
+def solution():
+
+    x3_coefficient = 0
+
+    poly1 = sp.Poly(7*x**4 - 3*x**3 - 3*x**2 - 8*x + 1, x)
+
+    poly2 = sp.Poly(8*x**4 + 2*x**3 - 7*x**2 + 3*x + 4, x)
+
+    product = poly1 * poly2
+
+    for term in product.terms():
+
+        if term.degree(x) == 3:
+
+            x3_coefficient += term.coeff(x)
+
+    result = x3_coefficient
+
+    return result
+
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr1 = 7*x**4 - 3*x**3 - 3*x**2 - 8*x + 1
+
+    expr2 = 8*x**4 + 2*x**3 - 7*x**2 + 3*x + 4
+
+    multiplied_expr = expr1 * expr2
+
+    simplified_expr = simplify(multiplied_expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+
+    result = x3_coefficient
+
+    return result
+
+
+from sympy import symbols, Poly
+
+def solution():
+
+    x = symbols('x')
+
+    poly1 = Poly(7*x**4 - 3*x**3 - 3*x**2 - 8*x + 1)
+
+    poly2 = Poly(8*x**4 + 2*x**3 - 7*x**2 + 3*x + 4)
+
+    multiplied_poly = (poly1 * poly2)
+
+    coefficient_x3 = multiplied_poly.coefficients()[3]
+
+    result = coefficient_x3
+
+    return result
+
+
+from sympy import symbols, sympify, expand
+
+import numpy as np
+
+import sympy as sym
+
+from sympy import Matrix
+
+from sympy.physics vectors import Symbol, symbols
+
+from sympy.physics.vector.vector import Vector, cross_product, grad, divergence, curl
+
+import matplotlib.pyplot as plt
+
+import math
+
+import random
+
+import decimal
+
+from decimal import Decimal
+
+def solution():
+
+    x = symbols('x')
+
+    term1 = 7*x**4 - 3*x**3 - 3*x**2 - 8*x + 1
+
+    term2 = 8*x**4 + 2*x**3 - 7*x**2 + 3*x + 4
+
+    product = term1 * term2
+
+    simplified_product = expand(product)
+
+    x3_coefficient = simplified_product.as_coeff_terms().get(x**3, 0).as_coeff_Mul()[1][0]
+
+    result = x3_coefficient
+
+    return result
+
+
+from sympy import symbols, Poly
+
+from sympy.assumptions import Q
+
+from sympy.utilitiesCancellation import cancel
+
+x = symbols('x')
+
+a = Poly('7*x**4 - 3*x**3 - 3*x**2 - 8*x + 1', x)
+
+b = Poly('8*x**4 + 2*x**3 - 7*x**2 + 3*x + 4', x)
+
+c = (a * b).as_expr().simplify()
+
+x3_coefficient = c.as_expr().coeff(x, 3)
+
+result = x3_coefficient
+
+return result
+
+
+from sympy import symbols, expand
+
+import numpy as np
+
+import math
+
+def solution():
+
+    x = symbols('x')
+
+    expr1 = 7 * x**4 - 3 * x**3 - 3 * x**2 - 8 * x + 1
+
+    expr2 = 8 * x**4 + 2 * x**3 - 7 * x**2 + 3 * x + 4
+
+    product = expr1 * expr2
+
+    expanded_product = expand(product)
+
+    x3_coefficient = expanded_product.as_coefficients_dict()[x**3]
+
+    result = x3_coefficient
+
+    return result
+
+
+from sympy import symbols, Poly, Mul
+
+import itertools
+
+def solution():
+
+    x = symbols('x')
+
+    poly1 = Poly(7*x**4 - 3*x**3 - 3*x**2 - 8*x + 1)
+
+    poly2 = Poly(8*x**4 + 2*x**3 - 7*x**2 + 3*x + 4)
+
+    # Multiplying two polynomials
+
+    product_poly = poly1 * poly2
+
+    # Finding the coefficient of x**3
+
+    for term in itertools.groupby(product_poly.terms, key=lambda term: term.degree()):
+
+        degree, coefficient = next(term)
+
+        if degree == 3:
+
+            result = coefficient
+
+            break
+
+    return result
+
+
+ Executed result: 37
+[EXP] 1011: [success_rate]: True, [answer]: 89, [output]: import numpy as np
+
+def solution():
+
+    x1, y1 = 4, 365
+
+    y_intercept = np.arange(1, 10, 0.1)
+
+    slopes = []
+
+    for y in y_intercept:
+
+        m = (y1 - y) / (x1 - 0)
+
+        slopes.append(m)
+
+    min_slope = min(slopes)
+
+    result = "{:.2f}".format(min_slope)
+
+    return result
+
+
+import numpy as np
+
+def solution():
+
+    # Given point
+
+    x1, y1 = 4, 365
+
+    # Equation of the line
+
+    y = a * x + b
+
+    # Given y-intercept is in [1, 9]
+
+    b = np.linspace(1, 9, 100)
+
+    # Calculate the possible slope values
+
+    a_values = (y1 - b) / x1
+
+    # Find the minimum slope
+
+    min_slope = min(a_values)
+
+    result = "{:.2f}".format(min_slope)
+
+    return result
+
+
+def solution():
+
+    y_intercept = 1
+
+    y_intercept2 = 9
+
+    x1 = 4
+
+    y1 = 365
+
+    line1 = float((y1 - y_intercept) / (x1 - 0))
+
+    line2 = float((y1 - y_intercept2) / (x1 - 0))
+
+    min_slope = line2
+
+    if line1 < line2:
+
+        min_slope = line1
+
+    result = "{:.2f}".format(min_slope)
+
+    return result
+
+
+import numpy as np
+
+import sympy as sp
+
+from sympy import symbols, Eq, solve
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    line = Eq(y - 365, m * (x - 4))
+
+    constraint1 = Eq(1, line.rhs.subs(x, 0))
+
+    constraint2 = Eq(9, line.rhs.subs(x, 0))
+
+    m1, m2 = symbols('m1 m2')
+
+    sol = solve((constraint1, constraint2), (m1, m2))
+
+    m = min(sol)
+
+    result = float(m)
+
+    return result
+
+
+import numpy as np
+
+import sympy as sy
+
+from sympy import symbols, solve
+
+import math
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    m = Symbol('m')
+
+    a = 4 
+
+    b = 365
+
+    e = 1
+
+    f = 9
+
+    equation1 = m*x - y + a
+
+    equation2 = -f
+
+    equation3 = m*x + b
+
+    equation4 = e
+
+    solution = solve((equation1 - equation2, equation3 - equation4), (m, b))
+
+    min_slope = solution[0].evalf()
+
+    result = min_slope
+
+    return result
+
+
+from sympy import symbols, Eq, solve
+
+import numpy as np
+
+import math
+
+def solution():
+
+    y_intercept = symbols('y0')
+
+    x, y = symbols('x y')
+
+    equation = Eq((y - 365) / (x - 4), (y0 - 0) / 0)
+
+    result = solve((y0 - 1, y0 - 9), y0)[0]
+
+    line_equation = (y - 365) / (x - 4) - result
+
+    line_equation = "y - " + str(result * x) + " - " + str(result * 4) + " = 0"
+
+    return line_equation
+
+
+import numpy as np
+
+from sympy import symbols, solve
+
+def solution():
+
+    x, y = symbols('x y')
+
+    line = (y - 365) - 2 * (x - 4)
+
+    base = solve(line, x)
+
+    min_slope = float('inf')
+
+    for b in base:
+
+        slope = (365 - b) / (4 - b)
+
+        if slope < min_slope and 1 < b < 9:
+
+            min_slope = slope
+
+    result = '{:.2f}'.format(min_slope)
+
+    return result
+
+
+import numpy as np
+
+import sympy as sp
+
+def solution():
+
+    y_intercept = sp.symbols('y_intercept')
+
+    x_val = 4
+
+    y_val = 365
+
+    y_slope = (y_val - y_intercept) / (x_val - 0)
+
+    constraint = 1 <= y_intercept <= 9
+
+    result = sp.solve(constraint, y_slope)
+
+    min_slope = min(result)
+
+    return min_slope
+
+
+ Executed result: 89.00
+[EXP] 1012: [success_rate]: True, [answer]: 0, [output]: def solution():
+
+    result = ''
+
+    for x in range(1, 1000):
+
+        if x**(-1) > x:
+
+            result += str(x) + ', '
+
+    result = result.rstrip(', ')
+
+    result = 'There are {} values of x.'.format(len(result.split(', ')))
+
+    return result
+
+
+import math
+
+def solution():
+
+    count = 0
+
+    for x in range(2, 10000):
+
+        if x**(-1) > x:
+
+            count += 1
+
+    result = count
+
+    return result
+
+
+def solution():
+
+    count = 0
+
+    for x in range(2, 1000000):
+
+        if x**(-1) > x:
+
+            count += 1
+
+    result = count
+
+    return result
+
+
+def solution():
+
+    result = 1
+
+    for x in range(2, 10):
+
+        if x**-1 > x:
+
+            result += 1
+
+    return result
+
+
+import math
+
+def solution():
+
+    count = 0
+
+    for x in range(2, 100000):
+
+        if x**(-1) > x:
+
+            count += 1
+
+    result = count
+
+    return result
+
+
+def solution():
+
+    count = 0
+
+    for x in range(1, 10001):
+
+        if x ** -1 > x:
+
+            count += 1
+
+    result = count
+
+    return result
+
+
+def solution():
+
+    from sympy import symbols
+
+    x = symbols('x')
+
+    expr = x**(-1) - x
+
+    simplified_expr = simplify(expr)
+
+    roots = solve(simplified_expr, x)
+
+    count = 0
+
+    for root in roots:
+
+        if root > 0:
+
+            count += 1
+
+    result = count
+
+    return result
+
+
+import math
+
+import sympy as sp
+
+from functools import lru_cache
+
+from typing import Callable
+
+@lru_cache(maxsize=None)
+
+def is_prime(n: int) -> bool:
+
+    if n < 2:
+
+        return False
+
+
+ Executed result: 0
+[EXP] 1013: [success_rate]: False, [answer]: -6.5, [output]: import math
+
+def solution():
+
+    red_wavelength = 7e-7  # wavelength of red light in meters
+
+    E1 = 1 / red_wavelength  # Energy of a red light photon
+
+    E2 = 2000 * E1  # Energy of a photon with 2000 times the energy as a red light photon
+
+    wavelength2 = 1 / E2  # wavelength of a photon with 2000 times the energy as a red light photon
+
+    a = int(math.log10(wavelength2))
+
+    b = math.log10(wavelength2) - a
+
+    result = a + b
+
+    return result
+
+
+import math
+
+import sympy as sp
+
+def solution():
+
+    wavelength = 7e-7
+
+    new_energy = 2000 * (1/wavelength)
+
+    new_wavelength = 7e-7 / (new_energy / (1/wavelength))
+
+    a = round(10**(int(math.log10(new_wavelength))))
+
+    b = round(math.log10(new_wavelength) - math.log10(a))
+
+    result = a + b
+
+    return result
+
+
+import numpy as np
+
+import sympy as sp
+
+def solution():
+
+    wavelength = 7e-7
+
+    energy = 1 / wavelength
+
+    energy_multiplyer = 2000
+
+    new_energy = energy * energy_multiplyer
+
+    new_wavelength = 1 / new_energy
+
+    a = int(str(new_wavelength).split('e')[0])
+
+    b = int(str(new_wavelength).split('e')[1])
+
+    result = str(a) + '+' + str(b)
+
+    return result
+
+
+from sympy import symbols, Eq
+
+def solution():
+
+    wavelength = 7e-7
+
+    E1 = 2000 * (1/wavelength)
+
+    E2 = 1/w
+
+    w = symbols('w')
+
+    Eq(E1, E2).solve(w)[0]
+
+    wavelength_2 = 2000*wavelength
+
+    w1 = wavelength_2/wavelength
+
+    a = int(w1)
+
+    b = int(math.log10(w1)) - 1
+
+    result = a + b
+
+    return result
+
+
+import math
+
+def solution():
+
+    wavelength = 7e-7
+
+    energy = 1 / wavelength
+
+    required_energy = 2000 * energy
+
+    required_wavelength = 1 / required_energy
+
+    a = int(math.log10(required_wavelength))
+
+    b = math.log10(required_wavelength) - a
+
+    result = a + b
+
+    return result
+
+
+import math
+
+from sympy import symbols, simplify
+
+import numpy as np
+
+def solution():
+
+    wavelength_red = 7e-7
+
+    energy_red = 1 / wavelength_red
+
+    energy_new = energy_red * 2000
+
+    new_wavelength = 1 / energy_new
+
+    a = abs(int(new_wavelength / 10**int(math.log10(new_wavelength))))
+
+    b = int(math.log10(new_wavelength)) - int(math.log10(a))
+
+    result = float(a + b)
+
+    return result
+
+
+from sympy import symbols, Eq, solve
+
+import math
+
+import numpy as np
+
+from math import log10
+
+from fractions import Fraction
+
+import decimal
+
+from sympy import init_printing
+
+init_printing(use_latex=True)
+
+def solution():
+
+    wavelength = 7e-7
+
+    energy1 = 1 / wavelength
+
+    energy2 = 2000 * energy1
+
+    wavelength2 = 1 / energy2
+
+    decimal.getcontext().prec = 10
+
+    a = int(np.log10(wavelength2) + 1)
+
+    b = -int(np.floor(np.log10(wavelength2)))
+
+    result = a + b
+
+    return result
+
+
+import math
+
+def solution():
+
+    wavelength_red_light = 7e-7
+
+    energy_proportional = 1/wavelength_red_light
+
+    energy_photon = 2000 * energy_proportional
+
+    wavelength_photon = 1 / energy_photon
+
+    wavelength_photon = "{:.2e}".format(wavelength_photon)
+
+    a = int(wavelength_photon.split('e')[0])
+
+    b = int(wavelength_photon.split('e')[1])
+
+    result = a + b
+
+    return result
+
+
+ Executed result: -9.455931955649724
+[EXP] 1014: [success_rate]: True, [answer]: \frac{1}{9}, [output]: def solution():
+
+    a = 1
+
+    b = 3
+
+    c = 5
+
+    numerator = a**3 + b**2 + c
+
+    denominator = a + b**2 + c**3
+
+    result = numerator / denominator
+
+    return result
+
+
+import math
+
+def solution():
+
+    a = 1
+
+    b = 3
+
+    c = 5
+
+    result = (a**3 + b**2 + c) / (a + b**2 + c**3)
+
+    return "{:.2f}".format(result)
+
+
+import sympy as sy
+
+from math import pi
+
+def solution():
+
+    a = 1
+
+    b = 3
+
+    c = 5
+
+    numerator = sy.sympify('a^3 + b^2 + c')
+
+    denominator = sy.sympify('a + b^2 + c^3')
+
+    result = numerator.subs({sy.symbols('a'): a, sy.symbols('b'): b, sy.symbols('c'): c}) / denominator.subs({sy.symbols('a'): a, sy.symbols('b'): b, sy.symbols('c'): c})
+
+    return result
+
+
+def solution():
+
+    a = 1
+
+    b = 3
+
+    c = 5
+
+    numerator = a**3 + b**2 + c
+
+    denominator = a + b**2 + c**3
+
+    result = numerator / denominator
+
+    return result
+
+
+def solution():
+
+    a = 1
+
+    b = 3
+
+    c = 5
+
+    numerator = a**3 + b**2 + c
+
+    denominator = a + b**2 + c**3
+
+    result = numerator / denominator
+
+    return result
+
+
+def solution():
+
+    a = 1
+
+    b = 3
+
+    c = 5
+
+    numerator = a**3 + b**2 + c
+
+    denominator = a + b**2 + c**3
+
+    result = numerator / denominator
+
+    return result
+
+
+import math
+
+def solution():
+
+    a = 1
+
+    b = 3
+
+    c = 5
+
+    expression = (a**3 + b**2 + c) / (a + b**2 + c**3)
+
+    result = expression
+
+    return str(result)
+
+
+def solution():
+
+    a = 1
+
+    b = 3
+
+    c = 5
+
+    numerator = a**3 + b**2 + c
+
+    denominator = a + b**2 + c**3
+
+    rational_expression = numerator / denominator
+
+    result = "{:.2f}".format(rational_expression)
+
+    return result
+
+
+ Executed result: 0.1111111111111111
+[EXP] 1015: [success_rate]: False, [answer]: -1, [output]: import numpy as np
+
+from sympy import symbols, solve
+
+import math
+
+x = symbols('x')
+
+expr = x**2 - 5*x - 14
+
+solutions = solve(expr, x)
+
+result = min(solutions)
+
+result = int(result)
+
+return result
+
+
+from sympy import symbols, solve
+
+import math
+
+x = symbols('x')
+
+expr = x**2 - 5*x - 14
+
+roots = solve(expr, x)
+
+roots = [float(r) for r in roots]
+
+min_root = min(roots)
+
+n = int(math.ceil(min_root))
+
+result = n
+
+return result
+
+
+import numpy as np
+
+from sympy import solve, symbols
+
+from sympy.parsing.sympy_parser import parse_expr
+
+import math
+
+import re
+
+from math import sqrt
+
+from sympy import sympify
+
+def solution():
+
+    x = symbols('x')
+
+    n = symbols('n')
+
+    expr = n**2 - 5*n - 14
+
+    solutions = solve(expr, n)
+
+    min_solution = min(solutions)
+
+    result = int(min_solution)
+
+    return result
+
+
+import numpy as np
+
+def solution():
+
+    n2_min5n14 = lambda n: n**2 - 5*n - 14
+
+    roots = np.roots([1, -5, -14])
+
+    if roots[0].real > 0:
+
+        return int(roots[1].real)
+
+
+import numpy as np
+
+from sympy import solve
+
+from sympy.abc import n
+
+import math
+
+import fractions
+
+from fractions import Fraction
+
+def solution():
+
+    equation = n**2 - 5*n - 14
+
+    solutions = solve(equation)
+
+    smallest_integer_solution = int(min(solutions))
+
+    result = smallest_integer_solution
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, solve
+
+import math
+
+def solution():
+
+    x = symbols('x')
+
+    equation = x**2 - 5*x - 14
+
+    roots = solve(equation)
+
+    roots = [root for root in roots if root.is_Rational]
+
+    roots = sorted(roots)
+
+    roots = [root.evalf() for root in roots]
+
+    for i in range(len(roots)):
+
+        if roots[i] < 5 and roots[i+1] > 5:
+
+            n = int(roots[i])
+
+            result = n
+
+            return result
+
+
+import math
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+from sympy.solvers import solve
+
+from sympy.printing import latex
+
+from sympy import symbols, Eq, solve
+
+import fraction
+
+import decimal
+
+from decimal import Decimal
+
+import random
+
+def solution():
+
+    x = symbols('x')
+
+    expr = x**2 - 5*x - 14
+
+    roots = solve(expr, x)
+
+    roots = [float(i) for i in roots]
+
+    roots.sort()
+
+    for i in range(len(roots)):
+
+        if roots[i] < 0 and roots[i+1] > 0:
+
+            n = int(roots[i])
+
+            break
+
+    result = n
+
+    return result
+
+
+import numpy as np
+
+def solution():
+
+    import numpy as np
+
+    from sympy import symbols, simplify
+
+    x = symbols('x')
+
+    expr = x**2 - 5*x - 14
+
+    simplified_expr = simplify(expr)
+
+    result = np.roots([simplified_expr.as_numer_denom()])
+
+    result = result[np.isreal(result)].real
+
+    result = int(min(result))
+
+    return result
+
+
+ Executed result: -2
+[EXP] 1016: [success_rate]: True, [answer]: 495, [output]: def solution():
+
+    start = 47
+
+    end = 64
+
+    odd_sum = 0
+
+    for i in range(start, end+1):
+
+        if i % 2 != 0:
+
+            odd_sum += i
+
+    return odd_sum
+
+
+import math
+
+def solution():
+
+    start = 47  # Start from 47 because 46 is even
+
+    end = 64  # End at 64 because 65 is greater than 64
+
+    n = (end - start) // 2 + 1  # Number of odd integers
+
+    odd_sum = n * (2 * start + (end - start))  # Using the formula for the sum of an arithmetic series
+
+    result = odd_sum
+
+    return result
+
+
+def solution():
+
+    a = 47
+
+    b = 63
+
+    odd_sum = 0
+
+    for i in range(a, b + 1):
+
+        if i % 2 != 0:
+
+            odd_sum += i
+
+    result = odd_sum
+
+    return result
+
+
+def solution():
+
+    total_sum = 0
+
+    for i in range(47, 65):
+
+        if i % 2 != 0:
+
+            total_sum += i
+
+    result = total_sum
+
+    return result
+
+
+def solution():
+
+    start = 47
+
+    end = 64
+
+    total_sum = 0
+
+    for i in range(start, end+1):
+
+        if i % 2 != 0:
+
+            total_sum += i
+
+    result = total_sum
+
+    return result
+
+
+def solution():
+
+    total = 0
+
+    for i in range(47, 65):
+
+        if i % 2 != 0:
+
+            total += i
+
+    result = total
+
+    return result
+
+
+def solution():
+
+    first_odd_integer = 47
+
+    last_odd_integer = 63
+
+    sum_odd_integers = (last_odd_integer + first_odd_integer) * (last_odd_integer - first_odd_integer + 1) / 2
+
+    result = sum_odd_integers
+
+    return result
+
+
+import numpy as np
+
+import range
+
+from sympy import symbols, Sum
+
+def solution():
+
+    x = symbols('x')
+
+    range_nums = range(47, 65)
+
+    odd_nums = [i for i in range_nums if i % 2 != 0]
+
+    total_sum = sum(odd_nums)
+
+    result = str(total_sum)
+
+    return result
+
+
+ Executed result: 495
+[EXP] 1017: [success_rate]: True, [answer]: 1, [output]: import sympy as sp
+
+from sympy import symbols
+
+from sympy.solvers import solve
+
+from sympy import Eq, Poly
+
+import math
+
+import numpy as np
+
+def solution():
+
+    x = symbols('x')
+
+    a = 4
+
+    c = 2
+
+    d = 3
+
+    F = a**x + c**d
+
+    eq = F.subs({a:4,c:2,d:3}) - 12
+
+    b = solve(Eq(eq,0),x)[0]
+
+    result = float(b)
+
+    return result
+
+
+from sympy import symbols
+
+from sympy import solve
+
+import sympy as sp
+
+def solution():
+
+    a, b, c, d = symbols('a b c d')
+
+    F = a**b + c**d
+
+    equation = Eq(F.subs({a: 4, c: 2, d: 3}), 12)
+
+    b_value = solve(equation, b)
+
+    result = b_value[0]
+
+    return result
+
+
+import sympy as sp
+
+from sympy.abc import b
+
+from sympy import Eq, solve
+
+from sympy.functions import Pow
+
+def solution():
+
+    F = Eq(Pow(4, b) + Pow(2, 3), 12)
+
+    b_value = solve(F, b, dict=True)[0][b]
+
+    result = float(b_value)
+
+    return result
+
+
+import sympy as sp
+
+from sympy.abc import a, b, c, d
+
+from sympy import Eq, solve
+
+def solution():
+
+    func = a**b + c**d
+
+    equation = Eq(func.subs({a:4, c:2}), 12)
+
+    b_value = solve(equation, b)
+
+    return b_value
+
+
+import sympy as sp
+
+def solution():
+
+    x, y, z, w = sp.symbols('x y z w')
+
+    F = sp.Function('F')
+
+    F1 = F(x, y, z, w) == x**y + z**w
+
+    sol = sp.solve(F1.subs(x, 4).subs(z, 2), y)
+
+    result = str(sol[0])
+
+    return result
+
+
+from sympy import symbols
+
+from sympy import solve
+
+from sympy import sympify
+
+def solution():
+
+    a = symbols('a')
+
+    b = symbols('b')
+
+    c = symbols('c')
+
+    d = symbols('d')
+
+    f = a**b + c**d
+
+    f1 = sympify(f.subs({a: 4, c: 2, d: 3}))
+
+    b_value = solve((f1 - 12), b)
+
+    result = b_value[0]
+
+    return result
+
+
+from sympy import symbols, solveset, S
+
+def solution():
+
+    x = symbols('x')
+
+    a, b, c, d = 4, x, 2, 3
+
+    expr = a**b + c**d
+
+    expr = expr.subs((a, 4), (c, 2), (d, 3))
+
+    sol = solveset(expr - 12, x)
+
+    result = float(sol.evalf())
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, solve
+
+from sympy.solvers import solve
+
+from sympy.simplify import simplify
+
+x = symbols('x')
+
+expr = x**4 + 2**x
+
+simplified_expr = simplify(expr)
+
+solved = solve(expr - 12,x)
+
+result = str(solved)
+
+return result
+
+
+ Executed result: 1.0
+[EXP] 1018: [success_rate]: False, [answer]: 19, [output]: def solution():
+
+    installation_cost = 10000
+
+    annual_maintenance_cost = 650
+
+    annual_savings = 1200
+
+    years = 0
+
+    while installation_cost > 0:
+
+        installation_cost -= annual_savings - annual_maintenance_cost
+
+        years += 1
+
+    result = years
+
+    return result
+
+
+def solution():
+
+    installation_cost = 10000
+
+    annual_maintenance_cost = 650
+
+    annual_savings = 1200
+
+    years = 0
+
+    while installation_cost > 0:
+
+        installation_cost -= annual_savings - annual_maintenance_cost
+
+        years += 1
+
+    result = years
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, Eq
+
+from sympy import solve
+
+from sympy import nsimplify
+
+from sympy import simplify
+
+from sympy import lambdify
+
+from scipy.optimize import fsolve
+
+from sympy import symbols
+
+def solution():
+
+    r = symbols('r')
+
+    installation_cost = 10000
+
+    annual_maintenance_cost = 650
+
+    annual_energy_saving = 1200
+
+    equation = Eq(10000 + 650*r, 1200*r)
+
+    solution = solve(equation, r)
+
+    result = nsimplify(solution[0])
+
+    return result
+
+
+def solution():
+
+    install_cost = 10000
+
+    annual_maintenance_cost = 650
+
+    annual_saving = 1200
+
+    break_even_point = install_cost / (annual_saving - annual_maintenance_cost)
+
+    break_even_point = round(break_even_point)
+
+    result = break_even_point
+
+    return result
+
+
+def solution():
+
+    installation_cost = 10000
+
+    annual_maintenance_cost = 650
+
+    annual_savings = 1200
+
+    time_to_recuperate = (installation_cost + annual_maintenance_cost) / annual_savings
+
+    result = "{:.2f}".format(time_to_recuperate)
+
+    return result
+
+
+import numpy as np
+
+from sympy import Symbol
+
+from sympy import solve
+
+import math
+
+def solution():
+
+    x = Symbol('x')
+
+    expr = 10000 + 650*x - 1200*x
+
+    result = solve((10000 + 650*x - 1200*x), x)
+
+    result = int(result[0])
+
+    return result
+
+
+import numpy as np
+
+def solution():
+
+    # Initial cost
+
+    initial_cost = 10000
+
+    # Annual saving
+
+    annual_saving = 1200
+
+    # Annual maintenance cost
+
+    annual_maintenance_cost = 650
+
+    # Total annual cost
+
+    total_annual_cost = annual_maintenance_cost
+
+    # Time to recoup the cost
+
+    cost_recoupment_time = (initial_cost + total_annual_cost) / (annual_saving - total_annual_cost)
+
+    # Round up to whole years
+
+    result = np.ceil(cost_recoupment_time)
+
+    return result
+
+
+def solution():
+
+    initial_cost = 10000
+
+    annual_savings = 1200
+
+    annual_maintenance = 650
+
+    total_savings = 0
+
+    years = 0
+
+    while True:
+
+        total_savings += annual_savings - annual_maintenance
+
+        if total_savings >= initial_cost:
+
+            break
+
+        years += 1
+
+    result = years
+
+    return result
+
+
+ Executed result: 18
+[EXP] 1019: [success_rate]: True, [answer]: 672, [output]: import math
+
+def solution():
+
+    principal = 500
+
+    rate = 3 / 100
+
+    time = 10
+
+    amount = principal * (1 + rate) ** time
+
+    result = "{:.0f}".format(amount)
+
+    return result
+
+
+import math
+
+def solution():
+
+    initial_balance = 500
+
+    annual_rate = 0.03
+
+    years = 10
+
+    result = initial_balance * (1 + annual_rate)**years
+
+    result = "{:.0f}".format(result)
+
+    return result
+
+
+import math
+
+import numpy as np
+
+def solution():
+
+    principal = 500
+
+    rate = 0.03
+
+    time = 10
+
+    future_value = principal * (1 + rate)**time
+
+    result = "{:.0f}".format(future_value)
+
+    return result
+
+
+import math
+
+def solution():
+
+    amount = 500
+
+    rate = 0.03
+
+    years = 10
+
+    result = (1 + rate) ** years * amount
+
+    result = "{:.0f}".format(result)
+
+    return result
+
+
+import math
+
+def solution():
+
+    principal = 500
+
+    rate = 0.03
+
+    time = 10
+
+    # Calculating the total amount after 10 years
+
+    amount = principal * (1 + rate) ** time
+
+    # Rounding the result to the nearest dollar
+
+    result = round(amount)
+
+    return result
+
+
+import math
+
+def solution():
+
+    principal = 500
+
+    rate = 0.03
+
+    time = 10
+
+    # Calculate the final amount in the account
+
+    final_amount = principal * (1 + rate) ** time
+
+    # Round to the nearest dollar
+
+    result = round(final_amount)
+
+    return result
+
+
+import math
+
+def solution():
+
+    principal = 500
+
+    rate = 0.03
+
+    time = 10
+
+    result = principal * (1 + rate) ** time
+
+    result = "{:.0f}".format(result)
+
+    return result
+
+
+import math
+
+def solution():
+
+    principal = 500
+
+    rate = 0.03
+
+    time = 10
+
+    # Calculate the future value
+
+    future_value = principal * (1 + rate) ** time
+
+    # Round the result to the nearest dollar
+
+    result = round(future_value)
+
+    return result
+
+
+ Executed result: 672
+[EXP] 1020: [success_rate]: True, [answer]: -4, [output]: import math
+
+def solution():
+
+    start = -10
+
+    end = 10
+
+    for i in range(start, end + 1):
+
+        if (i-5)*(i+5) >= 0:
+
+            pass
+
+        else:
+
+            result = i
+
+            break
+
+    return result
+
+
+import sympy as sym
+
+from sympy import symbols
+
+from sympy import simplify
+
+def solution():
+
+    x = symbols('x')
+
+    equation = (x-5)*(x+5)
+
+    simplified_equation = simplify(equation)
+
+    solution = sym.solve(simplified_equation, x)
+
+    solution = min(map(int, solution))
+
+    return str(solution)
+
+
+import numpy as np
+
+from sympy import solveset
+
+def solution():
+
+    x = symbols('x')
+
+    inequality = (x-5)*(x+5)<0
+
+    solutions = solveset(inequality)
+
+    integer_solutions = [s for s in solutions if s.is_integer]
+
+    smallest_integer_solution = min(integer_solutions)
+
+    result = int(smallest_integer_solution)
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, solve
+
+def solution():
+
+    x = symbols('x')
+
+    inequality=(x-5)*(x+5)<0
+
+    solution=solve(inequality,x)
+
+    result=f"The smallest integer that satisfies the inequality is {min(solution)}"
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+import math
+
+import sympy
+
+import decimal
+
+from decimal import getcontext
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x - 5) * (x + 5)
+
+    simplified_expr = simplify(expr)
+
+    decimal.getcontext().prec = 10
+
+    result = decimal.Decimal(simplified_expr).as_coeff_Mul()[0][0].evalf()
+
+    return result
+
+
+import math
+
+def solution():
+
+    # Range of x
+
+    x = symbols('x')
+
+    inequality = (x - 5) * (x + 5)
+
+    # Simplifying the inequality
+
+    simplified_inequality = simplify(inequality)
+
+    # Solve the inequality
+
+    solutions = solve(simplified_inequality, x)
+
+    # Smallest integer that satisfies the inequality
+
+    result = min(solutions).evalf()
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, solve
+
+def solution():
+
+    x = symbols('x')
+
+    result = solve((x-5)*(x+5) < 0, x)
+
+    result = r'{0} < x < {1}'.format(result[0], result[1])
+
+    return result
+
+
+import numpy as np
+
+def solution():
+
+    from sympy import symbols, solve
+
+    x = symbols('x')
+
+    equation = x**2 - 25
+
+    roots = solve(equation, x)
+
+    roots = [r for r in roots if isinstance(r, (int, float))]
+
+    result = min(roots)
+
+    return result
+
+
+ Executed result: -4
+[EXP] 1021: [success_rate]: False, [answer]: 8, [output]: from sympy import symbols, Eq, solve
+
+import sympy as sp
+
+x, y, z = symbols('x y z')
+
+expr1 = Eq(3*x,8*y)
+
+expr2 = Eq(5*y,15*z)
+
+sol = solve((expr1, expr2), (x, y, z))
+
+result = sol[0][0]/sol[0][2]
+
+result = sp.latex(result)
+
+return result
+
+
+from sympy import symbols
+
+from fractions import Fraction
+
+from sympy.simplify import simplify_logic
+
+from math import gcd
+
+from sympy import Rational
+
+from sympy.parsing.sympy_parser import eval_expr
+
+from termcolor import colored
+
+import math
+
+import random
+
+import re
+
+def solution():
+
+    x, y, z = symbols('x y z')
+
+    equation1 = 3*x - 8*y
+
+    equation2 = 5*y - 15*z
+
+    combined_equation = equation1 + equation2
+
+    simplified_equation = combined_equation.factor()
+
+    z_coefficent = 15
+
+    y_coefficent = 5
+
+    x_coefficent = 3
+
+    denominator = math.gcd(z_coefficent, y_coefficent)
+
+    y_coefficent //= denominator
+
+    z_coefficent //= denominator
+
+    denominator = math.gcd(x_coefficent, y_coefficent)
+
+    x_coefficent //= denominator
+
+    if y_coefficent < 0:
+
+        y_coefficent *= -1
+
+    if z_coefficent < 0:
+
+        z_coefficent *= -1
+
+    if x_coefficent < 0:
+
+        x_coefficent *= -1
+
+
+def solution():
+
+    x = 8 * 5 / 3
+
+    y = 15 / 5
+
+    z = y
+
+    result = x / z
+
+    return str(result)
+
+
+import sympy as sp
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    z = symbols('z')
+
+    equation1 = 3*x == 8*y
+
+    equation2 = 5*y == 15*z
+
+    solution = sp.solve((equation1, equation2), [x, y, z])
+
+    x_value = solution[0][0]
+
+    z_value = solution[0][2]
+
+    result = x_value / z_value
+
+    return str(result)
+
+
+from sympy import symbols, Eq, solve
+
+import numpy as np
+
+from fractions import Fraction
+
+import math
+
+import re
+
+from sympy import Rational
+
+from collections import Counter
+
+from sympy import simplify
+
+import sympy as sp
+
+import decimal
+
+from sympy import Symbol
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    z = symbols('z')
+
+    equation1 = Eq(3*x, 8*y)
+
+    equation2 = Eq(5*y, 15*z)
+
+    solution = solve((equation1, equation2), (x, y, z))
+
+    xz_ratio = Fraction(solution[0][0]/solution[0][2]).limit_denominator()
+
+    result = str(xz_ratio)
+
+    return result
+
+
+import sympy as sp
+
+def solution():
+
+    x, y, z = sp.symbols('x y z')
+
+    equation1 = 3*x - 8*y
+
+    equation2 = 5*y - 15*z
+
+    solution_dict = sp.solve((equation1, equation2), (x, y, z))
+
+    result = (solution_dict[0][0] / solution_dict[0][2])
+
+    result = sp.simplify(result)
+
+    return str(result)
+
+
+import sympy as sym
+
+from sympy import symbols
+
+from sympy import simplify
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    z = symbols('z')
+
+    eq1 = sym.Eq(3*x, 8*y)
+
+    eq2 = sym.Eq(5*y, 15*z)
+
+    solve1 = sym.solve((eq1, eq2), (x, y, z))
+
+    x_over_z = solve1[0][0]/solve1[0][2]
+
+    result = str(x_over_z)
+
+    return result
+
+
+import sympy as sp
+
+from sympy import simplify
+
+x, y, z = sp.symbols('x y z')
+
+expr1 = 3*x - 8*y
+
+expr2 = 5*y - 15*z
+
+simplified_expr1 = simplify(expr1)
+
+simplified_expr2 = simplify(expr2)
+
+result = sp.simplify(simplified_expr1/simplified_expr2)
+
+return str(result)
+
+
+ Executed result: 4.444444444444445
+[EXP] 1022: [success_rate]: True, [answer]: \frac{3}{2}, [output]: def solution():
+
+    a = 2
+
+    b = math.log(6, 5)
+
+    c = math.log(7, 6)
+
+    d = math.log(8, 7)
+
+    result = a * b * c * d
+
+    return result
+
+
+def solution():
+
+    a = 2
+
+    b = log(6, 5)
+
+    c = log(7, 6)
+
+    d = log(8, 7)
+
+    result = a * b * c * d
+
+    return result
+
+
+import math
+
+def solution():
+
+    a = math.log(5, 4)
+
+    b = math.log(6, 5)
+
+    c = math.log(7, 6)
+
+    d = math.log(8, 7)
+
+    result = a * b * c * d
+
+    return '{:.2f}'.format(result)
+
+
+import math
+
+def solution():
+
+    a = math.log(5,4)
+
+    b = math.log(6,5)
+
+    c = math.log(7,6)
+
+    d = math.log(8,7)
+
+    result = a * b * c * d
+
+    result = "{:.2f}".format(result)
+
+    return result
+
+
+from sympy import symbols
+
+def solution():
+
+    a = symbols('a')
+
+    b = symbols('b')
+
+    c = symbols('c')
+
+    d = symbols('d')
+
+    equation1 = 4**a == 5
+
+    equation2 = 5**b == 6
+
+    equation3 = 6**c == 7
+
+    equation4 = 7**d == 8
+
+    solution1 = solve(equation1)
+
+    solution2 = solve(equation2)
+
+    solution3 = solve(equation3)
+
+    solution4 = solve(equation4)
+
+    result = solution1[0] * solution2[0] * solution3[0] * solution4[0]
+
+    return result
+
+
+import math
+
+def solution():
+
+    a = math.log(5, 4)
+
+    b = math.log(6, 5)
+
+    c = math.log(7, 6)
+
+    d = math.log(8, 7)
+
+    result = a * b * c * d
+
+    return result
+
+
+def solution():
+
+    result = 4**(1/2) * 5**(1/1) * 6**(1/3) * 7**(1/2)
+
+    result = round(result, 2)
+
+    return str(result)
+
+
+import math
+
+import sympy
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    a = sympy.log10(sympy.log10(5)/sympy.log10(4))
+
+    b = sympy.log10(sympy.log10(6)/sympy.log10(5))
+
+    c = sympy.log10(sympy.log10(7)/sympy.log10(6))
+
+    d = sympy.log10(sympy.log10(8)/sympy.log10(7))
+
+    result = a*b*c*d
+
+    return result
+
+
+ Executed result: 1.50
+[EXP] 1023: [success_rate]: True, [answer]: 5, [output]: import math
+
+def solution():
+
+    a = 1
+
+    b = -8
+
+    c = 15
+
+    vertex_x = -b / (2*a)
+
+    vertex_y = a*vertex_x**2 + b*vertex_x + c
+
+    distance = math.sqrt((vertex_x-0)**2 + (vertex_y-2)**2)
+
+    result = "{:.2f}".format(distance)
+
+    return result
+
+
+import numpy as np
+
+import math
+
+def solution():
+
+    x = np.array(-4)
+
+    f = x**2 - 8*x + 15
+
+    vertex = (x, f)
+
+    point = (0, 2)
+
+    distance = math.sqrt((vertex[0] - point[0])**2 + (vertex[1] - point[1])**2)
+
+    result = "{:.2f}".format(distance)
+
+    return result
+
+
+import math
+
+def solution():
+
+    vertex_x = -(-8) / 2
+
+    vertex_y = vertex_x**2 - 8*vertex_x + 15
+
+    distance = math.sqrt((vertex_x - 0)**2 + (vertex_y - 2)**2)
+
+    result = "{:.2f}".format(distance)
+
+    return result
+
+
+import numpy as np
+
+import math
+
+from sympy import symbols
+
+from sympy.parsing.sympy_parser import parse_expr
+
+from sympy import simplify
+
+import matplotlib.pyplot as plt
+
+from sympy.plotting import plot
+
+def solution():
+
+    x = symbols('x')
+
+    expr = x**2 - 8*x + 15
+
+    vertex_x = -8/2
+
+    vertex_y = expr.subs(x, vertex_x)
+
+    distance = abs(vertex_y - 2)
+
+    result = distance
+
+    return result
+
+
+import math
+
+def solution():
+
+    a = 1
+
+    b = -8
+
+    c = 15
+
+    vertex_x = -b / 2 / a
+
+    vertex_y = a * vertex_x**2 + b * vertex_x + c
+
+    distance = math.sqrt((vertex_x - 0)**2 + (vertex_y - 2)**2)
+
+    result = "{:.2f}".format(distance)
+
+    return result
+
+
+import numpy as np
+
+import math
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = x**2 - 8*x + 15
+
+    vertex = (-8 / 2, expr.subs(x, -8 / 2))
+
+    distance = math.sqrt((vertex[0] - 0)**2 + (vertex[1] - 2)**2)
+
+    result = r'\sqrt{{{}}}'.format(distance**2)
+
+    return result
+
+
+import math
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+from sympy.simplify import simplify_logic
+
+from sympy.parsing.sympy_parser import parse_expr
+
+import itertools
+
+import mpmath
+
+from sympy import Pow
+
+from scipy import optimize
+
+import matplotlib.pyplot as plt
+
+from typing import Tuple
+
+from scipy.stats import chi2_contingency
+
+def solution():
+
+    x = symbols('x')
+
+    func = x**2 - 8*x + 15
+
+    x = np.linspace(-5, 10, 400)
+
+    y = x**2 - 8*x + 15
+
+    plt.plot(x, y)
+
+    plt.grid(True)
+
+    plt.show()
+
+    a = optimize.minimize_scalar(lambda x: (x - 2)**2, method="Bounded", bounds=[0, math.inf]).x
+
+    b = optimize.minimize_scalar(lambda x: (x - 4)**2, method="Bounded", bounds=[0, math.inf]).x
+
+    distance = math.sqrt((a - 0)**2 + (4 - 2)**2)
+
+    result = distance
+
+    return result
+
+
+import math
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = x**2 - 8*x + 15
+
+    # Finding the vertex of the parabola
+
+    a, b = 1, -8
+
+    c = 15
+
+    vertex_x = -b / (2 * a)
+
+    vertex_y = a * vertex_x ** 2 + b * vertex_x + c
+
+    vertex = (vertex_x, vertex_y)
+
+    # Distance formula
+
+    x1, y1 = vertex
+
+    x2, y2 = 0, 2
+
+    distance = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+
+    result = "{:.2f}".format(distance)
+
+    return result
+
+
+ Executed result: 5.00
+[EXP] 1024: [success_rate]: True, [answer]: 920.25, [output]: import math
+
+def solution():
+
+    principal = 10000
+
+    rate = 0.045
+
+    time = 2
+
+    # Formula for compound interest
+
+    A = principal * (1 + rate)**time
+
+    interest = A - principal
+
+    # Dollar value to the nearest cent
+
+    result = "{:.2f}".format(interest)
+
+    return result
+
+
+import math
+
+def solution():
+
+    principal = 10000
+
+    rate = 0.045
+
+    time = 2
+
+    # Calculate compound interest
+
+    compound_interest = principal * (1 + rate)**time
+
+    # Round to the nearest cent
+
+    result = "{:.2f}".format(compound_interest - principal)
+
+    return result
+
+
+import math
+
+def solution():
+
+    principal = 10000
+
+    rate = 0.045
+
+    time = 2
+
+    amount = principal * (1 + rate) ** time
+
+    interest = amount - principal
+
+    result = "{:.2f}".format(interest)
+
+    return result
+
+
+import math
+
+def solution():
+
+    principal = 10000
+
+    rate = 0.045
+
+    time = 2
+
+    # Calculate the interest
+
+    interest = principal * (1 + rate) ** time - principal
+
+    # Dollar value to the nearest cent
+
+    result = "{:.2f}".format(interest)
+
+    return result
+
+
+import math
+
+def solution():
+
+    principal = 10000
+
+    rate = 0.045
+
+    time = 2
+
+    interest = principal * (1 + rate) ** time
+
+    result = "{:.2f}".format(interest - principal)
+
+    return result
+
+
+from math import pow
+
+import math
+
+def solution():
+
+    principal = 10000
+
+    rate = 0.045
+
+    years = 2
+
+    # A = P(1 + r)^n
+
+    amount = principal * (1 + rate) ** years
+
+    interest = amount - principal
+
+    result = "{:.2f}".format(interest)
+
+    return result
+
+
+import math
+
+def solution():
+
+    principal = 10000
+
+    rate = 0.045
+
+    time = 2
+
+    a = principal * (1 + rate)**time
+
+    interest = a - principal
+
+    result = "{:.2f}".format(interest)
+
+    return result
+
+
+import math
+
+import numpy as np
+
+from functools import reduce
+
+from operator import mul
+
+from math import exp
+
+def solution():
+
+    principal = 10000
+
+    rate = 0.045
+
+    time = 2
+
+    amount = principal * (1 + rate)**time
+
+    interest = amount - principal
+
+    result = "{:.2f}".format(interest)
+
+    return result
+
+
+ Executed result: 920.25
+[EXP] 1025: [success_rate]: True, [answer]: 6x^2+30x+36, [output]: import sympy as sp
+
+from sympy import symbols
+
+x = symbols('x')
+
+expr = 6 * (x + 2) * (x + 3)
+
+simplified_expr = sp.expand(expr)
+
+result = str(simplified_expr)
+
+return result
+
+
+from sympy import symbols, expand
+
+def solution():
+
+    x = symbols('x')
+
+    expression = 6*(x+2)*(x+3)
+
+    expanded_expression = expand(expression)
+
+    result = str(expanded_expression)
+
+    return result
+
+
+from sympy import symbols, expand
+
+import sympy as sp
+
+def solution():
+
+    x = symbols('x')
+
+    expr = sp.expand(6*(x+2)*(x+3))
+
+    result = str(expr)
+
+    return result
+
+
+import sympy as sp
+
+from sympy import symbols
+
+from sympy.parsing.sympy_parser import parse_expr
+
+def solution():
+
+    x = symbols('x')
+
+    expr = sp.sympify('6*(x+2)*(x+3)')
+
+    result = sp.factor(expr)
+
+    return str(result)
+
+
+def solution():
+
+    from sympy import symbols, expand
+
+    x = symbols('x')
+
+    expr = 6*(x+2)*(x+3)
+
+    result = expand(expr)
+
+    return result
+
+
+from sympy import symbols, expand
+
+import sympy as sp
+
+x = symbols('x')
+
+def solution():
+
+    expr = (x+2)*(x+3)
+
+    expanded_expr = sp.expand(expr)
+
+    result = str(expanded_expr)
+
+    return result
+
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x+2)*(x+3)
+
+    simplified_expr = simplify(expr)
+
+    result = str(simplified_expr)
+
+    return result
+
+
+from sympy import symbols, expand
+
+def solution():
+
+    x = symbols('x')
+
+    expr = 6 * (x + 2) * (x + 3)
+
+    simplified_expr = expand(expr)
+
+    result = str(simplified_expr)
+
+    return result
+
+
+ Executed result: 6*x**2 + 30*x + 36
+[EXP] 1026: [success_rate]: False, [answer]: 120, [output]: import numpy as np
+
+from sympy import symbols
+
+from scipy.optimize import curve_fit
+
+import latex
+
+import re
+
+from sympy.solvers.solvers import solve
+
+from sympy.simplify import simplify
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    equation = y - x**2*symbols('a') - x*symbols('b') - symbols('c')
+
+    points = [(-3, 3), (1, 3), (0, 0)]
+
+    popt, _ = curve_fit(lambda x, a, b, c: a*x**2 + b*x + c, [point[0] for point in points], [point[1] for point in points])
+
+    result = 100*popt[0] + 10*popt[1] + popt[2]
+
+    return latex(result)
+
+
+import numpy as np
+
+from sympy import symbols, solve
+
+from sympy import sympify
+
+from sympy import Rational
+
+from mpmath import atan
+
+import math
+
+def solution():
+
+    x = symbols('x')
+
+    p1 = (-3,3)
+
+    p2 = (1,3)
+
+    p3 = (0,0)
+
+    Y1 = p1[1]
+
+    Y2 = p2[1]
+
+    Y3 = p3[1]
+
+    X1 = p1[0]
+
+    X2 = p2[0]
+
+    X3 = p3[0]
+
+    f = X1**2*a + X1*b + c - Y1
+
+    g = X2**2*a + X2*b + c - Y2
+
+    h = X3**2*a + X3*b + c - Y3
+
+    sol = solve((f,g,h), (a,b,c))
+
+    a = sol[0][0]
+
+    b = sol[0][1]
+
+    c = sol[0][2]
+
+    result = 100*a + 10*b + c
+
+    return result
+
+
+from sympy import symbols, Poly
+
+import numpy as np
+
+def solution():
+
+    x = symbols('x')
+
+    y = x**2
+
+    y += 3*x + 0
+
+    expression = Poly(y, x)
+
+    a, b, c = expression.all_coeffs()
+
+    print(a, b, c)
+
+    result = 100*a + 10*b + c
+
+    return result
+
+
+def solution():
+
+    x1, y1 = -3, 3
+
+    x2, y2 = 1, 3
+
+    x3, y3 = 0, 0
+
+    a = (y2 - y3) / ((x2 - x3) * (x1 - x3))
+
+    b = (y1 - y2) / (x1 - x2) - a * (x1 + x2)
+
+    c = y1 - a * x1**2 - b * x1
+
+    result = 100 * a + 10 * b + c
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols
+
+from sympy.geometry import Point
+
+from sympy import Poly
+
+from sympy.solvers import solve
+
+def solution():
+
+    x = symbols('x')
+
+    point1 = Point(-3, 3)
+
+    point2 = Point(1, 3)
+
+    point3 = Point(0, 0)
+
+    a = (point2.x - point1.x)*(point3.y - point1.y) - (point2.y - point1.y)*(point3.x - point1.x)
+
+    b = (point1.y - point2.y)*(point3.x - point1.x) - (point1.x - point2.x)*(point3.y - point1.y)
+
+    c = point1.y - a*point1.x**2 - b*point1.x
+
+    result = float(100*a + 10*b + c)
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    points = [(x-3, 3), (1, 3), (0, 0)]
+
+    coefficients = np.polyfit([point[0] for point in points], [point[1] for point in points], 2)
+
+    a, b, c = coefficients
+
+    result = 100 * a + 10 * b + c
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, Poly
+
+from sympy.solvers import solve
+
+def solution():
+
+    x = symbols('x')
+
+    equations = [x**2 * a + x * b + c - 3, x**2 * a + x * b + c - 3, x**2 * a + c]
+
+    solutions = solve(equations, (a, b, c))
+
+    result = 100 * solutions[0][0] + 10 * solutions[0][1] + solutions[0][2]
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, Poly
+
+def solution():
+
+    x = symbols('x')
+
+    p1 = Poly(3, x)  # y = 3
+
+    p2 = Poly(3 + x, x)  # y = 3 + x
+
+    p3 = Poly(0, x)  # y = 0
+
+    abc = np.linalg.solve([p1 unsubstitute(-3), p2.substitute(-3), p3.substitute(0)], [3, 3, 0])
+
+    result = 100 * abc[0] + 10 * abc[1] + abc[2]
+
+    return result
+
+
+ Executed result: 130
+[EXP] 1027: [success_rate]: True, [answer]: 3.5, [output]: import numpy as np
+
+from scipy.optimize import root_scalar
+
+import math
+
+def solution():
+
+    t = root_scalar(lambda t: -6 * t**2 + 43 * t - 77, method='bisection')
+
+    result = t.root
+
+    return "{:.1f}".format(result)
+
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+from scipy.optimize import root_scalar
+
+def solution():
+
+    def f(t):
+
+        return -6 * t**2 + 43 * t - 77
+
+
+import numpy as np
+
+from scipy.optimize import root_scalar
+
+import math
+
+import sympy as sp
+
+def solve_quadratic_equation(a, b, c):
+
+    t = sp.symbols('t')
+
+    expr = a * t**2 + b * t + c
+
+def solution():
+
+    a = -6
+
+    b = 43
+
+    c = 0
+
+    func = sp.Eq(a * t**2 + b * t + c, 77)
+
+    result = sp.solve(func.subs(t, t), t)
+
+    result = round(float(result[0]), 1)
+
+    return result
+
+
+import numpy as np
+
+from numpy import roots
+
+from sympy import symbols
+
+from sympy import Eq
+
+from sympy import solve
+
+def solution():
+
+    t = symbols('t')
+
+    expr = Eq(-6*t**2 + 43*t, 77)
+
+    t_value = solve(expr, t)
+
+    t_value = float(t_value[0])
+
+    result = "{:.1f}".format(t_value)
+
+    return result
+
+
+import numpy as np
+
+from scipy.optimize import root_scalar
+
+import math
+
+def solution():
+
+    def equation(t):
+
+        return -6*t**2 + 43*t - 77
+
+
+import math
+
+import numpy as np
+
+from scipy.optimize import brentq
+
+from scipy.misc import derivative
+
+from sympy import sympify, symbols
+
+from sympy.physics.mechanics import dynamicsymbols
+
+from scipy.integrate import quad
+
+def solution():
+
+    t = symbols('t')
+
+    y = -6*t**2 + 43*t
+
+    y77 = 77
+
+    sol = brentq(lambda t: -6*t**2 + 43*t - 77, 0, y77/43)
+
+    result = "{:.1f}".format(sol)
+
+    return result
+
+
+import numpy as np
+
+from scipy.optimize import fsolve
+
+def solution():
+
+    def equation(vars):
+
+        t,y = vars
+
+        return -6*t**2 + 43*t - 77
+
+
+import numpy as np
+
+def solution():
+
+    t = np.linspace(0, 100)
+
+    h = -6 * t**2 + 43 * t
+
+    result = t[np.where(h > 77)[0][0]]
+
+    return "{:.1f}".format(result)
+
+
+ Executed result: 3.5
+[EXP] 1028: [success_rate]: True, [answer]: \sqrt{33}, [output]: import math
+
+def solution():
+
+    numerator = 33
+
+    denominator = math.sqrt(33)
+
+    # Rationalizing the denominator
+
+    denominator = 33 ** 0.5
+
+    result = numerator / denominator
+
+    return result
+
+
+import math
+
+import sympy as sp
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    expression = 33 / math.sqrt(33)
+
+    result = sp.simplify(expression)
+
+    return str(result)
+
+
+import math
+
+def solution():
+
+    numerator = 33
+
+    denominator = math.sqrt(33)
+
+    # Multiply numerator and denominator by the conjugate of denominator
+
+    denominator_conjugate = conjugate(denominator)
+
+    numerator *= denominator_conjugate
+
+    simplified_denominator = denominator * denominator_conjugate
+
+    result = numerator / simplified_denominator
+
+    # Formatting the result in LaTeX
+
+    result = r'{}/\sqrt{{}}'.format(result, simplified_denominator)
+
+    return result
+
+
+import math
+
+import fractions
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    numerator = 33
+
+    denominator = math.sqrt(33)
+
+    simplified_expr = fractions.Fraction(numerator).limit_denominator()
+
+    result = r'\frac{{{}}}{{{}}}'.format(simplified_expr.numerator, simplified_expr.denominator)
+
+    return result
+
+
+import math
+
+import fractions
+
+def solution():
+
+    numerator = 33
+
+    denominator = math.sqrt(33)
+
+    result = fractions.Fraction(numerator, denominator).limit_denominator()
+
+    return str(result)
+
+
+import math
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    expr = 33 / math.sqrt(33)
+
+    simplified_expr = simplify(expr)
+
+    result = str(simplified_expr)
+
+    return result
+
+
+import sympy as sp
+
+from math import sqrt
+
+from sympy.simplify import simplify
+
+from sympy import Rational
+
+def solution():
+
+    from sympy import symbols
+
+    x = symbols('x')
+
+    num= 33
+
+    denom = sqrt(33)
+
+    simplified = sp.simplify(33/denom)
+
+    result = Rational(simplified).as_numer_denom()
+
+    return result
+
+
+import math
+
+def solution():
+
+    numerator = 33
+
+    denominator = math.sqrt(33)
+
+    gcd = math.gcd(numerator, int(denominator))
+
+    numerator //= gcd
+
+    denominator //= gcd
+
+    if denominator < 0:
+
+        numerator *= -1
+
+        denominator *= -1
+
+    result = r'\frac{{{}}}{{{}}} = {}'.format(numerator, denominator, numerator/denominator)
+
+    return result
+
+
+ Executed result: 5.74456264653803
+[EXP] 1029: [success_rate]: True, [answer]: \frac{h^2}{m}, [output]: from sympy import symbols
+
+m, h = symbols('m h')
+
+def solution():
+
+    rate = m / h
+
+    distance = h
+
+    time = distance / rate
+
+    result = str(time)
+
+    return result
+
+
+import sympy as sp
+
+from sympy import symbols
+
+def solution():
+
+    m = symbols('m')
+
+    h = symbols('h')
+
+    rate = m / h
+
+    travel_time = h / rate
+
+    result = sp.simplify(travel_time)
+
+    return str(result)
+
+
+def solution():
+
+    m = 0
+
+    h = 0
+
+    rate = m / h
+
+    time_to_travel_h = h / rate
+
+    result = r'{}h/m'.format(time_to_travel_h)
+
+    return result
+
+
+from sympy import symbols
+
+def solution():
+
+    m = symbols('m')
+
+    h = symbols('h')
+
+    rate = m / h
+
+    new_hours = h
+
+    result = r'{}/{}'.format(m, h)
+
+    return result
+
+
+def solution():
+
+    m = float(input("Enter the distance in miles: "))
+
+    h = float(input("Enter the time in hours: "))
+
+    total_hours = m / h
+
+    result = r"${} = \frac{{{}}}{{{}}}$".format(total_hours, m, h)
+
+    return resultificação
+
+
+def solution():
+
+    m = float(input("Enter miles: "))
+
+    h = float(input("Enter hours: "))
+
+    # Calculating time to travel h miles
+
+    h_hours = h * m / m
+
+    # Formatting the result in LaTeX
+
+    result = r'{}h'.format(h_hours)
+
+    return result
+
+
+import sympy as sp
+
+from sympy import symbols
+
+def solution():
+
+    m, h = symbols('m h')
+
+    result = sp.solve(m/h*h, h)[0]
+
+    result = sp.latex(result)
+
+    return result
+
+
+def solution():
+
+    m = symbols('m')
+
+    h = symbols('h')
+
+    time_to_travel_h_miles = h * (m/h)
+
+    result = str(time_to_travel_h_miles)
+
+    return result
+
+
+ Executed result: h**2/m
+[EXP] 1030: [success_rate]: True, [answer]: 1, [output]: import numpy as np
+
+def solution():
+
+    x = np.array([1]) - 1
+
+    g = x[0]
+
+    f = g**3 + 2*g + 1
+
+    result = f
+
+    return str(result)
+
+
+import sympy as sp
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    f = x**3 + 2*x + 1
+
+    g = x - 1
+
+    result = f.subs(x, g)
+
+    result = sp.simplify(result)
+
+    result = sp.latex(result)
+
+    return result
+
+
+import sympy as sy
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    f = x**3 + 2*x + 1
+
+    g = x - 1
+
+    result = f.subs(x, g)
+
+    result = sy.simplify(result)
+
+    return str(result)
+
+
+from sympy import symbols, sympify
+
+from sympy.simplify import simplify_expr
+
+x = symbols('x')
+
+f = sympify('x**3+2*x+1')
+
+g = sympify('x-1')
+
+result = f.subs(x, g).simplify()
+
+result = str(result)
+
+return result
+
+
+def solution():
+
+    from sympy import symbols, sin
+
+    x = symbols('x')
+
+    f = x**3 + 2*x + 1
+
+    g = x - 1
+
+    g_on_1 = g.subs(x, 1)
+
+    result = f.subs(x, g_on_1)
+
+    return result
+
+
+from sympy import symbols
+
+import numpy as np
+
+def solution():
+
+    x = symbols('x')
+
+    f = x**3 + 2*x + 1
+
+    g = x - 1
+
+    g1 = g.subs(x, 1)
+
+    result = f.subs(x, g1)
+
+    return result
+
+
+import sympy as sp
+
+from sympy import symbols
+
+from sympy import simplify
+
+import math
+
+import numpy as np
+
+def solution():
+
+    x = symbols('x')
+
+    f = x**3 + 2*x + 1
+
+    g = x - 1
+
+    g1 = g.subs(x, 1)
+
+    f_g1 = f.subs(x, g1)
+
+    result = simplify(f_g1)
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+from fractions import Fraction
+
+def solution():
+
+    x = symbols('x')
+
+    f = x**3 + 2*x + 1
+
+    g = x - 1
+
+    g_value = g.subs(x, 1)
+
+    f_g_value = f.subs(x, g_value)
+
+    result = simplify(f_g_value)
+
+    return str(result)
+
+
+ Executed result: 1
+[EXP] 1031: [success_rate]: True, [answer]: 19, [output]: def solution():
+
+    def t(x):
+
+        return abs(-3 + 2*x)
+
+
+def solution():
+
+    t = lambda x: abs(-3 + 2*x)
+
+    result = t(t(-4))
+
+    return result
+
+
+def solution():
+
+    t = abs(-3+2*x)
+
+    result = t(abs(-3+2*-4))
+
+    return result
+
+
+def solution():
+
+    def t(x):
+
+        return abs(-3 + 2 * x)
+
+
+def solution():
+
+    t = lambda x: abs(-3 + 2*x)
+
+    result = t(t(-4))
+
+    return result
+
+
+import math
+
+def solution():
+
+    t = lambda x: abs(-3 + 2*x)
+
+    result = t(t(-4))
+
+    return result
+
+
+def solution():
+
+    x = -4
+
+    t = abs(-3 + 2 * x)
+
+    result = abs(-3 + 2 * t)
+
+    return result
+
+
+def solution():
+
+    def t(x):
+
+        return abs(-3 + 2*x)
+
+
+ Executed result: 19
+[EXP] 1032: [success_rate]: True, [answer]: -814+3698i, [output]: import numpy as np
+
+import math
+
+import cmath
+
+from sympy import symbols
+
+def solution():
+
+    kelly = complex(508, 1749)
+
+    avril = complex(-1322, 1949)
+
+    sum_numbers = kelly + avril
+
+    real, imag = sum_numbers.real, sum_numbers.imag
+
+    result = r'{}+{}i'.format round(real, 2), round(imag, 2) 
+
+    return result
+
+
+def solution():
+
+    a = complex(508, 1749)
+
+    b = complex(-1322, 1949)
+
+    result = a + b
+
+    return result
+
+
+import cmath
+
+import re
+
+def solution():
+
+    num1 = complex(508, 1749)
+
+    num2 = complex(-1322, 1949)
+
+    sum_of_numbers = num1 + num2
+
+    # Format the result in LaTeX
+
+    result = r'{}'.format(sum_of_numbers)
+
+    return result
+
+
+import cmath
+
+import math
+
+def solution():
+
+    num1 = complex(508, 1749)
+
+    num2 = complex(-1322, 1949)
+
+    sum_complex = num1 + num2
+
+    result = r'{} + {}i'.format(math.floor(sum_complex.real), sum_complex.imag)
+
+    return result
+
+
+def solution():
+
+    complex_num1 = complex(508, 1749)
+
+    complex_num2 = complex(-1322, 1949)
+
+    sum_of_complex_nums = complex_num1 + complex_num2
+
+    result = "{:.2f}".format(sum_of_complex_nums.real) + " + " + str(sum_of_complex_nums.imag) + "i"
+
+    return result
+
+
+import cmath
+
+import math
+
+def solution():
+
+    a = complex(508, 1749)
+
+    b = complex(-1322, 1949)
+
+    sum = a + b
+
+    result = r'{} + {}i'.format(sum.real, sum.imag)
+
+    return result
+
+
+import cmath
+
+def solution():
+
+    num1 = complex(508, 1749)
+
+    num2 = complex(-1322, 1949)
+
+    sum_of_numbers = num1 + num2
+
+    result = str(sum_of_numbers)
+
+    return result
+
+
+import cmath
+
+import math
+
+def solution():
+
+    x = complex(508,1749)
+
+    y = complex(-1322,1949)
+
+    sum = x + y
+
+    result = str(sum)
+
+    return result
+
+
+ Executed result: (-814+3698j)
+[EXP] 1033: [success_rate]: False, [answer]: 3.21, [output]: import math
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    a = 1
+
+    b = 2.6
+
+    c = 3.6
+
+    # Simplify the expression
+
+    simplified_expr = simplify(a*x**2 + b*x + c)
+
+    # Check if it is in the form (x+b)^2+c
+
+    if simplified_expr == (x+b)**2 + c:
+
+        result = b + c
+
+    else:
+
+        result = "Not in the required form"
+
+    return result
+
+
+import math
+
+import cmath
+
+def solution():
+
+    a = 1
+
+    b = 2.6
+
+    c = 3.6
+
+    discriminant = b**2 - 4*a*c
+
+    if discriminant > 0:
+
+        root1 = (-b-cmath.sqrt(discriminant))/(2*a)
+
+        root2 = (-b+cmath.sqrt(discriminant))/(2*a)
+
+    elif discriminant == 0:
+
+        root = (-b)/(2*a)
+
+    result = b + c
+
+    return result
+
+
+import math
+
+def solution():
+
+    a = 1
+
+    b = -2.6
+
+    c = 3.6
+
+    discriminant = math.sqrt(b**2 - 4 * a * c)
+
+    b_minus_c = b - math.sqrt(b**2 - 4 * a * c)
+
+    result = "{:.2f}".format(b_minus_c)
+
+    return result
+
+
+import math
+
+import cmath
+
+import numpy as np
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    expr = x**2 + 2.6*x + 3.6
+
+    # convert to the form (x + b)^2 + c
+
+    a, b, c = cmath.sqrt((2.6)**2 - 4*1*3.6)/2, -2.6/2, 3.6 - (2.6)**2/4
+
+    result = b + c
+
+    return "{:.2f}".format(result)
+
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    equation = x**2 + (2.6)*x + 3.6
+
+    equation = simplify(equation)
+
+    equation = equation - 3.6
+
+    a = (2.6)**2 - 4*1*3.6
+
+    b = -2.6
+
+    a = np.sqrt(a)
+
+    result = b + a
+
+    result = "{:.2f}".format(result)
+
+    return result
+
+
+import numpy as np
+
+import math
+
+def solution():
+
+    a = 1
+
+    b = 2.6
+
+    c = 3.6
+
+    discriminant = b**2 - 4*a*c
+
+    root1 = (-b + math.sqrt(discriminant)) / (2 * a)
+
+    root2 = (-b - math.sqrt(discriminant)) / (2 * a)
+
+    b = (root1 + root2) / 2
+
+    c = a * root1 * root2
+
+    result = "{:.2f}".format(b+c)
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols
+
+import math
+
+import re
+
+from fractions import Fraction
+
+def solution():
+
+    x = symbols('x')
+
+    coeff_a = 1
+
+    coeff_b = 2.6
+
+    coeff_c = 3.6
+
+    expr = x**2 + coeff_b * x + coeff_c
+
+    temp = (coeff_b**2 - 4*coeff_a*coeff_c)**0.5
+
+    b = Fraction(coeff_b - temp).limit_denominator()
+
+    c = Fraction(coeff_c - b**2).limit_denominator()
+
+    result = b + c
+
+    return str(result)
+
+
+import math
+
+import cmath
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    equation = x**2 + 2.6*x + 3.6
+
+    a = 1
+
+    b = -2.6/2
+
+    c = 3.6 - b**2
+
+    result = b + c
+
+    return "{:.2f}".format(result)
+
+
+ Executed result: 0.61
+[EXP] 1034: [success_rate]: True, [answer]: 10, [output]: import numpy as np
+
+import math
+
+from sympy import symbols, Rational, simplify
+
+def solution():
+
+    # Time taken by Beatrice to complete the race
+
+    time_taken_by_beatrice = 25
+
+    # Time taken by Alice to complete the race
+
+    time_taken_by_alice = time_taken_by_beatrice - 5
+
+    # Speed of Alice
+
+    speed_alice = 100 / time_taken_by_alice
+
+    # Time taken by Alice to run 50 meters
+
+    time_alice_run_50 = 50 / speed_alice
+
+    result = time_alice_run_50
+
+    return result
+
+
+def solution():
+
+    alice_lead_time = 5
+
+    beatrice_time = 25
+
+    distance = 100
+
+    total_alice_time = beatrice_time - alice_lead_time
+
+    alice_speed = distance / total_alice_time
+
+    alice_50m_time = 50 / alice_speed
+
+    result = "{:.2f}".format(alice_50m_time)
+
+    return result
+
+
+import sympy as sp
+
+from sympy.physics.mechanics import kinetic_energy
+
+from sympy.physics.mechanics import potential_energy
+
+def solution():
+
+    # Position
+
+    x = sp.symbols('x')
+
+    # Initial and final positions
+
+    x0 = 0
+
+    x1 = 100
+
+    # Initial and final velocities
+
+    v0 = sp.symbols('v0')
+
+    v1 = v0
+
+    # Kinetic energy
+
+    Ek = kinetic_energy(0.5, v0, v1)
+
+    # Potential energy
+
+    Ep = 0*x0
+
+    # Energy
+
+    E = Ek + Ep
+
+    # Solving the energy equation
+
+    a = sp.solve(E.subs({x0:0, x1:100, v0:v0}), v0)[0]
+
+    # Velocity at the finish line
+
+    vf = v0 - a
+
+    # Time taken to run 50 meters
+
+    t = (50 - 0) / vf
+
+    result = t
+
+    return result
+
+
+import sympy as sp
+
+def solution():
+
+    alice_time = 25 - 5
+
+    distance_alice_run = 100
+
+    speed_alice = distance_alice_run / alice_time
+
+    time_to_run_50m = 50 / speed_alice
+
+    result = "{:.2f}".format(time_to_run_50m)
+
+    return result
+
+
+def solution():
+
+    alice_time = 25 - 5
+
+    distance = 100
+
+    # Alice's speed
+
+    speed = distance / alice_time
+
+    time_for_50m = 50 / speed
+
+    result = "{:.2f}".format(time_for_50m)
+
+    return result
+
+
+import sympy as sp
+
+from sympy.abc import t
+
+def solution():
+
+    # Time taken by Beatrice
+
+    beatrice_time = 25
+
+    # Time taken by Alice
+
+    alice_time = beatrice_time - 5
+
+    # Distance of the race
+
+    distance = 100
+
+    # Speed of Alice
+
+    alice_speed = distance / (t - 5)
+
+    # Time taken by Alice to run 50 meters
+
+    alice_50m_time = 50 / alice_speed
+
+    result = sp.latex(alice_50m_time)
+
+    return result
+
+
+import numpy as np
+
+def solution():
+
+    # Time taken by Beatrice
+
+    beatrice_time = 25
+
+    # Time taken by Alice
+
+    alice_time = beatrice_time - 5
+
+    # Distance covered by both
+
+    distance = 100
+
+    # Time taken to run 50 meters
+
+    alice_fifty_meters = (50 / distance) * alice_time
+
+    result = "{:.2f}".format(alice_fifty_meters)
+
+    return result
+
+
+from sympy import symbols, Eq, solve
+
+import math
+
+def solution():
+
+    # Distance of the track event in meters
+
+    distance = 100
+
+    # Time taken by Bea in seconds
+
+    beatrice_time = 25
+
+    # Time taken by Ali in seconds
+
+    ali_time = beatrice_time - 5
+
+    # Speed of Ali in meters per second
+
+    speed = distance / ali_time
+
+    # Time taken by Ali to run 50 meters
+
+    time_to_run_50m = 50 / speed
+
+    result = "{:.2f}".format(time_to_run_50m)
+
+    return result
+
+
+ Executed result: 10.00
+[EXP] 1035: [success_rate]: False, [answer]: [6,\infty), [output]: import numpy as np
+
+from scipy.optimize import minimize
+
+import matplotlib.pyplot as plt
+
+import sympy as sp
+
+from sympy import symbols, simplify
+
+from functools import lru_cache
+
+from scipy.optimize import minimize_scalar
+
+from scipy.optimize import root_scalar
+
+def solution():
+
+    # Brute Force Method:
+
+    x = symbols('x')
+
+    F = abs(x+1) + abs(x-5)
+
+    # Plotting the function
+
+    x_values = np.linspace(-10, 10, 400)
+
+    y_values = [F.subs(x,i) for i in x_values]
+
+    plt.plot(x_values, y_values)
+
+    plt.fill_between(x_values, y_values,where=(x_values>=-4), alpha=0.3)
+
+    plt.fill_between(x_values, y_values,where=(x_values>=x_values[100]), alpha=0.3)
+
+    plt.fill_between(x_values, y_values,where=(x_values<=x_values[350]), alpha=0.3)
+
+    plt.xlabel('x')
+
+    plt.ylabel('F(x)')
+
+    plt.grid(True)
+
+    plt.show()
+
+    return
+
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+def solution():
+
+    x = np.linspace(-6, 6, 400)
+
+    y = np.abs(x + 1) + np.abs(x - 5)
+
+    y_max = np.max(y)
+
+    y_min = np.min(y)
+
+    plt.plot(x, y)
+
+    plt.xlabel('x')
+
+    plt.ylabel('F(x)')
+
+    plt.title('Graph of F(x)')
+
+    plt.grid(True)
+
+    plt.show()
+
+    result = f'[{y_min}, {y_max}]'
+
+    return result
+
+
+def solution():
+
+    import numpy as np
+
+    import matplotlib.pyplot as plt
+
+    from scipy.optimize import minimize
+
+    from numpy.linalg import norm
+
+    from scipy.optimize import minimize_scalar
+
+    x = np.linspace(-10, 10, 400)
+
+    y = np.abs(x+1) + np.abs(x-5)
+
+    plt.plot(x, y)
+
+    plt.fill_between(x, y, where=(x>=-4) & (x<=5), color='red', alpha=0.2)
+
+    plt.grid(True)
+
+    plt.ylabel('y')
+
+    plt.xlabel('x')
+
+    plt.title('Graph of F(x) = |x+1| + |x-5|')
+
+    result = r'[-4, 5]'
+
+    return result
+
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+def solution():
+
+    x = np.linspace(-6, 6, 400)
+
+    y = np.abs(x+1) + np.abs(x-5)
+
+    plt.plot(x, y)
+
+    plt.xlabel('x')
+
+    plt.ylabel('F(x)')
+
+    plt.title('The function F(x) = |x+1|+|x-5|')
+
+    plt.grid(True)
+
+    plt.show()
+
+    range_y = [x for x in set(y) if x <= max(y) and x >= min(y)]
+
+    range_y = [round(i, 2) for i in range_y]
+
+    result = f"[{min(range_y)}, {max(range_y)}]"
+
+    return result
+
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+from scipy.optimize import minimize
+
+def solution():
+
+    x = np.linspace(-10, 10, 400)
+
+    y = np.abs(x+1) + np.abs(x-5)
+
+    plt.plot(x, y)
+
+    plt.xlabel('x')
+
+    plt.ylabel('F(x)')
+
+    plt.title('Function F(x)')
+
+    plt.grid(True)
+
+    plt.show()
+
+    result = '[{:f},{:f}]'.format(np.min(y), np.max(y))
+
+    return result
+
+
+def solution():
+
+    x = float(input("Enter the value of x: "))
+
+    f = abs(x + 1) + abs(x - 5)
+
+    return f
+
+
+def solution():
+
+    # Minimum and maximum values
+
+    min_value = -1 + 0 + 5 - 1
+
+    max_value = 1 + 1 + 5 + 1
+
+    # Range of the function
+
+    range_result = f'[{min_value}, {max_value}]'
+
+    return range_result
+
+
+import sympy as sp
+
+from sympy import symbols, simplify
+
+import math
+
+import numpy as np
+
+import re
+
+def solution():
+
+    x = symbols('x')
+
+    expr = abs(x+1) + abs(x-5)
+
+    simplified_expr = simplify(expr)
+
+    result = '[-4, 4]'
+
+    return result
+
+
+ Executed result: [6.0, 16.0]
+[EXP] 1036: [success_rate]: False, [answer]: \frac{3}{32}, [output]: def solution():
+
+    ratio = 1/2
+
+    next_term = 1 * ratio**2
+
+    next_next_term = 1 * ratio**3
+
+    total_sum = next_term + next_next_term
+
+    result = total_sum
+
+    return result
+
+
+def solution():
+
+    first_term = 1
+
+    common_ratio = 0.5
+
+    sum_of_remaining_terms = first_term / (1 - common_ratio)**2
+
+    result = sum_of_remaining_terms
+
+    return result
+
+
+def solution():
+
+    a = 1
+
+    ratio = 1/2
+
+    next_term = a * ratio**2
+
+    next_next_term = a * ratio**3
+
+    result = next_term + next_next_term
+
+    return result
+
+
+import math
+
+def solution():
+
+    sequence = [1, 0.5, 0.25, 0.125]
+
+    next_two_terms = [sequence[-1] * 0.5, sequence[-1] * 0.5 * 0.5]
+
+    result = sum(next_two_terms)
+
+    return result
+
+
+def solution():
+
+    previous_term = 1 / 8
+
+    ratio = 1 / 2
+
+    next_term1 = previous_term * ratio
+
+    next_term2 = next_term1 * ratio
+
+    sum_of_next_terms = next_term1 + next_term2
+
+    result = sum_of_next_terms
+
+    return result
+
+
+import fractions
+
+import math
+
+def solution():
+
+    ratio = 1/2
+
+    next_term = 1/(2**2)
+
+    next_next_term = 1/(2**3)
+
+    result = next_term + next_next_term
+
+    result = fractions.Fraction(result).limit_denominator()
+
+    return str(result)
+
+
+def solution():
+
+    r = 1/2
+
+    term = 1/8
+
+    sum = term + r * term
+
+    result = "{}".format(sum)
+
+    return result
+
+
+import fractions
+
+import itertools
+
+from sympy import symbols
+
+from sympy import simplify
+
+from sympy import Sigmas
+
+from sympy import oo
+
+import math
+
+import numpy as np
+
+def solution():
+
+    # Sum of the given terms
+
+    given_terms = [1, 1/2, 1/4, 1/8]
+
+    given_sum = sum(given_terms)
+
+    # Finding the common ratio
+
+    common_ratio = given_terms[1] / given_terms[0]
+
+    # Formula for sum of geometric series
+
+    sum_of_next_two = given_sum / (1 - common_ratio) * (power(-common_ratio, 2))
+
+    result = fractions.Fraction(sum_of_next_two).limit_denominator()
+
+    return result
+
+
+ Executed result: 0.375
+[EXP] 1037: [success_rate]: True, [answer]: 4, [output]: import sympy as sp
+
+def solution():
+
+    r = sp.symbols('r')
+
+    expr = (6*r**2 - 19*r - 7) / (2*r - 7) - 4*r + 3
+
+    simplified_expr = sp.solve(expr, r)
+
+    result = simplified_expr[0]
+
+    return result
+
+
+from sympy import symbols, Eq, solve
+
+def solution():
+
+    x = symbols('r')
+
+    expr = Eq((6*x**2 - 19*x - 7) / (2*x - 7), 4*x - 3)
+
+    solutions = solve(expr, x)
+
+    result = str(solutions[0])
+
+    return result
+
+
+import sympy as sp
+
+from sympy.abc import r
+
+def solution():
+
+    expr = sp.Eq((6*r**2 - 19*r - 7) / (2*r - 7), 4*r - 3)
+
+    solution = sp.solve(expr, r)[0]
+
+    result = str(solution)
+
+    return result
+
+
+import sympy as sp
+
+from sympy import symbols, simplify, Eq, solve
+
+x = symbols('x')
+
+eq = Eq((6*x**2 - 19*x - 7) / (2*x - 7), 4*x - 3)
+
+eq
+
+solution = solve(eq, x)
+
+result = sp.simplify(solution[0])
+
+if isinstance(result, float):
+
+    return "{:.2f}".format(result)
+
+
+from sympy import symbols, solve
+
+from sympy import Eq, sympify
+
+from sympy import LaTeXPrinter
+
+import math
+
+import numpy as np
+
+from IPython.display import display, Math
+
+from sympy import Matrix
+
+def solution():
+
+    r = symbols('r')
+
+    # Given equation
+
+    equation = Eq(sympify('6*r**2 - 19*r - 7'), sympify('(2*r-7)*(4*r-3)'))
+
+    # Solving the equation
+
+    solution = solve(equation, r)
+
+    # Round the solution to 2 decimal places
+
+    solution = round(solution[0], 2)
+
+    # Return the solution in LaTeX format
+
+    latex_printer = LaTeXPrinter()
+
+    result = latex_printer.doprint(solution)
+
+    return result
+
+
+import sympy as sp
+
+from sympy import symbols
+
+from sympy.solvers.solveset import solveset
+
+from sympy import latex
+
+import numpy as np
+
+def solution():
+
+    r = symbols('r')
+
+    expr = (6*r**2-19*r-7)/(2*r-7) - 4*r+3
+
+    simplified_expr = sp.solve((6*r**2-19*r-7)/(2*r-7) - 4*r+3, r)
+
+    result = simplified_expr[0]
+
+    result = latex(result)
+
+    return result
+
+
+import sympy as sp
+
+def solution():
+
+    r = sp.symbols('r')
+
+    equation = sp.Eq((6*r**2 - 19*r - 7) / (2*r - 7), 4*r - 3)
+
+    solution = sp.solve(equation, r)[0]
+
+    return str(solution)
+
+
+from sympy import sympify, solve
+
+from sympy.abc import r
+
+from sympy.latex import latex
+
+expr1 = sympify('6*r**2 - 19*r - 7')
+
+expr2 = sympify('2*r - 7')
+
+expr = expr1 - (4*r - 3)*(2*r - 7)
+
+result = solve(expr, r)
+
+result = latex(result[0])
+
+return result
+
+
+ Executed result: 4
+[EXP] 1038: [success_rate]: True, [answer]: 11, [output]: from sympy import symbols, Eq, solve
+
+def solution():
+
+    x = symbols('x')
+
+    y = x**2 + x*b + c
+
+    y2 = 3
+
+    y4 = 3
+
+    eq1 = Eq(y.subs(x, 2), y2)
+
+    eq2 = Eq(y.subs(x, 4), y4)
+
+    sol = solve((eq1, eq2), (b, c))
+
+    result = sol[1]
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, Poly
+
+from sympy.solvers import solve
+
+from sympy import latex
+
+from sympy import Symbol
+
+from decimal import Decimal
+
+def solution():
+
+    # given points
+
+    x1, y1 = 2, 3
+
+    x2, y2 = 4, 3
+
+    # coefficients of parabola
+
+    x = symbols('x')
+
+    b, c = symbols('b c')
+
+    eqn = Poly(x**2 + b*x + c, x)
+
+    # value of y at given points
+
+    y1_val = eqn.subs({x: x1})
+
+    y2_val = eqn.subs({x: x2})
+
+    # system of equations
+
+    system = [y1_val - y1, y2_val - y2]
+
+    # solve the system of equations
+
+    result = solve(system, (b, c))
+
+    c_val = Decimal(result[1])
+
+    result = latex(c_val)
+
+    return result
+
+
+def solution():
+
+    x1, y1 = 2, 3
+
+    x2, y2 = 4, 3
+
+    equation = [x**2 + b*x + c for x in [x1, x2]]
+
+    y1_coefficient = y1 - equation[0]
+
+    y2_coefficient = y2 - equation[1]
+
+    c = y1_coefficient
+
+    result = c
+
+    return result
+
+
+from sympy import symbols, Eq, solve
+
+import numpy as np
+
+import re
+
+x = symbols('x')
+
+expr = x**2 + 1*x + c
+
+expr1 = Eq(2**2 + 1*2 + c, 3)
+
+expr2 = Eq(4**2 + 1*4 + c, 3)
+
+solution = solve((expr1, expr2), (b, c))
+
+c = float(solution[1])
+
+result = c
+
+return result
+
+
+from sympy import symbols
+
+from sympy import solve
+
+from sympy import Eq
+
+from sympy import Poly
+
+import re
+
+import numpy as np
+
+def solution():
+
+    x = symbols('x')
+
+    y = x**2 + b*x + c
+
+    p1 = Eq(y.subs(x, 2), 3)
+
+    p2 = Eq(y.subs(x, 4), 3)
+
+    PB = Poly(p1.lhs - p2.lhs, x)
+
+    roots = PB.all_roots()
+
+    b = float(roots[0])
+
+    c = 3 - 2**2 - b*2
+
+    result = c
+
+    return result
+
+
+def solution():
+
+    x1, y1 = 2, 3
+
+    x2, y2 = 4, 3
+
+    # First, find b
+
+    b = (y2 - y1) / (x2 - x1)
+
+    # Now, substitute x1, y1 in y = x^2 + bx + c
+
+    y1 = x1**2 + b * x1 + c
+
+    c = y1
+
+    result = c
+
+    return result
+
+
+def solution():
+
+    x1, y1 = 2, 3
+
+    x2, y2 = 4, 3
+
+    # Calculate b and c
+
+    b = 3 - (y1 - (x1**2 + b * x1 + c))
+
+    c = y1 - (x1**2 + b * x1)
+
+    result = c
+
+    return result
+
+
+def solution():
+
+    import numpy as np
+
+    import sympy as sp
+
+    x = sp.symbols('x')
+
+    y = x**2 + sp.sympify('b*x') + sp.sympify('c')
+
+    point1 = (2, 3)
+
+    point2 = (4, 3)
+
+    eq1 = sp.Eq(y.subs(x, point1[0]), point1[1])
+
+    eq2 = sp.Eq(y.subs(x, point2[0]), point2[1])
+
+    from sympy.solvers import solve
+
+    sol = solve((eq1, eq2), (b, c))
+
+    c = sol[0][1]
+
+    result = c
+
+    return result
+
+
+ Executed result: {b: -6, c: 11}
+[EXP] 1039: [success_rate]: False, [answer]: 13, [output]: from mpmath import *
+
+import numpy as np
+
+from sympy import symbols
+
+def solution():
+
+    x, y = symbols('x y')
+
+    line1 = 2*x-10
+
+    line2 = (y-8)*(9-7) - (x-7)*(0-8)
+
+    point = solve((line1-line2), (x, y))
+
+    a, b = point[0]
+
+    result = a+b
+
+    return result
+
+
+def solution():
+
+    x1, y1 = 7, 8
+
+    x2, y2 = 9, 0
+
+    m = (y2 - y1) / (x2 - x1)
+
+    c = y1 - m * x1
+
+    y = 2 * x - 10
+
+    a = (c - y) / 2
+
+    b = 2 * a - 10
+
+    result = a + b
+
+    return result
+
+
+from sympy import symbols, solve
+
+x, y = symbols('x y')
+
+line1 = 2*x - 10
+
+line2 = (y - 8) / (x - 7) - (0 - 8) / (9 - 7)
+
+result = solve((line1 - line2).simplify(), (x, y))
+
+a, b = result[0]
+
+result = a + b
+
+return result
+
+
+def solution():
+
+    x1, y1 = 7, 8
+
+    x2, y2 = 9, 0
+
+    m = (y2 - y1) / (x2 - x1)
+
+    b = y1 - m * x1
+
+    x = (2 - 10) / (2 * m)
+
+    y = 2 * x - 10
+
+    a, b = x, y
+
+    result = a + b
+
+    return result
+
+
+def solution():
+
+    import numpy as np
+
+    import sympy as sp
+
+    x1, y1 = 7, 8
+
+    x2, y2 = 9, 0
+
+    m = (y2 - y1) / (x2 - x1)
+
+    y = 2 * x - 10
+
+    a, b = x, y
+
+    equations = [sp.Eq(m*(x-a)+b-y, 0)]
+
+    solution = sp.solve(equations, (a, b))
+
+    a, b = solution[0]
+
+    result = a + b
+
+    return result
+
+
+import numpy as np
+
+def solution():
+
+    x1, y1 = 7, 8
+
+    x2, y2 = 9, 0
+
+    y = 2*x - 10
+
+    m = (y2 - y1) / (x2 - x1)
+
+    b = y1 - m * x1
+
+    x = (b + 10) / 2
+
+    a, b = x, y
+
+    result = a + b
+
+    return result
+
+
+def solution():
+
+    x1, y1 = 7, 8
+
+    x2, y2 = 9, 0
+
+    m = (y2 - y1) / (x2 - x1)
+
+    a = m
+
+    b = y1 - a * x1
+
+    x = (10 - b) / a
+
+    y = 2 * x - 10
+
+    point = (x, y)
+
+    a, b = point
+
+    result = a + b
+
+    return result
+
+
+import numpy as np
+
+import sympy as sp
+
+from sympy.solvers import solve
+
+from sympy import symbols
+
+sp.init_printing()
+
+x = symbols('x')
+
+# Line y = 2x - 10
+
+y = 2*x - 10
+
+# Line through (7,8) and (9,0)
+
+x1, y1 = 7, 8
+
+x2, y2 = 9, 0
+
+# Parameters of the second line
+
+m = (y2 - y1) / (x2 - x1)
+
+c = y1 - m * x1
+
+# Intersection of the two lines
+
+expr = sp.Eq(2*x - 10, m*x + c)
+
+solution = solve(expr)
+
+# Calculate a + b
+
+a = solution[0]
+
+b = 2*a - 10
+
+result = float(a) + float(b)
+
+return result
+
+
+ Executed result: 2.0*x**2 - 27.0*x + 106.0
+[EXP] 1040: [success_rate]: False, [answer]: 84, [output]: import sympy as sp
+
+from sympy import symbols, simplify, sqrt
+
+from sympy.simplify import fraction
+
+from collections import OrderedDict
+
+import re
+
+def solution():
+
+    x = symbols('x')
+
+    equation = x*(2*x - 7) - 3
+
+    simplified_equation = simplify(equation)
+
+    roots = sp.solve(simplified_equation, x)
+
+    m = 0
+
+    n = 0
+
+            p = int(Denominator)
+
+            if root == m-sqrt(n):
+
+                m = int(m)
+
+                n = int(n)
+
+                p = int(p)
+
+                return m + n + p
+
+
+import sympy as sy
+
+x = sy.symbols('x')
+
+solution = sy.solve(x*(2*x - 7) - 3, x)
+
+m = solution[0].as_numer_denom()[1]
+
+n = solution[0].as_numer_denom()[1]**2 - (solution[0].as_numer_denom()[0])**2
+
+p = solution[0].as_numer_denom()[1]
+
+result = m + n + p
+
+result = int(result)
+
+return str(result)
+
+
+import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    equation = sp.solve(x*(2*x - 7) - 3, x)
+
+    m = equation[0].as_numer_denom()[0].as_coeff_add()[1]
+
+    n = equation[0].as_numer_denom()[0].as_coeff_add()[2].as_poly().coeffs()[1]**2
+
+    p = equation[0].as_numer_denom()[0].as_coeff_add()[2].as_poly().coeffs()[0]
+
+    m = int(m)
+
+    n = int(n)
+
+    p = int(p)
+
+    result = m + n + p
+
+    return result
+
+
+from sympy import symbols, solve
+
+from sympy.core.sympify import sympify
+
+import math
+
+def solution():
+
+    x = symbols('x')
+
+    expression = x*(2*x-7) - 3
+
+    solutions = solve(expression, x)
+
+    solution1 = solutions[0]
+
+    solution2 = solutions[1]
+
+    m = sympify(solution1.as_coeff_add()[0][0]).evalf()
+
+    n = sympify(solution1.as_coeff_add()[0][1]).evalf()
+
+    p = sympify(solution1.as_coeff_Mul()[0]).evalf()
+
+    sum = m + n + p
+
+    result = sum
+
+    return result
+
+
+import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    expr = x*(2*x - 7) - 3
+
+    sol1, sol2 = sp.solve(expr, x)
+
+    m = sol1.as_numer_denom()[0].as_numer_denom()[0]
+
+    n = sol1.as_numer_denom()[0].as_numer_denom()[1]**2
+
+    p = sol1.as_numer_denom()[0].as_numer_denom()[1]
+
+    result = m + n + p
+
+    return result
+
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+from sympy import init_printing
+
+init_printing()
+
+x = symbols('x')
+
+expr = x * (2 * x - 7) - 3
+
+simplified_expr = simplify(expr)
+
+from sympy import solve
+
+solutions = solve(simplified_expr, x)
+
+m = solutions[0].as_numer_denom()[1][0]
+
+n = solutions[0].as_numer_denom()[1][1]
+
+p = solutions[0].as_numer_denom()[0]
+
+result = m + n + p
+
+return result
+
+
+from sympy import symbols, solve
+
+import re
+
+import math
+
+from sympy import sympify
+
+from sympy import Eq, solve
+
+def solution():
+
+    x = symbols('x')
+
+    equation = Eq(x*(2*x-7), 3)
+
+    solutions = solve(equation)
+
+    solution1 = format(solutions[0], '.0e')
+
+    solution2 = format(solutions[1], '.0e')
+
+    solution1_float = float(solution1)
+
+    solution2_float = float(solution2)
+
+    solution1_sqrt = math.sqrt(solution1_float**2 - 7*solution1_float)
+
+    solution2_sqrt = math.sqrt(solution2_float**2 - 7*solution2_float)
+
+    m1 = solution1_float + solution1_sqrt
+
+    m2 = solution2_float + solution2_sqrt
+
+    m3 = 1
+
+    n1 = solution1_float**2 - 7*solution1_float
+
+    n2 = solution2_float**2 - 7*solution2_float
+
+    n = min(n1, n2)
+
+    p = 1
+
+    m = min(m1, m2)
+
+    result = m + n + p
+
+    return result
+
+
+def solution():
+
+    from sympy import symbols, solve
+
+    from math import sqrt
+
+    from fractions import Fraction
+
+    x = symbols('x')
+
+    equation = x*(2*x - 7) - 3
+
+    solutions = solve(equation, x)
+
+    m = int(Fraction(solutions[0]).numerator)
+
+    n = int(Fraction(solutions[0]).denominator**2 - Fraction(solutions[0]).numer)
+
+    p = Fraction(solutions[0]).denominator
+
+    result = m + n + p
+
+    return result
+
+
+ Executed result: <built-in function sum>
+[EXP] 1041: [success_rate]: False, [answer]: 11, [output]: import math
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x, y = symbols('x y')
+
+    expr = x**2 + 8*x + y**2 + 4*y + c
+
+    simplified_expr = simplify(expr)
+
+    a = 1
+
+    b = 8/2
+
+    c_val = (-b**2 + math.sqrt(b**2 - 4*a*c)) / (2*a)
+
+    result = c_val
+
+    return result
+
+
+import math
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    # Equation of the circle
+
+    circle_eq = x**2 + 8*x + y**2 + 4*y + c
+
+    # Simplifying the equation
+
+    simplified_eq = simplify(circle_eq)
+
+    # Radius of the circle
+
+    radius = 3
+
+    # Coefficient of x^2 from the circle equation
+
+    x2_coeff = simplified_eq.as_coeff_Mul()[0].as_coeff_add()[0][0].as_coeff_Mul()[0]
+
+    # Coefficient of y^2 from the circle equation
+
+    y2_coeff = simplified_eq.as_coeff_Mul()[0].as_coeff_add()[0][1].as_coeff_Mul()[0]
+
+    # Coefficient of xy from the circle equation
+
+    xy_coeff = simplified_eq.as_coeff_Mul()[0].as_coeff_add()[0][0].as_coeff_Mul()[1]
+
+    # Coefficient of x from the circle equation
+
+    x_coeff = simplified_eq.as_coeff_Mul()[0].as_coeff_add()[0][0].as_coeff_Mul()[2]
+
+    # Coefficient of y from the circle equation
+
+    y_coeff = simplified_eq.as_coeff_Mul()[0].as_coeff_add()[0][1].as_coeff_Mul()[2]
+
+    # Radius in terms of c
+
+    radiusvalue = (x2_coeff + x_coeff**2 + y2_coeff + y_coeff**2 + 2*xy_coeff*xy_coeff + 2*x_coeff*y_coeff - c)**0.5
+
+    # Find the value of c
+
+    c_value = (radius**2 - x2_coeff - x_coeff**2 - y2_coeff - y_coeff**2 - 2*xy_coeff*xy_coeff - 2*x_coeff*y_coeff)**2
+
+    result = c_value
+
+    return result
+
+
+import numpy
+
+import sympy
+
+from sympy import symbols, simplify
+
+from sympy.simplify import simplify_logic
+
+from sympy.parsing.sympy_parser import parse_expr
+
+from sympy.plotting import plot
+
+import math
+
+import numpy as np
+
+import re
+
+import decimal
+
+from decimal import Decimal
+
+from IPython.display import display, Math
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    c = symbols('c')
+
+    expr = x**2 + 8*x + y**2 + 4*y + c
+
+    expr = expr - c
+
+    expr = expr.subs(c, 0)
+
+    circle_eq = sympify('({} + {}x + {}y + {} = 0)'.format(a, 8, 4, c))
+
+    coefficients = circle_eq.as_coeff_Mul()
+
+    coefficients = coefficients[0].as_coeff_Mul()
+
+    radius = math.sqrt(coefficients[0]**2 + coefficients[1]**2)
+
+    radius = 3
+
+    c = (coefficients[0]**2 + coefficients[1]**2 - radius**2)
+
+    c = simplify(c)
+
+    c = float(c)
+
+    result = c
+
+    return result
+
+
+from sympy import symbols, simplify
+
+import math
+
+def solution():
+
+    x, y = symbols('x y')
+
+    expr = x**2 + 8*x + y**2 + 4*y + c
+
+    # Completing the square
+
+    expr = expr - c
+
+    expr = (x + 4)**2 - 16 + (y + 2)**2 - 4 + c
+
+    # Simplifying
+
+    simplified_expr = simplify(expr)
+
+    # Radius of the circle
+
+    radius = math.sqrt(16 + 4 - c)
+
+    # Setting the radius equal to 3
+
+    3**2 = 16 + 4 - c
+
+    c = -20
+
+    result = -20
+
+    return result
+
+
+import math
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+import cmath
+
+import sympy
+
+import re
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    expr = x**2 + 8*x + y**2 + 4*y + c
+
+    center_x = -8/2
+
+    center_y = 4/2
+
+    radius = math.sqrt((8/2)**2 + (4/2)**2 + c)
+
+    if radius == 3:
+
+        result = r'c = {}'.format(int(c))
+
+    else:
+
+        result = 'c does not exist'
+
+    return result
+
+
+from sympy import symbols, simplify
+
+import numpy as np
+
+import math
+
+def solution():
+
+    x, y = symbols('x y')
+
+    # Circle equation
+
+    equation = x**2 + 8*x + y**2 + 4*y + c
+
+    # Complete the square
+
+    equation = equation - c
+
+    equation = equation + 16
+
+    equation = equation + 4
+
+    equation = (x + 4)**2 + (y + 2)**2
+
+    # Radius of the circle
+
+    radius = 3
+
+    # Radial distance from the center to the circle
+
+    distance = radius**2
+
+    # Substitute the values into the equation
+
+    simplified_expr = equation - distance
+
+    result = simplify(simplified_expr)
+
+    result = float(result)
+
+    return result
+
+
+import math
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    a = 1
+
+    b = 8
+
+    c = symbols('c')
+
+    d = 4
+
+    expr = a*x**2 + b*x + y**2 + d*y + c
+
+    # Completing the square
+
+    expr = simplify(expr + b**2/4 + d**2/4 - c)
+
+    # Converting to a standard form of a circle equation
+
+    expr = expr - a - b**2/4 - d**2/4
+
+    # Extracting the center and radius
+
+    center = (-b/2, -d/2)
+
+    radius = math.sqrt(a + b**2/4 + d**2/4 - c)
+
+    # The radius is 3, solving for c
+
+    c_value = a + b**2/4 + d**2/4 - 3**2
+
+    result = c_value
+
+    return result
+
+
+import math
+
+import sympy as sp
+
+import numpy as np
+
+from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    y = symbols('y')
+
+    c = symbols('c')
+
+    equation = x**2 + 8*x + y**2 + 4*y + c
+
+    # Convert the equation to standard form
+
+    a = 1
+
+    b = 8
+
+    c = c
+
+    d = 4
+
+    equation_standard = a*x**2 - 2*x*b + b**2/4 + a*y**2 - 2*y*d + d**2/4 + c
+
+    # find the center (h, k) of the circle
+
+    h = -b / 2/a
+
+    k = -d / 2/a
+
+    # calculate the radius
+
+    r = math.sqrt((b/2/a)**2 + (d/2/a)**2 - c)
+
+    r = simplify(r).evalf()
+
+    # find the value of c such that the radius is 3
+
+    c_value = r**2 - ((b/2/a)**2 + (d/2/a)**2
+
+    result = c_value
+
+    return result
+
+
+ Executed result: c
+[EXP] 1042: [success_rate]: True, [answer]: 3, [output]: def solution():
+
+    # Function values
+
+    f_values = [0, 0, 1, 3, 6]
+
+    # Define function g(x) = f(x) - x
+
+    g_values = [f_value - x for x, f_value in zip([0, 1, 2, 3, 4], f_values)]
+
+    result = len(set(g_values))
+
+    return result
+
+
+def solution():
+
+    domain = [0, 1, 2, 3, 4]
+
+    f_values = [0, 0, 1, 3, 6]
+
+    def g(x):
+
+        return f_values[domain.index(x)] - x
+
+
+from sympy import symbols
+
+from sympy.utilities.lambdify import lambdify
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+from scipy.interpolate import UnivariateSpline
+
+from scipy.integrate import quad
+
+    x = np.array([0, 1, 2, 3, 4])
+
+    y = np.array([0, 0, 1, 3, 6])
+
+    spline = UnivariateSpline(x, y, s=None, k=3, ext=0)
+
+    g = lambdify(x, spline(x) - x, 'numpy')
+
+    x_range = np.linspace(x[0], x[-1], 400)
+
+    y_range = g(x_range)
+
+    plt.plot(x, y, '+', label='original data')
+
+    plt.plot(x_range, y_range, label='spline interpolation')
+
+    plt.grid(True)
+
+    plt.legend()
+
+    plt.show()
+
+    return len(np.unique(y_range))
+
+
+def solution():
+
+    x_values = [0, 1, 2, 3, 4]
+
+    f_values = [0, 0, 1, 3, 6]
+
+    g_values = [f - x for x, f in zip(x_values, f_values)]
+
+    result = len(set(g_values))
+
+    return result
+
+
+from sympy import symbols, Poly
+
+x = symbols('x')
+
+f = Poly({0:0, 1:0, 2:1, 3:3, 4:6}, x)
+
+g = f - x
+
+def solution():
+
+    result = set(g.evalf(subs={x:i}) for i in g.all_coeffs())
+
+    return str(len(result))
+
+
+import numpy as np
+
+from sympy import symbols
+
+from sympy import poly
+
+import math
+
+def solution():
+
+    # Define the function f(x)
+
+    f = [0,0,1,3,6]
+
+    from sympy import symbols, Poly
+
+    x = symbols('x')
+
+    f_expr = Poly([f[i] for i in range(len(f))],x)
+
+    # Define g(x) = f(x) - x
+
+    g_expr = f_expr - x
+
+    # Generate the range of g
+
+    g_range = [g_expr.evalf(subs={x:i}) for i in range(5)]
+
+    # Count the distinct elements in the range
+
+    distinct_count = len(set(g_range))
+
+    result = distinct_count
+
+    return result
+
+
+from sympy import symbols
+
+from sympy import simplify
+
+x = symbols('x')
+
+expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+
+simplified_expr = simplify(expr)
+
+x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+
+result = x3_coefficient
+
+return result
+
+
+def solution():
+
+    f_values = [0, 0, 1, 3, 6]
+
+    g_values = [value - x for x, value in zip([0, 1, 2, 3, 4], f_values)]
+
+    result = len(set(g_values))
+
+    return result
+
+
+ Executed result: 3
+[EXP] 1043: [success_rate]: True, [answer]: 2, [output]: import sympy as sp
+
+from sympy.abc import x
+
+def solution():
+
+    expr = (2**x - 2)*(5*2**x + 10) - 3*4**x - 12
+
+    simplified_expr = sp.solve(expr, x)
+
+    result = str(simplified_expr)
+
+    return result
+
+
+from sympy import symbols, Eq, solve
+
+import sympy as sp
+
+x = symbols('x')
+
+expr1 = 2**x - 2
+
+expr2 = 5*(2**x) + 10
+
+expr3 = 3*(4**x) + 12
+
+eq = Eq((expr1)*(expr2), expr3)
+
+result = solve(eq, x)[0]
+
+return sp.simplify(result)
+
+
+import sympy as sp
+
+from sympy import symbols
+
+import numpy as np
+
+from scipy.optimize import fsolve
+
+import math
+
+def solution():
+
+    x = symbols('x')
+
+    equation = (2**x-2)*(5*2**x+10) - 3*4**x - 12
+
+    result = fsolve(equation, 0)[0]
+
+    return result
+
+
+from sympy import symbols, solve
+
+from sympy.abc import x
+
+from sympy import Expr
+
+import sympy as sp
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (2**x - 2)*(5*2**x + 10) - 3*4**x - 12
+
+    result = solve(expr, x)
+
+    if isinstance(result, Expr):
+
+        result = sp.latex(result)
+
+    return result
+
+
+from sympy import symbols, Eq, solve
+
+import sympy as sp
+
+x = symbols('x')
+
+expr = Eq((2**x-2)*(5*2**x+10), 3*4**x+12)
+
+solution = solve(expr, x)
+
+result = solution[0]
+
+return str(result)
+
+
+import numpy as np
+
+from sympy import symbols, solve
+
+import sympy as sp
+
+x = symbols('x')
+
+expr = (2**x-2)*(5*2**x+10) - 3*4**x - 12
+
+result = solve(sp.simplify(expr), x)
+
+result = str(result[0])
+
+return result
+
+
+import numpy as np
+
+from sympy import symbols, solve
+
+def solution():
+
+    x = symbols('x')
+
+    eq = (2**x - 2) * (5 * 2**x + 10) - 3 * 4**x - 12
+
+    roots = solve(eq, x)
+
+    result = roots[0]
+
+    return result
+
+
+import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    equation = sp.Eq((2**x - 2) * (5 * 2**x + 10), 3 * (4**x) + 12)
+
+    solution = sp.solve(equation, x)[0]
+
+    result = sp.latex(solution)
+
+    return result
+
+
+ Executed result: 2
+[EXP] 1044: [success_rate]: True, [answer]: 25, [output]: def solution():
+
+    sum = 1 + 3 + 5 + 7 + 9
+
+    result = sum
+
+    return result
+
+
+def solution():
+
+    first_positive_odd = 1
+
+    total_sum = 0
+
+    for _ in range(5):
+
+        total_sum += first_positive_odd
+
+        first_positive_odd += 2
+
+    result = total_sum
+
+    return result
+
+
+def solution():
+
+    result = sum([i for i in range(1, 6, 2)]
+
+    return result
+
+
+def solution():
+
+    sum = 1 + 3 + 5 + 7 + 9
+
+    result = sum
+
+    return result
+
+
+def solution():
+
+    sum_first_five_odd_integers = sum(i for i in range(1, 10, 2))
+
+    result = sum_first_five_odd_integers
+
+    return result
+
+
+def solution():
+
+    sum_of_odd_integers = sum([2*i - 1 for i in range(1, 6)])
+
+    result = sum_of_odd_integers
+
+    return result
+
+
+def solution():
+
+    num_sum = sum([i for i in range(1, 11, 2])
+
+    result = num_sum
+
+    return result
+
+
+def solution():
+
+    a = 1
+
+    sum_odd = 0
+
+    for i in range(1, 6):
+
+        if a % 2 != 0:
+
+            sum_odd += a
+
+        a += 2
+
+    result = sum_odd
+
+    return result
+
+
+ Executed result: 25
+[EXP] 1045: [success_rate]: True, [answer]: 10, [output]: def solution():
+
+    # Let the number of quarters in the second pile be x
+
+    x = symbols('x')
+
+    # The number of quarters in the first pile
+
+    first_pile = x - 3
+
+    # The number of quarters in the third pile
+
+    third_pile = x - 2
+
+    # The number of quarters in the fourth pile
+
+    fourth_pile = 2 * x
+
+    # The total number of quarters
+
+    total_quarters = first_pile + second_pile + third_pile + fourth_pile
+
+    # Solving the equation
+
+    from sympy import Eq, solve
+
+    result = 2 * y
+
+    return result
+
+
+def solution():
+
+    piles = [x for x in range(1, 21)]
+
+    first_pile = piles[1]
+
+    second_pile = first_pile + 3
+
+    third_pile = second_pile - 2
+
+    fourth_pile = second_pile * 2
+
+    result = fourth_pile
+
+    return result
+
+
+def solution():
+
+    # The total number of quarters is 20
+
+    total_quarters = 20
+
+    # The first pile has 3 fewer than the second pile
+
+    second_pile_quarters = x
+
+    first_pile_quarters = second_pile_quarters - 3
+
+    # The second pile has 2 more than the third pile
+
+    third_pile_quarters = second_pile_quarters - 2
+
+    # The fourth pile has twice as many as the second pile
+
+    fourth_pile_quarters = 2 * second_pile_quarters
+
+    # Calculating the sum of quarters in all piles
+
+    sum_quarters = first_pile_quarters + second_pile_quarters + third_pile_quarters + fourth_pile_quarters
+
+    result = fourth_pile_quarters
+
+    return result
+
+
+import sympy as sp
+
+from sympy import symbols
+
+from math import pi
+
+import numpy as np
+
+def solution():
+
+    # 1st question
+
+    x = symbols('x')
+
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+
+    result = x3_coefficient
+
+    return result
+
+
+from sympy import symbols
+
+def solution():
+
+    x = symbols('x')
+
+    q1 = x
+
+    q2 = x + 3
+
+    q3 = q2 - 2
+
+    q4 = 2 * q2
+
+    q = q1 + q2 + q3 + q4
+
+    q4_value = q4.subs(x, 20)
+
+    return q4_value
+
+
+def solution():
+
+    # Total quarters in all piles
+
+    total_quarters = 20
+
+    # Let 'x' be the number of quarters in the second pile
+
+    x = (total_quarters - 3) // 2 + 1
+
+    # Number of quarters in the fourth pile
+
+    fourth_pile_quarters = 2 * x
+
+    result = fourth_pile_quarters
+
+    return result
+
+
+def solution():
+
+    # Initialize the number of quarters in each pile
+
+    quarters_in_pile1 = None
+
+    quarters_in_pile2 = None
+
+    quarters_in_pile3 = None
+
+    quarters_in_pile4 = None
+
+    # Formulate the system of linear equations
+
+    first_equation = quarters_in_pile1 + quarters_in_pile2 + quarters_in_pile3 + quarters_in_pile4 == 20
+
+    second_equation = quarters_in_pile1 - quarters_in_pile2 == 3
+
+    third_equation = quarters_in_pile2 - quarters_in_pile3 == 2
+
+    fourth_equation = quarters_in_pile4 == 2 * quarters_in_pile2
+
+    # Use sympy to solve the system of equations
+
+    x, y, z, w = symbols('x y z w')
+
+    equations = [first_equation, second_equation, third_equation, fourth_equation]
+
+    solution = solve(equations, (x, y, z, w))
+
+    # The number of quarters in the fourth pile
+
+    quarters_in_pile4_value = solution[3]
+
+    result = quarters_in_pile4_value
+
+    return result
+
+
+def solution():
+
+    second_pile = (20 - 3) / 2
+
+    third_pile = second_pile - 2
+
+    fourth_pile = second_pile * 2
+
+    result = fourth_pile
+
+    return result
+
+
+ Executed result: 10
+[EXP] 1046: [success_rate]: False, [answer]: 36, [output]: import math
+
+def solution():
+
+    # Number of days in February
+
+    days = 28
+
+    # Number of miles Suzanne walks every three days
+
+    miles_per_three_days = 4
+
+    # Total miles Suzanne can walk in February
+
+    total_miles = math.ceil(days / 3) * miles_per_three_days
+
+    result = total_miles
+
+    return result
+
+
+def solution():
+
+    x = symbols('x')
+
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+
+    result = x3_coefficient
+
+    return result
+
+
+import math
+
+def solution():
+
+    days_in_feb = 28
+
+    miles_per_day = 4
+
+    # Find the number of days on which she walks
+
+    days_walking = math.ceil(days_in_feb / 3) * 3
+
+    # Calculate the number of miles she walks
+
+    miles_walked = days_walking * miles_per_day
+
+    result = miles_walked
+
+    return result
+
+
+import math
+
+from math import ceil
+
+import calendar
+
+from functools import reduce
+
+from operator import mul
+
+def solution():
+
+    days_in_february = calendar.monthrange(2023, 2)[1]
+
+    miles_per_day = 4
+
+    total_miles = 0
+
+    for day in range(1, days_in_february + 1):
+
+        if day % 3 == 0:
+
+            total_miles += miles_per_day
+
+    result = total_miles
+
+    return result
+
+
+def solution():
+
+    days_in_feb = 28
+
+    miles_per_day = 4
+
+    days_per_walk = 3
+
+    total_miles = (days_in_feb // days_per_walk) * miles_per_day
+
+    result = total_miles
+
+    return result
+
+
+import math
+
+def solution():
+
+    days_in_feb = 28
+
+    miles_per_day = 4
+
+    days_between_walks = 3
+
+    total_miles_walked = math.ceil(days_in_feb / days_between_walks) * miles_per_day
+
+    result = total_miles_walked
+
+    return result
+
+
+def solution():
+
+    # Number of days in February
+
+    days_in_feb = 28
+
+    # Miles walked per day
+
+    miles_per_day = 4
+
+    # Number of times she walks in a power of 3
+
+    power_of_three = (days_in_feb + 2) // 3
+
+    # Total miles walked
+
+    total_miles = power_of_three * miles_per_day
+
+    result = total_miles
+
+    return result
+
+
+import math
+
+def solution():
+
+    days_in_february = 28
+
+    miles_per_day = 4
+
+    remainder_miles = days_in_february % 3
+
+    total_miles = remainder_miles * miles_per_day
+
+    for i in range(3, days_in_february + 1):
+
+        total_miles = i * miles_per_day
+
+        if total_miles >= days_in_february:
+
+            break
+
+    result = total_miles
+
+    return result
+
+
+ Executed result: 40
+[EXP] 1047: [success_rate]: False, [answer]: 9, [output]: import math
+
+from sympy import simplify
+
+from sympy import symbols
+
+def solution():
+
+    A = symbols('A')
+
+    B = symbols('B')
+
+    C = symbols('C')
+
+    equation = ((A * B ** (0.5)) / C) * 3 * (2 ** 0.5) / 8
+
+    equation = simplify(equation)
+
+    A_value = 24
+
+    B_value = 32
+
+    C_value = 3
+
+    result = A_value + B_value + C_value
+
+    return result
+
+
+import math
+
+import sympy as sp
+
+def solution():
+
+    A = 24
+
+    B = 8
+
+    C = 6
+
+    result = A + B + C
+
+    return str(result)
+
+
+import math
+
+def solution():
+
+    A = 24
+
+    B = 18
+
+    C = 6
+
+    result = A + B + C
+
+    return result
+
+
+import math
+
+from sympy import simplify
+
+def solution():
+
+    import sympy
+
+    A, B, C = sympy.symbols('A B C')
+
+    expr = A * sympy.sqrt(B) / C - 8 / (3 * sympy.sqrt(2))
+
+    simplified_expr = simplify(expr)
+
+    A_value = int(simplified_expr.lhs.args[0].args[0].subs({sympy.sqrt(2): 1.4142135623730951}))
+
+    B_value = int(simplified_expr.lhs.args[0].args[1].subs({sympy.sqrt(2): 1.4142135623730951}))
+
+    C_value = int(simplified_expr.rhs.args[0].args[1].subs({sympy.sqrt(2): 1.4142135623730951}))
+
+    A_value = A_value * 2
+
+    B_value = B_value * 4
+
+    C_value = C_value * 3
+
+    result = A_value + B_value + C_value
+
+    return result
+
+
+import sympy as sp
+
+from math import gcd
+
+from functools import reduce
+
+from math import sqrt
+
+import re
+
+def solution():
+
+    from sympy import symbols, simplify
+
+    x = symbols('x')
+
+    expr = 3*(x**2 - x**3 + x) + 3*(x + 2*x**3 - 3*x**2 + 3*x**5 + x**3) - 5*(1 + x - 4*x**3 - x**2)
+
+    radius = 6
+
+    prime_prob = 1 / 6
+
+    composite_prob = 1 / 3
+
+    otherwise_prob = 1 / 6
+
+    a=np.array([-7, 0, 1])
+
+    b=np.array([4, 2, -1])
+
+    A=None
+
+    B=None
+
+    # Expected value of each outcome
+
+    prime_expected_value = (2 * prime_prob) + (3 * prime_prob) + (5 * prime_prob)
+
+    composite_expected_value = 0 * composite_prob
+
+    otherwise_expected_value = -3 * otherwise_prob
+
+    total_expected_value = prime_expected_value + composite_expected_value + otherwise_expected_value
+
+    result = "{:.2f}".format(total_expected_value)
+
+    simplified_expr = simplify(expr)
+
+    x3_coefficient = simplified_expr.as_coefficients_dict()[x**3]
+
+    result = x3_coefficient
+
+    equation = Eq(A*x**3 + B*x + C, 0)
+
+    sol = solve(equation, x)
+
+    A = sp.N(sol[0]).evalf()
+
+    B = sp.N(sol[1]).evalf()
+
+
+import math
+
+def solution():
+
+    a = 8 * 3
+
+    b = 2 * 2
+
+    c = 3 * 2
+
+    result = a + b + c
+
+    return result
+
+
+import sympy as sp
+
+def solution():
+
+    A, B, C = sp.symbols('A B C', integer=True)
+
+    expr = (A*sp.sqrt(B))/C - 8/(3*sp.sqrt(2))
+
+    expr = sp.Eq(expr, 0)
+
+    result = sp.solve((expr, (A, 'integer', 1), (B, 'integer', 1), (C, 'integer', 1)))[0]
+
+    print("The value of A+B+C is ", result[0]+result[1]+result[2])
+
+    return "The value of A+B+C is " + str(result[0]+result[1]+result[2])
+
+
+import math
+
+def solution():
+
+    # Calculate A and C
+
+    A = 8 * C // (3 * math.sqrt(2))
+
+    C_divisor = 3 * math.sqrt(2)
+
+    for i in range(2, A + 1):
+
+        if A % i == 0 and C % i == 0:
+
+            C = C // i
+
+            A = A // i
+
+            break
+
+    # Calculate B
+
+    B = (A ** 2) * (C ** 2) * 2
+
+    # Calculate A + B + C
+
+    result = A + B + C
+
+    return result
+
+
+ Executed result: 59
+[EXP] 1048: [success_rate]: True, [answer]: 45, [output]: import math
+
+def solution():
+
+    a = 3**2
+
+    d = 3**4 - 3**2
+
+    x = (3**4 + 3**2) / 2
+
+    result = int(x)
+
+    return result
+
+
+def solution():
+
+    a = 3**2
+
+    c = 3**4
+
+    n = 3
+
+    d = c - a
+
+    x = a + (n-1) * d / 2
+
+    result = int(x)
+
+    return result
+
+
+import math
+
+def solution():
+
+    a = 3**2
+
+    d = (3**4 - a) / (2)
+
+    x = a + d
+
+    result = int(x)
+
+    return result
+
+
+import math
+
+def solution():
+
+    seq = [9, x, 81]
+
+    diff = (81 - 9) / (len(seq) - 1)
+
+    x = 9 + diff
+
+    result = int(x)
+
+    return result
+
+
+import math
+
+def solution():
+
+    # Given values
+
+    first_term = 3**2
+
+    last_term = 3**4
+
+    # Using the formula for the nth term of an arithmetic sequence
+
+    a = first_term + (last_term - first_term) // 2
+
+    # Converting to integer
+
+    a = int(a)
+
+    result = a
+
+    return result
+
+
+def solution():
+
+    a = 3**2
+
+    c = 3**4
+
+    b = (a + c) / 2
+
+    result = int(b)
+
+    return result
+
+
+from math import sqrt
+
+from sympy import symbols, simplify
+
+import numpy as np
+
+def solution():
+
+    x = symbols('x')
+
+    expr = (x**2) + 9
+
+    simplified_expr = simplify(expr)
+
+    result = int(simplified_expr**(1/2))
+
+    return result
+
+
+def solution():
+
+    sequence = [9, x, 81]
+
+    sequence.sort()
+
+    x = sequence[1]
+
+    result = x
+
+    return result
+
+
+ Executed result: 45

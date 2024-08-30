@@ -149,7 +149,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             token_end = np.argmax(cumulated_cnt_length >= index_end)
             if token_end < token_start:
                 token_end = -1
-            return token_start, token_end
+            return token_start+1, token_end+1 # +1 to account for the >= sign, instead of > sign
         def _clean_action(action):
             action = action.replace("`\n", "")
             return action + "\n"

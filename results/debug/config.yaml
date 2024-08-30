@@ -1,21 +1,16 @@
 algorithm:
-  beam_search: false
-  beam_temperature: 0.6
-  do_sample: true
-  n_generate_sample: 8
-  name: Self_Consistency
-  task: math
-  value_type: logp
+  name: Logprob_Analyzer
+  task: humaneval
 llm:
   context_length: 8192
-  dtype: float32
-  engine: /ssddata/model_hub/Meta-Llama-3-8B-Instruct
+  dtype: bfloat16
+  engine: /root/huggingface/Meta-Llama-3-8B-Instruct
   name: vllm
   ngpu: 1
   stop: null
   temperature: 0
   top_p: 1
 run:
-  batch_size: 10
-  data_path: /ssddata/junxianh/Agent-Decoding/data/math/test.json
+  batch_size: 20
+  data_path: results/run_parallel_passk_humaneval_8_29/
   log_path: results/debug

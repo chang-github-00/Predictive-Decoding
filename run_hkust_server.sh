@@ -43,7 +43,7 @@ python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_serve
 
 # math parallel run predictive decoding, set n generate samples to 1
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_mpc_sample_math_8_21 --batch_size 500
-python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_mpc_sample_math_8_21 --batch_size 500
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_mpc_sample_math_8_30 --batch_size 500
 
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/mpc_sample_gsm8k_llama3.yaml --tasks gsm8k --algorithm MPC_Sample --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_mpc_sample_gsm8k_8_21 --batch_size 1319
 

@@ -6,7 +6,7 @@ run:
 
 
 algorithm:
-  task: math
+  task: humaneval
   name: MPC_Sample
   lookahead_thought_length: 8
   reward_threshold: 0.0
@@ -14,8 +14,8 @@ algorithm:
   beam_size: 8
   value_type: logp # use llama3
   do_sample: True
-  beam_temperature: 0.8 #1.0
-  select_temperature: 0.00
+  beam_temperature: 1.0
+  select_temperature: 0.1
   use_memory: True
   # lookahead_token_length: 
 llm:
@@ -33,7 +33,7 @@ llm:
       max_tokens: 500
   llama-3:
       name: vllm
-      engine: /root/huggingface/Meta-Llama-3-8B-Instruct/
+      engine: /root/huggingface/Meta-Llama-3-8B-Instruct
       context_length: 8192
       temperature: 0
       top_p: 1

@@ -12,7 +12,9 @@ algorithm:
   value_type: logp # use llama3
   do_sample: True
   beam_temperature: 0.6
+  beam_search: True
   # lookahead_token_length: 
+  
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
       name: gpt_azure

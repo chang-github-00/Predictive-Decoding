@@ -17,7 +17,7 @@ from typing import Optional
 
 from utils.human_eval.evaluation import evaluate_functional_correctness
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "6"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 def load_dataset(task, path=''):
     if task == "humaneval":
@@ -169,10 +169,12 @@ class EvalReasoning:
                     output = all_outputs[id]
                     if type(output) == list: 
                         for out in output:
-                            write_dict = {"task_id":item["task_id"], "generation":out, "prompt":item["prompt"]}
+                            write_dict = item.copy()
+                            write_dict["generation"] = out
                             f.write(json.dumps(write_dict) + '\n')
                     else:
-                        write_dict = {"task_id":item["task_id"], "generation":output, "prompt":item["prompt"]}
+                        write_dict = item.copy()
+                        write_dict["generation"] = output
                         f.write(json.dumps(write_dict) + '\n')
             
         res = entry_point(output_filepath, self.dataset_path)

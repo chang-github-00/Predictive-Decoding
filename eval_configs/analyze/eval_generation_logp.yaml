@@ -1,0 +1,20 @@
+run:
+  log_path: ${PROJECT_PATH}/results/debug_math_self_consistency
+  data_path: ${PROJECT_PATH}/data/math/test.json
+
+
+algorithm:
+  task: humaneval
+  name: Logprob_Analyzer
+
+
+llm:
+  llama-3:
+    name: vllm
+    engine: /root/huggingface/Meta-Llama-3-8B-Instruct
+    context_length: 8192
+    temperature: 0
+    top_p: 1
+    stop:
+    dtype: bfloat16
+    ngpu: 1

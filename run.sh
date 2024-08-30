@@ -42,4 +42,9 @@ python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs/gsm8k/self_
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model llama-3 --data_path /root/Agent-Decoding/data/math/test.json --log_path results/run_parallel_mpc_sample_math_8_20 --batch_size 500
 
 # math non parallel run predictive decoding
-python agentboard/eval_reasoning.py --cfg-path eval_configs/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model llama-3 --data_path /root/Agent-Decoding/data/math/test.json --log_path results/run_mpc_sample_math_8_21
+python agentboard/eval_reasoning.py --cfg-path eval_configs/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model llama-3 --data_path /root/Agent-Decoding/data/math/test.json --log_path results/run_mpc_sample_math_8_28
+
+python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs/humaneval/self_consistency_humaneval_llama3.yaml --tasks humaneval --algorithm Self_Consistency --model llama-3 --data_path data/humaneval/humaneval-python.jsonl --log_path results/run_parallel_passk_humaneval_8_29 --batch_size 200
+
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs/math/self_consistency_math_llama3.yaml --tasks math --algorithm Self_Consistency --model llama-3 --data_path /root/Agent-Decoding/data/math/test.json --log_path results/run_parallel_self_consistency_math_8_29_beam_search_best_1 --batch_size 5000
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model llama-3 --data_path /root/huggingface/gsm8k --log_path results/run_parallel_self_consistency_gsm8k_8_29_beam_search_best_1 --batch_size 2000

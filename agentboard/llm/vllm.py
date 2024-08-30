@@ -35,7 +35,7 @@ class VLLM:
         if self.context_length > 8192:
             self.llm = LLM(model=self.model, dtype=d_type, tensor_parallel_size=ngpu, gpu_memory_utilization=0.9, max_num_batched_tokens=8192, max_model_len=8192)
         else:
-            self.llm = LLM(model=self.model, dtype=d_type, tensor_parallel_size=ngpu, gpu_memory_utilization=0.9, max_num_batched_tokens=self.context_length)
+            self.llm = LLM(model=self.model, dtype=d_type, tensor_parallel_size=ngpu, gpu_memory_utilization=0.8, max_num_batched_tokens=self.context_length)
         self.tokenizer = self.llm.get_tokenizer()
         
     def make_prompt(self, system_message, prompt):
@@ -188,6 +188,7 @@ class VLLM:
                 max_tokens=max_tokens,
                 logprobs=logprobs,
                 n=n,
+                best_of=8,
                 use_beam_search=True,
             )
         else:
@@ -260,14 +261,55 @@ class VLLM:
                 all_outputs.append(outputs)
             return True, all_outputs
     
-    def encode(self, system_message, prompt, answer_prefix=None):
-        full_prompt = self.get_input(system_message, prompt, answer_prefix)
-        outputs = self.llm.encode([full_prompt])
+    def encode(self, system_messages, prompts, answer_prefixes=None):
+        full_prompts = []
+        for i in range(len(prompts)):
+            prompt = prompts[i]
+            system_message = system_messages[i]
+            if answer_prefixes is not None:
+                answer_prefix = answer_prefixes[i]
+            else:
+                answer_prefix = None
+            
+            full_prompt=[
+                    {"role": "system", "content": system_message},
+                    {"role": "user", "content": prompt},
+            ]
+            
+            samplingparams = SamplingParams(
+                temperature=0,
+                max_tokens=1,
+                prompt_logprobs=1,
+            )
+            
+            if answer_prefix is not None:
+                full_prompt.append({"role": "assistant", "content": ""})
+            # full_prompt = self.make_prompt(system_message, prompt)
+            full_prompt = self.tokenizer.apply_chat_template(full_prompt, tokenize=False)
+            if answer_prefix is not None:
+                full_prompt = full_prompt.rstrip("<|eot_id|>")
+                full_prompt += answer_prefix
+            assert full_prompt is not None
+            
+            full_prompts.append(full_prompt)
+        
+        outputs = self.llm.generate(full_prompts, samplingparams)
         
         # get tokens and logprobs
+        all_logprobs = []
         
-        
-        return True, outputs
+        for i in range(len(outputs)):
+            tokens = [self.tokenizer.decode(prompt_token_id) for prompt_token_id in outputs[i].prompt_token_ids][1:]
+            logprobs = []
+            token_id = 1
+            for logprob in outputs[i].prompt_logprobs:
+                if logprob is not None:
+                    token = outputs[i].prompt_token_ids[token_id]
+                    logprobs.append(logprob[token].logprob)
+                    token_id += 1
+            item = {'tokens': tokens, 'logprobs': logprobs}
+            all_logprobs.append(item)
+        return True, all_logprobs
         
     def get_input(self, system_message, prompt, answer_prefix=None):
         full_prompt=[

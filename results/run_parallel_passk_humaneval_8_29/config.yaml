@@ -1,0 +1,20 @@
+algorithm:
+  beam_temperature: 0.6
+  do_sample: true
+  n_generate_sample: 1
+  name: Self_Consistency
+  task: humaneval
+  value_type: logp
+llm:
+  context_length: 8192
+  dtype: float32
+  engine: /root/huggingface/Meta-Llama-3-8B-Instruct
+  name: vllm
+  ngpu: 1
+  stop: null
+  temperature: 0
+  top_p: 1
+run:
+  batch_size: 200
+  data_path: data/humaneval/humaneval-python.jsonl
+  log_path: results/run_parallel_passk_humaneval_8_29

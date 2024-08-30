@@ -17,14 +17,16 @@ from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 def load_analyze_data(task, path='result/...'):
     examples = []
+    path = os.path.join(path, f"{task}_output.jsonl")
     with open(path, "r") as f:
         for line in f:
             js = json.loads(line)
             examples.append(js)
+    if task == "humaneval": examples = examples[:164]
     return examples
   
 
@@ -46,7 +48,7 @@ class Iterator:
         return value
 
    
-class AnalyzeLogp:
+class AnalyzeReward:
     def __init__(self,
                  task="dp",
                  run_config=None,
@@ -74,8 +76,9 @@ class AnalyzeLogp:
         id = 0
         
         for test_items in tqdm(item_iter, total=math.ceil(len(self.examples)/self.batch_size)):
-            prompts = [item["prompt"] for item in test_items]
-            completions = [item["completion"] for item in test_items]
+            prompts = [item["text"] for item in test_items]
+            completions = [item["generation"] for item in test_items]
+            answer_prefixes = [item["prompt"] for item in test_items]
             
             if self.task == "math":
                 system_msg = "You will write python program to solve math problems. You will only write imports and code blocks ."
@@ -84,7 +87,7 @@ class AnalyzeLogp:
             else:
                 system_msg = "Finish writing the python function. You will only write code blocks."
                 
-            success, all_values = self.evaluator.parallel_run(system_msg=system_msg, prompts=self.prompts, completions=completions) # process all questions in parallel
+            success, all_values = self.evaluator.parallel_run(system_msgs=system_msg, prompts=prompts, completions=completions, answer_prefixes=answer_prefixes) # process all questions in parallel
 
             for i, item in enumerate(test_items):
                 item["logp"] = all_values[i]
@@ -157,8 +160,9 @@ def main():
     with open(os.path.join(run_config["log_path"], "config.yaml"), "w") as f:
         yaml.dump({"llm":llm_config, "algorithm":algorithm_config, "run":run_config}, f)
     
-    metrics_generation = AnalyzeLogp(task, run_config, llm_config, algorithm_config)
+    metrics_generation = AnalyzeReward(task, run_config, llm_config, algorithm_config)
     
+
     metrics_generation.parallel_evaluate()
     
     

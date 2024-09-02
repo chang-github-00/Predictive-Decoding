@@ -8,7 +8,7 @@ import re
 import io
 import numpy as np
 import argparse
-
+import torch
 
 @registry.register_algorithm("Logprob_Analyzer")
 
@@ -53,7 +53,10 @@ class Logprob_Analyzer:
             
             full_completion = completions[i]
             prefix = before_generation_prefixes[i]
-            completion_after_prefix = full_completion[full_completion.index(prefix)+len(prefix):]
+            if prefix in full_completion:
+                completion_after_prefix = full_completion[full_completion.index(prefix)+len(prefix):]
+            else:
+                completion_after_prefix = full_completion
             start_id, end_id = _get_start_end_token_id(prompt, completion_after_prefix, tokens)
             start_generation_id = start_id
             if end_id != -1:
@@ -82,3 +85,4 @@ class Logprob_Analyzer:
     
     def from_config(llm_model, config):
         return Logprob_Analyzer(llm_model)
+    

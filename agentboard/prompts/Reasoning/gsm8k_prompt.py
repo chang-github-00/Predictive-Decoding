@@ -873,3 +873,18 @@ def solution():
     return result
 '''.strip() + '\n\n\n'
 
+pal_prompt_1 = '''
+Q: Olivia has $23. She bought five bagels for $3 each. How much money does she have left?
+
+# solution in Python:
+
+
+def solution():
+    money_initial = 23
+    bagels = 5
+    bagel_cost = 3
+    money_spent = bagels * bagel_cost
+    money_left = money_initial - money_spent
+    result = money_left
+    return result
+'''.strip() + '\n\n\n'

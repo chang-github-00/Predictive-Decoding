@@ -35,7 +35,7 @@ class VLLM:
         if self.context_length > 8192:
             self.llm = LLM(model=self.model, dtype=d_type, tensor_parallel_size=ngpu, gpu_memory_utilization=0.9, max_num_batched_tokens=8192, max_model_len=8192)
         else:
-            self.llm = LLM(model=self.model, dtype=d_type, tensor_parallel_size=ngpu, gpu_memory_utilization=0.8, max_num_batched_tokens=self.context_length)
+            self.llm = LLM(model=self.model, dtype=d_type, tensor_parallel_size=ngpu, gpu_memory_utilization=0.9, max_num_batched_tokens=self.context_length)
         self.tokenizer = self.llm.get_tokenizer()
         
     def make_prompt(self, system_message, prompt):
@@ -278,7 +278,7 @@ class VLLM:
             
             samplingparams = SamplingParams(
                 temperature=0,
-                max_tokens=1,
+                # max_tokens=1,
                 prompt_logprobs=1,
             )
             

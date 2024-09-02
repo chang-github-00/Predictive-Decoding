@@ -7,7 +7,7 @@ import random
 import re
 import io
 import argparse
-
+import numpy as np
 
 @registry.register_algorithm("Generation")
 class Generation:  # the agent should receive goal, state and action, then return the next state
@@ -219,7 +219,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
         
             all_outputs.append(code)
         return True, all_outputs
-    
+            
     def parallel_run(self, questions, prompts=None, **kwargs):
         
         args = {
@@ -228,7 +228,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
             "temperature": self.beam_temperature,
             "top_p": 1.0,
             "stop": [],            
-            "logprobs": 0,
+            "logprobs": 1,
             "use_beam_search": self.beam_search
         }
         
@@ -262,12 +262,14 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
 
         all_system_messages = [self.prompts["system_msg"]] * len(all_prompts)
         
-        success, all_code_samples = self.llm_model.parallel_generate_with_config(all_system_messages, all_prompts, generation_config, answer_prefixes)
+        success, all_code_samples_raw = self.llm_model.parallel_generate_with_config(all_system_messages, all_prompts, generation_config, answer_prefixes)
                 
         if not success:
             
             return False, None
         
+        all_code_samples = [[code["text"] for code in code_sample_raw] for code_sample_raw in all_code_samples_raw]
+        all_code_logprobs = [[np.exp(sum(code["logprobs"])) for code in code_sample_raw] for code_sample_raw in all_code_samples_raw]
         if args.n_generate_sample == 1: all_code_samples = [[code_sample] for code_sample in all_code_samples]
         
         if self.task == "humaneval":

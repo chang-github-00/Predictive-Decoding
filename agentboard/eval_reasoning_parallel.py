@@ -16,7 +16,7 @@ from tqdm import tqdm
 from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
@@ -225,7 +225,7 @@ class EvalReasoning:
         #     self.prompts = json.load(f)
         self.prompts = {}
         if self.task == "gsm8k":
-            from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt, pal_prompt
+            from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt, pal_prompt, pal_prompt_1
             self.prompts["prompt"] = pal_prompt #code_prompt#pal_prompt
             self.prompts["evaluate"] = evaluate_prompt
             self.prompts["system_msg"] = "You will write python program to solve math problems. You will only write code blocks."

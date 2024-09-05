@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 import os
+import seaborn as sns
 
 def load_analyze_data(task, path='result/...'):
     examples = []
@@ -13,7 +14,7 @@ def load_analyze_data(task, path='result/...'):
     if task == "humaneval": examples = examples[:164]
     return examples
 
-task = "math"#"gsm8k"
+task = "math"
 prob_data_path = f"results/run_anlaysis_important_results/{task}_output_probs.jsonl"
 with open(prob_data_path, "r") as f:
     prob = json.load(f)
@@ -27,11 +28,57 @@ autoregressive_data = np.array([p[0] for p in prob])
 beamsearch_data = np.array([p[1] for p in prob])
 mpc_data = np.array([p[2] for p in prob])
 
-diff_data = mpc_data - autoregressive_data
-diff_data_2 = beamsearch_data - autoregressive_data
-correct = np.array([bool(item["success_rate"]) for item in autoregressive_results])
+optimal_data = np.max([autoregressive_data, beamsearch_data, mpc_data], axis=0)
+
+# Create a figure and axis
+plt.figure(figsize=(10, 5))
+
+# Plot density plots for each array
+# plt.hist(beamsearch_data[beamsearch_data>0.05], bins=100, alpha=0.5, label='Beam Search',density=True)
+plt.hist(optimal_data, bins=100, alpha=0.6, label='LLM Non-myopic Planning',density=True)
+plt.hist(autoregressive_data, bins=100, alpha=0.5, label='LLM Autoregressive Planning',density=True)
+
+plt.legend(loc='upper right', fontsize=18)
+
+# Calculate and plot medians
+autoregressive_median = np.median(autoregressive_data)
+optimal_median = np.median(optimal_data)
+
+plt.axvline(autoregressive_median, color='orange', linestyle='-', label='Autoregressive Median',linewidth=3)
+# plt.axvline(beamsearch_median, color='orange', linestyle='--', label='Beam Search Median')
+plt.axvline(optimal_median,  linestyle='-', color='cornflowerblue',label='MPC Median',linewidth=3)
+plt.text(autoregressive_median-0.01, 3.5, f'{autoregressive_median:.2f}',fontdict={'size': 15})
+plt.text(optimal_median, 3.5, f'{optimal_median:.2f}', fontdict={'size': 15})
+plt.ylabel('Density', fontsize=18)
+plt.xlabel('Generation Probability P (MATH)', fontsize=18)
+plt.xlim(0, 1)
+plt.savefig(f"draw/{task}_output_probs.pdf", bbox_inches='tight', pad_inches=0.1,format="pdf")
+
+
+# create a figure to plot difference
+diff_data = optimal_data - autoregressive_data
+
+correct = np.array([data["success_rate"] for data in autoregressive_results])
 wrong = np.logical_not(correct)
-activated = ((diff_data >0) + (diff_data_2 > 0))>0
+
+plt.figure(figsize=(5, 5))
+
+
+sns.kdeplot(diff_data[wrong], label='Wrong', color='red', linewidth=3)
+sns.kdeplot(diff_data[correct], label='Correct', color='blue', linewidth=3)
+# sns.distplot(diff_data, label='Overall', kde=True, bins=50,  kde_kws={'linewidth': 2})
+
+
+plt.xlabel('Myopic Gap p* (MATH)', fontsize=18)
+plt.ylabel('Density', fontsize=18)
+plt.legend(loc='upper right', fontsize=18)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.xlim(-0.001, 0.3)
+plt.savefig(f"draw/{task}_output_probs_diff.pdf", bbox_inches='tight', pad_inches=0.1,format="pdf")
+
+
+activated = diff_data > 0.01
 non_activated = np.logical_not(activated)
 
 # calculate confusion matrix
@@ -40,68 +87,90 @@ FP = np.sum(activated & correct)
 TN = np.sum(non_activated & wrong)
 FN = np.sum(non_activated & correct)
 print(f"TP: {TP}, FP: {FP}, TN: {TN}, FN: {FN}")
+print(f"{TP/(TP+TN)}")
+print(f"{FP/(FP+FN)}")
 
-activated_2 = autoregressive_data < 0.95
-non_activated_2 = np.logical_not(activated_2)
+
+
+
+
+
+
+task = "gsm8k"
+prob_data_path = f"results/run_anlaysis_important_results/{task}_output_probs.jsonl"
+with open(prob_data_path, "r") as f:
+    prob = json.load(f)
+
+file_autoregressive = f"results/run_anlaysis_important_results/{task}_autoregressive_output.jsonl"
+autoregressive_results = load_analyze_data(task, file_autoregressive)
+file_mpc = f"results/run_anlaysis_important_results/{task}_mpc_output.jsonl"
+mpc_results = load_analyze_data(task, file_mpc)
+
+autoregressive_data = np.array([p[0] for p in prob])
+beamsearch_data = np.array([p[1] for p in prob])
+mpc_data = np.array([p[2] for p in prob])
+
+optimal_data = np.max([autoregressive_data, beamsearch_data, mpc_data], axis=0)
+
+# Create a figure and axis
+plt.figure(figsize=(10, 5))
+
+# Plot density plots for each array
+# plt.hist(beamsearch_data[beamsearch_data>0.05], bins=100, alpha=0.5, label='Beam Search',density=True)
+plt.hist(optimal_data, bins=200, alpha=0.6, label='LLM Non-myopic Planning',density=True)
+plt.hist(autoregressive_data, bins=200, alpha=0.5, label='LLM Autoregressive Planning',density=True)
+
+plt.legend(loc='upper left', fontsize=18)
+
+# Calculate and plot medians
+autoregressive_median = np.median(autoregressive_data)
+optimal_median = np.median(optimal_data)
+
+plt.axvline(autoregressive_median, color='orange', linestyle='-', label='Autoregressive Median',linewidth=3)
+# plt.axvline(beamsearch_median, color='orange', linestyle='--', label='Beam Search Median')
+plt.axvline(optimal_median,  linestyle='-', color='cornflowerblue',label='MPC Median',linewidth=3)
+plt.text(autoregressive_median-0.025, 18, f'{autoregressive_median:.2f}',fontdict={'size': 15})
+plt.text(optimal_median, 18, f'{optimal_median:.2f}', fontdict={'size': 15})
+plt.ylabel('Density', fontsize=18)
+plt.xlabel('Generation Probability P (GSM8K)', fontsize=18)
+plt.xlim(0.7, 1)
+plt.savefig(f"draw/{task}_output_probs.pdf", bbox_inches='tight', pad_inches=0.1,format="pdf")
+
+
+
+# create a figure to plot difference
+diff_data = optimal_data - autoregressive_data
+
+correct = np.array([data["success_rate"] for data in autoregressive_results])
+wrong = np.logical_not(correct)
+
+plt.figure(figsize=(5, 5))
+
+
+sns.kdeplot(diff_data[wrong], label='Wrong', color='red', linewidth=3)
+sns.kdeplot(diff_data[correct], label='Correct', color='blue', linewidth=3)
+# sns.distplot(diff_data, label='Overall', kde=True, bins=50,  kde_kws={'linewidth': 2})
+
+plt.xlim(-0.001, 0.4)
+plt.xlabel('Myopic Gap p* (GSM8K)', fontsize=18)
+plt.ylabel('Density', fontsize=18)
+plt.legend(loc='upper right', fontsize=18)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.savefig(f"draw/{task}_output_probs_diff.pdf", bbox_inches='tight', pad_inches=0.1,format="pdf")
+
+
+activated = diff_data > 0.01
+non_activated = np.logical_not(activated)
+
 # calculate confusion matrix
-TP = np.sum(activated_2 & wrong)
-FP = np.sum(activated_2 & correct)
-TN = np.sum(non_activated_2 & wrong)
-FN = np.sum(non_activated_2 & correct)
+TP = np.sum(activated & wrong)
+FP = np.sum(activated & correct)
+TN = np.sum(non_activated & wrong)
+FN = np.sum(non_activated & correct)
 print(f"TP: {TP}, FP: {FP}, TN: {TN}, FN: {FN}")
-
-# draw the histogram of the output probabilities
-plt.figure(figsize=(10, 6))
-plt.hist(autoregressive_data, bins=100, alpha=0.5, label='autoregressive')
-# plt.hist(beamsearch_data, bins=100, alpha=0.5, label='beamsearch')
-plt.hist(mpc_data, bins=100, alpha=0.5, label='mpc')
-plt.xlabel('output probability')
-plt.ylabel('frequency')
-plt.legend(loc='upper right')
-plt.savefig("draw/output_probs.png")
-
-print(autoregressive_data.mean())
-print(beamsearch_data.mean())
-print(mpc_data.mean())
-
-# draw the histogram of the difference between mpc and autoregressive
-plt.figure(figsize=(10, 6))
-plt.hist(diff_data, bins=100, alpha=0.5, label='mpc - autoregressive')
-plt.xlabel('difference')
-plt.ylabel('frequency')
-plt.legend(loc='upper right')
-plt.savefig("draw/diff_probs.png")
-
-# draw the historgram of difference between correct and wrong
-plt.figure(figsize=(10, 6))
-plt.hist(autoregressive_data[correct], bins=100, alpha=0.5, label='correct')
-plt.hist(autoregressive_data[wrong], bins=100, alpha=0.5, label='wrong')
-plt.xlabel('output probability')
-plt.ylabel('frequency')
-plt.legend(loc='upper right')
-plt.savefig("draw/output_probs_correct_wrong.png")
-
-print(autoregressive_data[correct].mean())
-print(autoregressive_data[wrong].mean())
+print(f"{TP/(TP+TN)}")
+print(f"{FP/(FP+FN)}")
 
 
-correct_mpc = np.array([bool(item["success_rate"]) for item in mpc_results])
-wrong_mpc = np.logical_not(correct_mpc)
-plt.figure(figsize=(10, 6))
-plt.hist(mpc_data[correct], bins=100, alpha=0.5, label='correct')
-plt.hist(mpc_data[wrong], bins=100, alpha=0.5, label='wrong')
-plt.xlabel('output probability')
-plt.ylabel('frequency')
-plt.legend(loc='upper right')
-plt.savefig("draw/output_probs_correct_wrong_mpc.png")
 
-# draw the histogram of difference between TP and FP
-plt.figure(figsize=(10, 6))
-plt.hist(diff_data[correct_mpc & wrong], bins=100, alpha=0.5, label='FP')
-print((diff_data[correct_mpc & wrong]>0).sum()/len(diff_data[correct_mpc & wrong]))
-# plt.hist(diff_data[activated & correct], bins=100, alpha=0.5, label='TP')
-
-plt.legend(loc='upper right')
-plt.xlabel('difference')
-plt.ylabel('frequency')
-plt.savefig("draw/diff_probs_TP_FP.png")

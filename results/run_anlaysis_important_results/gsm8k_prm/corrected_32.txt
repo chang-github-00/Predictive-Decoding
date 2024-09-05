@@ -1,0 +1,7 @@
+def solution():	 [t]
+    """John takes care of 10 dogs.  Each dog takes .5 hours a day to walk and take care of their business.  How many hours a day does he spend taking care of dogs?"""	 [f]
+    dogs = 10	 [t]
+    hours_per_dog = 0.5	 [t]
+    hours_per_day = dogs * hours_per_dog	 [t]
+    result = hours_per_day	 [f]
+    return result	 [f]

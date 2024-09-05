@@ -1,0 +1,8 @@
+def solution():	 [ ]
+    """Marcus is half of Leo’s age and five years younger than Deanna. Deanna is 26. How old is Leo?"""	 [ ]
+    deanna_age = 26	 [ ]
+    deanna_to_leo = deanna_age - 5  # Deanna is 5 years older than Marcus	 [ ]
+    leo_to_marcus = 2 * deanna_to_leo  # Marcus is half of Leo's age	 [ ]
+    leo_age = leo_to_marcus + deanna_to_leo	 [ ]
+    result = leo_age	 [ ]
+    return result	 [ ]

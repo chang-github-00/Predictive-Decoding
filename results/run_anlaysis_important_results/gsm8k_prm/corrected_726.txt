@@ -1,0 +1,7 @@
+def solution():	 [ ]
+    """Topher, the green giant, wears enormous shoes.  The length of one of his shoes is 10 inches longer than 9 times the length of one of Bobby's shoes.  If the length of one of Topher's shoes is 8-feet and 4-inches, how long, in inches, is one of Bobby's shoes?"""	 [ ]
+    topher_shoe_length_inches = 8 * 12 + 4  # convert the feet and inches to inches	 [ ]
+    topher_shoe_length_inches += 10	 [ ]
+    bobby_shoe_length_inches = (topher_shoe_length_inches - 10) // 9  # subtract 10 and divide by 9	 [ ]
+    result = bobby_shoe_length_inches	 [ ]
+    return result	 [ ]

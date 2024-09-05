@@ -1,0 +1,8 @@
+def solution():	 [ ]
+    """A DVD can be played 1000 times before it breaks. There are two DVDs in the public library, one has been played 356 times and the other has been played 135 times. How many total times can both DVDs be played before they break?"""	 [ ]
+    dvd1_played = 356	 [ ]
+    dvd2_played = 135	 [ ]
+    total_played = dvd1_played + dvd2_played	 [ ]
+    remaining_plays = 1000 - total_played	 [ ]
+    result = remaining_plays	 [ ]
+    return result	 [ ]

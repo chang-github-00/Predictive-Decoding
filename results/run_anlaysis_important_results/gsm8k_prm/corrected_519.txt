@@ -1,0 +1,6 @@
+def solution():	 [ ]
+    """Royce takes 40 minutes more than double Rob to shingle a house. If Rob takes 2 hours, how many minutes does Royce take?"""	 [ ]
+    rob_time = 2 * 60  # 2 hours is 120 minutes	 [ ]
+    royce_time = rob_time + (rob_time * 2) + 40	 [ ]
+    result = royce_time	 [ ]
+    return result	 [ ]

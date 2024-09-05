@@ -1,0 +1,7 @@
+def solution():	 [ ]
+    """While walking down the street with his 3 younger siblings, Greg found $20. To be fair to his siblings, he decided to split the money equally. How much money did each of them get?"""	 [ ]
+    money_found = 20	 [ ]
+    siblings = 3	 [ ]
+    money_per_sibling = money_found / siblings	 [ ]
+    result = money_per_sibling	 [ ]
+    return result	 [ ]

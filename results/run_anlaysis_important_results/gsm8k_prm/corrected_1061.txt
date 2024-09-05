@@ -1,0 +1,7 @@
+def solution():	 [ ]
+    """Betsy and Donovan made a meal together. Betsy's part took 18 minutes longer than Donovan's part. The meal was made in 98 minutes. How many minutes long was Betsy's part?"""	 [ ]
+    total_time = 98	 [ ]
+    donovan_time = total_time - 18	 [ ]
+    betsy_time = total_time	 [ ]
+    result = betsy_time	 [ ]
+    return result	 [ ]

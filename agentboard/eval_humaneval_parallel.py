@@ -15,9 +15,9 @@ from algorithms import load_algorithm
 from tqdm import tqdm
 from typing import Optional
 
-from utils.human_eval.evaluation import evaluate_functional_correctness
+from utils.human_eval.evaluation import evaluate_functional_correctness, parse_code_prefix
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "7"
 
 def load_dataset(task, path=''):
     if task == "humaneval":
@@ -60,7 +60,8 @@ def entry_point(
     results to f"{sample_file}_results.jsonl.gz"
     """
     k = list(map(int, k.split(",")))
-    results = evaluate_functional_correctness(sample_file, k=k, n_workers=n_workers, timeout=timeout, problem_file=problem_file)
+    is_mbpp = "mbpp" in problem_file
+    results = evaluate_functional_correctness(sample_file, k=k, n_workers=n_workers, timeout=timeout, problem_file=problem_file, is_mbpp=is_mbpp)
     results = {k:v*100 for k,v in results.items()}
     print(results)
     
@@ -88,7 +89,7 @@ class EvalReasoning:
         # with open(algorithm_config["prompt_path"], 'r') as f:
         #     self.prompts = json.load(f)
         self.prompts = {}
-        if self.task == "humaneval":
+        if self.task in ["humaneval", "mbpp"]:
             self.prompts["system_msg"] = "Finish writing the python function. You will only write code blocks."
         
     def evaluate(self):
@@ -145,37 +146,37 @@ class EvalReasoning:
         
         id = 0
         
-        for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
-            if self.task == "humaneval":
-                prefixes = [item["prompt"] for item in test_items]
-                questions = [item["text"] for item in test_items]
-                self.prompts["prompt"] = prefixes
-            elif self.task == "mbpp":
-                prefixes = [item["code"] for item in test_items]
-                questions = [item["prompt"] for item in test_items]
-                self.prompts["prompt"] = prefixes
-            else:
-                raise ValueError("Task not supported")
+        # for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
+        #     if self.task == "humaneval":
+        #         prefixes = [item["prompt"] for item in test_items]
+        #         questions = [item["text"] for item in test_items]
+        #         self.prompts["prompt"] = prefixes
+        #     elif self.task == "mbpp":
+        #         prefixes = [parse_code_prefix(item["code"]) for item in test_items]
+        #         questions = [item["prompt"] for item in test_items]
+        #         self.prompts["prompt"] = prefixes
+        #     else:
+        #         raise ValueError("Task not supported")
             
-            success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
+        #     success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 
-            assert success
+        #     assert success
             
-            assert len(test_items) == len(all_outputs)
+        #     assert len(test_items) == len(all_outputs)
             
             
-            with open(output_filepath, "a+") as f:
-                for id, item in enumerate(test_items):
-                    output = all_outputs[id]
-                    if type(output) == list: 
-                        for out in output:
-                            write_dict = item.copy()
-                            write_dict["generation"] = out
-                            f.write(json.dumps(write_dict) + '\n')
-                    else:
-                        write_dict = item.copy()
-                        write_dict["generation"] = output
-                        f.write(json.dumps(write_dict) + '\n')
+        #     with open(output_filepath, "a+") as f:
+        #         for id, item in enumerate(test_items):
+        #             output = all_outputs[id]
+        #             if type(output) == list: 
+        #                 for out in output:
+        #                     write_dict = item.copy()
+        #                     write_dict["generation"] = out
+        #                     f.write(json.dumps(write_dict) + '\n')
+        #             else:
+        #                 write_dict = item.copy()
+        #                 write_dict["generation"] = output
+        #                 f.write(json.dumps(write_dict) + '\n')
             
         res = entry_point(output_filepath, self.dataset_path)
         with open(os.path.join(self.log_path,f"all_results.txt"), "a+") as f:
@@ -254,8 +255,8 @@ def main():
     
     eval_reasoning = EvalReasoning(task, run_config, llm_config, algorithm_config)
     
-    for i in range(10):
-        metrics = eval_reasoning.parallel_evaluate()
+    # for i in range(10):
+    metrics = eval_reasoning.parallel_evaluate()
     
     
 if __name__ == "__main__":

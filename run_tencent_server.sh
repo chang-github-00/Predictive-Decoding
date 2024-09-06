@@ -50,3 +50,6 @@ python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_tencent_ser
 
 # humaneval parallel run, set n generate samples to 10
 python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_tencent_server/humaneval/self_consistency_humaneval_llama3.yaml --tasks humaneval --algorithm Self_Consistency --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/run_parallel_passk_humaneval_8_23 --batch_size 200
+
+# mbpp parallel run, set n generate samples to 10
+python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_server/mbpp/self_consistency_mbpp_llama3.yaml --tasks mbpp --model llama-3 --log_path results/run_self_consistency_mbpp_9_6 --algorithm Self_Consistency --batch_size 500 --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl

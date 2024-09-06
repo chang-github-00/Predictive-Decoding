@@ -59,6 +59,7 @@ IMPORT_HELPER = {
 }
 
 
+
 LANGUAGE_NAME = {
     "cpp"   : "CPP",
     "go"    : "Go",
@@ -67,6 +68,18 @@ LANGUAGE_NAME = {
     "python": "Python",
 }
 
+
+def parse_code_prefix(code: str) -> str:
+    code = code.strip()
+    code_lines = code.split("\n")
+    prefix = ""
+    prefix_id = 0
+    for line in code_lines:
+        if "def " in line:
+            prefix_id = code_lines.index(line)
+            break
+    prefix = "\n".join([code.strip() for code in code_lines[:prefix_id+1]])
+    return prefix + "\n"
 
 def read_dataset(
     data_file: str = None,

@@ -15,6 +15,6 @@ llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 10
+  batch_size: 500
   data_path: /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl
-  log_path: results/debug
+  log_path: results/run_self_consistency_mbpp_9_6

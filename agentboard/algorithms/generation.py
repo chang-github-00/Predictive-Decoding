@@ -250,7 +250,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
             self.prompts = prompts
         
         all_prompts = []
-        if self.task == "humaneval":
+        if self.task in ["humaneval", "mbpp"]:
             all_prompts = questions
             answer_prefixes = self.prompts["prompt"]
         else:
@@ -270,7 +270,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
         
         if args.n_generate_sample == 1: all_code_samples = [[code_sample] for code_sample in all_code_samples]
         
-        if self.task == "humaneval":
+        if self.task in ["humaneval", "mbpp"]:
             all_outputs = []
             for prefix, code_samples in zip(self.prompts["prompt"], all_code_samples):
                 

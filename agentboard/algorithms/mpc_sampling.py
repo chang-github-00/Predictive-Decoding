@@ -92,7 +92,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                 answer_prefix = f.getvalue()
                 
             return model_input, answer_prefix
-        if self.task == "humaneval":
+        if self.task in ["humaneval", "mbpp"]:
             with io.StringIO() as f:
                 f.write(question)
                 model_input = f.getvalue()
@@ -565,7 +565,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                         parse_prefix = "def solution():\n"
                     if self.task == "math":
                         parse_prefix = "Null"
-                    if self.task == "humaneval":
+                    if self.task in ["humaneval", "mbpp"]:
                         parse_prefix = self.prompts["prompt"]
                     processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix)
 
@@ -712,7 +712,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                             parse_prefix = "def solution():\n"
                         if self.task == "math":
                             parse_prefix = "Null"
-                        if self.task == "humaneval":
+                        if self.task in ["humaneval", "mbpp"]:
                             parse_prefix = self.prompts["prompt"][id]
                         processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix, id=id)
 
@@ -749,7 +749,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                         f.write("def solution():\n")
                     elif self.task == "math":
                         pass
-                    elif self.task == "humaneval":
+                    elif self.task in ["humaneval", "mbpp"]:
                         f.write(self.prompts["prompt"][id])
                     else:
                         raise NotImplementedError
@@ -856,7 +856,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                             parse_prefix = "def solution():\n"
                         if self.task == "math":
                             parse_prefix = "Null"
-                        if self.task == "humaneval":
+                        if self.task in ["humaneval", "mbpp"]:
                             parse_prefix = self.prompts["prompt"][id]
                         processed_output, action = self.parse_action_sequence(action_sequence, parse_prefix=parse_prefix, id=id)
 
@@ -893,7 +893,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                         f.write("def solution():\n")
                     elif self.task == "math":
                         pass
-                    elif self.task == "humaneval":
+                    elif self.task in ["humaneval", "mbpp"]:
                         f.write(self.prompts["prompt"][id])
                     else:
                         raise NotImplementedError

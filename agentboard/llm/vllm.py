@@ -181,6 +181,10 @@ class VLLM:
         use_beam_search = config.get("use_beam_search", False)
         
         if use_beam_search:
+            if n > 1:
+                best_of = n
+            else:
+                best_of = 8
             samplingparams = SamplingParams(
                 temperature=0,
                 top_p=top_p,
@@ -188,7 +192,7 @@ class VLLM:
                 max_tokens=max_tokens,
                 logprobs=logprobs,
                 n=n,
-                best_of=8,
+                best_of=best_of,
                 use_beam_search=True,
             )
         else:

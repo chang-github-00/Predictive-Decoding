@@ -59,3 +59,11 @@ python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_serve
 
 
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_self_consistency_gsm8k_8_31_n_8_sample --batch_size 1319
+
+# mbpp parallel run, set n generate samples to 10
+python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_server/mbpp/self_consistency_mbpp_llama3.yaml --tasks mbpp --model llama-3 --log_path results/run_self_consistency_mbpp_9_6 --algorithm Self_Consistency --batch_size 500 --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl
+
+# mbpp mpc sample parallel run, set n generate samples to 1
+python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_server/mbpp/mpc_sample_mbpp_llama3.yaml --tasks mbpp --model llama-3 --log_path results/run_mpc_sample_n_1_mbpp_9_6 --algorithm MPC_Sample --batch_size 500 --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl
+# mbpp mpc sample parallel run, set n generate samples to 10
+python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_server/mbpp/mpc_multiple_mbpp_llama3.yaml --tasks mbpp --model llama-3 --log_path results/run_mpc_sample_n_10_mbpp_9_6 --algorithm MPC_Sample --batch_size 500 --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl

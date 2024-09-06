@@ -17,7 +17,7 @@ from typing import Optional
 
 from utils.human_eval.evaluation import evaluate_functional_correctness, parse_code_prefix
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "7"
+os.environ["CUDA_VISIBLE_DEVICES"] = "5"
 
 def load_dataset(task, path=''):
     if task == "humaneval":
@@ -89,8 +89,10 @@ class EvalReasoning:
         # with open(algorithm_config["prompt_path"], 'r') as f:
         #     self.prompts = json.load(f)
         self.prompts = {}
-        if self.task in ["humaneval", "mbpp"]:
+        if self.task in ["humaneval"]:
             self.prompts["system_msg"] = "Finish writing the python function. You will only write code blocks."
+        elif self.task in ["mbpp"]:
+            self.prompts["system_msg"] = "Finish writing the python function. You will only write code blocks. There should only be one return statement in the function."
         
     def evaluate(self):
         
@@ -146,37 +148,37 @@ class EvalReasoning:
         
         id = 0
         
-        # for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
-        #     if self.task == "humaneval":
-        #         prefixes = [item["prompt"] for item in test_items]
-        #         questions = [item["text"] for item in test_items]
-        #         self.prompts["prompt"] = prefixes
-        #     elif self.task == "mbpp":
-        #         prefixes = [parse_code_prefix(item["code"]) for item in test_items]
-        #         questions = [item["prompt"] for item in test_items]
-        #         self.prompts["prompt"] = prefixes
-        #     else:
-        #         raise ValueError("Task not supported")
+        for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
+            if self.task == "humaneval":
+                prefixes = [item["prompt"] for item in test_items]
+                questions = [item["text"] for item in test_items]
+                self.prompts["prompt"] = prefixes
+            elif self.task == "mbpp":
+                prefixes = [parse_code_prefix(item["code"]) for item in test_items]
+                questions = [item["prompt"] for item in test_items]
+                self.prompts["prompt"] = prefixes
+            else:
+                raise ValueError("Task not supported")
             
-        #     success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
+            success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 
-        #     assert success
+            assert success
             
-        #     assert len(test_items) == len(all_outputs)
+            assert len(test_items) == len(all_outputs)
             
             
-        #     with open(output_filepath, "a+") as f:
-        #         for id, item in enumerate(test_items):
-        #             output = all_outputs[id]
-        #             if type(output) == list: 
-        #                 for out in output:
-        #                     write_dict = item.copy()
-        #                     write_dict["generation"] = out
-        #                     f.write(json.dumps(write_dict) + '\n')
-        #             else:
-        #                 write_dict = item.copy()
-        #                 write_dict["generation"] = output
-        #                 f.write(json.dumps(write_dict) + '\n')
+            with open(output_filepath, "a+") as f:
+                for id, item in enumerate(test_items):
+                    output = all_outputs[id]
+                    if type(output) == list: 
+                        for out in output:
+                            write_dict = item.copy()
+                            write_dict["generation"] = out
+                            f.write(json.dumps(write_dict) + '\n')
+                    else:
+                        write_dict = item.copy()
+                        write_dict["generation"] = output
+                        f.write(json.dumps(write_dict) + '\n')
             
         res = entry_point(output_filepath, self.dataset_path)
         with open(os.path.join(self.log_path,f"all_results.txt"), "a+") as f:

@@ -1,0 +1,2 @@
+{"task": "mbpp_mbpp_test", "pass@1": 35.0}
+{"task": "mbpp_mbpp_test", "pass@1": 35.5}

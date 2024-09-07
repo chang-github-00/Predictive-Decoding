@@ -48,3 +48,9 @@ python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs/humaneval/s
 
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs/math/self_consistency_math_llama3.yaml --tasks math --algorithm Self_Consistency --model llama-3 --data_path /root/Agent-Decoding/data/math/test.json --log_path results/run_parallel_self_consistency_math_8_29_beam_search_best_1 --batch_size 5000
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model llama-3 --data_path /root/huggingface/gsm8k --log_path results/run_parallel_self_consistency_gsm8k_8_29_beam_search_best_1 --batch_size 2000
+
+
+
+# reward model gsm8k
+
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/mpc_reward_gsm8k_llama3.yaml --tasks gsm8k --algorithm MPC_Sample_Reward --model llama-3 --data_path /root/huggingface/gsm8k --log_path results/run_reward_model_llama3_mathshepherd_gsm8k_9_7_mpc_1.0_0.01 --batch_size 2000 --reward_model math-shepherd

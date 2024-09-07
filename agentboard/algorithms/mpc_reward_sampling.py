@@ -98,10 +98,12 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
             full_prompt = []
             index = 0
             for action in memory + action_sequences:
+                if action is None:
+                    continue
                 if "answer" in action:
-                    full_prompt.append(f"{action['answer']} ки")
+                    full_prompt.append(f"{action}ки\n")
                 if action is not None:
-                    full_prompt.append(f"Step {index+1}: {action} ки")
+                    full_prompt.append(f"Step {index+1}: {action} ки\n")
                     index += 1
             full_prompt = f"{question} {full_prompt}"
             full_prompts.append(full_prompt)
@@ -134,7 +136,7 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
         
         # if we have the id, means this is for parallel generation, therefore we need to update only the corresponding state for that question
         
-        action_rollouts = outputs["action_chain"]
+        action_rollouts = outputs
         
         if memory is None:
             memory = self.memory[id] if id is not None else self.memory
@@ -292,8 +294,11 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
     def parse_action_sequence(self, action_output, parse_prefix="", id=None, memory=None): 
         if self.value_type == "reward":
             action_output = action_output.split(".")
+            action_output = [action for action in action_output if action.strip() != ""]
             action_output = action_output[:self.lookahead_decision_length]
             action_output = [action+". " for action in action_output]
+            if len(action_output) == 0:
+                return None, None
             return action_output, action_output[0]
         elif self.value_type == "logp":
             return self.parse_action_sequence_and_logp(action_output, parse_prefix=parse_prefix, id=id, memory=memory)
@@ -698,6 +703,7 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
                         # self.update_trajectory_pool(processed_output, reward=reward, id=id)    
                 if args.value_type == "logp":
                     all_reward = [processed_output["action_prob"] for processed_output in all_processed_output]
+                    all_processed_output = [processed_output["action_chain"] for processed_output in all_processed_output]
                 elif args.value_type == "reward":
                     all_questions_for_rm = [questions[i] for i in record_action_id]
                     all_memories = [self.memory[i] for i in record_action_id]

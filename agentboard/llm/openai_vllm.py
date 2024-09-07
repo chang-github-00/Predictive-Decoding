@@ -130,7 +130,7 @@ class OPENAI_VLLM:
                     
         return False, None
     
-    def complete(self, prompt): # to get logprobs
+    def encode(self, prompt): # to get logprobs
         response = self.client.completions.create(
             model=self.engine,
             prompt=prompt,

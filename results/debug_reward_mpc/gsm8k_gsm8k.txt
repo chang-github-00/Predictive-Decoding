@@ -1,0 +1,102 @@
+[EXP] 1: [success_rate]: True, [answer]: 18, [output]:  Janet's ducks lay 16 eggs per day.  She eats 3 for breakfast, leaving 16 - 3 = 13 eggs.  She uses 4 for muffins, leaving 13 - 4 = 9 eggs.  She sells the remainder, 9 eggs, every day for $2 per egg, totaling 9 x 2 = $18.  The answer is 18. 
+ Voted result:  Janet's ducks lay 16 eggs per day.  She eats 3 for breakfast, leaving 16 - 3 = 13 eggs.  She uses 4 for muffins, leaving 13 - 4 = 9 eggs.  She sells the remainder, 9 eggs, every day for $2 per egg, totaling 9 x 2 = $18.  The answer is 18. 
+[EXP] 2: [success_rate]: True, [answer]: 3, [output]: 2 bolts of blue fiber are needed.  Since half the amount of white fiber is needed, that means 2/2 = 1 bolt of white fiber is needed.  So the total number of bolts needed is 2 + 1 = 3.  The answer is 3. 
+ Voted result: 2 bolts of blue fiber are needed.  Since half the amount of white fiber is needed, that means 2/2 = 1 bolt of white fiber is needed.  So the total number of bolts needed is 2 + 1 = 3.  The answer is 3. 
+[EXP] 3: [success_rate]: True, [answer]: 70000, [output]:  Josh started with a house worth 80000.  After 50000 in repairs, the house increased in value by 150%.  150% of 80000 is 150/100 * 80000 = 120000.  So the house is now worth 80000 + 120000 = 200000.  Josh spent 80000 + 50000 = 130000.  He made 200000 - 130000 = 70000 in profit.  The answer is 70000. 
+ Voted result:  Josh started with a house worth 80000.  After 50000 in repairs, the house increased in value by 150%.  150% of 80000 is 150/100 * 80000 = 120000.  So the house is now worth 80000 + 120000 = 200000.  Josh spent 80000 + 50000 = 130000.  He made 200000 - 130000 = 70000 in profit.  The answer is 70000. 
+[EXP] 4: [success_rate]: True, [answer]: 540, [output]:  James runs 3 sprints per time, so for 3 times a week, he runs 3 * 3 = 9 sprints.  For each sprint, he runs 60 meters.   So the total distance he runs is 9 * 60 = 540 meters.  The answer is 540. 
+ Voted result:  James runs 3 sprints per time, so for 3 times a week, he runs 3 * 3 = 9 sprints.  For each sprint, he runs 60 meters.   So the total distance he runs is 9 * 60 = 540 meters.  The answer is 540. 
+[EXP] 5: [success_rate]: True, [answer]: 20, [output]:  Every morning, Wendi gives her chickens 15 cups of feed.  She gives them another 25 cups in the afternoon. 20 chickens, 3 cups each will be 20 x 3 = 60 cups.  So in total she has given them 15 + 25 = 40 cups.  To reach 60 cups, she needs to give them 60 - 40 = 20 cups.  The answer is 20. 
+ Voted result:  Every morning, Wendi gives her chickens 15 cups of feed.  She gives them another 25 cups in the afternoon. 20 chickens, 3 cups each will be 20 x 3 = 60 cups.  So in total she has given them 15 + 25 = 40 cups.  To reach 60 cups, she needs to give them 60 - 40 = 20 cups.  The answer is 20. 
+[EXP] 6: [success_rate]: True, [answer]: 64, [output]:  Kylar wants to buy 16 glasses.  Every second glass costs 60% of $5, which is $3.  So the 8 glasses at the discount will cost 8 x $3 = $24.  The other 8 regular glasses will cost 8 x $5 = $40.  So the total price for the 16 glasses is $24 + $40 = $64.  The answer is $64. 
+ Voted result:  Kylar wants to buy 16 glasses.  Every second glass costs 60% of $5, which is $3.  So the 8 glasses at the discount will cost 8 x $3 = $24.  The other 8 regular glasses will cost 8 x $5 = $40.  So the total price for the 16 glasses is $24 + $40 = $64.  The answer is $64. 
+[EXP] 7: [success_rate]: True, [answer]: 260, [output]:  Since Seattle has 20 sheep, then Charleston has 4 times that which is 20 x 4 = 80 sheep.  Toulouse has twice as many sheep as Charleston, which is 80 x 2 = 160 sheep.  In total, they have 20 + 80 + 160 = 260 sheep.  The answer is 260. 
+ Voted result:  Since Seattle has 20 sheep, then Charleston has 4 times that which is 20 x 4 = 80 sheep.  Toulouse has twice as many sheep as Charleston, which is 80 x 2 = 160 sheep.  In total, they have 20 + 80 + 160 = 260 sheep.  The answer is 260. 
+[EXP] 8: [success_rate]: False, [answer]: 160, [output]:  We are given that Carla's normal download speed is 2 GB/min.  So, downloading 200 GB would normally take 200 / 2 = 100 minutes. 
+
+Since Carla has to restart the download, let's calculate how much time she wasted waiting for the restart: The download was completed 40% of the way, so it took Carla 40% * 100 minutes = 40 minutes to reach that point.  Then the Windows restart took 20 more minutes.  So, in total, Carla wasted 60 minutes.  But now, she has to restart from the beginning.   She already downloaded 40% of 200 GB, which is 80 GB.   So now she needs to download 200 - 80 = 120 GB.  At her normal speed, it would take her 120 / 2 = 60 minutes.  But then we must add the time she wasted waiting for the restart, so the total time will be 60 + 60 = 120 minutes.  The answer is 120. 
+ Voted result:  We are given that Carla's normal download speed is 2 GB/min.  So, downloading 200 GB would normally take 200 / 2 = 100 minutes. 
+
+Since Carla has to restart the download, let's calculate how much time she wasted waiting for the restart: The download was completed 40% of the way, so it took Carla 40% * 100 minutes = 40 minutes to reach that point.  Then the Windows restart took 20 more minutes.  So, in total, Carla wasted 60 minutes.  But now, she has to restart from the beginning.   She already downloaded 40% of 200 GB, which is 80 GB.   So now she needs to download 200 - 80 = 120 GB.  At her normal speed, it would take her 120 / 2 = 60 minutes.  But then we must add the time she wasted waiting for the restart, so the total time will be 60 + 60 = 120 minutes.  The answer is 120. 
+[EXP] 9: [success_rate]: False, [answer]: 45, [output]:  Let's break this down step by step. 
+
+John drives for 3 hours at 60 mph.  3 hours at 60 mph means he has traveled 3 x 60 = 180 miles away from home. 
+
+Then, he tries to get home in 4 hours.  He spends the first 2 hours in standstill traffic, which means he doesn't move at all during that time. 
+
+Then, he drives at 30 mph for half an hour.  When you go 30 miles per hour for half an hour, you go 15 miles.  So, after this, he has gone 15 + 180 = 195 miles.  But we still have 4 hours left, and he'll be going 80 mph during those next 2 hours. 2 hours at 80 mph means he'll go 2 x 80 = 160 miles.  
+
+Total distance so far is 195 miles.  We are looking for how many miles away he is from home.  If he went away 195 miles and then goes back 160 miles, he will be 195 - 160 = 35 miles away from home.  The answer is 35. 
+ Voted result:  Let's break this down step by step. 
+
+John drives for 3 hours at 60 mph.  3 hours at 60 mph means he has traveled 3 x 60 = 180 miles away from home. 
+
+Then, he tries to get home in 4 hours.  He spends the first 2 hours in standstill traffic, which means he doesn't move at all during that time. 
+
+Then, he drives at 30 mph for half an hour.  When you go 30 miles per hour for half an hour, you go 15 miles.  So, after this, he has gone 15 + 180 = 195 miles.  But we still have 4 hours left, and he'll be going 80 mph during those next 2 hours. 2 hours at 80 mph means he'll go 2 x 80 = 160 miles.  
+
+Total distance so far is 195 miles.  We are looking for how many miles away he is from home.  If he went away 195 miles and then goes back 160 miles, he will be 195 - 160 = 35 miles away from home.  The answer is 35. 
+[EXP] 10: [success_rate]: True, [answer]: 460, [output]:  Eliza's regular rate is 10 dollars per hour.  For the first 40 hours, her earnings will be 40 x 10 = 400 dollars.  For the overtime hours (5 hours), her rate is 10 x 1. 2 = 12 dollars per hour.  So for the overtime hours, she earns 5 x 12 = 60 dollars.  Total earnings are 400 + 60 = 460 dollars.  The answer is 460. 
+ Voted result:  Eliza's regular rate is 10 dollars per hour.  For the first 40 hours, her earnings will be 40 x 10 = 400 dollars.  For the overtime hours (5 hours), her rate is 10 x 1. 2 = 12 dollars per hour.  So for the overtime hours, she earns 5 x 12 = 60 dollars.  Total earnings are 400 + 60 = 460 dollars.  The answer is 460. 
+[EXP] 11: [success_rate]: True, [answer]: 366, [output]: 60 downloads in the first month.  The number of downloads in the second month was 3 times as many.  60 x 3 = 180.  After reducing 30% in the third month, we need to calculate 30% of 180 and subtract that from 180.  30% of 180 is 30/100 x 180 = 54.   So 180 - 54 = 126 downloads in the third month.  In total, the program had 60 + 180 + 126 = 366 downloads.  The answer is 366. 
+ Voted result: 60 downloads in the first month.  The number of downloads in the second month was 3 times as many.  60 x 3 = 180.  After reducing 30% in the third month, we need to calculate 30% of 180 and subtract that from 180.  30% of 180 is 30/100 x 180 = 54.   So 180 - 54 = 126 downloads in the third month.  In total, the program had 60 + 180 + 126 = 366 downloads.  The answer is 366. 
+[EXP] 12: [success_rate]: True, [answer]: 694, [output]: 3 dozen donuts cost 68 dollars per dozen.  68 * 3 = 204.  Two dozen mini cupcakes cost 80 dollars per dozen.  80 * 2 = 160.  6 dozen mini cheesecakes cost 55 dollars per dozen.   55 * 6 = 330.   The total cost is 204 + 160 + 330.  204 + 160 = 364.   364 + 330 = 694.  The answer is 694. 
+ Voted result: 3 dozen donuts cost 68 dollars per dozen.  68 * 3 = 204.  Two dozen mini cupcakes cost 80 dollars per dozen.  80 * 2 = 160.  6 dozen mini cheesecakes cost 55 dollars per dozen.   55 * 6 = 330.   The total cost is 204 + 160 + 330.  204 + 160 = 364.   364 + 330 = 694.  The answer is 694. 
+[EXP] 13: [success_rate]: False, [answer]: 13, [output]:  Carlos needs to plant the tree.  The tree costs $90. 
+The tree will grow 7 lemons per year.  If he can sell them for $1. 5 each, his total earnings will be $7.  
+It costs $3 per year to take care of the tree.  So, his profit will be $7 - $3 = $4 per year.  
+
+Carlos cannot make a profit if he only plants the tree.  He has to grow the tree to make a profit.  Your answer is not provided in the examples. 
+ Voted result:  Carlos needs to plant the tree.  The tree costs $90. 
+The tree will grow 7 lemons per year.  If he can sell them for $1. 5 each, his total earnings will be $7.  
+It costs $3 per year to take care of the tree.  So, his profit will be $7 - $3 = $4 per year.  
+
+Carlos cannot make a profit if he only plants the tree.  He has to grow the tree to make a profit.  Your answer is not provided in the examples. 
+[EXP] 14: [success_rate]: True, [answer]: 18, [output]:  Melanie started with some unknown number of vacuum cleaners.  Let's call this number x. 
+
+She sold a third of the vacuum cleaners at the green house.  A third of x is x/3.  After selling x/3 vacuum cleaners, she was left with x - (x/3) = 2x/3 vacuum cleaners.  
+She sold 2 more vacuum cleaners at the red house, which left her with 2x/3 - 2 vacuum cleaners.  
+She then sold half of what was left at the orange house.  She had 2x/3 - 2 vacuum cleaners, and half of that is (2x/3 - 2)/2 = x/3 - 1.   After selling this, Melanie had 5 vacuum cleaners left.   
+
+So, x/3 - 1 = 5.   We need to solve for x. 
+
+To start, add 1 to both sides of the equation: x/3 = 6.  Then multiply both sides by 3: x = 18.  The answer is 18. 
+ Voted result:  Melanie started with some unknown number of vacuum cleaners.  Let's call this number x. 
+
+She sold a third of the vacuum cleaners at the green house.  A third of x is x/3.  After selling x/3 vacuum cleaners, she was left with x - (x/3) = 2x/3 vacuum cleaners.  
+She sold 2 more vacuum cleaners at the red house, which left her with 2x/3 - 2 vacuum cleaners.  
+She then sold half of what was left at the orange house.  She had 2x/3 - 2 vacuum cleaners, and half of that is (2x/3 - 2)/2 = x/3 - 1.   After selling this, Melanie had 5 vacuum cleaners left.   
+
+So, x/3 - 1 = 5.   We need to solve for x. 
+
+To start, add 1 to both sides of the equation: x/3 = 6.  Then multiply both sides by 3: x = 18.  The answer is 18. 
+[EXP] 15: [success_rate]: True, [answer]: 60, [output]: 20 students are enrolled in a dance class.  20% enrolled in contemporary dance. 20% of 20 is 4.  So there were 4 students who enrolled in contemporary dance.  That leaves 20 - 4 = 16 students remaining. 
+
+25% of the remaining students enrolled in jazz dance. 25% of 16 is 4.  So 4 students enrolled in jazz dance.  That leaves 16 - 4 = 12 students remaining.  They enrolled in hip-hop dance. 
+
+To find the percentage, divide 12 by 20 and multiply by 100:
+
+(12/20)*100 = 60
+
+So 60% of the students enrolled in hip-hop dance.  The answer is 60. 
+ Voted result: 20 students are enrolled in a dance class.  20% enrolled in contemporary dance. 20% of 20 is 4.  So there were 4 students who enrolled in contemporary dance.  That leaves 20 - 4 = 16 students remaining. 
+
+25% of the remaining students enrolled in jazz dance. 25% of 16 is 4.  So 4 students enrolled in jazz dance.  That leaves 16 - 4 = 12 students remaining.  They enrolled in hip-hop dance. 
+
+To find the percentage, divide 12 by 20 and multiply by 100:
+
+(12/20)*100 = 60
+
+So 60% of the students enrolled in hip-hop dance.  The answer is 60. 
+[EXP] 16: [success_rate]: True, [answer]: 125, [output]:  lets consider the jewelry option first.  The jewelry is worth $5,000 initially.  If it goes up 2. 5%, then it will be worth $5,000 x (1 + 0. 025) = $5,125.  So the profit would be $5,125 - $5,000 = $125.  Now let's consider the electronic gadgets option.   These are worth $8,000 initially.  If they go up 1. 2%, they will be worth $8,000 x (1 + 0. 012) = $8,064.   So the profit would be $8,064 - $8,000 = $64.  Since 125 is greater than 64, the merchant should choose the jewelry option.   The answer is $125. 
+ Voted result:  lets consider the jewelry option first.  The jewelry is worth $5,000 initially.  If it goes up 2. 5%, then it will be worth $5,000 x (1 + 0. 025) = $5,125.  So the profit would be $5,125 - $5,000 = $125.  Now let's consider the electronic gadgets option.   These are worth $8,000 initially.  If they go up 1. 2%, they will be worth $8,000 x (1 + 0. 012) = $8,064.   So the profit would be $8,064 - $8,000 = $64.  Since 125 is greater than 64, the merchant should choose the jewelry option.   The answer is $125. 
+[EXP] 17: [success_rate]: False, [answer]: 230, [output]:  Let's break it down step by step. 
+
+Day 1: Both trains travel westward for 80 miles. 80 * 2 = 160 miles.  
+
+Day 2: Both trains travel northward for 150 miles. 150 * 2 = 300 miles.  The total distance covered by each train in the two days is 160 + 300 = 460.  The answer is 460. 
+ Voted result:  Let's break it down step by step. 
+
+Day 1: Both trains travel westward for 80 miles. 80 * 2 = 160 miles.  
+
+Day 2: Both trains travel northward for 150 miles. 150 * 2 = 300 miles.  The total distance covered by each train in the two days is 160 + 300 = 460.  The answer is 460. 

@@ -186,8 +186,9 @@ class EvalReasoning:
                     answer = item["answer"]
                 elif self.task == "gsm8k":
                     answer = retrieve_answer_from_dataset(item["answer"])
-                if type(output) == list: output = "\n".join(output) 
-                output = output + "\n Voted result: " + str(final_output)
+                if type(output) == list: 
+                    output = "\n".join(output) 
+                    output = output + "\n Voted result: " + str(final_output)
                 
                 
                 id += 1
@@ -266,8 +267,9 @@ def main():
     llm_config, algorithm_config, run_config = load_config(args.cfg_path, args) 
     
     task = args.tasks
-    llm_config = llm_config[args.model]
     reward_model_config = llm_config[args.reward_model]
+    llm_config = llm_config[args.model]
+    
     
     check_log_paths_are_ready(run_config["log_path"])
     

@@ -130,6 +130,25 @@ class OPENAI_VLLM:
                     
         return False, None
     
+    def complete(self, prompt): # to get logprobs
+        response = self.client.completions.create(
+            model=self.engine,
+            prompt=prompt,
+            max_tokens=1,
+            logprobs=20,
+            echo=True
+        )
+        
+        all_logprobs = []
+        all_tokens = []
+        for res in response.choices:
+            logprobs = res.logprobs.top_logprobs
+            tokens = res.logprobs.tokens
+            all_logprobs.append(logprobs)
+            all_tokens.append(tokens)
+        return all_logprobs, all_tokens
+            
+    
     def generate_with_config(self, system_message, prompt, config):
         prompt=[
                 {"role": "system", "content": system_message},

@@ -164,9 +164,11 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             
             all_prefix = [prefix] + [a for a in memory if a is not None]
             
-            for prefix in all_prefix:
-                if prefix in action: # added, in case there is repeat of prompt inside the generation
-                    action = action.split(prefix)[1]
+            if "mistral" not in self.llm_model.engine.lower(): # mistral don't know when to stop and easily generate more than one prefix...
+                # actually this code is not quite useful for llama3 anyway, perhaps could remove it.
+                for prefix in all_prefix:
+                    if prefix in action: # added, in case there is repeat of prompt inside the generation
+                        action = action.split(prefix)[1]
             action = action.lstrip('\n')
             
             if action == "":
@@ -197,9 +199,11 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
             token_start, token_end = 0, -1
             action = action_text_output
             
-            for prefix in all_prefix:
-                if prefix in action: # added, in case there is repeat of prompt inside the generation
-                    action = action.split(prefix)[1]
+            if "mistral" not in self.llm_model.engine.lower(): # mistral don't know when to stop and easily generate more than one prefix...
+                # actually this code is not quite useful for llama3 anyway, perhaps could remove it.
+                for prefix in all_prefix:
+                    if prefix in action: # added, in case there is repeat of prompt inside the generation
+                        action = action.split(prefix)[1]
                     
              # remove all '\n' in the beginning
             action = action.lstrip('\n')
@@ -358,7 +362,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                     all_action_prob_pairs[action] += prob
             
             # print in style action:prob, action: prob...
-            print("Action probabilities: ", all_action_prob_pairs)
+            # print("Action probabilities: ", all_action_prob_pairs)
             
             all_valid_actions = list(all_action_prob_pairs.keys())
             probs = list(all_action_prob_pairs.values())

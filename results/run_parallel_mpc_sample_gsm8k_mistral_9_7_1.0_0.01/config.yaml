@@ -1,6 +1,6 @@
 algorithm:
   beam_size: 8
-  beam_temperature: 1.0
+  beam_temperature: 0.6
   do_sample: true
   lookahead_thought_length: 8
   n_generate_sample: 1

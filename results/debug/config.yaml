@@ -1,6 +1,6 @@
 algorithm:
   beam_size: 8
-  beam_temperature: 1.0
+  beam_temperature: 0.6
   do_sample: true
   lookahead_thought_length: 8
   n_generate_sample: 1
@@ -20,6 +20,6 @@ llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 10
+  batch_size: 1
   data_path: /ssddata/junxianh/Agent-Decoding/data/gsm8k
   log_path: results/debug

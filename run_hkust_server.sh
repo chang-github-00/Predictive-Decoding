@@ -67,3 +67,15 @@ python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_serve
 python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_server/mbpp/mpc_sample_mbpp_llama3.yaml --tasks mbpp --model llama-3 --log_path results/run_mpc_sample_n_1_mbpp_9_6 --algorithm MPC_Sample --batch_size 500 --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl
 # mbpp mpc sample parallel run, set n generate samples to 10
 python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_server/mbpp/mpc_multiple_mbpp_llama3.yaml --tasks mbpp --model llama-3 --log_path results/run_mpc_sample_n_10_mbpp_9_6 --algorithm MPC_Sample --batch_size 500 --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl
+
+
+# mistral-v0.3 experiments
+
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_self_consistency_gsm8k_mistral_9_7_n_1 --batch_size 1319
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_self_consistency_gsm8k_mistral_9_7_n_1_beamsearch --batch_size 1319
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/mpc_sample_gsm8k_llama3.yaml --tasks gsm8k --algorithm MPC_Sample --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_mpc_sample_gsm8k_mistral_9_7_1.0_0.01 --batch_size 1319
+
+
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/self_consistency_math_llama3.yaml --tasks math --algorithm Self_Consistency --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_self_consistency_math_mistral_9_7_n_1 --batch_size 5000
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/self_consistency_math_llama3.yaml --tasks math --algorithm Self_Consistency --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_self_consistency_math_mistral_9_7_n_1_beamsearch --batch_size 5000
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_mpc_sample_math_mistral_9_7_1.0_0.01 --batch_size 5000

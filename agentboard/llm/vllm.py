@@ -75,7 +75,32 @@ class VLLM:
             raise NotImplementedError
         
         return full_prompt
-
+    
+    def make_prompt_new(self, system_message, prompt, answer_prefix=None):
+        if 'llama-3' in self.model.lower():
+            full_prompt=[
+                    {"role": "system", "content": system_message},
+                    {"role": "user", "content": prompt},
+            ]
+            
+            if answer_prefix is not None:
+                full_prompt.append({"role": "assistant", "content": ""})
+            # full_prompt = self.make_prompt(system_message, prompt)
+            full_prompt = self.tokenizer.apply_chat_template(full_prompt, tokenize=False)
+            if answer_prefix is not None:
+                
+                full_prompt = full_prompt.rstrip("<|eot_id|>")
+                full_prompt += answer_prefix
+            return full_prompt
+        elif 'mistral' in self.model.lower():
+            prompt_template = '''<s>[INST] {system_message}\n\n{prompt}[/INST] '''
+            full_prompt = prompt_template.format(system_message=system_message, prompt=prompt)
+            if answer_prefix is not None:
+                full_prompt += answer_prefix
+            return full_prompt
+        else:
+            raise NotImplementedError
+            
     def generate(self, system_message, prompt, answer_prefix=None):
         full_prompt=[
                 # {"role": "system", "content": system_message},
@@ -122,19 +147,7 @@ class VLLM:
             n=n,
         )
         
-        full_prompt=[
-                {"role": "system", "content": system_message},
-                {"role": "user", "content": prompt},
-        ]
-        
-        if answer_prefix is not None:
-            full_prompt.append({"role": "assistant", "content": ""})
-        # full_prompt = self.make_prompt(system_message, prompt)
-        full_prompt = self.tokenizer.apply_chat_template(full_prompt, tokenize=False)
-        if answer_prefix is not None:
-            full_prompt = full_prompt.rstrip("<|eot_id|>")
-            full_prompt += answer_prefix
-        assert full_prompt is not None
+        full_prompt= self.make_prompt_new(system_message, prompt, answer_prefix)
             
         response = self.llm.generate([full_prompt], samplingparams)
         
@@ -214,19 +227,7 @@ class VLLM:
             else:
                 answer_prefix = None
             
-            full_prompt=[
-                    {"role": "system", "content": system_message},
-                    {"role": "user", "content": prompt},
-            ]
-            
-            if answer_prefix is not None:
-                full_prompt.append({"role": "assistant", "content": ""})
-            # full_prompt = self.make_prompt(system_message, prompt)
-            full_prompt = self.tokenizer.apply_chat_template(full_prompt, tokenize=False)
-            if answer_prefix is not None:
-                full_prompt = full_prompt.rstrip("<|eot_id|>")
-                full_prompt += answer_prefix
-            assert full_prompt is not None
+            full_prompt= self.make_prompt_new(system_message, prompt, answer_prefix)
             
             full_prompts.append(full_prompt)
             

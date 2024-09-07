@@ -17,7 +17,7 @@ from typing import Optional
 
 from utils.human_eval.evaluation import evaluate_functional_correctness, parse_code_prefix
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "5"
+os.environ["CUDA_VISIBLE_DEVICES"] = "7"
 
 def load_dataset(task, path=''):
     if task == "humaneval":

@@ -8,11 +8,11 @@ run:
 algorithm:
   task: math
   name: Self_Consistency  
-  n_generate_sample: 8 # n=1 pal
+  n_generate_sample: 1 # n=1 pal / 8
   value_type: logp # use llama3
   do_sample: True
   beam_temperature: 0.6
-  beam_search: True
+  beam_search: False  # True
   # lookahead_token_length: 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
@@ -35,4 +35,14 @@ llm:
       top_p: 1
       stop:
       dtype: float32
+      ngpu: 1
+
+  mistral-3:
+      name: vllm
+      engine: /ssddata/model_hub/Mistral-7B-Instruct-v0.3
+      context_length: 32768
+      temperature: 0
+      top_p: 1
+      stop: 
+      dtype: bfloat16
       ngpu: 1

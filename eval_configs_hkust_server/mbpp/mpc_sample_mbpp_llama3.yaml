@@ -14,8 +14,8 @@ algorithm:
   beam_size: 8
   value_type: logp # use llama3
   do_sample: True
-  beam_temperature: 0.1
-  select_temperature: 0.05
+  beam_temperature: 0.6
+  select_temperature: 0.1
   use_memory: True
   # lookahead_token_length: 
 llm:
@@ -38,6 +38,15 @@ llm:
       temperature: 0
       top_p: 1
       stop:
+      dtype: float32
+      ngpu: 1
+  mistral-2:
+      name: vllm
+      engine: /ssddata/model_hub/Mistral-7B-Instruct-v0.2
+      context_length: 32768
+      temperature: 0
+      top_p: 1
+      stop: 
       dtype: float32
       ngpu: 1
   # llama3:

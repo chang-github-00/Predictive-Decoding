@@ -34,5 +34,5 @@ llm:
       temperature: 0
       top_p: 1
       stop:
-      dtype: float32
+      dtype: bfloat16
       ngpu: 1

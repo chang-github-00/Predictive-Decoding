@@ -40,6 +40,15 @@ llm:
       stop:
       dtype: float32
       ngpu: 1
+  mistral-3:
+      name: vllm
+      engine: /ssddata/model_hub/Mistral-7B-Instruct-v0.3
+      context_length: 32768
+      temperature: 0
+      top_p: 1
+      stop: 
+      dtype: bfloat16
+      ngpu: 1
   # llama3:
   #     name: openai_vllm
   #     engine: /root/huggingface/Meta-Llama-3-8B-Instruct/

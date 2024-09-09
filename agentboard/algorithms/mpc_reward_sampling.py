@@ -80,6 +80,8 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
                 answer_prefix = f.getvalue()
                 
             return model_input, answer_prefix
+        else:
+            raise NotImplementedError
         
     def get_reward_parallel(self, action_sequences, questions, memories=None):
         # get the reward for the action sequence
@@ -105,6 +107,7 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
                 if action is not None:
                     full_prompt.append(f"Step {index+1}: {action} ки\n")
                     index += 1
+            full_prompt = "".join(full_prompt)
             full_prompt = f"{question} {full_prompt}"
             full_prompts.append(full_prompt)
         

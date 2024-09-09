@@ -16,7 +16,7 @@ from tqdm import tqdm
 from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
@@ -55,8 +55,8 @@ def evaluate_results(task, item, result): #result is a list
             return judge_gsm8k_answer(result, answer), result
         elif type(result) == list:
             count = dict()
-            for re in result:
-                match = re.search(r'answer is (\d+)', re)
+            for res in result:
+                match = re.search(r'answer is (\d+)', res)
                 if match:
                     output = eval(match.group(1))
                     if output not in count:

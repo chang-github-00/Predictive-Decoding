@@ -98,6 +98,12 @@ class VLLM:
             if answer_prefix is not None:
                 full_prompt += answer_prefix
             return full_prompt
+        elif 'codellama' in self.model.lower():
+            prompt_template = '''<s>[INST] {system_message}\n\n{prompt}[/INST] \n[BEGIN]\n'''
+            full_prompt = prompt_template.format(system_message=system_message, prompt=prompt)
+            if answer_prefix is not None:
+                full_prompt += answer_prefix
+            return full_prompt
         else:
             raise NotImplementedError
             

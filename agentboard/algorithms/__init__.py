@@ -1,5 +1,5 @@
 from .generation import Generation
-from .cot import COT  
+from .cot import COT, COT_Reward
 from .tot import TOT
 from .tot_light import TOT_Light
 from .mcts_light import MCTS_Light
@@ -14,7 +14,7 @@ from .analyzer import Logprob_Analyzer
 from common.registry import registry
 
 def load_algorithm(name, config, llm_model, reward_model=None):
-    if name == "MPC_Sample_Reward":
+    if name in ["MPC_Sample_Reward", "COT_Reward"]:
         algorithm = registry.get_algorithm_class(name).from_config(llm_model, config, reward_model=reward_model)
     else:
         algorithm = registry.get_algorithm_class(name).from_config(llm_model, config)

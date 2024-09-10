@@ -14,7 +14,7 @@ algorithm:
   beam_temperature: 1.0
   beam_search: False
   value_type: reward # use math shepherd
-  result_type: vote #rank
+  result_type: rank #rank
   # lookahead_token_length: 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key

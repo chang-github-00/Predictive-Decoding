@@ -64,3 +64,6 @@ python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8
 
 # reward model math, autoregressive + self consistency 
 python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 200 --data_path  /root/huggingface/gsm8k --log_path results/run_reward_model_llama3_mathshepherd_gsm8k_9_9_vote --reward_model math-shepherd
+
+
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 200 --data_path  /root/huggingface/gsm8k --log_path results/run_llama3_mathshepherd_gsm8k_9_10_cot_1 --reward_model math-shepherd

@@ -16,7 +16,7 @@ from tqdm import tqdm
 from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
@@ -55,16 +55,23 @@ def evaluate_results(task, item, result): #result is a list
             return judge_gsm8k_answer(result, answer), result
         elif type(result) == list:
             count = dict()
+            output_answer = dict()
             for res in result:
                 match = re.search(r'answer is (\d+)', res)
                 if match:
                     output = eval(match.group(1))
                     if output not in count:
                         count[output] = 1
+                        output_answer[output] = [res]
                     else:
                         count[output] += 1
-            self_consistency_result = max(count, key=count.get)
-            return judge_gsm8k_answer(str(self_consistency_result), answer), self_consistency_result
+                        output_answer[output].append(res)
+            if len(count) == 0:
+                output = result[0]
+            else:
+                self_consistency_result = max(count, key=count.get)
+                output = output_answer[self_consistency_result]
+            return judge_gsm8k_answer(str(output), answer), output
         
     else:
         raise NotImplementedError
@@ -179,7 +186,7 @@ class EvalReasoning:
                 output = all_outputs[batch_id]
                 try:
                     evaluation, final_output = evaluate_results(self.task, item, output)
-                except:
+                except Exception as e:
                     evaluation = False  
                     
                 if self.task == "math":

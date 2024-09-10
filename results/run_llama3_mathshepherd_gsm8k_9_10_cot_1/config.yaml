@@ -1,10 +1,10 @@
 algorithm:
   beam_search: false
-  beam_temperature: 1.0
+  beam_temperature: 0.2
   do_sample: true
-  n_generate_sample: 8
+  n_generate_sample: 1
   name: COT_Reward
-  result_type: vote
+  result_type: rank
   task: gsm8k
   value_type: reward
 llm:
@@ -26,6 +26,6 @@ reward_llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 100
+  batch_size: 1319
   data_path: /root/huggingface/gsm8k
-  log_path: results/run_reward_model_llama3_mathshepherd_gsm8k_9_9_vote
+  log_path: results/run_llama3_mathshepherd_gsm8k_9_10_cot_1

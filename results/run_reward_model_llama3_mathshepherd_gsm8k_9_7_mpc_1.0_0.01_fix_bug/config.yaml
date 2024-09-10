@@ -1,11 +1,14 @@
 algorithm:
-  beam_search: false
+  beam_size: 8
   beam_temperature: 1.0
   do_sample: true
-  n_generate_sample: 8
-  name: COT_Reward
-  result_type: vote
+  lookahead_thought_length: 6
+  n_generate_sample: 1
+  name: MPC_Sample_Reward
+  reward_threshold: 0.0
+  select_temperature: 0.01
   task: gsm8k
+  use_memory: true
   value_type: reward
 llm:
   context_length: 8192
@@ -26,6 +29,6 @@ reward_llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 100
+  batch_size: 500
   data_path: /root/huggingface/gsm8k
-  log_path: results/run_reward_model_llama3_mathshepherd_gsm8k_9_9_vote
+  log_path: results/run_reward_model_llama3_mathshepherd_gsm8k_9_7_mpc_1.0_0.01_fix_bug

@@ -2,7 +2,7 @@ algorithm:
   beam_search: false
   beam_temperature: 1.0
   do_sample: true
-  n_generate_sample: 32
+  n_generate_sample: 64
   name: COT_Reward
   result_type: rank
   task: gsm8k
@@ -26,6 +26,6 @@ reward_llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 40
+  batch_size: 20
   data_path: /root/huggingface/gsm8k
-  log_path: results/scaling_law_experiment_cot_rank_32
+  log_path: results/scaling_law_experiment_cot_rank_64

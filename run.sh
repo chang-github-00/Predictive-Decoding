@@ -78,6 +78,8 @@ python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8
 
 # for autoregressive + rank 
 
+# flops 22: n = 4
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 200 --data_path  /root/huggingface/gsm8k --log_path results/scaling_law_experiment_cot_rank_4 --reward_model math-shepherd
 # flops 44: n = 8   
 python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 200 --data_path  /root/huggingface/gsm8k --log_path results/scaling_law_experiment_cot_rank_8 --reward_model math-shepherd
 # flops 176: n = 32
@@ -88,4 +90,15 @@ python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8
 
 # for mcts 
 
-# flops 360 n_iteration = 16 
+# flops 179 n_iteration = 32 n=4
+# 55/74 resumed from 48
+python examples/SearchORM/gsm8k/inference_mcts.py --llama_path /ssddata/model_hub/Meta-Llama-3-8B-Instruct --rm_path /ssddata/model_hub/math-shepherd-mistral-7b-prm/ --base_lm llama3 --n_actions 4 --n_iters 16
+
+# flops 437 n_iteration = 16 n=8 
+python examples/SearchORM/gsm8k/inference_mcts.py --llama_path /ssddata/model_hub/Meta-Llama-3-8B-Instruct --rm_path /ssddata/model_hub/math-shepherd-mistral-7b-prm/ --base_lm llama3 --n_actions 8 --n_iters 16
+
+
+# for predictive decoding
+
+# k = 1 
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/mpc_reward_gsm8k_llama3.yaml --tasks gsm8k --algorithm MPC_Sample_Reward --model llama-3 --data_path /root/huggingface/gsm8k --log_path results/scaling_law_experiment_mpc_k_1 --batch_size 200 --reward_model math-shepherd

@@ -1,11 +1,14 @@
 algorithm:
-  beam_search: false
+  beam_size: 16
   beam_temperature: 1.0
   do_sample: true
-  n_generate_sample: 32
-  name: COT_Reward
-  result_type: rank
+  lookahead_thought_length: 6
+  n_generate_sample: 1
+  name: MPC_Sample_Reward
+  reward_threshold: 0.0
+  select_temperature: 0.01
   task: gsm8k
+  use_memory: true
   value_type: reward
 llm:
   context_length: 8192
@@ -26,6 +29,6 @@ reward_llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 40
+  batch_size: 200
   data_path: /root/huggingface/gsm8k
-  log_path: results/scaling_law_experiment_cot_rank_32
+  log_path: results/scaling_law_experiment_mpc_k_16

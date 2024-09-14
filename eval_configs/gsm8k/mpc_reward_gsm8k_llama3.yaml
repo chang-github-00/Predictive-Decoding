@@ -11,7 +11,7 @@ algorithm:
   lookahead_thought_length: 6
   reward_threshold: 0.0
   n_generate_sample: 1
-  beam_size: 8
+  beam_size: 16
   value_type: reward # use math shepherd
   do_sample: True
   beam_temperature: 1.0

@@ -1,0 +1,453 @@
+[EXP] 1: [success_rate]: True, [answer]: 18, [output]:  Janet's ducks lay 16 eggs per day.  She eats 3 for breakfast, leaving 16 - 3 = 13 eggs.  Then, she uses 4 for muffins, leaving 13 - 4 = 9 eggs.  She sells these 9 eggs for $2 each, so she makes 9 x $2 = $18 in total.  The answer is 18. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 2: [success_rate]: True, [answer]: 3, [output]: 2 bolts of blue fiber are needed. 1/2 that amount of white fiber is needed. 1/2 of 2 is 1.  So 1 bolt of white fiber is needed. 2 bolts of blue fiber + 1 bolt of white fiber = 3 bolts in total.  The answer is 3. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 3: [success_rate]: False, [answer]: 70000, [output]:  There are a lot of steps to follow in this problem.  Josh bought a house for $80,000, but then he put in $50,000 in repairs.   That means he spent $80,000 + $50,000 = $130,000.  
+The house increased in value by 150%.  What does 150% mean? It means that the value increased to 3 times its original value.  If the house was originally $80,000 and the value increased by 150%, then the new value is $80,000 x 3 = $240,000.  So the house is now worth $240,000. 
+Now we figure out how much profit Josh made.  Josh originally spent $130,000 to buy and renovate the house.   After the renovation, it is worth $240,000.   If he sells the house, he will get back $240,000.   The profit is the amount by which he sold the house for more than he spent.  $240,000 - $130,000 = $110,000.  The answer is $110,000. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 4: [success_rate]: True, [answer]: 540, [output]:  James runs 3 sprints per time, so for 3 times a week, he runs 3 * 3 = 9 sprints.  For each sprint, he runs 60 meters.   So the total distance he runs is 9 * 60 = 540 meters.  The answer is 540. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 5: [success_rate]: True, [answer]: 20, [output]: 20 chickens. 3 cups per chicken.  So, in total, Wendi needs to give her chickens 3 * 20 = 60 cups of chicken feed. 
+
+In the morning, she gives them 15 cups.  In the afternoon, 25 cups.  So far, she has given them 15 + 25 = 40 cups. 
+
+She has 60 cups to give, and has already given 40, so she needs 60 - 40 = 20 cups in the final meal.  The answer is 20. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 6: [success_rate]: True, [answer]: 64, [output]:  Kylar wants to buy 16 glasses.  Every second glass costs 60% of $5, which is $3.  So, he needs to buy 8 glasses at $5 each, which is 8 x 5 = $40.  And he needs to buy 8 glasses at $3 each, which is 8 x 3 = $24.  Total, he needs to pay $40 + $24 = $64.  The answer is $64. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 7: [success_rate]: True, [answer]: 260, [output]: 1st: Seattle has 20 sheep. 
+2nd: Since Charleston has 4 times as many sheep as Seattle, Charleston has 4 x 20 = 80 sheep. 
+3rd: Since Toulouse has twice as many sheep as Charleston, Toulouse has 2 x 80 = 160 sheep. 20 + 80 + 160 = 260. 260 sheep in total.  The answer is 260. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 8: [success_rate]: False, [answer]: 160, [output]:  Let's break it down step by step!
+
+1. 200 GB is the total file size. 
+2.  Initially, Carla can download 2 GB/minute.  So, it would take 200 / 2 = 100 minutes to download the whole file. 
+3.  However, Windows restarts the download after downloading 40% of the file.  40% of 200 GB is 0. 4 * 200 = 80 GB.  
+4.   Since she loses progress when Windows restarts, she has to download the remaining 120 GB again.  
+5.   The download speed is still 2 GB/minute.  So, it will take 120 / 2 = 60 minutes to download the remaining 120 GB.  
+6.    In total, it takes 100 minutes (download 80 GB initially) + 20 minutes (restart download) + 60 minutes (download final 120 GB) = 180 minutes to download the file.  The answer is 180 minutes. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 9: [success_rate]: False, [answer]: 45, [output]:  Let's break this down step by step. 
+
+John drives for 3 hours at 60 mph.  3 hours at 60 mph means he has traveled 3 x 60 = 180 miles away from home. 
+
+Then, he tries to get home in 4 hours.  He spends the first 2 hours in standstill traffic, which means he doesn't move at all during that time. 
+
+Then, he drives at 30 mph for half an hour.  Half an hour is 0. 5 hours, and 0. 5 x 30 is 15.  So he travels 15 miles during that half hour.  
+
+Finally, he drives the remaining 2 hours at 80 mph.  2 hours at 80 mph means he has traveled 2 x 80 = 160 miles during those two hours.  Adding the 15 miles from before, that's 160 + 15 = 175 miles he traveled during those 2 hours.  
+
+So, he drove 180 miles away, then traveled 175 miles back towards home.  The distance he is from home is the distance he drove away minus the distance he drove back.   180 - 175 is 5.  The answer is 5 miles. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 10: [success_rate]: True, [answer]: 460, [output]:  Eliza gets $10 per hour for the first 40 hours she works, so the earnings for those hours are:
+40 * $10 = $400
+For the overtime hours, her rate is 10 * 1. 2 = $12 per hour.  There are 5 overtime hours.   So, the earnings for overtime hours are:
+5 * $12 = $60
+ Total earnings = $400 + $60 = $460.  The answer is $460. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 11: [success_rate]: True, [answer]: 366, [output]: 60 downloads in the first month. 3 times as many as 60 is 60 * 3 = 180. 180 is the number of downloads in the second month.  
+
+The number of downloads in the third month is 30% less than in the second month.  180 - 30% * 180 = 180 - 54 = 126. 126 is the number of downloads in the third month. 60 + 180 + 126 is 366.  The answer is 366. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 12: [success_rate]: True, [answer]: 694, [output]: 3 dozen donuts cost 68 dollars per dozen.  68 * 3 = 204.  Two dozen mini cupcakes cost 80 dollars per dozen.  80 * 2 = 160.  Six dozen mini cheesecakes cost 55 dollars per dozen.  55 * 6 = 330.  The total cost is 204 + 160 + 330.  204 + 160 is 364.  364 + 330 is 694.  The answer is 694. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 13: [success_rate]: True, [answer]: 13, [output]:  Carlos needs to plant the tree.  The tree costs $90. 
+The tree will grow 7 lemons per year.  If he can sell them for $1. 5 each, then that's 7 * $1. 5 = $10. 50 per year.  But since it costs $3 to water and feed the tree, his earning per year is actually $10 - $3 = $7. 
+
+To find the years, we want to know when his earnings will be greater than the initial cost of $90.  
+So, we want to know when $7 * years > $90.  
+$7 * years > $90. 
+We can set it up as a equation and solve for years.  $7 * years > $90.  
+years > $90 / $7.  
+years > 13.  Therefore, the minimum number of years is 14.  (You cannot have a fraction of a year, so it takes at least 14 years.  The exact number of years could be 14 but it wouldn't be less than that. )
+
+The answer is 14. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 14: [success_rate]: True, [answer]: 18, [output]:  Melanie started with some unknown number of vacuum cleaners.  She sold a third, so that is 1/3 of them.  Let's say the starting number of vacuum cleaners is x.  1/3 of x is x/3.  So she sold x/3 vacuum cleaners. 
+
+A: After selling a third of the vacuum cleaners, she had x - x/3 = 2x/3 left.  Then she sold 2 more vacuum cleaners, so she had 2x/3 - 2 vacuum cleaners left.  Next, she sold half of what was left, so that is 1/2 of (2x/3 - 2) vacuum cleaners.  This is (1/2)(2x/3 - 2) or x/3 - 1 vacuum cleaners left.  But we know this is equal to 5.   So set x/3 - 1 = 5 and solve for x.  
+
+First multiply both sides by 3 to get x - 3 = 15.  Add 3 to both sides to get x = 18.   So Melanie started with 18 vacuum cleaners.  The answer is 18. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 15: [success_rate]: True, [answer]: 60, [output]: 20 students are enrolled in a dance class. 20% enrolled in contemporary dance. 20% of 20 is 4. 20 - 4 = 16 students are left. 25% of 16 enrolled in jazz dance.  25% of 16 is 4.  16 - 4 = 12 students are left.  Therefore, 12 students enrolled in hip-hop dance.  To find the percentage of students that enrolled in hip-hop dance, we divide 12 by 20 and multiply by 100.  12/20 x 100 = 60%.  The answer is 60%. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 16: [success_rate]: True, [answer]: 125, [output]:  First, let's calculate the future price of the jewelry.  The current price is $5,000 and the market is expected to rise by 2. 5%.  The calculation is $5,000 * (1 + 0. 025) = $5,125.  Next, let's calculate the future price of the electronic gadgets.  The current price is $8,000 and the market is expected to rise by 1. 2%.  The calculation is $8,000 * (1 + 0.  012) = $8,096.  Between the two options, the merchant will have a profit of $5,125 - $5,000 = $125 with the jewelry, and $8,096 - $8,000 = $96 with the electronic gadgets.  Since the profit made from the jewelry is larger, $125 > $96, the merchant should choose jewelry.  The answer is $125. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 17: [success_rate]: False, [answer]: 230, [output]:  Let's break it down step by step.  The two trains travel west for 80 miles, so they cover a total of 80 + 80 = 160 miles west.   The next day, they travel north for 150 miles.  So the total distance covered by each train is 160 + 150 = 310 miles.  The answer is 310. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 18: [success_rate]: False, [answer]: 57500, [output]: 1) Let's calculate her annual salary from teaching.  If she works 35 hours a week as a teacher and she gets $20 per hour, then her weekly salary as a teacher is 35 x 20 = 700 dollars.  She works 50 weeks a year, so her annual salary from teaching is 700 x 50 = 35,000 dollars. 2) Then let's calculate her annual salary from coaching.  If she works 15 hours a week as a coach and she gets $30 per hour, then her weekly salary as a coach is 15 x 30 = 450 dollars.  She works 50 weeks a year, so her annual salary from coaching is 450 x 50 = 22,500 dollars.  3) Her total annual salary is the sum of her salaries from teaching and coaching.  35,000 + 22,500 = 57,500.  The answer is 57,500. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 19: [success_rate]: True, [answer]: 7, [output]:  Claire makes a 3 egg omelet every morning.  That means she eats 3 eggs every day.  Now, 4 weeks = 28 days.  In 28 days, she eats 3 eggs x 28 = 84 eggs.  In one dozen, there are 12 eggs.  Therefore, 84 eggs / 12 = 7 dozens of eggs.  The answer is 7. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 20: [success_rate]: True, [answer]: 6, [output]:  Let's break down the problem step by step. 
+
+Marissa walked the first 4 miles in 1 hour, so her speed for the first 4 miles is 4 miles / 1 hour = 4 miles per hour. 
+
+She then took another hour to walk the next 2 miles, so her speed for the next 2 miles is 2 miles / 1 hour = 2 miles per hour. 
+
+In the first 6 miles, she took 2 hours, so her average speed for the first 6 miles is 6 miles / 2 hours = 3 miles per hour. 
+
+Now, she has walked 6 miles and has 12 - 6 = 6 miles left.  She wants her average speed to be 4 miles per hour for the entire 12-mile trail.  So, the total time it takes her to complete the trail should be 12 miles / 4 miles per hour = 3 hours.  
+
+She has already taken 2 hours, so she has 3 - 2 = 1 hour left.  In this 1 hour, she needs to cover 6 miles.  So, her speed for the remaining 6 miles should be 6 miles / 1 hour = 6 miles per hour.  The answer is 6. 
+[FLOPS] {'avg_prompt_tokens': 819.7, 'avg_prompt_times': 78.4, 'avg_generation_tokens': 5164.9, 'avg_reward_tokens': 319.3, 'avg_reward_times': 77.2}
+[EXP] 21: [success_rate]: True, [answer]: 15, [output]: 10 liters of orange drink are 2/3 water. 2/3 of 10 liters is 20/3 liters = 6 2/3 liters. 8/3 liters are not water.  So 10 liters of orange drink have 6 2/3 liters of water. 
+
+15 liters of pineapple drink are 3/5 water.  3/5 of 15 liters is 45/5 liters = 9 liters.  6/5 liters are not water.  So 15 liters of pineapple drink have 9 liters of water. 
+
+Together, the total amount of water is 6 2/3 + 9 = 15 2/3 liters.  But 1 liter of orange drink was spilled, so that reduces the total water by 1 liter.  So the total water remaining is 15 2/3 - 1 = 14 2/3 liters. 
+
+The remaining mixture has 24 liters in total.  It has 14 2/3 liters of water.  So to find the proportion of water, we need to do 14 2/3 divided by 24.  14 2/3 = 58/3.  So 58/3 divided by 24 is 29/12.  The proportion of water is 29/12.  We can simplify it to 29/12.  Another way to do it is to find the total amount of non-water in the mixed drink.  The mixed drink is comprised of the 4 liters of orange drink that are not water, and 6 liters of pineapple drink that are not water.  This is 4 + 6 = 10 liters.   The total drink is 24 liters, so the proportion of non-water is 10/24, which simplifies to 5/12.   So the proportion of water is 1 - 5/12 = 7/12.  This can be simplified to 7/12.  Both results match, indicating that the water proportion of the remaining mixture is 7/12. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 22: [success_rate]: False, [answer]: 14, [output]:  Samantha is 31 years old now.  Raymond was born 6 years before Samantha.  So he is 31 - 6 = 25 years old.  Raymond had a son at the age of 23, so 25 - 23 = 2 years ago.  The answer is 2. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 23: [success_rate]: True, [answer]: 7, [output]:  Billy has 8 customers originally.  The first 3 customers buy one DVD each, so that is 3 DVDs.   The next 2 customers buy 2 DVDs each, so that is 2 x 2 = 4 DVDs.  Adding these together, 3 + 4 = 7.   The last 3 customers didn't buy any DVDs.   Therefore, Billy sold a total of 7 DVDs.  The answer is 7. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 24: [success_rate]: True, [answer]: 8, [output]:  The candle melts 2 cm every hour.  Time period from 1:00 PM to 5:00 PM is 4 hours.  So, it will melt 2 * 4 = 8 cm.  The answer is 8 cm. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 25: [success_rate]: True, [answer]: 26, [output]: 25% discount means Kyle paid 75% of the original price.  Let's call the original price x.  75% of x is 0. 75x.  Since Kyle paid 19. 50, we can set up the equation:
+
+0. 75x = 19. 50
+To solve for x, we can divide both sides by 0. 75:
+
+x = 19.  50 / 0. 75
+x = 26
+
+So the original price was $26.  The answer is 26. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 26: [success_rate]: True, [answer]: 2, [output]:  Marie ordered a chicken meal that costs 12 dollars, 5 packs of milk that cost 3 dollars each, and 4 apples that cost 1. 5 dollars each.  In total, those cost:
+
+12 + (5 x 3) + (4 x 1. 5) = 12 + 15 + 6 = 33
+
+She paid a total of 50 dollars. 50 - 33 is 17.   So, the pizza boxes cost the rest of the 17 dollars:
+
+17 / 8. 5 = 2
+
+She ordered 2 boxes of pizza.  The answer is 2. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 27: [success_rate]: False, [answer]: 243, [output]:  Mishka bought 3 pairs of shorts, 3 pairs of pants, and 3 pairs of shoes.  
+
+Each pair of shorts costs $16. 50, so the total for 3 pairs is 3 x 16. 50 = 49. 50. 
+
+Each pair of pants costs $22.  50, so the total for 3 pairs is 3 x 22.  50 = 67.  50. 
+
+Each pair of shoes costs $42, so the total for 3 pairs is 3 x 42 = 126.  00. 
+
+The total she spent on all the clothing items can be calculated as 49.   50 + 67.  50 + 126.   00. 49 + 67 + 126 = 242.  The answer is $242. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 28: [success_rate]: True, [answer]: 16, [output]: 1 carton has 15 servings.  Cynthia eats 1 serving daily.  At 60 days, she would eat 60 servings.  So she would buy 60 ÷ 15 = 4 cartons.  Each carton costs 4 dollars.  Therefore, she would spend 4 * 4 = 16 dollars.  The answer is 16. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 29: [success_rate]: True, [answer]: 25, [output]:  Henry's 60-mile trip was divided into 2 stops.  He stopped after 20 miles and his second stop was 15 miles before the end of the trip.   So his second stop was at 60 - 15 = 45 miles.  He travelled between 20 and 45 miles.   45 - 20 = 25.  The answer is 25. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 30: [success_rate]: True, [answer]: 104, [output]:  Let's start by finding the cost of the second pair of high heels, which costs twice as much as the first pair.   If the first pair costs $33, then the second pair costs $33 * 2 = $66.  Together, the heels cost $33 + $66 = $99.   Since the heels are five dollars less than the boots, the boots must cost $99 + $5 = $104.  The answer is 104. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 31: [success_rate]: True, [answer]: 109, [output]:  Let's start by using the ratio to find their current ages.  Darrell is 7 parts and Allen is 11 parts.   If we add 7 and 11, we get 18 parts.  Then we divide 162 by 18 to find how many years each part is.    162 / 18 = 9.  So Darrell's age is 7 * 9 = 63 and Allen's age is 11 * 9 = 99.  10 years from now, Allen's age will be 99 + 10 = 109.  The answer is 109. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 32: [success_rate]: True, [answer]: 80, [output]: 1.  The first friend said there are 80 jelly beans.  
+2.  The second friend said there were 20 more than half of 80.  Half of 80 is 40.  40 + 20 is 60.  So the second friend guessed 60.   
+3.   The third friend said there were 25% more than the first one, which is 80.   25% of 80 is 20.   80 + 20 is 100.  So the third friend guessed 100. 
+
+To find the average, add up their guesses: 80 + 60 + 100 = 240.   Then divide by the number of guesses: 240/3 = 80.  So the average guess is 80.  The answer is 80. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 33: [success_rate]: True, [answer]: 35, [output]:  There are originally 10 dogs to care for.  Each dog takes 0. 5 hours per day.  So it takes 10 x 0. 5 = 5 hours per day. 5 hours per day times 7 days per week is 5 x 7 = 35.  The answer is 35. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 34: [success_rate]: True, [answer]: 70, [output]:  Let's solve this problem step by step!
+
+Gretchen has a total of 110 coins.  There are 30 more gold coins than silver coins.   Let's use the letter "G" to represent the number of gold coins and the letter "S" to represent the number of silver coins.  We know that G = S + 30, because the number of gold coins is 30 more than the number of silver coins.  We also know that G + S = 110, because the total number of coins is 110. 
+
+Now we can simplify this equation.  By substituting G = S + 30 into G + S = 110, we get:
+
+(S + 30) + S = 110
+
+
+Simplify this equation:
+
+S + S + 30 = 110
+
+
+Combine like terms:
+
+2S + 30 = 110
+
+
+Subtract 30 from both sides:
+
+2S = 80
+
+
+Divide both sides by 2:
+
+
+S = 40
+
+
+So Gretchen has 40 silver coins.  Now, to find the number of gold coins, we substitute S = 40 into the equation G = S + 30:
+G = 40 + 30 = 70
+
+
+So Gretchen has 70 gold coins.  The answer is 70. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 35: [success_rate]: True, [answer]: 23, [output]:  Let's start by finding out how many jewels Aaron has.  Since Raymond has 40 jewels, half of that is 40 / 2 = 20.  Aaron has 5 more than half of that, so he has 20 + 5 = 25 jewels. 
+
+Then we need to find out how many jewels Siobhan has.  Siobhan has 2 fewer jewels than Aaron, so we can subtract 2 from Aaron's 25 jewels to find Siobhan's jewels.  25 - 2 is 23.   The answer is 23. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 36: [success_rate]: True, [answer]: 9, [output]:  Mike started with 4 points.  In the second 20 minutes, he scored 25% more points than in the first 20 minutes, which is 25% of 4 points. 25% of 4 is 4 x 0. 25 = 1.  So he scored 1 more point than the 4 points he scored in the first 20 minutes.  So in total, he scored 4 + 5 = 9 points.  The answer is 9. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 37: [success_rate]: True, [answer]: 75, [output]:  Terry eats 2 yogurts per day.  For 30 days, that's 2 yogurts x 30 days = 60 yogurts.  The cost of 4 yogurts is 5 dollars.  To find out how many sets of 4 yogurts 60 yogurts are, we divide 60 by 4.  60/4 = 15.  So he will need 15 sets of 4 yogurts.   He will have to spend 15 sets x 5 dollars per set = 15 x 5 = 75 dollars.  The answer is 75. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 38: [success_rate]: True, [answer]: 2, [output]:  John started with 13 lego sets.  He sells them each for 15 dollars.  So he earned 13 x 15 = 195 dollars.  He uses this money to buy 8 video games for 20 dollars each.   That cost 8 x 20 = 160 dollars.  John has 5 dollars left after buying all the video games.   So he must have earned 195 - 160 = 35 dollars in spare change.  This is coming from 13 - x lego sets.    A lego set is 15 dollars, so 15 x x = 35.   Solving for x, we get x = 2.  So he sold 13 - 2 = 11 lego sets, and has 2 left.   The answer is 2. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 39: [success_rate]: True, [answer]: 10, [output]:  John runs 60 miles in total.  He runs 3 days a week.  So he runs 60 / 3 = 20 miles a day.  He runs 3 hours the first day and half as much the other two days.  So he runs 3 hours the first day, and 1. 5 hours the other two days.  In total, he runs 3 + 1. 5 + 1. 5 = 6 hours a week.  60 miles / 6 hours = 10 miles per hour.  The answer is 10. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 40: [success_rate]: False, [answer]: 18, [output]:  First, Dana can skip at 3 miles per hour. 3 is half of the speed she can run.  So the speed she can run is 3 * 2 = 6 miles per hour.  At this speed, she can travel 6 miles in 1 hour.  She runs for one-third of the time, which is 2 hours.  In 2 hours, she can travel 6 * 2 = 12 miles.  She walks for two-thirds of the time, which is 4 hours.  At a walking speed, she can travel 3 miles in 1 hour.  In 4 hours, she can travel 3 * 4 = 12 miles.   The total distance she can travel is 12 miles from running + 12 miles from walking = 24 miles.  The answer is 24. 
+[FLOPS] {'avg_prompt_tokens': 813.6, 'avg_prompt_times': 77.6, 'avg_generation_tokens': 4928.5, 'avg_reward_tokens': 307.6, 'avg_reward_times': 76.3}
+[EXP] 41: [success_rate]: False, [answer]: 8, [output]:  We know Suzy's iPhone is 1 year old.  Ben's iPhone is 2 years older than Suzy's, so it must be 1 + 2 = 3 years old.  Brandon's iPhone is 4 times as old as Ben's, so it is 3 * 4 = 12 years old.  The answer is 12. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 42: [success_rate]: True, [answer]: 200, [output]:  If Polly can throw the javelin 400 feet without the gemstone, then with the gemstone, she can throw it 400 x 3 = 1200 feet.  Since the dragon's flames reach 1000 feet, Polly can safely stand 1200 - 1000 = 200 feet outside of the dragon's flames.  The answer is 200 feet. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 43: [success_rate]: True, [answer]: 26, [output]: 5 apple pies with 8 pieces each, that's a total of 5 x 8 = 40 pieces of apple pie initially.  After the guests had taken their pieces, there were 14 pieces remaining.  So the guests had taken 40 - 14 = 26 pieces of pie.  The answer is 26. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 44: [success_rate]: False, [answer]: 48, [output]: 1 serving has 250 calories, and the bag has 5 servings.  Total calories in the bag is 5 x 250 = 1250.  It is given that the daily calorie target is 2000, and 1800 calories have already been consumed.  Therefore, the maximum allowed calories for the day is 2000 - 1800 = 200.  The bag can be eaten entirely, as it has 1250 calories, which is less than the maximum allowed 200 calories.  The answer is 300g. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 45: [success_rate]: True, [answer]: 20, [output]:  Charlie can make 10 candles from 1 pound of beeswax.  Since he wants to make 20 candles, he needs 20/10 = 2 pounds of beeswax.   One pound of beeswax and the wicks cost $10, so 2 pounds will cost 2 x 10 = $20.   He can sell the 20 candles for 20 x $2 = $40.  His profit is the income minus the cost, which is $40 - $20 = $20.   The answer is $20. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 46: [success_rate]: True, [answer]: 104, [output]:  Let's break it down step by step!
+
+On Monday, Meredith wrote 5 articles, which took 5 x 4 hours = 20 hours to write.  On Tuesday, she wrote 2/5 times more articles than Monday, which is 5 + (2/5 * 5) = 5 + 2 = 7 articles.  7 x 4 hours = 28 hours.  On Wednesday, she wrote twice the number of articles she wrote on Tuesday, which is 2 * 7 = 14 articles.   14 x 4 hours = 56 hours. 
+
+To calculate the total number of hours she spent writing articles, we add up the hours she spent each day: 20 + 28 + 56 = 104 hours.  The answer is 104. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 47: [success_rate]: True, [answer]: 163, [output]:  Candice started with 80 post-it notes.  During her work at the coffee shop, she placed a single post-it note on each of 220 cups of coffee.  So she used 220 post-it notes.   Now, we can subtract the 220 post-it notes used from the original 80 to see how many post-it notes she had remaining at her workplace 80 - 220 = -140  So, Candice didn't have -140 post-it notes.  She must have bought more.  At work, she only had 23 post-it notes remaining.  This means she bought a package of post-it notes that had a quantity greater than 23.  To find the number of post-it notes in the package that she purchased, we need to add the post-it notes remaining to the post-it notes that she used at the coffee shop.   We know that she used 220 cards at the coffee shop and had 23 remaining.   So, she had 220 + 23 = 243 post-it notes after her work.   This 243 is equal to the total post-it notes Candice started with (80) plus the amount in the package she purchased (`x`).    So, let's set up the equation: 80 + `x` = 243.   To solve for `x`, we subtract 80 from both sides:  x = 243 - 80  x = 163.  Finally, we can conclude that Candice bought a package with 163 post-it notes.  The answer is 163. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 48: [success_rate]: True, [answer]: 800, [output]:  Let's start by figuring out how many blue ties John bought.  He spent $200 on blue ties that cost $40 each.  200 / 40 = 5, so he bought 5 blue ties. 
+
+Now, John said he buys twice as many red ties as blue ties, so he bought 2 * 5 = 10 red ties. 
+
+John also said that the red ties cost 50% more than the blue ties.  50% of 40 is 20, so the red ties cost 40 + 20 = 60.  Since he bought 10 of these, he spent 60 * 10 = 600 for these ties.  And, he spent 200 for the blue ties.  The total he spent on the ties is 600 + 200 = 800.  The answer is 800. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 49: [success_rate]: True, [answer]: 8, [output]: 1 foot is equal to 12 inches, and the wire is 4 feet long. 4 feet * 12 inches/foot = 48 inches. 48 inches in total, and each piece is 6 inches long. 48 inches / 6 inches per piece = 8 pieces.  The answer is 8. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 50: [success_rate]: True, [answer]: 30, [output]: 15 * 8 = 120 units in the building. 3/4 * 120 = 90 units occupied. 120 - 90 = 30 units unoccupied.  The answer is 30. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 51: [success_rate]: True, [answer]: 294, [output]: 252 eggs per day.  There are 7 days in a week.  So he produces 252 * 7 = 1764 eggs in a week.  A dozen eggs is 12 eggs.  So that is 1764 / 12 = 147 dozen eggs.   At 2 dollars per dozen, he earned 2 x 147 = 294 dollars.  The answer is 294. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 52: [success_rate]: True, [answer]: 5, [output]:  Tom's ship travels at 10 miles per hour from 1 to 4 PM. 4 - 1 is 3 hours.  So it travels 10 * 3 = 30 miles to get to its destination. 
+
+Now, since he is traveling back at 6 mph, to find the time it takes him to travel back, we divide the distance (30 miles) by the speed (6 mph).  So, 30 / 6 is 5 hours.  The answer is 5 hours. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 53: [success_rate]: True, [answer]: 15, [output]:  Uriah originally wanted to remove 15 pounds from his book bag.  He removed 30 comic books, each weighing 1/4 pound.  30 * 1/4 = 7. 5 pounds of comic books are removed.   To remove 15 pounds in total, he also needs to remove 15 - 7 = 8 pounds of toys.  Each toy weighs 1/2 pound.  To remove 8 pounds, he needs to remove 8 * 2 = 16 toys.  The answer is 16. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 54: [success_rate]: True, [answer]: 40, [output]:  We first need to find the total revenue earned for each day.  On Thursday, the mechanic repaired 6 truck tires and 4 car tires.  For the truck tires, the total revenue earned is 6 x 60 = 360 dollars.  For the car tires, the total revenue earned is 4 x 40 = 160 dollars.  So on Thursday, the total revenue earned is 360 + 160 = 520 dollars. 
+
+On Friday, the mechanic repaired 12 car tires and didn't repair any truck tires.  So the total revenue earned is 12 x 40 = 480 dollars.  Now we need to find the difference in revenue earned on these two days.  520 - 480 is 40.  So the mechanic earned 40 dollars more on the day with higher revenue, which is Thursday.  The answer is 40. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 55: [success_rate]: True, [answer]: 40, [output]:  Let's break this problem down step by step.  The Doubtfire sisters have adopted 7 kittens.   Now, they are informed that their two housecats, Patchy and Trixie, have each had kittens.   We know that Patchy has thrice the number of kittens as the 7 the sisters adopted.  So, Patchy has 7 x 3 = 21 kittens.   Their other cat, Trixie, has 12 kittens.  So, the total number of kittens now is 7 + 21 + 12 = 40.  The answer is 40. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 56: [success_rate]: True, [answer]: 14, [output]:  Jean starts with 30 lollipops and eats 2. 30 - 2 = 28. 28 lollipops are remaining. 28 lollipops to be packaged in bags of 2 is 28 ÷ 2 = 14. 28 divided by 2 is 14. 14 bags can be filled.  The answer is 14. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 57: [success_rate]: True, [answer]: 3, [output]: 7 dollars for a ticket + 7 dollars for popcorn is 14 dollars per trip. 42 dollars for the week can be divided by 14 to find out how many times he can go to the movies. 42/14 is 3.  The answer is 3. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 58: [success_rate]: True, [answer]: 83, [output]:  Let's follow the steps!
+
+We know that the bridge can carry no more than 5000 pounds.  The combined weight of the driver and the empty truck is 3755 pounds.   The weight of the driver and the empty truck plus the boxes must not exceed the maximum weight of the bridge. 
+
+Let's first subtract the weight of the driver and the empty truck from the bridge's weight limit:
+5000 - 3755 = 1245
+
+This means that the total weight of the boxes must not exceed 1245 pounds.  Each box weighs 15 pounds.   To find the maximum number of boxes, we divide the maximum weight (1245) by the weight of each box (15):
+1245 ÷ 15 = 83
+
+So, the maximum number of boxes that can be loaded onto the truck while not exceeding the bridge's weight limit is 83.  The answer is 83. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 59: [success_rate]: True, [answer]: 57, [output]: 40. 25% is a quarter, so a quarter of 40 is 40 / 4 = 10. 40 + 10 is 50, which is the new total after the 25% fee. 50 + 3 (delivery fee) is 53. 53 + 4 (tip) is 57.  The answer is 57. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 60: [success_rate]: True, [answer]: 187, [output]: 6 clusters with 20 fruit each means there are 6 x 20 = 120 raspberries. 67 individual fruit were scattered across the bush. 120 + 67 = 187.  The answer is 187. 
+[FLOPS] {'avg_prompt_tokens': 811.7, 'avg_prompt_times': 69.3, 'avg_generation_tokens': 4367.8, 'avg_reward_tokens': 300.6, 'avg_reward_times': 68.0}
+[EXP] 61: [success_rate]: True, [answer]: 17, [output]: 25 oranges total are in the basket. 1 is bad, 20% are unripe, and 2 are sour.  1 + (20/100 * 25) + 2 = 1 + 5 + 2 = 8. 8 oranges are not good, so the rest are good. 25 - 8 = 17. 17 oranges are good.  The answer is 17. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 62: [success_rate]: True, [answer]: 1430, [output]:  Janet pays the cost of the material, which is $500.  She also pays the cost for the jeweler to construct it, which is $800.  So far, she has paid $500 + $800 = $1300.  She then pays 10% of that to get it insured.  10% of $1300 is 10 / 100 * 1300 = 130.   The total she pays is $1300 + $130 = $1430.   The answer is $1430. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 63: [success_rate]: False, [answer]: 25000, [output]:  Marcy starts with a pension of $50,000 annually.  Since she gets 5% increase for every year after 20, let's calculate the total percentage increase she gets:
+
+Years worked    20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+Percentage increase     5%, 5%, 5%, 5%, 5%, 5%, 5%, 5%, 5%, 5%, 5%
+Total increase =  50%.  5% increase times 10 years (30-20) is 50%.  So, the total pension after 30 years will be: 
+50,000 + 50% * 50,000 = 50,000 + 25,000 = 75,000.  The answer is $75,000. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 64: [success_rate]: True, [answer]: 1596, [output]:  If the streaming service charges $140 per month, then for the first 6 months, Aleena will pay 6 x 140 = 840 dollars.  For the remaining 6 months, the fee is 90% of 140, or 0. 90 * 140 = 126.  So for the last 6 months, she paid 6 * 126 = 756 dollars.  The total amount she paid is 840 + 756 = 1596.  The answer is 1596. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 65: [success_rate]: False, [answer]: 300, [output]:  Sophia has not yet filled up the tank, so she has only used 4 gallons out of 12.  12 - 4 = 8 gallons left.  Since she needed 4 gallons to fill it up, 8 gallons will be enough to fill it up completely, and she has already driven 100 miles on 4 gallons.  To find the number of miles she can drive on 1 gallon, we divide 100 by 4:  100 ÷ 4 = 25 miles per gallon.   So she can drive 25 miles on 1 gallon.  Now we have to multiply this by 8 gallons to find the total miles:  25 x 8 = 200 miles.  Sophia can drive 200 miles on a single tank of gas.  The answer is 200. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 66: [success_rate]: True, [answer]: 36, [output]: 2 hours of TV in one day, and then 2/2 hours of reading, which is 1 hour.  So, in one day, Jim spends 2 + 1 = 3 hours.  This is 3 times a week, so in a week, Jim spends 3 * 3 = 9 hours.  In 4 weeks, Jim spends 9 * 4 = 36 hours.  The answer is 36. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 67: [success_rate]: True, [answer]: 48, [output]: 4 schools are competing.  Each school has a girls' basketball team and a boys' basketball team.  That is 2 teams per school.  Each team has 5 players, so 5 * 2 = 10 players per school.  Each school also sends a coach for each team, so that is 2 coaches per school.  10 players + 2 coaches = 12 people per school.   There are 4 schools, so 4 x 12 = 48 people.  The answer is 48. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 68: [success_rate]: True, [answer]: 595, [output]:  Let's start by finding the number of rubies. 35 fewer rubies than diamonds means that the number of rubies is 175 - 35 = 140.  Then, the number of emeralds is twice the number of rubies, so 140 x 2 = 280.  The number of diamonds is 175, the number of rubies is 140, and the number of emeralds is 280.   So the total number of gems is 175 + 140 + 280 = 595.  The answer is 595. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 69: [success_rate]: True, [answer]: 36, [output]: 60 is the number of girls at the school.  There are twice as many boys as girls.  So that means there are 2 x 60 = 120 boys at the school.  Total students are then 60 + 120 = 180.  With 5 students to every teacher, you can divide the total students by 5 to find the teachers. 180 / 5 = 36.  The answer is 36. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 70: [success_rate]: True, [answer]: 60, [output]:  Bailey started with some amount of money.  She received a weekly allowance of $5 for 8 weeks.  So she received in total 5 x 8 = 40 dollars during those 8 weeks.  If she had a total of $100 after adding that 40 dollars, then she had 100 - 40 = 60 dollars originally.  The answer is 60. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 71: [success_rate]: True, [answer]: 7425, [output]: 5 classes/day x 5 days (from Monday to Friday) is 25 classes.  For Saturday, she has 8 classes.  So in total, she has 25 + 8 = 33 classes.  Each class has 15 students, so 15 x 33 = 495 students in total.  Each student pays 15 dollars, so Judy makes 15 x 495 = 7425 dollars.  The answer is 7425. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 72: [success_rate]: True, [answer]: 60, [output]:  Kelian has two recipes.  The second recipe has twice as many instructions as the first one.  The first recipe has 20 instructions.  So the second recipe has 20 * 2 = 40 instructions.  In total, Kelian has 20 + 40 = 60 instructions to read.  The answer is 60. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 73: [success_rate]: True, [answer]: 221, [output]: 43 brownies for 3 dollars each are 43 x 3 = 129 dollars.  23 slices of cheesecake for 4 dollars each are 23 x 4 = 92 dollars.  Total money raised is 129 + 92 = 221 dollars.  The answer is 221. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 74: [success_rate]: True, [answer]: 255, [output]:  Shiela bought 5 cell phones for $150 each, so the total cost is 5 x 150 = 750 dollars. 2% interest is 750 x 0. 02 = 15 dollars, so the total cost becomes 750 + 15 = 765 dollars. 765 dollars will be divided equally among 3 months, so each month she will pay 765 / 3 = 255 dollars.  The answer is 255. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 75: [success_rate]: True, [answer]: 88, [output]:  Artie is going to round the prices to the nearest dollar.  Marigolds will be 3 dollars.  Petunias will be 2 dollars.   Begonias will be 2 dollars.  He sells 12 pots of marigolds.  At 3 dollars each, that will be 12 * 3 = 36.  He sells 9 pots of petunias.  At 2 dollars each, that will be 9 * 2 = 18.  He sells 17 pots of begonias.  At 2 dollars each, that will be 17 * 2 = 34.   Adding all the money up, 36 + 18 + 34 = 88.  The answer is 88. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 76: [success_rate]: False, [answer]: 60, [output]: 16 is the square footage of the top level. 16 / 2 = 8 is the square footage of the second level.  8 / 2 = 4 is the square footage of the third level.  4 / 2 = 2 is the square footage of the fourth level.  To find the average square footage of a level, you can add the square footage of all levels and divide by the number of levels.  The square footage of all levels is 16 + 8 + 4 + 2 = 30.  To find the average, you divide 30 by 4, the number of levels.  30 / 4 = 7.  The answer is 7. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 77: [success_rate]: True, [answer]: 5, [output]:  Cecilia feeds 1 cup of dog food per day for 180 days.  1 * 180 = 180 cups.  Then she will feed 2 cups per day after that.  For the remaining days in the year, there are 365 - 180 = 185 days.   2 * 185 = 370 cups.   The total amount of cups of food in 1 year is 180 + 370 = 550 cups.   One bag of dog food contains 110 cups.   To find the number of bags needed, divide the total cups by the cups in one bag. 550/110 = 5.  The answer is 5. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 78: [success_rate]: True, [answer]: 100, [output]:  Let's work from the inside out.  Sarah does 4 times as much laundry as David, so Sarah does 4X amount as laundry as David.   Sarah does 400 pounds of laundry, so David does 400 / 4 = 100 pounds of laundry.  Raymond does half as much laundry as Sarah, so he does 400 / 2 = 200 pounds of laundry.  The difference in the amount of laundry Raymond and David do is 200 - 100 = 100.  The answer is 100. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 79: [success_rate]: True, [answer]: 6, [output]:  Let's figure out how much money Vincent would spend on flowers at each rate first.  At 3 flowers for $2. 50, Vincent can buy:
+
+* 18 flowers ÷ 3 flowers per package = 6 packages
+* 6 packages x $2. 50 per package = $15
+
+So at this rate, Vincent would spend $15 on 18 flowers.  At 2 flowers for $1, he can buy:
+
+* 18 flowers ÷ 2 flowers per package = 9 packages
+* 9 packages x $1 per package = $9
+
+So at this rate, Vincent would spend $9 on 18 flowers.  To find out how much money Vincent saves, we subtract the amount he would spend at the 2 flowers for $1 rate from the amount he would spend at the 3 flowers for $2. 50 rate:
+
+* $15 (at 3 flowers for $2. 50) - $9 (at 2 flowers for $1) = $6
+
+The answer is 6. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 80: [success_rate]: True, [answer]: 70, [output]: 100 dollars is the original cost. 30% is 30/100, so 30% of 100 is 30. 100 - 30 is 70.  The answer is 70. 
+[FLOPS] {'avg_prompt_tokens': 807.5, 'avg_prompt_times': 65.4, 'avg_generation_tokens': 4036.5, 'avg_reward_tokens': 290.7, 'avg_reward_times': 64.2}
+[EXP] 81: [success_rate]: True, [answer]: 10, [output]: 24 liters of water were originally.  1/6 of 24 liters is 24 / 6 = 4 liters.  So each of the 2 girls got 4 liters.  4 x 2 is 8 liters.  Then a boy got 6 liters.  8 + 6 is 14.  So in total, 24 - 14 liters were left.  24 - 14 is 10.   The answer is 10. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 82: [success_rate]: True, [answer]: 17, [output]:  Charlie started with 10 stickers.  He got 21 more from the store, so 10 + 21 = 31.  Then he got 23 more for his birthday, so 31 + 23 = 54.  He gave 9 stickers to his sister, so 54 - 9 = 45.  Then he used 28 stickers, leaving him with 45 - 28 = 17.  The answer is 17. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 83: [success_rate]: True, [answer]: 623, [output]: 4 times what Grace weighs is 4 x 125 = 500 pounds. 2 pounds less than that is 500 - 2 = 498.  That is Alex's weight.  We then combine the two weights: 125 + 498 = 623.  The answer is 623. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 84: [success_rate]: True, [answer]: 600, [output]:  Dan started with 3 rose bushes. 3 rose bushes each with 25 roses will have a total of 3 x 25 = 75 roses. 75 roses each with 8 thorns will have a total of 75 x 8 = 600 thorns.  The answer is 600. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 85: [success_rate]: True, [answer]: 15, [output]:  Let's suppose the number of games they lost is x.  Then the number of games they won is x + 8.  We know that the total number of games played is 22, so we can set up the equation x + (x + 8) = 22.  Simplifying the equation, we get 2x + 8 = 22.  Subtracting 8 from both sides, we get 2x = 14.   Dividing both sides by 2, we get x = 7.  So the number of games they lost is 7.  The number of games they won is 7 + 8 = 15.  The answer is 15. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 86: [success_rate]: True, [answer]: 44, [output]:  Gene goes on four vacations per year.  Since he has been vacationing from age 23 to 34, that's 34 - 23 = 11 years.   After 11 years, he's been on 11 * 4 = 44 vacations.   Each vacation gives him one quilt block.  The answer is 44. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 87: [success_rate]: True, [answer]: 22, [output]: 1st time the alarm went off, it rang 4 times. 2nd time it went off, it rang 3 times as long, so 3 x 4 = 12. 3rd time it went off, it rang for half as long as the 2nd time, so 12 / 2 = 6. 4 + 12 + 6 = 22.  The answer is 22. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 88: [success_rate]: False, [answer]: 9360, [output]:  Sylvie's initial salary is $600 per month. 10% of $600 is $60. 5 years of 10% increase adds up to 5 x $60 = $300 increase.  So her new salary after 5 years is $600 + $300 = $900.  Then, we will increment her salary by 10% for the next three years. 10% of $900 is $90. 3 years of 10% increase adds up to 3 x $90 = $270.  So her new salary after 8 years is $900 + $270 = $1170.  The answer is 1170$. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 89: [success_rate]: False, [answer]: 8000, [output]:  Let's start by using the information that Marilyn's record sold 10 times as many copies as Harald's.  This means that if Harald sold x copies, Marilyn sold 10x copies.  Then, we know that x + 10x = 88,000, since they sold a total of 88,000 copies.  We can combine like terms to get 11x = 88,000.  From here, we can divide both sides by 11 to get x = 8,000.  So Harald sold 8,000 copies.  The answer is 8,000. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 90: [success_rate]: False, [answer]: 24, [output]: 16 friends are invited, but 1/4 don't show up, which means 4 guests don't attend. 16 - 4 = 12.  The number of guests she will need gift bags for is 12.  She needs 3/4 of a gift bag for each guest, so she will need 12 * 3/4 = 9 gift bags.  Since each gift bag is 2 dollars, she will need 9 * 2 = 18.  The answer is 18. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 91: [success_rate]: True, [answer]: 225, [output]:  Ted will need to figure out how many pounds of potato salad he needs for each type of dinosaur.  An adult will eat 10 pounds of potato salad, and a child will eat 10 / 2 = 5 pounds of potato salad.  There are 20 adults and 5 children, so the total number of pounds needed is: 20 * 10 + 5 * 5 = 200 + 25 = 225 pounds.  The answer is 225. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 92: [success_rate]: True, [answer]: 28, [output]:  Let's start with Cindy having 4 pets.  Since Marcia has 2 more pets than Cindy, Marcia has 4 + 2 = 6 pets.  Jan has three times the number of pets as Marcia, so Jan has 6 * 3 = 18 pets.  In total, all three have 4 + 6 + 18 = 28 pets.  The answer is 28. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 93: [success_rate]: True, [answer]: 4, [output]:  We are given that James is 10 and is 1 year younger than Corey, so Corey is 10 + 1 = 11 years old.  We know that Amy is 2 years younger than Corey, so Amy must be 11 - 2 = 9 years old.  We know that Amy is 5 years older than Jackson, so Jackson must be 9 - 5 = 4 years old.  The answer is 4. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 94: [success_rate]: True, [answer]: 36, [output]:  Lee runs the 400-meter hurdles in 38 seconds.  This means that, before Gerald changed his diet, Lee was two seconds faster.  So Gerald originally ran it in 38 + 2 = 40 seconds.  With his improved diet, Gerald's time is 10% faster.  Since 10% of 40 is 4, Gerald's time is now 40 - 4 = 36 seconds.  The answer is 36. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 95: [success_rate]: False, [answer]: 348, [output]:  Let the number of dogs be x.  Then the number of cats is 2x.   The combined number of dogs and cats is x + 2x = 3x.   Since the number of rabbits is 12 less, the total number of pets is 3x - 12.  Since we know the number of dogs is 60, x = 60.   So the total number of pets is 3(60) - 12 = 180 - 12 = 168.  The answer is 168. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 96: [success_rate]: True, [answer]: 40, [output]: 2/5 of 200 is 80, so there are 80 boys. 200 - 80 is 120, so there are 120 girls.  2/3 of 120 is 80, so 80 girls are in the girl scout. 120 - 80 is 40.  The answer is 40. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 97: [success_rate]: True, [answer]: 3, [output]: 9 is the original number of hours Harry slept. 2/3 of this means we have to find 2/3 * 9 = 6 hours. 6 is how many hours James slept. 9 - 6 = 3, which is how many hours more Harry slept.  The answer is 3. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 98: [success_rate]: True, [answer]: 12, [output]: 16 ounce cans contain 3 tomatoes each.  Each can loses half its volume, which means it results in 8 ounces of sauce.  If the total amount of sauce made was 32 ounces, she must have used 4 cans: 32/8 = 4.  If each can has 3 tomatoes, then Freda used 4 x 3 = 12 tomatoes.  The answer is 12. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 99: [success_rate]: True, [answer]: 5, [output]: 30 cars were originally on the motorway. 20 more cars drove through in the second 15 minutes.  But 5 took the exit, so 30 - 5 = 25 cars are left after all cars have driven through the traffic jam. 25 - 20 = 5, so 5 cars drove through in the first 15 minutes.  The answer is 5. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 100: [success_rate]: True, [answer]: 58, [output]:  Mary had 18 new potted plants.  She already had 2 plants on each of the 40 window ledges, so she had 2 x 40 = 80 plants.  80 + 18 = 98 plants in total.  Now, she gives away 40 plants (1 plant per ledge). 98 - 40 = 58.  The answer is 58. 
+[FLOPS] {'avg_prompt_tokens': 802.3, 'avg_prompt_times': 61.7, 'avg_generation_tokens': 3744.2, 'avg_reward_tokens': 281.3, 'avg_reward_times': 60.5}
+[EXP] 101: [success_rate]: True, [answer]: 175, [output]:  Jerome had 4 friends.  The first friend pressed the doorbell 20 times.  The second friend pressed the doorbell 1/4 times more than the first.  1/4 of 20 is 5.  So the second friend pressed the doorbell 20 + 5 = 25 times.   The third friend pressed the doorbell 10 times more than the fourth friend.  The fourth friend pressed the doorbell 60 times, so the third friend pressed the doorbell 60 + 10 = 70 times.  The first friend pressed the doorbell 20 times, the second friend pressed 25, the third friend 70, and the fourth friend 60.  Those are a total of 20 + 25 + 70 + 60 = 175.  The answer is 175. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 102: [success_rate]: True, [answer]: 6, [output]: 4 pages from the Science textbook. 20 pages from the Social Studies textbook. 7 pages from the History textbook.  8 pages from the Geography textbook means a total of 4 + 20 + 7 + 8 = 39 pages.  After reading 15 on Monday, he has 39 - 15 = 24 pages left.  There are 4 more days left. 24 pages in 4 days must be 24 / 4 = 6 pages on average.  The answer is 6. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 103: [success_rate]: False, [answer]: 26, [output]:  Let's break this down step by step!
+
+John drinks a glass of water for breakfast, lunch, and dinner 5 days a week (Monday to Friday).  That's 3 glasses of water per day for 5 days, so that's 3 x 5 = 15 glasses of water.  Then, he drinks one glass of water before going to bed, which adds up to 16 glasses of water from Monday to Friday. 
+
+On the weekends (Saturday and Sunday), John doesn't drink water for breakfast or before bedtime.  But he still drinks water for lunch and dinner.  So that's 2 glasses of water for 2 days, which is 2 x 2 = 4 glasses of water.  
+
+In total, John drinks 16 glasses of water during the weekdays and 4 glasses of water on the weekends.  To find the total number of glasses of water in a week, add those together: 16 + 4 = 20.  John drinks 20 glasses of water in a week.  The answer is 20. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 104: [success_rate]: True, [answer]: 140, [output]:  First, we need to find out how many 3-mile parts are in 42 miles. 42 / 3 = 14.  This means that the fog bank needs to cover 14 parts of the city.  For each part, it takes 10 minutes.  So the fog bank needs 10 * 14 = 140 minutes to cover the whole city.  The answer is 140. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 105: [success_rate]: True, [answer]: 500, [output]: 1000 is the total number of jigsaw pieces. 1/4 is the same as dividing by 4, so Poppy placed 1000 / 4 = 250 pieces. 1000 - 250 = 750 are left. 1/3 is the same as dividing by 3, so her mom placed 1/3 of 750 pieces. 750 / 3 = 250.  750 - 250 = 500. 500 are left to be placed.  The answer is 500. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 106: [success_rate]: True, [answer]: 20, [output]:  If Amir eats 5 cookies, Cody eats 3 times as many, so Cody eats 5 * 3 = 15 cookies. 5 + 15 = 20.  The answer is 20. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 107: [success_rate]: False, [answer]: 72, [output]:  Let's break this down step by step!
+
+For one box, the dimensions without the walls are:
+L = 5 - 1 = 4 inches (since the wall is 1 inch thick, subtract it from both length and width)
+W = 6 - 1 = 5 inches
+H = 4 - 1 = 3 inches
+
+The volume of one box is:
+V = L x W x H = 4 x 5 x 3 = 60 inches^3
+
+Since John has 3 boxes, the total inner volume is:
+V_total = 3 x 60 = 180 inches^3
+
+The answer is 180. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 108: [success_rate]: True, [answer]: 3, [output]:  Frankie watches TV after he finishes his homework every night.  On Monday and Tuesday, he watched a 1-hour episode of his favorite show each night.  On Wednesday, he watched a few episodes of a 30-minute show.  On Thursday, he finished homework early and watched a 1-hour episode and a 30-minute show.  On Friday, he got to stay up late for the weekend, so he watched two 1-hour episodes.  If he watched 7 hours of TV in all, how many 30-minute episodes did he watch on Wednesday?
+
+Let's break it down:
+
+* On Monday and Tuesday, Frankie watched 2*1 = 2 hours of TV. 7 - 2 = 5 hours left for the rest of the week. 
+* On Wednesday, Frankie watched an unknown number of 30-minute episodes.  Since each episode is 30 minutes, he watched some number of episodes x 30 minutes.  We don't know x yet.  Calling this amount of minutes 'm', Frankie watched 30m minutes on Wednesday.  On Thursday, he watched a 1 hour episode (60 minutes) and a 30-minute episode.  So he watched 60 + 30 = 90 minutes on Thursday.  On Friday, he watched 2 1-hour episodes.   So he watched 2*60 = 120 minutes on Friday.   In total, Frankie watched 30m + 90 + 120 minutes.  We are given this total as 7 hours, which is 7 * 60 = 420 minutes.  Frankie watched a total of 30m + 90 + 120 minutes, which equals 420 minutes.   Now we have to isolate m.   30m + 90 + 120 = 420.   Simplify the right side to get 30m + 210 = 420, then subtract 210 to both sides to get 30m = 210.  Finally, divide both sides by 30 to get m = 7.  Frankie watched 7 30-minute episodes on Wednesday.   The answer is 7. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 109: [success_rate]: True, [answer]: 50, [output]:  Henry started with some unknown number of cookies, which we'll call x.  This year, he wanted to bake twice as much, so he made 2x.  But, he baked 15 more cookies "by mistake".  So his total number of cookies is 2x + 15.  The total number of cookies he had left after dropping 5 is 110.  This means that 2x + 15 - 5 = 110.  We can simplify this to 2x + 10 = 110.  Subtract 10 from both sides to get 2x = 100.  Finally, divide both sides by 2 to get x = 50.  So, Henry baked 50 cookies last year.  The answer is 50. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 110: [success_rate]: True, [answer]: 28, [output]: 10 gallons of gas at $3. 00 per gallon will cost 10 * 3. 00 = 30.   With an app that offers 0. 20 cashback per gallon and you fill up 10 gallons, you will get 10 * 0. 20 = 2. 00 in cashback.  The final cost is 30 - 2 = 28. 00.  The answer is 28. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 111: [success_rate]: True, [answer]: 45, [output]:  Beatrice's fruit roll-ups are 2 roll-ups wide and 24 rolls up long, so she had a total of 2 x 24 = 48 fruit roll-ups.  Marcell's fruit roll-ups are 3 roll-ups wide and 14 rolls up long, so he had a total of 3 x 14 = 42 fruit roll-ups.   They ate a total of 48 + 42 = 90 fruit roll-ups.   To find the average, they ate 90/2 = 45 fruit roll-ups on average.  The answer is 45. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 112: [success_rate]: True, [answer]: 16, [output]:  Julia will row 64 seconds, which is 64/16 * 20 = 80 feet total. 80/10 = 8.  Since the boat took on 2 liters of water for every 10 feet, the total amount of water taken on is 2 * 8 = 16 liters.  The answer is 16. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 113: [success_rate]: True, [answer]: 24, [output]: 4 teachers take turns using the whiteboard, each having 2 lessons per day. 4 x 2 = 8 lessons per day. 3 times are cleaned per lesson, so that's a total of 8 x 3 = 24 cleanings per day.  The answer is 24. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 114: [success_rate]: True, [answer]: 25, [output]: 15 days have passed, and Ryan plants 2 flowers each day. 15 days x 2 flowers per day = 30 flowers. 5 did not grow, so he has 30 - 5 = 25 flowers left.  The answer is 25. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 115: [success_rate]: True, [answer]: 6, [output]:  Jamal has 1800 photographs.  His phone can hold 6 times more photographs than Brittany's phone.  So Brittany's phone can hold 1800 / 6 = 300 photographs.   Brittany's phone can hold 50 times more photographs than there are ducks in Jamal's photograph.   Let's call the number of ducks in Jamal's photograph x.   So, there are 50x photographs in Brittany's phone.  Since Brittany's phone can hold 300 photographs, we can set up the equation: 50x = 300.  Solve for x and you get x = 6.  So there are 6 ducks in Jamal's photograph of ducks at the zoo.  The answer is 6. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 116: [success_rate]: True, [answer]: 90, [output]: 1.  Sasha bought 2x4x10 boards for $10 each.  She bought 10 of them, so she spent 10 x 10 = 100 dollars.  she also bought 4x4x10 boards for $16 each.  She bought 5 of them, so she spent 5 x 16 = 80 dollars.   So in total, she spent 100 + 80 = 180 dollars. 
+She wants to sell them, but prices have increased by 50% since she bought them.   That means the price of 2x4x10 boards increased from $10 to 10 x 1. 5 = 15.  The price of 4x4x10 boards increased from $16 to 16 x 1. 5 = 24.  She sold them all, so she got 10 x 15 = 150 dollars for the 2x4x10 boards and 5 x 24 = 120 dollars for the 4x4x10 boards.  So she got a total of 150 + 120 = 270 dollars.  Now, to find her profit, we need to subtract the amount she spent from the amount she got.   270 - 180 = 90.  The answer is 90. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 117: [success_rate]: True, [answer]: 42, [output]:  Let's say the number of teaspoons of sugar Katy used is 7x, and the number of cups of water is 13x (since the ratio is 7:13). 
+
+We know the total number of teaspoons of sugar and cups of water is 120, so we can set up the equation:
+
+7x + 13x = 120
+
+Combine like terms:
+
+20x = 120
+
+Divide both sides by 20:
+
+x = 6
+
+So Katy used 6 units of the ratio.  Since the ratio is 7:13, the number of teaspoons of sugar Katy used is:
+
+7x = 7(6) = 42
+
+The answer is 42. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 118: [success_rate]: True, [answer]: 360, [output]:  John has 3 children.  He buys 2 pairs of shoes for each of them.  So the total number of pairs of shoes he bought is 2 x 3 = 6.  Each pair of shoes costs 60 dollars.  So the total cost is 6 pairs * 60 dollars = 360 dollars.  The answer is 360. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 119: [success_rate]: True, [answer]: 4, [output]:  There are originally 2 containers of vehicles at the port.  Each container has 5 vehicles, so a total of 2 x 5 = 10 vehicles.  Then, the customs officer count 30 vehicles at the port.  So there must have been 30 - 10 = 20 vehicles brought in the next day.  Since there are 5 vehicles in each container, the number of containers that were imported on the second day is 20 / 5 = 4.  The answer is 4. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}
+[EXP] 120: [success_rate]: False, [answer]: 95200, [output]:  Adrien's salary was originally 30% higher than Lylah's.  So if Adrien's original salary was $40,000, then Lylah's salary was 40,000 * (100/130) = 30,769. 
+
+Four years later, Adrien's salary increased by 40% from his original salary, which is 40,000 * (140/100) = 56,000. 
+
+If Lylah's salary also increased simultaneously, then we know that her salary increased by the same percentage from her original amount. 30,769 * (140/100) = 43,075.  After both salaries increased, Adrien's salary was 56,000 and Lylah's salary was 43,075.  Adding both salaries, we get the total salary of both: 56,000 + 43,075 = 99,075.  The answer is 99,075. 
+[FLOPS] {'avg_prompt_tokens': 808.9, 'avg_prompt_times': 61.9, 'avg_generation_tokens': 3798.3, 'avg_reward_tokens': 291.0, 'avg_reward_times': 60.7}

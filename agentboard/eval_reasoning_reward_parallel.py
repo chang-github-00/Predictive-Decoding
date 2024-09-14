@@ -16,11 +16,20 @@ from tqdm import tqdm
 from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+from utils.logging.token_logger import token_count, count_flag
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
         dataset = [{"question": a["question"], "answer": a["answer"]} for a in full_dataset]
+        return dataset
+    
+    if task == "gsm8k-subset":
+        full_dataset = datasets.load_dataset(path, 'main', split='test')
+        dataset = [{"question": a["question"], "answer": a["answer"]} for a in full_dataset]
+        # keep every 7 questions
+        indexes = list(range(0, len(dataset), 7))
+        dataset = [dataset[i] for i in indexes]
         return dataset
     
     if task == "math":
@@ -113,7 +122,7 @@ class EvalReasoning:
         self.batch_size = run_config["batch_size"]
         self.algorithm = load_algorithm(algorithm_config["name"], algorithm_config, self.llm, reward_model=self.reward_llm)
         
-        self.dataset = load_dataset(task, run_config["data_path"])
+        self.dataset = load_dataset(task+'-subset', run_config["data_path"])
         self.dataset_path = run_config["data_path"]
         # with open(algorithm_config["prompt_path"], 'r') as f:
         #     self.prompts = json.load(f)
@@ -174,6 +183,9 @@ class EvalReasoning:
         id = 0
         
         for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
+            if count_flag:
+                token_count.add_instance(len(test_items))
+                
             questions = [item["question"] for item in test_items]
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="answer") # process all questions in parallel
 
@@ -205,8 +217,15 @@ class EvalReasoning:
                 else:
                     index = id
                     
+                count_stats = token_count.get_count()
+                    
                 f.write(f"[EXP] {index}: [success_rate]: {evaluation}, [answer]: {answer}, [output]: {output}\n")
                 result.append(evaluation)
+            
+            if count_flag:
+                token_count.print()
+                f.write(f"[FLOPS] {count_stats}\n")
+
         
         metrics = {"task":self.task+'_'+dataset_name, "success_rate": sum(result) / len(result)}
         with open(os.path.join(self.log_path,f"all_results.txt"), "a+") as f:

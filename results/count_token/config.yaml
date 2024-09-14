@@ -1,0 +1,25 @@
+algorithm:
+  beam_size: 8
+  beam_temperature: 0.6
+  do_sample: true
+  lookahead_thought_length: 6
+  n_generate_sample: 1
+  name: MPC_Sample
+  reward_threshold: 0.0
+  select_temperature: 0.01
+  task: gsm8k
+  use_memory: true
+  value_type: logp
+llm:
+  context_length: 32768
+  dtype: bfloat16
+  engine: /ssddata/model_hub/Mistral-7B-Instruct-v0.3
+  name: vllm
+  ngpu: 1
+  stop: null
+  temperature: 0
+  top_p: 1
+run:
+  batch_size: 20
+  data_path: /root/huggingface/gsm8k
+  log_path: results/count_token

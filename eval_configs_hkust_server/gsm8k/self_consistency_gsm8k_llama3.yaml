@@ -8,11 +8,11 @@ run:
 algorithm:
   task: math
   name: Self_Consistency  
-  n_generate_sample: 1 # n=1 pal
+  n_generate_sample: 8 # n=1 pal
   value_type: logp # use llama3
   do_sample: True
   beam_temperature: 1
-  beam_search: True
+  beam_search: False
   # lookahead_token_length: 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key

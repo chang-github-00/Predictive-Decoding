@@ -16,12 +16,14 @@ from tqdm import tqdm
 from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
-os.environ["CUDA_VISIBLE_DEVICES"] = "4"
+from utils.logging.token_logger import token_count, count_flag
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
         dataset = [{"question": a["question"], "answer": a["answer"]} for a in full_dataset]
-        return dataset
+        return dataset[:20]
     
     if task == "math":
         examples = []
@@ -286,6 +288,10 @@ class EvalReasoning:
         
         for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
             questions = [item["question"] for item in test_items]
+            
+            if count_flag:
+                token_count.add_instance(len(questions))
+                
             success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
 
             # for output in all_outputs:
@@ -317,7 +323,12 @@ class EvalReasoning:
                     
                 f.write(f"[EXP] {index}: [success_rate]: {evaluation}, [answer]: {answer}, [output]: {output}\n")
                 result.append(evaluation)
+            if count_flag:
+                count_stats = token_count.get_count()
+                f.write(f"[FLOPS] {count_stats}\n")
         
+        if count_flag:
+            token_count.print()
         metrics = {"task":self.task+'_'+dataset_name, "success_rate": sum(result) / len(result)}
         with open(os.path.join(self.log_path,f"all_results.txt"), "a+") as f:
             f.write(json.dumps(metrics) + "\n")

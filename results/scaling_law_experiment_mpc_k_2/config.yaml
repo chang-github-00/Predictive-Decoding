@@ -1,6 +1,6 @@
 algorithm:
-  beam_size: 8
-  beam_temperature: 0.8
+  beam_size: 2
+  beam_temperature: 1.0
   do_sample: true
   lookahead_thought_length: 6
   n_generate_sample: 1
@@ -29,6 +29,6 @@ reward_llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 100
+  batch_size: 200
   data_path: /root/huggingface/gsm8k
-  log_path: results/scaling_law_experiment_mpc_k_8
+  log_path: results/scaling_law_experiment_mpc_k_2

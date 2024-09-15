@@ -31,4 +31,4 @@ reward_llm:
 run:
   batch_size: 100
   data_path: /root/huggingface/gsm8k
-  log_path: results/scaling_law_experiment_mpc_k_8
+  log_path: results/scaling_law_experiment_mpc_k_16_smaller_temp

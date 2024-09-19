@@ -14,7 +14,7 @@ algorithm:
   beam_size: 8
   value_type: reward # use math shepherd
   do_sample: True
-  beam_temperature: 0.8
+  beam_temperature: 1.0
   select_temperature: 0.01
   use_memory: True
   

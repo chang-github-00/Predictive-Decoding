@@ -216,6 +216,8 @@ class COT_Reward :  # the algorithm should be stateless, and generates a whole p
             return all_outputs
         
         elif self.result_type == "rank":
+            if len(rewards) == 0:
+                return results
             best_index = rewards.index(max(rewards))
             all_outputs = [results[best_index]]
             

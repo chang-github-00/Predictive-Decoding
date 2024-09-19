@@ -17,7 +17,7 @@ from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
 from utils.logging.token_logger import token_count, count_flag
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
@@ -305,7 +305,8 @@ def main():
     
     eval_reasoning = EvalReasoning(task, run_config, llm_config, reward_model_config, algorithm_config)
     
-    metrics = eval_reasoning.parallel_evaluate()
+    for i in range(3):
+        metrics = eval_reasoning.parallel_evaluate()
     
     
 if __name__ == "__main__":

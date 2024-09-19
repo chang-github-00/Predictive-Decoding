@@ -8,7 +8,7 @@ import random
 import re
 import torch
 from sentence_transformers import SentenceTransformer, util
-from InstructorEmbedding import INSTRUCTOR
+# from InstructorEmbedding import INSTRUCTOR
 
 @registry.register_agent("MPCAgent")
 class MPCAgent(   # add world modeling objective in agent 

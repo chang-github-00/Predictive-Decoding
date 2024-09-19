@@ -1,0 +1,284 @@
+[EXP] 1: [success_rate]: True, [answer]: 18, [output]:  Janet's ducks lay 16 eggs per day.  She eats 3 eggs for breakfast, and bakes muffins with 4 eggs.  So, she is left with 16 - 3 - 4 = 9 eggs.  She sells these eggs for $2 each, so she makes 9 * 2 = 18 dollars.  The answer is 18. 
+ Voted result: [" Janet's ducks lay 16 eggs per day.  She eats 3 eggs for breakfast, and bakes muffins with 4 eggs.  So, she is left with 16 - 3 - 4 = 9 eggs.  She sells these eggs for $2 each, so she makes 9 * 2 = 18 dollars.  The answer is 18. "]
+[EXP] 2: [success_rate]: False, [answer]: 160, [output]: 200 GB is the file size that needs to be downloaded.  Carla can download at a rate of 2 GB per minute.  So in 1 minute, she downloads 2 GB.  
+
+40% of 200 GB = 0. 40 * 200 = 80 GB.  
+
+So, Carla has to download the first 80 GB, which takes 80 / 2 = 40 minutes. 
+
+Then, Windows forces a restart, and Carla spends 20 minutes doing that. 
+
+Now, Carla needs to start the download again from the beginning.  She still has 200 GB left, which takes another 100 GB / 2 = 50 minutes. 
+
+Total time taken is 40 minutes for downloading 80 GB, 20 minutes for restart and 50 minutes for downloading the remaining 120 GB.  That's 40 + 20 + 50 = 110 minutes.  The answer is 110. 
+ Voted result: ["200 GB is the file size that needs to be downloaded.  Carla can download at a rate of 2 GB per minute.  So in 1 minute, she downloads 2 GB.  \n\n40% of 200 GB = 0. 40 * 200 = 80 GB.  \n\nSo, Carla has to download the first 80 GB, which takes 80 / 2 = 40 minutes. \n\nThen, Windows forces a restart, and Carla spends 20 minutes doing that. \n\nNow, Carla needs to start the download again from the beginning.  She still has 200 GB left, which takes another 100 GB / 2 = 50 minutes. \n\nTotal time taken is 40 minutes for downloading 80 GB, 20 minutes for restart and 50 minutes for downloading the remaining 120 GB.  That's 40 + 20 + 50 = 110 minutes.  The answer is 110. "]
+[EXP] 3: [success_rate]: True, [answer]: 60, [output]: 20% of the students, which is 20/100 * 20 = 4 students, signed up for contemporary dance.  That leaves 20 - 4 = 16 students.  25% of those remaining, which is 25/100 * 16 = 4 students, signed up for jazz dance.  That leaves 16 - 4 = 12 students.  To find the percentage of students who enrolled in hip-hop dance, we can do 12/20 * 100 = 60%. 
+ Voted result: 20% of the students, which is 20/100 * 20 = 4 students, signed up for contemporary dance.  That leaves 20 - 4 = 16 students.  25% of those remaining, which is 25/100 * 16 = 4 students, signed up for jazz dance.  That leaves 16 - 4 = 12 students.  To find the percentage of students who enrolled in hip-hop dance, we can do 12/20 * 100 = 60%. 
+[EXP] 4: [success_rate]: True, [answer]: 14, [output]:  Samantha is 31 years old.  She is 6 years younger than Raymond, so Raymond is 31 + 6 = 37.  Raymond had a son at 23, so that was 37 - 23 = 14 years ago.  The answer is 14. 
+ Voted result: [' Samantha is 31 years old.  She is 6 years younger than Raymond, so Raymond is 31 + 6 = 37.  Raymond had a son at 23, so that was 37 - 23 = 14 years ago.  The answer is 14. ']
+[EXP] 5: [success_rate]: True, [answer]: 25, [output]: 60-mile trip, first stop at 20 miles, second stop 15 miles before the end, means the second stop was at 60 - 15 = 45 miles.  The distance between first and second stop is then 45 - 20 = 25.  The answer is 25. 
+ Voted result: ['60-mile trip, first stop at 20 miles, second stop 15 miles before the end, means the second stop was at 60 - 15 = 45 miles.  The distance between first and second stop is then 45 - 20 = 25.  The answer is 25. ']
+[EXP] 6: [success_rate]: True, [answer]: 9, [output]:  Mike scored 4 points in the first 20 minutes.  To find the number of points he scored in the second 20 minutes, we need to find 25% of 4 points.  25% is the same as 1/4, so the number of points he scored in the second 20 minutes is 4 + (4/4) = 4 + 1 = 5.  So he scored 4 + 5 = 9 points in the second 20 minutes.  In total, he scored 4 + 9 = 13 points. 
+ Voted result:  Mike scored 4 points in the first 20 minutes.  To find the number of points he scored in the second 20 minutes, we need to find 25% of 4 points.  25% is the same as 1/4, so the number of points he scored in the second 20 minutes is 4 + (4/4) = 4 + 1 = 5.  So he scored 4 + 5 = 9 points in the second 20 minutes.  In total, he scored 4 + 9 = 13 points. 
+[EXP] 7: [success_rate]: True, [answer]: 26, [output]: 5 apple pies were baked, each cut into 8 pieces.  That's a total of 5 x 8 = 40 pieces.  After eating, there were 14 pieces remaining.  So the guests must have eaten 40 - 14 = 26 pieces of pie. 
+ Voted result: 5 apple pies were baked, each cut into 8 pieces.  That's a total of 5 x 8 = 40 pieces.  After eating, there were 14 pieces remaining.  So the guests must have eaten 40 - 14 = 26 pieces of pie. 
+[EXP] 8: [success_rate]: True, [answer]: 30, [output]: 15 floors, each with 8 units means a total of 15 * 8 = 120 units in the building.  If 3/4 of the building is occupied, then the number of occupied units is 3/4 * 120 = 90.  So, the number of unoccupied units is 120 - 90 = 30.  The answer is 30. 
+ Voted result: ['15 floors, each with 8 units means a total of 15 * 8 = 120 units in the building.  If 3/4 of the building is occupied, then the number of occupied units is 3/4 * 120 = 90.  So, the number of unoccupied units is 120 - 90 = 30.  The answer is 30. ']
+[EXP] 9: [success_rate]: True, [answer]: 3, [output]:  Peter has 42 dollars.  Each trip to the movies, he will spend 7 + 7 = 14 dollars.  To find how many times he can go, we need to divide 42 by 14.  
+
+42 ÷ 14 is 3. 
+ Voted result:  Peter has 42 dollars.  Each trip to the movies, he will spend 7 + 7 = 14 dollars.  To find how many times he can go, we need to divide 42 by 14.  
+
+42 ÷ 14 is 3. 
+[EXP] 10: [success_rate]: True, [answer]: 1596, [output]: 140 dollars is the charge for one month.  The first half of the year has 6 months, so for the first half of the year, she paid 6 x 140 = 840 dollars.  The second half of the year has 6 months, so Aleena will pay 10% less than 140 dollars each month.  140 - 10% of 140 is 140 - 14 = 126.  So Aleena pays 126 dollars per month for the second half of the year.  In the second half of the year, she pays 6 x 126 = 756 dollars.  In total, she paid 840 + 756 = 1596 dollars by the end of the year. 
+ Voted result: 140 dollars is the charge for one month.  The first half of the year has 6 months, so for the first half of the year, she paid 6 x 140 = 840 dollars.  The second half of the year has 6 months, so Aleena will pay 10% less than 140 dollars each month.  140 - 10% of 140 is 140 - 14 = 126.  So Aleena pays 126 dollars per month for the second half of the year.  In the second half of the year, she pays 6 x 126 = 756 dollars.  In total, she paid 840 + 756 = 1596 dollars by the end of the year. 
+[EXP] 11: [success_rate]: True, [answer]: 7425, [output]: 5 dance classes each day on 5 weekdays means Judy taught 5 * 5 = 25 classes during the weekdays.  On Saturday, she taught 8 classes.  In total, she taught 25 + 8 = 33 classes.  Each class has 15 students.  15 * 33 = 495 students.  She charges 15 dollars per student.  495 * 15 = 7425.  The answer is 7425. 
+ Voted result: ['5 dance classes each day on 5 weekdays means Judy taught 5 * 5 = 25 classes during the weekdays.  On Saturday, she taught 8 classes.  In total, she taught 25 + 8 = 33 classes.  Each class has 15 students.  15 * 33 = 495 students.  She charges 15 dollars per student.  495 * 15 = 7425.  The answer is 7425. ']
+[EXP] 12: [success_rate]: True, [answer]: 100, [output]:  Sarah does 400 pounds of laundry.  David does a quarter of what Sarah does because Sarah does 4 times as much as David.  So David does 400 / 4 = 100 pounds of laundry.  Raymond does half as much as Sarah does, so Raymond does 400 / 2 = 200 pounds of laundry.  The difference in the amount of laundry Raymond and David do is 200 - 100 = 100 pounds.  The answer is 100. 
+ Voted result: [' Sarah does 400 pounds of laundry.  David does a quarter of what Sarah does because Sarah does 4 times as much as David.  So David does 400 / 4 = 100 pounds of laundry.  Raymond does half as much as Sarah does, so Raymond does 400 / 2 = 200 pounds of laundry.  The difference in the amount of laundry Raymond and David do is 200 - 100 = 100 pounds.  The answer is 100. ']
+[EXP] 13: [success_rate]: True, [answer]: 15, [output]:  []
+The football team played 22 games.  They won 8 more than they lost.  This means that the number of wins plus the number of losses equals 22, and the difference between the number of wins and losses is 8. 
+
+Let's say the number of losses is x.  Then the number of wins is x + 8. 
+
+We can write an equation based on this information: x + (x + 8) = 22
+
+Combine like terms: 2x + 8 = 22
+
+Subtract 8 from both sides: 2x = 14
+
+Divide both sides by 2: x = 7
+
+So the team lost 7 games. 
+
+The number of wins is x + 8 = 7 + 8 = 15. 
+
+The team won 15 games. 
+ Voted result:  []
+The football team played 22 games.  They won 8 more than they lost.  This means that the number of wins plus the number of losses equals 22, and the difference between the number of wins and losses is 8. 
+
+Let's say the number of losses is x.  Then the number of wins is x + 8. 
+
+We can write an equation based on this information: x + (x + 8) = 22
+
+Combine like terms: 2x + 8 = 22
+
+Subtract 8 from both sides: 2x = 14
+
+Divide both sides by 2: x = 7
+
+So the team lost 7 games. 
+
+The number of wins is x + 8 = 7 + 8 = 15. 
+
+The team won 15 games. 
+[EXP] 14: [success_rate]: True, [answer]: 28, [output]:  Since Cindy has 4 pets, Marcia has 4 + 2 = 6 pets.  Since Jan has 3 times the number of pets as Marcia, Jan has 3 x 6 = 18 pets.  In total, they have 4 + 6 + 18 = 28 pets. 
+ Voted result:  Since Cindy has 4 pets, Marcia has 4 + 2 = 6 pets.  Since Jan has 3 times the number of pets as Marcia, Jan has 3 x 6 = 18 pets.  In total, they have 4 + 6 + 18 = 28 pets. 
+[EXP] 15: [success_rate]: True, [answer]: 5, [output]: 30 cars were originally lined up on the motorway.  5 cars didn't drive through the traffic jam.  So, 30 - 5 = 25 cars drove through the traffic jam.  
+
+In the first 15 minutes, some cars drove through.  Then, 20 more cars drove through in the remaining 15 minutes.  So, the first 15 minutes had a certain number of cars, and the remaining 15 minutes had 20 cars.  
+
+Let the number of cars in the first 15 minutes be x.  Then, the total number of cars driven through the traffic jam would be x + 20.  
+
+Since 25 cars drove through the traffic jam, x + 20 = 25.  
+
+To solve for x, subtract 20 from both sides:
+
+x = 25 - 20
+
+x = 5
+
+So, 5 cars drove through in the first 15 minutes of the traffic jam. 
+ Voted result: 30 cars were originally lined up on the motorway.  5 cars didn't drive through the traffic jam.  So, 30 - 5 = 25 cars drove through the traffic jam.  
+
+In the first 15 minutes, some cars drove through.  Then, 20 more cars drove through in the remaining 15 minutes.  So, the first 15 minutes had a certain number of cars, and the remaining 15 minutes had 20 cars.  
+
+Let the number of cars in the first 15 minutes be x.  Then, the total number of cars driven through the traffic jam would be x + 20.  
+
+Since 25 cars drove through the traffic jam, x + 20 = 25.  
+
+To solve for x, subtract 20 from both sides:
+
+x = 25 - 20
+
+x = 5
+
+So, 5 cars drove through in the first 15 minutes of the traffic jam. 
+[EXP] 16: [success_rate]: True, [answer]: 20, [output]:  Since Amir eats 5 cookies, Cody eats three times 5 cookies, which is 5 * 3 = 15 cookies.   Since Amir eats 5 cookies and Cody eats 15 cookies, together they eat 5 + 15 = 20 cookies. 
+ Voted result:  Since Amir eats 5 cookies, Cody eats three times 5 cookies, which is 5 * 3 = 15 cookies.   Since Amir eats 5 cookies and Cody eats 15 cookies, together they eat 5 + 15 = 20 cookies. 
+[EXP] 17: [success_rate]: True, [answer]: 24, [output]: 4 teachers share the whiteboard, each with 2 lessons per day.  So, in total there are 4 x 2 = 8 lessons per day.  In each lesson, the whiteboard is cleaned 3 times.  So, the total number of times the whiteboard is cleaned is 8 x 3 = 24.  The answer is 24. 
+ Voted result: ['4 teachers share the whiteboard, each with 2 lessons per day.  So, in total there are 4 x 2 = 8 lessons per day.  In each lesson, the whiteboard is cleaned 3 times.  So, the total number of times the whiteboard is cleaned is 8 x 3 = 24.  The answer is 24. ']
+[EXP] 18: [success_rate]: True, [answer]: 95200, [output]: 4 years ago, Adrien's salary was 40000.  Lylah's salary was 30% lower than Adrien's, so Lylah's salary was 30% of 40000 less.  30% of 40000 is 12000.  40000 - 12000 is 28000.  So Lylah's salary 4 years ago was 28000.  Four years later, Adrien's salary increased 40% over his salary 4 years ago, so his new salary is 40000 + 40% of 40000.  40% of 40000 is 16000.  40000 + 16000 is 56000. 
+
+Since both Adrien's and Lylah's salaries increased simultaneously, Lylah's salary increased 40% over her salary 4 years ago.  Lylah's new salary is 28000 + 40% of 28000.  40% of 28000 is 11200.  28000 + 11200 is 39200. 
+
+Four years later, Adrien's and Lylah's salaries are 56000 and 39200 respectively.  The answer is 56000 + 39200 = 95200. 
+ Voted result: ["4 years ago, Adrien's salary was 40000.  Lylah's salary was 30% lower than Adrien's, so Lylah's salary was 30% of 40000 less.  30% of 40000 is 12000.  40000 - 12000 is 28000.  So Lylah's salary 4 years ago was 28000.  Four years later, Adrien's salary increased 40% over his salary 4 years ago, so his new salary is 40000 + 40% of 40000.  40% of 40000 is 16000.  40000 + 16000 is 56000. \n\nSince both Adrien's and Lylah's salaries increased simultaneously, Lylah's salary increased 40% over her salary 4 years ago.  Lylah's new salary is 28000 + 40% of 28000.  40% of 28000 is 11200.  28000 + 11200 is 39200. \n\nFour years later, Adrien's and Lylah's salaries are 56000 and 39200 respectively.  The answer is 56000 + 39200 = 95200. "]
+[EXP] 19: [success_rate]: True, [answer]: 82, [output]:  Let's start with the information that Dylan bought 38 chicken sausages.  Since he bought 6 more fish sausages than chicken sausages, the number of fish sausages is 38 + 6 = 44. 
+
+To find the total number of sausages, add the number of chicken sausages and fish sausages: 38 + 44 = 82. 
+
+So, Dylan bought 82 sausages in all. 
+ Voted result:  Let's start with the information that Dylan bought 38 chicken sausages.  Since he bought 6 more fish sausages than chicken sausages, the number of fish sausages is 38 + 6 = 44. 
+
+To find the total number of sausages, add the number of chicken sausages and fish sausages: 38 + 44 = 82. 
+
+So, Dylan bought 82 sausages in all. 
+[EXP] 20: [success_rate]: True, [answer]: 13, [output]:  Walt walked 4 miles on monday.  On tuesday, he walked 6 * 4 = 24 miles.  So in total he walked 4 + 24 = 28 miles.  41 - 28 = 13.  The answer is 13. 
+ Voted result: [' Walt walked 4 miles on monday.  On tuesday, he walked 6 * 4 = 24 miles.  So in total he walked 4 + 24 = 28 miles.  41 - 28 = 13.  The answer is 13. ']
+[FLOPS] {'avg_prompt_tokens': 734.2, 'avg_prompt_times': 64.0, 'avg_generation_tokens': 6771.9, 'avg_reward_tokens': 267.8, 'avg_reward_times': 59.8}
+[EXP] 21: [success_rate]: True, [answer]: 20, [output]: 20 cars are available.  12 are automatic and 4 are manual, so in total 12 + 4 = 16 cars are automatic or manual.  So, 20 - 16 = 4 cars are semi-automatic. 
+ Voted result: 20 cars are available.  12 are automatic and 4 are manual, so in total 12 + 4 = 16 cars are automatic or manual.  So, 20 - 16 = 4 cars are semi-automatic. 
+[EXP] 22: [success_rate]: False, [answer]: 75, [output]: 30 bees left the hive in the first 6 hours.  1/2 that many bees returned, so 30 / 2 = 15 bees.  After that, 2 times as many bees left, so 2 x 30 = 60 bees.  So in the next 6 hours, there were 15 returns and 60 leaves, netting a loss of 45 bees.  Since every bee that left before had not returned, all of the bees that left earlier (30 bees) return in the next 6 hours.  So in the last 6 hours of the day, Debra saw 30 bees return. 
+ Voted result: 30 bees left the hive in the first 6 hours.  1/2 that many bees returned, so 30 / 2 = 15 bees.  After that, 2 times as many bees left, so 2 x 30 = 60 bees.  So in the next 6 hours, there were 15 returns and 60 leaves, netting a loss of 45 bees.  Since every bee that left before had not returned, all of the bees that left earlier (30 bees) return in the next 6 hours.  So in the last 6 hours of the day, Debra saw 30 bees return. 
+[EXP] 23: [success_rate]: True, [answer]: 272, [output]: 3 classes, each for 1 hour, 3 days a week, is 3 x 1 x 3 = 9 hours a week.  2 classes, 2 hours each, 2 days a week, is 2 x 2 x 2 = 8 hours a week.  Total hours each week is 9 + 8 = 17.  For 16 weeks, 17 hours x 16 weeks = 272 hours.  The answer is 272. 
+ Voted result: ['3 classes, each for 1 hour, 3 days a week, is 3 x 1 x 3 = 9 hours a week.  2 classes, 2 hours each, 2 days a week, is 2 x 2 x 2 = 8 hours a week.  Total hours each week is 9 + 8 = 17.  For 16 weeks, 17 hours x 16 weeks = 272 hours.  The answer is 272. ']
+[EXP] 24: [success_rate]: True, [answer]: 32, [output]:  Let's start by identifying the number of starfish, sea horses, and clownfish caught by Locsin:
+
+* Starfish: Anakin caught 10, so Locsin caught 5 fewer, which is 10 - 5 = 5. 
+* Sea horses: Anakin caught 6, so Locsin caught 3 fewer, which is 6 - 3 = 3. 
+* Clownfish: Anakin caught 3, so Locsin caught 2 more, which is 3 + 2 = 5. 
+
+Now, let's add up the total number of fish caught by both Anakin and Locsin:
+
+* Starfish: Anakin (10) + Locsin (5) = 15
+* Sea horses: Anakin (6) + Locsin (3) = 9
+* Clownfish: Anakin (3) + Locsin (5) = 8
+
+The total number of fish caught is the sum of the three types of fish:
+
+15 (starfish) + 9 (sea horses) + 8 (clownfish) = 32
+
+So, Anakin and Locsin were able to catch 32 fish. 
+ Voted result:  Let's start by identifying the number of starfish, sea horses, and clownfish caught by Locsin:
+
+* Starfish: Anakin caught 10, so Locsin caught 5 fewer, which is 10 - 5 = 5. 
+* Sea horses: Anakin caught 6, so Locsin caught 3 fewer, which is 6 - 3 = 3. 
+* Clownfish: Anakin caught 3, so Locsin caught 2 more, which is 3 + 2 = 5. 
+
+Now, let's add up the total number of fish caught by both Anakin and Locsin:
+
+* Starfish: Anakin (10) + Locsin (5) = 15
+* Sea horses: Anakin (6) + Locsin (3) = 9
+* Clownfish: Anakin (3) + Locsin (5) = 8
+
+The total number of fish caught is the sum of the three types of fish:
+
+15 (starfish) + 9 (sea horses) + 8 (clownfish) = 32
+
+So, Anakin and Locsin were able to catch 32 fish. 
+[EXP] 25: [success_rate]: True, [answer]: 18, [output]:  Let's first find out how much money Jimmy has by using the information given: "Jimmy has $2 more than twice the money Ethel has".  Since Ethel has $8, "twice the money Ethel has" means 2 x 8 = 16.  Now, Jimmy has $2 more than that, so he has 16 + 2 = 18. 
+ Voted result:  Let's first find out how much money Jimmy has by using the information given: "Jimmy has $2 more than twice the money Ethel has".  Since Ethel has $8, "twice the money Ethel has" means 2 x 8 = 16.  Now, Jimmy has $2 more than that, so he has 16 + 2 = 18. 
+[EXP] 26: [success_rate]: True, [answer]: 15, [output]:  First, let's find out how much did they make: 0. 50 x 20 = 10 per gallon.  For a gallon they make it costs 3 + 2 = 5 dollars.  So for each gallon, they have a profit of 10 - 5 = 5 dollars.  They made 25 dollars in total, and made 5 dollars per gallon, so they must have sold 25 / 5 = 5 gallons. 
+
+Now let's find out how much they spent on lemons: each gallon costs 3 dollars, and they made 5 gallons, so they spent 5 x 3 = 15 dollars on lemons.  The answer is 15. 
+ Voted result: [" First, let's find out how much did they make: 0. 50 x 20 = 10 per gallon.  For a gallon they make it costs 3 + 2 = 5 dollars.  So for each gallon, they have a profit of 10 - 5 = 5 dollars.  They made 25 dollars in total, and made 5 dollars per gallon, so they must have sold 25 / 5 = 5 gallons. \n\nNow let's find out how much they spent on lemons: each gallon costs 3 dollars, and they made 5 gallons, so they spent 5 x 3 = 15 dollars on lemons.  The answer is 15. "]
+[EXP] 27: [success_rate]: False, [answer]: 23, [output]: First, let's figure out Mark's age.   Since two years ago, Mark was 5 years older than half Jan's age, we first find half of 30, which is 15.  Then, we add 5 to get 20.  But this is Mark's age two years ago, so we add 2 to get Mark's current age: 20 + 2 = 22. 
+
+Now, we know Jean is 2 years older than Mark, so we add 2 to Mark's age to get Jean's current age: 22 + 2 = 24.  So Jean is 24 years old.  The answer is 24. 
+ Voted result: ["First, let's figure out Mark's age.   Since two years ago, Mark was 5 years older than half Jan's age, we first find half of 30, which is 15.  Then, we add 5 to get 20.  But this is Mark's age two years ago, so we add 2 to get Mark's current age: 20 + 2 = 22. \n\nNow, we know Jean is 2 years older than Mark, so we add 2 to Mark's age to get Jean's current age: 22 + 2 = 24.  So Jean is 24 years old.  The answer is 24. "]
+[EXP] 28: [success_rate]: True, [answer]: 34, [output]: 3 friends spent 20. 25 on tickets.  Then they spent 4. 50 less on food than on the tickets.  So they spent 20. 25 - 4. 50 = 15. 75 on food.  The 3 tickets and food costed in total 20. 25 + 15. 75 = 36.  They also went on 2 rides, which costs 33 for each ride.  So the cost for the rides is 2 x 33 = 66.  The total cost is 36 + 66 = 102.  If the cost is split between 3 friends, then each of them pays 102 / 3 = 34.  The answer is 34. 
+ Voted result: ['3 friends spent 20. 25 on tickets.  Then they spent 4. 50 less on food than on the tickets.  So they spent 20. 25 - 4. 50 = 15. 75 on food.  The 3 tickets and food costed in total 20. 25 + 15. 75 = 36.  They also went on 2 rides, which costs 33 for each ride.  So the cost for the rides is 2 x 33 = 66.  The total cost is 36 + 66 = 102.  If the cost is split between 3 friends, then each of them pays 102 / 3 = 34.  The answer is 34. ']
+[EXP] 29: [success_rate]: True, [answer]: 120, [output]: 200 pounds of carrots are available.  Each of the 40 restaurants will receive 2 pounds of carrots.  So, the total number of pounds of carrots given out will be 2 x 40 = 80 pounds.  The number of pounds not used will be the difference between the original 200 pounds and the 80 pounds given out: 200 - 80 = 120.  The answer is 120. 
+ Voted result: ['200 pounds of carrots are available.  Each of the 40 restaurants will receive 2 pounds of carrots.  So, the total number of pounds of carrots given out will be 2 x 40 = 80 pounds.  The number of pounds not used will be the difference between the original 200 pounds and the 80 pounds given out: 200 - 80 = 120.  The answer is 120. ']
+[EXP] 30: [success_rate]: True, [answer]: 31, [output]:  Carl used 2 slices of cheese per sandwich, and he ate a sandwich every day this week.  So he ate 2 x 7 = 14 slices of cheese for sandwiches.  
+
+Then, he ate cheese and egg omelets for 3 days, using 1 more slice per omelet than per sandwich.  So, for omelets, he used 3 x (2 + 1) = 3 x 3 = 9 slices of cheese. 
+
+Finally, he used 8 slices of cheese for the macaroni and cheese dish. 
+
+In total, Carl used 14 + 9 + 8 = 31 slices of cheese.  The answer is 31. 
+ Voted result: [' Carl used 2 slices of cheese per sandwich, and he ate a sandwich every day this week.  So he ate 2 x 7 = 14 slices of cheese for sandwiches.  \n\nThen, he ate cheese and egg omelets for 3 days, using 1 more slice per omelet than per sandwich.  So, for omelets, he used 3 x (2 + 1) = 3 x 3 = 9 slices of cheese. \n\nFinally, he used 8 slices of cheese for the macaroni and cheese dish. \n\nIn total, Carl used 14 + 9 + 8 = 31 slices of cheese.  The answer is 31. ']
+[EXP] 31: [success_rate]: True, [answer]: 10, [output]:  First, we calculate the total amount Sara needs to buy the jacket and shoes.  A jacket for 30 dollars, and 2 pairs of shoes for 2 x 20 = 40 dollars.  So in total, she will spend 30 + 40 = 70.  If she already has 10, she will need to earn 70 - 10 = 60 dollars more.  She earns 5 dollars for each time she babysits and 4 dollars for each time she mows the lawn.  She babysits the neighbor's kids 4 times, earning 4 x 5 = 20 dollars.  So she still needs 60 - 20 = 40.  Since she earns 4 dollars for each time she mows the lawn, she will need to mow the lawn 40/4 = 10 times. 
+ Voted result:  First, we calculate the total amount Sara needs to buy the jacket and shoes.  A jacket for 30 dollars, and 2 pairs of shoes for 2 x 20 = 40 dollars.  So in total, she will spend 30 + 40 = 70.  If she already has 10, she will need to earn 70 - 10 = 60 dollars more.  She earns 5 dollars for each time she babysits and 4 dollars for each time she mows the lawn.  She babysits the neighbor's kids 4 times, earning 4 x 5 = 20 dollars.  So she still needs 60 - 20 = 40.  Since she earns 4 dollars for each time she mows the lawn, she will need to mow the lawn 40/4 = 10 times. 
+[EXP] 32: [success_rate]: True, [answer]: 15, [output]:  There are 4 roses in the vase.  There are 7 more dahlias than roses, so there are 4 + 7 = 11 dahlias.  In total, there are 4 roses + 11 dahlias = 15 flowers. 
+ Voted result:  There are 4 roses in the vase.  There are 7 more dahlias than roses, so there are 4 + 7 = 11 dahlias.  In total, there are 4 roses + 11 dahlias = 15 flowers. 
+[EXP] 33: [success_rate]: True, [answer]: 180, [output]: 30 dollars an hour for 3 hours is 30 * 3 = 90 dollars.  18 dollars an hour for 5 hours is 18 * 5 = 90 dollars.  Together they will pay 90 + 90 = 180 dollars.  The answer is 180 dollars. 
+ Voted result: ['30 dollars an hour for 3 hours is 30 * 3 = 90 dollars.  18 dollars an hour for 5 hours is 18 * 5 = 90 dollars.  Together they will pay 90 + 90 = 180 dollars.  The answer is 180 dollars. ']
+[EXP] 34: [success_rate]: False, [answer]: 50, [output]:  Let's first find out how many shells Kylie collects on Monday.  Robert collects 20 shells, and Kylie collects 5 more than Robert, so Kylie collects 20 + 5 = 25 shells on Monday. 
+ Voted result:  Let's first find out how many shells Kylie collects on Monday.  Robert collects 20 shells, and Kylie collects 5 more than Robert, so Kylie collects 20 + 5 = 25 shells on Monday. 
+[EXP] 35: [success_rate]: True, [answer]: 68, [output]:  Let's first determine the age of Joan and Mary based on the given information. 
+
+Since Jessa is 20 years old, and Joan is 5 years older than Jessa, we can calculate Joan's age as:
+
+Joan's age = Jessa's age + 5
+Joan's age = 20 + 5
+Joan's age = 25
+
+Since Mary is 2 years younger than Joan, we can calculate Mary's age as:
+
+Mary's age = Joan's age - 2
+Mary's age = 25 - 2
+Mary's age = 23
+
+Now we know the ages of the three girls: Jessa is 20, Joan is 25, and Mary is 23. 
+
+To find the sum of their ages, we add:
+
+20 + 25 + 23 = 68
+
+The sum of the ages of the three girls is 68. 
+ Voted result:  Let's first determine the age of Joan and Mary based on the given information. 
+
+Since Jessa is 20 years old, and Joan is 5 years older than Jessa, we can calculate Joan's age as:
+
+Joan's age = Jessa's age + 5
+Joan's age = 20 + 5
+Joan's age = 25
+
+Since Mary is 2 years younger than Joan, we can calculate Mary's age as:
+
+Mary's age = Joan's age - 2
+Mary's age = 25 - 2
+Mary's age = 23
+
+Now we know the ages of the three girls: Jessa is 20, Joan is 25, and Mary is 23. 
+
+To find the sum of their ages, we add:
+
+20 + 25 + 23 = 68
+
+The sum of the ages of the three girls is 68. 
+[EXP] 36: [success_rate]: False, [answer]: 7, [output]:  We can start by finding the difference between the number of snails in the two aquariums.  We can do this by subtracting the number of snails in the smaller aquarium from the number of snails in the larger aquarium:
+
+32 (snails in larger aquarium) - 4 (snails in smaller aquarium) = 28
+
+This means that there is a difference of 28 snails between the two aquariums.  The problem states that this difference is twice the number of fish in both aquariums.  Let's call the number of fish in both aquariums "x".  We can set up the equation:
+
+28 = 2x
+
+To solve for x, we can divide both sides of the equation by 2:
+
+x = 28 ÷ 2
+x = 14
+
+This means that there are 14 fish in each aquarium. 
+ Voted result:  We can start by finding the difference between the number of snails in the two aquariums.  We can do this by subtracting the number of snails in the smaller aquarium from the number of snails in the larger aquarium:
+
+32 (snails in larger aquarium) - 4 (snails in smaller aquarium) = 28
+
+This means that there is a difference of 28 snails between the two aquariums.  The problem states that this difference is twice the number of fish in both aquariums.  Let's call the number of fish in both aquariums "x".  We can set up the equation:
+
+28 = 2x
+
+To solve for x, we can divide both sides of the equation by 2:
+
+x = 28 ÷ 2
+x = 14
+
+This means that there are 14 fish in each aquarium. 
+[EXP] 37: [success_rate]: False, [answer]: 73, [output]:  Last night, Rick killed 10 wolves and 15 cougars.  So in total, he killed 10 + 15 = 25 animals.  Today, he killed 3 times as many wolves, so 3 x 10 = 30 wolves.  He killed 3 fewer cougars so 15 - 3 = 12 cougars.  12 + 30 = 42.  Total, he killed 25 + 42 = 67 animals.  The answer is 67. 
+ Voted result: [' Last night, Rick killed 10 wolves and 15 cougars.  So in total, he killed 10 + 15 = 25 animals.  Today, he killed 3 times as many wolves, so 3 x 10 = 30 wolves.  He killed 3 fewer cougars so 15 - 3 = 12 cougars.  12 + 30 = 42.  Total, he killed 25 + 42 = 67 animals.  The answer is 67. ']
+[EXP] 38: [success_rate]: True, [answer]: 168, [output]:  Let's start by using the information that Andrea has 52 apples.  Since Andrea has 8 more apples than Jamal, Jamal must have 52 - 8 = 44 apples. 
+
+We are also given that Jamal has 4 more bananas than apples, so Jamal has 44 + 4 = 48 bananas. 
+
+Andrea has half as many bananas as Jamal, so she has 48 / 2 = 24 bananas. 
+
+To find the total number of fruits, we add the number of apples and bananas for both people:
+
+Andrea's fruits: 52 apples + 24 bananas = 76
+Jamal's fruits: 44 apples + 48 bananas = 92
+
+In total, there are 76 + 92 = 168 fruits.  The answer is 168. 
+ Voted result: [" Let's start by using the information that Andrea has 52 apples.  Since Andrea has 8 more apples than Jamal, Jamal must have 52 - 8 = 44 apples. \n\nWe are also given that Jamal has 4 more bananas than apples, so Jamal has 44 + 4 = 48 bananas. \n\nAndrea has half as many bananas as Jamal, so she has 48 / 2 = 24 bananas. \n\nTo find the total number of fruits, we add the number of apples and bananas for both people:\n\nAndrea's fruits: 52 apples + 24 bananas = 76\nJamal's fruits: 44 apples + 48 bananas = 92\n\nIn total, there are 76 + 92 = 168 fruits.  The answer is 168. "]

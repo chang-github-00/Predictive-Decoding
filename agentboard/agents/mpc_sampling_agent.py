@@ -11,7 +11,7 @@ import numpy as np
 import torch.nn.functional as F
 from torch.distributions import Categorical
 from sentence_transformers import SentenceTransformer, util
-from InstructorEmbedding import INSTRUCTOR
+# from InstructorEmbedding import INSTRUCTOR
 
 @registry.register_agent("MPCSample")
 class MPCSample(   # add world modeling objective in agent 
@@ -95,8 +95,11 @@ class MPCSample(   # add world modeling objective in agent
         self.reward_threshold = reward_threshold #0.7 # determine if the reward is good enough
         self.window_size = 1 # determine the action window size for self-evaulation
         
-        self.similarity_metric = SimilarityMetric() #InstructionSimilarityMetric() #SimilarityMetric()
-        
+        if self.value_type == "heuristic":
+            self.similarity_metric = SimilarityMetric() #InstructionSimilarityMetric() #SimilarityMetric()
+        else:
+            self.similarity_metric = None
+            
         if "claude" in self.llm_model.engine:
             self.split = self.llm_model.xml_split
         else:

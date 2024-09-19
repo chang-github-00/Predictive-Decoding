@@ -26,6 +26,6 @@ reward_llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 200
+  batch_size: 100
   data_path: /root/huggingface/gsm8k
   log_path: results/run_reward_model_llama3_mathshepherd_gsm8k_9_9_vote

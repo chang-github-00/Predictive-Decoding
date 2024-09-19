@@ -9,6 +9,8 @@ import io
 import argparse
 import numpy as np
 
+from utils.logging.token_logger import token_count, count_flag
+
 @registry.register_algorithm("Generation")
 class Generation:  # the agent should receive goal, state and action, then return the next state
     def __init__(self,
@@ -468,7 +470,17 @@ class Self_Consistency_old:  # the algorithm should be stateless, and generates 
         
             all_outputs.append(code)
         return True, all_outputs
-            
+    
+    
+    def record_generated_num_tokens(self, results):
+        if not count_flag:
+            return
+        
+        for res in results:
+            for result in res:
+                token = self.llm_model.tokenizer.encode(result)
+                token_count.add_generation_tokens(len(token))
+    
     def parallel_run(self, questions, prompts=None, **kwargs):
         
         args = {
@@ -542,6 +554,8 @@ class Self_Consistency_old:  # the algorithm should be stateless, and generates 
                     formatted_code_samples.append(code)
                     
                 all_outputs.append(formatted_code_samples)
+            if count_flag:
+                self.record_generated_num_tokens(all_outputs)
             return True, all_outputs
                 
                 

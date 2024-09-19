@@ -58,9 +58,54 @@ vllm serve /root/huggingface/math-shepherd-mistral-7b-prm
 # then run the following command, could possibly run more than one in parallel.
 python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/mpc_reward_gsm8k_llama3.yaml --tasks gsm8k --algorithm MPC_Sample_Reward --model llama-3 --data_path /root/huggingface/gsm8k --log_path results/run_reward_model_llama3_mathshepherd_gsm8k_9_7_mpc_1.0_0.01 --batch_size 2000 --reward_model math-shepherd
 
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/mpc_reward_gsm8k_llama3.yaml --tasks gsm8k --algorithm MPC_Sample_Reward --model llama-3 --data_path /root/huggingface/gsm8k --log_path results/count_tokens --batch_size 20 --reward_model math-shepherd
 
 # reward model math, autoregressive + rank
 python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 1319 --data_path  /root/huggingface/gsm8k --log_path results/run_reward_model_llama3_mathshepherd_gsm8k_9_9_rank --reward_model math-shepherd
 
 # reward model math, autoregressive + self consistency 
 python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 200 --data_path  /root/huggingface/gsm8k --log_path results/run_reward_model_llama3_mathshepherd_gsm8k_9_9_vote --reward_model math-shepherd
+
+
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 200 --data_path  /root/huggingface/gsm8k --log_path results/run_llama3_mathshepherd_gsm8k_9_10_cot_1 --reward_model math-shepherd
+
+
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 20 --data_path  /root/huggingface/gsm8k --log_path results/count_token --reward_model math-shepherd
+
+
+
+# scaling law experiment: 
+
+# for autoregressive + rank 
+
+# flops 22: n = 4
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 200 --data_path  /root/huggingface/gsm8k --log_path results/scaling_law_experiment_cot_rank_4 --reward_model math-shepherd
+# flops 44: n = 8   
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 200 --data_path  /root/huggingface/gsm8k --log_path results/scaling_law_experiment_cot_rank_8 --reward_model math-shepherd
+# flops 176: n = 32
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 200 --data_path  /root/huggingface/gsm8k --log_path results/scaling_law_experiment_cot_rank_32 --reward_model math-shepherd
+# flops 352  : n = 64
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/cot_reward_gsm8k_llama3.yaml --tasks gsm8k --model llama-3 --reward_model math-shepherd --algorithm COT_Reward --batch_size 200 --data_path  /root/huggingface/gsm8k --log_path results/scaling_law_experiment_cot_rank_64 --reward_model math-shepherd
+
+
+# for mcts 
+
+# flops 179 n_iteration = 32 n=4
+# 148/189 resumed from 48
+python examples/SearchORM/gsm8k/inference_mcts.py --llama_path /ssddata/model_hub/Meta-Llama-3-8B-Instruct --rm_path /ssddata/model_hub/math-shepherd-mistral-7b-prm/ --base_lm llama3 --n_actions 4 --n_iters 16
+
+# flops 437 n_iteration = 16 n=8 
+python examples/SearchORM/gsm8k/inference_mcts.py --llama_path /ssddata/model_hub/Meta-Llama-3-8B-Instruct --rm_path /ssddata/model_hub/math-shepherd-mistral-7b-prm/ --base_lm llama3 --n_actions 8 --n_iters 16
+
+
+# for predictive decoding
+
+# k = 1 
+python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8k/mpc_reward_gsm8k_llama3.yaml --tasks gsm8k --algorithm MPC_Sample_Reward --model llama-3 --data_path /root/huggingface/gsm8k --log_path results/scaling_law_experiment_mpc_k_1 --batch_size 200 --reward_model math-shepherd
+
+
+# guided deocding
+
+# beam = 2 146/180
+
+# beam = 8 

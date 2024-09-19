@@ -8,7 +8,7 @@ run:
 algorithm:
   task: gsm8k
   name: MPC_Sample
-  lookahead_thought_length: 4
+  lookahead_thought_length: 8
   reward_threshold: 0.0
   n_generate_sample: 1
   beam_size: 8

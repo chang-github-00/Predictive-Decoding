@@ -1,6 +1,9 @@
 import pdb
 
 from common.registry import registry
+from utils.logging.token_logger import token_count, count_flag
+
+
 # from rouge import Rouge
 import json
 import torch
@@ -113,6 +116,10 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
         
         all_logprobs,  all_tokens = self.reward_model.encode(full_prompts)
         
+        if count_flag:
+            for tokens in all_tokens:
+                token_count.add_reward_tokens(len(tokens), 1)
+            
         all_rewards = []
         for (logprobs, tokens) in zip(all_logprobs, all_tokens):
             tag_token_index = [i+1 for i, token in enumerate(tokens) if step_tag in token]
@@ -286,6 +293,10 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
                     action_length = token_end - token_start
                 else:
                     action_length = len(action_tokens)
+                
+                if count_flag:
+                    token_count.add_generation_tokens(action_length)
+                    
                 action_prob = action_prob ** (1 / action_length)  # normalize by the length of the action
                 action_chain = [a for a in action_chain if a.strip()!=""]
                 
@@ -300,6 +311,11 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
             action_output = [action for action in action_output if action.strip() != ""]
             action_output = action_output[:self.lookahead_decision_length]
             action_output = [action+". " for action in action_output]
+            
+            if count_flag:
+                action_text = "".join(action_output)
+                action_tokens = self.llm_model.tokenizer.encode(action_text)
+                token_count.add_generation_tokens(len(action_tokens))
             if len(action_output) == 0:
                 return None, None
             return action_output, action_output[0]
@@ -607,6 +623,16 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
         else:
             raise ValueError("n_generate_sample must be greater than 0.")
     
+    def record_num_tokens(self, system_messages, input_prompts, answer_prefixes):
+        if not count_flag:
+            return
+        
+        for system_message, input_prompt, answer_prefix in zip(system_messages, input_prompts, answer_prefixes):
+            text = system_message + input_prompt + answer_prefix
+            token = self.llm_model.tokenizer.encode(text)
+            token_count.add_prompt_tokens(len(token), self.beam_size)
+        
+    
     def parallel_run_single(self, questions, prompts=None, **kwargs): # code for original vllm
         
         args = {
@@ -678,6 +704,7 @@ class MPC_Sample_Reward:  # the algorithm should be stateless, and generates tho
                 break
             
             success, action_sequence_samples = self.llm_model.parallel_generate_with_config(all_system_messages, all_input_prompts, generation_config, answer_prefixes=all_answer_prefixes)
+            self.record_num_tokens(all_system_messages, all_input_prompts, all_answer_prefixes)
             
             if success:
                 

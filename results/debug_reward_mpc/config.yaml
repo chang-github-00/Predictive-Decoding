@@ -1,10 +1,10 @@
 algorithm:
   beam_search: false
-  beam_temperature: 1.0
+  beam_temperature: 0.5
   do_sample: true
   n_generate_sample: 8
   name: COT_Reward
-  result_type: vote
+  result_type: rank
   task: gsm8k
   value_type: reward
 llm:

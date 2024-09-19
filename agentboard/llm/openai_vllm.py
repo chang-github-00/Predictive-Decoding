@@ -12,6 +12,7 @@ import copy
 from openai import OpenAI
 import time
 import openai
+import os
 
 @registry.register_llm("openai_vllm")
 class OPENAI_VLLM:
@@ -42,7 +43,7 @@ class OPENAI_VLLM:
         
         self.client = OpenAI(
             api_key = "EMPTY",
-            base_url = "http://localhost:8000/v1"
+            base_url = os.getenv("OPENAI_API_BASE", "http://localhost:8000/v1"),
             # organization='',
         )
                 

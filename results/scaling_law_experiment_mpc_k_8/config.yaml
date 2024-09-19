@@ -1,0 +1,34 @@
+algorithm:
+  beam_size: 8
+  beam_temperature: 0.8
+  do_sample: true
+  lookahead_thought_length: 6
+  n_generate_sample: 1
+  name: MPC_Sample_Reward
+  reward_threshold: 0.0
+  select_temperature: 0.01
+  task: gsm8k
+  use_memory: true
+  value_type: reward
+llm:
+  context_length: 8192
+  dtype: float32
+  engine: /ssddata/model_hub/Meta-Llama-3-8B-Instruct/
+  name: vllm
+  ngpu: 1
+  stop: null
+  temperature: 0
+  top_p: 1
+reward_llm:
+  context_length: 4096
+  dtype: float32
+  engine: /ssddata/model_hub/math-shepherd-mistral-7b-prm/
+  name: openai_vllm
+  ngpu: 1
+  stop: null
+  temperature: 0
+  top_p: 1
+run:
+  batch_size: 100
+  data_path: /root/huggingface/gsm8k
+  log_path: results/scaling_law_experiment_mpc_k_8

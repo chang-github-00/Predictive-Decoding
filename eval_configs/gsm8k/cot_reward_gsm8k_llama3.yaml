@@ -8,13 +8,13 @@ run:
 algorithm:
   task: gsm8k
   name: COT_Reward
-  n_generate_sample: 8 # n=1 pal
+  n_generate_sample: 1 # n=1 pal
   value_type: logp # use llama3
   do_sample: True
   beam_temperature: 1.0
   beam_search: False
   value_type: reward # use math shepherd
-  result_type: vote #rank
+  result_type: rank #rank
   # lookahead_token_length: 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
@@ -31,7 +31,7 @@ llm:
       max_tokens: 500
   llama-3:
       name: vllm
-      engine: /root/huggingface/Meta-Llama-3-8B-Instruct/
+      engine: /ssddata/model_hub/Meta-Llama-3-8B-Instruct/ #/root/huggingface/Meta-Llama-3-8B-Instruct/
       context_length: 8192
       temperature: 0
       top_p: 1
@@ -40,7 +40,7 @@ llm:
       ngpu: 1
   math-shepherd:
       name: openai_vllm
-      engine: /root/huggingface/math-shepherd-mistral-7b-prm/
+      engine: /ssddata/model_hub/math-shepherd-mistral-7b-prm/ #/root/huggingface/math-shepherd-mistral-7b-prm/
       context_length: 4096
       temperature: 0
       top_p: 1

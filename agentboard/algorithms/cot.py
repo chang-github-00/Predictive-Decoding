@@ -8,7 +8,7 @@ import re
 import io
 import argparse
 import torch
-
+from utils.logging.token_logger import token_count, count_flag
 
 @registry.register_algorithm("COT")
 class COT:  # the agent should receive goal, state and action, then return the next state
@@ -147,6 +147,11 @@ class COT_Reward :  # the algorithm should be stateless, and generates a whole p
         
         all_logprobs,  all_tokens = self.reward_model.encode(full_prompts)
         
+        if count_flag:
+            for tokens in all_tokens:
+                token_count.add_reward_tokens(len(tokens), 1)
+        
+        
         all_rewards = []
         for (logprobs, tokens) in zip(all_logprobs, all_tokens):
             tag_token_index = [i+1 for i, token in enumerate(tokens) if step_tag in token]
@@ -218,6 +223,24 @@ class COT_Reward :  # the algorithm should be stateless, and generates a whole p
         else:
             raise NotImplementedError
         
+    def record_num_tokens(self, system_messages, input_prompts, answer_prefixes):
+        if not count_flag:
+            return
+        
+        for system_message, input_prompt, answer_prefix in zip(system_messages, input_prompts, answer_prefixes):
+            text = system_message + input_prompt + answer_prefix
+            token = self.llm_model.tokenizer.encode(text)
+            token_count.add_prompt_tokens(len(token), self.n_generate_sample)
+            
+    def record_generated_num_tokens(self, results):
+        if not count_flag:
+            return
+        
+        for res in results:
+            for result in res:
+                token = self.llm_model.tokenizer.encode(result)
+                token_count.add_generation_tokens(len(token))
+            
         
     def run(self, question, prompts=None, **kwargs):
         
@@ -319,7 +342,10 @@ class COT_Reward :  # the algorithm should be stateless, and generates a whole p
         all_system_messages = [self.prompts["system_msg"]] * len(all_prompts)
         
         success, results = self.llm_model.parallel_generate_with_config(all_system_messages, all_prompts, generation_config, all_answer_prefixes)
-                
+        
+        self.record_num_tokens(all_system_messages, all_prompts, all_answer_prefixes)
+        self.record_generated_num_tokens(results)
+        
         if not success:
             
             return False, None

@@ -9,6 +9,7 @@ import re
 import io
 import argparse
 import numpy as np
+from utils.logging.token_logger import token_count, count_flag
 
 @registry.register_algorithm("MPC_Sample")
 class MPC_Sample:  # the algorithm should be stateless, and generates a whole plan / code / chain of actions at once.
@@ -236,6 +237,10 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                     action_length = token_end - token_start
                 else:
                     action_length = len(action_tokens)
+                    
+                if count_flag:
+                    token_count.add_generation_tokens(action_length)
+                    
                 action_prob = action_prob ** (1 / action_length) # normalize by the length of the action
                 
                 action_chain = [a for a in action_chain if a.strip()!=""]
@@ -262,6 +267,10 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                     action_length = token_end - token_start
                 else:
                     action_length = len(action_tokens)
+                
+                if count_flag:
+                    token_count.add_generation_tokens(action_length)
+                    
                 action_prob = action_prob ** (1 / action_length)  # normalize by the length of the action
                 action_chain = [a for a in action_chain if a.strip()!=""]
                 

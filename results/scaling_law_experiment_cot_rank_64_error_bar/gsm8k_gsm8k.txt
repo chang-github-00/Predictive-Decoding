@@ -282,3 +282,80 @@ Jamal's fruits: 44 apples + 48 bananas = 92
 
 In total, there are 76 + 92 = 168 fruits.  The answer is 168. 
  Voted result: [" Let's start by using the information that Andrea has 52 apples.  Since Andrea has 8 more apples than Jamal, Jamal must have 52 - 8 = 44 apples. \n\nWe are also given that Jamal has 4 more bananas than apples, so Jamal has 44 + 4 = 48 bananas. \n\nAndrea has half as many bananas as Jamal, so she has 48 / 2 = 24 bananas. \n\nTo find the total number of fruits, we add the number of apples and bananas for both people:\n\nAndrea's fruits: 52 apples + 24 bananas = 76\nJamal's fruits: 44 apples + 48 bananas = 92\n\nIn total, there are 76 + 92 = 168 fruits.  The answer is 168. "]
+[EXP] 39: [success_rate]: True, [answer]: 118000, [output]: 400000 is the selling price.  3% of 400000 is 400000 * 3 / 100 = 12000.  5% of 400000 is 400000 * 5 / 100 = 20000.  So Mr.  Tan paid a total of 12000 + 20000 = 32000 in transfer fees and brokerage fees.  Then 400000 - 32000 = 368000.  After paying 250000 for the loan, he had 368000 - 250000 = 118000 left, which is his net proceeds. 
+ Voted result: 400000 is the selling price.  3% of 400000 is 400000 * 3 / 100 = 12000.  5% of 400000 is 400000 * 5 / 100 = 20000.  So Mr.  Tan paid a total of 12000 + 20000 = 32000 in transfer fees and brokerage fees.  Then 400000 - 32000 = 368000.  After paying 250000 for the loan, he had 368000 - 250000 = 118000 left, which is his net proceeds. 
+[EXP] 40: [success_rate]: True, [answer]: 315, [output]:  The total number of stitches in the sweater is 1800.  The body of the sweater takes 900 stitches.  The collar takes 900 / 10 = 90 stitches.  The rosette takes 2 x 90 = 180 stitches.  The total number of stitches used so far is 900 + 90 + 180 = 1170.  So the number of stitches left for the two sleeves is 1800 - 1170 = 630.  Since the two sleeves take the same number of stitches, each sleeve will take 630 / 2 = 315 stitches.  The answer is 315. 
+ Voted result: [' The total number of stitches in the sweater is 1800.  The body of the sweater takes 900 stitches.  The collar takes 900 / 10 = 90 stitches.  The rosette takes 2 x 90 = 180 stitches.  The total number of stitches used so far is 900 + 90 + 180 = 1170.  So the number of stitches left for the two sleeves is 1800 - 1170 = 630.  Since the two sleeves take the same number of stitches, each sleeve will take 630 / 2 = 315 stitches.  The answer is 315. ']
+[FLOPS] {'avg_prompt_tokens': 734.2, 'avg_prompt_times': 64.0, 'avg_generation_tokens': 6798.6, 'avg_reward_tokens': 268.9, 'avg_reward_times': 59.8}
+[EXP] 41: [success_rate]: True, [answer]: 7, [output]:  Peter purchased 20 popsicles at $0. 25 each.  So the cost of popsicles is 20 x 0. 25 = 5 dollars.  He purchased 4 ice cream bars at $0. 50 each.  So the cost of ice cream bars is 4 x 0. 50 = 2 dollars.  In total, Peter paid 5 + 2 = 7 dollars.  The answer is 7. 
+ Voted result: [' Peter purchased 20 popsicles at $0. 25 each.  So the cost of popsicles is 20 x 0. 25 = 5 dollars.  He purchased 4 ice cream bars at $0. 50 each.  So the cost of ice cream bars is 4 x 0. 50 = 2 dollars.  In total, Peter paid 5 + 2 = 7 dollars.  The answer is 7. ']
+[EXP] 42: [success_rate]: True, [answer]: 8, [output]: 76-star flag.  The flag has three rows of 8 stars.  8 * 3 = 24 stars.  It has two rows of 6 stars.  6 * 2 = 12 stars.  24 + 12 = 36 stars in total so far.  There are 76 - 36 = 40 stars left on the flag.  These must be arranged into 5-star rows.  To find out how many 5-star rows there are, divide the remaining stars (40) by the number of stars in each row (5).  40 ÷ 5 = 8.  The answer is 8. 
+ Voted result: ['76-star flag.  The flag has three rows of 8 stars.  8 * 3 = 24 stars.  It has two rows of 6 stars.  6 * 2 = 12 stars.  24 + 12 = 36 stars in total so far.  There are 76 - 36 = 40 stars left on the flag.  These must be arranged into 5-star rows.  To find out how many 5-star rows there are, divide the remaining stars (40) by the number of stars in each row (5).  40 ÷ 5 = 8.  The answer is 8. ']
+[EXP] 43: [success_rate]: True, [answer]: 3, [output]:  Will buys 15 oranges.  The oldest son is 8 years old and the youngest is half as old, which means the youngest is 8/2 = 4 years old.  So, the oldest son will wash 8 oranges and the youngest will wash 4 oranges.  They will wash a total of 8 + 4 = 12 oranges.  To find the number of oranges left unwashed, we subtract the number of oranges washed from the total number of oranges: 15 - 12 = 3.  The answer is 3. 
+ Voted result: [' Will buys 15 oranges.  The oldest son is 8 years old and the youngest is half as old, which means the youngest is 8/2 = 4 years old.  So, the oldest son will wash 8 oranges and the youngest will wash 4 oranges.  They will wash a total of 8 + 4 = 12 oranges.  To find the number of oranges left unwashed, we subtract the number of oranges washed from the total number of oranges: 15 - 12 = 3.  The answer is 3. ']
+[EXP] 44: [success_rate]: False, [answer]: 8, [output]: 16. 
+ Voted result: 16. 
+[EXP] 45: [success_rate]: True, [answer]: 6, [output]: 2 tubs of ice cream will cost you 2 * (11 - 13) = 2 * 2 = 4 dollars.  4 packets of milk will cost you 4 * (cost of 1 packet - 0. 5) = 4 * 0. 5 = 2 dollars.  So the total discount is 4 + 2 dollars.  The answer is 6 dollars. 
+ Voted result: ['2 tubs of ice cream will cost you 2 * (11 - 13) = 2 * 2 = 4 dollars.  4 packets of milk will cost you 4 * (cost of 1 packet - 0. 5) = 4 * 0. 5 = 2 dollars.  So the total discount is 4 + 2 dollars.  The answer is 6 dollars. ']
+[EXP] 46: [success_rate]: True, [answer]: 14, [output]:  Martha invited 2 families with 6 people each, so 2 x 6 = 12 people.  She also invited 3 families with 4 people each, so 3 x 4 = 12 people.  In total she invited 12 + 12 = 24 people.  8 people couldn't come due to illness, so we subtract them, 24 - 8 = 16.  One fourth of that number (8 / 4 = 2) had previous commitments, so we subtract those, too, 16 - 2 = 14.  The answer is 14. 
+ Voted result: [" Martha invited 2 families with 6 people each, so 2 x 6 = 12 people.  She also invited 3 families with 4 people each, so 3 x 4 = 12 people.  In total she invited 12 + 12 = 24 people.  8 people couldn't come due to illness, so we subtract them, 24 - 8 = 16.  One fourth of that number (8 / 4 = 2) had previous commitments, so we subtract those, too, 16 - 2 = 14.  The answer is 14. "]
+[EXP] 47: [success_rate]: True, [answer]: 9, [output]:  Jam has 3 boxes and 2 loose pencils, so she has a total of 3 x ? (the number of pencils in one box) + 2 = 26 pencils.  Let's solve for the number of pencils in one box: 
+3 x ? + 2 = 26 
+3x = 24 
+x = 8 
+So each box contains 8 pencils, and Jam has 3 boxes.  3 x 8 = 24 so she has 24 pencils in boxes, and 2 loose pencils, making a total of 24 + 2 = 26.  
+As for Meg, she has 46 pencils.  
+In total, Jam and Meg have 26 + 46 = 72 pencils.  72 is 8 x 9.  So they need 9 boxes.  The answer is 9. 
+ Voted result: [" Jam has 3 boxes and 2 loose pencils, so she has a total of 3 x ? (the number of pencils in one box) + 2 = 26 pencils.  Let's solve for the number of pencils in one box: \n3 x ? + 2 = 26 \n3x = 24 \nx = 8 \nSo each box contains 8 pencils, and Jam has 3 boxes.  3 x 8 = 24 so she has 24 pencils in boxes, and 2 loose pencils, making a total of 24 + 2 = 26.  \nAs for Meg, she has 46 pencils.  \nIn total, Jam and Meg have 26 + 46 = 72 pencils.  72 is 8 x 9.  So they need 9 boxes.  The answer is 9. "]
+[EXP] 48: [success_rate]: True, [answer]: 14, [output]:  Erin starts with 7 lollipops.  Her mother gives her 10 more, so she now has 7 + 10 = 17 lollipops.  After giving 3 to Ella, she has 17 - 3 = 14 lollipops.  The answer is 14. 
+ Voted result: [' Erin starts with 7 lollipops.  Her mother gives her 10 more, so she now has 7 + 10 = 17 lollipops.  After giving 3 to Ella, she has 17 - 3 = 14 lollipops.  The answer is 14. ']
+[EXP] 49: [success_rate]: True, [answer]: 72, [output]:  Maria started with 8 shares worth 8 dollars each.  So she had a total of 8 x 8 = 64 dollars worth of shares. 
+
+After the first year, the stock price increased 50%, so the new price is 8 + (8 * 0. 5) = 8 + 4 = 12 dollars.  Since she still has 8 shares, she now has 8 x 12 = 96 dollars worth of shares. 
+
+After the second year, the stock price decreased by 25%.  So the new price is 12 - (12 * 0. 25) = 12 - 3 = 9 dollars.  Since she still has 8 shares, she now has 8 x 9 = 72 dollars worth of shares. 
+
+The final value of all Maria's shares is 72 dollars. 
+ Voted result:  Maria started with 8 shares worth 8 dollars each.  So she had a total of 8 x 8 = 64 dollars worth of shares. 
+
+After the first year, the stock price increased 50%, so the new price is 8 + (8 * 0. 5) = 8 + 4 = 12 dollars.  Since she still has 8 shares, she now has 8 x 12 = 96 dollars worth of shares. 
+
+After the second year, the stock price decreased by 25%.  So the new price is 12 - (12 * 0. 25) = 12 - 3 = 9 dollars.  Since she still has 8 shares, she now has 8 x 9 = 72 dollars worth of shares. 
+
+The final value of all Maria's shares is 72 dollars. 
+[EXP] 50: [success_rate]: False, [answer]: 180000, [output]:  Tyson runs 5000 meters every day.  1/5 times more meters means 5000 + (5000 * 1/5) = 5000 + 1000 = 6000 meters a day.  For a month (30 days) he would run 6000 * 30 = 180,000 meters.  The answer is 180,000. 
+ Voted result: [' Tyson runs 5000 meters every day.  1/5 times more meters means 5000 + (5000 * 1/5) = 5000 + 1000 = 6000 meters a day.  For a month (30 days) he would run 6000 * 30 = 180,000 meters.  The answer is 180,000. ']
+[EXP] 51: [success_rate]: True, [answer]: 8, [output]: 1 hour yoga on Monday.  A cooking class that lasts 3 times as long as Monday's yoga (3 * 1 = 3 hours) on Tuesday.  A 1/2 hour (or 30 minutes) cheese-tasting event on Wednesday.  A museum tour that takes half as long as the cooking class on Thursday (3/2 hours, or 1. 5 hours).  And 2 hours of errands on Friday.  
+
+In total, all of Peyton's after-work activities take: 1 hour + 3 hours + 1/2 hour + 1. 5 hours + 2 hours = 8 hours.  The answer is 8. 
+ Voted result: ["1 hour yoga on Monday.  A cooking class that lasts 3 times as long as Monday's yoga (3 * 1 = 3 hours) on Tuesday.  A 1/2 hour (or 30 minutes) cheese-tasting event on Wednesday.  A museum tour that takes half as long as the cooking class on Thursday (3/2 hours, or 1. 5 hours).  And 2 hours of errands on Friday.  \n\nIn total, all of Peyton's after-work activities take: 1 hour + 3 hours + 1/2 hour + 1. 5 hours + 2 hours = 8 hours.  The answer is 8. "]
+[EXP] 52: [success_rate]: True, [answer]: 2, [output]:  Morgan's dad gave her $90 for her birthday.  She wants to play one round of mini-golf, which costs 5 dollars.  She also wants 5 dollars in arcade tokens and 2 rides on the go-karts, which is 2 x 10 = 20 dollars.  Totaling 5 + 5 + 20 = 30 dollars spent.  She started with 90 dollars, so she has 90 - 30 = 60 dollars left. 
+ Voted result:  Morgan's dad gave her $90 for her birthday.  She wants to play one round of mini-golf, which costs 5 dollars.  She also wants 5 dollars in arcade tokens and 2 rides on the go-karts, which is 2 x 10 = 20 dollars.  Totaling 5 + 5 + 20 = 30 dollars spent.  She started with 90 dollars, so she has 90 - 30 = 60 dollars left. 
+[EXP] 53: [success_rate]: False, [answer]: 49, [output]: 96 fourth-graders were at Small Tree School originally.  43 of them were girls, so the rest must be boys.  96 - 43 = 53.  However, 5 girls and 4 boys were absent.  So we need to subtract 9 from 53 to get the number of boys who were present on Friday.  53 - 9 = 44.  The answer is 44. 
+ Voted result: ['96 fourth-graders were at Small Tree School originally.  43 of them were girls, so the rest must be boys.  96 - 43 = 53.  However, 5 girls and 4 boys were absent.  So we need to subtract 9 from 53 to get the number of boys who were present on Friday.  53 - 9 = 44.  The answer is 44. ']
+[EXP] 54: [success_rate]: False, [answer]: 50, [output]: 14 pairs were sold on friday.  On saturday they sold double that number: 14 x 2 = 28.  28 were sold on sunday, but 6 were returned, so actually 28 - 6 = 22 were sold.  So in total, 14 + 28 + 22 = 64.  The answer is 64. 
+ Voted result: ['14 pairs were sold on friday.  On saturday they sold double that number: 14 x 2 = 28.  28 were sold on sunday, but 6 were returned, so actually 28 - 6 = 22 were sold.  So in total, 14 + 28 + 22 = 64.  The answer is 64. ']
+[EXP] 55: [success_rate]: True, [answer]: 15, [output]: 50 socks need washing.  She washes 10 pairs, which is 10 x 2 = 20 socks, and 15 loose socks.  So she has washed 20 + 15 = 35 socks.  To find out how many she has left, we need to subtract 35 from 50.  50 - 35 = 15.  The answer is 15. 
+ Voted result: ['50 socks need washing.  She washes 10 pairs, which is 10 x 2 = 20 socks, and 15 loose socks.  So she has washed 20 + 15 = 35 socks.  To find out how many she has left, we need to subtract 35 from 50.  50 - 35 = 15.  The answer is 15. ']
+[EXP] 56: [success_rate]: True, [answer]: 16, [output]: 52 is the total number of choir members.  50% of 52 is 26 boys.  So the remaining members must be girls.  52 - 26 = 26, so there are 26 girls. 
+
+26 girls from the choir are going to perform.  Half of those can't make it, so the number of girls who don't make it is 26/2 = 13.  That means 26 - 13 = 13 girls can make it to the show. 
+
+Then, the 3 choir teachers will also be performing.  The total number of people performing will be the 13 girls that showed up and the 3 teachers, so 13 + 3 = 16.  The answer is 16. 
+ Voted result: ["52 is the total number of choir members.  50% of 52 is 26 boys.  So the remaining members must be girls.  52 - 26 = 26, so there are 26 girls. \n\n26 girls from the choir are going to perform.  Half of those can't make it, so the number of girls who don't make it is 26/2 = 13.  That means 26 - 13 = 13 girls can make it to the show. \n\nThen, the 3 choir teachers will also be performing.  The total number of people performing will be the 13 girls that showed up and the 3 teachers, so 13 + 3 = 16.  The answer is 16. "]
+[EXP] 57: [success_rate]: True, [answer]: 34, [output]: 60 - 10 - (10 + 10 - 20%) = ?
+
+Let's calculate the cost of Hulu and Disney Plus after the discount:
+
+10 + 10 - (20% of 20) = 10 + 10 - 4 = 16
+
+Tim will now pay $10 for Netflix, $16 for Hulu and Disney Plus, totaling $26. 
+
+So, by canceling his cable package and switching to streaming services, Tim will save:
+
+60 - 26 = 34
+
+The answer is 34. 
+ Voted result: ["60 - 10 - (10 + 10 - 20%) = ?\n\nLet's calculate the cost of Hulu and Disney Plus after the discount:\n\n10 + 10 - (20% of 20) = 10 + 10 - 4 = 16\n\nTim will now pay $10 for Netflix, $16 for Hulu and Disney Plus, totaling $26. \n\nSo, by canceling his cable package and switching to streaming services, Tim will save:\n\n60 - 26 = 34\n\nThe answer is 34. "]
+[EXP] 58: [success_rate]: False, [answer]: 12, [output]:  Ericas age is 30.  Beth is 5 years older than that, so Beths age is 30 + 5 = 35.  Alice is 7 years older than Beth, so Alisas age is 35 + 7 = 42. 
+ Voted result:  Ericas age is 30.  Beth is 5 years older than that, so Beths age is 30 + 5 = 35.  Alice is 7 years older than Beth, so Alisas age is 35 + 7 = 42. 

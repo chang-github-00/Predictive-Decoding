@@ -49,7 +49,10 @@ python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_serve
 
 
 # humaneval parallel run, set n generate samples to 10
-python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_server/humaneval/self_consistency_humaneval_llama3.yaml --tasks humaneval --algorithm Self_Consistency --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/run_parallel_passk_humaneval_8_23 --batch_size 200
+python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_server/humaneval/self_consistency_humaneval_llama3.yaml --model llama-3  --tasks humaneval --algorithm Self_Consistency --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/run_parallel_passk_humaneval_8_23 --batch_size 200
+
+
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3  --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/run_parallel_passk_mpc_sample_humaneval_9_14_N_10 --batch_size 200
 
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/self_consistency_math_llama3.yaml --tasks math --algorithm Self_Consistency --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_self_consistency_math_8_28_n_8_beam_search --batch_size 5000
 
@@ -68,14 +71,74 @@ python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_serve
 # mbpp mpc sample parallel run, set n generate samples to 10
 python agentboard/eval_humaneval_parallel.py --cfg-path eval_configs_hkust_server/mbpp/mpc_multiple_mbpp_llama3.yaml --tasks mbpp --model llama-3 --log_path results/run_mpc_sample_n_10_mbpp_9_6 --algorithm MPC_Sample --batch_size 500 --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl
 
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/mbpp/mpc_sample_mbpp_llama3.yaml --tasks mbpp --model llama-3 --log_path results/run_parallel_passk_mpc_sample_mbpp_9_14_N_10 --algorithm MPC_Sample --batch_size 500 --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl
 
 # mistral-v0.3 experiments
 
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_self_consistency_gsm8k_mistral_9_7_n_1 --batch_size 1319
-python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_self_consistency_gsm8k_mistral_9_7_n_1_beamsearch --batch_size 1319
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_self_consistency_gsm8k_mistral_9_7_n_1_beamsearch_search_6 --batch_size 1319
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/mpc_sample_gsm8k_llama3.yaml --tasks gsm8k --algorithm MPC_Sample --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/run_parallel_mpc_sample_gsm8k_mistral_9_7_1.0_0.01 --batch_size 1319
 
 
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/self_consistency_math_llama3.yaml --tasks math --algorithm Self_Consistency --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_self_consistency_math_mistral_9_7_n_1 --batch_size 5000
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/self_consistency_math_llama3.yaml --tasks math --algorithm Self_Consistency --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_self_consistency_math_mistral_9_7_n_1_beamsearch --batch_size 5000
 python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/math/mpc_sample_math_llama3.yaml --tasks math --algorithm MPC_Sample --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/math/test.json --log_path results/run_parallel_mpc_sample_math_mistral_9_7_1.0_0.01 --batch_size 5000
+
+# codellama experiments
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/self_consistency_humaneval_llama3.yaml --tasks humaneval --algorithm Self_Consistency --model codellama --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/run_parallel_humaneval_codellama_passk_9_9 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/mbpp/self_consistency_mbpp_llama3.yaml --tasks mbpp --algorithm Self_Consistency --model codellama --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl --log_path results/run_parallel_mbpp_codellama_passk_9_9 --batch_size 500
+
+
+# deepseek-coder experiments
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/self_consistency_humaneval_llama3.yaml --tasks humaneval --algorithm Self_Consistency --model deepseek-coder --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/run_parallel_humaneval_deepseek-coder_passk_9_10 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --tasks humaneval --algorithm MPC_Sample --model deepseek-coder --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/run_parallel_humaneval_deepseek-coder_passk_mpc_sample_9_11_0.4_1.0 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/self_consistency_humaneval_llama3.yaml --tasks humaneval --algorithm Self_Consistency --model deepseek-coder --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/run_parallel_humaneval_deepseek-coder_passk_beamsearch_9_10 --batch_size 200
+
+
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/mbpp/self_consistency_mbpp_llama3.yaml --tasks mbpp --algorithm Self_Consistency --model deepseek-coder --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl --log_path results/run_parallel_mbpp_deepseek-coder_passk_9_10 --batch_size 500
+
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/mbpp/mpc_sample_mbpp_llama3.yaml --tasks mbpp --algorithm MPC_Sample --model deepseek-coder --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl --log_path results/run_parallel_mbpp_deepseek-coder_passk_mpc_sample_9_11_0.3_1.0 --batch_size 500
+
+
+
+# self infilling experiments
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/mbpp/self_infilling_mbpp_llama3.yaml --model llama-3 --tasks mbpp --algorithm Self_Infill  --data_path /ssddata/junxianh/Agent-Decoding/data/mbpp/mbpp_test.jsonl --log_path results/run_parallel_self_infill_9_14_mbpp_llama3_10 --batch_size 500
+
+
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/self_infilling_humaneval_llama3.yaml --model deepseek-coder --tasks humaneval --algorithm Self_Infill --log_path results/run_parallel_self_infilling_9_14_humaneval_n_10_2 --batch_size 200 --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl
+
+
+
+
+# ablation experiments
+
+# ablation look ahead length on gsm8k and humaneval pass 1
+
+#humaneval no lookaeahd t = 1
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3  --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_t_1_no_lookahead --batch_size 200
+#humaneval k = 2
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3  --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_k_2 --batch_size 200
+
+
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/self_consistency_humaneval_llama3.yaml --tasks humaneval --algorithm Self_Consistency --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/run_parallel_humaneval_llama3_passk_9_14 --batch_size 200
+
+# gsm8k no lookaeahd t = 1
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/mpc_sample_gsm8k_llama3.yaml --tasks gsm8k --algorithm MPC_Sample --model llama-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/ablation_study_gsm8k_t_4_no_lookahead --batch_size 500
+
+# temperature ablation on humaneval pass1
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3 --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_temp_0.6_0.01 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3 --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_temp_0.6_0.05 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3 --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_temp_0.6_0.1 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3 --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_temp_0.6_0.5 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3 --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_temp_0.6_1.0 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3 --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_temp_0.6_5.0 --batch_size 200
+
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3 --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_temp_0.1_0.05 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3 --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_temp_0.3_0.05 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3 --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_temp_1.0_0.05 --batch_size 200
+python agentboard/eval_code_parallel.py --cfg-path eval_configs_hkust_server/humaneval/mpc_sample_humaneval_llama3.yaml --model llama-3 --tasks humaneval --algorithm MPC_Sample --data_path /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl --log_path results/ablation_study_humaneval_temp_2.0_0.05 --batch_size 200
+
+
+
+
+python agentboard/eval_reasoning_parallel.py --cfg-path eval_configs_hkust_server/gsm8k/self_consistency_gsm8k_llama3.yaml --tasks gsm8k --algorithm Self_Consistency --model mistral-3 --data_path /ssddata/junxianh/Agent-Decoding/data/gsm8k --log_path results/ablation_beamsearch_n_4 --batch_size 1319

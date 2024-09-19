@@ -12,6 +12,7 @@ algorithm:
   value_type: logp # use llama3
   do_sample: True
   beam_temperature: 0.6
+  beam_search: True
   # lookahead_token_length: 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
@@ -35,3 +36,21 @@ llm:
       stop:
       dtype: float32
       ngpu: 1
+  codellama:
+      name: vllm
+      engine: /ssddata/model_hub/CodeLlama-13b-hf
+      context_length: 16384
+      temperature: 0
+      top_p: 1
+      stop: 
+      dtype: bfloat16
+      ngpu: 1
+  deepseek-coder:
+      name: vllm
+      engine: /ssddata/model_hub/deepseek-coder-6.7b-instruct
+      context_length: 16384
+      temperature: 0
+      top_p: 1
+      stop: 
+      dtype: bfloat16
+      ngpu: 2

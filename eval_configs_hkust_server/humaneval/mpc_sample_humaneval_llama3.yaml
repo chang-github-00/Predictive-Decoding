@@ -14,8 +14,8 @@ algorithm:
   beam_size: 8
   value_type: logp # use llama3
   do_sample: True
-  beam_temperature: 1.0
-  select_temperature: 0.1
+  beam_temperature: 0.8
+  select_temperature: 0.05
   use_memory: True
   # lookahead_token_length: 
 llm:
@@ -40,6 +40,24 @@ llm:
       stop:
       dtype: float32
       ngpu: 1
+  codellama:
+      name: vllm
+      engine: /ssddata/model_hub/CodeLlama-13b-hf
+      context_length: 16384
+      temperature: 0
+      top_p: 1
+      stop: [END]
+      dtype: bfloat16
+      ngpu: 2
+  deepseek-coder:
+      name: vllm
+      engine: /ssddata/model_hub/deepseek-coder-6.7b-instruct
+      context_length: 16384
+      temperature: 0
+      top_p: 1
+      stop: 
+      dtype: bfloat16
+      ngpu: 2
   # llama3:
   #     name: openai_vllm
   #     engine: /root/huggingface/Meta-Llama-3-8B-Instruct/

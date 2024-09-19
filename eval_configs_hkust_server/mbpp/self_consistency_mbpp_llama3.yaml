@@ -36,3 +36,21 @@ llm:
       stop:
       dtype: bfloat16
       ngpu: 1
+  codellama:
+      name: vllm
+      engine: /ssddata/model_hub/CodeLlama-13b-hf
+      context_length: 16384
+      temperature: 0
+      top_p: 1
+      stop: [END]
+      dtype: bfloat16
+      ngpu: 2
+  deepseek-coder:
+      name: vllm
+      engine: /ssddata/model_hub/deepseek-coder-6.7b-instruct
+      context_length: 16384
+      temperature: 0
+      top_p: 1
+      stop: 
+      dtype: bfloat16
+      ngpu: 2

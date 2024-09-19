@@ -58,6 +58,14 @@ plt.savefig(f"draw/{task}_output_probs.pdf", bbox_inches='tight', pad_inches=0.1
 # create a figure to plot difference
 diff_data = optimal_data - autoregressive_data
 
+print("Mean combined",diff_data.mean())
+print("Mean beam search", (np.max([autoregressive_data, beamsearch_data], axis=0) - autoregressive_data).mean())
+print("Mean mpc", (np.max([autoregressive_data, mpc_data], axis=0) - autoregressive_data).mean())
+
+print("p* > 0.01", np.sum(diff_data > 0.01)/len(diff_data))
+print("p* > 0.05", np.sum(diff_data > 0.05)/len(diff_data))
+print("p* > 0.1", np.sum(diff_data > 0.1)/len(diff_data))
+
 correct = np.array([data["success_rate"] for data in autoregressive_results])
 wrong = np.logical_not(correct)
 
@@ -140,6 +148,14 @@ plt.savefig(f"draw/{task}_output_probs.pdf", bbox_inches='tight', pad_inches=0.1
 
 # create a figure to plot difference
 diff_data = optimal_data - autoregressive_data
+
+print("Mean combined",diff_data.mean())
+print("Mean beam search", (np.max([autoregressive_data, beamsearch_data], axis=0) - autoregressive_data).mean())
+print("Mean mpc", (np.max([autoregressive_data, mpc_data], axis=0) - autoregressive_data).mean())
+
+print("p* > 0.01", np.sum(diff_data > 0.01)/len(diff_data))
+print("p* > 0.05", np.sum(diff_data > 0.05)/len(diff_data))
+print("p* > 0.1", np.sum(diff_data > 0.1)/len(diff_data))
 
 correct = np.array([data["success_rate"] for data in autoregressive_results])
 wrong = np.logical_not(correct)

@@ -20,6 +20,6 @@ llm:
   temperature: 0
   top_p: 1
 run:
-  batch_size: 100
+  batch_size: 1319
   data_path: /ssddata/junxianh/Agent-Decoding/data/gsm8k
   log_path: results/run_parallel_mpc_sample_gsm8k_mistral_9_7_0.6_0.01

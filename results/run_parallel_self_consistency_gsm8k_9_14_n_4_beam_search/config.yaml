@@ -1,0 +1,21 @@
+algorithm:
+  beam_search: true
+  beam_temperature: 0.6
+  do_sample: true
+  n_generate_sample: 8
+  name: Self_Consistency
+  task: math
+  value_type: logp
+llm:
+  context_length: 8192
+  dtype: float32
+  engine: /apdcephfs_qy3/share_733425/timhuang/haitengzhao/Tree_DPO/models/Meta-Llama-3-8B-Instruct
+  name: vllm
+  ngpu: 1
+  stop: null
+  temperature: 0
+  top_p: 1
+run:
+  batch_size: 1319
+  data_path: /ssddata/junxianh/Agent-Decoding/data/gsm8k
+  log_path: results/run_parallel_self_consistency_gsm8k_9_14_n_4_beam_search

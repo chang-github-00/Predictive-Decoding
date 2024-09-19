@@ -600,7 +600,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
                 if iter > args.max_iters:
                     break
                 
-                if end_suffix is not None and action.strip().startswith(end_suffix):
+                if end_suffix is not None and end_suffix in action.strip():
                     break
             else:
                 reflection_tips = self.reflection_tips(reward_threshold=self.reward_threshold)
@@ -685,7 +685,7 @@ class MPC_Sample:  # the algorithm should be stateless, and generates a whole pl
 
                 ended = False
                 for action in self.memory[id]:
-                    if action is not None and end_suffix is not None and action.strip().startswith(end_suffix): 
+                    if action is not None and end_suffix is not None and end_suffix in action.strip().lower(): 
                         ended = True    
                         break
                     

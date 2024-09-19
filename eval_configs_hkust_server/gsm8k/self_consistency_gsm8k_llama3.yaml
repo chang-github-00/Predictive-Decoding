@@ -7,7 +7,7 @@ run:
 
 algorithm:
   task: math
-  name: Self_Consistency  
+  name: Self_Consistency
   n_generate_sample: 1 # n=1 pal
   value_type: logp # use llama3
   do_sample: True

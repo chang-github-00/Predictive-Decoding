@@ -17,7 +17,7 @@ from typing import Optional
 
 from utils.human_eval.evaluation import evaluate_functional_correctness, parse_code_prefix
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 def load_dataset(task, path=''):
     if task == "humaneval":
@@ -90,9 +90,9 @@ class EvalReasoning:
         #     self.prompts = json.load(f)
         self.prompts = {}
         if self.task in ["humaneval"]:
-            self.prompts["system_msg"] = "Finish writing the python function. You will only write code blocks."
+            self.prompts["system_msg"] = "Finish writing the python function. You will only write code blocks. Write # finish after the last line of the function." #"Finish writing the python function. You will only write code blocks."
         elif self.task in ["mbpp"]:
-            self.prompts["system_msg"] = "Finish writing the python function. You will only write code blocks. There should only be one return statement in the function."
+            self.prompts["system_msg"] = "Finish writing the python function. You will only write code blocks. Write # finish after the last line of the function."#"Finish writing the python function. You will only write code blocks. There should only be one return statement in the function."
         
     def evaluate(self):
         
@@ -144,6 +144,9 @@ class EvalReasoning:
         
         output_filepath = os.path.join(self.log_path,f"{self.task}_output.jsonl")
         
+        # output_f = open(output_filepath, "w")
+        # output_f.close()
+        
         item_iter = Iterator(self.dataset, self.batch_size)
         
         id = 0
@@ -160,7 +163,7 @@ class EvalReasoning:
             else:
                 raise ValueError("Task not supported")
             
-            success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="return") # process all questions in parallel
+            success, all_outputs = self.algorithm.parallel_run(questions, prompts=self.prompts, end_suffix="finish") # process all questions in parallel
 
             assert success
             
@@ -257,8 +260,8 @@ def main():
     
     eval_reasoning = EvalReasoning(task, run_config, llm_config, algorithm_config)
     
-    # for i in range(10):
-    metrics = eval_reasoning.parallel_evaluate()
+    for i in range(5):
+        metrics = eval_reasoning.parallel_evaluate()
     
     
 if __name__ == "__main__":

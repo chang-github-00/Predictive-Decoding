@@ -104,6 +104,12 @@ class VLLM:
             if answer_prefix is not None:
                 full_prompt += answer_prefix
             return full_prompt
+        elif 'deepseek-coder' in self.model.lower():
+            prompt_template = '''{system_message}\n\n{prompt} ### Response: '''
+            full_prompt = prompt_template.format(system_message=system_message, prompt=prompt)
+            if answer_prefix is not None:
+                full_prompt += answer_prefix
+            return full_prompt
         else:
             raise NotImplementedError
             
@@ -143,7 +149,9 @@ class VLLM:
         do_sample = config.get("do_sample", True)
         top_p = config.get("top_p", 1)
         
-        
+        if "codellama" in self.model.lower():
+            stop = "[END]"
+            
         samplingparams = SamplingParams(
             temperature=temperature,
             top_p=top_p,
@@ -196,6 +204,8 @@ class VLLM:
         do_sample = config.get("do_sample", True)
         top_p = config.get("top_p", 1)
         
+        if "codellama" in self.model.lower():
+            stop = ["[END]", "[BEGIN]", "[/"]
         
         use_beam_search = config.get("use_beam_search", False)
         
@@ -203,7 +213,7 @@ class VLLM:
             if n > 1:
                 best_of = n
             else:
-                best_of = 8
+                best_of = 4
             samplingparams = SamplingParams(
                 temperature=0,
                 top_p=top_p,

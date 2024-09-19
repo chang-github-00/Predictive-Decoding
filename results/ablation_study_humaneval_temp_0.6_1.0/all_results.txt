@@ -1,0 +1,5 @@
+{"task": "humaneval_humaneval-python", "pass@1": 48.170731707317074}
+{"task": "humaneval_humaneval-python", "pass@1": 48.47560975609756}
+{"task": "humaneval_humaneval-python", "pass@1": 49.390243902439025}
+{"task": "humaneval_humaneval-python", "pass@1": 49.390243902439025}
+{"task": "humaneval_humaneval-python", "pass@1": 49.268292682926834}

@@ -16,7 +16,7 @@ from tqdm import tqdm
 from typing import Optional
 
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
-os.environ["CUDA_VISIBLE_DEVICES"] = "4"
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
@@ -38,7 +38,7 @@ def load_dataset(task, path='/root/huggingface/gsm8k'):
             example = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'answer': gt_ans}
             dataset.append(example)  
 
-        return dataset
+        return dataset[2563:]
 
 def retrieve_answer_from_dataset(answer: str) -> str:
     return re.match(r'[\S\s]*#### (.*)$', answer)[1]

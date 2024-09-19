@@ -8,7 +8,7 @@ run:
 algorithm:
   task: mbpp
   name: MPC_Sample
-  lookahead_thought_length: 8
+  lookahead_thought_length: 10
   reward_threshold: 0.0
   n_generate_sample: 1
   beam_size: 8
@@ -49,6 +49,24 @@ llm:
       stop: 
       dtype: float32
       ngpu: 1
+  codellama:
+      name: vllm
+      engine: /ssddata/model_hub/CodeLlama-13b-hf
+      context_length: 16384
+      temperature: 0
+      top_p: 1
+      stop: [END]
+      dtype: bfloat16
+      ngpu: 2
+  deepseek-coder:
+      name: vllm
+      engine: /ssddata/model_hub/deepseek-coder-6.7b-instruct
+      context_length: 16384
+      temperature: 0
+      top_p: 1
+      stop: 
+      dtype: bfloat16
+      ngpu: 2
   # llama3:
   #     name: openai_vllm
   #     engine: /root/huggingface/Meta-Llama-3-8B-Instruct/

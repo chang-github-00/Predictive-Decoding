@@ -1,0 +1,2662 @@
+[EXP] 2563: [success_rate]: False, [answer]: [-4,0), [output]: import sympy as sp
+
+def solution():
+
+    k = sp.symbols('k')
+
+    quadratic = k * sp.Symbol('x')**2 - 3 * k * sp.Symbol('x') + 4 * k + 7
+
+    roots = solveset(quadratic, sp.Symbol('x'))
+
+    real_roots = [r for r in roots if r.is_real]
+
+    if real_roots:
+
+        result = "For k = " + str(real_roots[0])
+
+    else:
+
+        result = "No real roots for any value of k"
+
+    return result
+
+
+ Executed result: No real roots for any value of k
+[EXP] 2564: [success_rate]: False, [answer]: 6, [output]: from sympy import symbols, minimize
+
+def solution():
+
+    x = symbols('x')
+
+    numerator = (x - 1)**7 + 3*(x - 1)**6 + (x - 1)**5 + 1
+
+    denominator = (x - 1)**5
+
+    expression = numerator / denominator
+
+    # Minimize the expression for x > 1
+
+    result = minimize(expression, x, constraints=[x > 1])
+
+    return result['value']
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2565: [success_rate]: False, [answer]: 20, [output]: from math import sqrt, inf
+
+from sympy import Symbol, Eq, rsolve
+
+def solution():
+
+    a = Symbol('a')
+
+    b = Symbol('b')
+
+    # Condition: a > 2b > 0
+
+    condition = a > 2*b and b > 0
+
+    # Function to minimize
+
+    f = 3*a**3*sqrt(3) + 2/(a*b - 2*b**2)
+
+    # Solve for the minimum value of ab - 2b^2
+
+    sol = rsolve(Eq(a*b - 2*b**2, 0), a, b)
+
+    # Find the minimum value of the function
+
+    minimum_value = inf
+
+    for sol_pair in sol:
+
+        a_val, b_val = sol_pair
+
+        if a_val > 2*b_val > 0:
+
+            value = f.subs({'a': a_val, 'b': b_val})
+
+            if value < minimum_value:
+
+                minimum_value = value
+
+    result = minimum_value
+
+    return result
+
+
+ Executed result: inf
+[EXP] 2566: [success_rate]: False, [answer]: \frac{1}{144}, [output]: def solution():
+
+    Sn = [1, 1]
+
+    n = 3
+
+    while n <= 12:
+
+        Sn.append(Sn[n - 2] * Sn[n - 1] / (Sn[n - 2] + Sn[n - 1]))
+
+        n += 1
+
+    result = Sn[12]
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2567: [success_rate]: False, [answer]: 3-2f(x), [output]: def solution():
+
+    def f(x):
+
+        if x >= -3 and x <= 0:
+
+            return -2 - x
+
+
+ Executed result: None
+[EXP] 2568: [success_rate]: False, [answer]: 4, [output]: import math
+
+def solution():
+
+    x = symbols('x')
+
+    log_x = math.log(x, 2)
+
+    log_x_squared = math.log(x**2, 2)
+
+    eq = log_x + log_x_squared - 6
+
+    solved_eq = solve(eq, x)
+
+    x_value = solved_eq[0]
+
+    result = x_value
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2569: [success_rate]: False, [answer]: -5, [output]: from sympy import symbols, solve, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    # Equation to be solved
+
+    equation = (C/(x-3)) + (D/(x+8)) == (4*x - 23)/(x**2 + 5*x - 24)
+
+    # Solving for C and D
+
+    sols = solve((x-3)*(x+8)*equation - (4*x - 23), (C, D))
+
+    # Choosing the solution where C and D are integers
+
+    solution = next((s for s in sols if s[0].is_integer() and s[1].is_integer()), None)
+
+    if solution:
+
+        C, D = solution
+
+        product = C * D
+
+        result = product
+
+    else:
+
+        # In case no integer solution is found, return the expression in LaTeX
+
+        result = r'\frac{C}{x-3}+\frac{D}{x+8}=\frac{4x-23}{x^2+5x-24}'
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2570: [success_rate]: False, [answer]: \frac{7}{2}, [output]: from sympy import Symbol, Eq, solve, N
+
+def solution():
+
+    a = Symbol('a')
+
+    b = Symbol('b')
+
+    x = Symbol('x')
+
+    equation = a * x**3 + 9 * x**2 + a * x - 30
+
+    equation1 = equation.subs(x, a-3)
+
+    equation2 = equation.subs(x, b)
+
+    sol1 = solve(equation1, a)
+
+    sol2 = solve(equation2, a)
+
+    if len(sol1) > 0 and len(sol2) > 0:
+
+        a_value = sol1[0]
+
+        b_value = sol2[0]
+
+        result = a_value + b_value
+
+        return result
+
+
+ Executed result: (30 - 9*b**2)/(b**3 + b) - sqrt(-53/12 - 287/(18*(15743/432 + 7*sqrt(86269)/48)**(1/3)) + 2*(15743/432 + 7*sqrt(86269)/48)**(1/3))/2 + 9/4 - sqrt(-69/(4*sqrt(-53/12 - 287/(18*(15743/432 + 7*sqrt(86269)/48)**(1/3)) + 2*(15743/432 + 7*sqrt(86269)/48)**(1/3))) - 53/6 - 2*(15743/432 + 7*sqrt(86269)/48)**(1/3) + 287/(18*(15743/432 + 7*sqrt(86269)/48)**(1/3)))/2
+[EXP] 2571: [success_rate]: False, [answer]: 2, [output]: from sympy import Function, solve
+
+def solution():
+
+    x, y, z = Function('x'), Function('y'), Function('z')
+
+    constraints = {x*y*z*(x+y+z)-1: 0, x>0, y>0, z>0}
+
+    # Solving for x, y, and z that satisfy the constraints
+
+    sol = solve(constraints, (x, y, z))
+
+    # Finding the minimum value of (x + y)(y + z)
+
+    min_value = None
+
+    for solution in sol:
+
+        value = (solution[x] + solution[y]) * (solution[y] + solution[z])
+
+        if min_value is None or value < min_value:
+
+            min_value = value
+
+    result = min_value
+
+    return result
+
+
+ Executed result: None
+[EXP] 2572: [success_rate]: False, [answer]: -7, [output]: from sympy import symbols, simplify
+
+def solution():
+
+    a, b, c, d, e = symbols('a b c d e')
+
+    expression = a**5 / ((a - b) * (a - c) * (a - d) * (a - e)) + b**5 / ((b - a) * (b - c) * (b - d) * (b - e)) + c**5 / ((c - a) * (c - b) * (c - d) * (c - e)) + d**5 / ((d - a) * (d - b) * (d - c) * (d - e)) + e**5 / ((e - a) * (e - b) * (e - c) * (e - d))
+
+    solved_expression = simplify(expression)
+
+    return solved_expression
+
+
+ Executed result: a + b + c + d + e
+[EXP] 2573: [success_rate]: True, [answer]: (x^2+1)(x^2-4x+13), [output]: from sympy import symbols, factor
+
+def solution():
+
+    x = symbols('x')
+
+    expr = x**4 - 4*x**3 + 14*x**2 - 4*x + 13
+
+    factored_expr = factor(expr)
+
+    result = factored_expr
+
+    return result
+
+
+ Executed result: (x**2 + 1)*(x**2 - 4*x + 13)
+[EXP] 2574: [success_rate]: False, [answer]: 27, [output]: import math
+
+def solution():
+
+    x = symbols('x')
+
+    log2x = log(log(8*x, 2), 2)
+
+    log8x = log(log(2*x, 8), 8)
+
+    if log2x == log8x:
+
+        squared_log2x = log2x**2
+
+        result = squared_log2x
+
+    else:
+
+        result = 'No solution'
+
+    return result
+
+
+ Executed result: No solution
+[EXP] 2575: [success_rate]: True, [answer]: 44, [output]: from sympy import symbols, solve, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    eq = x**3 - 20*x**2 + 18*x - 7
+
+    roots = solve(eq, x)
+
+    r, s, t = roots
+
+    value = simplify(r**2*s**2 + s**2*t**2 + t**2*r**2)
+
+    result = value
+
+    return result
+
+
+ Executed result: 44
+[EXP] 2576: [success_rate]: False, [answer]: 3, [output]: from sympy import symbols, solve
+
+def solution():
+
+    a, b, c = symbols('a b c')
+
+    # Equations
+
+    eq1 = a**2 - bc
+
+    eq2 = a + b + c - abc
+
+    # Solving for a^2
+
+    a_squared_sol = solve(eq1, a**2)
+
+    # Finding the smallest possible value
+
+    smallest_a_squared = min(a_squared_sol)
+
+    # Converting the result to simplified form
+
+    simplified_smallest_a_squared = simplify(smallest_a_squared)
+
+    result = simplified_smallest_a_squared
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2577: [success_rate]: False, [answer]: 18, [output]: from sympy import symbols, factor
+
+def solution():
+
+    x = symbols('x')
+
+    expr = 8 * x**3 - 27
+
+    factorized_expr = factor(expr)
+
+    quadratic = factorized_expr[0]
+
+    linear_terms = factorized_expr[2]
+
+    constants = [quadratic.coefficients()[0], quadratic.coefficients()[1], linear_terms.coefficients()[0], linear_terms.coefficients()[1], -27]
+
+    result = sum(constants)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2578: [success_rate]: True, [answer]: \sqrt{101}-\sqrt{2}+9, [output]: from sympy import symbols, summation
+
+def solution():
+
+    n = symbols('n')
+
+    result = summation(2 / (n ** (1/2) + (n + 2) ** (1/2)), (n, 1, 99))
+
+    return result
+
+
+ Executed result: 17.6356620587478
+[EXP] 2579: [success_rate]: False, [answer]: \frac{1}{4}, [output]: import sympy as sp
+
+import math
+
+def solution():
+
+    x, a, b = sp. symbols('x, a, b')
+
+    eq = x ** 4 + a * x ** 3 - b * x ** 2 + a * x + 1
+
+    roots = sp.roots(eq, real=True)
+
+    # Minimum and maximum values of a and b for at least one real root
+
+    min_a = sp.N(sp.solve(len(roots) >= 1, a))
+
+    max_a = sp.N(sp.solve(len(roots) >= 2, a))
+
+    min_b = sp.N(sp.solve(len(roots) >= 1, b))
+
+    max_b = sp.N(sp.solve(len(roots) >= 2, b))
+
+    # Integration limits for a and b
+
+    integral_limits = [(min_a, max_a), (min_b, max_b)]
+
+    integral_expression = sp.integral(sp.Integral(1, (x, 1), (y, 0)).subs((x, sp.sqrt(y))), y, integral_limits[0][0], integral_limits[0][1])
+
+    for i in range(1, len(integral_limits)):
+
+        integral_expression += sp.integral(sp.Integral(1, (x, sp.sqrt(y)), (y, integral_limits[i-1][1], integral_limits[i][1])).subs((x, sp.sqrt(y))), y, integral_limits[i][0], integral_limits[i][1])
+
+    integral_expression = sp.N(integral_expression)
+
+    result = integral_expression
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2580: [success_rate]: False, [answer]: 12, [output]: from sympy import symbols, serie
+
+def solution():
+
+    # Assuming the numbers are in the order: A, B, C, D, E
+
+    A, B, C, D, E = symbols('A B C D E')
+
+    # Sum of the numbers at the ends of the line segments
+
+    AB = A + B
+
+    BC = B + C
+
+    CD = C + D
+
+    DE = D + E
+
+    EA = E + A
+
+    # Arithmetic sequence
+
+    difference = (EA - AB) / 4
+
+    # Middle term
+
+    middle_term = AB + 2 * difference
+
+    # Simplify the expression
+
+    simplified_middle_term = simplify(middle_term)
+
+    result = simplified_middle_term
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2581: [success_rate]: False, [answer]: -4, [output]: from sympy import symbols, S, Eq, Eq, solve
+
+def solution():
+
+    x = symbols('x')
+
+    c = symbols('c')
+
+    a = symbols('a')
+
+    b = symbols('b')
+
+    inequality = S(0) >= (x + c) / (x**2 + a*x + b)
+
+    # Solving for the roots of the denominator
+
+    denominator = x**2 + a*x + b
+
+    roots = solve([denominator], x)
+
+    # Finding the roots that satisfy the inequality
+
+    roots_that_satisfy_inequality = [root for root in roots if root < -1 or root > 1]
+
+    # Expression to test if the roots lie in the correct intervals
+
+    test_expression = inequality.subs({x: roots_that_satisfy_inequality[0]}) & inequality.subs({x: roots_that_satisfy_inequality[1]})
+
+    if test_expression:
+
+        # Adding the values of c, a, and b
+
+        result = c + a + b
+
+        return result
+
+
+ Executed result: a + b + c
+[EXP] 2582: [success_rate]: False, [answer]: 34, [output]: import sympy as sp
+
+def solution():
+
+    x = sp.symbols('x')
+
+    log10_x = sp.log(x, 10)
+
+    log30_x = log10_x / sp.log(30, 10)
+
+    log5_x = sp.log(x, 5)
+
+    log15_x = sp.log(x, 15)
+
+    log6_x = sp.log(x, 6)
+
+    log2_x = sp.log(x, 2)
+
+    expression = 17 * log30_x - 3 * log5_x + 20 * log15_x - 3 * log6_x + 20 * log2_x
+
+    # Condition for x > 1
+
+    condition = x > 1
+
+    # Finding the minimum value of the expression for x > 1
+
+    min_value = expression.subs(x, sp.minimize(expression, condition)[0])
+
+    # Formatting the result in LaTeX
+
+    result = r'{}\min_{x > 1} 17 \log_{30} x - 3 \log_x 5 + 20 \log_x 15 - 3 \log_x 6 + 20 \log_x 2 = {}'.format(min_value)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2583: [success_rate]: False, [answer]: 12, [output]: import cmath
+
+def solution():
+
+    sasha_point = complex(15+8j)
+
+    chloe_point = complex(3-4j)
+
+    distance_to_origin_sasha = cmath.dist(sasha_point, complex(0, 0))
+
+    distance_to_origin_chloe = cmath.dist(chloe_point, complex(0, 0))
+
+    difference_in_distances = distance_to_origin_sasha - distance_to_origin_chloe
+
+    result = "{:.2f}".format(difference_in_distances)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2584: [success_rate]: True, [answer]: 384, [output]: def solution():
+
+    year1 = 2009
+
+    year2 = 2007
+
+    year3 = 2005
+
+    year4 = 2003
+
+    year5 = 2001
+
+    expression = (year1**4) - (4 * year2**4) + (6 * year3**4) - (4 * year4**4) + (year5**4)
+
+    result = expression
+
+    return result
+
+
+ Executed result: 384
+[EXP] 2585: [success_rate]: False, [answer]: 66673, [output]: from sympy import symbols, simplify, expand
+
+def solution():
+
+    sqrt2 = symbols('sqrt(2)')
+
+    cuberoot3 = symbols('cuberoot(3)')
+
+    expr = (sqrt2 + cuberoot3)**12
+
+    expanded_expr = expand(expr)
+
+    rational_terms = [term.evalf() for term in expanded_expr if term.is_rational]
+
+    result = sum(rational_terms)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2586: [success_rate]: False, [answer]: \frac{2}{5}, [output]: import sympy
+
+def solution():
+
+    # Define the variables
+
+    a, b, c = sympy.symbols('a b c')
+
+    # Constrain the variables to be positive and sum to 1
+
+    constraints = [a > 0, b > 0, c > 0, a + b + c == 1]
+
+    # Minimize the expression
+
+    expression = a**2 + 2*b**2 + c**2
+
+    min_value, min_point = sympy.minimize(expression, (a, b, c), constraints=constraints)
+
+    # Format the result
+
+    result = r'{}\min{(a^2 + 2b^2 + c^2)} = {}'.format(min_value)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2587: [success_rate]: False, [answer]: \frac{7}{4}, [output]: from sympy import symbols, Eq, solve, Fraction
+
+def solution():
+
+    x = symbols('x')
+
+    equation = Eq(x**4 - 7*x**3 + 4*x**2 + 7*x - 4, 0)
+
+    roots = solve(equation, x)
+
+    a, b, c, d = roots
+
+    sum_of_reciprocals = Fraction(1, a) + Fraction(1, b) + Fraction(1, c) + Fraction(1, d)
+
+    result = sum_of_reciprocals
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2588: [success_rate]: False, [answer]: -108, [output]: import sympy as sp
+
+def solution():
+
+    x, y = sp.symbols('x y')
+
+    expr = x**6 + y**6 - 54*x*y
+
+    result = sp.minimize(expr, (x, y))
+
+    min_value = result.value
+
+    return min_value
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2589: [success_rate]: False, [answer]: (-\infty,0]\cup(\frac{1}{2},\frac{3}{2}], [output]: def solution():
+
+    from sympy import Symbol, Eq, solve
+
+    t = Symbol('t')
+
+    eq = Eq((t * (2 * t - 3)) / (4 * t - 2), 0)
+
+    solutions = solve(eq, t)
+
+    # Check for complex solutions and return real solutions only
+
+    real_solutions = [solution for solution in solutions if solution.imag == 0]
+
+    result = real_solutions
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2590: [success_rate]: False, [answer]: 8, [output]: from math import log2
+
+def solution():
+
+    x = symbols('x')
+
+    left_side = log2((2*x + 8)/(x + 2)) + log2((x + 2)/(x - 5))
+
+    simplified_left_side = simplify(left_side)
+
+    if simplified_left_side != simplified_left_side:
+
+        return "The equation has no solution in real numbers."
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2591: [success_rate]: True, [answer]: 2, [output]: def solution():
+
+    # Fourth term (a_4)
+
+    a4 = 24
+
+    # Eleventh term (a_11)
+
+    a11 = 3072
+
+    # First term (a_1)
+
+    a1 = a4 / (a4 - 1)
+
+    # Common ratio (r)
+
+    r = (a11 / a4) ** (1 / (11 - 4))
+
+    result = r
+
+    return result
+
+
+ Executed result: 2.0
+[EXP] 2592: [success_rate]: False, [answer]: 3x^2-7x+4, [output]: from sympy import symbols, Function, Eq, solve, simplify
+
+x = symbols('x')
+
+p = Function('p')(x)
+
+q = Function('q')(x)
+
+# Given conditions
+
+Eq(p(2), 2)
+
+Eq(q(x)*(x-2)*(x-1), 18*(x-1))
+
+# Solving for q(x)
+
+q_sol = solve([Eq(p(2), 2), Eq(q(x)*(x-2)*(x-1), 18*(x-1))], q(x))[0]
+
+# Finding p(x) + q(x)
+
+p_plus_q = p(x) + q_sol(x)
+
+# Simplifying the expression
+
+simplified_expr = simplify(p_plus_q)
+
+result = simplified_expr
+
+return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2593: [success_rate]: False, [answer]: \frac{1}{5}, [output]: from sympy import symbols, poly, rational
+
+def solution():
+
+    x = symbols('x')
+
+    conditions = [rational(1, n) for n in range(1, 10)]
+
+    p = poly(conditions, x, domain='ZZ[x]')
+
+    p10 = p.subs(x, 10)
+
+    # If the result is an expression, return it in simplest form (LaTeX)
+
+    if p10.is_Expr:
+
+        result = r'{}\frac{{{}}}{{{}}}' .format(p10.as_numer_denom()[0], p10.as_numer_denom()[1])
+
+    else:
+
+        result = p10
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2594: [success_rate]: False, [answer]: -4, [output]: def solution():
+
+    # Given that e(x) is even and o(x) is odd, we know that e(x) = e(-x) and o(x) = -o(-x)
+
+    # From the given equation e(x) + x^2 = o(x), it follows that e(-2) + 4 = -o(-2)
+
+    # Since e(x) is even, e(2) = e(-2)
+
+    e_2 = e(-2)
+
+    # Since o(x) is odd, o(2) = -o(-2)
+
+    o_2 = -o(-2)
+
+    # Based on the given equation, we have e_2 + 4 = o_2
+
+    # Solving for e_2, we get e_2 = o_2 - 4
+
+    e_2 = o_2 - 4
+
+    # Since f(x) = e(x) + o(x), f(2) = e_2 + o_2
+
+    f_2 = e_2 + o_2
+
+    return f_2
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2595: [success_rate]: False, [answer]: (-4,13), [output]: def solution():
+
+    x = symbols('x')
+
+    expr = abs(x - 13) / (x**2 - 9*x - 52)
+
+    roots = solveset(expr, x)
+
+    solutions = []
+
+    for root in roots:
+
+        if root is not ComplexInfinity and root.is_real:
+
+            solutions.append(root)
+
+    if len(solutions) == 0:
+
+        result = "The solution set is empty."
+
+    elif len(solutions) == 1:
+
+        result = "The solution is ${}$.".format(solutions[0])
+
+    else:
+
+        result = "The solutions are ${}, {} and others.".format(solutions[0], solutions[-1])
+
+    return result
+
+
+ Executed result: The solution set is empty.
+[EXP] 2596: [success_rate]: False, [answer]: 67, [output]: from sympy import init_printing, symbols, factor
+
+from sympy.abc import x
+
+init_printing(use_latex='mathjax')
+
+def solution():
+
+    x = symbols('x')
+
+    equation = x**(2*n) + 1 + (x + 1)**(2*n)
+
+    for n in range(1, 101):
+
+        if factor(equation).components()[0] == x**2 + x + 1:
+
+            print('The number of positive integers n, 1 <= n <= 100, for which x^{2n} + 1 + (x + 1)^{2n} is divisible by x^2 + x + 1 is:', n)
+
+            break
+
+    return None
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2597: [success_rate]: True, [answer]: 3+4\sqrt{2}, [output]: import math
+
+def solution():
+
+    a = 41 + 24 * math.sqrt(2)
+
+    result = math.sqrt(a)
+
+    return result
+
+
+ Executed result: 8.65685424949238
+[EXP] 2598: [success_rate]: False, [answer]: 336, [output]: from sympy import symbols, simplify, Eq
+
+def solution():
+
+    x = symbols('x')
+
+    p_x = 'p({})'.format(x)
+
+    p_2x = 'p(2{})'.format(x)
+
+    p_x_plus_6 = 'p(x + 6)'
+
+    # Equation 1: p(1) = 210
+
+    eq1 = Eq(p_x.subs({x: 1}), 210)
+
+    # Equation 2: (x + 10) * p(2x) = 8 * (x - 4) * p(x + 6)
+
+    eq2 = Eq((x + 10) * p_2x, 8 * (x - 4) * p_x_plus_6)
+
+    # Solving the system of equations
+
+    sol = solve([eq1, eq2], p_x)
+
+    # Extract the value of p(10) from the solution
+
+    p_10 = sol[p_x].subs({x: 10})
+
+    result = p_10
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2599: [success_rate]: False, [answer]: \sqrt{2}, [output]: import cmath
+
+import math
+
+def solution():
+
+    x, y, z = map(float, input("Enter three positive real numbers (x y z): ").split())
+
+    sqrt_x_y = cmath.sqrt(x**2 + y**2).real
+
+    sqrt_x_z = cmath.sqrt(x**2 + z**2).real
+
+    sqrt_y_z = cmath.sqrt(y**2 + z**2).real
+
+    sum_sqrt = sqrt_x_y + sqrt_x_z + sqrt_y_z
+
+    sum_xyz = x + y + z
+
+    if sum_xyz == 0:
+
+        result = "The denominator cannot be zero."
+
+    else:
+
+        result = sum_sqrt / sum_xyz
+
+        if result < sqrt_x_y and result < sqrt_x_z and result < sqrt_y_z:
+
+            result = result
+
+        else:
+
+            result = sqrt_x_y if sqrt_x_y < sqrt_x_z and sqrt_x_y < sqrt_y_z else (sqrt_x_z if sqrt_x_z < sqrt_y_z else sqrt_y_z)
+
+    return result
+
+
+ Executed result: The denominator cannot be zero.
+[EXP] 2600: [success_rate]: False, [answer]: 1, [output]: import cmath
+
+def solution():
+
+    a_b = 21 - 20j
+
+    b = cmath.rect(0, 29)
+
+    a = a_b / b
+
+    |a| = abs(a)
+
+    result = "{:.2f}".format(abs(a))
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2601: [success_rate]: True, [answer]: 3, [output]: from fractions import Fraction
+
+def solution():
+
+    num = (1990**3 - 1000**3 - 990**3)
+
+    denom = (1990 * 1000 * 990)
+
+    result = Fraction(num, denom)
+
+    return result
+
+
+ Executed result: 3
+[EXP] 2602: [success_rate]: False, [answer]: (2,12)\cup(12,102), [output]: import sympy as sp
+
+def solution():
+
+    x = sp.Symbol('x')
+
+    log_base = 10
+
+    # Denominator should be positive to avoid division by zero
+
+    condition = sp.Pow(sp.log(log_base, x - 2), -1) > 0
+
+    domain = sp.solve(condition, x)
+
+    domain_interval = sp.intersection_overlaps(domain, sp.Interval(2, sp.Infinity))
+
+    domain_start = domain_interval.left_endpoint
+
+    domain_end = domain_interval.right_endpoint
+
+    domain_str = "({}, {})".format(domain_start, domain_end)
+
+    return domain_str
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2603: [success_rate]: False, [answer]: -\frac{5}{4}, [output]: from sympy import minimize, symbols
+
+def solution():
+
+    x, y = symbols('x y')
+
+    expression = 2*x**2 + 2*x*y + 4*y + 5*y**2 - x
+
+    result = minimize(expression, (x, y))
+
+    min_value = result.value
+
+    return min_value
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2604: [success_rate]: True, [answer]: (2x+3)(2x-1)(2x+1), [output]: from sympy import symbols, factor
+
+def solution():
+
+    x = symbols('x')
+
+    expr = 8*x**3 + 12*x**2 - 2*x - 3
+
+    factorized_expr = factor(expr)
+
+    result = factorized_expr
+
+    return result
+
+
+ Executed result: (2*x - 1)*(2*x + 1)*(2*x + 3)
+[EXP] 2605: [success_rate]: False, [answer]: 3-\sqrt{7}, [output]: from sympy import Symbol, sqrt, solve
+
+def solution():
+
+    x = Symbol('x')
+
+    left_side = sqrt(x**2 - 2*x + 2) + sqrt(-x**2 + 6*x - 2)
+
+    right_side = 2 * sqrt(x)
+
+    # Solving the equation
+
+    solution = solve(left_side - right_side, x)
+
+    solution = list(solution.values())[0]
+
+    # Check if the solution is real and non-negative
+
+    if solution.imag == 0 and solution >= 0:
+
+        result = solution
+
+    else:
+
+        result = "No real solution"
+
+    return result
+
+
+ Executed result: No real solution
+[EXP] 2606: [success_rate]: False, [answer]: 6\sqrt{3}+6, [output]: import numpy as np
+
+from sympy import symbols, simplify, Imaginary, I
+
+def solution():
+
+    z1, z2, z3, z4 = symbols('z1 z2 z3 z4')
+
+    eq1 = z4**4 - 6*z4**2 + 8*z4 + 1 + 4*I * (z4**3 - z4 + 2)
+
+    eq2 = z1**4 - 6*z1**2 + 8*z1 + 1 + 4*I * (z1**3 - z1 + 2)
+
+    eq3 = z2**4 - 6*z2**2 + 8*z2 + 1 + 4*I * (z2**3 - z2 + 2)
+
+    eq4 = z3**4 - 6*z3**2 + 8*z3 + 1 + 4*I * (z3**3 - z3 + 2)
+
+    equation_system = [eq1 - eq2, eq1 - eq3, eq1 - eq4, eq2 - eq3, eq2 - eq4, eq3 - eq4]
+
+    solution_dict = dict(solve(equation_system))
+
+    z1_val = solution_dict[z1]
+
+    z2_val = solution_dict[z2]
+
+    z3_val = solution_dict[z3]
+
+    z4_val = solution_dict[z4]
+
+    pairwise_distances = []
+
+    for i in range(4):
+
+        for j in range(i+1, 4):
+
+            distance = ((z1_val[i] - z1_val[j])**2 + (z2_val[i] - z2_val[j])**2 + (z3_val[i] - z3_val[j])**2 + (z4_val[i] - z4_val[j])**2)**0.5
+
+            pairwise_distances.append(distance)
+
+    result = sum(pairwise_distances)
+
+    return result
+
+
+ Executed result: 0
+[EXP] 2607: [success_rate]: False, [answer]: x^8+x^7+x^6+x^5+x^4+x^3+x^2+x+1, [output]: from sympy import symbols, solve,polydiv
+
+def solution():
+
+    x = symbols('x')
+
+    expr = x**9 + 1
+
+    divider = x - 1
+
+    quotient, remainder = polydiv(expr, divider)
+
+    result = quotient
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2608: [success_rate]: False, [answer]: 7, [output]: import sympy as sp
+
+def solution():
+
+    a = sp. Symbol('a')
+
+    h, k = sp.symbols('h k')
+
+    hyper_eq = sp.Eq((sp.Pow(sp.Sqrt((sp.Pow(x - h, 2) / sp.Pow(a, 2)) - 1) + k) ** 2 - y ** 2) / sp.Pow(b, 2), 1)
+
+    hyper_sol = sp.solve(hyper_eq, (h, k, a, b))
+
+    h_value, k_value, a_value, b_value = hyper_sol[0]
+
+    result = h_value + k_value + a_value + b_value
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2609: [success_rate]: False, [answer]: (0,9)\cup(9,36), [output]: import sympy as sp
+
+def solution():
+
+    x = sp.Symbol('x')
+
+    expression = sp.abs(x**2 - 81) / (x**2 - 36*x)
+
+    solution_set = expression < 0
+
+    # Solving the inequality
+
+    sol1 = sp.solve(solution_set, x)
+
+    # If there is no solution or infinite solutions, return the expression
+
+    if not sol1:
+
+        result = r'\frac{{|{} - 81|}}{{{} - 36{}}} < 0'.format(x, x)
+
+        return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2610: [success_rate]: False, [answer]: x+6, [output]: from sympy import symbols, sympify, poly1d, factors
+
+def solution():
+
+    x = symbols('x')
+
+    P = poly1d(coeffs)  # Assuming coeffs is a list of the coefficients of P(x) in descending order.
+
+    # Factors of (x-13) and (x+17)
+
+    factor_13 = factors(x-13)
+
+    factor_17 = factors(x+17)
+
+    # Remainders when P(x) is divided by (x-13) and (x+17)
+
+    remainder_13 = P.remainder(factor_13[0][0])
+
+    remainder_17 = P.remainder(factor_17[0][0])
+
+    # Remainder when P(x) is divided by the product of (x-13) and (x+17)
+
+    remainder = remainder_13 * factor_17[0][1] + remainder_17 * factor_13[0][1]
+
+    result = remainder
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2611: [success_rate]: False, [answer]: p-q, [output]: def solution():
+
+    # p and q sums
+
+    p = sum(1/k**2 for k in range(1, float('inf')))
+
+    q = sum(1/k**3 for k in range(1, float('inf')))
+
+    # j and k sum
+
+    j_k_sum = sum(sum(1/((j + k)**3) for j in range(1, float('inf'))) for k in range(1, float('inf')))
+
+    # Writing j and k sum in terms of p and q
+
+    j_k_sum_in_terms_of_p_and_q = j_k_sum - p**2 + 2*q
+
+    return j_k_sum_in_terms_of_p_and_q
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2612: [success_rate]: False, [answer]: (-5,\sqrt{26}], [output]: import cmath
+
+def solution():
+
+    def f(x):
+
+        return (x**2 - 10*x + 34)**0.5 - (x**2 + 4)**0.5
+
+
+ Executed result: None
+[EXP] 2613: [success_rate]: False, [answer]: 12, [output]: def solution():
+
+    a = symbols('a')
+
+    b = symbols('b')
+
+    c = symbols('c')
+
+    d = symbols('d')
+
+    a_squared = a**2
+
+    b_squared = b**2
+
+    c_squared = c**2
+
+    d_squared = d**2
+
+    condition_a = Eq(a_squared + b_squared, 3)
+
+    condition_b = Eq(c_squared + d_squared, 4)
+
+    sol = solve((condition_a, condition_b), (a, b, c, d))
+
+    a_val = sol['a'].evalf()
+
+    b_val = sol['b'].evalf()
+
+    c_val = sol['c'].evalf()
+
+    d_val = sol['d'].evalf()
+
+    ac_plus_bd = a_val * c_val + b_val * d_val
+
+    bc_minus_ad = c_val * b_val - a_val * d_val
+
+    ac_plus_bd_squared = (ac_plus_bd)**2
+
+    bc_minus_ad_squared = (bc_minus_ad)**2
+
+    result = ac_plus_bd_squared + bc_minus_ad_squared
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2614: [success_rate]: False, [answer]: 10, [output]: from sympy import symbols, Eq, solve
+
+def solution():
+
+    a, b, c = symbols('a b c')
+
+    eq1 = (a + 1) * (b + 1) * (c + 1) == 1
+
+    eq2 = (a + 2) * (b + 2) * (c + 2) == 2
+
+    eq3 = (a + 3) * (b + 3) * (c + 3) == 3
+
+    solutions = solve((eq1, eq2, eq3), (a, b, c))
+
+    a_value = solutions[a] + 4
+
+    b_value = solutions[b] + 4
+
+    c_value = solutions[c] + 4
+
+    result = (a_value + 4) * (b_value + 4) * (c_value + 4)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2615: [success_rate]: False, [answer]: 13, [output]: from cmath import sqrt
+
+def solution():
+
+    z = complex(156 + 65j)
+
+    modulus = sqrt(z.real**2 + z.imag**2)
+
+    result = modulus
+
+    return result
+
+
+ Executed result: (169+0j)
+[EXP] 2616: [success_rate]: False, [answer]: 4, [output]: def solution():
+
+    def f(x):
+
+        if 0 <= x < 2:
+
+            return 2*x
+
+
+ Executed result: None
+[EXP] 2617: [success_rate]: False, [answer]: 14, [output]: def solution():
+
+    # Coordinates of point F1 and F2
+
+    F1_x, F1_y = -1, 0
+
+    F2_x, F2_y = 1, 0
+
+    # Distance between F1 and F2
+
+    distance = ((F1_x - F2_x)**2 + (F1_y - F2_y)**2)**0.5
+
+    result = distance
+
+    return result
+
+
+ Executed result: 2.0
+[EXP] 2618: [success_rate]: False, [answer]: \frac{2x-7}{(x+1)(x-2)}, [output]: from sympy import symbols, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    numerator = 4*x + 5
+
+    denominator_1 = x**2 + x - 2
+
+    denominator_2 = x + 2
+
+    denominator_3 = x - 1
+
+    fraction_1 = (numerator) / denominator_1
+
+    fraction_2 = (0) / (x + 2)
+
+    fraction_3 = (0) / (x - 1)
+
+    simplified_fraction_1 = simplify(fraction_1)
+
+    simplified_fraction_2 = simplify(fraction_2)
+
+    simplified_fraction_3 = simplify(fraction_3)
+
+    A = simplified_fraction_1.coeff(1)
+
+    B = simplified_fraction_1.coeff(2)
+
+    fraction_4 = (B) / (x + 1)
+
+    fraction_5 = (-A) / (x - 2)
+
+    fraction_6 = fraction_4 - fraction_5
+
+    simplified_fraction_6 = simplify(fraction_6)
+
+    result = simplified_fraction_6
+
+    return result
+
+
+ Executed result: (4*x + 5)/((x - 2)*(x**2 + x - 2))
+[EXP] 2619: [success_rate]: False, [answer]: 1, [output]: from sympy import Eq, solveset, symbols
+
+def solution():
+
+    x, y = symbols('x y')
+
+    eq = Eq((x + y)**2, (x + 1)*(y - 1))
+
+    solutions = solveset(eq, (x, y))
+
+    if len(list(solutions)) == 0:
+
+        result = "No solution"
+
+    elif len(list(solutions)) == 1:
+
+        result = str(list(solutions)[0])
+
+    else:
+
+        result = "Infinitely many solutions"
+
+    return result
+
+
+ Executed result: Infinitely many solutions
+[EXP] 2620: [success_rate]: False, [answer]: \frac{2a+b}{2}, [output]: from sympy import symbols, Simpify, Eq, solve
+
+def solution():
+
+    a, b = symbols('a b', positive=True)
+
+    x = symbols('x')
+
+    equation_1 = (x / (x - a)) + (x - b) / (x - a - b)
+
+    equation_2 = (x - a) / (x - 2 * a) + (x + a - b) / (x - b)
+
+    equation = Eq(equation_1, equation_2)
+
+    solutions = solve(equation, x)
+
+    if len(solutions) == 1:
+
+        result = solutions[0]
+
+    else:
+
+        result = "No solution"
+
+    return result
+
+
+ Executed result: No solution
+[EXP] 2621: [success_rate]: False, [answer]: 5, [output]: import sympy
+
+def solution():
+
+    x = sympy.symbols('x1, x2, ..., x101')
+
+    sum_of_squares = sum([x[i]**2 for i in range(1, 102)] )
+
+    constraint = sum_of_squares - 1
+
+    # Define the objective function
+
+    objective_function = sum([x[i]*x[i+1] for i in range(1, 102)])
+
+    # Use sympy's maximize function to find the maximum value of the objective function under the given constraint
+
+    max_value, max_point = sympy.optimize.maximize(objective_function, x, constraints=constraint)
+
+    result = max_value
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2622: [success_rate]: False, [answer]: \{1\pm\sqrt{5},-2\}, [output]: from sympy import symbols, roots, latex
+
+def solution():
+
+    x = symbols('x')
+
+    eq = x**4 + 2*x**3 + 2
+
+    roots_list = roots(eq)
+
+    # Ensure that the roots are distinct and sorted
+
+    roots_list = sorted(set(roots_list))
+
+    alpha1, alpha2, alpha3, alpha4 = roots_list
+
+    set1 = (alpha1*alpha2 + alpha3*alpha4).evalf()
+
+    set2 = (alpha1*alpha3 + alpha2*alpha4).evalf()
+
+    set3 = (alpha1*alpha4 + alpha2*alpha3).evalf()
+
+    result1 = latex(set1)
+
+    result2 = latex(set2)
+
+    result3 = latex(set3)
+
+    result = "{{{}, {}, {}}}".format(result1, result2, result3)
+
+    return result
+
+
+ Executed result: {3.23606797749979, -1.23606797749979 + 1.0 \cdot 10^{-20} i, -2.0 + 7.0 \cdot 10^{-21} i}
+[EXP] 2623: [success_rate]: False, [answer]: -338016, [output]: from sympy import symbols, roots, pprint
+
+from sympy.abc import x
+
+def solution():
+
+    x_list = roots([x**2016 + x**2015 + ... + x + 1 for i in range(2016)], domain='ZZ')
+
+    total_sum = 0
+
+    for x_i in x_list:
+
+        total_sum += 1 / (1 - x_i)**2
+
+    result = total_sum
+
+    return result
+
+
+ Executed result: 0
+[EXP] 2624: [success_rate]: False, [answer]: 80, [output]: from sympy import symbols, roots, simplify
+
+from math import floor
+
+def solution():
+
+    x = symbols('x')
+
+    P = x**3 - a*x**2 + b*x - 65
+
+    roots_list = roots(P, complex=True)
+
+    # Extract real and imaginary parts of the roots
+
+    roots_real = [root.real for root in roots_list]
+
+    roots_imag = [root.imag for root in roots_list]
+
+    # Find the sum of the zeros for each possible combination of a and b
+
+    p_sum = 0
+
+    for a in range(1, 66):
+
+        for b in range(1, 66):
+
+            roots_combination = roots_real + roots_imag
+
+            p_sum += sum(roots_combination)
+
+    # Round the final result to the nearest integer
+
+    result = floor(p_sum)
+
+    return result
+
+
+ Executed result: 0
+[EXP] 2625: [success_rate]: False, [answer]: 6+\sqrt{6}, [output]: import math
+
+def solution():
+
+    # Foci and vertex coordinates
+
+    focus_x, focus_y = 3, 2
+
+    vertex_x, vertex_y = 4, 2
+
+    # Distance between focus and vertex
+
+    a = math.sqrt((vertex_x - focus_x)**2 + (vertex_y - focus_y)**2)
+
+    # Slope of the asymptote
+
+    m = math.sqrt(2) / 2
+
+    # Semi-major axis length (c) and semi-minor axis length (b)
+
+    c = a * m**2
+
+    b = a * math.sqrt(1 - m**2)
+
+    # Center coordinates (h and k)
+
+    h = vertex_x + (c * (focus_x - vertex_x)) / (c**2 - b**2)
+
+    k = vertex_y + (c * (focus_y - vertex_y)) / (c**2 - b**2)
+
+    # Formatting the result in LaTeX
+
+    result = r'({}, {})'.format(h, k)
+
+    return result
+
+
+ Executed result: (6.000000000000002, 2.0)
+[EXP] 2626: [success_rate]: False, [answer]: -\frac{1}{2}, [output]: import sympy
+
+def solution():
+
+    a, b, c = sympy.symbols('a b c')
+
+    condition = a**2 + b**2 + c**2 - 1
+
+    solution_set = sympy.solve([condition], [a, b, c])
+
+    min_value = float('inf')
+
+    for sol in solution_set:
+
+        current_value = sol[0] * sol[1] + sol[0] * sol[2] + sol[1] * sol[2]
+
+        if current_value < min_value:
+
+            min_value = current_value
+
+    return min_value
+
+
+ Executed result: inf
+[EXP] 2627: [success_rate]: False, [answer]: 2, [output]: import sympy as sp
+
+def solution():
+
+    equation = sp.Eq(4*sp.x**2 + 16*sp.y**2 - 16*sp.x + 96*sp.y + 144, 0)
+
+    (a, b), (h, k) = sp.solveset(equation, (sp.x, sp.y))
+
+    a, b, h, k = float(sp.N(a)), float(sp.N(b)), float(sp.N(h)), float(sp.N(k))
+
+    result = h + k + a + b
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2628: [success_rate]: False, [answer]: 64, [output]: def solution():
+
+    from sympy import symbols, Eq, solve
+
+    # Define the symbols
+
+    a = [sympy.symbols('a{}'.format(i)) for i in range(1, 11)]
+
+    # Define the equations
+
+    eq1 = sum(a) - 96
+
+    eq2 = sum([a[i]**2 for i in range(1, 11)]) - 144
+
+    eq3 = sum([a[i]**3 for i in range(1, 11)]) - 216
+
+    # Solve the system of equations
+
+    solutions = solve((eq1, eq2, eq3), (a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10]))
+
+    # Find the possible values of n
+
+    n_values = set()
+
+    for solution in solutions:
+
+        if all([solution[i] > 0 for i in range(1, 11)]):
+
+            n_values.add(len(solution))
+
+    # Return the sum of possible values of n
+
+    result = sum(n_values)
+
+    return result
+
+
+ Executed result: 0
+[EXP] 2629: [success_rate]: False, [answer]: 2, [output]: from cmath import square, rect, phase, pi
+
+def solution():
+
+    z = complex(sqrt(64/5), -48/5)
+
+    modulus = abs(z)
+
+    result = modulus
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2630: [success_rate]: False, [answer]: [\frac{1}{2},\frac{3}{2}], [output]: import sympy as sp
+
+def solution():
+
+    x = sp.Symbol('x')
+
+    p = (x**2 + x + 1) / (x**2 + 1)
+
+    root_numerator = sp.roots([1, 2*x + 1, x**2 + x + 1])
+
+    root_denominator = sp.roots([1, 2*x])
+
+    roots = []
+
+    for r in root_numerator:
+
+        if r not in root_denominator:
+
+            roots.append(r)
+
+    min_val = float('inf')
+
+    max_val = float('-inf')
+
+    for root in roots:
+
+        min_val = min(min_val, root)
+
+        max_val = max(max_val, root)
+
+    lower_bound = sp.limit(p, x, min_val, direction='-')
+
+    upper_bound = sp.limit(p, x, max_val, direction='+')
+
+    range_str = r'[{}, {}]'.format(lower_bound, upper_bound)
+
+    return range_str
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2631: [success_rate]: False, [answer]: -\frac{5}{2}, [output]: from sympy import symbols, Eq, solve, simplify
+
+def solution():
+
+    a, b, c = symbols('a b c')
+
+    equation_1 = Eq(2*a**3 + 7*a**2 - 8*a + 5, 0)
+
+    equation_2 = Eq(2*b**3 + 7*b**2 - 8*b + 5, 0)
+
+    equation_3 = Eq(2*c**3 + 7*c**2 - 8*c + 5, 0)
+
+    solutions = solve((equation_1, equation_2, equation_3), (a, b, c))
+
+    if len(solutions) == 3:
+
+        a_value = solutions[a]
+
+        b_value = solutions[b]
+
+        c_value = solutions[c]
+
+        product = a_value * b_value * c_value
+
+        result = simplify(product)
+
+        return result
+
+
+ Executed result: None
+[EXP] 2632: [success_rate]: False, [answer]: 56, [output]: from cmath import complex, pi
+
+def solution():
+
+    z1 = complex(18, 83)
+
+    z2 = complex(18, 39)
+
+    z3 = complex(78, 99)
+
+    nominator = (z3 - z1) / (z2 - z1)
+
+    denominator = (complex(1, 0) - z3) / (complex(1, 0) - z2)
+
+    real_part_z = nominator * denominator.real
+
+    pi_half = pi / 2
+
+    if nominator.imag > 0:
+
+        real_part_z += pi_half
+
+    elif nominator.imag < 0:
+
+        real_part_z -= pi_half
+
+    # Formatting the result in LaTeX
+
+    result = r'{}'.format(real_part_z)
+
+    return result
+
+
+ Executed result: (-1.0386740331491713+3.895027624309392j)
+[EXP] 2633: [success_rate]: False, [answer]: 4, [output]: import sympy as sp
+
+def solution():
+
+    x = sp.Symbol('x')
+
+    a = sp.Symbol('a')
+
+    p = x**4 + (a**2 - 1) * x**2 + a**3
+
+    # Finding the roots of the polynomial
+
+    roots = p.all_roots()
+
+    # Checking if the number of roots is 2 and they are distinct
+
+    condition = len(roots) == 2 and len(set(roots)) == 2
+
+    # Finding all possible values of 'a' that satisfy the condition
+
+    solutions = []
+
+    for i in range(2, 1000):
+
+        if condition.subs({x: sp.N(i)**(1/4)}).evalf() == True:
+
+            solutions.append(i)
+
+    # Summing the solutions
+
+    result = sum(solutions)
+
+    if len(solutions) != 0:
+
+        result = "{:.2f}".format(result)
+
+    else:
+
+        result = "No solution found."
+
+    return result
+
+
+ Executed result: No solution found.
+[EXP] 2634: [success_rate]: False, [answer]: 4022030, [output]: import sympy as sp
+
+import numpy as np
+
+def floor(x):
+
+    return int(x)
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2635: [success_rate]: False, [answer]: \frac{4}{27}, [output]: import math
+
+def solution():
+
+    x = float(input("Enter a positive real number other than 1/3 or 1/2: "))
+
+    # Check if the given number is 1/3 or 1/2
+
+    if x == (1/3) or x == (1/2):
+
+        print("The given number is not valid. Please enter a positive real number other than 1/3 or 1/2.")
+
+        return None
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2636: [success_rate]: True, [answer]: 19941989, [output]: import math
+
+def solution():
+
+    n = 19941994
+
+    result = math.floor(math.sqrt(n**2 - 10*n + 29))
+
+    return result
+
+
+ Executed result: 19941989
+[EXP] 2637: [success_rate]: False, [answer]: 2, [output]: from sympy import symbols, solve
+
+def solution():
+
+    x = symbols('x')
+
+    eq1 = 3**(2*x) + 19
+
+    eq2 = 10**x
+
+    sol = solve(eq1 - eq2, x)
+
+    if len(sol) == 0:
+
+        result = "No solution"
+
+    elif len(sol) == 1:
+
+        result = sol[0]
+
+    else:
+
+        result = "Multiple solutions"
+
+    return result
+
+
+ Executed result: Multiple solutions
+[EXP] 2638: [success_rate]: False, [answer]: {B}, [output]: import asymath
+
+def solution():
+
+    func = asymath.r'''real func(real x) {
+
+      real y;
+
+      if (x >= -3 && x <= 0) {y = -2 - x;}
+
+      if (x >= 0 && x <= 2) {y = sqrt(4 - (x - 2)^2) - 2;}
+
+      if (x >= 2 && x <= 3) {y = 2*(x - 2);}
+
+      return(y);
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2639: [success_rate]: False, [answer]: 30, [output]: import numpy as np
+
+import sympy as sp
+
+def solution():
+
+    x = sp.Symbol('x')
+
+    # Define the functions
+
+    f1 = sp.abs(x - 1) + sp.abs(x - 3)
+
+    f2 = 8
+
+    # Find the intersection points
+
+    intersection_points = np.roots([f1(x + 1) - f2(x + 1), f1(x - 1) - f2(x - 1)])
+
+    # Calculate the area using the integral of the difference between the two functions
+
+    area = (sp.integrate(f1(x) - f2(x), (x, intersection_points[0], intersection_points[1]))).evalf()
+
+    result = area
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2640: [success_rate]: False, [answer]: 3968, [output]: import math
+
+def f(x):
+
+    if math.isqrt(x)**2 == x:
+
+        return math.sqrt(x)
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2641: [success_rate]: False, [answer]: 1, [output]: def solution():
+
+    fibonacci = [0, 1]
+
+    for n in range(2, 1000):
+
+        fibonacci.append(fibonacci[n - 1] + fibonacci[n - 2])
+
+    sum_terms = 0
+
+    for n in range(1, len(fibonacci) - 1):
+
+        sum_terms += 1 / (fibonacci[n] * fibonacci[n + 2])
+
+    result = sum_terms
+
+    return result
+
+
+ Executed result: 0
+[EXP] 2642: [success_rate]: False, [answer]: 12, [output]: from sympy import symbols, binomial
+
+def solution():
+
+    x = symbols('x')
+
+    k_max = 0
+
+    max_coeff = 0
+
+    for k in range(1, 51):
+
+        coeff = binomial(50, k) * (3 ** k)
+
+        if coeff > max_coeff:
+
+            max_coeff = coeff
+
+            k_max = k
+
+    result = k_max
+
+    return result
+
+
+ Executed result: 38
+[EXP] 2643: [success_rate]: False, [answer]: 214, [output]: from sympy import symbols, solve
+
+def solution():
+
+    a, b, c, d = symbols('a b c d')
+
+    eq1 = (a + b)*(c + d) - 143
+
+    eq2 = (a + c)*(b + d) - 150
+
+    eq3 = (a + d)*(b + c) - 169
+
+    solutions = solve((eq1, eq2, eq3), (a**2, b**2, c**2, d**2))
+
+    solutions[0][0] = abs(solutions[0][0])
+
+    solutions[0][1] = abs(solutions[0][1])
+
+    solutions[0][2] = abs(solutions[0][2])
+
+    solutions[0][3] = abs(solutions[0][3])
+
+    result = sum(solutions[0].values())
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2644: [success_rate]: False, [answer]: 48, [output]: import sympy as sp
+
+def solution():
+
+    x = sp.Symbol('x')
+
+    p = x**3 - 12*x**2 + ax - 64
+
+    # All roots must be real and nonnegative
+
+    roots = p.all_real_roots(domain='real')
+
+    non_negative_roots = [root for root in roots if root >= 0]
+
+    # The polynomial has all real, nonnegative roots if and only if it has exactly one root
+
+    if len(non_negative_roots) == 1:
+
+        a_value = non_negative_roots[0]**2 + 12*non_negative_roots[0] - 64
+
+        result = a_value
+
+    else:
+
+        result = 'No solution'
+
+    return result
+
+
+ Executed result: No solution
+[EXP] 2645: [success_rate]: False, [answer]: \frac{161}{400}, [output]: from sympy import symbols, solve, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    eq = 2000*x**6 + 100*x**5 + 10*x**3 + x - 2
+
+    roots = solve(eq, x)
+
+    if len(roots) == 2:
+
+        root1, root2 = roots
+
+        difference = root1 - root2
+
+        squared_difference = simplify(difference**2)
+
+        result = squared_difference
+
+    else:
+
+        result = "The equation does not have two real roots."
+
+    return result
+
+
+ Executed result: The equation does not have two real roots.
+[EXP] 2646: [success_rate]: False, [answer]: -9, [output]: from sympy import symbols, simplify, solve
+
+def solution():
+
+    x = symbols('x')
+
+    f = simplify(2*x + 9)/(x - 7)
+
+    f_of_x = f.subs(x, f(x))
+
+    solutions = solve(f_of_x - x, x)
+
+    product_of_solutions = 1
+
+    for solution in solutions:
+
+        product_of_solutions *= solution
+
+    result = product_of_solutions
+
+    return result
+
+
+ Executed result: 1
+[EXP] 2647: [success_rate]: False, [answer]: -1, [output]: import cmath
+
+def solution():
+
+    z = cmath.sqrt(1, 0)  # complex 5th root of 1
+
+    z_conjugate = z.conjugate()  # complex conjugate of z
+
+    result = z + z_conjugate + z**2 + z_conjugate**2
+
+    result = r'{z} + {z_conjugate} + {z}^2 + {z_conjugate}^2'.format(z=z, z_conjugate=z_conjugate)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2648: [success_rate]: False, [answer]: {(B)}, [output]: from sympy import symbols, polyroots, max_real
+
+from math import sqrt
+
+def solution():
+
+    x = symbols('x')
+
+    polynomial_a = x**19 + 2018*x**11 + 1
+
+    polynomial_b = x**17 + 2018*x**11 + 1
+
+    polynomial_c = x**19 + 2018*x**13 + 1
+
+    polynomial_d = x**17 + 2018*x**13 + 1
+
+    polynomial_e = 2019*x + 2018
+
+    roots_a = polyroots(polynomial_a)
+
+    roots_b = polyroots(polynomial_b)
+
+    roots_c = polyroots(polynomial_c)
+
+    roots_d = polyroots(polynomial_d)
+
+    roots_e = polyroots(polynomial_e)
+
+    max_real_a = max_real(polynomial_a)
+
+    max_real_b = max_real(polynomial_b)
+
+    max_real_c = max_real(polynomial_c)
+
+    max_real_d = max_real(polynomial_d)
+
+    max_real_e = max_real(polynomial_e)
+
+    if max_real_a > max_real_b and max_real_a > max_real_c and max_real_a > max_real_d and max_real_a > max_real_e:
+
+        result = 'A'
+
+    elif max_real_b > max_real_a and max_real_b > max_real_c and max_real_b > max_real_d and max_real_b > max_real_e:
+
+        result = 'B'
+
+    elif max_real_c > max_real_a and max_real_c > max_real_b and max_real_c > max_real_d and max_real_c > max_real_e:
+
+        result = 'C'
+
+    elif max_real_d > max_real_a and max_real_d > max_real_b and max_real_d > max_real_c and max_real_d > max_real_e:
+
+        result = 'D'
+
+    else:
+
+        result = 'E'
+
+    return result
+
+
+ Executed result: E
+[EXP] 2649: [success_rate]: False, [answer]: 10, [output]: def solution():
+
+    result = sum([sgn(n) for n in range(-10, 21)])
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2650: [success_rate]: False, [answer]: \frac{1}{2}, [output]: from sympy import Symbol, summation, pprint
+
+x = Symbol('x')
+
+# Define the sum
+
+sum_expr = summation(x/(x**4 + x**2 + 1), (x, 0, infinity))
+
+# Simplify the sum
+
+simplified_sum_expr = sum_expr.doit()
+
+# Print the simplified expression in LaTeX format
+
+pprint(simplified_sum_expr, use_unicode=True)
+
+# Compute the sum for a given number of terms
+
+n_terms = 10
+
+partial_sum = 0
+
+for i in range(n_terms+1):
+
+    partial_sum += i / (i**4 + i**2 + 1)
+
+result = partial_sum
+
+return result
+
+
+ Executed result: 0
+[EXP] 2651: [success_rate]: False, [answer]: 7, [output]: from sympy import solve, Eq
+
+from sympy.abc import a, b, h, k
+
+def solution():
+
+    # Equation of the hyperbola
+
+    equation = Eq((y - k)**2 / a**2 - (x - h)**2 / b**2, 1)
+
+    # Solving for h, k, a, and b
+
+    solution_dict = solve(equation, (h, k, a, b))
+
+    h, k, a, b = solution_dict[h], solution_dict[k], solution_dict[a], solution_dict[b]
+
+    # Sum of h + k + a + b
+
+    result = h + k + a + b
+
+    return result
+
+
+ Executed result: a + b + h + k
+[EXP] 2652: [success_rate]: False, [answer]: 17, [output]: def solution():
+
+    x = symbols('x')
+
+    f1 = abs(x + 15)
+
+    f2 = abs(x + 12)
+
+    f3 = abs(x + 8)
+
+    f4 = abs(x - 1)
+
+    f5 = abs(x - 3)
+
+    f6 = abs(x - 19)
+
+    max_f = max(f1, f2, f3, f4, f5, f6)
+
+    min_value = min(max_f)
+
+    # Formatting the result in LaTeX
+
+    result = r'{}\min\{f(x)\} = {}'.format(min_value)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2653: [success_rate]: False, [answer]: -5+4i, [output]: from cmath import complex, conjugate
+
+def solution():
+
+    # Equation in complex number form
+
+    equation = 3 * complex(z=z) + 4 * conjugate(z) == 1 - 8 * complex(imag=1)
+
+    # Solving for z using the quadratic formula
+
+    a = 3
+
+    b = -4
+
+    c = 1 + 36
+
+    z1 = (-b + math.sqrt(b**2 - 4*a*c)) / (2*a)
+
+    z2 = (-b - math.sqrt(b**2 - 4*a*c)) / (2*a)
+
+    # Check if solutions are real or complex
+
+    if isinstance(z1, complex):
+
+        result = r'{}\pm {}i'.format(z1.real, z1.imag)
+
+    elif isinstance(z2, complex):
+
+        result = r'{}\pm {}i'.format(z2.real, z2.imag)
+
+    else:
+
+        result = z1
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2654: [success_rate]: False, [answer]: 7x(x-1)(x-2), [output]: from sympy import symbols, factor
+
+def solution():
+
+    x = symbols('x')
+
+    expr = 7*x**3 - 21*x**2 + 14*x
+
+    factorized_expr = factor(expr)
+
+    result = factorized_expr
+
+    return result
+
+
+ Executed result: 7*x*(x - 2)*(x - 1)
+[EXP] 2655: [success_rate]: False, [answer]: 0, [output]: from sympy import Symbol, solve
+
+def solution():
+
+    a = Symbol('a')
+
+    expression = (a**3 - 1**3) / (a - 1)
+
+    eq = expression - 0
+
+    solutions = solve(eq, a)
+
+    result = len(solutions)
+
+    return result
+
+
+ Executed result: 2
+[EXP] 2656: [success_rate]: False, [answer]: 10879, [output]: from sympy import symbols, Eq, solve
+
+def solution():
+
+    x = symbols('x')
+
+    eq1 = Eq(1988*x**2 + b*x + 8891, 0)
+
+    eq2 = Eq(8891*x**2 + b*x + 1988, 0)
+
+    solutions = solve((eq1, eq2), b)
+
+    result = ', '.join(str(sol) for sol in solutions)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2657: [success_rate]: False, [answer]: -2,\frac{3}{2}, [output]: from sympy import symbols, sqrt, diff, simplify
+
+def solution():
+
+    x = symbols('x')
+
+    given_quadratic = x**2 + (3/2) * x - 1
+
+    a = given_quadratic.coeffof(x**2)
+
+    b = given_quadratic.coeffof(x)
+
+    c = given_quadratic.as_numeric()
+
+    # Roots are one less than the final two coefficients
+
+    root1 = a + 1
+
+    root2 = -b - 1
+
+    # Find the quadratic with roots one more than the given coefficients
+
+    new_roots = root1 + 2, root2 + 2
+
+    new_quadratic = (x - new_roots[0]) * (x - new_roots[1])
+
+    # Simplify the quadratic
+
+    simplified_quadratic = simplify(new_quadratic)
+
+    result = simplified_quadratic.roots()
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2658: [success_rate]: False, [answer]: -\sqrt{14}, [output]: import sympy as sp
+
+def solution():
+
+    x = sp.Symbol('x')
+
+    equation = x**2 + sp.floor(x/2) + sp.floor(x/3) - 10
+
+    solutions = sp.solve(equation, x)
+
+    formatted_solutions = ', '.join(str(sol) for sol in solutions)
+
+    result = formatted_solutions
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2659: [success_rate]: False, [answer]: \frac{8}{3}, [output]: from sympy import Symbol, solve, Eq, det, Function, dsolve
+
+from sympy.abc import x
+
+def solution():
+
+    p = Function('p')
+
+    p_x = p(x)
+
+    # Equations for the given points
+
+    eqs = [p_x.subs(x, 1) - 1, p_x.subs(x, 2) - 3, p_x.subs(x, 3) - 2]
+
+    # Second degree polynomial equation
+
+    poly_eq = det([[x, 1], [p(x), p_x]])
+
+    # Solving the system of equations
+
+    solutions = solve(poly_eq * eqs[0] - eqs[1] * p(x) + eqs[2], x)
+
+    # Finding the non-integer solution
+
+    non_integer_solution = [sol for sol in solutions if not sol.is_integer()]
+
+    # If there is no non-integer solution, return None
+
+    if len(non_integer_solution) == 0:
+
+        return None
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2660: [success_rate]: False, [answer]: \frac{\sqrt{5}-1}{2}, [output]: import math
+
+def solution():
+
+    # Midpoints of AB and CD
+
+    midpoint_AB = [0.5, 0.5]
+
+    midpoint_CD = [0.5, 0.5]
+
+    # Coordinates of vertices A and B
+
+    A = [0, 0]
+
+    B = [1, 0]
+
+    # Coordinates of vertices C and D
+
+    C = [0, 1]
+
+    D = [1, 1]
+
+    # Calculate midpoints
+
+    midpoint_AB[0] = (A[0] + midpoint_AB[0]) / 2
+
+    midpoint_AB[1] = (A[1] + midpoint_AB[1]) / 2
+
+    midpoint_CD[0] = (C[0] + midpoint_CD[0]) / 2
+
+    midpoint_CD[1] = (C[1] + midpoint_CD[1]) / 2
+
+    # Find distance between midpoints
+
+    distance = math.sqrt((midpoint_AB[0] - midpoint_CD[0])**2 + (midpoint_AB[1] - midpoint_CD[1])**2)
+
+    result = "{:.2f}".format(distance)
+
+    return result
+
+
+ Executed result: 0.50
+[EXP] 2661: [success_rate]: False, [answer]: 48, [output]: from sympy import symbols, minimize
+
+def solution():
+
+    x = symbols('x')
+
+    expr = x**7 + 32*x**2 + 128
+
+    numerator = expr
+
+    denominator = x**3
+
+    # Minimize the expression for x > 0
+
+    min_value = minimize(numerator, x, constraints=x > 0)
+
+    # Simplify the result if it is still an expression
+
+    min_value_simplified = simplify(min_value.value)
+
+    result = min_value_simplified
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2662: [success_rate]: False, [answer]: 2+\sqrt{3}, [output]: from sympy import symbols, replace, Eq, func, solve
+
+def solution():
+
+    x, y = symbols('x y')
+
+    eq = Eq(2*x**2 - 8*x + 3*y**2 + 6*y + 5, 0)
+
+    # Solve for y in terms of x
+
+    y_solution = solve(eq, y)
+
+    y_solution = [y.subs(x, x_val) for x_val in range(1, 9)]
+
+    # Find the maximum x value
+
+    max_x = max([x_val for y_val in y_solution if y_val is not None for x_val in y_val])
+
+    result = max_x
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2663: [success_rate]: False, [answer]: \frac{1}{2}x+2, [output]: import sympy as sp
+
+def solution():
+
+    x1, y1 = sp.symbols('x1 y1')
+
+    x2, y2 = sp.symbols('x2 y2')
+
+    x, y = sp.symbols('x y')
+
+    # Equations of the parabolas
+
+    parabola1 = y**2 - 4*x
+
+    parabola2 = -32*y - x**2
+
+    # Derivative of the parabolas
+
+    dy1_dx1 = sp.diff(parabola1, x)
+
+    dy2_dy2 = sp.diff(parabola2, y)
+
+    # Common point of the tangents
+
+    common_point = sp.solve([dy1_dx1, dy2_dy2], [x1, y1])
+
+    x_common, y_common = common_point.values()
+
+    # Slope of the tangents
+
+    dy1_dx1_common = dy1_dx1.subs(x, x_common).subs(y, y_common)
+
+    dy2_dy2_common = dy2_dy2.subs(x, x_common).subs(y, y_common)
+
+    slope = -dy1_dx1_common / dy2_dy2_common
+
+    b = y_common - slope * x_common
+
+    result = r'y = {}x + {}'.format(slope, b)
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2664: [success_rate]: False, [answer]: 13, [output]: from sympy import symbols, roots, Mul
+
+def solution():
+
+    r = symbols('r')
+
+    quadratic = r**2 + 5*r + 7
+
+    root_r = roots(quadratic)
+
+    r_minus_one = r - 1
+
+    r_plus_2 = r + 2
+
+    r_plus_6 = r + 6
+
+    r_plus_3 = r + 3
+
+    product = r_minus_one * r_plus_2 * r_plus_6 * r_plus_3
+
+    result = str(product)
+
+    return result
+
+
+ Executed result: (r - 1)*(r + 2)*(r + 3)*(r + 6)
+[EXP] 2665: [success_rate]: False, [answer]: \frac{1+\sqrt{5}}{4}, [output]: import sympy as sp
+
+def solution():
+
+    w, x, y, z = sp.symbols('w x y z', positive=True)
+
+    expression = (w*x + x*y + y*z) / (w**2 + x**2 + y**2 + z**2)
+
+    max_value = sp.Maximum(expression, (w, x, y, z))
+
+    result = max_value.doit()
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute
+[EXP] 2666: [success_rate]: True, [answer]: 64, [output]: import cmath
+
+def solution():
+
+    complex_number = complex(-2 - 2 * cmath.sqrt(3) * 1j)
+
+    cube_complex_number = complex_number ** 3
+
+    magnitude = abs(cube_complex_number)
+
+    result = magnitude
+
+    return result
+
+
+ Executed result: 63.999999999999986
+[EXP] 2667: [success_rate]: False, [answer]: 2101, [output]: def solution():
+
+    x = 5
+
+    y = 4
+
+    expression = x**4 + x**3*y + x**2*y**2 + x*y**3 + y**4
+
+    evaluated_expression = expression.replace('x', str(x)).replace('y', str(y))
+
+    result = evaluated_expression
+
+    return result
+
+
+ Executed result: Error: return error, fail to execute

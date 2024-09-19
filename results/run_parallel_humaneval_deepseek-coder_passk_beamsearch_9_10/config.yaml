@@ -1,0 +1,21 @@
+algorithm:
+  beam_search: true
+  beam_temperature: 0.6
+  do_sample: true
+  n_generate_sample: 10
+  name: Self_Consistency
+  task: humaneval
+  value_type: logp
+llm:
+  context_length: 16384
+  dtype: bfloat16
+  engine: /ssddata/model_hub/deepseek-coder-6.7b-instruct
+  name: vllm
+  ngpu: 2
+  stop: null
+  temperature: 0
+  top_p: 1
+run:
+  batch_size: 200
+  data_path: /ssddata/junxianh/Agent-Decoding/data/humaneval/humaneval-python.jsonl
+  log_path: results/run_parallel_humaneval_deepseek-coder_passk_beamsearch_9_10

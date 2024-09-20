@@ -1,0 +1,2536 @@
+{
+  "id": 0,
+  "task_name": "look_at_obj_in_light-Bowl-None-DeskLamp-308",
+  "goal": "look at bowl under the desklamp.",
+  "difficulty": "hard",
+  "is_done": true,
+  "progress_rate": 1.0,
+  "grounding_acc": 1.0,
+  "score_change_record": [
+    [
+      0,
+      0.25
+    ],
+    [
+      1,
+      0.5
+    ],
+    [
+      3,
+      0.75
+    ],
+    [
+      4,
+      1.0
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "look at bowl under the desklamp.",
+      "Observation": "On the desk 2, you see a alarmclock 1, a bowl 1, and a cd 3.",
+      "Action": "go to desk 2",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 1": {
+      "Action": "take bowl 1 from desk 2",
+      "Observation": "You pick up the bowl 1 from the desk 2.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 2": {
+      "Action": "go to bed 1",
+      "Observation": "On the bed 1, you see a book 1, a cellphone 1, a laptop 2, a laptop 1, a pillow 2, and a pillow 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 3": {
+      "Action": "go to desk 1",
+      "Observation": "On the desk 1, you see a desklamp 1, a keychain 3, a mug 2, a pen 2, a pen 1, and a pencil 2.",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 4": {
+      "Action": "use desklamp 1",
+      "Observation": "You turn on the desklamp 1.",
+      "Progress Rate": 1.0
+    }
+  }
+}
+{
+  "id": 1,
+  "task_name": "pick_two_obj_and_place-SoapBar-None-GarbageCan-424",
+  "goal": "put two soapbar in garbagecan.",
+  "difficulty": "hard",
+  "is_done": true,
+  "progress_rate": 1.0,
+  "grounding_acc": 1.0,
+  "score_change_record": [
+    [
+      0,
+      0.25
+    ],
+    [
+      1,
+      0.5
+    ],
+    [
+      3,
+      0.75
+    ],
+    [
+      7,
+      1.0
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put two soapbar in garbagecan.",
+      "Observation": "On the countertop 1, you see a candle 1, a soapbar 4, a soapbar 3, a soapbar 1, and a spraybottle 1.",
+      "Action": "go to countertop 1",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 1": {
+      "Action": "take soapbar 4 from countertop 1",
+      "Observation": "You pick up the soapbar 4 from the countertop 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 2": {
+      "Action": "go to garbagecan 1",
+      "Observation": "On the garbagecan 1, you see nothing.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 3": {
+      "Action": "put soapbar 4 in/on garbagecan 1",
+      "Observation": "You put the soapbar 4 in/on the garbagecan 1.",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 4": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a candle 1, a soapbar 3, a soapbar 1, and a spraybottle 1.",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 5": {
+      "Action": "take soapbar 3 from countertop 1",
+      "Observation": "You pick up the soapbar 3 from the countertop 1.",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 6": {
+      "Action": "go to garbagecan 1",
+      "Observation": "On the garbagecan 1, you see a soapbar 4.",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 7": {
+      "Action": "put soapbar 3 in/on garbagecan 1",
+      "Observation": "You put the soapbar 3 in/on the garbagecan 1.",
+      "Progress Rate": 1.0
+    }
+  }
+}
+{
+  "id": 2,
+  "task_name": "pick_cool_then_place_in_recep-Tomato-None-Microwave-10",
+  "goal": "put a cool tomato in microwave.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.7,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put a cool tomato in microwave.",
+      "Observation": "The fridge 1 is closed.",
+      "Action": "go to fridge 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "open fridge 1",
+      "Observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "take tomato 1 from fridge 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "examine tomato 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "examine fridge 1",
+      "Observation": "The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "take apple 1 from fridge 1",
+      "Observation": "You pick up the apple 1 from the fridge 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "check valid actions",
+      "Observation": "Choose an action from these valid actions: check valid actions, close fridge 1, cool apple 1 with fridge 1, examine apple 1, examine fridge 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, put apple 1 in/on fridge 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "put apple 1 in/on microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "go to microwave 1",
+      "Observation": "The microwave 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "open microwave 1",
+      "Observation": "You open the microwave 1. The microwave 1 is open. In it, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "put apple 1 in/on microwave 1",
+      "Observation": "You put the apple 1 in/on the microwave 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "close microwave 1",
+      "Observation": "You close the microwave 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "use microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "examine microwave 1",
+      "Observation": "The microwave 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "open microwave 1",
+      "Observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "close microwave 1",
+      "Observation": "You close the microwave 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "use microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "examine microwave 1",
+      "Observation": "The microwave 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "heat apple 1 using microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "open microwave 1",
+      "Observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 1.",
+      "Progress Rate": 0.0
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: cool some pan and put it in stoveburner.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a safe 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see nothing.\nAction: go to stoveburner 2\nObservation: On the stoveburner 2, you see a pot 1.\nAction: go to stoveburner 3\nObservation: On the stoveburner 3, you see a pan 1.\nAction: take pan 1 from stoveburner 3\nObservation: You pick up the pan 1 from the stoveburner 3.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: cool pan 1 with fridge 1\nObservation: You cool the pan 1 using the fridge 1.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see nothing.\nAction: put pan 1 in/on stoveburner 1\nObservation: You put the pan 1 in/on the stoveburner 1.\n\nYou should perform actions to accomplish the goal: put a cool tomato in microwave.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: open fridge 1\nObservation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.\nAction: take tomato 1 from fridge 1\nObservation: Nothing happens.\nAction: examine tomato 1\nObservation: Nothing happens.\nAction: examine fridge 1\nObservation: The fridge 1 is open. In it, you see a apple 1, a bowl 3, a bowl 2, a cup 1, a mug 1, and a pan 1.\nAction: take apple 1 from fridge 1\nObservation: You pick up the apple 1 from the fridge 1.\nAction: check valid actions\nObservation: Choose an action from these valid actions: check valid actions, close fridge 1, cool apple 1 with fridge 1, examine apple 1, examine fridge 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, put apple 1 in/on fridge 1\nAction: put apple 1 in/on microwave 1\nObservation: Nothing happens.\nAction: go to microwave 1\nObservation: The microwave 1 is closed.\nAction: open microwave 1\nObservation: You open the microwave 1. The microwave 1 is open. In it, you see nothing.\nAction: put apple 1 in/on microwave 1\nObservation: You put the apple 1 in/on the microwave 1.\nAction: close microwave 1\nObservation: You close the microwave 1.\nAction: use microwave 1\nObservation: Nothing happens.\nAction: examine microwave 1\nObservation: The microwave 1 is closed.\nAction: open microwave 1\nObservation: You open the microwave 1. The microwave 1 is open. In it, you see a apple 1.\nAction: close microwave 1\nObservation: You close the microwave 1.\nAction: use microwave 1\nObservation: Nothing happens.\nAction: examine microwave 1\nObservation: The microwave 1 is closed.\nAction: heat apple 1 using microwave 1\nObservation: Nothing happens.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 3,
+  "task_name": "pick_clean_then_place_in_recep-Plate-None-CounterTop-10",
+  "goal": "put a clean plate in countertop.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.45,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put a clean plate in countertop.",
+      "Observation": "Nothing happens.",
+      "Action": "examine countertop 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "inventory",
+      "Observation": "You are not carrying anything.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "go to fridge 1",
+      "Observation": "The fridge 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "open fridge 1",
+      "Observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 1, a egg 2, a egg 1, a lettuce 1, a mug 1, a tomato 2, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "examine bowl 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "take bowl 1 from fridge 1",
+      "Observation": "You pick up the bowl 1 from the fridge 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a apple 2, a dishsponge 2, a potato 3, and a potato 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "put bowl 1 in/on countertop 1",
+      "Observation": "You put the bowl 1 in/on the countertop 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "examine countertop 1",
+      "Observation": "On the countertop 1, you see a apple 2, a bowl 1, a dishsponge 2, a potato 3, and a potato 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "go to fridge 1",
+      "Observation": "The fridge 1 is open. In it, you see a apple 1, a egg 2, a egg 1, a lettuce 1, a mug 1, a tomato 2, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "examine dishsponge 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "take dishsponge 2 from countertop 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "examine sinkbasin 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "open sinkbasin 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "examine potato 3",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "examine potato 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "go to fridge 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "close fridge 1",
+      "Observation": "You close the fridge 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "examine sinkbasin 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "examine dishsponge 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: clean some soapbar and put it in toilet.\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a garbagecan 1, a handtowelholder 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 4, and a soapbar 3.\nAction: take soapbar 4 from toilet 1\nObservation: You pick up the soapbar 4 from the toilet 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: clean soapbar 4 with sinkbasin 1\nObservation: You clean the soapbar 4 using the sinkbasin 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 3.\nAction: put soapbar 4 in/on toilet 1\nObservation: You put the soapbar 4 in/on the toilet 1.\n\nYou should perform actions to accomplish the goal: put a clean plate in countertop.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: examine countertop 1\nObservation: Nothing happens.\nAction: inventory\nObservation: You are not carrying anything.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: open fridge 1\nObservation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, a bowl 1, a egg 2, a egg 1, a lettuce 1, a mug 1, a tomato 2, and a tomato 1.\nAction: examine bowl 1\nObservation: Nothing happens.\nAction: take bowl 1 from fridge 1\nObservation: You pick up the bowl 1 from the fridge 1.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a apple 2, a dishsponge 2, a potato 3, and a potato 2.\nAction: put bowl 1 in/on countertop 1\nObservation: You put the bowl 1 in/on the countertop 1.\nAction: examine countertop 1\nObservation: On the countertop 1, you see a apple 2, a bowl 1, a dishsponge 2, a potato 3, and a potato 2.\nAction: go to fridge 1\nObservation: The fridge 1 is open. In it, you see a apple 1, a egg 2, a egg 1, a lettuce 1, a mug 1, a tomato 2, and a tomato 1.\nAction: examine dishsponge 2\nObservation: Nothing happens.\nAction: take dishsponge 2 from countertop 1\nObservation: Nothing happens.\nAction: examine sinkbasin 1\nObservation: Nothing happens.\nAction: open sinkbasin 1\nObservation: Nothing happens.\nAction: examine potato 3\nObservation: Nothing happens.\nAction: examine potato 2\nObservation: Nothing happens.\nAction: go to fridge 1\nObservation: Nothing happens.\nAction: close fridge 1\nObservation: You close the fridge 1.\nAction: examine sinkbasin 1\nObservation: Nothing happens.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 4,
+  "task_name": "pick_clean_then_place_in_recep-SoapBar-None-CounterTop-424",
+  "goal": "put a clean soapbar in countertop.",
+  "difficulty": "hard",
+  "is_done": true,
+  "progress_rate": 1.0,
+  "grounding_acc": 0.8571428571428571,
+  "score_change_record": [
+    [
+      0,
+      0.25
+    ],
+    [
+      2,
+      0.5
+    ],
+    [
+      4,
+      0.75
+    ],
+    [
+      6,
+      1.0
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put a clean soapbar in countertop.",
+      "Observation": "On the countertop 1, you see a candle 2, a soapbar 1, a soapbottle 1, and a spraybottle 1.",
+      "Action": "go to countertop 1",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 1": {
+      "Action": "examine soapbar 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 2": {
+      "Action": "take soapbar 1 from countertop 1",
+      "Observation": "You pick up the soapbar 1 from the countertop 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 3": {
+      "Action": "go to sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see nothing.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 4": {
+      "Action": "clean soapbar 1 with sinkbasin 1",
+      "Observation": "You clean the soapbar 1 using the sinkbasin 1.",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 5": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a candle 2, a soapbottle 1, and a spraybottle 1.",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 6": {
+      "Action": "put soapbar 1 in/on countertop 1",
+      "Observation": "You put the soapbar 1 in/on the countertop 1.",
+      "Progress Rate": 1.0
+    }
+  }
+}
+{
+  "id": 5,
+  "task_name": "pick_cool_then_place_in_recep-Lettuce-None-CounterTop-10",
+  "goal": "cool some lettuce and put it in countertop.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.45,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "cool some lettuce and put it in countertop.",
+      "Observation": "The fridge 1 is closed.",
+      "Action": "go to fridge 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "open fridge 1",
+      "Observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "take lettuce 1 from fridge 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "examine fridge 1",
+      "Observation": "The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "examine lettuce 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "examine lettuce 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "examine fridge 1",
+      "Observation": "The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "examine lettuce 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "inventory",
+      "Observation": "You are not carrying anything.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "close fridge 1",
+      "Observation": "You close the fridge 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "examine countertop 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "open fridge 1",
+      "Observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "examine lettuce 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "examine countertop 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "examine fridge 1",
+      "Observation": "The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "take lettuce 1 from fridge 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "examine lettuce 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "examine countertop 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a bowl 3, a bowl 2, a creditcard 2, a creditcard 1, a dishsponge 1, and a glassbottle 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "examine lettuce 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: cool some pan and put it in stoveburner.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a safe 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see nothing.\nAction: go to stoveburner 2\nObservation: On the stoveburner 2, you see a pot 1.\nAction: go to stoveburner 3\nObservation: On the stoveburner 3, you see a pan 1.\nAction: take pan 1 from stoveburner 3\nObservation: You pick up the pan 1 from the stoveburner 3.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: cool pan 1 with fridge 1\nObservation: You cool the pan 1 using the fridge 1.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see nothing.\nAction: put pan 1 in/on stoveburner 1\nObservation: You put the pan 1 in/on the stoveburner 1.\n\nYou should perform actions to accomplish the goal: cool some lettuce and put it in countertop.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: open fridge 1\nObservation: You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.\nAction: take lettuce 1 from fridge 1\nObservation: Nothing happens.\nAction: examine fridge 1\nObservation: The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.\nAction: examine lettuce 1\nObservation: Nothing happens.\nAction: examine lettuce 1\nObservation: Nothing happens.\nAction: examine fridge 1\nObservation: The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.\nAction: examine lettuce 1\nObservation: Nothing happens.\nAction: inventory\nObservation: You are not carrying anything.\nAction: close fridge 1\nObservation: You close the fridge 1.\nAction: examine countertop 1\nObservation: Nothing happens.\nAction: open fridge 1\nObservation: You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.\nAction: examine lettuce 1\nObservation: Nothing happens.\nAction: examine countertop 1\nObservation: Nothing happens.\nAction: examine fridge 1\nObservation: The fridge 1 is open. In it, you see a bowl 1, a bread 2, a cup 3, a egg 1, a mug 1, a plate 3, a potato 1, and a tomato 1.\nAction: take lettuce 1 from fridge 1\nObservation: Nothing happens.\nAction: examine lettuce 1\nObservation: Nothing happens.\nAction: examine countertop 1\nObservation: Nothing happens.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a bowl 3, a bowl 2, a creditcard 2, a creditcard 1, a dishsponge 1, and a glassbottle 1.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 6,
+  "task_name": "pick_clean_then_place_in_recep-Pan-None-CounterTop-10",
+  "goal": "clean some pan and put it in countertop.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.45,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "clean some pan and put it in countertop.",
+      "Observation": "On the countertop 1, you see nothing.",
+      "Action": "go to countertop 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "open cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "open cabinet 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "inventory",
+      "Observation": "You are not carrying anything.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "open cabinet 3",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "examine cabinet 3",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "open cabinet 4",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "open cabinet 5",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "open cabinet 6",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "open drawer 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "open drawer 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "open drawer 3",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "go to cabinet 1",
+      "Observation": "On the cabinet 1, you see a plate 1, and a vase 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "take plate 1 from cabinet 1",
+      "Observation": "You pick up the plate 1 from the cabinet 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "go to sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "clean plate 1 with sinkbasin 1",
+      "Observation": "You clean the plate 1 using the sinkbasin 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "put plate 1 in/on countertop 1",
+      "Observation": "You put the plate 1 in/on the countertop 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "examine countertop 1",
+      "Observation": "On the countertop 1, you see a plate 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "examine plate 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: clean some soapbar and put it in toilet.\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a garbagecan 1, a handtowelholder 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 4, and a soapbar 3.\nAction: take soapbar 4 from toilet 1\nObservation: You pick up the soapbar 4 from the toilet 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: clean soapbar 4 with sinkbasin 1\nObservation: You clean the soapbar 4 using the sinkbasin 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 3.\nAction: put soapbar 4 in/on toilet 1\nObservation: You put the soapbar 4 in/on the toilet 1.\n\nYou should perform actions to accomplish the goal: clean some pan and put it in countertop.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to countertop 1\nObservation: On the countertop 1, you see nothing.\nAction: open cabinet 1\nObservation: Nothing happens.\nAction: open cabinet 2\nObservation: Nothing happens.\nAction: inventory\nObservation: You are not carrying anything.\nAction: open cabinet 3\nObservation: Nothing happens.\nAction: examine cabinet 3\nObservation: Nothing happens.\nAction: open cabinet 4\nObservation: Nothing happens.\nAction: open cabinet 5\nObservation: Nothing happens.\nAction: open cabinet 6\nObservation: Nothing happens.\nAction: open drawer 1\nObservation: Nothing happens.\nAction: open drawer 2\nObservation: Nothing happens.\nAction: open drawer 3\nObservation: Nothing happens.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a plate 1, and a vase 1.\nAction: take plate 1 from cabinet 1\nObservation: You pick up the plate 1 from the cabinet 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: clean plate 1 with sinkbasin 1\nObservation: You clean the plate 1 using the sinkbasin 1.\nAction: go to countertop 1\nObservation: On the countertop 1, you see nothing.\nAction: put plate 1 in/on countertop 1\nObservation: You put the plate 1 in/on the countertop 1.\nAction: examine countertop 1\nObservation: On the countertop 1, you see a plate 1.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 7,
+  "task_name": "pick_clean_then_place_in_recep-Plate-None-CounterTop-10",
+  "goal": "put a clean plate in countertop.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.25,
+  "grounding_acc": 0.7,
+  "score_change_record": [
+    [
+      3,
+      0.25
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put a clean plate in countertop.",
+      "Observation": "On the countertop 1, you see a dishsponge 1, a egg 2, and a glassbottle 2.",
+      "Action": "go to countertop 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "examine countertop 1",
+      "Observation": "On the countertop 1, you see a dishsponge 1, a egg 2, and a glassbottle 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "take dishsponge 1 from countertop 1",
+      "Observation": "You pick up the dishsponge 1 from the countertop 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "go to cabinet 1",
+      "Observation": "On the cabinet 1, you see a bowl 1, and a plate 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 4": {
+      "Action": "take plate 1 from cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 5": {
+      "Action": "open cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 6": {
+      "Action": "examine cabinet 1",
+      "Observation": "On the cabinet 1, you see a bowl 1, and a plate 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 7": {
+      "Action": "take plate 1 from cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 8": {
+      "Action": "check valid actions",
+      "Observation": "Choose an action from these valid actions: check valid actions, examine cabinet 1, examine dishsponge 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, put dishsponge 1 in/on cabinet 1",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 9": {
+      "Action": "go to sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see nothing.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 10": {
+      "Action": "clean plate 1 using sinkbasin 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 11": {
+      "Action": "examine sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see nothing.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 12": {
+      "Action": "go to cabinet 2",
+      "Observation": "The cabinet 2 is closed.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 13": {
+      "Action": "open cabinet 2",
+      "Observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a vase 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 14": {
+      "Action": "examine cabinet 2",
+      "Observation": "The cabinet 2 is open. In it, you see a vase 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 15": {
+      "Action": "take vase 1 from cabinet 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 16": {
+      "Action": "go to countertop 2",
+      "Observation": "On the countertop 2, you see a bread 1, a cellphone 1, a creditcard 2, a creditcard 1, a lettuce 1, a mug 1, a plate 3, a spatula 1, and a tomato 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 17": {
+      "Action": "take plate 3 from countertop 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 18": {
+      "Action": "check valid actions",
+      "Observation": "Choose an action from these valid actions: check valid actions, examine countertop 2, examine dishsponge 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, put dishsponge 1 in/on countertop 2",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 19": {
+      "Action": "go to cabinet 3",
+      "Observation": "On the cabinet 3, you see a plate 2.",
+      "Progress Rate": 0.25
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: clean some soapbar and put it in toilet.\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a garbagecan 1, a handtowelholder 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 4, and a soapbar 3.\nAction: take soapbar 4 from toilet 1\nObservation: You pick up the soapbar 4 from the toilet 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: clean soapbar 4 with sinkbasin 1\nObservation: You clean the soapbar 4 using the sinkbasin 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 3.\nAction: put soapbar 4 in/on toilet 1\nObservation: You put the soapbar 4 in/on the toilet 1.\n\nYou should perform actions to accomplish the goal: put a clean plate in countertop.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a dishsponge 1, a egg 2, and a glassbottle 2.\nAction: examine countertop 1\nObservation: On the countertop 1, you see a dishsponge 1, a egg 2, and a glassbottle 2.\nAction: take dishsponge 1 from countertop 1\nObservation: You pick up the dishsponge 1 from the countertop 1.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a bowl 1, and a plate 1.\nAction: take plate 1 from cabinet 1\nObservation: Nothing happens.\nAction: open cabinet 1\nObservation: Nothing happens.\nAction: examine cabinet 1\nObservation: On the cabinet 1, you see a bowl 1, and a plate 1.\nAction: take plate 1 from cabinet 1\nObservation: Nothing happens.\nAction: check valid actions\nObservation: Choose an action from these valid actions: check valid actions, examine cabinet 1, examine dishsponge 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 2, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, put dishsponge 1 in/on cabinet 1\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: clean plate 1 using sinkbasin 1\nObservation: Nothing happens.\nAction: examine sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: go to cabinet 2\nObservation: The cabinet 2 is closed.\nAction: open cabinet 2\nObservation: You open the cabinet 2. The cabinet 2 is open. In it, you see a vase 1.\nAction: examine cabinet 2\nObservation: The cabinet 2 is open. In it, you see a vase 1.\nAction: take vase 1 from cabinet 2\nObservation: Nothing happens.\nAction: go to countertop 2\nObservation: On the countertop 2, you see a bread 1, a cellphone 1, a creditcard 2, a creditcard 1, a lettuce 1, a mug 1, a plate 3, a spatula 1, and a tomato 1.\nAction: take plate 3 from countertop 2\nObservation: Nothing happens.\nAction: check valid actions\nObservation: Choose an action from these valid actions: check valid actions, examine countertop 2, examine dishsponge 1, go to cabinet 1, go to cabinet 2, go to cabinet 3, go to cabinet 4, go to cabinet 5, go to cabinet 6, go to coffeemachine 1, go to countertop 1, go to countertop 3, go to drawer 1, go to drawer 2, go to drawer 3, go to fridge 1, go to garbagecan 1, go to microwave 1, go to shelf 1, go to shelf 2, go to shelf 3, go to sinkbasin 1, go to stoveburner 1, go to stoveburner 2, go to stoveburner 3, go to stoveburner 4, go to toaster 1, inventory, look, put dishsponge 1 in/on countertop 2Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 8,
+  "task_name": "pick_heat_then_place_in_recep-Mug-None-CoffeeMachine-10",
+  "goal": "put a hot mug in coffeemachine.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.25,
+  "grounding_acc": 0.4,
+  "score_change_record": [
+    [
+      10,
+      0.25
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put a hot mug in coffeemachine.",
+      "Observation": "Nothing happens.",
+      "Action": "examine countertop 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "go to microwave 1",
+      "Observation": "The microwave 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "examine countertop 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "open microwave 1",
+      "Observation": "You open the microwave 1. The microwave 1 is open. In it, you see a cup 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "take cup 1 from microwave 1",
+      "Observation": "You pick up the cup 1 from the microwave 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "go to coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "put cup 1 in/on coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "open coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "examine countertop 3",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "go to countertop 3",
+      "Observation": "On the countertop 3, you see a bread 1, a butterknife 1, a cellphone 3, a creditcard 1, a glassbottle 3, a houseplant 1, a knife 2, a mug 2, a papertowelroll 1, a plate 3, a spatula 3, and a spoon 2.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 11": {
+      "Action": "put cup 1 in/on coffee machine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 12": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 13": {
+      "Action": "use coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 14": {
+      "Action": "open coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 15": {
+      "Action": "go to countertop 2",
+      "Observation": "On the countertop 2, you see a apple 1, a cellphone 2, a cellphone 1, a knife 1, a lettuce 2, a lettuce 1, a peppershaker 3, and a plate 2.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 16": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a pan 1, and a spoon 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 17": {
+      "Action": "go to coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 18": {
+      "Action": "go to countertop 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 19": {
+      "Action": "open coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: put a hot apple in fridge.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 1, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to diningtable 1\nObservation: On the diningtable 1, you see a apple 1, a bread 1, a fork 3, a fork 2, a fork 1, a mug 2, a peppershaker 3, a plate 2, a pot 1, a soapbottle 3, a spatula 1, a spoon 3, a spoon 2, a spoon 1, a winebottle 3, and a winebottle 2.\n\nAction: take apple 1 from diningtable 1\nObservation: You pick up the apple 1 from the diningtable 1.\nAction: go to microwave 1\nObservation: The microwave 1 is closed.\nAction: heat apple 1 with microwave 1\nObservation: You heat the apple 1 using the microwave 1.\nAction: go to fridge 1\nObservation: The fridge 1 is open. In it, you see a cup 1, and a egg 1.\nAction: put apple 1 in/on fridge 1\nObservation: You put the apple 1 in/on the fridge 1.\n\nYou should perform actions to accomplish the goal: put a hot mug in coffeemachine.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: examine countertop 1\nObservation: Nothing happens.\nAction: go to microwave 1\nObservation: The microwave 1 is closed.\nAction: examine countertop 2\nObservation: Nothing happens.\nAction: open microwave 1\nObservation: You open the microwave 1. The microwave 1 is open. In it, you see a cup 1.\nAction: take cup 1 from microwave 1\nObservation: You pick up the cup 1 from the microwave 1.\nAction: go to coffeemachine 1\nObservation: On the coffeemachine 1, you see nothing.\nAction: put cup 1 in/on coffeemachine 1\nObservation: Nothing happens.\nAction: examine coffeemachine 1\nObservation: On the coffeemachine 1, you see nothing.\nAction: open coffeemachine 1\nObservation: Nothing happens.\nAction: examine countertop 3\nObservation: Nothing happens.\nAction: go to countertop 3\nObservation: On the countertop 3, you see a bread 1, a butterknife 1, a cellphone 3, a creditcard 1, a glassbottle 3, a houseplant 1, a knife 2, a mug 2, a papertowelroll 1, a plate 3, a spatula 3, and a spoon 2.\nAction: put cup 1 in/on coffee machine 1\nObservation: Nothing happens.\nAction: examine coffeemachine 1\nObservation: Nothing happens.\nAction: use coffeemachine 1\nObservation: Nothing happens.\nAction: open coffeemachine 1\nObservation: Nothing happens.\nAction: go to countertop 2\nObservation: On the countertop 2, you see a apple 1, a cellphone 2, a cellphone 1, a knife 1, a lettuce 2, a lettuce 1, a peppershaker 3, and a plate 2.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a pan 1, and a spoon 1.\nAction: go to coffeemachine 1\nObservation: Nothing happens.\nAction: go to countertop 1\nObservation: Nothing happens.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 9,
+  "task_name": "pick_and_place_simple-SaltShaker-None-Drawer-10",
+  "goal": "put some saltshaker on drawer.",
+  "difficulty": "easy",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.8,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put some saltshaker on drawer.",
+      "Observation": "The cabinet 2 is closed.",
+      "Action": "go to cabinet 2",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "open cabinet 2",
+      "Observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a dishsponge 1, and a plate 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "go to drawer 1",
+      "Observation": "The drawer 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "open drawer 1",
+      "Observation": "You open the drawer 1. The drawer 1 is open. In it, you see a fork 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "take saltshaker from cabinet 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "take saltshaker from drawer 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "go to shelf 1",
+      "Observation": "On the shelf 1, you see a mug 3.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "go to cabinet 1",
+      "Observation": "On the cabinet 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "go to cabinet 3",
+      "Observation": "On the cabinet 3, you see a plate 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "go to cabinet 4",
+      "Observation": "On the cabinet 4, you see a bowl 1, a cup 1, and a peppershaker 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "go to shelf 2",
+      "Observation": "On the shelf 2, you see a plate 3.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "take saltshaker from cabinet 4",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "go to cabinet 5",
+      "Observation": "The cabinet 5 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "open cabinet 5",
+      "Observation": "You open the cabinet 5. The cabinet 5 is open. In it, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "go to cabinet 6",
+      "Observation": "The cabinet 6 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "open cabinet 6",
+      "Observation": "You open the cabinet 6. The cabinet 6 is open. In it, you see a cup 3.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "take saltshaker from cabinet 6",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "go to shelf 3",
+      "Observation": "On the shelf 3, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "go to cabinet 3",
+      "Observation": "On the cabinet 3, you see a plate 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a creditcard 3, a papertowelroll 1, a peppershaker 2, and a soapbottle 1.",
+      "Progress Rate": 0.0
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: put some spraybottle on toilet.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a cloth 1, a soapbar 1, a soapbottle 1.\nAction: go to cabinet 2\nObservation: The cabinet 2 is closed.\nAction: open cabinet 2\nObservation: You open the cabinet 2. The cabinet 2 is open. In it, you see a candle 1, and a spraybottle 2.\nAction: take spraybottle 2 from cabinet 2\nObservation: You pick up the spraybottle 2 from the cabinet 2.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbottle 2.\nAction: put spraybottle 2 in/on toilet 1\nObservation: You put the spraybottle 2 in/on the toilet 1.\n\nYou should perform actions to accomplish the goal: put some saltshaker on drawer.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to cabinet 2\nObservation: The cabinet 2 is closed.\nAction: open cabinet 2\nObservation: You open the cabinet 2. The cabinet 2 is open. In it, you see a dishsponge 1, and a plate 1.\nAction: go to drawer 1\nObservation: The drawer 1 is closed.\nAction: open drawer 1\nObservation: You open the drawer 1. The drawer 1 is open. In it, you see a fork 1.\nAction: take saltshaker from cabinet 2\nObservation: Nothing happens.\nAction: take saltshaker from drawer 1\nObservation: Nothing happens.\nAction: go to shelf 1\nObservation: On the shelf 1, you see a mug 3.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see nothing.\nAction: go to cabinet 3\nObservation: On the cabinet 3, you see a plate 2.\nAction: go to cabinet 4\nObservation: On the cabinet 4, you see a bowl 1, a cup 1, and a peppershaker 1.\nAction: go to shelf 2\nObservation: On the shelf 2, you see a plate 3.\nAction: take saltshaker from cabinet 4\nObservation: Nothing happens.\nAction: go to cabinet 5\nObservation: The cabinet 5 is closed.\nAction: open cabinet 5\nObservation: You open the cabinet 5. The cabinet 5 is open. In it, you see nothing.\nAction: go to cabinet 6\nObservation: The cabinet 6 is closed.\nAction: open cabinet 6\nObservation: You open the cabinet 6. The cabinet 6 is open. In it, you see a cup 3.\nAction: take saltshaker from cabinet 6\nObservation: Nothing happens.\nAction: go to shelf 3\nObservation: On the shelf 3, you see nothing.\nAction: go to cabinet 3\nObservation: On the cabinet 3, you see a plate 2.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 10,
+  "task_name": "pick_clean_then_place_in_recep-Bowl-None-Cabinet-10",
+  "goal": "clean some bowl and put it in cabinet.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.55,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "clean some bowl and put it in cabinet.",
+      "Observation": "On the cabinet 1, you see a mug 1, and a vase 1.",
+      "Action": "go to cabinet 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "take bowl from cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "examine cabinet 1",
+      "Observation": "On the cabinet 1, you see a mug 1, and a vase 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "examine mug 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "open cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "examine vase 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "examine cabinet 1",
+      "Observation": "On the cabinet 1, you see a mug 1, and a vase 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "go to cabinet 2",
+      "Observation": "The cabinet 2 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "open cabinet 2",
+      "Observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a cup 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "take bowl from cabinet 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "take bowl from cabinet 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "examine cabinet 2",
+      "Observation": "The cabinet 2 is open. In it, you see a cup 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "examine cup 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "take bowl from cabinet 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "examine cabinet 2",
+      "Observation": "The cabinet 2 is open. In it, you see a cup 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "examine cup 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "inventory",
+      "Observation": "You are not carrying anything.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "examine cabinet 2",
+      "Observation": "The cabinet 2 is open. In it, you see a cup 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "close cabinet 2",
+      "Observation": "You close the cabinet 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "go to cabinet 1",
+      "Observation": "On the cabinet 1, you see a mug 1, and a vase 1.",
+      "Progress Rate": 0.0
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: clean some soapbar and put it in toilet.\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a garbagecan 1, a handtowelholder 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 4, and a soapbar 3.\nAction: take soapbar 4 from toilet 1\nObservation: You pick up the soapbar 4 from the toilet 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: clean soapbar 4 with sinkbasin 1\nObservation: You clean the soapbar 4 using the sinkbasin 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 3.\nAction: put soapbar 4 in/on toilet 1\nObservation: You put the soapbar 4 in/on the toilet 1.\n\nYou should perform actions to accomplish the goal: clean some bowl and put it in cabinet.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a mug 1, and a vase 1.\nAction: take bowl from cabinet 1\nObservation: Nothing happens.\nAction: examine cabinet 1\nObservation: On the cabinet 1, you see a mug 1, and a vase 1.\nAction: examine mug 1\nObservation: Nothing happens.\nAction: open cabinet 1\nObservation: Nothing happens.\nAction: examine vase 1\nObservation: Nothing happens.\nAction: examine cabinet 1\nObservation: On the cabinet 1, you see a mug 1, and a vase 1.\nAction: go to cabinet 2\nObservation: The cabinet 2 is closed.\nAction: open cabinet 2\nObservation: You open the cabinet 2. The cabinet 2 is open. In it, you see a cup 1.\nAction: take bowl from cabinet 2\nObservation: Nothing happens.\nAction: take bowl from cabinet 2\nObservation: Nothing happens.\nAction: examine cabinet 2\nObservation: The cabinet 2 is open. In it, you see a cup 1.\nAction: examine cup 1\nObservation: Nothing happens.\nAction: take bowl from cabinet 2\nObservation: Nothing happens.\nAction: examine cabinet 2\nObservation: The cabinet 2 is open. In it, you see a cup 1.\nAction: examine cup 1\nObservation: Nothing happens.\nAction: inventory\nObservation: You are not carrying anything.\nAction: examine cabinet 2\nObservation: The cabinet 2 is open. In it, you see a cup 1.\nAction: close cabinet 2\nObservation: You close the cabinet 2.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 11,
+  "task_name": "pick_and_place_simple-Vase-None-Safe-219",
+  "goal": "put a vase in safe.",
+  "difficulty": "easy",
+  "is_done": false,
+  "progress_rate": 0.3333333333333333,
+  "grounding_acc": 0.75,
+  "score_change_record": [
+    [
+      19,
+      0.3333333333333333
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put a vase in safe.",
+      "Observation": "The cabinet 1 is closed.",
+      "Action": "go to cabinet 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "open cabinet 1",
+      "Observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a box 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "examine box 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "examine safe 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "go to safe 1",
+      "Observation": "The safe 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "open safe 1",
+      "Observation": "You open the safe 1. The safe 1 is open. In it, you see a watch 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "take watch 2 from safe 1",
+      "Observation": "You pick up the watch 2 from the safe 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "go to shelf 3",
+      "Observation": "On the shelf 3, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "go to shelf 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "go to shelf 1",
+      "Observation": "On the shelf 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "go to shelf 4",
+      "Observation": "On the shelf 4, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "go to shelf 5",
+      "Observation": "On the shelf 5, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "go to shelf 6",
+      "Observation": "On the shelf 6, you see a statue 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "take statue 1 from shelf 6",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "go to safe 1",
+      "Observation": "The safe 1 is open. In it, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "go to shelf 7",
+      "Observation": "On the shelf 7, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "go to shelf 8",
+      "Observation": "On the shelf 8, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "go to shelf 9",
+      "Observation": "On the shelf 9, you see a statue 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "take statue 2 from shelf 9",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "go to shelf 10",
+      "Observation": "On the shelf 10, you see a vase 1.",
+      "Progress Rate": 0.3333333333333333
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: put some spraybottle on toilet.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a cloth 1, a soapbar 1, a soapbottle 1.\nAction: go to cabinet 2\nObservation: The cabinet 2 is closed.\nAction: open cabinet 2\nObservation: You open the cabinet 2. The cabinet 2 is open. In it, you see a candle 1, and a spraybottle 2.\nAction: take spraybottle 2 from cabinet 2\nObservation: You pick up the spraybottle 2 from the cabinet 2.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbottle 2.\nAction: put spraybottle 2 in/on toilet 1\nObservation: You put the spraybottle 2 in/on the toilet 1.\n\nYou should perform actions to accomplish the goal: put a vase in safe.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a armchair 1, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a dresser 1, a garbagecan 1, a safe 1, a shelf 12, a shelf 11, a shelf 10, a shelf 9, a shelf 8, a shelf 7, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, a shelf 1, a sidetable 1, and a sofa 1.\nAction: go to cabinet 1\nObservation: The cabinet 1 is closed.\nAction: open cabinet 1\nObservation: You open the cabinet 1. The cabinet 1 is open. In it, you see a box 1.\nAction: examine box 1\nObservation: Nothing happens.\nAction: examine safe 1\nObservation: Nothing happens.\nAction: go to safe 1\nObservation: The safe 1 is closed.\nAction: open safe 1\nObservation: You open the safe 1. The safe 1 is open. In it, you see a watch 2.\nAction: take watch 2 from safe 1\nObservation: You pick up the watch 2 from the safe 1.\nAction: go to shelf 3\nObservation: On the shelf 3, you see nothing.\nAction: go to shelf 2\nObservation: Nothing happens.\nAction: go to shelf 1\nObservation: On the shelf 1, you see nothing.\nAction: go to shelf 4\nObservation: On the shelf 4, you see nothing.\nAction: go to shelf 5\nObservation: On the shelf 5, you see nothing.\nAction: go to shelf 6\nObservation: On the shelf 6, you see a statue 1.\nAction: take statue 1 from shelf 6\nObservation: Nothing happens.\nAction: go to safe 1\nObservation: The safe 1 is open. In it, you see nothing.\nAction: go to shelf 7\nObservation: On the shelf 7, you see nothing.\nAction: go to shelf 8\nObservation: On the shelf 8, you see nothing.\nAction: go to shelf 9\nObservation: On the shelf 9, you see a statue 2.\nAction: take statue 2 from shelf 9\nObservation: Nothing happens.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 12,
+  "task_name": "pick_cool_then_place_in_recep-Potato-None-Microwave-10",
+  "goal": "cool some potato and put it in microwave.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.25,
+  "grounding_acc": 0.2,
+  "score_change_record": [
+    [
+      3,
+      0.25
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "cool some potato and put it in microwave.",
+      "Observation": "The fridge 1 is closed.",
+      "Action": "go to fridge 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "open fridge 1",
+      "Observation": "You open the fridge 1. The fridge 1 is open. In it, you see a egg 1, a lettuce 2, and a pan 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "take pan 1 from fridge 1",
+      "Observation": "You pick up the pan 1 from the fridge 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a mug 2, a potato 1, a soapbottle 1, a spatula 1, and a spoon 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 4": {
+      "Action": "examine microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 5": {
+      "Action": "open microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 6": {
+      "Action": "put potato 1 in/on microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 7": {
+      "Action": "examine microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 8": {
+      "Action": "use microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 9": {
+      "Action": "examine microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 10": {
+      "Action": "put pan 1 in/on microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 11": {
+      "Action": "examine microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 12": {
+      "Action": "open microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 13": {
+      "Action": "close fridge 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 14": {
+      "Action": "examine microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 15": {
+      "Action": "examine microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 16": {
+      "Action": "examine microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 17": {
+      "Action": "open microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 18": {
+      "Action": "close microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 19": {
+      "Action": "use microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: cool some pan and put it in stoveburner.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a safe 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see nothing.\nAction: go to stoveburner 2\nObservation: On the stoveburner 2, you see a pot 1.\nAction: go to stoveburner 3\nObservation: On the stoveburner 3, you see a pan 1.\nAction: take pan 1 from stoveburner 3\nObservation: You pick up the pan 1 from the stoveburner 3.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: cool pan 1 with fridge 1\nObservation: You cool the pan 1 using the fridge 1.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see nothing.\nAction: put pan 1 in/on stoveburner 1\nObservation: You put the pan 1 in/on the stoveburner 1.\n\nYou should perform actions to accomplish the goal: cool some potato and put it in microwave.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: open fridge 1\nObservation: You open the fridge 1. The fridge 1 is open. In it, you see a egg 1, a lettuce 2, and a pan 1.\nAction: take pan 1 from fridge 1\nObservation: You pick up the pan 1 from the fridge 1.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a mug 2, a potato 1, a soapbottle 1, a spatula 1, and a spoon 1.\nAction: examine microwave 1\nObservation: Nothing happens.\nAction: open microwave 1\nObservation: Nothing happens.\nAction: put potato 1 in/on microwave 1\nObservation: Nothing happens.\nAction: examine microwave 1\nObservation: Nothing happens.\nAction: use microwave 1\nObservation: Nothing happens.\nAction: examine microwave 1\nObservation: Nothing happens.\nAction: put pan 1 in/on microwave 1\nObservation: Nothing happens.\nAction: examine microwave 1\nObservation: Nothing happens.\nAction: open microwave 1\nObservation: Nothing happens.\nAction: close fridge 1\nObservation: Nothing happens.\nAction: examine microwave 1\nObservation: Nothing happens.\nAction: examine microwave 1\nObservation: Nothing happens.\nAction: examine microwave 1\nObservation: Nothing happens.\nAction: open microwave 1\nObservation: Nothing happens.\nAction: close microwave 1\nObservation: Nothing happens.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 13,
+  "task_name": "pick_cool_then_place_in_recep-Mug-None-CoffeeMachine-10",
+  "goal": "cool some mug and put it in coffeemachine.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.5,
+  "grounding_acc": 0.4,
+  "score_change_record": [
+    [
+      17,
+      0.25
+    ],
+    [
+      18,
+      0.5
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "cool some mug and put it in coffeemachine.",
+      "Observation": "The fridge 1 is closed.",
+      "Action": "go to fridge 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "open fridge 1",
+      "Observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 2, a apple 1, a bowl 2, a bowl 1, a egg 1, a lettuce 1, a plate 2, a potato 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "take mug 1 from fridge 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "examine fridge 1",
+      "Observation": "The fridge 1 is open. In it, you see a apple 2, a apple 1, a bowl 2, a bowl 1, a egg 1, a lettuce 1, a plate 2, a potato 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "examine mug 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "examine countertop 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "take mug 1 from countertop 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "open coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "examine countertop 3",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "go to countertop 3",
+      "Observation": "On the countertop 3, you see a bread 3, a butterknife 1, a cellphone 3, a creditcard 2, a fork 2, a houseplant 1, a pot 2, a potato 2, and a saltshaker 3.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "take mug 1 from countertop 3",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "go to coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "open coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "go to countertop 2",
+      "Observation": "On the countertop 2, you see a bread 2, a bread 1, a cellphone 1, a creditcard 1, a knife 2, a knife 1, a soapbottle 2, and a spoon 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a glassbottle 2, a mug 1, and a papertowelroll 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 18": {
+      "Action": "take mug 1 from countertop 1",
+      "Observation": "You pick up the mug 1 from the countertop 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 19": {
+      "Action": "go to coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: cool some pan and put it in stoveburner.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a safe 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see nothing.\nAction: go to stoveburner 2\nObservation: On the stoveburner 2, you see a pot 1.\nAction: go to stoveburner 3\nObservation: On the stoveburner 3, you see a pan 1.\nAction: take pan 1 from stoveburner 3\nObservation: You pick up the pan 1 from the stoveburner 3.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: cool pan 1 with fridge 1\nObservation: You cool the pan 1 using the fridge 1.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see nothing.\nAction: put pan 1 in/on stoveburner 1\nObservation: You put the pan 1 in/on the stoveburner 1.\n\nYou should perform actions to accomplish the goal: cool some mug and put it in coffeemachine.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: open fridge 1\nObservation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 2, a apple 1, a bowl 2, a bowl 1, a egg 1, a lettuce 1, a plate 2, a potato 1, and a tomato 1.\nAction: take mug 1 from fridge 1\nObservation: Nothing happens.\nAction: examine fridge 1\nObservation: The fridge 1 is open. In it, you see a apple 2, a apple 1, a bowl 2, a bowl 1, a egg 1, a lettuce 1, a plate 2, a potato 1, and a tomato 1.\nAction: examine mug 1\nObservation: Nothing happens.\nAction: examine coffeemachine 1\nObservation: Nothing happens.\nAction: examine countertop 1\nObservation: Nothing happens.\nAction: take mug 1 from countertop 1\nObservation: Nothing happens.\nAction: examine coffeemachine 1\nObservation: Nothing happens.\nAction: open coffeemachine 1\nObservation: Nothing happens.\nAction: examine countertop 3\nObservation: Nothing happens.\nAction: go to countertop 3\nObservation: On the countertop 3, you see a bread 3, a butterknife 1, a cellphone 3, a creditcard 2, a fork 2, a houseplant 1, a pot 2, a potato 2, and a saltshaker 3.\nAction: take mug 1 from countertop 3\nObservation: Nothing happens.\nAction: go to coffeemachine 1\nObservation: On the coffeemachine 1, you see nothing.\nAction: open coffeemachine 1\nObservation: Nothing happens.\nAction: go to countertop 2\nObservation: On the countertop 2, you see a bread 2, a bread 1, a cellphone 1, a creditcard 1, a knife 2, a knife 1, a soapbottle 2, and a spoon 2.\nAction: examine coffeemachine 1\nObservation: Nothing happens.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a glassbottle 2, a mug 1, and a papertowelroll 1.\nAction: take mug 1 from countertop 1\nObservation: You pick up the mug 1 from the countertop 1.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 14,
+  "task_name": "pick_heat_then_place_in_recep-Egg-None-GarbageCan-10",
+  "goal": "heat some egg and put it in garbagecan.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.45,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "heat some egg and put it in garbagecan.",
+      "Observation": "The fridge 1 is closed.",
+      "Action": "go to fridge 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "open fridge 1",
+      "Observation": "You open the fridge 1. The fridge 1 is open. In it, you see a apple 2, a bowl 2, a bowl 1, a bread 1, a lettuce 1, a plate 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "take egg 1 from fridge 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "go to stoveburner 1",
+      "Observation": "On the stoveburner 1, you see a pot 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "heat pot 1 with stoveburner 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "put egg 1 in/on pot 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "open stoveburner 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "examine pot 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "examine stoveburner 1",
+      "Observation": "On the stoveburner 1, you see a pot 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "use pot 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "go to fridge 1",
+      "Observation": "The fridge 1 is open. In it, you see a apple 2, a bowl 2, a bowl 1, a bread 1, a lettuce 1, a plate 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "take pot 1 from stoveburner 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "go to microwave 1",
+      "Observation": "The microwave 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "open microwave 1",
+      "Observation": "You open the microwave 1. The microwave 1 is open. In it, you see a apple 1, and a cup 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "take egg 1 from fridge 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "take egg 1 from microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "examine egg 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "go to cabinet 1",
+      "Observation": "On the cabinet 1, you see a glassbottle 1, and a vase 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "go to stoveburner 2",
+      "Observation": "On the stoveburner 2, you see a pan 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "take egg 1 from cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: put a hot apple in fridge.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 1, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to diningtable 1\nObservation: On the diningtable 1, you see a apple 1, a bread 1, a fork 3, a fork 2, a fork 1, a mug 2, a peppershaker 3, a plate 2, a pot 1, a soapbottle 3, a spatula 1, a spoon 3, a spoon 2, a spoon 1, a winebottle 3, and a winebottle 2.\n\nAction: take apple 1 from diningtable 1\nObservation: You pick up the apple 1 from the diningtable 1.\nAction: go to microwave 1\nObservation: The microwave 1 is closed.\nAction: heat apple 1 with microwave 1\nObservation: You heat the apple 1 using the microwave 1.\nAction: go to fridge 1\nObservation: The fridge 1 is open. In it, you see a cup 1, and a egg 1.\nAction: put apple 1 in/on fridge 1\nObservation: You put the apple 1 in/on the fridge 1.\n\nYou should perform actions to accomplish the goal: heat some egg and put it in garbagecan.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: open fridge 1\nObservation: You open the fridge 1. The fridge 1 is open. In it, you see a apple 2, a bowl 2, a bowl 1, a bread 1, a lettuce 1, a plate 1, and a tomato 1.\nAction: take egg 1 from fridge 1\nObservation: Nothing happens.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see a pot 1.\nAction: heat pot 1 with stoveburner 1\nObservation: Nothing happens.\nAction: put egg 1 in/on pot 1\nObservation: Nothing happens.\nAction: open stoveburner 1\nObservation: Nothing happens.\nAction: examine pot 1\nObservation: Nothing happens.\nAction: examine stoveburner 1\nObservation: On the stoveburner 1, you see a pot 1.\nAction: use pot 1\nObservation: Nothing happens.\nAction: go to fridge 1\nObservation: The fridge 1 is open. In it, you see a apple 2, a bowl 2, a bowl 1, a bread 1, a lettuce 1, a plate 1, and a tomato 1.\nAction: take pot 1 from stoveburner 1\nObservation: Nothing happens.\nAction: go to microwave 1\nObservation: The microwave 1 is closed.\nAction: open microwave 1\nObservation: You open the microwave 1. The microwave 1 is open. In it, you see a apple 1, and a cup 1.\nAction: take egg 1 from fridge 1\nObservation: Nothing happens.\nAction: take egg 1 from microwave 1\nObservation: Nothing happens.\nAction: examine egg 1\nObservation: Nothing happens.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a glassbottle 1, and a vase 1.\nAction: go to stoveburner 2\nObservation: On the stoveburner 2, you see a pan 1.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 15,
+  "task_name": "pick_cool_then_place_in_recep-Mug-None-CoffeeMachine-10",
+  "goal": "put a cool mug in coffeemachine.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.5,
+  "grounding_acc": 0.5,
+  "score_change_record": [
+    [
+      0,
+      0.25
+    ],
+    [
+      1,
+      0.5
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put a cool mug in coffeemachine.",
+      "Observation": "On the countertop 1, you see a apple 1, a creditcard 2, a mug 2, and a spatula 1.",
+      "Action": "go to countertop 1",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 1": {
+      "Action": "take mug 2 from countertop 1",
+      "Observation": "You pick up the mug 2 from the countertop 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 2": {
+      "Action": "go to coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 3": {
+      "Action": "open coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 4": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see a mug 2.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 5": {
+      "Action": "put mug 2 in/on coffeemachine 1",
+      "Observation": "You put the mug 2 in/on the coffeemachine 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 6": {
+      "Action": "close coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 7": {
+      "Action": "use coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 8": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see a mug 2.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 9": {
+      "Action": "open coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 10": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see a mug 2.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 11": {
+      "Action": "close coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 12": {
+      "Action": "use coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 13": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see a mug 2.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 14": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see a mug 2.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 15": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see a mug 2.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 16": {
+      "Action": "close coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 17": {
+      "Action": "use coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 18": {
+      "Action": "open coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 19": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see a mug 2.",
+      "Progress Rate": 0.5
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: cool some pan and put it in stoveburner.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 16, a cabinet 15, a cabinet 14, a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 2, a countertop 1, a diningtable 1, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a safe 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see nothing.\nAction: go to stoveburner 2\nObservation: On the stoveburner 2, you see a pot 1.\nAction: go to stoveburner 3\nObservation: On the stoveburner 3, you see a pan 1.\nAction: take pan 1 from stoveburner 3\nObservation: You pick up the pan 1 from the stoveburner 3.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: cool pan 1 with fridge 1\nObservation: You cool the pan 1 using the fridge 1.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see nothing.\nAction: put pan 1 in/on stoveburner 1\nObservation: You put the pan 1 in/on the stoveburner 1.\n\nYou should perform actions to accomplish the goal: put a cool mug in coffeemachine.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a apple 1, a creditcard 2, a mug 2, and a spatula 1.\nAction: take mug 2 from countertop 1\nObservation: You pick up the mug 2 from the countertop 1.\nAction: go to coffeemachine 1\nObservation: Nothing happens.\nAction: open coffeemachine 1\nObservation: Nothing happens.\nAction: examine coffeemachine 1\nObservation: On the coffeemachine 1, you see a mug 2.\nAction: put mug 2 in/on coffeemachine 1\nObservation: You put the mug 2 in/on the coffeemachine 1.\nAction: close coffeemachine 1\nObservation: Nothing happens.\nAction: use coffeemachine 1\nObservation: Nothing happens.\nAction: examine coffeemachine 1\nObservation: On the coffeemachine 1, you see a mug 2.\nAction: open coffeemachine 1\nObservation: Nothing happens.\nAction: examine coffeemachine 1\nObservation: On the coffeemachine 1, you see a mug 2.\nAction: close coffeemachine 1\nObservation: Nothing happens.\nAction: use coffeemachine 1\nObservation: Nothing happens.\nAction: examine coffeemachine 1\nObservation: On the coffeemachine 1, you see a mug 2.\nAction: examine coffeemachine 1\nObservation: On the coffeemachine 1, you see a mug 2.\nAction: examine coffeemachine 1\nObservation: On the coffeemachine 1, you see a mug 2.\nAction: close coffeemachine 1\nObservation: Nothing happens.\nAction: use coffeemachine 1\nObservation: Nothing happens.\nAction: open coffeemachine 1\nObservation: Nothing happens.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 16,
+  "task_name": "pick_heat_then_place_in_recep-Cup-None-Cabinet-10",
+  "goal": "put a hot cup in cabinet.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.6,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put a hot cup in cabinet.",
+      "Observation": "On the countertop 1, you see a cellphone 2, a egg 2, and a lettuce 1.",
+      "Action": "go to countertop 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "take cup 1 from countertop 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "go to microwave 1",
+      "Observation": "The microwave 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "open microwave 1",
+      "Observation": "You open the microwave 1. The microwave 1 is open. In it, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "go to fridge 1",
+      "Observation": "The fridge 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "open fridge 1",
+      "Observation": "You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a bread 2, a egg 1, a pan 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "take cup 1 from fridge 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "examine fridge 1",
+      "Observation": "The fridge 1 is open. In it, you see a bowl 1, a bread 2, a egg 1, a pan 1, and a tomato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "put cup 1 in/on cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "go to cabinet 1",
+      "Observation": "On the cabinet 1, you see a saltshaker 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "take cup 1 from fridge 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "examine cabinet 1",
+      "Observation": "On the cabinet 1, you see a saltshaker 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "put cup 1 in/on cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "go to microwave 1",
+      "Observation": "The microwave 1 is open. In it, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "examine microwave 1",
+      "Observation": "The microwave 1 is open. In it, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "examine cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "go to countertop 2",
+      "Observation": "On the countertop 2, you see a bowl 2, a bread 1, a butterknife 1, a egg 3, a fork 1, a glassbottle 2, a glassbottle 1, a knife 2, a knife 1, a potato 1, and a spatula 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "take cup 1 from countertop 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "go to cabinet 1",
+      "Observation": "On the cabinet 1, you see a saltshaker 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "open cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: put a hot apple in fridge.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 1, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to diningtable 1\nObservation: On the diningtable 1, you see a apple 1, a bread 1, a fork 3, a fork 2, a fork 1, a mug 2, a peppershaker 3, a plate 2, a pot 1, a soapbottle 3, a spatula 1, a spoon 3, a spoon 2, a spoon 1, a winebottle 3, and a winebottle 2.\n\nAction: take apple 1 from diningtable 1\nObservation: You pick up the apple 1 from the diningtable 1.\nAction: go to microwave 1\nObservation: The microwave 1 is closed.\nAction: heat apple 1 with microwave 1\nObservation: You heat the apple 1 using the microwave 1.\nAction: go to fridge 1\nObservation: The fridge 1 is open. In it, you see a cup 1, and a egg 1.\nAction: put apple 1 in/on fridge 1\nObservation: You put the apple 1 in/on the fridge 1.\n\nYou should perform actions to accomplish the goal: put a hot cup in cabinet.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a cellphone 2, a egg 2, and a lettuce 1.\nAction: take cup 1 from countertop 1\nObservation: Nothing happens.\nAction: go to microwave 1\nObservation: The microwave 1 is closed.\nAction: open microwave 1\nObservation: You open the microwave 1. The microwave 1 is open. In it, you see nothing.\nAction: go to fridge 1\nObservation: The fridge 1 is closed.\nAction: open fridge 1\nObservation: You open the fridge 1. The fridge 1 is open. In it, you see a bowl 1, a bread 2, a egg 1, a pan 1, and a tomato 1.\nAction: take cup 1 from fridge 1\nObservation: Nothing happens.\nAction: examine fridge 1\nObservation: The fridge 1 is open. In it, you see a bowl 1, a bread 2, a egg 1, a pan 1, and a tomato 1.\nAction: put cup 1 in/on cabinet 1\nObservation: Nothing happens.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a saltshaker 1.\nAction: take cup 1 from fridge 1\nObservation: Nothing happens.\nAction: examine cabinet 1\nObservation: On the cabinet 1, you see a saltshaker 1.\nAction: put cup 1 in/on cabinet 1\nObservation: Nothing happens.\nAction: go to microwave 1\nObservation: The microwave 1 is open. In it, you see nothing.\nAction: examine microwave 1\nObservation: The microwave 1 is open. In it, you see nothing.\nAction: examine cabinet 1\nObservation: Nothing happens.\nAction: go to countertop 2\nObservation: On the countertop 2, you see a bowl 2, a bread 1, a butterknife 1, a egg 3, a fork 1, a glassbottle 2, a glassbottle 1, a knife 2, a knife 1, a potato 1, and a spatula 1.\nAction: take cup 1 from countertop 2\nObservation: Nothing happens.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a saltshaker 1.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 17,
+  "task_name": "pick_clean_then_place_in_recep-Mug-None-CoffeeMachine-10",
+  "goal": "put a clean mug in coffeemachine.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.7,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put a clean mug in coffeemachine.",
+      "Observation": "On the cabinet 1, you see a vase 1.",
+      "Action": "go to cabinet 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "examine cabinet 1",
+      "Observation": "On the cabinet 1, you see a vase 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "go to cabinet 2",
+      "Observation": "The cabinet 2 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "open cabinet 2",
+      "Observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a plate 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "examine plate 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "take mug from cabinet 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "examine cabinet 2",
+      "Observation": "The cabinet 2 is open. In it, you see a plate 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "go to cabinet 3",
+      "Observation": "On the cabinet 3, you see a plate 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "take mug from cabinet 3",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "open cabinet 3",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "go to cabinet 4",
+      "Observation": "On the cabinet 4, you see a peppershaker 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "examine coffeemachine 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "go to cabinet 5",
+      "Observation": "The cabinet 5 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "open cabinet 5",
+      "Observation": "You open the cabinet 5. The cabinet 5 is open. In it, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "go to cabinet 6",
+      "Observation": "The cabinet 6 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "open cabinet 6",
+      "Observation": "You open the cabinet 6. The cabinet 6 is open. In it, you see a cup 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "take cup 1 from cabinet 6",
+      "Observation": "You pick up the cup 1 from the cabinet 6.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "examine cup 1",
+      "Observation": "This is a normal cup 1. In it, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "go to coffeemachine 1",
+      "Observation": "On the coffeemachine 1, you see nothing.",
+      "Progress Rate": 0.0
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: clean some soapbar and put it in toilet.\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a garbagecan 1, a handtowelholder 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 4, and a soapbar 3.\nAction: take soapbar 4 from toilet 1\nObservation: You pick up the soapbar 4 from the toilet 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: clean soapbar 4 with sinkbasin 1\nObservation: You clean the soapbar 4 using the sinkbasin 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 3.\nAction: put soapbar 4 in/on toilet 1\nObservation: You put the soapbar 4 in/on the toilet 1.\n\nYou should perform actions to accomplish the goal: put a clean mug in coffeemachine.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a vase 1.\nAction: examine coffeemachine 1\nObservation: Nothing happens.\nAction: examine cabinet 1\nObservation: On the cabinet 1, you see a vase 1.\nAction: go to cabinet 2\nObservation: The cabinet 2 is closed.\nAction: open cabinet 2\nObservation: You open the cabinet 2. The cabinet 2 is open. In it, you see a plate 1.\nAction: examine plate 1\nObservation: Nothing happens.\nAction: take mug from cabinet 2\nObservation: Nothing happens.\nAction: examine cabinet 2\nObservation: The cabinet 2 is open. In it, you see a plate 1.\nAction: go to cabinet 3\nObservation: On the cabinet 3, you see a plate 2.\nAction: take mug from cabinet 3\nObservation: Nothing happens.\nAction: open cabinet 3\nObservation: Nothing happens.\nAction: go to cabinet 4\nObservation: On the cabinet 4, you see a peppershaker 2.\nAction: examine coffeemachine 1\nObservation: Nothing happens.\nAction: go to cabinet 5\nObservation: The cabinet 5 is closed.\nAction: open cabinet 5\nObservation: You open the cabinet 5. The cabinet 5 is open. In it, you see nothing.\nAction: go to cabinet 6\nObservation: The cabinet 6 is closed.\nAction: open cabinet 6\nObservation: You open the cabinet 6. The cabinet 6 is open. In it, you see a cup 1.\nAction: take cup 1 from cabinet 6\nObservation: You pick up the cup 1 from the cabinet 6.\nAction: examine cup 1\nObservation: This is a normal cup 1. In it, you see nothing.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 18,
+  "task_name": "pick_clean_then_place_in_recep-SoapBar-None-Cabinet-424",
+  "goal": "clean some soapbar and put it in cabinet.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.5,
+  "grounding_acc": 1.0,
+  "score_change_record": [
+    [
+      5,
+      0.25
+    ],
+    [
+      6,
+      0.5
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "clean some soapbar and put it in cabinet.",
+      "Observation": "The cabinet 1 is closed.",
+      "Action": "go to cabinet 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "open cabinet 1",
+      "Observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "inventory",
+      "Observation": "You are not carrying anything.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "go to sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "examine sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a soapbar 1, and a soapbottle 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 6": {
+      "Action": "take soapbar 1 from countertop 1",
+      "Observation": "You pick up the soapbar 1 from the countertop 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 7": {
+      "Action": "go to cabinet 1",
+      "Observation": "The cabinet 1 is open. In it, you see nothing.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 8": {
+      "Action": "put soapbar 1 in/on cabinet 1",
+      "Observation": "You put the soapbar 1 in/on the cabinet 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 9": {
+      "Action": "close cabinet 1",
+      "Observation": "You close the cabinet 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 10": {
+      "Action": "go to cabinet 2",
+      "Observation": "The cabinet 2 is closed.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 11": {
+      "Action": "open cabinet 2",
+      "Observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see nothing.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 12": {
+      "Action": "inventory",
+      "Observation": "You are not carrying anything.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 13": {
+      "Action": "go to sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see nothing.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 14": {
+      "Action": "examine sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see nothing.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 15": {
+      "Action": "go to cabinet 2",
+      "Observation": "The cabinet 2 is open. In it, you see nothing.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 16": {
+      "Action": "go to cabinet 3",
+      "Observation": "The cabinet 3 is closed.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 17": {
+      "Action": "open cabinet 3",
+      "Observation": "You open the cabinet 3. The cabinet 3 is open. In it, you see nothing.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 18": {
+      "Action": "examine cabinet 3",
+      "Observation": "The cabinet 3 is open. In it, you see nothing.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 19": {
+      "Action": "go to cabinet 4",
+      "Observation": "The cabinet 4 is closed.",
+      "Progress Rate": 0.5
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: clean some soapbar and put it in toilet.\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a garbagecan 1, a handtowelholder 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 4, and a soapbar 3.\nAction: take soapbar 4 from toilet 1\nObservation: You pick up the soapbar 4 from the toilet 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: clean soapbar 4 with sinkbasin 1\nObservation: You clean the soapbar 4 using the sinkbasin 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 3.\nAction: put soapbar 4 in/on toilet 1\nObservation: You put the soapbar 4 in/on the toilet 1.\n\nYou should perform actions to accomplish the goal: clean some soapbar and put it in cabinet.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to cabinet 1\nObservation: The cabinet 1 is closed.\nAction: open cabinet 1\nObservation: You open the cabinet 1. The cabinet 1 is open. In it, you see nothing.\nAction: inventory\nObservation: You are not carrying anything.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: examine sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a soapbar 1, and a soapbottle 1.\nAction: take soapbar 1 from countertop 1\nObservation: You pick up the soapbar 1 from the countertop 1.\nAction: go to cabinet 1\nObservation: The cabinet 1 is open. In it, you see nothing.\nAction: put soapbar 1 in/on cabinet 1\nObservation: You put the soapbar 1 in/on the cabinet 1.\nAction: close cabinet 1\nObservation: You close the cabinet 1.\nAction: go to cabinet 2\nObservation: The cabinet 2 is closed.\nAction: open cabinet 2\nObservation: You open the cabinet 2. The cabinet 2 is open. In it, you see nothing.\nAction: inventory\nObservation: You are not carrying anything.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: examine sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: go to cabinet 2\nObservation: The cabinet 2 is open. In it, you see nothing.\nAction: go to cabinet 3\nObservation: The cabinet 3 is closed.\nAction: open cabinet 3\nObservation: You open the cabinet 3. The cabinet 3 is open. In it, you see nothing.\nAction: examine cabinet 3\nObservation: The cabinet 3 is open. In it, you see nothing.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 19,
+  "task_name": "pick_heat_then_place_in_recep-Cup-None-Cabinet-10",
+  "goal": "put a hot cup in cabinet.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.25,
+  "grounding_acc": 0.65,
+  "score_change_record": [
+    [
+      17,
+      0.25
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "put a hot cup in cabinet.",
+      "Observation": "Nothing happens.",
+      "Action": "take cup 1 from countertop 2",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "examine countertop 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "examine countertop 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a bowl 1, a mug 1, and a soapbottle 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "take mug 1 from countertop 1",
+      "Observation": "You pick up the mug 1 from the countertop 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "go to microwave 1",
+      "Observation": "The microwave 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "open microwave 1",
+      "Observation": "You open the microwave 1. The microwave 1 is open. In it, you see a potato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "put mug 1 in/on microwave 1",
+      "Observation": "You put the mug 1 in/on the microwave 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "heat mug 1 with microwave 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "examine microwave 1",
+      "Observation": "The microwave 1 is open. In it, you see a mug 1, and a potato 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "close microwave 1",
+      "Observation": "You close the microwave 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "go to cabinet 1",
+      "Observation": "On the cabinet 1, you see a plate 2, and a plate 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "open cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "examine cabinet 1",
+      "Observation": "On the cabinet 1, you see a plate 2, and a plate 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "put mug 1 in/on cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "examine cabinet 1",
+      "Observation": "On the cabinet 1, you see a plate 2, and a plate 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "go to cabinet 2",
+      "Observation": "The cabinet 2 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "open cabinet 2",
+      "Observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a cup 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 18": {
+      "Action": "put mug 1 in/on cabinet 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 19": {
+      "Action": "go to cabinet 3",
+      "Observation": "On the cabinet 3, you see a cup 2, and a peppershaker 1.",
+      "Progress Rate": 0.25
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: put a hot apple in fridge.\nYou are in the middle of a room. Looking quickly around you, you see a cabinet 13, a cabinet 12, a cabinet 11, a cabinet 10, a cabinet 9, a cabinet 8, a cabinet 7, a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 1, a diningtable 1, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: go to diningtable 1\nObservation: On the diningtable 1, you see a apple 1, a bread 1, a fork 3, a fork 2, a fork 1, a mug 2, a peppershaker 3, a plate 2, a pot 1, a soapbottle 3, a spatula 1, a spoon 3, a spoon 2, a spoon 1, a winebottle 3, and a winebottle 2.\n\nAction: take apple 1 from diningtable 1\nObservation: You pick up the apple 1 from the diningtable 1.\nAction: go to microwave 1\nObservation: The microwave 1 is closed.\nAction: heat apple 1 with microwave 1\nObservation: You heat the apple 1 using the microwave 1.\nAction: go to fridge 1\nObservation: The fridge 1 is open. In it, you see a cup 1, and a egg 1.\nAction: put apple 1 in/on fridge 1\nObservation: You put the apple 1 in/on the fridge 1.\n\nYou should perform actions to accomplish the goal: put a hot cup in cabinet.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: take cup 1 from countertop 2\nObservation: Nothing happens.\nAction: examine countertop 2\nObservation: Nothing happens.\nAction: examine countertop 1\nObservation: Nothing happens.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a bowl 1, a mug 1, and a soapbottle 1.\nAction: take mug 1 from countertop 1\nObservation: You pick up the mug 1 from the countertop 1.\nAction: go to microwave 1\nObservation: The microwave 1 is closed.\nAction: open microwave 1\nObservation: You open the microwave 1. The microwave 1 is open. In it, you see a potato 1.\nAction: put mug 1 in/on microwave 1\nObservation: You put the mug 1 in/on the microwave 1.\nAction: heat mug 1 with microwave 1\nObservation: Nothing happens.\nAction: examine microwave 1\nObservation: The microwave 1 is open. In it, you see a mug 1, and a potato 1.\nAction: close microwave 1\nObservation: You close the microwave 1.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a plate 2, and a plate 1.\nAction: open cabinet 1\nObservation: Nothing happens.\nAction: examine cabinet 1\nObservation: On the cabinet 1, you see a plate 2, and a plate 1.\nAction: put mug 1 in/on cabinet 1\nObservation: Nothing happens.\nAction: examine cabinet 1\nObservation: On the cabinet 1, you see a plate 2, and a plate 1.\nAction: go to cabinet 2\nObservation: The cabinet 2 is closed.\nAction: open cabinet 2\nObservation: You open the cabinet 2. The cabinet 2 is open. In it, you see a cup 1.\nAction: put mug 1 in/on cabinet 2\nObservation: Nothing happens.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 20,
+  "task_name": "pick_clean_then_place_in_recep-Knife-None-CounterTop-10",
+  "goal": "clean some knife and put it in countertop.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.65,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "clean some knife and put it in countertop.",
+      "Observation": "Nothing happens.",
+      "Action": "examine countertop 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "examine drawer 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "go to drawer 1",
+      "Observation": "The drawer 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "open drawer 1",
+      "Observation": "You open the drawer 1. The drawer 1 is open. In it, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "examine cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "go to cabinet 1",
+      "Observation": "On the cabinet 1, you see a pan 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "take pan 1 from cabinet 1",
+      "Observation": "You pick up the pan 1 from the cabinet 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "go to sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see a bowl 2, a egg 1, a potato 3, and a spoon 3.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 8": {
+      "Action": "clean pan 1 with sinkbasin 1",
+      "Observation": "You clean the pan 1 using the sinkbasin 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 9": {
+      "Action": "go to countertop 1",
+      "Observation": "On the countertop 1, you see a mug 2, a papertowelroll 1, a peppershaker 3, and a spatula 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 10": {
+      "Action": "put pan 1 in/on countertop 1",
+      "Observation": "You put the pan 1 in/on the countertop 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 11": {
+      "Action": "examine countertop 1",
+      "Observation": "On the countertop 1, you see a mug 2, a pan 1, a papertowelroll 1, a peppershaker 3, and a spatula 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 12": {
+      "Action": "examine cabinet 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 13": {
+      "Action": "examine stoveburner 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 14": {
+      "Action": "go to cabinet 2",
+      "Observation": "The cabinet 2 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 15": {
+      "Action": "open cabinet 2",
+      "Observation": "You open the cabinet 2. The cabinet 2 is open. In it, you see a soapbottle 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 16": {
+      "Action": "take soapbottle 1 from cabinet 2",
+      "Observation": "You pick up the soapbottle 1 from the cabinet 2.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 17": {
+      "Action": "go to stoveburner 1",
+      "Observation": "On the stoveburner 1, you see a pot 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 18": {
+      "Action": "examine pot 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 19": {
+      "Action": "take pot 1 from stoveburner 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: clean some soapbar and put it in toilet.\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a garbagecan 1, a handtowelholder 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 4, and a soapbar 3.\nAction: take soapbar 4 from toilet 1\nObservation: You pick up the soapbar 4 from the toilet 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: clean soapbar 4 with sinkbasin 1\nObservation: You clean the soapbar 4 using the sinkbasin 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 3.\nAction: put soapbar 4 in/on toilet 1\nObservation: You put the soapbar 4 in/on the toilet 1.\n\nYou should perform actions to accomplish the goal: clean some knife and put it in countertop.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 6, a cabinet 5, a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a coffeemachine 1, a countertop 3, a countertop 2, a countertop 1, a drawer 3, a drawer 2, a drawer 1, a fridge 1, a garbagecan 1, a microwave 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a stoveburner 4, a stoveburner 3, a stoveburner 2, a stoveburner 1, and a toaster 1.\nAction: examine countertop 1\nObservation: Nothing happens.\nAction: examine drawer 1\nObservation: Nothing happens.\nAction: go to drawer 1\nObservation: The drawer 1 is closed.\nAction: open drawer 1\nObservation: You open the drawer 1. The drawer 1 is open. In it, you see nothing.\nAction: examine cabinet 1\nObservation: Nothing happens.\nAction: go to cabinet 1\nObservation: On the cabinet 1, you see a pan 1.\nAction: take pan 1 from cabinet 1\nObservation: You pick up the pan 1 from the cabinet 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see a bowl 2, a egg 1, a potato 3, and a spoon 3.\nAction: clean pan 1 with sinkbasin 1\nObservation: You clean the pan 1 using the sinkbasin 1.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a mug 2, a papertowelroll 1, a peppershaker 3, and a spatula 1.\nAction: put pan 1 in/on countertop 1\nObservation: You put the pan 1 in/on the countertop 1.\nAction: examine countertop 1\nObservation: On the countertop 1, you see a mug 2, a pan 1, a papertowelroll 1, a peppershaker 3, and a spatula 1.\nAction: examine cabinet 2\nObservation: Nothing happens.\nAction: examine stoveburner 1\nObservation: Nothing happens.\nAction: go to cabinet 2\nObservation: The cabinet 2 is closed.\nAction: open cabinet 2\nObservation: You open the cabinet 2. The cabinet 2 is open. In it, you see a soapbottle 1.\nAction: take soapbottle 1 from cabinet 2\nObservation: You pick up the soapbottle 1 from the cabinet 2.\nAction: go to stoveburner 1\nObservation: On the stoveburner 1, you see a pot 1.\nAction: examine pot 1\nObservation: Nothing happens.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 21,
+  "task_name": "pick_clean_then_place_in_recep-Cloth-None-CounterTop-424",
+  "goal": "clean some cloth and put it in countertop.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.25,
+  "grounding_acc": 0.35,
+  "score_change_record": [
+    [
+      7,
+      0.25
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "clean some cloth and put it in countertop.",
+      "Observation": "On the countertop 1, you see a soapbottle 1, and a spraybottle 1.",
+      "Action": "go to countertop 1",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 1": {
+      "Action": "examine soapbottle 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 2": {
+      "Action": "take soapbottle 1 from countertop 1",
+      "Observation": "You pick up the soapbottle 1 from the countertop 1.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 3": {
+      "Action": "go to sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 4": {
+      "Action": "examine sinkbasin 1",
+      "Observation": "On the sinkbasin 1, you see nothing.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 5": {
+      "Action": "use soapbottle 1/sinkbasin 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 6": {
+      "Action": "go to cabinet 1",
+      "Observation": "The cabinet 1 is closed.",
+      "Progress Rate": 0.0
+    },
+    "Interaction Turn 7": {
+      "Action": "open cabinet 1",
+      "Observation": "You open the cabinet 1. The cabinet 1 is open. In it, you see a cloth 2.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 8": {
+      "Action": "take cloth 2 from cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 9": {
+      "Action": "examine cloth 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 10": {
+      "Action": "take cloth 2 from cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 11": {
+      "Action": "examine cloth 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 12": {
+      "Action": "examine cabinet 1",
+      "Observation": "The cabinet 1 is open. In it, you see a cloth 2.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 13": {
+      "Action": "take cloth 2 from cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 14": {
+      "Action": "take cloth 2 from cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 15": {
+      "Action": "examine cloth 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 16": {
+      "Action": "take cloth 2 from cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 17": {
+      "Action": "examine cloth 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 18": {
+      "Action": "take cloth 2 from cabinet 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 19": {
+      "Action": "examine cloth 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: clean some soapbar and put it in toilet.\nYou are in the middle of a room. Looking quickly around you, you see a bathtubbasin 1, a garbagecan 1, a handtowelholder 1, a shelf 3, a shelf 2, a shelf 1, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 4, and a soapbar 3.\nAction: take soapbar 4 from toilet 1\nObservation: You pick up the soapbar 4 from the toilet 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: clean soapbar 4 with sinkbasin 1\nObservation: You clean the soapbar 4 using the sinkbasin 1.\nAction: go to toilet 1\nObservation: On the toilet 1, you see a soapbar 3.\nAction: put soapbar 4 in/on toilet 1\nObservation: You put the soapbar 4 in/on the toilet 1.\n\nYou should perform actions to accomplish the goal: clean some cloth and put it in countertop.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a cabinet 4, a cabinet 3, a cabinet 2, a cabinet 1, a countertop 1, a garbagecan 1, a handtowelholder 2, a handtowelholder 1, a sinkbasin 2, a sinkbasin 1, a toilet 1, a toiletpaperhanger 1, and a towelholder 1.\nAction: go to countertop 1\nObservation: On the countertop 1, you see a soapbottle 1, and a spraybottle 1.\nAction: examine soapbottle 1\nObservation: Nothing happens.\nAction: take soapbottle 1 from countertop 1\nObservation: You pick up the soapbottle 1 from the countertop 1.\nAction: go to sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: examine sinkbasin 1\nObservation: On the sinkbasin 1, you see nothing.\nAction: use soapbottle 1/sinkbasin 1\nObservation: Nothing happens.\nAction: go to cabinet 1\nObservation: The cabinet 1 is closed.\nAction: open cabinet 1\nObservation: You open the cabinet 1. The cabinet 1 is open. In it, you see a cloth 2.\nAction: take cloth 2 from cabinet 1\nObservation: Nothing happens.\nAction: examine cloth 2\nObservation: Nothing happens.\nAction: take cloth 2 from cabinet 1\nObservation: Nothing happens.\nAction: examine cloth 2\nObservation: Nothing happens.\nAction: examine cabinet 1\nObservation: The cabinet 1 is open. In it, you see a cloth 2.\nAction: take cloth 2 from cabinet 1\nObservation: Nothing happens.\nAction: take cloth 2 from cabinet 1\nObservation: Nothing happens.\nAction: examine cloth 2\nObservation: Nothing happens.\nAction: take cloth 2 from cabinet 1\nObservation: Nothing happens.\nAction: examine cloth 2\nObservation: Nothing happens.\nAction: take cloth 2 from cabinet 1\nObservation: Nothing happens.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 22,
+  "task_name": "look_at_obj_in_light-Bowl-None-DeskLamp-308",
+  "goal": "examine the bowl with the desklamp.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.5,
+  "grounding_acc": 0.35,
+  "score_change_record": [
+    [
+      0,
+      0.25
+    ],
+    [
+      12,
+      0.5
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "examine the bowl with the desklamp.",
+      "Observation": "On the desk 1, you see a alarmclock 2, a alarmclock 1, a desklamp 1, a mug 1, and a pencil 1.",
+      "Action": "go to desk 1",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 1": {
+      "Action": "examine desklamp 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 2": {
+      "Action": "use desklamp 1",
+      "Observation": "You turn on the desklamp 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 3": {
+      "Action": "examine bowl",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 4": {
+      "Action": "examine shelf 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 5": {
+      "Action": "examine shelf 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 6": {
+      "Action": "examine shelf 3",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 7": {
+      "Action": "examine shelf 4",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 8": {
+      "Action": "examine shelf 5",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 9": {
+      "Action": "examine shelf 6",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 10": {
+      "Action": "go to shelf 1",
+      "Observation": "On the shelf 1, you see a pen 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 11": {
+      "Action": "take pen 1 from shelf 1",
+      "Observation": "You pick up the pen 1 from the shelf 1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 12": {
+      "Action": "go to shelf 2",
+      "Observation": "On the shelf 2, you see a bowl 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 13": {
+      "Action": "examine bowl 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 14": {
+      "Action": "take bowl 1 from shelf 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 15": {
+      "Action": "examine desklamp 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 16": {
+      "Action": "go to shelf 3",
+      "Observation": "On the shelf 3, you see a alarmclock 2, a alarmclock 1, and a desklamp 1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 17": {
+      "Action": "examine alarmclock 2",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 18": {
+      "Action": "examine alarmclock 1",
+      "Observation": "Nothing happens.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 19": {
+      "Action": "use desklamp 1",
+      "Observation": "You turn on the desklamp 1.",
+      "Progress Rate": 0.5
+    }
+  },
+  "example_prompt": "Your task is to interact with a virtual household simulator to accomplish a specific task. With each interaction, you will receive an observation.\nYour role is to decide on an action based on the observation. Please ensure that any objects ('{obj}') and receptacles ('{recep}') you mention in your response are present in the observation provided.\n\nHere are the available actions you can take:\n- 'take {obj} from {recep}'\n- 'put {obj} in/on {recep}'\n- 'open {recep}'\n- 'close {recep}'\n- 'use {obj}/{recep}'\n- 'clean {obj} using {recep}'\n- 'cool {obj} using {recep}'\n- 'heat {obj} using {recep}'\n- 'inventory'\n- 'examine {recep}/{obj}'\n- 'go to {recep}'\n\nHere are examples:\nYour task is to: look at statue under the desklamp.\nYou are in the middle of a room. Looking quickly around you, you see a coffeetable 1, a diningtable 1, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a dresser 1, a garbagecan 1, a sidetable 2, a sidetable 1, and a sofa 1.\nAction: go to dresser 1\nObservation: On the dresser 1, you see a cellphone 3, a newspaper 2, a statue 1, and a television 1.\nAction: take statue 1 from dresser 1\nObservation: You pick up the statue 1 from the dresser 1.\nAction: go to sidetable 1\nObservation: On the sidetable 1, you see nothing.\nAction: go to sidetable 2\nObservation: On the sidetable 2, you see a desklamp 3, a newspaper 1, and a statue 2.\nAction: use desklamp 3\nObservation: You turn on the desklamp 3.\n\nYou should perform actions to accomplish the goal: examine the bowl with the desklamp.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nYou should use the following commands for help when your action cannot be understood: inventory\nObservation: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.\nAction: go to desk 1\nObservation: On the desk 1, you see a alarmclock 2, a alarmclock 1, a desklamp 1, a mug 1, and a pencil 1.\nAction: examine desklamp 1\nObservation: Nothing happens.\nAction: use desklamp 1\nObservation: You turn on the desklamp 1.\nAction: examine bowl\nObservation: Nothing happens.\nAction: examine shelf 1\nObservation: Nothing happens.\nAction: examine shelf 2\nObservation: Nothing happens.\nAction: examine shelf 3\nObservation: Nothing happens.\nAction: examine shelf 4\nObservation: Nothing happens.\nAction: examine shelf 5\nObservation: Nothing happens.\nAction: examine shelf 6\nObservation: Nothing happens.\nAction: go to shelf 1\nObservation: On the shelf 1, you see a pen 1.\nAction: take pen 1 from shelf 1\nObservation: You pick up the pen 1 from the shelf 1.\nAction: go to shelf 2\nObservation: On the shelf 2, you see a bowl 1.\nAction: examine bowl 1\nObservation: Nothing happens.\nAction: take bowl 1 from shelf 2\nObservation: Nothing happens.\nAction: examine desklamp 1\nObservation: Nothing happens.\nAction: go to shelf 3\nObservation: On the shelf 3, you see a alarmclock 2, a alarmclock 1, and a desklamp 1.\nAction: examine alarmclock 2\nObservation: Nothing happens.\nAction: examine alarmclock 1\nObservation: Nothing happens.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}

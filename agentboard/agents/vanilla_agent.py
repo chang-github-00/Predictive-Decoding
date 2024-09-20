@@ -185,7 +185,7 @@ class VanillaAgent(
         if success and self.use_parser:
             action = self.action_parser_for_special_llms(action)
 
-        return success, action
+        return success, action, False 
 
     @classmethod
     def from_config(cls, llm_model, config):

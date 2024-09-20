@@ -23,8 +23,8 @@ Agent Configuration:
   "reward_threshold": 0.0,
   "do_sample": true,
   "max_world_model_len": 500,
-  "beam_temperature": 0.7,
-  "select_temperature": 0.005,
+  "beam_temperature": 1.0,
+  "select_temperature": 0.01,
   "n_generate_sample": 8,
   "value_type": "llm"
 }
@@ -32,13 +32,13 @@ Environment Configuration:
 {
   "alfworld": {
     "name": "alfworld",
-    "base_config": "/root/Agent-Decoding/agentboard/environment/alfworld/base_config.yaml",
+    "base_config": "/ssddata/junxianh/Agent-Decoding/agentboard/environment/alfworld/base_config.yaml",
     "split": "eval_out_of_distribution",
     "batch_size": 1,
-    "label_path": "/root/Agent-Decoding/data/alfworld/test.jsonl",
+    "label_path": "/ssddata/junxianh/Agent-Decoding/data/alfworld/test.jsonl",
     "check_inventory": true,
     "check_actions": "check valid actions",
-    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/Agent/alfworld_act.json"
+    "init_prompt_path": "/ssddata/junxianh/Agent-Decoding/agentboard/prompts/Agent/alfworld_act.json"
   }
 }
 Run Configuration: 

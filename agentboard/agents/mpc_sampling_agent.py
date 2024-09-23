@@ -862,8 +862,9 @@ class MPCSample(   # add world modeling objective in agent
 
 class SimilarityMetric(object):
     def __init__(self,
-                 model_name='/root/huggingface/all-MiniLM-L12-v2'):
+                 model_name='/ssddata/model_hub/all-MiniLM-L12-v2'):
         self.model = SentenceTransformer(model_name)
+        self.model.eval()
 
     def get_similarity(self, sequences, source_sequence):
         source_embedding = self.model.encode(source_sequence)

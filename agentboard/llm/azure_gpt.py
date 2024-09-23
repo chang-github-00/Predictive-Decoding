@@ -121,7 +121,7 @@ class OPENAI_GPT_AZURE:
 
     def generate(self, system_message, prompt):
         
-        if 'gpt' in self.engine:
+        if 'gpt' in self.engine or 'llama' in self.engine.lower(): # include sambanova api
         
             prompt=[
                 {"role": "system", "content": system_message},

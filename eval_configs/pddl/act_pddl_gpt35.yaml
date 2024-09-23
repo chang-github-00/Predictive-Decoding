@@ -24,6 +24,17 @@ llm:
       max_retry_iters: 15
       stop: "\n"
       use_parser: False
+  llama-405b:
+      name: gpt
+      engine: Meta-Llama-3.1-405B-Instruct
+      context_length: 4096
+      use_azure: False
+      temperature: 0.0
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
 
 
 env:

@@ -1,0 +1,40 @@
+LLM Configuration: 
+{
+  "name": "gpt",
+  "engine": "Meta-Llama-3.1-405B-Instruct",
+  "context_length": 4096,
+  "use_azure": false,
+  "temperature": 0.0,
+  "top_p": 1,
+  "retry_delays": 20,
+  "max_retry_iters": 15,
+  "stop": "\n",
+  "use_parser": false
+}
+Agent Configuration: 
+{
+  "name": "ReactAgent",
+  "memory_size": 100,
+  "need_goal": true
+}
+Environment Configuration: 
+{
+  "alfworld": {
+    "name": "alfworld",
+    "base_config": "/ssddata/junxianh/Agent-Decoding/agentboard/environment/alfworld/base_config.yaml",
+    "split": "eval_out_of_distribution",
+    "batch_size": 1,
+    "label_path": "/ssddata/junxianh/Agent-Decoding/data/alfworld/test.jsonl",
+    "check_inventory": true,
+    "check_actions": "check valid actions",
+    "init_prompt_path": "/ssddata/junxianh/Agent-Decoding/agentboard/prompts/Agent/alfworld_react.json"
+  }
+}
+Run Configuration: 
+{
+  "max_num_steps": 20,
+  "wandb": false,
+  "project_name": "eval-test",
+  "baseline_dir": "data/baseline_results",
+  "log_path": "results/9_22_llama_405b_alfworld_react"
+}

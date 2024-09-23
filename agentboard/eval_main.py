@@ -15,6 +15,7 @@ from llm import load_llm
 from utils.logging.agent_logger import AgentLogger
 from utils.logging.logger import SummaryLogger
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "6"
 
 logger = AgentLogger(__name__)
 warnings.filterwarnings("ignore")

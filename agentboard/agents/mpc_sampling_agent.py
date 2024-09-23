@@ -38,7 +38,8 @@ class MPCSample(   # add world modeling objective in agent
                  beam_temperature=0.7,
                  select_temperature=0.1,
                  n_generate_sample=6,
-                 value_type = "heuristic"
+                 value_type = "heuristic",
+                 lookahead_length = 8,
                  ):
         super().__init__()
         self.use_parser = use_parser
@@ -47,6 +48,7 @@ class MPCSample(   # add world modeling objective in agent
         self.goal = None
         self.init_obs = None
         self.logger = logger
+        self.lookahead_length = lookahead_length
         if init_prompt_path is not None:  # load from file
             self.init_prompt_dict = json.load(open(init_prompt_path, 'r'))
             self.instruction = self.init_prompt_dict["instruction"]
@@ -80,6 +82,7 @@ class MPCSample(   # add world modeling objective in agent
         
         self.style = "full" # "no_cache_lookahead" "no_cache_no_lookahead"
         
+        self.task = 'pddl' # 'pddl'
         self.n_generate_sample = n_generate_sample
         self.stop = ''
         self.max_tokens = max_world_model_len
@@ -255,6 +258,8 @@ class MPCSample(   # add world modeling objective in agent
             except:
                 continue
             
+        all_actions = all_actions[:self.lookahead_length]
+            
         if len(all_actions)>0: 
             first_action = all_actions[0]["Action"] 
         else:
@@ -340,7 +345,10 @@ class MPCSample(   # add world modeling objective in agent
     
     def get_llm_value(self, new_trajectory, init_prompt_dict=None):
         
-        llm_generation_config = {"n": 1, "max_tokens": 100, "temperature": 0, "stop": ['\n']}
+        if self.task == 'alfworld':
+            llm_generation_config = {"n": 1, "max_tokens": 100, "temperature": 0, "stop": ['\n']}
+        else:
+            llm_generation_config = {"n": 1, "max_tokens": 200, "temperature": 0, "stop": ['\n']}
         
         system_message = "Please evaluate the given trajectory."
         
@@ -421,24 +429,61 @@ class MPCSample(   # add world modeling objective in agent
             query += "You should use the following commands for help when your action cannot be understood: " + check_actions + "\n"
         if check_inventory is not None:
             query += "You should use the following commands for help when your action cannot be understood: inventory\n"
+        
+        query += "If an action is wrong or cannot be executed, the observation would be Nothing Happens."
 
         history = self.memory[-self.memory_size:] # need to add memory to make the trajectory whole
         
+        new_interaction = []
         for item in trajectory:
             if "Action" in item and item["Action"] is not None:
-                history.append(("Action", item["Action"]))
+                new_interaction.append(("Action", item["Action"]))
             if "Observation" in item and item["Observation"] is not None:
-                history.append(("Observation", item["Observation"]))
+                new_interaction.append(("Observation", item["Observation"]))
         
-        evluation_instruction = f'''
+        # evluation_instruction = f'''
+        #     Evaluate the possibility the current trajectory could finish the task {self.goal} in the future in format: 
+        #     [Because ...](a one-phrase rationale), the current trajectory has a score [0.x] (You must give a score between: 0: impossible, 25: unlikely, 50: not sure, 75: very likely, 100: definitely).
+        #     Also penalize unnecessary repeated actions or actions that deviate far from the goal.
+        # '''
+        
+        evluation_instruction_alfworld = f'''
             Evaluate the possibility the current trajectory could finish the task {self.goal} in the future in format: 
             [Because ...](a one-phrase rationale), the current trajectory has a score [0.x] (You must give a score between: 0: impossible, 25: unlikely, 50: not sure, 75: very likely, 100: definitely).
-            Also penalize unnecessary repeated actions or actions that deviate far from the goal.
+            Also, penalize unnecessary repeated actions or actions that deviate far from the goal {self.goal}. 
+            Rules: 
+            The agent needs to go to a place to pick up an object.
+            The agent needs to go to a place to drop off an object.
+            The agent can only carry one object at a time, therefore, the agent needs to drop off all inventory before picking up another object.
+            The agent needs to go to a sinkbasin to clean an object.
+            The agent needs to go to a microwave to heat an object.
+            The agent can not pick up a desklamp, but can use - use desklamp - to turn on the light and look at object in inventory.
+            If a correct object mentioned in {self.goal} is taken, you should give a score of 0.25 for each.
+            If a wrong object not mentioned in {self.goal} is taken, you should give a score of 0. If an action is repeated a few times without success, you should give a score of 0.25.
+            Otherwise, you should give a score of at least 0.25.
         '''
+        evaluation_instruction_pddl = f'''
+            Evaluate the possibility the current trajectory could finish the task {self.goal} in the future in format: 
+            [Because ...](a one-phrase rationale), the current trajectory has a score [0.x] (You must give a score between: 0: impossible, 25: unlikely, 50: not sure, 75: very likely, 100: definitely).
+            Also, penalize unnecessary repeated actions or actions that deviate far from the goal {self.goal}, or if there is backward movement. 
+            If a subgoal was previously satisfied, you don't need to award it again.
+            '''
+            # If the task involves picking up a ball, the agent should pick up one ball each arm, move to another room, and drop the ball. Then go to the next room to pick up another ball.
+            # If the task involves rearranging blocks, the agent should expose the blocks at the bottom, move the blocks to the right place, and then arrange the blocks in the correct order.
+            # If the task involves making a cocktail, the agent should first acquire each ingredient with clean containers, then mix the ingredients in the correct order, and finally serve the cocktail. 
+            # If the task involves arranging new tyres, the agent should first open boot for tools and tyres, jackup the tyre, then loosen the nuts, and unfaste the tyre, before putting the new tyre on.
+
         
-        input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
+        if self.task == 'alfworld':
+            evluation_instruction = evluation_instruction_alfworld
+        else:
+            evluation_instruction = evaluation_instruction_pddl
+        
+        input_prompt = query + "Past interactions: \n" + "\n".join([item[0] + ": " + item[1] for item in history])
 
         input_prompt += "\n"  #(stop generating if you are not certain about the next observation)"
+
+        input_prompt += input_prompt + "Evaluate the following trajectory: \n" + "\n".join([item[0] + ": " + item[1] for item in new_interaction])
 
         input_prompt += evluation_instruction
         
@@ -448,11 +493,14 @@ class MPCSample(   # add world modeling objective in agent
         ]
         num_of_tokens = self.llm_model.num_tokens_from_messages(messages)
         while num_of_tokens > self.max_context_length - self.llm_model.max_tokens:
+            
             history = history[1:]
-            input_prompt = query + "\n".join([item[0] + ": " + item[1] for item in history])
+            input_prompt =  query + "Past interactions: \n" + "\n".join([item[0] + ": " + item[1] for item in history])
             
 
             input_prompt += "\n"  #(stop generating if you are not certain about the next observation)"
+            
+            input_prompt += input_prompt + "Evaluate the following trajectory: \n" + "\n".join([item[0] + ": " + item[1] for item in new_interaction])
 
             input_prompt += evluation_instruction
             # input_prompt += "\nPlease enter your action:"
@@ -501,7 +549,7 @@ class MPCSample(   # add world modeling objective in agent
         evluation_instruction = f'''
             Evaluate if action {action_to_evaluate} could help finish the task {self.goal} in the future, based on past interactions as well as imagined future trajectory.
             Actions that lead to successful competion in future trajectory should be awarded high scores.
-            Also penalize heavily unnecessary repeated actions or actions that deviate far from the goal. If the trajectory is not plausible, you should also give a lower score.
+            If the trajectory is not plausible, you should also give a lower score.
             Score: (choose between: E: impossible, D: unlikely, C: not sure, B: very likely, A: definitely).
             Reason:
         '''
@@ -712,7 +760,7 @@ class MPCSample(   # add world modeling objective in agent
 
         for i in range(self.max_iters):
             
-            self.trajectory_pool = []
+            # self.trajectory_pool = []
             
             if init_prompt_dict is not None:
                 self.init_prompt_dict = init_prompt_dict
@@ -749,7 +797,7 @@ class MPCSample(   # add world modeling objective in agent
                     
                     self.update_trajectory_pool(action_sequence, lookahead=True, reward=reward)
                 
-            self.verify_trajectory(threshold_high=self.similarity_threshold_high, threshold_low=self.similarity_threshold_low) #don't currently use verify
+            # self.verify_trajectory(threshold_high=self.similarity_threshold_high, threshold_low=self.similarity_threshold_low) #don't currently use verify
 
             # decide upon the best action based on simulated planning
             action = self.lookahead_decision_model(reward_threshold=self.reward_threshold)
@@ -792,6 +840,7 @@ class MPCSample(   # add world modeling objective in agent
         n_generate_sample = config.get("n_generate_sample", 6)
         
         value_type = config.get("value_type", "heuristic")
+        lookahead_length = config.get("lookahead_length", 10)
         
         
         return cls(llm_model, memory_size, examples, instruction, init_prompt_path, system_message, 
@@ -805,14 +854,17 @@ class MPCSample(   # add world modeling objective in agent
                    beam_temperature=beam_temperature, 
                    select_temperature=select_temperature, 
                    n_generate_sample=n_generate_sample,
-                   value_type=value_type
+                   value_type=value_type,
+                   lookahead_length=lookahead_length
                    )
+                   
         
 
 class SimilarityMetric(object):
     def __init__(self,
-                 model_name='/root/huggingface/all-MiniLM-L12-v2'):
+                 model_name='/ssddata/model_hub/all-MiniLM-L12-v2'):
         self.model = SentenceTransformer(model_name)
+        self.model.eval()
 
     def get_similarity(self, sequences, source_sequence):
         source_embedding = self.model.encode(source_sequence)

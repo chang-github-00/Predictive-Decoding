@@ -20,7 +20,7 @@ Agent Configuration:
   "n_gram": 30,
   "similarity_threshold_low": 0.5,
   "similarity_threshold_high": 0.7,
-  "reward_threshold": 0.0,
+  "reward_threshold": 0,
   "do_sample": true,
   "max_world_model_len": 500,
   "beam_temperature": 0.7,
@@ -30,15 +30,18 @@ Agent Configuration:
 }
 Environment Configuration: 
 {
-  "alfworld": {
-    "name": "alfworld",
-    "base_config": "/root/Agent-Decoding/agentboard/environment/alfworld/base_config.yaml",
-    "split": "eval_out_of_distribution",
-    "batch_size": 1,
-    "label_path": "/root/Agent-Decoding/data/alfworld/test.jsonl",
-    "check_inventory": true,
+  "pddl": {
+    "name": "pddl",
+    "game_name": [
+      "gripper",
+      "blockworld",
+      "barman",
+      "tyreworld"
+    ],
+    "env_num_per_task": 20,
     "check_actions": "check valid actions",
-    "init_prompt_path": "/root/Agent-Decoding/agentboard/prompts/Agent/alfworld_act.json"
+    "init_prompt_path": "/ssddata/junxianh/Agent-Decoding/agentboard/prompts/VanillaAgent/pddl_concise_prompt.json",
+    "label_path": "/ssddata/junxianh/Agent-Decoding/data/pddl/test.jsonl"
   }
 }
 Run Configuration: 

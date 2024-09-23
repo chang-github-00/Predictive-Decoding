@@ -21,7 +21,7 @@ agent:
   select_temperature: 0.05 #.05 # llm 0.3 # heuristic - 0.05, smaller difference than llm
   n_generate_sample: 8
   value_type: pddl
-  lookahead_length: 1
+  lookahead_length: 6
 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key

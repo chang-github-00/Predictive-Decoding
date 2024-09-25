@@ -17,7 +17,7 @@ agent:
   reward_threshold: 0.0 # llm - 0.2 # heuristic - 0.6
   do_sample: True
   max_world_model_len: 500
-  beam_temperature: 1.0
+  beam_temperature: 0.6
   select_temperature: 0.01 #.05 # llm 0.3 # heuristic - 0.05, smaller difference than llm
   n_generate_sample: 8
   value_type: logp

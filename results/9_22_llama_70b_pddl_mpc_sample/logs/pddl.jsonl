@@ -6056,3 +6056,728 @@
   },
   "example_prompt": "Your goal is to replace flat tyres with intact tyres on the hubs. Remember to open boot first to get tools you need. Intact tyres should be inflated. The nuts should be tight on the hubs. The flat tyres, wrench, jack, and pump should be in the boot. The boot should be closed.\n    There are 13 actions defined in this domain:\n    open <container>: The precondition for this action is that the container is unlocked and closed. The effect of this action is that the container is open and not closed.\n    close <container>: The precondition for this action is that the container is open. The effect of this action is that the container is closed and not open.\n    fetch <object> <container>: The precondition for this action is that the object is inside the container and the container is open. The effect of this action is that the object is held by the agent and not inside the container.\n    put-away <object> <container>: The precondition for this action is that the object is held by the agent and the container is open. The effect of this action is that the object is inside the container and not held by the agent.\n    loosen <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is tight, and the hub is on the ground. The effect of this action is that the nut on hub is loose and not tight.\n    tighten <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is loose, and the hub is on the ground. The effect of this action is that the nut on hub is tight and not loose.\n    jack-up <hub>: This action represents the process of lifting a hub off the ground using a jack. It requires the agent to have a jack and for the hub to be on the ground. After performing this action, the hub will no longer be on the ground and the agent will no longer have the jack.\n    jack-down <hub>: This action represents the process of lowering a hub back to the ground from an elevated position using a jack. It requires the agent to have the hub off the ground. After performing this action, the hub will be back on the ground and the agent will have the jack.\n    undo <nut> <hub>: This action undo the fastening of a nut on a hub. The preconditions are the hub is not on the ground (i.e., it has been jacked up), the hub is fastened, the agent has a wrench and the nut is loose. The effects are the agent has the nut, the hub is unfastened, the hub is no longer loose and the hub is not fastened anymore.\n    do-up <nut> <hub>: This action fasten a nut on a hub. The preconditions are the agent has a wrench, the hub is unfastened, the hub is not on the ground (i.e., it has been jacked up) and the agent has the nut to be fastened. The effects are the nut is now loose on the hub, the hub is fastened, the hub is no longer unfastened and the agent no longer has the nut.\n    remove-wheel <wheel> <hub>: This action removes a wheel from a hub. It can only be performed if the hub is not on the ground, the wheel is currently on the hub, and the hub is unfastened. After the action is performed, the agent will have the removed wheel and the hub will be free, meaning that the wheel is no longer on the hub.\n    put-on-wheel <wheel> <hub>: This action puts a wheel onto a hub. It can only be performed if the agent has the wheel, the hub is free, the hub is unfastened, and the hub is not on the ground. After the action is performed, the wheel will be on the hub, the hub will no longer be free, and the agent will no longer have the wheel.\n    inflate <wheel>: This action inflates a wheel using a pump. It can only be performed if the agent has a pump, the wheel is not inflated, and the wheel is intact. After the action is performed, the wheel will be inflated.\n\nHere are examples:\nThe goal is to satisfy the following conditions: w1 is in boot. (Note you need to open boot first so that you can extract tools from it.)\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. The nut nuts1 on the hub the-hub1 is tight. Wheel r1 is intact. Wheel r1 is not inflated. Wheel w1 is on hub the-hub1. Wrench is in boot.\nAction: check valid actions.\nObservation: Valid actions are: Open boot. Check valid actions. Look around.\nAction: Open boot.\nObservation: Boot is open. \nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: check valid actions\nObservation: Valid actions are: Fetch pump from boot., Fetch r1 from boot., Put-away wrench in boot., Close boot., Fetch jack from boot., Loosen the nut nuts1 on the hub the-hub1., check valid actions\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose. \nAction: fetch jack from boot\nObservation: You have jack. \nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground. \nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. \nAction: Remove-wheel w1 from the hub the-hub1.\nObservation: You have w1. \nAction: Put-away w1 in boot\nObservation: W1 is in boot. Goal is completed.\nYou should perform actions to accomplish the goal: The goal is to satisfy the following conditions: Wheel r1 is inflated., Wheel r2 is inflated., Wheel r3 is inflated., r1 is on the-hub1., r2 is on the-hub2., r3 is on the-hub3., w1 is in boot., w2 is in boot., w3 is in boot.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Hub the-hub2 is fastened. Hub the-hub2 is on the ground. Hub the-hub3 is fastened. Hub the-hub3 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. R2 is in boot. R3 is in boot. The nut nuts1 on the hub the-hub1 is tight. The nut nuts2 on the hub the-hub2 is tight. The nut nuts3 on the hub the-hub3 is tight. W1 is on the-hub1. W2 is on the-hub2. W3 is on the-hub3. Wheel r1 is intact. Wheel r1 is not inflated. Wheel r2 is intact. Wheel r2 is not inflated. Wheel r3 is intact. Wheel r3 is not inflated. Wrench is in boot.\nAction: Open boot.\nObservation: Boot is open.\nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: fetch pump from boot\nObservation: You have pump.\nAction: fetch jack from boot\nObservation: You have jack.\nAction: inflate r1\nObservation: Wheel r1 is inflated.\nAction: inflate r2\nObservation: Wheel r2 is inflated.\nAction: inflate r3\nObservation: Wheel r3 is inflated.\nAction: loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose.\nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground.\nAction: undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. You have nuts1.\nAction: Remove-wheel w1 from the hub the-hub1.\nObservation: The-hub1 is free.  You have w1.\nAction: Put-away w1 in boot\nObservation: W1 is in boot.\nAction: Put-on-wheel r1 on the-hub1.\nObservation: The action is not valid and therefore takes no effect. Please check valid actions.\nAction: check valid actions\nObservation: Valid actions are: Fetch w1 from boot., Put-away pump in boot., Fetch r1 from boot., Jack-down the hub the-hub1., Put-away wrench in boot., Fetch r2 from boot., Fetch r3 from boot., Loosen the nut nuts2 on the hub the-hub2., Loosen the nut nuts3 on the hub the-hub3., Put-away nuts1 in boot., Close boot., Do-up the nut nuts1 on the hub the-hub1., check valid actions, look around\nAction: Fetch r1 from boot\nObservation: You have r1.\nAction: Put-on-wheel r1 on the-hub1.\nObservation: R1 is on the-hub1.\nAction: Do-up the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.\nAction: jack-down the hub the-hub1\nObservation: Hub the-hub1 is on the ground. You have jack.\nAction: Loosen the nut nuts2 on the hub the-hub2.\nObservation: The nut nuts2 on the hub the-hub2 is loose.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
 }
+{
+  "id": 53,
+  "task_name": "tyreworld",
+  "goal": "The goal is to satisfy the following conditions: Wheel r1 is inflated., Wheel r2 is inflated., Wheel r3 is inflated., Wheel r4 is inflated., r1 is on the-hub1., r2 is on the-hub2., r3 is on the-hub3., r4 is on the-hub4., w1 is in boot., w2 is in boot., w3 is in boot., w4 is in boot.",
+  "difficulty": "easy",
+  "is_done": false,
+  "progress_rate": 0.25,
+  "grounding_acc": 0.9,
+  "score_change_record": [
+    [
+      8,
+      0.08333333333333333
+    ],
+    [
+      10,
+      0.16666666666666666
+    ],
+    [
+      12,
+      0.25
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: Wheel r1 is inflated., Wheel r2 is inflated., Wheel r3 is inflated., Wheel r4 is inflated., r1 is on the-hub1., r2 is on the-hub2., r3 is on the-hub3., r4 is on the-hub4., w1 is in boot., w2 is in boot., w3 is in boot., w4 is in boot.",
+      "Observation": "Boot is open.",
+      "Action": "Open boot.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "fetch wrench from boot",
+      "Observation": "You have wrench.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "Fetch jack from boot",
+      "Observation": "You have jack.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "fetch pump from boot",
+      "Observation": "You have pump.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 4": {
+      "Action": "Loosen the nut nuts1 on the hub the-hub1.",
+      "Observation": "The nut nuts1 on the hub the-hub1 is loose.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 5": {
+      "Action": "Jack-up the-hub1",
+      "Observation": "Hub the-hub1 is not on the ground.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 6": {
+      "Action": "Undo the fastening of the nut nuts1 on the hub the-hub1.",
+      "Observation": "Hub the-hub1 is unfastened. You have nuts1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 7": {
+      "Action": "Remove-wheel w1 from the-hub1.",
+      "Observation": "The-hub1 is free.  You have w1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 8": {
+      "Action": "Put-away w1 in boot",
+      "Observation": "W1 is in boot.",
+      "Progress Rate": 0.08333333333333333
+    },
+    "Interaction Turn 9": {
+      "Action": "Put-on-wheel r1 from the-hub1",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0.08333333333333333
+    },
+    "Interaction Turn 10": {
+      "Action": "inflate r1.",
+      "Observation": "Wheel r1 is inflated.",
+      "Progress Rate": 0.16666666666666666
+    },
+    "Interaction Turn 11": {
+      "Action": "fetch r1 from boot",
+      "Observation": "You have r1.",
+      "Progress Rate": 0.16666666666666666
+    },
+    "Interaction Turn 12": {
+      "Action": "Put-on-wheel r1 on the-hub1.",
+      "Observation": "R1 is on the-hub1.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 13": {
+      "Action": "Do-up nuts1 on the-hub1",
+      "Observation": "Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 14": {
+      "Action": "Jack-down the-hub1",
+      "Observation": "Hub the-hub1 is on the ground. You have jack.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 15": {
+      "Action": "Loosen the nut nuts1 on the hub the-hub1.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 16": {
+      "Action": "Tighten the nut nuts1 on the hub the-hub1.",
+      "Observation": "The nut nuts1 on the hub the-hub1 is tight.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 17": {
+      "Action": "Loosen the nut nuts2 on the hub the-hub2.",
+      "Observation": "The nut nuts2 on the hub the-hub2 is loose.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 18": {
+      "Action": "jack-up the-hub2",
+      "Observation": "Hub the-hub2 is not on the ground.",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 19": {
+      "Action": "Undo the fastening of the nut nuts2 on the hub the-hub2.",
+      "Observation": "Hub the-hub2 is unfastened. You have nuts2.",
+      "Progress Rate": 0.25
+    }
+  },
+  "example_prompt": "Your goal is to replace flat tyres with intact tyres on the hubs. Remember to open boot first to get tools you need. Intact tyres should be inflated. The nuts should be tight on the hubs. The flat tyres, wrench, jack, and pump should be in the boot. The boot should be closed.\n    There are 13 actions defined in this domain:\n    open <container>: The precondition for this action is that the container is unlocked and closed. The effect of this action is that the container is open and not closed.\n    close <container>: The precondition for this action is that the container is open. The effect of this action is that the container is closed and not open.\n    fetch <object> <container>: The precondition for this action is that the object is inside the container and the container is open. The effect of this action is that the object is held by the agent and not inside the container.\n    put-away <object> <container>: The precondition for this action is that the object is held by the agent and the container is open. The effect of this action is that the object is inside the container and not held by the agent.\n    loosen <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is tight, and the hub is on the ground. The effect of this action is that the nut on hub is loose and not tight.\n    tighten <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is loose, and the hub is on the ground. The effect of this action is that the nut on hub is tight and not loose.\n    jack-up <hub>: This action represents the process of lifting a hub off the ground using a jack. It requires the agent to have a jack and for the hub to be on the ground. After performing this action, the hub will no longer be on the ground and the agent will no longer have the jack.\n    jack-down <hub>: This action represents the process of lowering a hub back to the ground from an elevated position using a jack. It requires the agent to have the hub off the ground. After performing this action, the hub will be back on the ground and the agent will have the jack.\n    undo <nut> <hub>: This action undo the fastening of a nut on a hub. The preconditions are the hub is not on the ground (i.e., it has been jacked up), the hub is fastened, the agent has a wrench and the nut is loose. The effects are the agent has the nut, the hub is unfastened, the hub is no longer loose and the hub is not fastened anymore.\n    do-up <nut> <hub>: This action fasten a nut on a hub. The preconditions are the agent has a wrench, the hub is unfastened, the hub is not on the ground (i.e., it has been jacked up) and the agent has the nut to be fastened. The effects are the nut is now loose on the hub, the hub is fastened, the hub is no longer unfastened and the agent no longer has the nut.\n    remove-wheel <wheel> <hub>: This action removes a wheel from a hub. It can only be performed if the hub is not on the ground, the wheel is currently on the hub, and the hub is unfastened. After the action is performed, the agent will have the removed wheel and the hub will be free, meaning that the wheel is no longer on the hub.\n    put-on-wheel <wheel> <hub>: This action puts a wheel onto a hub. It can only be performed if the agent has the wheel, the hub is free, the hub is unfastened, and the hub is not on the ground. After the action is performed, the wheel will be on the hub, the hub will no longer be free, and the agent will no longer have the wheel.\n    inflate <wheel>: This action inflates a wheel using a pump. It can only be performed if the agent has a pump, the wheel is not inflated, and the wheel is intact. After the action is performed, the wheel will be inflated.\n\nHere are examples:\nThe goal is to satisfy the following conditions: w1 is in boot. (Note you need to open boot first so that you can extract tools from it.)\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. The nut nuts1 on the hub the-hub1 is tight. Wheel r1 is intact. Wheel r1 is not inflated. Wheel w1 is on hub the-hub1. Wrench is in boot.\nAction: check valid actions.\nObservation: Valid actions are: Open boot. Check valid actions. Look around.\nAction: Open boot.\nObservation: Boot is open. \nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: check valid actions\nObservation: Valid actions are: Fetch pump from boot., Fetch r1 from boot., Put-away wrench in boot., Close boot., Fetch jack from boot., Loosen the nut nuts1 on the hub the-hub1., check valid actions\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose. \nAction: fetch jack from boot\nObservation: You have jack. \nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground. \nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. \nAction: Remove-wheel w1 from the hub the-hub1.\nObservation: You have w1. \nAction: Put-away w1 in boot\nObservation: W1 is in boot. Goal is completed.\nYou should perform actions to accomplish the goal: The goal is to satisfy the following conditions: Wheel r1 is inflated., Wheel r2 is inflated., Wheel r3 is inflated., Wheel r4 is inflated., r1 is on the-hub1., r2 is on the-hub2., r3 is on the-hub3., r4 is on the-hub4., w1 is in boot., w2 is in boot., w3 is in boot., w4 is in boot.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Hub the-hub2 is fastened. Hub the-hub2 is on the ground. Hub the-hub3 is fastened. Hub the-hub3 is on the ground. Hub the-hub4 is fastened. Hub the-hub4 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. R2 is in boot. R3 is in boot. R4 is in boot. The nut nuts1 on the hub the-hub1 is tight. The nut nuts2 on the hub the-hub2 is tight. The nut nuts3 on the hub the-hub3 is tight. The nut nuts4 on the hub the-hub4 is tight. W1 is on the-hub1. W2 is on the-hub2. W3 is on the-hub3. W4 is on the-hub4. Wheel r1 is intact. Wheel r1 is not inflated. Wheel r2 is intact. Wheel r2 is not inflated. Wheel r3 is intact. Wheel r3 is not inflated. Wheel r4 is intact. Wheel r4 is not inflated. Wrench is in boot.\nAction: Open boot.\nObservation: Boot is open.\nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: Fetch jack from boot\nObservation: You have jack.\nAction: fetch pump from boot\nObservation: You have pump.\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose.\nAction: Jack-up the-hub1\nObservation: Hub the-hub1 is not on the ground.\nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. You have nuts1.\nAction: Remove-wheel w1 from the-hub1.\nObservation: The-hub1 is free.  You have w1.\nAction: Put-away w1 in boot\nObservation: W1 is in boot.\nAction: Put-on-wheel r1 from the-hub1\nObservation: The action is not valid and therefore takes no effect. Please check valid actions.\nAction: inflate r1.\nObservation: Wheel r1 is inflated.\nAction: fetch r1 from boot\nObservation: You have r1.\nAction: Put-on-wheel r1 on the-hub1.\nObservation: R1 is on the-hub1.\nAction: Do-up nuts1 on the-hub1\nObservation: Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.\nAction: Jack-down the-hub1\nObservation: Hub the-hub1 is on the ground. You have jack.\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: Tighten the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is tight.\nAction: Loosen the nut nuts2 on the hub the-hub2.\nObservation: The nut nuts2 on the hub the-hub2 is loose.\nAction: jack-up the-hub2\nObservation: Hub the-hub2 is not on the ground.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 54,
+  "task_name": "tyreworld",
+  "goal": "The goal is to satisfy the following conditions: r1 is on the-hub1., w1 is in boot.",
+  "difficulty": "hard",
+  "is_done": true,
+  "progress_rate": 1.0,
+  "grounding_acc": 1.0,
+  "score_change_record": [
+    [
+      5,
+      0.5
+    ],
+    [
+      7,
+      1.0
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: r1 is on the-hub1., w1 is in boot.",
+      "Observation": "You have wrench.",
+      "Action": "fetch wrench from boot",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "fetch jack from boot",
+      "Observation": "You have jack.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "jack-up the-hub1",
+      "Observation": "Hub the-hub1 is not on the ground.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "undo nuts1 on the-hub1",
+      "Observation": "Hub the-hub1 is unfastened. You have nuts1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 4": {
+      "Action": "remove-wheel w1 from the-hub1",
+      "Observation": "The-hub1 is free.  You have w1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 5": {
+      "Action": "put-away w1 in boot",
+      "Observation": "W1 is in boot.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 6": {
+      "Action": "fetch r1 from boot",
+      "Observation": "You have r1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 7": {
+      "Action": "put-on-wheel r1 on the-hub1",
+      "Observation": "R1 is on the-hub1. The goal is satisfied.",
+      "Progress Rate": 1.0
+    }
+  }
+}
+{
+  "id": 55,
+  "task_name": "tyreworld",
+  "goal": "The goal is to satisfy the following conditions: Wheel r1 is inflated., Wheel r2 is inflated., Wheel r3 is inflated.",
+  "difficulty": "easy",
+  "is_done": true,
+  "progress_rate": 1.0,
+  "grounding_acc": 1.0,
+  "score_change_record": [
+    [
+      3,
+      0.3333333333333333
+    ],
+    [
+      5,
+      0.6666666666666666
+    ],
+    [
+      7,
+      1.0
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: Wheel r1 is inflated., Wheel r2 is inflated., Wheel r3 is inflated.",
+      "Observation": "Boot is open.",
+      "Action": "Open boot.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "Fetch pump from boot.",
+      "Observation": "You have pump.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "Fetch r1 from boot.",
+      "Observation": "You have r1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "Inflate r1.",
+      "Observation": "Wheel r1 is inflated.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 4": {
+      "Action": "Fetch r2 from boot.",
+      "Observation": "You have r2.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 5": {
+      "Action": "Inflate r2.",
+      "Observation": "Wheel r2 is inflated.",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 6": {
+      "Action": "Fetch r3 from boot.",
+      "Observation": "You have r3.",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 7": {
+      "Action": "Inflate r3.",
+      "Observation": "Wheel r3 is inflated. The goal is satisfied.",
+      "Progress Rate": 1.0
+    }
+  }
+}
+{
+  "id": 56,
+  "task_name": "tyreworld",
+  "goal": "The goal is to satisfy the following conditions: Wheel r3 is inflated., w1 is in boot., w2 is in boot.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.6666666666666666,
+  "grounding_acc": 1.0,
+  "score_change_record": [
+    [
+      7,
+      0.3333333333333333
+    ],
+    [
+      17,
+      0.6666666666666666
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: Wheel r3 is inflated., w1 is in boot., w2 is in boot.",
+      "Observation": "Boot is open.",
+      "Action": "Open boot.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "Fetch wrench from boot",
+      "Observation": "You have wrench.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "Fetch jack from boot",
+      "Observation": "You have jack.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "Loosen the nut nuts1 on the hub the-hub1.",
+      "Observation": "The nut nuts1 on the hub the-hub1 is loose.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 4": {
+      "Action": "jack-up the-hub1",
+      "Observation": "Hub the-hub1 is not on the ground.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 5": {
+      "Action": "Undo the fastening of the nut nuts1 on the hub the-hub1.",
+      "Observation": "Hub the-hub1 is unfastened. You have nuts1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 6": {
+      "Action": "Remove-wheel w1 from the hub the-hub1.",
+      "Observation": "The-hub1 is free.  You have w1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 7": {
+      "Action": "Put-away w1 in boot",
+      "Observation": "W1 is in boot.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 8": {
+      "Action": "Fetch r1 from boot",
+      "Observation": "You have r1.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 9": {
+      "Action": "Put-on-wheel r1 the-hub1",
+      "Observation": "R1 is on the-hub1.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 10": {
+      "Action": "Do-up nuts1 on the-hub1.",
+      "Observation": "Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 11": {
+      "Action": "jack-down the-hub1",
+      "Observation": "Hub the-hub1 is on the ground. You have jack.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 12": {
+      "Action": "Tighten nuts1 on the-hub1.",
+      "Observation": "The nut nuts1 on the hub the-hub1 is tight.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 13": {
+      "Action": "Loosen the nut nuts2 on the hub the-hub2.",
+      "Observation": "The nut nuts2 on the hub the-hub2 is loose.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 14": {
+      "Action": "jack-up the-hub2",
+      "Observation": "Hub the-hub2 is not on the ground.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 15": {
+      "Action": "Undo the fastening of the nut nuts2 on the hub the-hub2.",
+      "Observation": "Hub the-hub2 is unfastened. You have nuts2.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 16": {
+      "Action": "Remove-wheel w2 from the hub the-hub2.",
+      "Observation": "The-hub2 is free.  You have w2.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 17": {
+      "Action": "Put-away w2 in boot",
+      "Observation": "W2 is in boot.",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 18": {
+      "Action": "Fetch r2 from boot",
+      "Observation": "You have r2.",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 19": {
+      "Action": "Put-on-wheel r2 the-hub2",
+      "Observation": "R2 is on the-hub2.",
+      "Progress Rate": 0.6666666666666666
+    }
+  },
+  "example_prompt": "Your goal is to replace flat tyres with intact tyres on the hubs. Remember to open boot first to get tools you need. Intact tyres should be inflated. The nuts should be tight on the hubs. The flat tyres, wrench, jack, and pump should be in the boot. The boot should be closed.\n    There are 13 actions defined in this domain:\n    open <container>: The precondition for this action is that the container is unlocked and closed. The effect of this action is that the container is open and not closed.\n    close <container>: The precondition for this action is that the container is open. The effect of this action is that the container is closed and not open.\n    fetch <object> <container>: The precondition for this action is that the object is inside the container and the container is open. The effect of this action is that the object is held by the agent and not inside the container.\n    put-away <object> <container>: The precondition for this action is that the object is held by the agent and the container is open. The effect of this action is that the object is inside the container and not held by the agent.\n    loosen <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is tight, and the hub is on the ground. The effect of this action is that the nut on hub is loose and not tight.\n    tighten <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is loose, and the hub is on the ground. The effect of this action is that the nut on hub is tight and not loose.\n    jack-up <hub>: This action represents the process of lifting a hub off the ground using a jack. It requires the agent to have a jack and for the hub to be on the ground. After performing this action, the hub will no longer be on the ground and the agent will no longer have the jack.\n    jack-down <hub>: This action represents the process of lowering a hub back to the ground from an elevated position using a jack. It requires the agent to have the hub off the ground. After performing this action, the hub will be back on the ground and the agent will have the jack.\n    undo <nut> <hub>: This action undo the fastening of a nut on a hub. The preconditions are the hub is not on the ground (i.e., it has been jacked up), the hub is fastened, the agent has a wrench and the nut is loose. The effects are the agent has the nut, the hub is unfastened, the hub is no longer loose and the hub is not fastened anymore.\n    do-up <nut> <hub>: This action fasten a nut on a hub. The preconditions are the agent has a wrench, the hub is unfastened, the hub is not on the ground (i.e., it has been jacked up) and the agent has the nut to be fastened. The effects are the nut is now loose on the hub, the hub is fastened, the hub is no longer unfastened and the agent no longer has the nut.\n    remove-wheel <wheel> <hub>: This action removes a wheel from a hub. It can only be performed if the hub is not on the ground, the wheel is currently on the hub, and the hub is unfastened. After the action is performed, the agent will have the removed wheel and the hub will be free, meaning that the wheel is no longer on the hub.\n    put-on-wheel <wheel> <hub>: This action puts a wheel onto a hub. It can only be performed if the agent has the wheel, the hub is free, the hub is unfastened, and the hub is not on the ground. After the action is performed, the wheel will be on the hub, the hub will no longer be free, and the agent will no longer have the wheel.\n    inflate <wheel>: This action inflates a wheel using a pump. It can only be performed if the agent has a pump, the wheel is not inflated, and the wheel is intact. After the action is performed, the wheel will be inflated.\n\nHere are examples:\nThe goal is to satisfy the following conditions: w1 is in boot. (Note you need to open boot first so that you can extract tools from it.)\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. The nut nuts1 on the hub the-hub1 is tight. Wheel r1 is intact. Wheel r1 is not inflated. Wheel w1 is on hub the-hub1. Wrench is in boot.\nAction: check valid actions.\nObservation: Valid actions are: Open boot. Check valid actions. Look around.\nAction: Open boot.\nObservation: Boot is open. \nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: check valid actions\nObservation: Valid actions are: Fetch pump from boot., Fetch r1 from boot., Put-away wrench in boot., Close boot., Fetch jack from boot., Loosen the nut nuts1 on the hub the-hub1., check valid actions\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose. \nAction: fetch jack from boot\nObservation: You have jack. \nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground. \nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. \nAction: Remove-wheel w1 from the hub the-hub1.\nObservation: You have w1. \nAction: Put-away w1 in boot\nObservation: W1 is in boot. Goal is completed.\nYou should perform actions to accomplish the goal: The goal is to satisfy the following conditions: Wheel r3 is inflated., w1 is in boot., w2 is in boot.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Hub the-hub2 is fastened. Hub the-hub2 is on the ground. Hub the-hub3 is fastened. Hub the-hub3 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. R2 is in boot. R3 is in boot. The nut nuts1 on the hub the-hub1 is tight. The nut nuts2 on the hub the-hub2 is tight. The nut nuts3 on the hub the-hub3 is tight. W1 is on the-hub1. W2 is on the-hub2. W3 is on the-hub3. Wheel r1 is intact. Wheel r1 is not inflated. Wheel r2 is intact. Wheel r2 is not inflated. Wheel r3 is intact. Wheel r3 is not inflated. Wrench is in boot.\nAction: Open boot.\nObservation: Boot is open.\nAction: Fetch wrench from boot\nObservation: You have wrench.\nAction: Fetch jack from boot\nObservation: You have jack.\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose.\nAction: jack-up the-hub1\nObservation: Hub the-hub1 is not on the ground.\nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. You have nuts1.\nAction: Remove-wheel w1 from the hub the-hub1.\nObservation: The-hub1 is free.  You have w1.\nAction: Put-away w1 in boot\nObservation: W1 is in boot.\nAction: Fetch r1 from boot\nObservation: You have r1.\nAction: Put-on-wheel r1 the-hub1\nObservation: R1 is on the-hub1.\nAction: Do-up nuts1 on the-hub1.\nObservation: Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.\nAction: jack-down the-hub1\nObservation: Hub the-hub1 is on the ground. You have jack.\nAction: Tighten nuts1 on the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is tight.\nAction: Loosen the nut nuts2 on the hub the-hub2.\nObservation: The nut nuts2 on the hub the-hub2 is loose.\nAction: jack-up the-hub2\nObservation: Hub the-hub2 is not on the ground.\nAction: Undo the fastening of the nut nuts2 on the hub the-hub2.\nObservation: Hub the-hub2 is unfastened. You have nuts2.\nAction: Remove-wheel w2 from the hub the-hub2.\nObservation: The-hub2 is free.  You have w2.\nAction: Put-away w2 in boot\nObservation: W2 is in boot.\nAction: Fetch r2 from boot\nObservation: You have r2.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 57,
+  "task_name": "tyreworld",
+  "goal": "The goal is to satisfy the following conditions: w1 is in boot., w2 is in boot.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.5,
+  "grounding_acc": 0.75,
+  "score_change_record": [
+    [
+      14,
+      0.5
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: w1 is in boot., w2 is in boot.",
+      "Observation": "Boot is open.",
+      "Action": "Open boot.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "fetch wrench from boot",
+      "Observation": "You have wrench.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "fetch jack from boot",
+      "Observation": "You have jack.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "jack-up the hub the-hub1",
+      "Observation": "Hub the-hub1 is not on the ground.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 4": {
+      "Action": "Undo the fastening of the nut nuts1 on the hub the-hub1.",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 5": {
+      "Action": "loosen the nut nuts1 on the hub the-hub1.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 6": {
+      "Action": "check valid actions",
+      "Observation": "Valid actions are: Fetch r1 from boot., Jack-down the hub the-hub1., Fetch pump from boot., Fetch r2 from boot., Put-away wrench in boot., Fetch r3 from boot., Loosen the nut nuts2 on the hub the-hub2., Loosen the nut nuts3 on the hub the-hub3., Close boot., check valid actions, look around",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 7": {
+      "Action": "Loosen the nut nuts1 on the hub the-hub1.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 8": {
+      "Action": "Jack-down the hub the-hub1.",
+      "Observation": "Hub the-hub1 is on the ground. You have jack.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 9": {
+      "Action": "Loosen the nut nuts1 on the hub the-hub1.",
+      "Observation": "The nut nuts1 on the hub the-hub1 is loose.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 10": {
+      "Action": "Undo the fastening of the nut nuts1 on the hub the-hub1.",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 11": {
+      "Action": "jack-up the hub the-hub1",
+      "Observation": "Hub the-hub1 is not on the ground.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 12": {
+      "Action": "Undo the fastening of the nut nuts1 on the hub the-hub1.",
+      "Observation": "Hub the-hub1 is unfastened. You have nuts1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 13": {
+      "Action": "Remove-wheel W1 from the hub the-hub1.",
+      "Observation": "The-hub1 is free.  You have w1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 14": {
+      "Action": "Put-away w1 in boot",
+      "Observation": "W1 is in boot.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 15": {
+      "Action": "fetch r1 from boot",
+      "Observation": "You have r1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 16": {
+      "Action": "Put-on-wheel r1 on the-hub1.",
+      "Observation": "R1 is on the-hub1.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 17": {
+      "Action": "Do-up nuts1 on the hub the-hub1.",
+      "Observation": "Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 18": {
+      "Action": "Tighten the nut nuts1 on the hub the-hub1.",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 19": {
+      "Action": "Jack-down the hub the-hub1.",
+      "Observation": "Hub the-hub1 is on the ground. You have jack.",
+      "Progress Rate": 0.5
+    }
+  },
+  "example_prompt": "Your goal is to replace flat tyres with intact tyres on the hubs. Remember to open boot first to get tools you need. Intact tyres should be inflated. The nuts should be tight on the hubs. The flat tyres, wrench, jack, and pump should be in the boot. The boot should be closed.\n    There are 13 actions defined in this domain:\n    open <container>: The precondition for this action is that the container is unlocked and closed. The effect of this action is that the container is open and not closed.\n    close <container>: The precondition for this action is that the container is open. The effect of this action is that the container is closed and not open.\n    fetch <object> <container>: The precondition for this action is that the object is inside the container and the container is open. The effect of this action is that the object is held by the agent and not inside the container.\n    put-away <object> <container>: The precondition for this action is that the object is held by the agent and the container is open. The effect of this action is that the object is inside the container and not held by the agent.\n    loosen <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is tight, and the hub is on the ground. The effect of this action is that the nut on hub is loose and not tight.\n    tighten <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is loose, and the hub is on the ground. The effect of this action is that the nut on hub is tight and not loose.\n    jack-up <hub>: This action represents the process of lifting a hub off the ground using a jack. It requires the agent to have a jack and for the hub to be on the ground. After performing this action, the hub will no longer be on the ground and the agent will no longer have the jack.\n    jack-down <hub>: This action represents the process of lowering a hub back to the ground from an elevated position using a jack. It requires the agent to have the hub off the ground. After performing this action, the hub will be back on the ground and the agent will have the jack.\n    undo <nut> <hub>: This action undo the fastening of a nut on a hub. The preconditions are the hub is not on the ground (i.e., it has been jacked up), the hub is fastened, the agent has a wrench and the nut is loose. The effects are the agent has the nut, the hub is unfastened, the hub is no longer loose and the hub is not fastened anymore.\n    do-up <nut> <hub>: This action fasten a nut on a hub. The preconditions are the agent has a wrench, the hub is unfastened, the hub is not on the ground (i.e., it has been jacked up) and the agent has the nut to be fastened. The effects are the nut is now loose on the hub, the hub is fastened, the hub is no longer unfastened and the agent no longer has the nut.\n    remove-wheel <wheel> <hub>: This action removes a wheel from a hub. It can only be performed if the hub is not on the ground, the wheel is currently on the hub, and the hub is unfastened. After the action is performed, the agent will have the removed wheel and the hub will be free, meaning that the wheel is no longer on the hub.\n    put-on-wheel <wheel> <hub>: This action puts a wheel onto a hub. It can only be performed if the agent has the wheel, the hub is free, the hub is unfastened, and the hub is not on the ground. After the action is performed, the wheel will be on the hub, the hub will no longer be free, and the agent will no longer have the wheel.\n    inflate <wheel>: This action inflates a wheel using a pump. It can only be performed if the agent has a pump, the wheel is not inflated, and the wheel is intact. After the action is performed, the wheel will be inflated.\n\nHere are examples:\nThe goal is to satisfy the following conditions: w1 is in boot. (Note you need to open boot first so that you can extract tools from it.)\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. The nut nuts1 on the hub the-hub1 is tight. Wheel r1 is intact. Wheel r1 is not inflated. Wheel w1 is on hub the-hub1. Wrench is in boot.\nAction: check valid actions.\nObservation: Valid actions are: Open boot. Check valid actions. Look around.\nAction: Open boot.\nObservation: Boot is open. \nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: check valid actions\nObservation: Valid actions are: Fetch pump from boot., Fetch r1 from boot., Put-away wrench in boot., Close boot., Fetch jack from boot., Loosen the nut nuts1 on the hub the-hub1., check valid actions\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose. \nAction: fetch jack from boot\nObservation: You have jack. \nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground. \nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. \nAction: Remove-wheel w1 from the hub the-hub1.\nObservation: You have w1. \nAction: Put-away w1 in boot\nObservation: W1 is in boot. Goal is completed.\nYou should perform actions to accomplish the goal: The goal is to satisfy the following conditions: w1 is in boot., w2 is in boot.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Hub the-hub2 is fastened. Hub the-hub2 is on the ground. Hub the-hub3 is fastened. Hub the-hub3 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. R2 is in boot. R3 is in boot. The nut nuts1 on the hub the-hub1 is tight. The nut nuts2 on the hub the-hub2 is tight. The nut nuts3 on the hub the-hub3 is tight. W1 is on the-hub1. W2 is on the-hub2. W3 is on the-hub3. Wheel r1 is intact. Wheel r1 is not inflated. Wheel r2 is inflated. Wheel r2 is intact. Wheel r3 is intact. Wheel r3 is not inflated. Wrench is in boot.\nAction: Open boot.\nObservation: Boot is open.\nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: fetch jack from boot\nObservation: You have jack.\nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground.\nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: The action is not valid and therefore takes no effect. Please check valid actions.\nAction: loosen the nut nuts1 on the hub the-hub1.\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: check valid actions\nObservation: Valid actions are: Fetch r1 from boot., Jack-down the hub the-hub1., Fetch pump from boot., Fetch r2 from boot., Put-away wrench in boot., Fetch r3 from boot., Loosen the nut nuts2 on the hub the-hub2., Loosen the nut nuts3 on the hub the-hub3., Close boot., check valid actions, look around\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: Jack-down the hub the-hub1.\nObservation: Hub the-hub1 is on the ground. You have jack.\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose.\nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: The action is not valid and therefore takes no effect. Please check valid actions.\nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground.\nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. You have nuts1.\nAction: Remove-wheel W1 from the hub the-hub1.\nObservation: The-hub1 is free.  You have w1.\nAction: Put-away w1 in boot\nObservation: W1 is in boot.\nAction: fetch r1 from boot\nObservation: You have r1.\nAction: Put-on-wheel r1 on the-hub1.\nObservation: R1 is on the-hub1.\nAction: Do-up nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.\nAction: Tighten the nut nuts1 on the hub the-hub1.\nObservation: The action is not valid and therefore takes no effect. Please check valid actions.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 58,
+  "task_name": "tyreworld",
+  "goal": "The goal is to satisfy the following conditions: w3 is in boot., w4 is in boot.",
+  "difficulty": "hard",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 1.0,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: w3 is in boot., w4 is in boot.",
+      "Observation": "Boot is open.",
+      "Action": "Open boot.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "fetch wrench from boot",
+      "Observation": "You have wrench.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "fetch jack from boot",
+      "Observation": "You have jack.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "Loosen the nut nuts1 on the hub the-hub1.",
+      "Observation": "The nut nuts1 on the hub the-hub1 is loose.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 4": {
+      "Action": "jack-up the hub the-hub1",
+      "Observation": "Hub the-hub1 is not on the ground.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 5": {
+      "Action": "Undo the fastening of the nut nuts1 on the hub the-hub1.",
+      "Observation": "Hub the-hub1 is unfastened. You have nuts1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 6": {
+      "Action": "Remove-wheel w1 from the hub the-hub1.",
+      "Observation": "The-hub1 is free.  You have w1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 7": {
+      "Action": "Put-away w1 in boot",
+      "Observation": "W1 is in boot.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 8": {
+      "Action": "fetch r1 from boot",
+      "Observation": "You have r1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 9": {
+      "Action": "Put-on-wheel r1 on the hub the-hub1",
+      "Observation": "R1 is on the-hub1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 10": {
+      "Action": "Do-up nuts1 on the hub the-hub1.",
+      "Observation": "Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 11": {
+      "Action": "jack-down the hub the-hub1",
+      "Observation": "Hub the-hub1 is on the ground. You have jack.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 12": {
+      "Action": "Loosen the nut nuts2 on the hub the-hub2.",
+      "Observation": "The nut nuts2 on the hub the-hub2 is loose.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 13": {
+      "Action": "jack-up the hub the-hub2",
+      "Observation": "Hub the-hub2 is not on the ground.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 14": {
+      "Action": "Undo the fastening of the nut nuts2 on the hub the-hub2.",
+      "Observation": "Hub the-hub2 is unfastened. You have nuts2.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 15": {
+      "Action": "Remove-wheel w2 from the hub the-hub2.",
+      "Observation": "The-hub2 is free.  You have w2.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 16": {
+      "Action": "Put-away w2 in boot",
+      "Observation": "W2 is in boot.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 17": {
+      "Action": "fetch r2 from boot",
+      "Observation": "You have r2.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 18": {
+      "Action": "Put-on-wheel r2 on the hub the-hub2",
+      "Observation": "R2 is on the-hub2.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 19": {
+      "Action": "Do-up nuts2 on the hub the-hub2.",
+      "Observation": "Hub the-hub2 is fastened. The nut nuts2 on the hub the-hub2 is loose.",
+      "Progress Rate": 0
+    }
+  },
+  "example_prompt": "Your goal is to replace flat tyres with intact tyres on the hubs. Remember to open boot first to get tools you need. Intact tyres should be inflated. The nuts should be tight on the hubs. The flat tyres, wrench, jack, and pump should be in the boot. The boot should be closed.\n    There are 13 actions defined in this domain:\n    open <container>: The precondition for this action is that the container is unlocked and closed. The effect of this action is that the container is open and not closed.\n    close <container>: The precondition for this action is that the container is open. The effect of this action is that the container is closed and not open.\n    fetch <object> <container>: The precondition for this action is that the object is inside the container and the container is open. The effect of this action is that the object is held by the agent and not inside the container.\n    put-away <object> <container>: The precondition for this action is that the object is held by the agent and the container is open. The effect of this action is that the object is inside the container and not held by the agent.\n    loosen <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is tight, and the hub is on the ground. The effect of this action is that the nut on hub is loose and not tight.\n    tighten <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is loose, and the hub is on the ground. The effect of this action is that the nut on hub is tight and not loose.\n    jack-up <hub>: This action represents the process of lifting a hub off the ground using a jack. It requires the agent to have a jack and for the hub to be on the ground. After performing this action, the hub will no longer be on the ground and the agent will no longer have the jack.\n    jack-down <hub>: This action represents the process of lowering a hub back to the ground from an elevated position using a jack. It requires the agent to have the hub off the ground. After performing this action, the hub will be back on the ground and the agent will have the jack.\n    undo <nut> <hub>: This action undo the fastening of a nut on a hub. The preconditions are the hub is not on the ground (i.e., it has been jacked up), the hub is fastened, the agent has a wrench and the nut is loose. The effects are the agent has the nut, the hub is unfastened, the hub is no longer loose and the hub is not fastened anymore.\n    do-up <nut> <hub>: This action fasten a nut on a hub. The preconditions are the agent has a wrench, the hub is unfastened, the hub is not on the ground (i.e., it has been jacked up) and the agent has the nut to be fastened. The effects are the nut is now loose on the hub, the hub is fastened, the hub is no longer unfastened and the agent no longer has the nut.\n    remove-wheel <wheel> <hub>: This action removes a wheel from a hub. It can only be performed if the hub is not on the ground, the wheel is currently on the hub, and the hub is unfastened. After the action is performed, the agent will have the removed wheel and the hub will be free, meaning that the wheel is no longer on the hub.\n    put-on-wheel <wheel> <hub>: This action puts a wheel onto a hub. It can only be performed if the agent has the wheel, the hub is free, the hub is unfastened, and the hub is not on the ground. After the action is performed, the wheel will be on the hub, the hub will no longer be free, and the agent will no longer have the wheel.\n    inflate <wheel>: This action inflates a wheel using a pump. It can only be performed if the agent has a pump, the wheel is not inflated, and the wheel is intact. After the action is performed, the wheel will be inflated.\n\nHere are examples:\nThe goal is to satisfy the following conditions: w1 is in boot. (Note you need to open boot first so that you can extract tools from it.)\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. The nut nuts1 on the hub the-hub1 is tight. Wheel r1 is intact. Wheel r1 is not inflated. Wheel w1 is on hub the-hub1. Wrench is in boot.\nAction: check valid actions.\nObservation: Valid actions are: Open boot. Check valid actions. Look around.\nAction: Open boot.\nObservation: Boot is open. \nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: check valid actions\nObservation: Valid actions are: Fetch pump from boot., Fetch r1 from boot., Put-away wrench in boot., Close boot., Fetch jack from boot., Loosen the nut nuts1 on the hub the-hub1., check valid actions\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose. \nAction: fetch jack from boot\nObservation: You have jack. \nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground. \nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. \nAction: Remove-wheel w1 from the hub the-hub1.\nObservation: You have w1. \nAction: Put-away w1 in boot\nObservation: W1 is in boot. Goal is completed.\nYou should perform actions to accomplish the goal: The goal is to satisfy the following conditions: w3 is in boot., w4 is in boot.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Hub the-hub2 is fastened. Hub the-hub2 is on the ground. Hub the-hub3 is fastened. Hub the-hub3 is on the ground. Hub the-hub4 is fastened. Hub the-hub4 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. R2 is in boot. R3 is in boot. R4 is in boot. The nut nuts1 on the hub the-hub1 is tight. The nut nuts2 on the hub the-hub2 is tight. The nut nuts3 on the hub the-hub3 is tight. The nut nuts4 on the hub the-hub4 is tight. W1 is on the-hub1. W2 is on the-hub2. W3 is on the-hub3. W4 is on the-hub4. Wheel r1 is intact. Wheel r1 is not inflated. Wheel r2 is intact. Wheel r2 is not inflated. Wheel r3 is intact. Wheel r3 is not inflated. Wheel r4 is intact. Wheel r4 is not inflated. Wrench is in boot.\nAction: Open boot.\nObservation: Boot is open.\nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: fetch jack from boot\nObservation: You have jack.\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose.\nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground.\nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. You have nuts1.\nAction: Remove-wheel w1 from the hub the-hub1.\nObservation: The-hub1 is free.  You have w1.\nAction: Put-away w1 in boot\nObservation: W1 is in boot.\nAction: fetch r1 from boot\nObservation: You have r1.\nAction: Put-on-wheel r1 on the hub the-hub1\nObservation: R1 is on the-hub1.\nAction: Do-up nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.\nAction: jack-down the hub the-hub1\nObservation: Hub the-hub1 is on the ground. You have jack.\nAction: Loosen the nut nuts2 on the hub the-hub2.\nObservation: The nut nuts2 on the hub the-hub2 is loose.\nAction: jack-up the hub the-hub2\nObservation: Hub the-hub2 is not on the ground.\nAction: Undo the fastening of the nut nuts2 on the hub the-hub2.\nObservation: Hub the-hub2 is unfastened. You have nuts2.\nAction: Remove-wheel w2 from the hub the-hub2.\nObservation: The-hub2 is free.  You have w2.\nAction: Put-away w2 in boot\nObservation: W2 is in boot.\nAction: fetch r2 from boot\nObservation: You have r2.\nAction: Put-on-wheel r2 on the hub the-hub2\nObservation: R2 is on the-hub2.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}
+{
+  "id": 59,
+  "task_name": "tyreworld",
+  "goal": "The goal is to satisfy the following conditions: Wheel r1 is inflated., Wheel r2 is inflated., Wheel r3 is inflated., r3 is on the-hub3., w3 is in boot.",
+  "difficulty": "easy",
+  "is_done": false,
+  "progress_rate": 0.0,
+  "grounding_acc": 0.75,
+  "score_change_record": [],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: Wheel r1 is inflated., Wheel r2 is inflated., Wheel r3 is inflated., r3 is on the-hub3., w3 is in boot.",
+      "Observation": "Boot is open.",
+      "Action": "Open boot.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "fetch wrench from boot",
+      "Observation": "You have wrench.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "fetch jack from boot",
+      "Observation": "You have jack.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "Loosen the nut nuts1 on the hub the-hub1.",
+      "Observation": "The nut nuts1 on the hub the-hub1 is loose.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 4": {
+      "Action": "jack-up the hub the-hub1.",
+      "Observation": "Hub the-hub1 is not on the ground.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 5": {
+      "Action": "Undo the fastening of the nut nuts1 on the hub the-hub1.",
+      "Observation": "Hub the-hub1 is unfastened. You have nuts1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 6": {
+      "Action": "Remove-wheel w1 from the hub the-hub1.",
+      "Observation": "The-hub1 is free.  You have w1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 7": {
+      "Action": "Put-away w1 in boot",
+      "Observation": "W1 is in boot.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 8": {
+      "Action": "Put-away jack in boot",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 9": {
+      "Action": "jack-down the hub the-hub1.",
+      "Observation": "Hub the-hub1 is on the ground. You have jack.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 10": {
+      "Action": "fetch r1 from boot",
+      "Observation": "You have r1.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 11": {
+      "Action": "Do-up nuts1 on the hub the-hub1.",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 12": {
+      "Action": "Put-on-wheel r1 on the-hub1",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 13": {
+      "Action": "jack-up the hub the-hub1",
+      "Observation": "Hub the-hub1 is not on the ground.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 14": {
+      "Action": "Do-up nuts1 on the hub the-hub1.",
+      "Observation": "Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 15": {
+      "Action": "Put-on-wheel r1 on the-hub1",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 16": {
+      "Action": "jack-down the hub the-hub1.",
+      "Observation": "Hub the-hub1 is on the ground. You have jack.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 17": {
+      "Action": "Tighten the nut nuts1 on the hub the-hub1.",
+      "Observation": "The nut nuts1 on the hub the-hub1 is tight.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 18": {
+      "Action": "fetch r2 from boot",
+      "Observation": "You have r2.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 19": {
+      "Action": "inflate r1",
+      "Observation": "The action is not valid and therefore takes no effect. Please check valid actions.",
+      "Progress Rate": 0
+    }
+  },
+  "example_prompt": "Your goal is to replace flat tyres with intact tyres on the hubs. Remember to open boot first to get tools you need. Intact tyres should be inflated. The nuts should be tight on the hubs. The flat tyres, wrench, jack, and pump should be in the boot. The boot should be closed.\n    There are 13 actions defined in this domain:\n    open <container>: The precondition for this action is that the container is unlocked and closed. The effect of this action is that the container is open and not closed.\n    close <container>: The precondition for this action is that the container is open. The effect of this action is that the container is closed and not open.\n    fetch <object> <container>: The precondition for this action is that the object is inside the container and the container is open. The effect of this action is that the object is held by the agent and not inside the container.\n    put-away <object> <container>: The precondition for this action is that the object is held by the agent and the container is open. The effect of this action is that the object is inside the container and not held by the agent.\n    loosen <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is tight, and the hub is on the ground. The effect of this action is that the nut on hub is loose and not tight.\n    tighten <nut> <hub>: The precondition for this action is that the agent has a wrench, the nut on hub is loose, and the hub is on the ground. The effect of this action is that the nut on hub is tight and not loose.\n    jack-up <hub>: This action represents the process of lifting a hub off the ground using a jack. It requires the agent to have a jack and for the hub to be on the ground. After performing this action, the hub will no longer be on the ground and the agent will no longer have the jack.\n    jack-down <hub>: This action represents the process of lowering a hub back to the ground from an elevated position using a jack. It requires the agent to have the hub off the ground. After performing this action, the hub will be back on the ground and the agent will have the jack.\n    undo <nut> <hub>: This action undo the fastening of a nut on a hub. The preconditions are the hub is not on the ground (i.e., it has been jacked up), the hub is fastened, the agent has a wrench and the nut is loose. The effects are the agent has the nut, the hub is unfastened, the hub is no longer loose and the hub is not fastened anymore.\n    do-up <nut> <hub>: This action fasten a nut on a hub. The preconditions are the agent has a wrench, the hub is unfastened, the hub is not on the ground (i.e., it has been jacked up) and the agent has the nut to be fastened. The effects are the nut is now loose on the hub, the hub is fastened, the hub is no longer unfastened and the agent no longer has the nut.\n    remove-wheel <wheel> <hub>: This action removes a wheel from a hub. It can only be performed if the hub is not on the ground, the wheel is currently on the hub, and the hub is unfastened. After the action is performed, the agent will have the removed wheel and the hub will be free, meaning that the wheel is no longer on the hub.\n    put-on-wheel <wheel> <hub>: This action puts a wheel onto a hub. It can only be performed if the agent has the wheel, the hub is free, the hub is unfastened, and the hub is not on the ground. After the action is performed, the wheel will be on the hub, the hub will no longer be free, and the agent will no longer have the wheel.\n    inflate <wheel>: This action inflates a wheel using a pump. It can only be performed if the agent has a pump, the wheel is not inflated, and the wheel is intact. After the action is performed, the wheel will be inflated.\n\nHere are examples:\nThe goal is to satisfy the following conditions: w1 is in boot. (Note you need to open boot first so that you can extract tools from it.)\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. The nut nuts1 on the hub the-hub1 is tight. Wheel r1 is intact. Wheel r1 is not inflated. Wheel w1 is on hub the-hub1. Wrench is in boot.\nAction: check valid actions.\nObservation: Valid actions are: Open boot. Check valid actions. Look around.\nAction: Open boot.\nObservation: Boot is open. \nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: check valid actions\nObservation: Valid actions are: Fetch pump from boot., Fetch r1 from boot., Put-away wrench in boot., Close boot., Fetch jack from boot., Loosen the nut nuts1 on the hub the-hub1., check valid actions\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose. \nAction: fetch jack from boot\nObservation: You have jack. \nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground. \nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. \nAction: Remove-wheel w1 from the hub the-hub1.\nObservation: You have w1. \nAction: Put-away w1 in boot\nObservation: W1 is in boot. Goal is completed.\nYou should perform actions to accomplish the goal: The goal is to satisfy the following conditions: Wheel r1 is inflated., Wheel r2 is inflated., Wheel r3 is inflated., r3 is on the-hub3., w3 is in boot.\nYou should use the following commands for help when your action cannot be understood: check valid actions\nObservation: Boot is closed. Boot is unlocked. Hub the-hub1 is fastened. Hub the-hub1 is on the ground. Hub the-hub2 is fastened. Hub the-hub2 is on the ground. Hub the-hub3 is fastened. Hub the-hub3 is on the ground. Jack is in boot. Pump is in boot. R1 is in boot. R2 is in boot. R3 is in boot. The nut nuts1 on the hub the-hub1 is tight. The nut nuts2 on the hub the-hub2 is tight. The nut nuts3 on the hub the-hub3 is tight. W1 is on the-hub1. W2 is on the-hub2. W3 is on the-hub3. Wheel r1 is intact. Wheel r1 is not inflated. Wheel r2 is intact. Wheel r2 is not inflated. Wheel r3 is intact. Wheel r3 is not inflated. Wrench is in boot.\nAction: Open boot.\nObservation: Boot is open.\nAction: fetch wrench from boot\nObservation: You have wrench.\nAction: fetch jack from boot\nObservation: You have jack.\nAction: Loosen the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is loose.\nAction: jack-up the hub the-hub1.\nObservation: Hub the-hub1 is not on the ground.\nAction: Undo the fastening of the nut nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is unfastened. You have nuts1.\nAction: Remove-wheel w1 from the hub the-hub1.\nObservation: The-hub1 is free.  You have w1.\nAction: Put-away w1 in boot\nObservation: W1 is in boot.\nAction: Put-away jack in boot\nObservation: The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.\nAction: jack-down the hub the-hub1.\nObservation: Hub the-hub1 is on the ground. You have jack.\nAction: fetch r1 from boot\nObservation: You have r1.\nAction: Do-up nuts1 on the hub the-hub1.\nObservation: The action is not valid and therefore takes no effect. Please check valid actions.\nAction: Put-on-wheel r1 on the-hub1\nObservation: The action is not valid and therefore takes no effect. Please check valid actions.\nAction: jack-up the hub the-hub1\nObservation: Hub the-hub1 is not on the ground.\nAction: Do-up nuts1 on the hub the-hub1.\nObservation: Hub the-hub1 is fastened. The nut nuts1 on the hub the-hub1 is loose.\nAction: Put-on-wheel r1 on the-hub1\nObservation: The action is not valid and therefore takes no effect. Please check valid actions.\nAction: jack-down the hub the-hub1.\nObservation: Hub the-hub1 is on the ground. You have jack.\nAction: Tighten the nut nuts1 on the hub the-hub1.\nObservation: The nut nuts1 on the hub the-hub1 is tight.\nAction: fetch r2 from boot\nObservation: You have r2.Predict actions and observations of next 5 steps in this format:\nAction:\nObservation:\n"
+}

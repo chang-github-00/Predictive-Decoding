@@ -434,8 +434,23 @@ class MPCSample(   # add world modeling objective in agent
         tokens = action_sequence["tokens"]
         
         actions = [item["Action"] for item in new_trajectory if "Action" in item and item["Action"] is not None]
-            
+        
+        action = actions[0]
+        # count the number of action in memory
+        count = 0
+        past_actions = []
+        for item in self.memory:
+            if item[0] == "Action":
+                past_actions.append(item[1])
+        if len(past_actions) >0 and past_actions[-1] == action:
+            return 0
+                
         observations = [item["Observation"] for item in new_trajectory if "Observation" in item and item["Observation"] is not None]
+        
+        if len(actions) < 1:
+            return 0
+        if len(observations) < 1:
+            return 0
         
         first_action = actions[0] 
         first_action_start, first_action_end = _get_start_end_token_id(action_sequence["text"], first_action, tokens)

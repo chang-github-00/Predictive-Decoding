@@ -11,7 +11,7 @@ algorithm:
   n_generate_sample: 1 # n=1 pal
   value_type: logp # use llama3
   do_sample: True
-  beam_temperature: 1
+  beam_temperature: 1.0
   beam_search: False
   # lookahead_token_length: 
 llm:

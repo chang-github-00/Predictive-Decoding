@@ -18,12 +18,12 @@ from typing import Optional
 from utils.math.math_utils import parse_question, parse_ground_truth, math_equal, call_with_timeout
 from utils.logging.token_logger import token_count, count_flag
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 def load_dataset(task, path='/root/huggingface/gsm8k'):
     if task == "gsm8k":
         full_dataset = datasets.load_dataset(path, 'main', split='test')
         dataset = [{"question": a["question"], "answer": a["answer"]} for a in full_dataset]
-        return dataset[:20]
+        return dataset
     
     if task == "math":
         examples = []
@@ -227,8 +227,8 @@ class EvalReasoning:
         #     self.prompts = json.load(f)
         self.prompts = {}
         if self.task == "gsm8k":
-            from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt, pal_prompt, pal_prompt_1
-            self.prompts["prompt"] = pal_prompt #code_prompt#pal_prompt
+            from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt, pal_prompt, pal_prompt_1, no_example_prompt
+            self.prompts["prompt"] = code_prompt #no_example_prompt#pal_prompt_1 #code_prompt#pal_prompt
             self.prompts["evaluate"] = evaluate_prompt
             self.prompts["system_msg"] = "You will write python program to solve math problems. You will only write code blocks."
         if self.task == "math":

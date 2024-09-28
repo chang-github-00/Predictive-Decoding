@@ -728,7 +728,15 @@ def solution():
 
 choice_prefix = ['# Is the above line of code:', '# (A) Correct', '# (B) Incorrect', '# The above line of code is:']
 
+no_example_prompt = '''
+The format should be like this:
+Q: [question]
 
+# solution in Python:
+def solution():
+    [code]
+    return result
+'''
 
 pal_prompt = '''
 Q: Olivia has $23. She bought five bagels for $3 each. How much money does she have left?

@@ -210,6 +210,8 @@ class ReactAgent(
         system_message = self.init_prompt_dict['system_msg']
 
         action = None    
+        self.think_count = 0
+        
         while action is None:
             input_prompt = self.make_prompt(need_goal=self.need_goal,
                                             check_actions=self.check_actions,
@@ -235,13 +237,12 @@ class ReactAgent(
                 self.memory.append(
                     ("Think", thought)
                 )
-                self.think_count += 1
             if action is not None:
                 action = self.action_parser_for_special_llms(action)
             else: 
                 self.think_count += 1
             if self.think_count >= self.max_think_iters:
-                action = response
+                action = self.action_parser_for_special_llms(response)
 
         return success, action, False 
 

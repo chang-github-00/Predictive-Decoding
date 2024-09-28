@@ -137,15 +137,15 @@ first_false_probs = np.array(first_false_probs)
 average_first_false_probs = np.mean(first_false_probs, axis=0)
 norm = Normalize(vmin=evaluated.min(), vmax=evaluated.max())
 cmap = cm.get_cmap('Greens')
-plt.figure(figsize=(4,3))
-plt.plot(average_first_false_probs, label='Incorrect Answer LogP w.r.t steps', marker='o', markersize=3)
+plt.figure(figsize=(4,2))
+plt.plot(average_first_false_probs, label='Incorrect Answer Score w.r.t steps', marker='o', markersize=3)
 plt.axvline(1, color='red', linestyle='--', label='First Incorrect Step')
 evaluate_range = np.linspace(0, 1, 100)
 
 for i in range(98):
     plt.fill_between(range(9), evaluate_range[i], evaluate_range[i+1], color=cmap(norm(evaluated[i])), alpha=0.5, edgecolor=None)
 
-plt.fill_between(range(9), evaluate_range[98], evaluate_range[99], color=cmap(norm(evaluated[99])), alpha=0.5, edgecolor=None, label='Correct Steps LogP Density')
+plt.fill_between(range(9), evaluate_range[98], evaluate_range[99], color=cmap(norm(evaluated[99])), alpha=0.5, edgecolor=None, label='Correct Steps Score Density')
 
 
 plt.xlabel('Step')

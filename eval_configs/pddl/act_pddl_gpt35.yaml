@@ -35,9 +35,9 @@ llm:
       max_retry_iters: 15
       stop: "\n"
       use_parser: False
-  llama-70b:
-      name: gpt
-      engine: Meta-Llama-3.1-70B-Instruct
+  llama-70b-vllm:
+      name: openai_vllm
+      engine: /ssddata/model_hub/Meta-Llama-3-8B-Instruct/
       context_length: 4096
       use_azure: False
       temperature: 0.0
@@ -46,8 +46,6 @@ llm:
       max_retry_iters: 15
       stop: "\n"
       use_parser: False
-
-
 env:
   pddl:
     name: pddl

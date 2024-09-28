@@ -1,4 +1,4 @@
-from vllm import LLM, SamplingParams
+# from vllm import LLM, SamplingParams
 import pdb
 import sys
 import numpy as np
@@ -13,6 +13,9 @@ from openai import OpenAI
 import time
 import openai
 import os
+import tiktoken
+from transformers import AutoTokenizer
+
 
 @registry.register_llm("openai_vllm")
 class OPENAI_VLLM:
@@ -46,18 +49,19 @@ class OPENAI_VLLM:
             base_url = os.getenv("OPENAI_API_BASE", "http://localhost:8000/v1"),
             # organization='',
         )
+        self.tokenizer = AutoTokenizer.from_pretrained(self.engine)
                 
     def chat_inference(self, messages):
 
         response = self.client.chat.completions.create(
-            engine=self.engine, # engine = "deployment_name".
+            model=self.engine,
             messages=messages,
             stop = self.stop,
             temperature = self.temperature,
             max_tokens = self.max_tokens,
         )
 
-        return response['choices'][0]['message']['content']
+        return response.choices[0].message.content
     
     def chat_inference_with_config(self, messages, config):
         stop = config.get("stop", self.stop)
@@ -69,9 +73,11 @@ class OPENAI_VLLM:
         temperature = config.get("temperature", self.temperature)
         max_tokens = config.get("max_tokens", self.max_tokens)
         n = config.get("n", 1)
-        logprobs = config.get("logprobs", 5)
+        top_logprobs = config.get("logprobs", 5)
         do_sample = config.get("do_sample", True)
         top_p = config.get("top_p", 1)
+        
+        logprobs = top_logprobs > 0
         
         
         response = self.client.chat.completions.create(
@@ -82,6 +88,7 @@ class OPENAI_VLLM:
                         top_p=top_p,
                         n=n,
                         stop=stop,
+                        top_logprobs=top_logprobs,
                         logprobs=logprobs,
         )
         if logprobs == 0:
@@ -172,8 +179,13 @@ class OPENAI_VLLM:
     
     
     def num_tokens_from_messages(self, messages):
-        raise NotImplementedError
-        return 1
+        # prompt = self.tokenizer.encode(self.tokenizer.apply_chat_template(messages))
+        prompt = ""
+        for message in messages:
+            prompt += message["role"] + ": " + message["content"] + "\n"
+        prompt = self.tokenizer.encode(prompt)
+        
+        return len(prompt)+100
 
     @classmethod
     def from_config(cls, config):

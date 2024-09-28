@@ -84,7 +84,7 @@ class MPCSample(   # add world modeling objective in agent
         
         self.task = 'pddl' # 'pddl'
         self.n_generate_sample = n_generate_sample
-        self.stop = ''
+        self.stop = []
         self.max_tokens = max_world_model_len
         self.temperature = beam_temperature
         self.select_temperature = select_temperature
@@ -237,6 +237,8 @@ class MPCSample(   # add world modeling objective in agent
     
     def parse_action_sequence(self,action): 
         
+        if isinstance(action, dict):
+            action = action["text"]
         # parse the llm generated action sequence into a trajectory list
         
         action_sequences = action.split('\n')
@@ -409,6 +411,64 @@ class MPCSample(   # add world modeling objective in agent
         satisified_percentage = satisfied/len(constraints)
         
         return satisified_percentage
+    
+    def get_logp_value(self, new_trajectory, action_sequence):
+        
+        def _get_start_end_token_id(original_text, text, tokens):
+            if text not in original_text:
+                text = text.strip()
+                if text not in original_text:
+                    return 0, -1
+            cnt_length = [len(token) for token in tokens]
+            cumulated_cnt_length = np.cumsum(cnt_length)
+            index_start =  original_text.index(text)#processed action index in action
+            index_end = index_start + len(text)
+                
+            token_start = np.argmax(cumulated_cnt_length >= index_start)
+            token_end = np.argmax(cumulated_cnt_length >= index_end)
+            if token_end < token_start:
+                token_end = -1
+            return token_start+1, token_end+1 # +1 to account for the >= sign, instead of > sign
+        
+        logp = action_sequence["logprobs"]
+        tokens = action_sequence["tokens"]
+        
+        actions = [item["Action"] for item in new_trajectory if "Action" in item and item["Action"] is not None]
+        
+        action = actions[0]
+        # count the number of action in memory
+        count = 0
+        past_actions = []
+        for item in self.memory:
+            if item[0] == "Action":
+                past_actions.append(item[1])
+        if len(past_actions) >0 and past_actions[-1] == action:
+            return 0
+                
+        observations = [item["Observation"] for item in new_trajectory if "Observation" in item and item["Observation"] is not None]
+        
+        if len(actions) < 1:
+            return 0
+        if len(observations) < 1:
+            return 0
+        
+        first_action = actions[0] 
+        first_action_start, first_action_end = _get_start_end_token_id(action_sequence["text"], first_action, tokens)
+        last_action = actions[-1]
+        last_action_start, last_action_end = _get_start_end_token_id(action_sequence["text"], last_action, tokens)
+        
+        last_observation = observations[-1]
+        last_observation_start, last_observation_end = _get_start_end_token_id(action_sequence["text"], last_observation, tokens)
+        
+        first_token_id = first_action_start
+        last_token_id = max(last_action_end, last_observation_end, first_action_end)
+        
+        action_logprobs = logp[first_token_id: last_token_id]
+        action_prob = np.exp(sum(action_logprobs)) 
+        action_length = last_token_id - first_token_id
+        action_prob = action_prob ** (1 / action_length)
+        
+        return action_prob
             
     def make_llm_scorer_prompt(self, trajectory, need_goal=False, check_actions="check valid actions", check_inventory="inventory", system_message='', tip=None):
         query = ""
@@ -790,6 +850,8 @@ class MPCSample(   # add world modeling objective in agent
                         reward = self.get_llm_value(action_ngram)
                     elif value_type == "pddl":
                         reward = self.get_pddl_value(action_ngram)
+                    elif value_type == "logp":
+                        reward = self.get_logp_value(action_ngram, action_sequence)
                     # elif value_type == "logp":
                     #     only support some models  
                     else:

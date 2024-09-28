@@ -1,0 +1,223 @@
+{
+  "id": 0,
+  "task_name": "gripper",
+  "goal": "The goal is to satisfy the following conditions: ball1 is at roomb. , ball2 is at roomb. , ball3 is at roomb. , ball4 is at roomb. ",
+  "difficulty": "easy",
+  "is_done": true,
+  "progress_rate": 1.0,
+  "grounding_acc": 0.9166666666666666,
+  "score_change_record": [
+    [
+      3,
+      0.25
+    ],
+    [
+      4,
+      0.5
+    ],
+    [
+      10,
+      0.75
+    ],
+    [
+      11,
+      1.0
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: ball1 is at roomb. , ball2 is at roomb. , ball3 is at roomb. , ball4 is at roomb. ",
+      "Observation": "Ball1 is carrying right. ",
+      "Action": "Pick up ball1 at rooma with arm right.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "Pick up ball2 at rooma with arm left.",
+      "Observation": "Ball2 is carrying left. ",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "Move from rooma to roomb",
+      "Observation": "Robby is at roomb. ",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "drop ball1 roomb right",
+      "Observation": "Ball1 is at roomb.  Right is free. ",
+      "Progress Rate": 0.25
+    },
+    "Interaction Turn 4": {
+      "Action": "drop ball2 roomb left",
+      "Observation": "Ball2 is at roomb.  Left is free. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 5": {
+      "Action": "Pick up ball3 at rooma with arm right.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 6": {
+      "Action": "Move from roomb to rooma",
+      "Observation": "Robby is at rooma. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 7": {
+      "Action": "Pick up ball3 at rooma with arm right.",
+      "Observation": "Ball3 is carrying right. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 8": {
+      "Action": "Pick up ball4 at rooma with arm left.",
+      "Observation": "Ball4 is carrying left. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 9": {
+      "Action": "Move from rooma to roomb",
+      "Observation": "Robby is at roomb. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 10": {
+      "Action": "drop ball3 roomb right",
+      "Observation": "Ball3 is at roomb.  Right is free. ",
+      "Progress Rate": 0.75
+    },
+    "Interaction Turn 11": {
+      "Action": "drop ball4 roomb left",
+      "Observation": "Ball4 is at roomb.  Left is free.  The goal is satisfied.",
+      "Progress Rate": 1.0
+    }
+  }
+}
+{
+  "id": 1,
+  "task_name": "gripper",
+  "goal": "The goal is to satisfy the following conditions: ball1 is at roomb. , ball2 is at roomb. , ball3 is at roomb. , ball4 is at roomb. , ball5 is at roomb. , ball6 is at roomb. ",
+  "difficulty": "easy",
+  "is_done": true,
+  "progress_rate": 1.0,
+  "grounding_acc": 0.8947368421052632,
+  "score_change_record": [
+    [
+      3,
+      0.16666666666666666
+    ],
+    [
+      4,
+      0.3333333333333333
+    ],
+    [
+      10,
+      0.5
+    ],
+    [
+      11,
+      0.6666666666666666
+    ],
+    [
+      17,
+      0.8333333333333334
+    ],
+    [
+      18,
+      1.0
+    ]
+  ],
+  "trajectory": {
+    "Interaction Turn 0": {
+      "Goal": "The goal is to satisfy the following conditions: ball1 is at roomb. , ball2 is at roomb. , ball3 is at roomb. , ball4 is at roomb. , ball5 is at roomb. , ball6 is at roomb. ",
+      "Observation": "Ball1 is carrying right. ",
+      "Action": "Pick up ball1 at rooma with arm right.",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 1": {
+      "Action": "Pick up ball2 at rooma with arm left.",
+      "Observation": "Ball2 is carrying left. ",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 2": {
+      "Action": "Move from rooma to roomb",
+      "Observation": "Robby is at roomb. ",
+      "Progress Rate": 0
+    },
+    "Interaction Turn 3": {
+      "Action": "drop ball1 roomb right",
+      "Observation": "Ball1 is at roomb.  Right is free. ",
+      "Progress Rate": 0.16666666666666666
+    },
+    "Interaction Turn 4": {
+      "Action": "drop ball2 roomb left",
+      "Observation": "Ball2 is at roomb.  Left is free. ",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 5": {
+      "Action": "Pick up ball3 at rooma with arm right.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 6": {
+      "Action": "Move from roomb to rooma",
+      "Observation": "Robby is at rooma. ",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 7": {
+      "Action": "Pick up ball3 at rooma with arm right.",
+      "Observation": "Ball3 is carrying right. ",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 8": {
+      "Action": "Pick up ball4 at rooma with arm left.",
+      "Observation": "Ball4 is carrying left. ",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 9": {
+      "Action": "Move from rooma to roomb",
+      "Observation": "Robby is at roomb. ",
+      "Progress Rate": 0.3333333333333333
+    },
+    "Interaction Turn 10": {
+      "Action": "drop ball3 roomb right",
+      "Observation": "Ball3 is at roomb.  Right is free. ",
+      "Progress Rate": 0.5
+    },
+    "Interaction Turn 11": {
+      "Action": "drop ball4 roomb left",
+      "Observation": "Ball4 is at roomb.  Left is free. ",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 12": {
+      "Action": "Pick up ball5 at rooma with arm right.",
+      "Observation": "The action is not valid and therefore takes no effect. Please remember to satisfy the restriction of actions. You can also check valid actions.",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 13": {
+      "Action": "Move from roomb to rooma",
+      "Observation": "Robby is at rooma. ",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 14": {
+      "Action": "Pick up ball5 at rooma with arm right.",
+      "Observation": "Ball5 is carrying right. ",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 15": {
+      "Action": "Pick up ball6 at rooma with arm left.",
+      "Observation": "Ball6 is carrying left. ",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 16": {
+      "Action": "Move from rooma to roomb",
+      "Observation": "Robby is at roomb. ",
+      "Progress Rate": 0.6666666666666666
+    },
+    "Interaction Turn 17": {
+      "Action": "drop ball5 roomb right",
+      "Observation": "Ball5 is at roomb.  Right is free. ",
+      "Progress Rate": 0.8333333333333334
+    },
+    "Interaction Turn 18": {
+      "Action": "drop ball6 roomb left",
+      "Observation": "Ball6 is at roomb.  Left is free.  The goal is satisfied.",
+      "Progress Rate": 1.0
+    }
+  }
+}

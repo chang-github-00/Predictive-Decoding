@@ -4,7 +4,8 @@ import re
 file = '../results/9_20_gpt35_act_pddl/pddl.txt'
 file = '../results/gpt35_react/pddl.txt'
 file = '../results/gpt35_4_20_low_temperature/alfworld.txt'
-
+file = '../results/9_22_llama_70b_pddl_mpc_sample/pddl.txt'
+file = '../results/9_22_llama_70b_alfworld_mpc_sample/alfworld.txt'
 
 data = []
 max_steps = 20

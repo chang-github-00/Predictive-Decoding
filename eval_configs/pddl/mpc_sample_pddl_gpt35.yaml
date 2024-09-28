@@ -21,7 +21,7 @@ agent:
   select_temperature: 0.05 #.05 # llm 0.3 # heuristic - 0.05, smaller difference than llm
   n_generate_sample: 8
   value_type: pddl
-  lookahead_length: 1
+  lookahead_length: 6
 
 llm:
   gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
@@ -36,9 +36,9 @@ llm:
       stop: 
       use_parser: False
       max_tokens: 200
-  llama-70b:
-      name: gpt
-      engine: Meta-Llama-3.1-70B-Instruct
+  llama-70b-vllm:
+      name: openai_vllm
+      engine: /ssddata/model_hub/Meta-Llama-3.1-70B-Instruct/
       context_length: 4096
       use_azure: False
       temperature: 0.0

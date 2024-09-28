@@ -92,10 +92,10 @@ python agentboard/eval_reasoning_reward_parallel.py --cfg-path eval_configs/gsm8
 
 # flops 179 n_iteration = 32 n=4
 # 148/189 resumed from 48
-python examples/SearchORM/gsm8k/inference_mcts.py --llama_path /ssddata/model_hub/Meta-Llama-3-8B-Instruct --rm_path /ssddata/model_hub/math-shepherd-mistral-7b-prm/ --base_lm llama3 --n_actions 4 --n_iters 16
+python examples/SearchORM/gsm8k/inference_mcts.py --llama_path /ssddata/model_hub/Meta-Llama-3-8B-Instruct/ --rm_path /ssddata/model_hub/math-shepherd-mistral-7b-prm/ --base_lm llama3 --n_actions 4 --n_iters 16
 
 # flops 437 n_iteration = 16 n=8 
-python examples/SearchORM/gsm8k/inference_mcts.py --llama_path /ssddata/model_hub/Meta-Llama-3-8B-Instruct --rm_path /ssddata/model_hub/math-shepherd-mistral-7b-prm/ --base_lm llama3 --n_actions 8 --n_iters 16
+python examples/SearchORM/gsm8k/inference_mcts.py --llama_path /ssddata/model_hub/Meta-Llama-3-8B-Instruct/ --rm_path /ssddata/model_hub/math-shepherd-mistral-7b-prm/ --base_lm llama3 --n_actions 8 --n_iters 16
 
 
 # for predictive decoding

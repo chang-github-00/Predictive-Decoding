@@ -8,7 +8,7 @@ run:
 algorithm:
   task: humaneval
   name: Self_Consistency  
-  n_generate_sample: 10 # n=1 pal
+  n_generate_sample: 1 # n=1 pal
   value_type: logp # use llama3
   do_sample: True
   beam_temperature: 0.6

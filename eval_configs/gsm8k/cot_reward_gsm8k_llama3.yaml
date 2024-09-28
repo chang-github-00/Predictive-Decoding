@@ -8,7 +8,7 @@ run:
 algorithm:
   task: gsm8k
   name: COT_Reward
-  n_generate_sample: 64 # n=1 pal
+  n_generate_sample: 1 # n=1 pal
   value_type: logp # use llama3
   do_sample: True
   beam_temperature: 1.0

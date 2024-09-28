@@ -228,7 +228,7 @@ class EvalReasoning:
         self.prompts = {}
         if self.task == "gsm8k":
             from prompts.Reasoning.gsm8k_prompt import code_prompt, evaluate_prompt, pal_prompt, pal_prompt_1, no_example_prompt
-            self.prompts["prompt"] = code_prompt #no_example_prompt#pal_prompt_1 #code_prompt#pal_prompt
+            self.prompts["prompt"] = no_example_prompt #no_example_prompt#pal_prompt_1 #code_prompt#pal_prompt
             self.prompts["evaluate"] = evaluate_prompt
             self.prompts["system_msg"] = "You will write python program to solve math problems. You will only write code blocks."
         if self.task == "math":

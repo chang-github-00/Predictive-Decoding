@@ -186,6 +186,9 @@ class OPENAI_VLLM:
         prompt = self.tokenizer.encode(prompt)
         
         return len(prompt)+100
+    
+    def num_tokens(self, prompt):
+        return len(self.tokenizer.encode(prompt))
 
     @classmethod
     def from_config(cls, config):

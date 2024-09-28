@@ -1,0 +1,4 @@
+{"task": "humaneval_humaneval-python", "pass@1": 53.65853658536586}
+[FLOPS] {'avg_prompt_tokens': 0.0, 'avg_prompt_times': 0.0, 'avg_generation_tokens': 122.2, 'avg_reward_tokens': 0.0, 'avg_reward_times': 0.0}
+{"task": "humaneval_humaneval-python", "pass@1": 51.21951219512195}
+[FLOPS] {'avg_prompt_tokens': 0.0, 'avg_prompt_times': 0.0, 'avg_generation_tokens': 125.5, 'avg_reward_tokens': 0.0, 'avg_reward_times': 0.0}

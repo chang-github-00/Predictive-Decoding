@@ -6,6 +6,7 @@ from common.registry import registry
 import json
 import random
 import re
+from utils.logging.token_logger import token_count, count_flag
 
 
 @registry.register_agent("VanillaAgent")
@@ -77,6 +78,8 @@ class VanillaAgent(
             ('Observation', self.init_obs)]  # list of [('State', "xxx"), ('Action', "xxx"), ...]
         self.steps = 0
         self.done = False
+        token_count.print()
+        token_count.add_instance(1)
 
     def update(self, action, state):
         self.steps += 1
@@ -181,6 +184,10 @@ class VanillaAgent(
         self.log_example_prompt(input_prompt)
 
         success, action = self.llm_model.generate(system_message, input_prompt)
+        
+        if count_flag:
+            num_tokens = self.llm_model.num_tokens(action)
+            token_count.add_generation_tokens(num_tokens)
 
         if success and self.use_parser:
             action = self.action_parser_for_special_llms(action)

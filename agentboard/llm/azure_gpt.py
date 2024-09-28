@@ -192,7 +192,10 @@ class OPENAI_GPT_AZURE:
             
             raise NotImplementedError
     
-
+    def num_tokens(self, prompt):
+        encoding = tiktoken.get_encoding("cl100k_base")
+        return len(encoding.encode(prompt)) 
+            
     def num_tokens_from_messages(self, messages, model="gpt-3.5-turbo-0613"):
         """Return the number of tokens used by a list of messages."""
         model = self.engine

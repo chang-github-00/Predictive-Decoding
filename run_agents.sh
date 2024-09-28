@@ -11,7 +11,10 @@
 
 # python agentboard/eval_main.py --cfg-path eval_configs/alf-world/act_alfworld_gpt35.yaml --tasks alfworld --model llama-70b --log_path results/9_22_llama_70b_alfworld_act --max_num_steps 20
 
-python agentboard/eval_main.py --cfg-path eval_configs/pddl/act_pddl_gpt35.yaml --tasks pddl --model llama-70b --log_path results/9_22_llama_70b_pddl_act_temp_high --max_num_steps 20
+python agentboard/eval_main.py --cfg-path eval_configs/pddl/act_pddl_gpt35.yaml --tasks pddl --model llama-70b --log_path results/count_alfworld_tokens_act --max_num_steps 20
 
 python agentboard/eval_main.py --cfg-path eval_configs/pddl/react_pddl_gpt35.yaml --tasks pddl --model llama-70b --log_path results/9_22_llama_70b_pddl_react --max_num_steps 20
 
+
+
+python agentboard/eval_main.py --cfg-path eval_configs/alf-world/act_alfworld_gpt35.yaml --tasks alfworld  --log_path results/count_alfworld_tokens_act --max_num_steps 20

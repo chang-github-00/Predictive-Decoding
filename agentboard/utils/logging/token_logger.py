@@ -23,6 +23,8 @@ class count_tokens:
     
     def print(self):
         # average tokens per instance
+        if self.instance_count == 0:
+            return
         print("Prompt times: ", self.prompt_count/self.instance_count)
         print("Average prompt length: ", sum(self.prompt_tokens)/len(self.prompt_tokens))
         print("Generation tokens per instance: ", self.generation_count/self.instance_count)

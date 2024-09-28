@@ -1,0 +1,2 @@
+2024-09-29 05:29:47 | GOAL | tasks.alfworld | Example 0 | Goal: look at bowl under the desklamp.
+2024-09-29 05:29:47 | INFO | tasks.alfworld | Step 00 - Message: You are in the middle of a room. Looking quickly around you, you see a bed 1, a desk 2, a desk 1, a drawer 6, a drawer 5, a drawer 4, a drawer 3, a drawer 2, a drawer 1, a garbagecan 1, a laundryhamper 1, a safe 1, a shelf 6, a shelf 5, a shelf 4, a shelf 3, a shelf 2, and a shelf 1.

@@ -16,6 +16,8 @@ from tqdm import tqdm
 from typing import Optional
 
 from utils.human_eval.evaluation import evaluate_functional_correctness, parse_code_prefix
+from utils.logging.token_logger import token_count, count_flag
+
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
@@ -23,7 +25,7 @@ def load_dataset(task, path=''):
     if task == "humaneval":
         dataset =  open(path).readlines()
         dataset = [json.loads(item) for item in dataset]
-        return dataset    
+        return dataset[:20]    
     elif task == "mbpp":
         dataset =  open(path).readlines()
         dataset = [json.loads(item) for item in dataset]
@@ -152,6 +154,9 @@ class EvalReasoning:
         id = 0
         
         for test_items in tqdm(item_iter, total=math.ceil(len(self.dataset)/self.batch_size)):
+            if count_flag:
+                token_count.add_instance(len(test_items))
+                
             if self.task == "humaneval":
                 prefixes = [item["prompt"] for item in test_items]
                 questions = [item["text"] for item in test_items]
@@ -183,12 +188,17 @@ class EvalReasoning:
                         write_dict["generation"] = output
                         f.write(json.dumps(write_dict) + '\n')
             
+            count_stats = token_count.get_count()
+            token_count.print()
+        
+            
         res = entry_point(output_filepath, self.dataset_path)
         with open(os.path.join(self.log_path,f"all_results.txt"), "a+") as f:
             for key, value in res.items():
                 metrics = {"task":self.task+'_'+dataset_name, key: value}
                 f.write(json.dumps(metrics) + "\n")
-        
+            if count_flag:
+                f.write(f"[FLOPS] {count_stats}\n")
         return res
     
 def parse_args():

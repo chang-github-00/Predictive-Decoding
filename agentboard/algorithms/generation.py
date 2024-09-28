@@ -166,7 +166,16 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
 
             full_output = f.getvalue()
             return full_output
+    
+    def record_generated_num_tokens(self, results):
+        if not count_flag:
+            return
         
+        for res in results:
+            for result in res:
+                token = self.llm_model.tokenizer.encode(result)
+                token_count.add_generation_tokens(len(token))
+                
     def run(self, question, prompts=None, **kwargs):
         
         if prompts is not None:
@@ -265,12 +274,14 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
         all_system_messages = [self.prompts["system_msg"]] * len(all_prompts)
         
         success, all_code_samples = self.llm_model.parallel_generate_with_config(all_system_messages, all_prompts, generation_config, answer_prefixes)
-                
+            
         if not success:
             
             return False, None
         
         if args.n_generate_sample == 1: all_code_samples = [[code_sample] for code_sample in all_code_samples]
+
+        self.record_generated_num_tokens(all_code_samples)
         
         if self.task in ["humaneval", "mbpp"]:
             all_outputs = []
@@ -283,7 +294,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
                     formatted_code_samples.append(code)
                     
                 all_outputs.append(formatted_code_samples)
-            
+                
             return True, all_outputs
         else:   
             all_outputs = []
@@ -295,6 +306,7 @@ class Self_Consistency:  # the algorithm should be stateless, and generates a wh
                     formatted_code_samples.append(code)
                     
                 all_outputs.append(formatted_code_samples)
+            
             return True, all_outputs
                 
                 

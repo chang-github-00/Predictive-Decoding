@@ -9,6 +9,7 @@ import io
 import argparse
 import numpy as np
 
+from utils.logging.token_logger import token_count, count_flag
 
 @registry.register_algorithm("Self_Infill")
 class Self_Infill:  # only support humaneval and mbpp
@@ -69,6 +70,14 @@ class Self_Infill:  # only support humaneval and mbpp
         
         raise NotImplementedError("This method is not implemented")
     
+    def record_generated_num_tokens(self, results):
+        if not count_flag:
+            return
+        
+        for res in results:
+            for result in res:
+                token = self.llm_model.tokenizer.encode(result)
+                token_count.add_generation_tokens(len(token))
             
     def parallel_run(self, questions, prompts=None, **kwargs):
         
@@ -114,13 +123,14 @@ class Self_Infill:  # only support humaneval and mbpp
         
             success, all_code_samples = self.llm_model.parallel_generate_with_config(all_system_messages, all_prompts, generation_config, answer_prefixes)
             
-            
             if not success:
             
                 return False, None
             
             if args.n_generate_sample == 1: 
                 all_code_samples = [[code_sample] for code_sample in all_code_samples]
+            
+            self.record_generated_num_tokens(all_code_samples)
         
             # split in half and keep the second half
             suffixes = []
@@ -136,9 +146,6 @@ class Self_Infill:  # only support humaneval and mbpp
                     suffix = f.getvalue()
                 suffixes.append(suffix)
                 
-        
-        
-        
         
         all_outputs = []
         for prefix, code_samples in zip(self.prompts["prompt"], all_code_samples):

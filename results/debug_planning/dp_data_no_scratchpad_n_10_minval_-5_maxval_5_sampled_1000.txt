@@ -1,6 +1,0 @@
-[EXP] 0: [success_rate]: False, [output]: [2, 2, 1, 2, 1, 2, 2, 1, 2, 2] 
-[EXP] 1: [success_rate]: False, [output]: [1, 2, 2, 1, 2, 1, 2, 1, 2, 2] 
-[EXP] 2: [success_rate]: False, [output]: [1, 2, 2, 1, 2, 2, 1, 2, 1, 2] 
-[EXP] 3: [success_rate]: False, [output]: [2, 2, 1, 2, 1, 2, 2, 1, 2, 2] 
-[EXP] 4: [success_rate]: False, [output]: [2, 1, 2, 2, 2, 1, 2, 1, 2, 2] 
-[EXP] 5: [success_rate]: False, [output]: [1, 2, 2, 1, 2, 1, 2, 1, 2, 2] 

@@ -1,3 +1,0 @@
-{"task": "gsm8k_gsm8k", "success_rate": 0.8518518518518519}
-{"task": "gsm8k_gsm8k", "success_rate": 0.873015873015873}
-{"task": "gsm8k_gsm8k", "success_rate": 0.8571428571428571}

@@ -1,1 +1,0 @@
-{"task": "math_test", "success_rate": 0.394}

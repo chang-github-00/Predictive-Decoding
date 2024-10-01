@@ -1,2 +1,0 @@
-{"task_name": "alfworld", "success_rate": 0.08208955223880597, "progress_rate": 0.3787313432835821, "grounding_acc": 0.5632764003825601, "success_rate_hard": 0.045454545454545456, "success_rate_easy": 0.25, "progress_rate_hard": 0.3613636363636364, "progress_rate_easy": 0.4583333333333333}
-{"task_name": "pddl", "success_rate": 0.03333333333333333, "progress_rate": 0.1711574074074074, "grounding_acc": 0.35007424145608734, "success_rate_hard": 0.0, "success_rate_easy": 0.05555555555555555, "progress_rate_hard": 0.06944444444444443, "progress_rate_easy": 0.238966049382716}

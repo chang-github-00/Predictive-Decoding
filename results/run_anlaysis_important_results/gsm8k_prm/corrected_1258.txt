@@ -1,8 +1,0 @@
-def solution():	 [ ]
-    """There are five phones on a phone plan. The main phone costs twice as much as each additional phone. If the main phone plan costs $20, how much does the whole phone plan cost?"""	 [ ]
-    main_phone = 20	 [ ]
-    additional_phones = 4  # 5 phones in total, 1 is the main phone	 [ ]
-    cost_per_additional_phone = main_phone / (additional_phones + 1)	 [ ]
-    total_cost = main_phone + additional_phones * cost_per_additional_phone	 [ ]
-    result = total_cost	 [ ]
-    return result	 [ ]

@@ -1,8 +1,0 @@
-def solution():	 [ ]
-    """Maggie's oven is malfunctioning. When she sets it to 450 the actual temperature is 468. If it's off by the same percentage for any recipe, what temperature should she set it at if her recipe calls for 520 degrees?"""	 [ ]
-    actual_temp = 468	 [ ]
-    set_temp = 450	 [ ]
-    percentage_diff = (actual_temp - set_temp) / set_temp * 100	 [ ]
-    new_set_temp = 520 * (1 + percentage_diff / 100)	 [ ]
-    result = new_set_temp	 [ ]
-    return result	 [ ]

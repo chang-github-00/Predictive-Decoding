@@ -1,7 +1,0 @@
-def solution():	 [ ]
-    """George has 45% more pears than bananas. If George has 200 bananas, how many fruits does George have?"""	 [ ]
-    bananas = 200	 [ ]
-    pears = bananas * 1.45  # 45% more pears than bananas	 [ ]
-    total_fruits = bananas + int(pear)	 [ ]
-    result = total_fruits	 [ ]
-    return result	 [ ]

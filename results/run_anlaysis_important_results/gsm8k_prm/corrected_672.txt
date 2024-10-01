@@ -1,7 +1,0 @@
-def solution():	 [ ]
-    """Christina records her mood every day on a calendar. Over the past thirty days of moods, she had twelve good days and eight bad days and the rest were neutral. Her first eight days were good, her second eight days were bad, and her third eight days were neutral. If the next three days were good, neutral, and good, how many good days were left in the month?"""	 [ ]
-    good_days_initial = 12	 [ ]
-    good_days_first_eight = 8	 [ ]
-    good_days_remaining = good_days_initial - good_days_first_eight	 [ ]
-    result = good_days_remaining	 [ ]
-    return result	 [ ]

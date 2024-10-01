@@ -1,8 +1,0 @@
-def solution():	 [ ]
-    """Shania is designing her own dress, and decides to make it a longer dress by extending the dress by 50% of its original length. She also adds 20cm to the bottom of the dress with a lace trim. If the final design is 140cm long then how long, in centimeters, was the dress in its original design?"""	 [ ]
-    final_length = 140	 [ ]
-    added_length = 20	 [ ]
-    extension = (final_length - added_length) / 1.5	 [ ]
-    original_length = final_length - extension	 [ ]
-    result = original_length	 [ ]
-    return result	 [ ]

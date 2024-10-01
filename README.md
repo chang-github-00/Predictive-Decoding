@@ -1,19 +1,15 @@
-# Decoding Strategy for Agents
+# Predictive Decoding Code Anonymous Version
 
 
 ## Download dataset
 under path `data/`
+prepare agent data following [AgentBoard](https://github.com/hkust-nlp/AgentBoard)
 
-## Parallel decoding + lookahead
-use `lade_results_all_tasks.yaml`, following [lade](https://lmsys.org/blog/2023-11-21-lookahead-decoding/)
+## Prepare environment
+see `setup.sh`
 
-## Lookahead + direct selection of hard match n-gram action
-use `agent_lade_results_all_tasks.yaml`
+## Input API Keys
+follow `.template_env` to write a environment variable file at `.env`
 
-```
-git clone https://github.com/chang-github-00/vllm
-python -m pip install vllm
-cd Agent-Decoding
-INSTALL_WEBARENA=false bash ./setup.sh
-```
-
+## Quick Start
+see commands in `run.sh`

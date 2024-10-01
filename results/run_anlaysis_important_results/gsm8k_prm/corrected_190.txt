@@ -1,7 +1,0 @@
-def solution():	 [ ]
-    """John collects peaches for 3 hours.  He can collect 2 peaches a minute.  How many peaches does he collect?"""	 [ ]
-    minutes_collected = 3	 [f]
-    peaches_per_minute = 2	 [ ]
-    total_peaches = minutes_collected * peaches_per_minute	 [ ]
-    result = total_peaches	 [ ]
-    return result	 [ ]

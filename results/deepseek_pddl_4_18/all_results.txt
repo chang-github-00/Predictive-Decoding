@@ -1,1 +1,0 @@
-{"task_name": "pddl", "success_rate": 0.11666666666666667, "progress_rate": 0.30726851851851844, "grounding_acc": 0.6389825953773324, "success_rate_hard": 0.08333333333333333, "success_rate_easy": 0.1388888888888889, "progress_rate_hard": 0.15972222222222224, "progress_rate_easy": 0.4056327160493827}

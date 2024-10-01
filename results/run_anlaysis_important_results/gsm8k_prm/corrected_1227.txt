@@ -1,8 +1,0 @@
-def solution():	 [ ]
-    """Susan orders 3 magazines that send 12 issues a year.  She has 1 magazine that sends 6 issues a year.  Her last magazine sends her 4 times the amount of the 6 issue magazine.  How many magazines does she get every year?"""	 [ ]
-    magazine1_issues = 12	 [ ]
-    magazine2_issues = 6	 [ ]
-    magazine3_issues = 24  # 4 times the amount of the 6 issue magazine	 [ ]
-    total_issues = magazine1_issues + magazine2_issues + magazine3_issues	 [ ]
-    result = total_issues	 [ ]
-    return result	 [ ]

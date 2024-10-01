@@ -1,1 +1,0 @@
-[EXP] 0: [success_rate]: True, [progress_rate]: 1.0, [grounding_acc]: 1.0, [score_state]: [(0, 0.25), (1, 0.5), (2, 0.75), (4, 1.0)] 

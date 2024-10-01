@@ -1,8 +1,0 @@
-def solution():	 [ ]
-    """Bob spends $27000 distributed between 3 schools to buy books.  He can buy 100 books for $500.  How many books can he buy per school?"""	 [ ]
-    total_money = 27000	 [ ]
-    books_per_dollar = 100	 [ ]
-    money_per_school = total_money / 3	 [ ]
-    books_per_school = money_per_school * books_per_dollar	 [ ]
-    result = books_per_school	 [ ]
-    return result	 [ ]

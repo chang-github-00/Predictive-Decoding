@@ -1,1 +1,0 @@
-{"task_name": "alfworld", "success_rate": 0.07462686567164178, "progress_rate": 0.2947761194029851, "grounding_acc": 0.5020167022032695, "success_rate_hard": 0.07272727272727272, "success_rate_easy": 0.08333333333333333, "progress_rate_hard": 0.31363636363636366, "progress_rate_easy": 0.20833333333333334}

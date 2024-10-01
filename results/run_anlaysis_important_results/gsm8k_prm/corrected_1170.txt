@@ -1,8 +1,0 @@
-def solution():	 [ ]
-    """A wall mural has four different colors of paint in it: red, white, purple, and yellow.  There are equal amounts of red, white, and purple paint in the mural. Half the mural is yellow. If the mural used 12 pints of paint in all, how many pints of red paint was used?"""	 [ ]
-    total_paint = 12	 [ ]
-    total_red_white_purple = (total_paint * 3) // 4  # 3 colors, 3/4 of total paint	 [ ]
-    yellow_paint = total_paint // 2  # half the mural is yellow	 [ ]
-    red_paint = total_red_white_purple - yellow_paint	 [ ]
-    result = red_paint	 [ ]
-    return result	 [ ]

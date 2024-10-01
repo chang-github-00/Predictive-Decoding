@@ -1,8 +1,0 @@
-[EXP] 0: [success_rate]: True, [progress_rate]: 1.0, [grounding_acc]: 1.0, [score_state]: [(3, 0.25), (4, 0.5), (9, 0.75), (10, 1.0)] 
-[EXP] 1: [success_rate]: True, [progress_rate]: 1.0, [grounding_acc]: 1.0, [score_state]: [(3, 0.16666666666666666), (4, 0.3333333333333333), (9, 0.5), (10, 0.6666666666666666), (15, 0.8333333333333334), (16, 1.0)] 
-[EXP] 2: [success_rate]: False, [progress_rate]: 0.75, [grounding_acc]: 1.0, [score_state]: [(3, 0.125), (4, 0.25), (9, 0.375), (10, 0.5), (15, 0.625), (16, 0.75)] 
-[EXP] 3: [success_rate]: False, [progress_rate]: 0.6, [grounding_acc]: 1.0, [score_state]: [(3, 0.1), (4, 0.2), (9, 0.3), (10, 0.4), (15, 0.5), (16, 0.6)] 
-[EXP] 4: [success_rate]: False, [progress_rate]: 0.5, [grounding_acc]: 1.0, [score_state]: [(3, 0.08333333333333333), (4, 0.16666666666666666), (9, 0.25), (10, 0.3333333333333333), (15, 0.4166666666666667), (16, 0.5)] 
-[EXP] 5: [success_rate]: True, [progress_rate]: 1.0, [grounding_acc]: 0.9230769230769231, [score_state]: [(3, 0.25), (4, 0.5), (7, 0.75), (12, 1.0)] 
-[EXP] 6: [success_rate]: False, [progress_rate]: 0.6666666666666666, [grounding_acc]: 0.8, [score_state]: [(5, 0.16666666666666666), (6, 0.3333333333333333), (11, 0.5), (17, 0.6666666666666666)] 
-[EXP] 7: [success_rate]: False, [progress_rate]: 0.8333333333333334, [grounding_acc]: 0.85, [score_state]: [(2, 0.16666666666666666), (6, 0.3333333333333333), (9, 0.5), (12, 0.6666666666666666), (17, 0.8333333333333334)] 

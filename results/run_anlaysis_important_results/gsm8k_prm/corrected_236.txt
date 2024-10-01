@@ -1,8 +1,0 @@
-def solution():	 [ ]
-    """Ram uses a lot of pens. He discovered that he can save money by mixing the ink from five empty pens to make one full pen. If he buys 25 pens and then uses them to make new pens when the ink runs low, how many total pens does he get to have?"""	 [ ]
-    pens_initial = 25	 [ ]
-    pens_per_refill = 5	 [ ]
-    pens_refilled = pens_initial // pens_per_refill	 [ ]
-    total_pens = pens_initial + pens_refilled	 [f]
-    result = total_pens	 [ ]
-    return result	 [ ]
